@@ -18,15 +18,15 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
+
 namespace NHapi.Base.validation
 {
-
     /// <summary> A rule that applies to a primitive datatype. </summary>
     /// <author>  Bryan Tripp
     /// </author>
     public interface IPrimitiveTypeRule : IRule
     {
+        #region Public Methods and Operators
 
         /// <summary> Optionally performs an automatic correction on given data to make it 
         /// conform (eg trims leading whitespace).  This is to be called prior to 
@@ -43,5 +43,7 @@ namespace NHapi.Base.validation
         /// rule -- returns true if it passes the test, false otherwise.  
         /// </summary>
         bool test(System.String testValu);
+
+        #endregion
     }
 }

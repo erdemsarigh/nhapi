@@ -1,10 +1,7 @@
-using System;
-using NHapi.Base.Parser;
-using NHapi.Base;
-using NHapi.Base.Log;
-
 namespace NHapi.Base.Model
 {
+    using NHapi.Base.Log;
+    using NHapi.Base.Parser;
 
     /// <summary> A generic HL7 message, meant for parsing message with unrecognized structures
     /// into a flat list of segments.
@@ -13,6 +10,7 @@ namespace NHapi.Base.Model
     /// </author>
     public abstract class GenericMessage : AbstractMessage
     {
+        #region Constructors and Destructors
 
         /// <summary> Creates a new instance of GenericMessage. 
         /// 
@@ -34,6 +32,10 @@ namespace NHapi.Base.Model
             }
         }
 
+        #endregion
+
+        #region Public Methods and Operators
+
         /// <summary> Returns a subclass of GenericMessage corresponding to a certain version.  
         /// This is needed so that version-specific segments can be added as the message
         /// is parsed.  
@@ -41,7 +43,9 @@ namespace NHapi.Base.Model
         public static System.Type getGenericMessageClass(System.String version)
         {
             if (!ParserBase.ValidVersion(version))
+            {
                 throw new System.ArgumentException("The version " + version + " is not recognized");
+            }
 
             System.Type c = null;
             if (version.Equals("2.1"))
@@ -71,22 +75,15 @@ namespace NHapi.Base.Model
             return c;
         }
 
+        #endregion
+
         /// <summary>
         /// Version 2.1 generic message
         /// </summary>
         public class V21 : GenericMessage
         {
-            /// <summary>
-            /// Version of message
-            /// </summary>
-            override public System.String Version
-            {
-                get
-                {
-                    return "2.1";
-                }
+            #region Constructors and Destructors
 
-            }
             /// <summary>
             /// Constructor
             /// </summary>
@@ -95,6 +92,23 @@ namespace NHapi.Base.Model
                 : base(factory)
             {
             }
+
+            #endregion
+
+            #region Public Properties
+
+            /// <summary>
+            /// Version of message
+            /// </summary>
+            public override System.String Version
+            {
+                get
+                {
+                    return "2.1";
+                }
+            }
+
+            #endregion
         }
 
         /// <summary>
@@ -102,17 +116,8 @@ namespace NHapi.Base.Model
         /// </summary>
         public class V22 : GenericMessage
         {
-            /// <summary>
-            /// Version of message
-            /// </summary>
-            override public System.String Version
-            {
-                get
-                {
-                    return "2.2";
-                }
+            #region Constructors and Destructors
 
-            }
             /// <summary>
             /// Constructor
             /// </summary>
@@ -121,6 +126,23 @@ namespace NHapi.Base.Model
                 : base(factory)
             {
             }
+
+            #endregion
+
+            #region Public Properties
+
+            /// <summary>
+            /// Version of message
+            /// </summary>
+            public override System.String Version
+            {
+                get
+                {
+                    return "2.2";
+                }
+            }
+
+            #endregion
         }
 
         /// <summary>
@@ -128,17 +150,8 @@ namespace NHapi.Base.Model
         /// </summary>
         public class V23 : GenericMessage
         {
-            /// <summary>
-            /// Version of message
-            /// </summary>
-            override public System.String Version
-            {
-                get
-                {
-                    return "2.3";
-                }
+            #region Constructors and Destructors
 
-            }
             /// <summary>
             /// Constructor
             /// </summary>
@@ -147,6 +160,23 @@ namespace NHapi.Base.Model
                 : base(factory)
             {
             }
+
+            #endregion
+
+            #region Public Properties
+
+            /// <summary>
+            /// Version of message
+            /// </summary>
+            public override System.String Version
+            {
+                get
+                {
+                    return "2.3";
+                }
+            }
+
+            #endregion
         }
 
         /// <summary>
@@ -154,17 +184,8 @@ namespace NHapi.Base.Model
         /// </summary>
         public class V231 : GenericMessage
         {
-            /// <summary>
-            /// Version of message
-            /// </summary>
-            override public System.String Version
-            {
-                get
-                {
-                    return "2.3.1";
-                }
+            #region Constructors and Destructors
 
-            }
             /// <summary>
             /// Constructor
             /// </summary>
@@ -173,6 +194,23 @@ namespace NHapi.Base.Model
                 : base(factory)
             {
             }
+
+            #endregion
+
+            #region Public Properties
+
+            /// <summary>
+            /// Version of message
+            /// </summary>
+            public override System.String Version
+            {
+                get
+                {
+                    return "2.3.1";
+                }
+            }
+
+            #endregion
         }
 
         /// <summary>
@@ -180,17 +218,8 @@ namespace NHapi.Base.Model
         /// </summary>
         public class V24 : GenericMessage
         {
-            /// <summary>
-            /// Version of message
-            /// </summary>
-            override public System.String Version
-            {
-                get
-                {
-                    return "2.4";
-                }
+            #region Constructors and Destructors
 
-            }
             /// <summary>
             /// Constructor
             /// </summary>
@@ -199,6 +228,23 @@ namespace NHapi.Base.Model
                 : base(factory)
             {
             }
+
+            #endregion
+
+            #region Public Properties
+
+            /// <summary>
+            /// Version of message
+            /// </summary>
+            public override System.String Version
+            {
+                get
+                {
+                    return "2.4";
+                }
+            }
+
+            #endregion
         }
 
         /// <summary>
@@ -206,17 +252,8 @@ namespace NHapi.Base.Model
         /// </summary>
         public class V25 : GenericMessage
         {
-            /// <summary>
-            /// Version of message
-            /// </summary>
-            override public System.String Version
-            {
-                get
-                {
-                    return "2.5";
-                }
+            #region Constructors and Destructors
 
-            }
             /// <summary>
             /// Constructor
             /// </summary>
@@ -225,6 +262,23 @@ namespace NHapi.Base.Model
                 : base(factory)
             {
             }
+
+            #endregion
+
+            #region Public Properties
+
+            /// <summary>
+            /// Version of message
+            /// </summary>
+            public override System.String Version
+            {
+                get
+                {
+                    return "2.5";
+                }
+            }
+
+            #endregion
         }
     }
 }

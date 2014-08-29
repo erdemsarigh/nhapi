@@ -3,10 +3,9 @@
 * 
 * Created on May 7, 2003 at 2:19:17 PM
 */
-using System;
+
 namespace NHapi.Base.Log
 {
-
     /// <summary> <p>Factory for creating {@link HapiLog} instances. It is factory
     /// that delegates the discovery process to the <code> LogFactory </code>
     /// class and wraps the discovered <code> Log </code> with a new instance of
@@ -19,11 +18,16 @@ namespace NHapi.Base.Log
     /// </version>
     public sealed class HapiLogFactory
     {
+        #region Constructors and Destructors
 
         /// <summary> Do not allow instantiation.</summary>
         private HapiLogFactory()
         {
         }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         /// <summary> Convenience method to return a named HAPI logger, without the application
         /// having to care about factories.
@@ -66,5 +70,7 @@ namespace NHapi.Base.Log
 
             return retVal;
         }
+
+        #endregion
     }
 }

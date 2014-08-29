@@ -23,14 +23,14 @@
 /// this file under either the MPL or the GPL.
 /// 
 /// </summary>
-using System;
+
 namespace NHapi.Base.Model
 {
-
     /// <summary> This class is used to provide utility functions for other datatype classes and methods.</summary>
-
     public class DataTypeUtil
     {
+        #region Public Properties
+
         /// <summary> This method will return a signed four digit integer indicating the local
         /// GMT offset. This is the HL7 Offset format in integer representation.
         /// </summary>
@@ -40,7 +40,9 @@ namespace NHapi.Base.Model
             {
                 int offSet;
                 System.Globalization.GregorianCalendar currentTime = new System.Globalization.GregorianCalendar();
-                int gmtOffSet = SupportClass.CalendarManager.manager.Get(currentTime, SupportClass.CalendarManager.ZONE_OFFSET);
+                int gmtOffSet = SupportClass.CalendarManager.manager.Get(
+                    currentTime,
+                    SupportClass.CalendarManager.ZONE_OFFSET);
 
                 int offSetSignInt;
                 if (gmtOffSet < 0)
@@ -59,17 +61,13 @@ namespace NHapi.Base.Model
                 offSet = ((gmtOffSetHours * 100) + gmtOffSetMin) * offSetSignInt;
                 return offSet;
             }
-
-
         }
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public DataTypeUtil()
-        {
-        } //end zero arg constructor
+        #endregion
 
+        //end zero arg constructor
+
+        #region Public Methods and Operators
 
         /// <summary> This method will preappend the zeros to the beginning of num such that the total length
         /// equals totalDigitLength. It will also return the string representation of the new number.
@@ -80,16 +78,17 @@ namespace NHapi.Base.Model
             equals totalDigitLength. Return the string representation of the new number*/
             System.String a = System.Convert.ToString(num);
             if (a.Length >= totalDigitLength)
-                return a;
-            else
             {
-                int preAppendAmnt = totalDigitLength - a.Length;
-                for (int j = 0; j < preAppendAmnt; j++)
-                {
-                    a = "0" + a;
-                } //end for
                 return a;
-            } //end else
+            }
+            int preAppendAmnt = totalDigitLength - a.Length;
+            for (int j = 0; j < preAppendAmnt; j++)
+            {
+                a = "0" + a;
+            } //end for
+            return a;
         }
+
+        #endregion
     } //end class
 }

@@ -18,12 +18,10 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using NHapi.Base.Model;
-using NHapi.Base.validation;
 
 namespace NHapi.Base.validation.impl
 {
+    using NHapi.Base.Model;
 
     /// <summary> A default implementation of <code>ValidationContext</code>. 
     /// 
@@ -34,33 +32,36 @@ namespace NHapi.Base.validation.impl
     /// </version>
     public class ValidationContextImpl : IValidationContext
     {
-        /// <returns> a List of <code>RuleBinding</code>s for <code>PrimitiveTypeRule</code>s.    
-        /// </returns>
-        virtual public System.Collections.IList PrimitiveRuleBindings
-        {
-            get
-            {
-                return myPrimitiveRuleBindings;
-            }
+        #region Fields
 
-        }
-        /// <returns> a List of <code>RuleBinding</code>s for <code>MessageRule</code>s.    
-        /// </returns>
-        virtual public System.Collections.IList MessageRuleBindings
-        {
-            get
-            {
-                return myMessageRuleBindings;
-            }
+        private System.Collections.IList myEncodingRuleBindings;
 
+        private System.Collections.IList myMessageRuleBindings;
+
+        private System.Collections.IList myPrimitiveRuleBindings;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        public ValidationContextImpl()
+        {
+            this.myPrimitiveRuleBindings = new System.Collections.ArrayList(30);
+            this.myMessageRuleBindings = new System.Collections.ArrayList(20);
+            this.myEncodingRuleBindings = new System.Collections.ArrayList(10);
         }
+
+        #endregion
+
+        #region Public Properties
+
         /// <returns> a List of <code>RuleBinding</code>s for <code>EncodingRule</code>s.    
         /// </returns>
-        virtual public System.Collections.IList EncodingRuleBindings
+        public virtual System.Collections.IList EncodingRuleBindings
         {
             get
             {
-                return myEncodingRuleBindings;
+                return this.myEncodingRuleBindings;
             }
 
             //    /**
@@ -76,26 +77,85 @@ namespace NHapi.Base.validation.impl
             //    public void setCheckPrimitivesOnSet(boolean check) {
             //        myCheckPrimitivesFlag = check;
             //    }
-
         }
 
-        private System.Collections.IList myPrimitiveRuleBindings;
-        private System.Collections.IList myMessageRuleBindings;
-        private System.Collections.IList myEncodingRuleBindings;
-
-        public ValidationContextImpl()
+        /// <returns> a List of <code>RuleBinding</code>s for <code>MessageRule</code>s.    
+        /// </returns>
+        public virtual System.Collections.IList MessageRuleBindings
         {
-            myPrimitiveRuleBindings = new System.Collections.ArrayList(30);
-            myMessageRuleBindings = new System.Collections.ArrayList(20);
-            myEncodingRuleBindings = new System.Collections.ArrayList(10);
-        }
-
-        public virtual IPrimitiveTypeRule[] getPrimitiveRules(System.String theVersion, System.String theTypeName, IPrimitive theType)
-        {
-            System.Collections.IList active = new System.Collections.ArrayList(myPrimitiveRuleBindings.Count);
-            for (int i = 0; i < myPrimitiveRuleBindings.Count; i++)
+            get
             {
-                System.Object o = myPrimitiveRuleBindings[i];
+                return this.myMessageRuleBindings;
+            }
+        }
+
+        /// <returns> a List of <code>RuleBinding</code>s for <code>PrimitiveTypeRule</code>s.    
+        /// </returns>
+        public virtual System.Collections.IList PrimitiveRuleBindings
+        {
+            get
+            {
+                return this.myPrimitiveRuleBindings;
+            }
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
+
+        public virtual IEncodingRule[] getEncodingRules(System.String theVersion, System.String theEncoding)
+        {
+            System.Collections.IList active = new System.Collections.ArrayList(this.myEncodingRuleBindings.Count);
+            for (int i = 0; i < this.myEncodingRuleBindings.Count; i++)
+            {
+                System.Object o = this.myEncodingRuleBindings[i];
+                if (!(o is RuleBinding))
+                {
+                    throw new System.InvalidCastException("Item in rule binding list is not a RuleBinding");
+                }
+
+                RuleBinding binding = (RuleBinding)o;
+                if (binding.Active && binding.appliesToVersion(theVersion) && binding.appliesToScope(theEncoding))
+                {
+                    active.Add(binding.Rule);
+                }
+            }
+            return (IEncodingRule[])SupportClass.ICollectionSupport.ToArray(active, new IEncodingRule[0]);
+        }
+
+        public virtual IMessageRule[] getMessageRules(
+            System.String theVersion,
+            System.String theMessageType,
+            System.String theTriggerEvent)
+        {
+            System.Collections.IList active = new System.Collections.ArrayList(this.myMessageRuleBindings.Count);
+            for (int i = 0; i < this.myMessageRuleBindings.Count; i++)
+            {
+                System.Object o = this.myMessageRuleBindings[i];
+                if (!(o is RuleBinding))
+                {
+                    throw new System.InvalidCastException("Item in rule binding list is not a RuleBinding");
+                }
+
+                RuleBinding binding = (RuleBinding)o;
+                if (binding.Active && binding.appliesToVersion(theVersion)
+                    && binding.appliesToScope(theMessageType + "^" + theTriggerEvent))
+                {
+                    active.Add(binding.Rule);
+                }
+            }
+            return (IMessageRule[])SupportClass.ICollectionSupport.ToArray(active, new IMessageRule[0]);
+        }
+
+        public virtual IPrimitiveTypeRule[] getPrimitiveRules(
+            System.String theVersion,
+            System.String theTypeName,
+            IPrimitive theType)
+        {
+            System.Collections.IList active = new System.Collections.ArrayList(this.myPrimitiveRuleBindings.Count);
+            for (int i = 0; i < this.myPrimitiveRuleBindings.Count; i++)
+            {
+                System.Object o = this.myPrimitiveRuleBindings[i];
                 if (!(o is RuleBinding))
                 {
                     throw new System.InvalidCastException("Item in rule binding list is not a RuleBinding");
@@ -110,45 +170,6 @@ namespace NHapi.Base.validation.impl
             return (IPrimitiveTypeRule[])SupportClass.ICollectionSupport.ToArray(active, new IPrimitiveTypeRule[0]);
         }
 
-        public virtual IMessageRule[] getMessageRules(System.String theVersion, System.String theMessageType, System.String theTriggerEvent)
-        {
-
-            System.Collections.IList active = new System.Collections.ArrayList(myMessageRuleBindings.Count);
-            for (int i = 0; i < myMessageRuleBindings.Count; i++)
-            {
-                System.Object o = myMessageRuleBindings[i];
-                if (!(o is RuleBinding))
-                {
-                    throw new System.InvalidCastException("Item in rule binding list is not a RuleBinding");
-                }
-
-                RuleBinding binding = (RuleBinding)o;
-                if (binding.Active && binding.appliesToVersion(theVersion) && binding.appliesToScope(theMessageType + "^" + theTriggerEvent))
-                {
-                    active.Add(binding.Rule);
-                }
-            }
-            return (IMessageRule[])SupportClass.ICollectionSupport.ToArray(active, new IMessageRule[0]);
-        }
-
-        public virtual IEncodingRule[] getEncodingRules(System.String theVersion, System.String theEncoding)
-        {
-            System.Collections.IList active = new System.Collections.ArrayList(myEncodingRuleBindings.Count);
-            for (int i = 0; i < myEncodingRuleBindings.Count; i++)
-            {
-                System.Object o = myEncodingRuleBindings[i];
-                if (!(o is RuleBinding))
-                {
-                    throw new System.InvalidCastException("Item in rule binding list is not a RuleBinding");
-                }
-
-                RuleBinding binding = (RuleBinding)o;
-                if (binding.Active && binding.appliesToVersion(theVersion) && binding.appliesToScope(theEncoding))
-                {
-                    active.Add(binding.Rule);
-                }
-            }
-            return (IEncodingRule[])SupportClass.ICollectionSupport.ToArray(active, new IEncodingRule[0]);
-        }
+        #endregion
     }
 }

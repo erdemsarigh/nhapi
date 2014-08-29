@@ -19,11 +19,9 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
+
 namespace NHapi.Base.Model
 {
-
-
     /// <summary> Represents the category of HL7 data types that contain a single value (in other
     /// words have no subcomponents).  Examples include ST and ID.
     /// </summary>
@@ -31,17 +29,15 @@ namespace NHapi.Base.Model
     /// </author>
     public interface IPrimitive : IType
     {
+        #region Public Properties
+
         /// <summary> Returns a String representation of the value of this field.</summary>
         /// <summary> Sets the value of this field if the given value is legal in the context of the
         /// implementing class.
         /// </summary>
         /// <throws>  DataTypeException if the given value is not valid in this context. </throws>
-        System.String Value
-        {
-            get;
+        System.String Value { get; set; }
 
-            set;
-
-        }
+        #endregion
     }
 }

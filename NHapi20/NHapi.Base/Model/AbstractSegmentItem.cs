@@ -1,18 +1,28 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace NHapi.Base.Model
 {
-    class AbstractSegmentItem
+    using System.Collections.Generic;
+
+    internal class AbstractSegmentItem
     {
-        private List<IType> _fields = new List<IType>();
-        private System.Type _type;
-        private bool _required = false;
-        private int _length = 0;
+        #region Fields
+
         private List<object> _args = new List<object>();
-        private int _maxReps=-1;
+
         private string _description;
+
+        private List<IType> _fields = new List<IType>();
+
+        private int _length = 0;
+
+        private int _maxReps = -1;
+
+        private bool _required;
+
+        private System.Type _type;
+
+        #endregion
+
+        #region Constructors and Destructors
 
         ///<summary>
         /// Constructor
@@ -25,7 +35,12 @@ namespace NHapi.Base.Model
         /// if new instances of this class are created (use null for zero-arg constructor)</param>
         /// <throws>  HL7Exception if the given class does not inherit from IType or if it cannot be instantiated. </throws>
         /// </summary>
-        public AbstractSegmentItem(System.Type t, bool required, int maxReps, int length, System.Object[] constructorArgs)
+        public AbstractSegmentItem(
+            System.Type t,
+            bool required,
+            int maxReps,
+            int length,
+            System.Object[] constructorArgs)
             : this(t, required, maxReps, length, constructorArgs, string.Empty)
         {
         }
@@ -42,19 +57,59 @@ namespace NHapi.Base.Model
         /// if new instances of this class are created (use null for zero-arg constructor)</param>
         /// <param name="description">Description of the segment</param>
         /// <throws>  HL7Exception if the given class does not inherit from IType or if it cannot be instantiated. </throws>
-        public AbstractSegmentItem(System.Type t, bool required, int maxReps, int length, System.Object[] constructorArgs, string description)
+        public AbstractSegmentItem(
+            System.Type t,
+            bool required,
+            int maxReps,
+            int length,
+            System.Object[] constructorArgs,
+            string description)
         {
             if (!typeof(IType).IsAssignableFrom(t))
             {
-                throw new HL7Exception("Class " + t.FullName + " does not inherit from " + "NHapi.Base.Model.IType", HL7Exception.APPLICATION_INTERNAL_ERROR);
+                throw new HL7Exception(
+                    "Class " + t.FullName + " does not inherit from " + "NHapi.Base.Model.IType",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
             }
 
-            _type = t;
-            _required = required;
-            _maxReps = maxReps;
+            this._type = t;
+            this._required = required;
+            this._maxReps = maxReps;
             if (constructorArgs != null)
-                _args.AddRange(constructorArgs);
-            _description = description;
+            {
+                this._args.AddRange(constructorArgs);
+            }
+            this._description = description;
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Arguments to pass to a constructor for this field
+        /// </summary>
+        public object[] Args
+        {
+            get
+            {
+                return this._args.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// What is this field
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return this._description;
+            }
+            set
+            {
+                this._description = value;
+            }
         }
 
         /// <summary>
@@ -62,63 +117,9 @@ namespace NHapi.Base.Model
         /// </summary>
         public System.Type FieldType
         {
-            get { return _type; }
-        }
-        /// <summary>
-        /// Is this a required field
-        /// </summary>
-        public bool IsRequired
-        {
-            get { return _required; }
-        }
-        /// <summary>
-        /// What is the length in characters of the field
-        /// </summary>
-        public int Length
-        {
-            get { return _length; }
-        }
-        /// <summary>
-        /// Arguments to pass to a constructor for this field
-        /// </summary>
-        public object[] Args
-        {
-            get { return _args.ToArray(); }
-        }
-        /// <summary>
-        /// Maximum number of repetitions of this field
-        /// </summary>
-        public int MaxRepetitions
-        {
             get
             {
-                if (_maxReps <= 0)
-                    return int.MaxValue;
-                else
-                    return _maxReps;
-            }
-            set { _maxReps = value; }
-        }
-        /// <summary>
-        /// What is this field
-        /// </summary>
-        public string Description
-        {
-            get { return _description; }
-            set { _description = value; }
-        }
-
-        /// <summary>
-        /// Return a specific repetition of this field
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        public IType this[int index]
-        {
-            get
-            {
-
-                return _fields[index];
+                return this._type;
             }
         }
 
@@ -129,20 +130,83 @@ namespace NHapi.Base.Model
         {
             get
             {
-                return _fields;
+                return this._fields;
             }
         }
 
+        /// <summary>
+        /// Is this a required field
+        /// </summary>
+        public bool IsRequired
+        {
+            get
+            {
+                return this._required;
+            }
+        }
+
+        /// <summary>
+        /// What is the length in characters of the field
+        /// </summary>
+        public int Length
+        {
+            get
+            {
+                return this._length;
+            }
+        }
+
+        /// <summary>
+        /// Maximum number of repetitions of this field
+        /// </summary>
+        public int MaxRepetitions
+        {
+            get
+            {
+                if (this._maxReps <= 0)
+                {
+                    return int.MaxValue;
+                }
+                return this._maxReps;
+            }
+            set
+            {
+                this._maxReps = value;
+            }
+        }
+
+        #endregion
+
+        #region Public Indexers
+
+        /// <summary>
+        /// Return a specific repetition of this field
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public IType this[int index]
+        {
+            get
+            {
+                return this._fields[index];
+            }
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
+
         public IType[] GetAllFieldsAsITypeArray()
         {
-            IType[] fields = new IType[_fields.Count];
+            IType[] fields = new IType[this._fields.Count];
             int i = 0;
-            foreach (IType type in _fields)
+            foreach (IType type in this._fields)
             {
                 fields[i++] = type;
             }
             return fields;
         }
 
+        #endregion
     }
 }

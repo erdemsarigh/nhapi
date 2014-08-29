@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace NHapi.Base.Log
 {
     /// <summary>
     /// Placeholder for LogFactory to get project to compile.
     /// </summary>
-    class LogFactory
+    internal class LogFactory
     {
+        #region Public Methods and Operators
+
         public static ILog GetLog(System.Type classType)
         {
             return new EntLibLogger();
@@ -18,5 +16,7 @@ namespace NHapi.Base.Log
         {
             return new EntLibLogger();
         }
+
+        #endregion
     }
 }

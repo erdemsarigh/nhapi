@@ -20,10 +20,9 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
+
 namespace NHapi.Base.SourceGeneration
 {
-
     /// <summary> Contains the information needed to create source code for a Group (a 
     /// Group is a part of a message that may repeat, and that contains two or 
     /// more segments or other groups).   
@@ -32,103 +31,61 @@ namespace NHapi.Base.SourceGeneration
     /// </author>
     public class GroupDef : IStructureDef
     {
-        /// <summary> Returns the Java class name of this Group.  This is derived from the 
-        /// message structure and the group elements.  This should only be called 
-        /// after all the elements are added.  
-        /// </summary>
-        virtual public System.String Name
+        #region Fields
+
+        private System.String description;
+
+        private System.Collections.ArrayList elements;
+
+        private System.Collections.Hashtable existingNames;
+
+        private System.String groupName;
+
+        private System.String messageName;
+
+        private bool repeating;
+
+        private bool required;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        /// <summary>Creates new GroupDef </summary>
+        public GroupDef(
+            System.String messageName,
+            System.String groupName,
+            bool required,
+            bool repeating,
+            System.String description)
         {
-            get
-            {
-                System.String result = null;
-
-                if (groupName != null && groupName.Length > 0)
-                {
-                    result = messageName + "_" + groupName;
-                }
-                else
-                {
-                    System.Text.StringBuilder name = new System.Text.StringBuilder();
-                    name.Append(messageName);
-                    name.Append("_");
-                    System.String[] children = ChildSegments;
-                    for (int i = 0; i < children.Length; i++)
-                    {
-                        name.Append(children[i]);
-                    }
-                    result = name.ToString();
-                }
-
-                return result;
-            }
-
+            this.messageName = messageName;
+            this.groupName = groupName;
+            this.elements = new System.Collections.ArrayList();
+            this.required = required;
+            this.repeating = repeating;
+            this.description = description;
+            this.existingNames = new System.Collections.Hashtable();
         }
-        /// <returns> group name without message name prepended  
-        /// </returns>
-        virtual public System.String UnqualifiedName
-        {
-            get
-            {
-                System.String name = Name;
-                return name.Substring(messageName.Length + 1);
-            }
 
-        }
-        /// <summary> Returns the structures in this group. </summary>
-        virtual public IStructureDef[] Structures
-        {
-            get
-            {
-                IStructureDef[] ret = new IStructureDef[elements.Count];
-                for (int i = 0; i < ret.Length; i++)
-                {
-                    ret[i] = (IStructureDef)elements[i];
-                }
-                return ret;
-            }
+        #endregion
 
-        }
-        /// <summary> Returns true if this structure is required in the Group.  </summary>
-        virtual public bool Required
-        {
-            get
-            {
-                return this.required;
-            }
+        #region Public Properties
 
-        }
-        /// <summary> Returns true if this structure can repeat in the Group.  </summary>
-        virtual public bool Repeating
-        {
-            get
-            {
-                return this.repeating;
-            }
-
-        }
-        /// <summary> Returns a text description of the structure.</summary>
-        virtual public System.String Description
-        {
-            get
-            {
-                return this.description;
-            }
-
-        }
         /// <summary> Returns a list of the names of the segments that are children of this Structure.
         /// If the structure is a Segment, a 1-element array is returned containing the segment
         /// name.  If a Group, an array of all the segments in the Group, including those nested
         /// in subgroups (depth first).  This method is used to support the XML SIG's convention
         /// for deriving group names.
         /// </summary>
-        virtual public System.String[] ChildSegments
+        public virtual System.String[] ChildSegments
         {
             get
             {
                 System.Collections.ArrayList deepChildList = new System.Collections.ArrayList();
-                for (int i = 0; i < elements.Count; i++)
+                for (int i = 0; i < this.elements.Count; i++)
                 {
-                    IStructureDef childStruct = (IStructureDef)elements[i];
+                    IStructureDef childStruct = (IStructureDef)this.elements[i];
                     System.String[] childStructChildren = childStruct.ChildSegments;
                     for (int j = 0; j < childStructChildren.Length; j++)
                     {
@@ -142,35 +99,104 @@ namespace NHapi.Base.SourceGeneration
                 }
                 return result;
             }
-
         }
 
-        private System.Collections.ArrayList elements;
-        private System.String messageName;
-        private System.String groupName;
-        private System.String description;
-        private bool required;
-        private bool repeating;
-        private System.Collections.Hashtable existingNames;
-
-
-        /// <summary>Creates new GroupDef </summary>
-        public GroupDef(System.String messageName, System.String groupName, bool required, bool repeating, System.String description)
+        /// <summary> Returns a text description of the structure.</summary>
+        public virtual System.String Description
         {
-            this.messageName = messageName;
-            this.groupName = groupName;
-            this.elements = new System.Collections.ArrayList();
-            this.required = required;
-            this.repeating = repeating;
-            this.description = description;
-            this.existingNames = new System.Collections.Hashtable();
+            get
+            {
+                return this.description;
+            }
         }
+
+        /// <summary> Returns the Java class name of this Group.  This is derived from the 
+        /// message structure and the group elements.  This should only be called 
+        /// after all the elements are added.  
+        /// </summary>
+        public virtual System.String Name
+        {
+            get
+            {
+                System.String result = null;
+
+                if (this.groupName != null && this.groupName.Length > 0)
+                {
+                    result = this.messageName + "_" + this.groupName;
+                }
+                else
+                {
+                    System.Text.StringBuilder name = new System.Text.StringBuilder();
+                    name.Append(this.messageName);
+                    name.Append("_");
+                    System.String[] children = this.ChildSegments;
+                    for (int i = 0; i < children.Length; i++)
+                    {
+                        name.Append(children[i]);
+                    }
+                    result = name.ToString();
+                }
+
+                return result;
+            }
+        }
+
+        /// <summary> Returns true if this structure can repeat in the Group.  </summary>
+        public virtual bool Repeating
+        {
+            get
+            {
+                return this.repeating;
+            }
+        }
+
+        /// <summary> Returns true if this structure is required in the Group.  </summary>
+        public virtual bool Required
+        {
+            get
+            {
+                return this.required;
+            }
+        }
+
+        /// <summary> Returns the structures in this group. </summary>
+        public virtual IStructureDef[] Structures
+        {
+            get
+            {
+                IStructureDef[] ret = new IStructureDef[this.elements.Count];
+                for (int i = 0; i < ret.Length; i++)
+                {
+                    ret[i] = (IStructureDef)this.elements[i];
+                }
+                return ret;
+            }
+        }
+
+        /// <returns> group name without message name prepended  
+        /// </returns>
+        public virtual System.String UnqualifiedName
+        {
+            get
+            {
+                System.String name = this.Name;
+                return name.Substring(this.messageName.Length + 1);
+            }
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         /// <summary> Adds an element (segment or group) to this group.  </summary>
         public virtual void addStructure(IStructureDef s)
         {
-            elements.Add(s);
+            this.elements.Add(s);
         }
+
+        #endregion
+
+        #region Methods
 
         /// <summary> Returns the name by which a particular structure can be accessed (eg for use 
         /// in writing accessor source code).  This may differ from the class name of the 
@@ -184,17 +210,19 @@ namespace NHapi.Base.SourceGeneration
         protected internal virtual System.String getIndexName(System.String name)
         {
             //see if this name is already being used 
-            System.Object o = existingNames[name];
+            System.Object o = this.existingNames[name];
             int c = 2;
             System.String newName = name;
             while (o != null)
             {
                 newName = name + c++;
-                o = existingNames[newName];
+                o = this.existingNames[newName];
             }
             name = newName;
-            existingNames[name] = name;
+            this.existingNames[name] = name;
             return name;
         }
+
+        #endregion
     }
 }

@@ -22,11 +22,10 @@
 /// If you do not delete the provisions above, a recipient may use your version of
 /// this file under either the MPL or the GPL.
 */
-using System;
-using NHapi.Base.Model;
-using NHapi.Base.Log;
+
 namespace NHapi.Base.Model.Primitive
 {
+    using NHapi.Base.Log;
 
     /// <summary> 
     /// This class contains functionality used by the TS class
@@ -82,6 +81,175 @@ namespace NHapi.Base.Model.Primitive
     /// </author>
     public class CommonTS
     {
+        #region Static Fields
+
+        private static readonly IHapiLog log;
+
+        #endregion
+
+        #region Fields
+
+        private CommonDT dt;
+
+        private CommonTM tm;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        static CommonTS()
+        {
+            log = HapiLogFactory.GetHapiLog(typeof(CommonTS));
+        }
+
+        /// <summary>Creates new ValidTS
+        /// zero argument constructor.
+        /// Creates an uninitailized TS datatype
+        /// </summary>
+        public CommonTS()
+        {
+        } //zero arg constructor
+
+        /// <summary> Constructs a TS object with the given value.
+        /// The stored value will be in the following
+        /// format YYYY[MM[DD[HHMM[SS[.S[S[S[S]]]]]]]][+/-ZZZZ]
+        /// </summary>
+        public CommonTS(System.String val)
+        {
+            this.Value = val;
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary> Returns the day as an integer.</summary>
+        public virtual int Day
+        {
+            get
+            {
+                int day = 0;
+                if (this.dt != null)
+                {
+                    day = this.dt.Day;
+                } //end if
+                return day;
+            }
+        }
+
+        /// <summary> Returns the fractional second value as a float.</summary>
+        public virtual float FractSecond
+        {
+            get
+            {
+                float fractionOfSec = 0;
+                if (this.tm != null)
+                {
+                    fractionOfSec = this.tm.FractSecond;
+                } //end if
+                return fractionOfSec;
+            }
+        }
+
+        /// <summary> Returns the GMT offset value as an integer.</summary>
+        public virtual int GMTOffset
+        {
+            get
+            {
+                int offSet = 0;
+                if (this.tm != null)
+                {
+                    offSet = this.tm.GMTOffset;
+                } //end if
+                return offSet;
+            }
+        }
+
+        /// <summary> Returns the hour as an integer.</summary>
+        public virtual int Hour
+        {
+            get
+            {
+                int hour = 0;
+                if (this.tm != null)
+                {
+                    hour = this.tm.Hour;
+                } //end if
+                return hour;
+            }
+        }
+
+        /// <summary> Returns the minute as an integer.</summary>
+        public virtual int Minute
+        {
+            get
+            {
+                int minute = 0;
+                if (this.tm != null)
+                {
+                    minute = this.tm.Minute;
+                } //end if
+                return minute;
+            }
+        }
+
+        /// <summary> Returns the month as an integer.</summary>
+        public virtual int Month
+        {
+            get
+            {
+                int month = 0;
+                if (this.dt != null)
+                {
+                    month = this.dt.Month;
+                } //end if
+                return month;
+            }
+        }
+
+        /// <summary> This method takes in the four digit (signed) GMT offset and sets the offset
+        /// field
+        /// </summary>
+        public virtual int Offset
+        {
+            set
+            {
+                try
+                {
+                    //create new time object is there isn't one
+                    if (this.tm == null)
+                    {
+                        this.tm = new CommonTM();
+                    }
+                    //set the offset value of the time object to the input value
+                    this.tm.Offset = value;
+                }
+                catch (DataTypeException e)
+                {
+                    throw e;
+                }
+                    //end catch
+                catch (System.Exception e)
+                {
+                    throw new DataTypeException("An unexpected exception ocurred", e);
+                } //end catch
+            }
+        }
+
+        /// <summary> Returns the second as an integer.</summary>
+        public virtual int Second
+        {
+            get
+            {
+                int seconds = 0;
+                if (this.tm != null)
+                {
+                    seconds = this.tm.Second;
+                } //end if
+                return seconds;
+            }
+        }
+
         /// <summary> Returns the HL7 TS string value.</summary>
         /// <summary> This method takes in a string HL7 Time Stamp value and performs validations.
         /// The stored value will be in the following
@@ -92,21 +260,21 @@ namespace NHapi.Base.Model.Primitive
         /// time zone (using standard time zone format which is not modified for daylight savings)
         /// will be stored as a default.
         /// </summary>
-        virtual public System.String Value
+        public virtual System.String Value
         {
             get
             {
                 System.String value_Renamed = null;
-                if (dt != null)
+                if (this.dt != null)
                 {
-                    value_Renamed = dt.Value;
+                    value_Renamed = this.dt.Value;
                 } //end if
-                if (tm != null && value_Renamed != null && !value_Renamed.Equals(""))
+                if (this.tm != null && value_Renamed != null && !value_Renamed.Equals(""))
                 {
-                    if (tm.Value != null && !tm.Value.Equals(""))
+                    if (this.tm.Value != null && !this.tm.Value.Equals(""))
                     {
                         //here we know we have a delete value or separate date and the time values supplied
-                        if (tm.Value.Equals("\"\"") && dt.Value.Equals("\"\""))
+                        if (this.tm.Value.Equals("\"\"") && this.dt.Value.Equals("\"\""))
                         {
                             //set value to the delete value ("")
                             value_Renamed = "\"\"";
@@ -114,23 +282,23 @@ namespace NHapi.Base.Model.Primitive
                         else
                         {
                             //set value to date concatonated with time value
-                            value_Renamed = value_Renamed + tm.Value;
+                            value_Renamed = value_Renamed + this.tm.Value;
                         }
                     } //end if
-                    if (tm.Value == null || tm.Value.Equals(""))
+                    if (this.tm.Value == null || this.tm.Value.Equals(""))
                     {
                         //here we know we both have the date and just the time offset value
                         //change the offset value from an integer to a signed string
-                        int offset = tm.GMTOffset;
+                        int offset = this.tm.GMTOffset;
                         System.String offsetStr = "";
                         if (offset > -99)
                         {
                             offsetStr = DataTypeUtil.preAppendZeroes(System.Math.Abs(offset), 4);
-                            if (tm.GMTOffset >= 0)
+                            if (this.tm.GMTOffset >= 0)
                             {
                                 offsetStr = "+" + offsetStr;
                             }
-                            //end if
+                                //end if
                             else
                             {
                                 offsetStr = "-" + offsetStr;
@@ -142,7 +310,6 @@ namespace NHapi.Base.Model.Primitive
                 return value_Renamed;
             }
 
-
             set
             {
                 if (value != null && !value.Equals("") && !value.Equals("\"\""))
@@ -153,7 +320,8 @@ namespace NHapi.Base.Model.Primitive
                         //8 characters in length
                         if (value.Length < 4)
                         {
-                            System.String msg = "The length of the TS datatype value must be at least 4 characters in length.";
+                            System.String msg =
+                                "The length of the TS datatype value must be at least 4 characters in length.";
                             DataTypeException e = new DataTypeException(msg);
                             throw e;
                         }
@@ -162,7 +330,8 @@ namespace NHapi.Base.Model.Primitive
                         //than 24 characters in length
                         if (value.Length > 24)
                         {
-                            System.String msg = "The length of the TS datatype value must not be more than 24 characters in length.";
+                            System.String msg =
+                                "The length of the TS datatype value must not be more than 24 characters in length.";
                             DataTypeException e = new DataTypeException(msg);
                             throw e;
                         }
@@ -182,9 +351,13 @@ namespace NHapi.Base.Model.Primitive
                             offsetExists = true;
                         }
                         if (sp != -1)
+                        {
                             indexOfSign = sp;
+                        }
                         if (sm != -1)
+                        {
                             indexOfSign = sm;
+                        }
 
                         if (offsetExists == false)
                         {
@@ -201,7 +374,7 @@ namespace NHapi.Base.Model.Primitive
                             }
                         } //offset not exist
 
-                        if (offsetExists == true)
+                        if (offsetExists)
                         {
                             if (indexOfSign > 8)
                             {
@@ -219,16 +392,16 @@ namespace NHapi.Base.Model.Primitive
                         } //offset exists
 
                         //create date object
-                        dt = new CommonDT();
+                        this.dt = new CommonDT();
                         //set the value of the date object to the input date value
-                        dt.Value = dateVal;
+                        this.dt.Value = dateVal;
                         //if the offset does not exist and a timvalue does not exist then
                         //we must provide a default offset = to the local time zone
                         if (timeVal == null && offsetExists == false)
                         {
                             int defaultOffset = DataTypeUtil.LocalGMTOffset;
-                            tm = new CommonTM();
-                            tm.Offset = defaultOffset;
+                            this.tm = new CommonTM();
+                            this.tm.Offset = defaultOffset;
                         } //end if
 
                         //if we have a time value then make a new time object and set it to the
@@ -239,345 +412,96 @@ namespace NHapi.Base.Model.Primitive
                             //at the very least -- must be at least 4chars in length.
                             if (timeValLessOffset.Length < 4)
                             {
-                                System.String msg = "The length of the time component for the TM datatype" + " value does not conform to the allowable format" + " YYYY[MM[DD[HHMM[SS[.S[S[S[S]]]]]]]][+/-ZZZZ].";
+                                System.String msg = "The length of the time component for the TM datatype"
+                                                    + " value does not conform to the allowable format"
+                                                    + " YYYY[MM[DD[HHMM[SS[.S[S[S[S]]]]]]]][+/-ZZZZ].";
                                 DataTypeException e = new DataTypeException(msg);
                                 throw e;
                             } //end if
-                            tm = new CommonTM();
-                            tm.Value = timeVal;
+                            this.tm = new CommonTM();
+                            this.tm.Value = timeVal;
                         } //end if
 
                         //if we have a time value and it only has the offset then make a new
                         //time object and set the offset value to the input value
-                        if (timeVal != null && timeValIsOffsetOnly == true)
+                        if (timeVal != null && timeValIsOffsetOnly)
                         {
                             //we know that the time value is just the offset so we
                             //must check to see if it is the right length before setting the
                             //offset field in the tm object
                             if (timeVal.Length != 5)
                             {
-                                System.String msg = "The length of the GMT offset for the TM datatype value does" + " not conform to the allowable format [+/-ZZZZ]";
+                                System.String msg = "The length of the GMT offset for the TM datatype value does"
+                                                    + " not conform to the allowable format [+/-ZZZZ]";
                                 DataTypeException e = new DataTypeException(msg);
                                 throw e;
                             } //end if 
-                            tm = new CommonTM();
+                            this.tm = new CommonTM();
                             //first extract the + sign from the offset value string if it exists
                             if (timeVal.IndexOf("+") == 0)
                             {
                                 timeVal = timeVal.Substring(1);
                             } //end if
                             int signedOffset = System.Int32.Parse(timeVal);
-                            tm.Offset = signedOffset;
+                            this.tm.Offset = signedOffset;
                         } //end if
                     }
-                    //end try
+                        //end try
                     catch (DataTypeException e)
                     {
                         throw e;
                     }
-                    //end catch
+                        //end catch
                     catch (System.Exception e)
                     {
                         throw new DataTypeException("An unexpected exception ocurred", e);
                     } //end catch
                 }
-                //end if
+                    //end if
                 else
                 {
                     //set the private value field to null or empty space.
                     if (value == null)
                     {
-                        dt = null;
-                        tm = null;
+                        this.dt = null;
+                        this.tm = null;
                     } //end if
                     if (value != null && value.Equals(""))
                     {
-                        dt = new CommonDT();
-                        dt.Value = "";
-                        tm = new CommonTM();
-                        tm.Value = "";
+                        this.dt = new CommonDT();
+                        this.dt.Value = "";
+                        this.tm = new CommonTM();
+                        this.tm.Value = "";
                     } //end if
                     if (value != null && value.Equals("\"\""))
                     {
-                        dt = new CommonDT();
-                        dt.Value = "\"\"";
-                        tm = new CommonTM();
-                        tm.Value = "\"\"";
+                        this.dt = new CommonDT();
+                        this.dt.Value = "\"\"";
+                        this.tm = new CommonTM();
+                        this.tm.Value = "\"\"";
                     } //end if
                 } //end else    
             }
             // end method
-
         }
-        /// <summary> This method takes in the four digit (signed) GMT offset and sets the offset
-        /// field
-        /// </summary>
-        virtual public int Offset
-        {
-            set
-            {
-                try
-                {
-                    //create new time object is there isn't one
-                    if (tm == null)
-                    {
-                        tm = new CommonTM();
-                    }
-                    //set the offset value of the time object to the input value
-                    tm.Offset = value;
-                }
-                catch (DataTypeException e)
-                {
-                    throw e;
-                }
-                //end catch
-                catch (System.Exception e)
-                {
-                    throw new DataTypeException("An unexpected exception ocurred", e);
-                } //end catch
-            }
 
-
-        }
         /// <summary> Returns the year as an integer.</summary>
-        virtual public int Year
+        public virtual int Year
         {
             get
             {
                 int year = 0;
-                if (dt != null)
+                if (this.dt != null)
                 {
-                    year = dt.Year;
+                    year = this.dt.Year;
                 } //end if
                 return year;
             }
-
-
-        }
-        /// <summary> Returns the month as an integer.</summary>
-        virtual public int Month
-        {
-            get
-            {
-                int month = 0;
-                if (dt != null)
-                {
-                    month = dt.Month;
-                } //end if
-                return month;
-            }
-
-
-        }
-        /// <summary> Returns the day as an integer.</summary>
-        virtual public int Day
-        {
-            get
-            {
-                int day = 0;
-                if (dt != null)
-                {
-                    day = dt.Day;
-                } //end if
-                return day;
-            }
-
-
-        }
-        /// <summary> Returns the hour as an integer.</summary>
-        virtual public int Hour
-        {
-            get
-            {
-                int hour = 0;
-                if (tm != null)
-                {
-                    hour = tm.Hour;
-                } //end if
-                return hour;
-            }
-
-
-        }
-        /// <summary> Returns the minute as an integer.</summary>
-        virtual public int Minute
-        {
-            get
-            {
-                int minute = 0;
-                if (tm != null)
-                {
-                    minute = tm.Minute;
-                } //end if
-                return minute;
-            }
-
-
-        }
-        /// <summary> Returns the second as an integer.</summary>
-        virtual public int Second
-        {
-            get
-            {
-                int seconds = 0;
-                if (tm != null)
-                {
-                    seconds = tm.Second;
-                } //end if
-                return seconds;
-            }
-
-
-        }
-        /// <summary> Returns the fractional second value as a float.</summary>
-        virtual public float FractSecond
-        {
-            get
-            {
-                float fractionOfSec = 0;
-                if (tm != null)
-                {
-                    fractionOfSec = tm.FractSecond;
-                } //end if
-                return fractionOfSec;
-            }
-
-
-        }
-        /// <summary> Returns the GMT offset value as an integer.</summary>
-        virtual public int GMTOffset
-        {
-            get
-            {
-                int offSet = 0;
-                if (tm != null)
-                {
-                    offSet = tm.GMTOffset;
-                } //end if
-                return offSet;
-            }
-
-
         }
 
-        private static readonly IHapiLog log;
+        #endregion
 
-        private CommonDT dt;
-        private CommonTM tm;
-
-        /// <summary>Creates new ValidTS
-        /// zero argument constructor.
-        /// Creates an uninitailized TS datatype
-        /// </summary>
-        public CommonTS()
-        {
-        } //zero arg constructor
-
-        /// <summary> Constructs a TS object with the given value.
-        /// The stored value will be in the following
-        /// format YYYY[MM[DD[HHMM[SS[.S[S[S[S]]]]]]]][+/-ZZZZ]
-        /// </summary>
-        public CommonTS(System.String val)
-        {
-            this.Value = val;
-        } //end constructor
-
-        /// <summary> This method takes in integer values for the year and month and day
-        /// and performs validations, it then sets the value in the object
-        /// formatted as an HL7 Time Stamp value with year and month and day precision (YYYYMMDD).
-        /// 
-        /// </summary>
-        public virtual void setDatePrecision(int yr, int mnth, int dy)
-        {
-            try
-            {
-                //create date object if there isn't one
-                if (dt == null)
-                {
-                    dt = new CommonDT();
-                }
-                //set the value of the date object to the input date value
-                dt.setYearMonthDayPrecision(yr, mnth, dy);
-                //clear the time value object
-                tm = null;
-            }
-            //end try
-            catch (DataTypeException e)
-            {
-                throw e;
-            }
-            //end catch
-            catch (System.Exception e)
-            {
-                throw new DataTypeException("An unexpected exception ocurred", e);
-            } //end catch
-        }
-
-        /// <summary> This method takes in integer values for the year, month, day, hour
-        /// and minute and performs validations, it then sets the value in the object
-        /// formatted as an HL7 Time Stamp value with year and month and day and hour and minute precision (YYYYMMDDHHMM).
-        /// </summary>
-        public virtual void setDateMinutePrecision(int yr, int mnth, int dy, int hr, int min)
-        {
-            try
-            {
-                //set the value of the date object to the input date value
-                this.setDatePrecision(yr, mnth, dy);
-                //create new time object is there isn't one
-                if (tm == null)
-                {
-                    tm = new CommonTM();
-                }
-                //set the value of the time object to the minute precision with the input values
-                tm.setHourMinutePrecision(hr, min);
-            }
-            //end try
-            catch (DataTypeException e)
-            {
-                throw e;
-            }
-            //end catch
-            catch (System.Exception e)
-            {
-                throw new DataTypeException("An unexpected exception ocurred", e);
-            } //end catch
-        }
-
-        /// <summary> This method takes in integer values for the year, month, day, hour, minute, seconds,
-        /// and fractional seconds (going to the tenthousandths precision).
-        /// The method performs validations and then sets the value in the object formatted as an
-        /// HL7 time value with a precision that starts from the year and goes down to the tenthousandths
-        /// of a second (YYYYMMDDHHMMSS.SSSS).
-        /// The Gmt Offset will not be effected.
-        /// Note: all of the precisions from tenths down to
-        /// tenthousandths of a second are optional. If the precision goes below tenthousandths
-        /// of a second then the second value will be rounded to the nearest tenthousandths of a second.
-        /// </summary>
-        public virtual void setDateSecondPrecision(int yr, int mnth, int dy, int hr, int min, float sec)
-        {
-            try
-            {
-                //set the value of the date object to the input date value
-                this.setDatePrecision(yr, mnth, dy);
-                //create new time object is there isn't one
-                if (tm == null)
-                {
-                    tm = new CommonTM();
-                }
-                //set the value of the time object to the second precision with the input values
-                tm.setHourMinSecondPrecision(hr, min, sec);
-            }
-            //end try
-            catch (DataTypeException e)
-            {
-                throw e;
-            }
-            //end catch
-            catch (System.Exception e)
-            {
-                throw new DataTypeException("An unexpected exception ocurred", e);
-            } //end catch
-        }
+        #region Public Methods and Operators
 
         /// <summary> Returns a string value representing the input Gregorian Calendar object in
         /// an Hl7 TimeStamp Format.
@@ -624,21 +548,118 @@ namespace NHapi.Base.Model.Primitive
                 ts.Offset = calOffset;
                 val = ts.Value;
             }
-            // end try
+                // end try
             catch (DataTypeException e)
             {
                 throw e;
             }
-            //end catch
+                //end catch
             catch (System.Exception e)
             {
                 throw new DataTypeException("An unexpected exception ocurred", e);
             } //end catch
             return val;
         }
-        static CommonTS()
+
+        //end constructor
+
+        /// <summary> This method takes in integer values for the year, month, day, hour
+        /// and minute and performs validations, it then sets the value in the object
+        /// formatted as an HL7 Time Stamp value with year and month and day and hour and minute precision (YYYYMMDDHHMM).
+        /// </summary>
+        public virtual void setDateMinutePrecision(int yr, int mnth, int dy, int hr, int min)
         {
-            log = HapiLogFactory.GetHapiLog(typeof(CommonTS));
+            try
+            {
+                //set the value of the date object to the input date value
+                this.setDatePrecision(yr, mnth, dy);
+                //create new time object is there isn't one
+                if (this.tm == null)
+                {
+                    this.tm = new CommonTM();
+                }
+                //set the value of the time object to the minute precision with the input values
+                this.tm.setHourMinutePrecision(hr, min);
+            }
+                //end try
+            catch (DataTypeException e)
+            {
+                throw e;
+            }
+                //end catch
+            catch (System.Exception e)
+            {
+                throw new DataTypeException("An unexpected exception ocurred", e);
+            } //end catch
         }
+
+        /// <summary> This method takes in integer values for the year and month and day
+        /// and performs validations, it then sets the value in the object
+        /// formatted as an HL7 Time Stamp value with year and month and day precision (YYYYMMDD).
+        /// 
+        /// </summary>
+        public virtual void setDatePrecision(int yr, int mnth, int dy)
+        {
+            try
+            {
+                //create date object if there isn't one
+                if (this.dt == null)
+                {
+                    this.dt = new CommonDT();
+                }
+                //set the value of the date object to the input date value
+                this.dt.setYearMonthDayPrecision(yr, mnth, dy);
+                //clear the time value object
+                this.tm = null;
+            }
+                //end try
+            catch (DataTypeException e)
+            {
+                throw e;
+            }
+                //end catch
+            catch (System.Exception e)
+            {
+                throw new DataTypeException("An unexpected exception ocurred", e);
+            } //end catch
+        }
+
+        /// <summary> This method takes in integer values for the year, month, day, hour, minute, seconds,
+        /// and fractional seconds (going to the tenthousandths precision).
+        /// The method performs validations and then sets the value in the object formatted as an
+        /// HL7 time value with a precision that starts from the year and goes down to the tenthousandths
+        /// of a second (YYYYMMDDHHMMSS.SSSS).
+        /// The Gmt Offset will not be effected.
+        /// Note: all of the precisions from tenths down to
+        /// tenthousandths of a second are optional. If the precision goes below tenthousandths
+        /// of a second then the second value will be rounded to the nearest tenthousandths of a second.
+        /// </summary>
+        public virtual void setDateSecondPrecision(int yr, int mnth, int dy, int hr, int min, float sec)
+        {
+            try
+            {
+                //set the value of the date object to the input date value
+                this.setDatePrecision(yr, mnth, dy);
+                //create new time object is there isn't one
+                if (this.tm == null)
+                {
+                    this.tm = new CommonTM();
+                }
+                //set the value of the time object to the second precision with the input values
+                this.tm.setHourMinSecondPrecision(hr, min, sec);
+            }
+                //end try
+            catch (DataTypeException e)
+            {
+                throw e;
+            }
+                //end catch
+            catch (System.Exception e)
+            {
+                throw new DataTypeException("An unexpected exception ocurred", e);
+            } //end catch
+        }
+
+        #endregion
     } //end class
 }

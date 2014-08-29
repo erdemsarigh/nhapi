@@ -3,10 +3,9 @@
 * 
 * Created on May 7, 2003 at 2:23:45 PM
 */
-using System;
+
 namespace NHapi.Base.Log
 {
-
     /// <summary> Provides a base implementation of the <code>HapiLog</code> interface.
     /// 
     /// It delegates all method calls declared by <code>Log</code> to the delegate specified in
@@ -19,79 +18,92 @@ namespace NHapi.Base.Log
     /// </version>
     public class HapiLogImpl : IHapiLog
     {
-        /// <returns>
-        /// </returns>
-        virtual public bool DebugEnabled
-        {
-            get
-            {
-                return innerLog.DebugEnabled;
-            }
-
-        }
-        /// <returns>
-        /// </returns>
-        virtual public bool ErrorEnabled
-        {
-            get
-            {
-                return innerLog.ErrorEnabled;
-            }
-
-        }
-        /// <returns>
-        /// </returns>
-        virtual public bool FatalEnabled
-        {
-            get
-            {
-                return innerLog.FatalEnabled;
-            }
-
-        }
-        /// <returns>
-        /// </returns>
-        virtual public bool InfoEnabled
-        {
-            get
-            {
-                return innerLog.InfoEnabled;
-            }
-
-        }
-        /// <returns>
-        /// </returns>
-        virtual public bool TraceEnabled
-        {
-            get
-            {
-                return innerLog.TraceEnabled;
-            }
-
-        }
-        /// <returns>
-        /// </returns>
-        virtual public bool WarnEnabled
-        {
-            get
-            {
-                return innerLog.WarnEnabled;
-            }
-
-        }
+        #region Fields
 
         private ILog innerLog;
+
+        #endregion
+
+        #region Constructors and Destructors
 
         internal HapiLogImpl(ILog log)
         {
             this.innerLog = log;
         }
 
+        #endregion
+
+        #region Public Properties
+
+        /// <returns>
+        /// </returns>
+        public virtual bool DebugEnabled
+        {
+            get
+            {
+                return this.innerLog.DebugEnabled;
+            }
+        }
+
+        /// <returns>
+        /// </returns>
+        public virtual bool ErrorEnabled
+        {
+            get
+            {
+                return this.innerLog.ErrorEnabled;
+            }
+        }
+
+        /// <returns>
+        /// </returns>
+        public virtual bool FatalEnabled
+        {
+            get
+            {
+                return this.innerLog.FatalEnabled;
+            }
+        }
+
+        /// <returns>
+        /// </returns>
+        public virtual bool InfoEnabled
+        {
+            get
+            {
+                return this.innerLog.InfoEnabled;
+            }
+        }
+
+        /// <returns>
+        /// </returns>
+        public virtual bool TraceEnabled
+        {
+            get
+            {
+                return this.innerLog.TraceEnabled;
+            }
+        }
+
+        /// <returns>
+        /// </returns>
+        public virtual bool WarnEnabled
+        {
+            get
+            {
+                return this.innerLog.WarnEnabled;
+            }
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
+
         /// <param name="message">
         /// </param>
         public virtual void Debug(System.Object message)
         {
-            innerLog.Debug(message);
+            this.innerLog.Debug(message);
         }
 
         /// <param name="message">
@@ -100,108 +112,8 @@ namespace NHapi.Base.Log
         /// </param>
         public virtual void Debug(System.Object message, System.Exception t)
         {
-            innerLog.Debug(message, t);
+            this.innerLog.Debug(message, t);
         }
-
-        /// <param name="message">
-        /// </param>
-        public virtual void Error(System.Object message)
-        {
-            innerLog.Error(message);
-        }
-
-        /// <param name="message">
-        /// </param>
-        /// <param name="t">
-        /// </param>
-        public virtual void Error(System.Object message, System.Exception t)
-        {
-            innerLog.Error(message, t);
-        }
-
-        /// <summary>
-        /// fatal
-        /// </summary>
-        /// <param name="message"></param>
-        public virtual void Fatal(System.Object message)
-        {
-            innerLog.Fatal(message);
-        }
-
-        /// <summary>
-        /// fatal
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="t"></param>
-        public virtual void Fatal(System.Object message, System.Exception t)
-        {
-            innerLog.Fatal(message, t);
-        }
-
-        /// <summary>
-        /// info
-        /// </summary>
-        /// <param name="message"></param>
-        public virtual void Info(System.Object message)
-        {
-            innerLog.Info(message);
-        }
-
-        /// <summary>
-        /// info
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="t"></param>
-        public virtual void Info(System.Object message, System.Exception t)
-        {
-            innerLog.Info(message, t);
-        }
-
-        /// <summary>
-        /// To string
-        /// </summary>
-        /// <returns></returns>
-        public override System.String ToString()
-        {
-            return innerLog.ToString();
-        }
-
-        /// <param name="message">
-        /// </param>
-        public virtual void Trace(System.Object message)
-        {
-            innerLog.Trace(message);
-        }
-
-        /// <summary>
-        /// Trace
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="t"></param>
-        public virtual void Trace(System.Object message, System.Exception t)
-        {
-            innerLog.Trace(message, t);
-        }
-
-        /// <summary>
-        /// Warn
-        /// </summary>
-        /// <param name="message"></param>
-        public virtual void Warn(System.Object message)
-        {
-            innerLog.Warn(message);
-        }
-
-        /// <summary>
-        /// Warn
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="t"></param>
-        public virtual void Warn(System.Object message, System.Exception t)
-        {
-            innerLog.Warn(message, t);
-        }
-
 
         /// <summary>
         /// debug method
@@ -212,7 +124,108 @@ namespace NHapi.Base.Log
         public virtual void Debug(System.String msgPattern, System.Object[] values, System.Exception t)
         {
             System.String message = System.String.Format(msgPattern, values);
-            innerLog.Debug(message, t);
+            this.innerLog.Debug(message, t);
         }
+
+        /// <param name="message">
+        /// </param>
+        public virtual void Error(System.Object message)
+        {
+            this.innerLog.Error(message);
+        }
+
+        /// <param name="message">
+        /// </param>
+        /// <param name="t">
+        /// </param>
+        public virtual void Error(System.Object message, System.Exception t)
+        {
+            this.innerLog.Error(message, t);
+        }
+
+        /// <summary>
+        /// fatal
+        /// </summary>
+        /// <param name="message"></param>
+        public virtual void Fatal(System.Object message)
+        {
+            this.innerLog.Fatal(message);
+        }
+
+        /// <summary>
+        /// fatal
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="t"></param>
+        public virtual void Fatal(System.Object message, System.Exception t)
+        {
+            this.innerLog.Fatal(message, t);
+        }
+
+        /// <summary>
+        /// info
+        /// </summary>
+        /// <param name="message"></param>
+        public virtual void Info(System.Object message)
+        {
+            this.innerLog.Info(message);
+        }
+
+        /// <summary>
+        /// info
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="t"></param>
+        public virtual void Info(System.Object message, System.Exception t)
+        {
+            this.innerLog.Info(message, t);
+        }
+
+        /// <summary>
+        /// To string
+        /// </summary>
+        /// <returns></returns>
+        public override System.String ToString()
+        {
+            return this.innerLog.ToString();
+        }
+
+        /// <param name="message">
+        /// </param>
+        public virtual void Trace(System.Object message)
+        {
+            this.innerLog.Trace(message);
+        }
+
+        /// <summary>
+        /// Trace
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="t"></param>
+        public virtual void Trace(System.Object message, System.Exception t)
+        {
+            this.innerLog.Trace(message, t);
+        }
+
+        /// <summary>
+        /// Warn
+        /// </summary>
+        /// <param name="message"></param>
+        public virtual void Warn(System.Object message)
+        {
+            this.innerLog.Warn(message);
+        }
+
+        /// <summary>
+        /// Warn
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="t"></param>
+        public virtual void Warn(System.Object message, System.Exception t)
+        {
+            this.innerLog.Warn(message, t);
+        }
+
+        #endregion
     }
 }

@@ -1,25 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Configuration;
-
 namespace NHapi.Base
 {
+    using System;
+
     public class ConfigurationSettings
     {
-        public static bool UseFactory
-        {
-            get
-            {
-                bool useFactory = false;
-                string useFactoryFromConfig = System.Configuration.ConfigurationManager.AppSettings["UseFactory"];
-                if(useFactoryFromConfig !=null && useFactoryFromConfig.Length>0)
-                {
-                    useFactory = Convert.ToBoolean(useFactoryFromConfig);
-                }
-                return useFactory;
-            }
-        }
+        #region Public Properties
 
         public static string ConnectionString
         {
@@ -34,5 +19,21 @@ namespace NHapi.Base
                 return conn;
             }
         }
+
+        public static bool UseFactory
+        {
+            get
+            {
+                bool useFactory = false;
+                string useFactoryFromConfig = System.Configuration.ConfigurationManager.AppSettings["UseFactory"];
+                if (useFactoryFromConfig != null && useFactoryFromConfig.Length > 0)
+                {
+                    useFactory = Convert.ToBoolean(useFactoryFromConfig);
+                }
+                return useFactory;
+            }
+        }
+
+        #endregion
     }
 }

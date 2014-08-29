@@ -1,23 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using NHapi.Base.SourceGeneration;
-using Microsoft.Test.CommandLineParsing;
-
 namespace ModelGenerator
 {
-    class Program
+    using Microsoft.Test.CommandLineParsing;
+
+    internal class Program
     {
-        static void Main(string[] args)
+        #region Methods
+
+        private static void Main(string[] args)
         {
             ModelBuilder builder = new ModelBuilder();
-            CommandLineParser.ParseArguments(builder, args);
+            builder.ParseArguments(args);
             builder.Execute();
-            
-
-            
         }
 
-
+        #endregion
     }
 }

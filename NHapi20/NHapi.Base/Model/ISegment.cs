@@ -20,17 +20,15 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </author>
-using System;
-using HL7Exception = NHapi.Base.HL7Exception;
+
 namespace NHapi.Base.Model
 {
-
-
     /// <summary> Represents an HL7 message segment, which is a unit of data that contains multiple fields.</summary>
     /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
     /// </author>
     public interface ISegment : IStructure
     {
+        #region Public Methods and Operators
 
         /// <summary> Returns the array of Fields at the specified index.  The array will be of length 1 for
         /// non-repeating fields, and >1 for repeating fields.  Fields are numbered from 1.
@@ -56,10 +54,6 @@ namespace NHapi.Base.Model
         /// </summary>
         IType GetField(int number, int rep);
 
-        /// <summary> Returns true if the field at the given index is required, false otherwise.</summary>
-        /// <throws>  HL7Exception if field index is out of range. </throws>
-        bool IsRequired(int number);
-
         /// <summary> Returns the maximum length of the field at the given index, in characters.</summary>
         /// <throws>  HL7Exception if field index is out of range. </throws>
         int GetLength(int number);
@@ -71,9 +65,15 @@ namespace NHapi.Base.Model
         /// <throws>  HL7Exception if field index is out of range. </throws>
         int GetMaxCardinality(int number);
 
+        /// <summary> Returns true if the field at the given index is required, false otherwise.</summary>
+        /// <throws>  HL7Exception if field index is out of range. </throws>
+        bool IsRequired(int number);
+
         /// <summary> Returns the number of fields defined by this segment (repeating 
         /// fields are not counted multiple times).  
         /// </summary>
         int NumFields();
+
+        #endregion
     }
 }

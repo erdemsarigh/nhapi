@@ -22,11 +22,10 @@
 /// If you do not delete the provisions above, a recipient may use your version of
 /// this file under either the MPL or the GPL.
 */
-using System;
-using NHapi.Base.validation;
 
 namespace NHapi.Base.Model
 {
+    using NHapi.Base.validation;
 
     /// <summary> Base class for Primitives.  Performs validation in setValue().
     /// 
@@ -35,46 +34,14 @@ namespace NHapi.Base.Model
     /// </author>
     public abstract class AbstractPrimitive : AbstractType, IPrimitive
     {
-        /// <summary> Sets the value of this Primitive, first performing validation as specified 
-        /// by <code>getMessage().getValidationContext()</code>.  No validation is performed 
-        /// if getMessage() returns null. 
-        /// 
-        /// </summary>
-        virtual public System.String Value
-        {
-            get
-            {
-                return myValue;
-            }
+        #region Fields
 
-            set
-            {
-                IMessage message = Message;
+        private System.String myValue;
 
-                if (message != null)
-                {
-                    IValidationContext context = message.ValidationContext;
-                    System.String version = message.Version;
+        #endregion
 
-                    if (context != null)
-                    {
-                        IPrimitiveTypeRule[] rules = context.getPrimitiveRules(version, TypeName, this);
+        #region Constructors and Destructors
 
-                        for (int i = 0; i < rules.Length; i++)
-                        {
-                            value = rules[i].correct(value);
-                            if (!rules[i].test(value))
-                            {
-                                throw new DataTypeException("Failed validation rule: " + rules[i].Description);
-                            }
-                        }
-                    }
-                }
-
-                myValue = value;
-            }
-
-        }
         ///<summary>
         /// <param name="message">message to which this type belongs
         /// </param>
@@ -94,12 +61,60 @@ namespace NHapi.Base.Model
         {
         }
 
-        private System.String myValue;
+        #endregion
+
+        #region Public Properties
+
+        /// <summary> Sets the value of this Primitive, first performing validation as specified 
+        /// by <code>getMessage().getValidationContext()</code>.  No validation is performed 
+        /// if getMessage() returns null. 
+        /// 
+        /// </summary>
+        public virtual System.String Value
+        {
+            get
+            {
+                return this.myValue;
+            }
+
+            set
+            {
+                IMessage message = this.Message;
+
+                if (message != null)
+                {
+                    IValidationContext context = message.ValidationContext;
+                    System.String version = message.Version;
+
+                    if (context != null)
+                    {
+                        IPrimitiveTypeRule[] rules = context.getPrimitiveRules(version, this.TypeName, this);
+
+                        for (int i = 0; i < rules.Length; i++)
+                        {
+                            value = rules[i].correct(value);
+                            if (!rules[i].test(value))
+                            {
+                                throw new DataTypeException("Failed validation rule: " + rules[i].Description);
+                            }
+                        }
+                    }
+                }
+
+                this.myValue = value;
+            }
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         /// <summary> Returns the value of getValue() </summary>
         public override System.String ToString()
         {
             return this.Value;
         }
+
+        #endregion
     }
 }

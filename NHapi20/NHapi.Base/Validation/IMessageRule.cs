@@ -18,11 +18,10 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using NHapi.Base.Model;
 
 namespace NHapi.Base.validation
 {
+    using NHapi.Base.Model;
 
     /// <summary> A validation rule that applies to a fully populated message object.  Message rules 
     /// may be called (depending on runtime configuration) just after an inbound message
@@ -32,6 +31,7 @@ namespace NHapi.Base.validation
     /// </author>
     public interface IMessageRule : IRule
     {
+        #region Public Methods and Operators
 
         /// <summary> Tests the given (fully populated) message against the criteria 
         /// defined by this rule class.  
@@ -43,5 +43,7 @@ namespace NHapi.Base.validation
         /// of message to which it doesn't apply.  
         /// </returns>
         ValidationException[] test(IMessage msg);
+
+        #endregion
     }
 }

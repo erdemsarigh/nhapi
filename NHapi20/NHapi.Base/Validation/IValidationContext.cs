@@ -18,11 +18,10 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using NHapi.Base.Model;
 
 namespace NHapi.Base.validation
 {
+    using NHapi.Base.Model;
 
     /// <summary> A set of rules for message validation.  
     /// 
@@ -33,6 +32,29 @@ namespace NHapi.Base.validation
     /// </version>
     public interface IValidationContext
     {
+        #region Public Methods and Operators
+
+        /// <param name="theVersion">an HL7 version (eg "2.1")
+        /// </param>
+        /// <param name="theEncoding">an encoding name (eg "VB", "XML)
+        /// </param>
+        /// <returns> the active encoding rules that apply to the given version and encoding
+        /// </returns>
+        IEncodingRule[] getEncodingRules(System.String theVersion, System.String theEncoding);
+
+        /// <param name="theVersion">an HL7 version (eg "2.1")
+        /// </param>
+        /// <param name="theMessageType">a value valid for MSH-9-1
+        /// </param>
+        /// <param name="theTriggerEvent">a value valid fro MSH-9-2
+        /// </param>
+        /// <returns> the active rules that apply to message of the given version, message type, 
+        /// and trigger event 
+        /// </returns>
+        IMessageRule[] getMessageRules(
+            System.String theVersion,
+            System.String theMessageType,
+            System.String theTriggerEvent);
 
         /// <param name="theVersion">an HL7 version (eg "2.1")
         /// </param>
@@ -44,23 +66,6 @@ namespace NHapi.Base.validation
         /// </returns>
         IPrimitiveTypeRule[] getPrimitiveRules(System.String theVersion, System.String theTypeName, IPrimitive theType);
 
-        /// <param name="theVersion">an HL7 version (eg "2.1")
-        /// </param>
-        /// <param name="theMessageType">a value valid for MSH-9-1
-        /// </param>
-        /// <param name="theTriggerEvent">a value valid fro MSH-9-2
-        /// </param>
-        /// <returns> the active rules that apply to message of the given version, message type, 
-        /// and trigger event 
-        /// </returns>
-        IMessageRule[] getMessageRules(System.String theVersion, System.String theMessageType, System.String theTriggerEvent);
-
-        /// <param name="theVersion">an HL7 version (eg "2.1")
-        /// </param>
-        /// <param name="theEncoding">an encoding name (eg "VB", "XML)
-        /// </param>
-        /// <returns> the active encoding rules that apply to the given version and encoding
-        /// </returns>
-        IEncodingRule[] getEncodingRules(System.String theVersion, System.String theEncoding);
+        #endregion
     }
 }

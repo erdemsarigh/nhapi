@@ -1,0 +1,11 @@
+C:\Code\nhapi\NHapi20\ModelGenerator\bin\Debug\ModelGenerator.exe.config
+C:\Code\nhapi\NHapi20\ModelGenerator\bin\Debug\ModelGenerator.exe
+C:\Code\nhapi\NHapi20\ModelGenerator\bin\Debug\ModelGenerator.pdb
+C:\Code\nhapi\NHapi20\ModelGenerator\bin\Debug\NHapi.Base.dll
+C:\Code\nhapi\NHapi20\ModelGenerator\bin\Debug\TestApiCore.dll
+C:\Code\nhapi\NHapi20\ModelGenerator\bin\Debug\NHapi.Base.pdb
+C:\Code\nhapi\NHapi20\ModelGenerator\bin\Debug\NHapi.Base.xml
+C:\Code\nhapi\NHapi20\ModelGenerator\bin\Debug\TestApiCore.pdb
+C:\Code\nhapi\NHapi20\ModelGenerator\obj\Debug\ModelGenerator.csprojResolveAssemblyReference.cache
+C:\Code\nhapi\NHapi20\ModelGenerator\obj\Debug\ModelGenerator.exe
+C:\Code\nhapi\NHapi20\ModelGenerator\obj\Debug\ModelGenerator.pdb

@@ -1,9 +1,6 @@
-using System;
-using NHapi.Base.Model;
-using NHapi.Base;
-
 namespace NHapi.Base.Util
 {
+    using NHapi.Base.Model;
 
     /// <summary> Tools for copying data recurvisely from one message element into another.  Currently only Types are 
     /// supported.  
@@ -12,6 +9,7 @@ namespace NHapi.Base.Util
     /// </author>
     public class DeepCopy
     {
+        #region Public Methods and Operators
 
         /// <summary> Copies data from the "from" Type into the "to" Type.  Either Type may be 
         /// a Primitive, Composite, or Varies.  If a Varies is provided, the operation is 
@@ -33,8 +31,6 @@ namespace NHapi.Base.Util
                 }
             }
         }
-
-
 
         /// <summary> Copies contents from the source segment to the destination segment.  This 
         /// method calls copy(Type, Type) on each repetition of each field (see additional 
@@ -58,5 +54,7 @@ namespace NHapi.Base.Util
                 }
             }
         }
+
+        #endregion
     }
 }

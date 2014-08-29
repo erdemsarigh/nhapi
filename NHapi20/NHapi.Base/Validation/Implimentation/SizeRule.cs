@@ -18,12 +18,9 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using NHapi.Base.validation;
 
 namespace NHapi.Base.validation.impl
 {
-
     /// <summary> Checks that Primitive values conform to a certain size limit.  
     /// 
     /// </summary>
@@ -33,36 +30,49 @@ namespace NHapi.Base.validation.impl
     /// </version>
     public class SizeRule : IPrimitiveTypeRule
     {
-        /// <seealso cref="NHapi.Base.validation.Rule.getDescription()">
-        /// </seealso>
-        virtual public System.String Description
-        {
-            get
-            {
-                return "Maxumim size <= " + myMaxChars + " characters";
-            }
-
-        }
-        /// <seealso cref="NHapi.Base.validation.Rule.getSectionReference()">
-        /// </seealso>
-        virtual public System.String SectionReference
-        {
-            get
-            {
-                return null;
-            }
-
-        }
+        #region Fields
 
         private int myMaxChars;
+
+        #endregion
+
+        #region Constructors and Destructors
 
         /// <param name="theMaxChars">the maximum number of characters this rule allows in a 
         /// primitive value
         /// </param>
         public SizeRule(int theMaxChars)
         {
-            myMaxChars = theMaxChars;
+            this.myMaxChars = theMaxChars;
         }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <seealso cref="NHapi.Base.validation.Rule.getDescription()">
+        /// </seealso>
+        public virtual System.String Description
+        {
+            get
+            {
+                return "Maxumim size <= " + this.myMaxChars + " characters";
+            }
+        }
+
+        /// <seealso cref="NHapi.Base.validation.Rule.getSectionReference()">
+        /// </seealso>
+        public virtual System.String SectionReference
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         /// <summary> Does nothing.  If what you wanted was to trim the value to the max size, you should
         /// make a separate rule for that.  
@@ -80,11 +90,13 @@ namespace NHapi.Base.validation.impl
         public virtual bool test(System.String value_Renamed)
         {
             bool ok = true;
-            if (value_Renamed != null && value_Renamed.Length > myMaxChars)
+            if (value_Renamed != null && value_Renamed.Length > this.myMaxChars)
             {
                 ok = false;
             }
             return ok;
         }
+
+        #endregion
     }
 }

@@ -18,13 +18,10 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using System.Text.RegularExpressions;
-using NHapi.Base.validation;
-using NHapi.Base.validation.impl;
 
 namespace NHapi.Base.validation.impl
 {
+    using System.Text.RegularExpressions;
 
     /// <summary> A <code>PrimitiveTypeRule</code> that validates primitive values 
     /// using a regular expression.  
@@ -36,32 +33,15 @@ namespace NHapi.Base.validation.impl
     /// </version>
     public class RegexPrimitiveRule : IPrimitiveTypeRule
     {
-        /// <summary>
-        /// The description
-        /// </summary>
-        virtual public System.String Description
-        {
-            get
-            {
-                return "Matches the regular expression " + myPattern.ToString();
-            }
-
-        }
-
-        /// <summary>
-        /// The section reference
-        /// </summary>
-        virtual public System.String SectionReference
-        {
-            get
-            {
-                return mySectionReference;
-            }
-
-        }
+        #region Fields
 
         private System.Text.RegularExpressions.Regex myPattern;
+
         private System.String mySectionReference;
+
+        #endregion
+
+        #region Constructors and Destructors
 
         /// <param name="theRegex">a regular expression against which to validate primitive
         /// values 
@@ -70,8 +50,48 @@ namespace NHapi.Base.validation.impl
         /// </param>
         public RegexPrimitiveRule(System.String theRegex, System.String theSectionReference)
         {
-            myPattern = new Regex(theRegex);
-            mySectionReference = theSectionReference;
+            this.myPattern = new Regex(theRegex);
+            this.mySectionReference = theSectionReference;
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The description
+        /// </summary>
+        public virtual System.String Description
+        {
+            get
+            {
+                return "Matches the regular expression " + this.myPattern;
+            }
+        }
+
+        /// <summary>
+        /// The section reference
+        /// </summary>
+        public virtual System.String SectionReference
+        {
+            get
+            {
+                return this.mySectionReference;
+            }
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
+
+        /// <summary>
+        /// Is this rule correct
+        /// </summary>
+        /// <param name="value_Renamed"></param>
+        /// <returns></returns>
+        public virtual System.String correct(System.String value_Renamed)
+        {
+            return value_Renamed;
         }
 
         /// <summary> Empty string, null, and the HL7 explicit null (two double-quotes) are passed.  
@@ -83,20 +103,9 @@ namespace NHapi.Base.validation.impl
             {
                 return true;
             }
-            else
-            {
-                return myPattern.IsMatch(value_Renamed);
-            }
+            return this.myPattern.IsMatch(value_Renamed);
         }
 
-        /// <summary>
-        /// Is this rule correct
-        /// </summary>
-        /// <param name="value_Renamed"></param>
-        /// <returns></returns>
-        public virtual System.String correct(System.String value_Renamed)
-        {
-            return value_Renamed;
-        }
+        #endregion
     }
 }

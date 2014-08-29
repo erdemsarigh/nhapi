@@ -18,9 +18,10 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
+
 namespace NHapi.Base.validation
 {
+    using System;
 
     /// <summary> A failure to validate against a rule.  </summary>
     /// <author>  Bryan Tripp
@@ -28,6 +29,7 @@ namespace NHapi.Base.validation
     [Serializable]
     public class ValidationException : System.Exception
     {
+        #region Constructors and Destructors
 
         /// <summary> Creates a new instance of <code>ValidationException</code> without detail message.</summary>
         public ValidationException()
@@ -43,7 +45,6 @@ namespace NHapi.Base.validation
         {
         }
 
-
         /// <summary> Constructs an instance of <code>ValidationException</code> with the specified detail message.</summary>
         /// <param name="msg">the detail message.
         /// </param>
@@ -51,5 +52,7 @@ namespace NHapi.Base.validation
             : base(msg)
         {
         }
+
+        #endregion
     }
 }

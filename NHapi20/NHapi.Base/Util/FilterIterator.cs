@@ -35,7 +35,7 @@
 /// 
 /// These changes are distributed under the same terms as the original (above). 
 /// </summary>
-using System;
+
 namespace NHapi.Base.Util
 {
     /// <summary>
@@ -43,10 +43,19 @@ namespace NHapi.Base.Util
     /// </summary>
     public class FilterIterator : System.Collections.IEnumerator
     {
-        private FilterIterator.IPredicate predicate;
+        #region Fields
+
         private System.Collections.IEnumerator iter;
+
         private System.Object nextObject;
-        private bool nextObjectSet = false;
+
+        private bool nextObjectSet;
+
+        private FilterIterator.IPredicate predicate;
+
+        #endregion
+
+        #region Constructors and Destructors
 
         /// <summary>
         /// Constructor
@@ -59,6 +68,31 @@ namespace NHapi.Base.Util
             this.predicate = predicate;
         }
 
+        #endregion
+
+        #region Interfaces
+
+        /// <summary>
+        /// IPredicate interface
+        /// </summary>
+        public interface IPredicate
+        {
+            #region Public Methods and Operators
+
+            /// <summary>
+            /// Evaluate the object
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <returns></returns>
+            bool evaluate(System.Object obj);
+
+            #endregion
+        }
+
+        #endregion
+
+        #region Public Properties
+
         /// <summary>
         /// The current item
         /// </summary>
@@ -66,20 +100,21 @@ namespace NHapi.Base.Util
         {
             get
             {
-                if (!nextObjectSet)
+                if (!this.nextObjectSet)
                 {
-                    if (!setNextObject())
+                    if (!this.setNextObject())
                     {
                         throw new System.ArgumentOutOfRangeException();
                     }
                 }
-                nextObjectSet = false;
-                return nextObject;
+                this.nextObjectSet = false;
+                return this.nextObject;
             }
-
         }
 
+        #endregion
 
+        #region Public Methods and Operators
 
         /// <summary>
         /// Move next
@@ -87,32 +122,18 @@ namespace NHapi.Base.Util
         /// <returns></returns>
         public virtual bool MoveNext()
         {
-            if (nextObjectSet)
+            if (this.nextObjectSet)
             {
                 return true;
             }
-            else
-            {
-                return setNextObject();
-            }
+            return this.setNextObject();
         }
 
-        /// <summary> Set nextObject to the next object. If there are no more
-        /// objects then return false. Otherwise, return true.
+        /// <summary>
+        /// Reset
         /// </summary>
-        private bool setNextObject()
+        public virtual void Reset()
         {
-            while (iter.MoveNext())
-            {
-                System.Object object_Renamed = iter.Current;
-                if (predicate.evaluate(object_Renamed))
-                {
-                    nextObject = object_Renamed;
-                    nextObjectSet = true;
-                    return true;
-                }
-            }
-            return false;
         }
 
         /// <summary>Throws UnsupportedOperationException </summary>
@@ -121,23 +142,28 @@ namespace NHapi.Base.Util
             throw new System.NotSupportedException();
         }
 
-        /// <summary>
-        /// IPredicate interface
+        #endregion
+
+        #region Methods
+
+        /// <summary> Set nextObject to the next object. If there are no more
+        /// objects then return false. Otherwise, return true.
         /// </summary>
-        public interface IPredicate
+        private bool setNextObject()
         {
-            /// <summary>
-            /// Evaluate the object
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <returns></returns>
-            bool evaluate(System.Object obj);
+            while (this.iter.MoveNext())
+            {
+                System.Object object_Renamed = this.iter.Current;
+                if (this.predicate.evaluate(object_Renamed))
+                {
+                    this.nextObject = object_Renamed;
+                    this.nextObjectSet = true;
+                    return true;
+                }
+            }
+            return false;
         }
-        /// <summary>
-        /// Reset
-        /// </summary>
-        virtual public void Reset()
-        {
-        }
+
+        #endregion
     }
 }

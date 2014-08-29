@@ -20,15 +20,13 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 */
-using System;
-using System.Collections.Generic;
-
-using NHapi.Base;
-using NHapi.Base.Parser;
-using NHapi.Base.Log;
 
 namespace NHapi.Base.Model
 {
+    using System.Collections.Generic;
+
+    using NHapi.Base.Log;
+    using NHapi.Base.Parser;
 
     /// <summary> Provides common functionality needed by implementers of the Segment interface.
     /// Implementing classes should define all the fields for the segment they represent 
@@ -41,11 +39,28 @@ namespace NHapi.Base.Model
     /// </summary>
     public abstract class AbstractSegment : ISegment
     {
+        #region Static Fields
+
         private static readonly IHapiLog log;
+
+        #endregion
+
+        #region Fields
+
         private List<AbstractSegmentItem> _items;
+
         private IGroup _parentStructure;
 
-        #region Constructor
+        #endregion
+
+        #region Constructors and Destructors
+
+        /// <summary> Sets the segment name.  This would normally be called by a Parser. </summary>
+        static AbstractSegment()
+        {
+            log = HapiLogFactory.GetHapiLog(typeof(AbstractSegment));
+        }
+
         /// <summary> Calls the abstract init() method to create the fields in this segment.
         /// 
         /// </summary>
@@ -59,19 +74,15 @@ namespace NHapi.Base.Model
         {
             this._parentStructure = parentStructure;
 
-            _items = new List<AbstractSegmentItem>();
-
+            this._items = new List<AbstractSegmentItem>();
         }
 
-        /// <summary> Sets the segment name.  This would normally be called by a Parser. </summary>
-        static AbstractSegment()
-        {
-            log = HapiLogFactory.GetHapiLog(typeof(AbstractSegment));
-        }
         #endregion
 
+        #region Public Properties
+
         /// <summary> Returns the Message to which this segment belongs.  </summary>
-        virtual public IMessage Message
+        public virtual IMessage Message
         {
             get
             {
@@ -82,58 +93,40 @@ namespace NHapi.Base.Model
                 }
                 return (IMessage)s;
             }
-
         }
 
         /// <summary>
         /// Immediate parent Group or message containing this segment
         /// </summary>
-        virtual public IGroup ParentStructure
+        public virtual IGroup ParentStructure
         {
             get
             {
-                return _parentStructure;
+                return this._parentStructure;
             }
-
         }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         /// <summary> Returns an array of Field objects at the specified location in the segment.  In the case of
         /// non-repeating fields the array will be of length one.  Fields are numbered from 1.
         /// </summary>
         public virtual IType[] GetField(int number)
         {
+            this.ensureEnoughFields(number);
 
-            ensureEnoughFields(number);
-
-            if (number < 1 || number > _items.Count)
+            if (number < 1 || number > this._items.Count)
             {
-                throw new HL7Exception("Can't retrieve field " + number + " from segment " + this.GetType().FullName + " - there are only " + _items[number - 1].Fields.Count + " fields.", HL7Exception.APPLICATION_INTERNAL_ERROR);
+                throw new HL7Exception(
+                    "Can't retrieve field " + number + " from segment " + this.GetType().FullName + " - there are only "
+                    + this._items[number - 1].Fields.Count + " fields.",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
             }
-            return _items[number - 1].GetAllFieldsAsITypeArray();
+            return this._items[number - 1].GetAllFieldsAsITypeArray();
 
             //return (IType[])_items[number - 1].fields; //note: fields are numbered from 1 from the user's perspective
-        }
-
-        /// <summary> Return the field description.  Fields are numbered from 1.
-        /// </summary>
-        public virtual string GetFieldDescription(int number)
-        {
-            ensureEnoughFields(number);
-            if (number < 1 || number > _items.Count)
-            {
-                throw new HL7Exception("Can't retrieve field " + number + " from segment " + this.GetType().FullName + " - there are only " + _items.Count + " fields.", HL7Exception.APPLICATION_INTERNAL_ERROR);
-            }
-            return _items[number - 1].Description;
-        }
-
-        /// <summary>
-        /// Returns the total number of items used for the field X.  Fields are numbered from 1.
-        /// </summary>
-        /// <param name="number">Field Number (Starts at 1)</param>
-        /// <returns>0 if no fields users, otherwise, the number of fields used.</returns>
-        public virtual int GetTotalFieldRepetitionsUsed(int number)
-        {
-            return _items[number - 1].Fields.Count;
         }
 
         /// <summary> Returns a specific repetition of field at the specified index.  If there exist 
@@ -150,114 +143,56 @@ namespace NHapi.Base.Model
         /// </summary>
         public virtual IType GetField(int number, int rep)
         {
-            ensureEnoughFields(number);
-            if (number < 1 || number > _items.Count)
+            this.ensureEnoughFields(number);
+            if (number < 1 || number > this._items.Count)
             {
-                throw new HL7Exception("Can't retrieve field " + number + " from segment " + this.GetType().FullName + " - there are only " + _items[number - 1].Fields.Count + " fields.", HL7Exception.APPLICATION_INTERNAL_ERROR);
+                throw new HL7Exception(
+                    "Can't retrieve field " + number + " from segment " + this.GetType().FullName + " - there are only "
+                    + this._items[number - 1].Fields.Count + " fields.",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
             }
 
-            int currentReps = _items[number - 1].Fields.Count;
+            int currentReps = this._items[number - 1].Fields.Count;
 
             //check if out of range ... 
             if (rep > currentReps)
-                throw new HL7Exception("Can't get repetition " + rep + " from field " + number + " - there are currently only " + currentReps + " reps.", HL7Exception.APPLICATION_INTERNAL_ERROR);
+            {
+                throw new HL7Exception(
+                    "Can't get repetition " + rep + " from field " + number + " - there are currently only "
+                    + currentReps + " reps.",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
 
-            if (rep > _items[number - 1].MaxRepetitions)
-                throw new HL7Exception("Can't get repetition " + rep + " from field " + number + " - maximum repetitions is only " + _items[number - 1].MaxRepetitions + " reps.", HL7Exception.APPLICATION_INTERNAL_ERROR);
-           
+            if (rep > this._items[number - 1].MaxRepetitions)
+            {
+                throw new HL7Exception(
+                    "Can't get repetition " + rep + " from field " + number + " - maximum repetitions is only "
+                    + this._items[number - 1].MaxRepetitions + " reps.",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
 
             //add a rep if necessary ... 
             if (rep == currentReps)
             {
-                _items[number - 1].Fields.Add(createNewType(number));
+                this._items[number - 1].Fields.Add(this.createNewType(number));
             }
 
-            return _items[number - 1].Fields[rep];
+            return this._items[number - 1].Fields[rep];
         }
 
-        /// <summary> Creates a new instance of the Type at the given field number in this segment.  </summary>
-        private IType createNewType(int field)
-        {
-            int number = field - 1;
-            System.Type c = (System.Type)this._items[number].FieldType;
-
-            IType newType = null;
-            try
-            {
-                System.Object[] args = getArgs(number);
-                System.Type[] argClasses = new System.Type[args.Length];
-                for (int i = 0; i < args.Length; i++)
-                {
-                    if (args[i] is IMessage)
-                    {
-                        argClasses[i] = typeof(IMessage);
-                    }
-                    else
-                    {
-                        argClasses[i] = args[i].GetType();
-                    }
-                }
-                newType = (IType)c.GetConstructor(argClasses).Invoke(args);
-            }
-            catch (System.UnauthorizedAccessException iae)
-            {
-                throw new HL7Exception("Can't access class " + c.FullName + " (" + iae.GetType().FullName + "): " + iae.Message, HL7Exception.APPLICATION_INTERNAL_ERROR);
-            }
-            catch (System.Reflection.TargetInvocationException ite)
-            {
-                throw new HL7Exception("Can't instantiate class " + c.FullName + " (" + ite.GetType().FullName + "): " + ite.Message, HL7Exception.APPLICATION_INTERNAL_ERROR);
-            }
-            catch (System.MethodAccessException nme)
-            {
-                throw new HL7Exception("Can't instantiate class " + c.FullName + " (" + nme.GetType().FullName + "): " + nme.Message, HL7Exception.APPLICATION_INTERNAL_ERROR);
-            }
-            catch (System.Exception ie)
-            {
-                throw new HL7Exception("Can't instantiate class " + c.FullName + " (" + ie.GetType().FullName + "): " + ie.Message, HL7Exception.APPLICATION_INTERNAL_ERROR);
-            }
-            return newType;
-        }
-
-        //defaults to {this.getMessage}
-        private System.Object[] getArgs(int fieldNum)
-        {
-            System.Object[] result = null;
-
-            System.Object o = _items[fieldNum].Args;
-            if (o != null && o is System.Object[] && ((object[])o).Length > 0)
-            {
-                result = o as object[];
-            }
-            else
-            {
-                result = new System.Object[] { Message };
-            }
-
-            return result;
-        }
-
-        /// <summary> Returns true if the given field is required in this segment - fields are 
-        /// numbered from 1. 
+        /// <summary> Return the field description.  Fields are numbered from 1.
         /// </summary>
-        /// <throws>  HL7Exception if field index is out of range.   </throws>
-        public virtual bool IsRequired(int number)
+        public virtual string GetFieldDescription(int number)
         {
-            if (number < 1 || number > _items.Count)
+            this.ensureEnoughFields(number);
+            if (number < 1 || number > this._items.Count)
             {
-                throw new HL7Exception("Can't retrieve optionality of field " + number + " from segment " + this.GetType().FullName + " - there are only " + _items[number - 1].Fields.Count + " fields.", HL7Exception.APPLICATION_INTERNAL_ERROR);
+                throw new HL7Exception(
+                    "Can't retrieve field " + number + " from segment " + this.GetType().FullName + " - there are only "
+                    + this._items.Count + " fields.",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
             }
-
-            bool ret = false;
-            try
-            {
-                ret = _items[number - 1].IsRequired;
-            }
-            catch (System.Exception e)
-            {
-                throw new HL7Exception("Can't retrieve optionality of field " + number + ": " + e.Message, HL7Exception.APPLICATION_INTERNAL_ERROR);
-            }
-
-            return ret;
+            return this._items[number - 1].Description;
         }
 
         /// <summary> Returns the maximum length of the field at the given index, in characters -   
@@ -266,19 +201,24 @@ namespace NHapi.Base.Model
         /// <throws>  HL7Exception if field index is out of range.   </throws>
         public virtual int GetLength(int number)
         {
-            if (number < 1 || number > _items.Count)
+            if (number < 1 || number > this._items.Count)
             {
-                throw new HL7Exception("Can't retrieve max length of field " + number + " from segment " + this.GetType().FullName + " - there are only " + _items[number - 1].Fields.Count + " fields.", HL7Exception.APPLICATION_INTERNAL_ERROR);
+                throw new HL7Exception(
+                    "Can't retrieve max length of field " + number + " from segment " + this.GetType().FullName
+                    + " - there are only " + this._items[number - 1].Fields.Count + " fields.",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
             }
 
             int ret = 0;
             try
             {
-                ret = _items[number - 1].Length; //fields #d from 1 to user 
+                ret = this._items[number - 1].Length; //fields #d from 1 to user 
             }
             catch (System.Exception e)
             {
-                throw new HL7Exception("Can't retrieve max length of field " + number + ": " + e.Message, HL7Exception.APPLICATION_INTERNAL_ERROR);
+                throw new HL7Exception(
+                    "Can't retrieve max length of field " + number + ": " + e.Message,
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
             }
 
             return ret;
@@ -288,23 +228,88 @@ namespace NHapi.Base.Model
         /// <throws>  HL7Exception if field index is out of range. </throws>
         public virtual int GetMaxCardinality(int number)
         {
-            if (number < 1 || number > _items.Count)
+            if (number < 1 || number > this._items.Count)
             {
-                throw new HL7Exception("Can't retrieve cardinality of field " + number + " from segment " + this.GetType().FullName + " - there are only " + _items[number - 1].Fields.Count + " fields.", HL7Exception.APPLICATION_INTERNAL_ERROR);
+                throw new HL7Exception(
+                    "Can't retrieve cardinality of field " + number + " from segment " + this.GetType().FullName
+                    + " - there are only " + this._items[number - 1].Fields.Count + " fields.",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
             }
 
             int reps = 0;
             try
             {
-                reps = _items[number - 1].MaxRepetitions; //fields #d from 1 to user
+                reps = this._items[number - 1].MaxRepetitions; //fields #d from 1 to user
             }
             catch (System.Exception e)
             {
-                throw new HL7Exception("Can't retrieve max repetitions of field " + number + ": " + e.Message, HL7Exception.APPLICATION_INTERNAL_ERROR);
+                throw new HL7Exception(
+                    "Can't retrieve max repetitions of field " + number + ": " + e.Message,
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
             }
 
             return reps;
         }
+
+        /// <summary> Returns the class name (excluding package). </summary>
+        public virtual System.String GetStructureName()
+        {
+            System.String fullName = this.GetType().FullName;
+            return fullName.Substring(
+                fullName.LastIndexOf('.') + 1,
+                (fullName.Length) - (fullName.LastIndexOf('.') + 1));
+        }
+
+        /// <summary>
+        /// Returns the total number of items used for the field X.  Fields are numbered from 1.
+        /// </summary>
+        /// <param name="number">Field Number (Starts at 1)</param>
+        /// <returns>0 if no fields users, otherwise, the number of fields used.</returns>
+        public virtual int GetTotalFieldRepetitionsUsed(int number)
+        {
+            return this._items[number - 1].Fields.Count;
+        }
+
+        /// <summary> Returns true if the given field is required in this segment - fields are 
+        /// numbered from 1. 
+        /// </summary>
+        /// <throws>  HL7Exception if field index is out of range.   </throws>
+        public virtual bool IsRequired(int number)
+        {
+            if (number < 1 || number > this._items.Count)
+            {
+                throw new HL7Exception(
+                    "Can't retrieve optionality of field " + number + " from segment " + this.GetType().FullName
+                    + " - there are only " + this._items[number - 1].Fields.Count + " fields.",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
+
+            bool ret = false;
+            try
+            {
+                ret = this._items[number - 1].IsRequired;
+            }
+            catch (System.Exception e)
+            {
+                throw new HL7Exception(
+                    "Can't retrieve optionality of field " + number + ": " + e.Message,
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
+
+            return ret;
+        }
+
+        /// <summary> Returns the number of fields defined by this segment (repeating 
+        /// fields are not counted multiple times).  
+        /// </summary>
+        public virtual int NumFields()
+        {
+            return this._items.Count;
+        }
+
+        #endregion
+
+        #region Methods
 
         /// <summary> Adds a field to the segment.  The field is initially empty (zero repetitions).   
         /// The field number is sequential depending on previous add() calls.  Implementing 
@@ -326,9 +331,14 @@ namespace NHapi.Base.Model
         /// <throws>  HL7Exception if the given class does not inherit from Type or if it can  </throws>
         /// <summary>    not be instantiated.
         /// </summary>
-        protected internal virtual void add(System.Type c, bool required, int maxReps, int length, System.Object[] constructorArgs)
+        protected internal virtual void add(
+            System.Type c,
+            bool required,
+            int maxReps,
+            int length,
+            System.Object[] constructorArgs)
         {
-            add(c, required, maxReps, length, constructorArgs, null);
+            this.add(c, required, maxReps, length, constructorArgs, null);
         }
 
         /// <summary>
@@ -340,15 +350,73 @@ namespace NHapi.Base.Model
         /// <param name="length"></param>
         /// <param name="constructorArgs"></param>
         /// <param name="description"></param>
-        protected internal virtual void add(System.Type c, bool required, int maxReps, int length, System.Object[] constructorArgs, string description)
+        protected internal virtual void add(
+            System.Type c,
+            bool required,
+            int maxReps,
+            int length,
+            System.Object[] constructorArgs,
+            string description)
         {
             if (!typeof(IType).IsAssignableFrom(c))
             {
-                throw new HL7Exception("Class " + c.FullName + " does not inherit from " + "ca.on.uhn.datatype.Type", HL7Exception.APPLICATION_INTERNAL_ERROR);
+                throw new HL7Exception(
+                    "Class " + c.FullName + " does not inherit from " + "ca.on.uhn.datatype.Type",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
             }
 
-            _items.Add(new AbstractSegmentItem(c, required, maxReps, length, constructorArgs, description));
+            this._items.Add(new AbstractSegmentItem(c, required, maxReps, length, constructorArgs, description));
+        }
 
+        /// <summary> Creates a new instance of the Type at the given field number in this segment.  </summary>
+        private IType createNewType(int field)
+        {
+            int number = field - 1;
+            System.Type c = this._items[number].FieldType;
+
+            IType newType = null;
+            try
+            {
+                System.Object[] args = this.getArgs(number);
+                System.Type[] argClasses = new System.Type[args.Length];
+                for (int i = 0; i < args.Length; i++)
+                {
+                    if (args[i] is IMessage)
+                    {
+                        argClasses[i] = typeof(IMessage);
+                    }
+                    else
+                    {
+                        argClasses[i] = args[i].GetType();
+                    }
+                }
+                newType = (IType)c.GetConstructor(argClasses).Invoke(args);
+            }
+            catch (System.UnauthorizedAccessException iae)
+            {
+                throw new HL7Exception(
+                    "Can't access class " + c.FullName + " (" + iae.GetType().FullName + "): " + iae.Message,
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
+            catch (System.Reflection.TargetInvocationException ite)
+            {
+                throw new HL7Exception(
+                    "Can't instantiate class " + c.FullName + " (" + ite.GetType().FullName + "): " + ite.Message,
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
+            catch (System.MethodAccessException nme)
+            {
+                throw new HL7Exception(
+                    "Can't instantiate class " + c.FullName + " (" + nme.GetType().FullName + "): " + nme.Message,
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
+            catch (System.Exception ie)
+            {
+                throw new HL7Exception(
+                    "Can't instantiate class " + c.FullName + " (" + ie.GetType().FullName + "): " + ie.Message,
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
+            return newType;
         }
 
         /// <summary> Called from GetField(...) methods.  If a field has been requested that 
@@ -359,7 +427,9 @@ namespace NHapi.Base.Model
         {
             int fieldsToAdd = fieldRequested - this.NumFields();
             if (fieldsToAdd < 0)
+            {
                 fieldsToAdd = 0;
+            }
 
             try
             {
@@ -374,21 +444,23 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary> Returns the number of fields defined by this segment (repeating 
-        /// fields are not counted multiple times).  
-        /// </summary>
-        public virtual int NumFields()
+        private System.Object[] getArgs(int fieldNum)
         {
-            return this._items.Count;
+            System.Object[] result = null;
+
+            System.Object o = this._items[fieldNum].Args;
+            if (o != null && o is System.Object[] && ((object[])o).Length > 0)
+            {
+                result = o as object[];
+            }
+            else
+            {
+                result = new System.Object[] { this.Message };
+            }
+
+            return result;
         }
 
-        /// <summary> Returns the class name (excluding package). </summary>
-        public virtual System.String GetStructureName()
-        {
-            System.String fullName = this.GetType().FullName;
-            return fullName.Substring(fullName.LastIndexOf('.') + 1, (fullName.Length) - (fullName.LastIndexOf('.') + 1));
-        }
-
-
+        #endregion
     }
 }

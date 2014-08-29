@@ -23,19 +23,19 @@
 /// this file under either the MPL or the GPL.
 /// 
 /// </summary>
-using System;
-using NHapi.Base.Model;
-using NHapi.Base;
-using System.Text.RegularExpressions;
 
 namespace NHapi.Base.Util
 {
+    using System.Text.RegularExpressions;
+
+    using NHapi.Base.Model;
 
     /// <summary> A tool for getting segments by name within a message or part of a message.</summary>
     /// <author>  Bryan Tripp
     /// </author>
     public class SegmentFinder : MessageNavigator
     {
+        #region Constructors and Destructors
 
         /// <summary> Creates a new instance of SegmentFinder.</summary>
         /// <param name="root">the scope of searches -- may be a whole message or only a branch
@@ -43,6 +43,22 @@ namespace NHapi.Base.Util
         public SegmentFinder(IGroup root)
             : base(root)
         {
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
+
+        /// <summary> As findSegment(), but will only return a group.</summary>
+        public virtual IGroup findGroup(System.String namePattern, int rep)
+        {
+            IStructure s = null;
+            do
+            {
+                s = this.findStructure(namePattern, rep);
+            }
+            while (!typeof(IGroup).IsAssignableFrom(s.GetType()));
+            return (IGroup)s;
         }
 
         /// <summary> Returns the first segment with a name that matches the given pattern, in a depth-first search.  
@@ -60,39 +76,23 @@ namespace NHapi.Base.Util
             IStructure s = null;
             do
             {
-                s = findStructure(namePattern, rep);
+                s = this.findStructure(namePattern, rep);
             }
             while (!typeof(ISegment).IsAssignableFrom(s.GetType()));
             return (ISegment)s;
         }
 
-        /// <summary> As findSegment(), but will only return a group.</summary>
-        public virtual IGroup findGroup(System.String namePattern, int rep)
+        /// <summary> As getSegment() but will only return a group.</summary>
+        public virtual IGroup getGroup(System.String namePattern, int rep)
         {
-            IStructure s = null;
-            do
+            IStructure s = this.GetStructure(namePattern, rep);
+            if (!typeof(IGroup).IsAssignableFrom(s.GetType()))
             {
-                s = findStructure(namePattern, rep);
+                throw new HL7Exception(
+                    s.GetStructureName() + " is not a group",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
             }
-            while (!typeof(IGroup).IsAssignableFrom(s.GetType()));
             return (IGroup)s;
-        }
-
-        /// <summary> Returns the first matching structure AFTER the current position</summary>
-        private IStructure findStructure(System.String namePattern, int rep)
-        {
-            IStructure s = null;
-
-            while (s == null)
-            {
-                iterate(false, false);
-                System.String currentName = getCurrentStructure(0).GetStructureName();
-                if (matches(namePattern, currentName))
-                {
-                    s = getCurrentStructure(rep);
-                }
-            }
-            return s;
         }
 
         /// <summary> Returns the first segment with a name matching the given pattern that is a sibling of
@@ -109,45 +109,63 @@ namespace NHapi.Base.Util
         /// </param>
         public virtual ISegment getSegment(System.String namePattern, int rep)
         {
-            IStructure s = GetStructure(namePattern, rep);
+            IStructure s = this.GetStructure(namePattern, rep);
             if (!typeof(ISegment).IsAssignableFrom(s.GetType()))
             {
-                throw new HL7Exception(s.GetStructureName() + " is not a segment", HL7Exception.APPLICATION_INTERNAL_ERROR);
+                throw new HL7Exception(
+                    s.GetStructureName() + " is not a segment",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
             }
             return (ISegment)s;
         }
 
-        /// <summary> As getSegment() but will only return a group.</summary>
-        public virtual IGroup getGroup(System.String namePattern, int rep)
-        {
-            IStructure s = GetStructure(namePattern, rep);
-            if (!typeof(IGroup).IsAssignableFrom(s.GetType()))
-            {
-                throw new HL7Exception(s.GetStructureName() + " is not a group", HL7Exception.APPLICATION_INTERNAL_ERROR);
-            }
-            return (IGroup)s;
-        }
+        #endregion
+
+        #region Methods
 
         private IStructure GetStructure(System.String namePattern, int rep)
         {
             IStructure s = null;
 
-            if (getCurrentStructure(0).Equals(this.Root))
-                drillDown(0);
+            if (this.getCurrentStructure(0).Equals(this.Root))
+            {
+                this.drillDown(0);
+            }
 
-            System.String[] names = getCurrentStructure(0).ParentStructure.Names;
+            System.String[] names = this.getCurrentStructure(0).ParentStructure.Names;
             for (int i = 0; i < names.Length && s == null; i++)
             {
-                if (matches(namePattern, names[i]))
+                if (this.matches(namePattern, names[i]))
                 {
-                    toChild(i);
-                    s = getCurrentStructure(rep);
+                    this.toChild(i);
+                    s = this.getCurrentStructure(rep);
                 }
             }
 
             if (s == null)
-                throw new HL7Exception("Can't find " + namePattern + " as a direct child", HL7Exception.APPLICATION_INTERNAL_ERROR);
+            {
+                throw new HL7Exception(
+                    "Can't find " + namePattern + " as a direct child",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
 
+            return s;
+        }
+
+        /// <summary> Returns the first matching structure AFTER the current position</summary>
+        private IStructure findStructure(System.String namePattern, int rep)
+        {
+            IStructure s = null;
+
+            while (s == null)
+            {
+                this.iterate(false, false);
+                System.String currentName = this.getCurrentStructure(0).GetStructureName();
+                if (this.matches(namePattern, currentName))
+                {
+                    s = this.getCurrentStructure(rep);
+                }
+            }
             return s;
         }
 
@@ -167,7 +185,6 @@ namespace NHapi.Base.Util
         }
         return matches;
         }*/
-
         /// <summary> Tests whether the given name matches the given pattern.</summary>
         private bool matches(System.String pattern, System.String candidate)
         {
@@ -178,12 +195,17 @@ namespace NHapi.Base.Util
             }
 
             if (!Regex.IsMatch(pattern, "[\\w\\*\\?]*"))
-                throw new System.ArgumentException("The pattern " + pattern + " is not valid.  Only [\\w\\*\\?]* allowed.");
+            {
+                throw new System.ArgumentException(
+                    "The pattern " + pattern + " is not valid.  Only [\\w\\*\\?]* allowed.");
+            }
 
             pattern = Regex.Replace(pattern, "\\*", ".*");
             pattern = Regex.Replace(pattern, "\\?", ".");
 
             return Regex.IsMatch(candidate, pattern);
         }
+
+        #endregion
     }
 }

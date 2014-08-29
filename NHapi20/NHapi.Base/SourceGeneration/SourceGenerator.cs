@@ -24,14 +24,11 @@
 /// this file under either the MPL or the GPL.
 /// 
 /// </summary>
-using System;
-using System.Reflection;
-using HL7Exception = NHapi.Base.HL7Exception;
-using NHapi.Base.Parser;
-using System.IO;
 
 namespace NHapi.Base.SourceGeneration
 {
+    using System;
+    using System.IO;
 
     /// <summary> <p>Manages automatic generation of HL7 API source code for all data types,
     /// segments, groups, and message structures. </p>
@@ -41,33 +38,52 @@ namespace NHapi.Base.SourceGeneration
     /// </author>
     public class SourceGenerator : System.Object
     {
+        #region Public Methods and Operators
 
-        /// <summary>Creates new SourceGenerator </summary>
-        public SourceGenerator()
+        [STAThread]
+        public static void Main(System.String[] args)
         {
+            if (args.Length != 2)
+            {
+                System.Console.Out.WriteLine("Usage: SourceGenerator base_directory version");
+                System.Environment.Exit(1);
+            }
+            makeAll(args[0], args[1]);
+        }
+
+        /// <summary> Make a Java-ish accessor method name out of a field or component description
+        /// by removing non-letters and adding "get".  One complication is that some description
+        /// entries in the DB have their data types in brackets, and these should not be
+        /// part of the method name.  On the other hand, sometimes critical distinguishing
+        /// information is in brackets, so we can't omit everything in brackets.  The approach
+        /// taken here is to eliminate bracketed text if a it looks like a data type.
+        /// </summary>
+        public static System.String MakeAccessorName(System.String fieldDesc)
+        {
+            return MakeName(fieldDesc);
+        }
+
+        /// <summary> Make a C#-ish accessor method name out of a field or component description
+        /// by removing non-letters and adding "get".  One complication is that some description
+        /// entries in the DB have their data types in brackets, and these should not be
+        /// part of the method name.  On the other hand, sometimes critical distinguishing
+        /// information is in brackets, so we can't omit everything in brackets.  The approach
+        /// taken here is to eliminate bracketed text if a it looks like a data type.
+        /// </summary>
+        public static System.String MakeAccessorName(System.String fieldDesc, int repitions)
+        {
+            string name = MakeName(fieldDesc);
+            if (repitions != 1 && !name.StartsWith("Get"))
+            {
+                name = "Get" + name;
+            }
+
+            return name;
         }
 
         public static void MakeEventMapping(System.String baseDirectory, System.String version)
         {
             EventMappingGenerator.makeAll(baseDirectory, version);
-        }
-
-        /// <summary> Generates source code for all data types, segments, groups, and messages.</summary>
-        /// <param name="baseDirectory">the directory where source should be written
-        /// </param>
-        public static void makeAll(System.String baseDirectory, System.String version)
-        {
-            try
-            {
-                DataTypeGenerator.makeAll(baseDirectory, version);
-                SegmentGenerator.makeAll(baseDirectory, version);
-                MessageGenerator.makeAll(baseDirectory, version);
-                BaseDataTypeGenerator.BuildBaseDataTypes(baseDirectory, version);
-            }
-            catch (System.Exception e)
-            {
-                SupportClass.WriteStackTrace(e, Console.Error);
-            }
         }
 
         public static string MakeName(string fieldDesc)
@@ -103,9 +119,13 @@ namespace NHapi.Base.SourceGeneration
             for (int i = 0; i < chars.Length; i++)
             {
                 if (chars[i] == '(')
+                {
                     inBrackets++;
+                }
                 if (chars[i] == ')')
+                {
                     inBrackets--;
+                }
 
                 if (System.Char.IsLetterOrDigit(chars[i]))
                 {
@@ -142,92 +162,15 @@ namespace NHapi.Base.SourceGeneration
             aName.Append(capitalize(filterBracketedText(bracketContents.ToString())));
             if (System.Char.IsDigit(aName[0]))
             {
-                return "Get" + aName.ToString();
+                return "Get" + aName;
             }
-            else
-                return aName.ToString();
+            return aName.ToString();
         }
-
 
         public static string MakePropertyName(string fieldDesc)
         {
             string name = MakeName(fieldDesc);
             return name;
-        }
-
-        /// <summary> Make a Java-ish accessor method name out of a field or component description
-        /// by removing non-letters and adding "get".  One complication is that some description
-        /// entries in the DB have their data types in brackets, and these should not be
-        /// part of the method name.  On the other hand, sometimes critical distinguishing
-        /// information is in brackets, so we can't omit everything in brackets.  The approach
-        /// taken here is to eliminate bracketed text if a it looks like a data type.
-        /// </summary>
-        public static System.String MakeAccessorName(System.String fieldDesc)
-        {
-            return MakeName(fieldDesc);
-        }
-
-        /// <summary> Make a C#-ish accessor method name out of a field or component description
-        /// by removing non-letters and adding "get".  One complication is that some description
-        /// entries in the DB have their data types in brackets, and these should not be
-        /// part of the method name.  On the other hand, sometimes critical distinguishing
-        /// information is in brackets, so we can't omit everything in brackets.  The approach
-        /// taken here is to eliminate bracketed text if a it looks like a data type.
-        /// </summary>
-        public static System.String MakeAccessorName(System.String fieldDesc, int repitions)
-        {
-            string name = MakeName(fieldDesc);
-            if (repitions != 1 && !name.StartsWith("Get"))
-                name = "Get" + name;
-
-
-            return name;
-        }
-
-        /// <summary> Bracketed text in a field description should be included in the accessor 
-        /// name unless it corresponds to a data type name. Given the text that appears in 
-        /// brackets in a field description, this method returns an empty string if it 
-        /// corresponds to a data type name, or returns original text if not.  It isn't 
-        /// convenient to actually check (e.g. with DataTypeGenerator) whether the given 
-        /// text actually corresponds to a data type name, so we are going to conclude that 
-        /// it is a data type if and only if it is all caps and has 2 or 3 characters.  
-        /// </summary>
-        private static System.String filterBracketedText(System.String text)
-        {
-            System.String filtered = "";
-            bool isDataType = true;
-            if (!text.Equals(text.ToUpper()))
-                isDataType = false;
-            if (text.Length < 2 || text.Length > 3)
-                isDataType = false;
-
-            if (!isDataType)
-                filtered = text;
-            return filtered;
-        }
-
-        /// <summary>Capitalizes first character of the given text. </summary>
-        private static System.String capitalize(System.String text)
-        {
-            System.Text.StringBuilder cap = new System.Text.StringBuilder();
-            if (text.Length > 0)
-            {
-                cap.Append(System.Char.ToUpper(text[0]));
-                cap.Append(text.Substring(1, (text.Length) - (1)));
-            }
-            return cap.ToString();
-        }
-
-        /// <summary> Creates the given directory if it does not exist.</summary>
-        public static FileInfo makeDirectory(System.String directory)
-        {
-            SupportClass.Tokenizer tok = new SupportClass.Tokenizer(directory, "\\/", false);
-            if (!Directory.Exists(directory))
-                return new FileInfo(Directory.CreateDirectory(directory).FullName);
-            else
-                return new FileInfo(directory);
-
-
         }
 
         /// <summary> <p>Returns either the given data type name or an alternate data type that Composites
@@ -246,7 +189,9 @@ namespace NHapi.Base.SourceGeneration
 
             //convert to varies to Varies
             if (ret.Equals("varies"))
+            {
                 ret = "Varies";
+            }
 
             //Valid.. classes are removed as of HAPI 0.3 (validating code implemented directly in Primitive classes
             /*try {
@@ -261,17 +206,79 @@ namespace NHapi.Base.SourceGeneration
             return ret;
         }
 
-       
-
-        [STAThread]
-        public static void Main(System.String[] args)
+        /// <summary> Generates source code for all data types, segments, groups, and messages.</summary>
+        /// <param name="baseDirectory">the directory where source should be written
+        /// </param>
+        public static void makeAll(System.String baseDirectory, System.String version)
         {
-            if (args.Length != 2)
+            try
             {
-                System.Console.Out.WriteLine("Usage: SourceGenerator base_directory version");
-                System.Environment.Exit(1);
+                DataTypeGenerator.makeAll(baseDirectory, version);
+                SegmentGenerator.makeAll(baseDirectory, version);
+                MessageGenerator.makeAll(baseDirectory, version);
+                BaseDataTypeGenerator.BuildBaseDataTypes(baseDirectory, version);
             }
-            makeAll(args[0], args[1]);
+            catch (System.Exception e)
+            {
+                SupportClass.WriteStackTrace(e, Console.Error);
+            }
         }
+
+        /// <summary> Creates the given directory if it does not exist.</summary>
+        public static FileInfo makeDirectory(System.String directory)
+        {
+            SupportClass.Tokenizer tok = new SupportClass.Tokenizer(directory, "\\/", false);
+            if (!Directory.Exists(directory))
+            {
+                return new FileInfo(Directory.CreateDirectory(directory).FullName);
+            }
+            return new FileInfo(directory);
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>Capitalizes first character of the given text. </summary>
+        private static System.String capitalize(System.String text)
+        {
+            System.Text.StringBuilder cap = new System.Text.StringBuilder();
+            if (text.Length > 0)
+            {
+                cap.Append(System.Char.ToUpper(text[0]));
+                cap.Append(text.Substring(1, (text.Length) - (1)));
+            }
+            return cap.ToString();
+        }
+
+        /// <summary> Bracketed text in a field description should be included in the accessor 
+        /// name unless it corresponds to a data type name. Given the text that appears in 
+        /// brackets in a field description, this method returns an empty string if it 
+        /// corresponds to a data type name, or returns original text if not.  It isn't 
+        /// convenient to actually check (e.g. with DataTypeGenerator) whether the given 
+        /// text actually corresponds to a data type name, so we are going to conclude that 
+        /// it is a data type if and only if it is all caps and has 2 or 3 characters.  
+        /// </summary>
+        private static System.String filterBracketedText(System.String text)
+        {
+            System.String filtered = "";
+            bool isDataType = true;
+            if (!text.Equals(text.ToUpper()))
+            {
+                isDataType = false;
+            }
+            if (text.Length < 2 || text.Length > 3)
+            {
+                isDataType = false;
+            }
+
+            if (!isDataType)
+            {
+                filtered = text;
+            }
+            return filtered;
+        }
+
+        #endregion
     }
 }

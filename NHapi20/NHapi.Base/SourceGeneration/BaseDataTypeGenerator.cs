@@ -1,12 +1,11 @@
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Text;
-
 namespace NHapi.Base.SourceGeneration
 {
-    class BaseDataTypeGenerator
+    using System.IO;
+    using System.Text;
+
+    internal class BaseDataTypeGenerator
     {
+        #region Public Methods and Operators
 
         public static void BuildBaseDataTypes(string baseDirectory, System.String version)
         {
@@ -17,8 +16,11 @@ namespace NHapi.Base.SourceGeneration
             BuildFile("IS", targetDir, version);
             BuildFile("ID", targetDir, version);
             BuildFile("TM", targetDir, version);
-
         }
+
+        #endregion
+
+        #region Methods
 
         private static void BuildFile(string dataType, string targetDir, string version)
         {
@@ -26,7 +28,7 @@ namespace NHapi.Base.SourceGeneration
             using (FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.ReadWrite))
             {
                 string source = GetClassSource(dataType, version);
-                byte[] data = System.Text.ASCIIEncoding.ASCII.GetBytes(source);
+                byte[] data = System.Text.Encoding.ASCII.GetBytes(source);
                 fs.Write(data, 0, data.Length);
             }
         }
@@ -36,11 +38,12 @@ namespace NHapi.Base.SourceGeneration
             string namespaceName = PackageManager.GetVersionPackageName(version);
             namespaceName = namespaceName.Substring(0, namespaceName.Length - 1);
 
-
             string baseClass = "NHapi.Base.Model.Primitive." + dataType;
 
             if (dataType.Equals("ST"))
+            {
                 baseClass = "AbstractPrimitive";
+            }
 
             StringBuilder sb = new StringBuilder();
             sb.Append("using System;\n\n");
@@ -85,10 +88,10 @@ namespace NHapi.Base.SourceGeneration
                 ///<param name=""theTable"">The table which this type belongs</param>
                 ///<param name=""description"">The description of this type</param>
                 ///</summary>
-		        public " + dataType + @"(IMessage message, int theTable, string description) : base(message,theTable, description)
+		        public " + dataType
+                          + @"(IMessage message, int theTable, string description) : base(message,theTable, description)
     	        {}
                 ");
-
             }
             else
             {
@@ -115,5 +118,7 @@ namespace NHapi.Base.SourceGeneration
             sb.Append("}\r");
             return sb.ToString();
         }
+
+        #endregion
     }
 }

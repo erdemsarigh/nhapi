@@ -1,9 +1,7 @@
-using System;
-using NHapi.Base.Model;
-using NHapi.Base.Log;
-using HL7Exception = NHapi.Base.HL7Exception;
 namespace NHapi.Base.Util
 {
+    using NHapi.Base.Log;
+    using NHapi.Base.Model;
 
     /// <summary> Iterates over all defined nodes (ie segments, groups) in a message, 
     /// regardless of whether they have been instantiated previously.  This is a 
@@ -22,6 +20,52 @@ namespace NHapi.Base.Util
     /// </author>
     public class MessageIterator : System.Collections.IEnumerator
     {
+        #region Static Fields
+
+        private static readonly IHapiLog log;
+
+        #endregion
+
+        #region Fields
+
+        private IStructure currentStructure;
+
+        private System.String direction;
+
+        private bool handleUnexpectedSegments;
+
+        private Position next_Renamed_Field;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        static MessageIterator()
+        {
+            log = HapiLogFactory.GetHapiLog(typeof(MessageIterator));
+        }
+
+        /* may add configurability later ... 
+        private boolean findUpToFirstRequired;
+        private boolean findFirstDescendentsOnly;
+		
+        public static final String WHOLE_GROUP;
+        public static final String FIRST_DESCENDENTS_ONLY;
+        public static final String UP_TO_FIRST_REQUIRED;
+        */
+
+        /// <summary>Creates a new instance of MessageIterator </summary>
+        public MessageIterator(IStructure start, System.String direction, bool handleUnexpectedSegments)
+        {
+            this.currentStructure = start;
+            this.direction = direction;
+            this.handleUnexpectedSegments = handleUnexpectedSegments;
+        }
+
+        #endregion
+
+        #region Public Properties
+
         /// <summary> <p>Returns the next node in the message.  Sometimes the next node is 
         /// ambiguous.  For example at the end of a repeating group, the next node 
         /// may be the first segment in the next repetition of the group, or the 
@@ -49,27 +93,30 @@ namespace NHapi.Base.Util
         {
             get
             {
-                if (!MoveNext())
+                if (!this.MoveNext())
                 {
                     throw new System.ArgumentOutOfRangeException("No more nodes in message");
                 }
                 try
                 {
-                    this.currentStructure = next_Renamed_Field.parent.GetStructure(next_Renamed_Field.index.name, next_Renamed_Field.index.rep);
+                    this.currentStructure =
+                        this.next_Renamed_Field.parent.GetStructure(
+                            this.next_Renamed_Field.index.name,
+                            this.next_Renamed_Field.index.rep);
                 }
                 catch (HL7Exception e)
                 {
                     throw new System.ArgumentOutOfRangeException("HL7Exception: " + e.Message);
                 }
-                clearNext();
+                this.clearNext();
                 return this.currentStructure;
             }
-
         }
+
         /// <summary>
         /// The direction
         /// </summary>
-        virtual public System.String Direction
+        public virtual System.String Direction
         {
             get
             {
@@ -78,35 +125,12 @@ namespace NHapi.Base.Util
 
             set
             {
-                clearNext();
+                this.clearNext();
                 this.direction = value;
             }
-
         }
 
-        private IStructure currentStructure;
-        private System.String direction;
-        private Position next_Renamed_Field;
-        private bool handleUnexpectedSegments;
-
-        private static readonly IHapiLog log;
-
-        /* may add configurability later ... 
-        private boolean findUpToFirstRequired;
-        private boolean findFirstDescendentsOnly;
-		
-        public static final String WHOLE_GROUP;
-        public static final String FIRST_DESCENDENTS_ONLY;
-        public static final String UP_TO_FIRST_REQUIRED;
-        */
-
-        /// <summary>Creates a new instance of MessageIterator </summary>
-        public MessageIterator(IStructure start, System.String direction, bool handleUnexpectedSegments)
-        {
-            this.currentStructure = start;
-            this.direction = direction;
-            this.handleUnexpectedSegments = handleUnexpectedSegments;
-        }
+        #endregion
 
         /* for configurability (maybe to add later, replacing hard-coded options
         in nextFromEndOfGroup) ... 
@@ -135,184 +159,7 @@ namespace NHapi.Base.Util
         return level;
         }*/
 
-
-        /// <summary> Returns true if another object exists in the iteration sequence.  </summary>
-        public virtual bool MoveNext()
-        {
-            bool has = true;
-            if (next_Renamed_Field == null)
-            {
-                if (typeof(IGroup).IsAssignableFrom(currentStructure.GetType()))
-                {
-                    groupNext((IGroup)currentStructure);
-                }
-                else
-                {
-                    IGroup parent = currentStructure.ParentStructure;
-                    Index i = getIndex(parent, currentStructure);
-                    Position currentPosition = new Position(parent, i);
-
-                    try
-                    {
-                        if (parent.IsRepeating(i.name) && currentStructure.GetStructureName().Equals(direction))
-                        {
-                            nextRep(currentPosition);
-                        }
-                        else
-                        {
-                            has = nextPosition(currentPosition, this.direction, this.handleUnexpectedSegments);
-                        }
-                    }
-                    catch (HL7Exception e)
-                    {
-                        throw new System.ApplicationException("HL7Exception arising from bad index: " + e.Message);
-                    }
-                }
-            }
-            log.Debug("MessageIterator.hasNext() in direction " + this.direction + "? " + has);
-            return has;
-        }
-
-        /// <summary> Sets next to the first child of the given group (iteration 
-        /// always proceeds from group to first child). 
-        /// </summary>
-        private void groupNext(IGroup current)
-        {
-            next_Renamed_Field = new Position(current, ((IGroup)current).Names[0], 0);
-        }
-
-        /// <summary> Sets next to the next repetition of the current structure.  </summary>
-        private void nextRep(Position current)
-        {
-            next_Renamed_Field = new Position(current.parent, current.index.name, current.index.rep + 1);
-        }
-
-        /// <summary> Sets this.next to the next position in the message (from the given position), 
-        /// which could be the next sibling, a new segment, or the next rep 
-        /// of the parent.  See next() for details. 
-        /// </summary>
-        private bool nextPosition(Position currPos, System.String direction, bool makeNewSegmentIfNeeded)
-        {
-            bool nextExists = true;
-            if (isLast(currPos))
-            {
-                nextExists = nextFromGroupEnd(currPos, direction, makeNewSegmentIfNeeded);
-            }
-            else
-            {
-                nextSibling(currPos);
-            }
-            return nextExists;
-        }
-
-        /// <summary>Navigates from end of group </summary>
-        private bool nextFromGroupEnd(Position currPos, System.String direction, bool makeNewSegmentIfNeeded)
-        {
-            //assert isLast(currPos);
-            bool nextExists = true;
-
-            //the following conditional logic is a little convoluted -- its meant as an optimization 
-            // i.e. trying to avoid calling matchExistsAfterCurrentPosition
-
-            if (!makeNewSegmentIfNeeded && typeof(IMessage).IsAssignableFrom(currPos.parent.GetType()))
-            {
-                nextExists = false;
-            }
-            else if (!makeNewSegmentIfNeeded || matchExistsAfterPosition(currPos, direction, false, true))
-            {
-                IGroup grandparent = currPos.parent.ParentStructure;
-                Index parentIndex = getIndex(grandparent, currPos.parent);
-                Position parentPos = new Position(grandparent, parentIndex);
-
-                try
-                {
-                    bool parentRepeats = parentPos.parent.IsRepeating(parentPos.index.name);
-                    if (parentRepeats && contains(parentPos.parent.GetStructure(parentPos.index.name, 0), direction, false, true))
-                    {
-                        nextRep(parentPos);
-                    }
-                    else
-                    {
-                        nextExists = nextPosition(parentPos, direction, makeNewSegmentIfNeeded);
-                    }
-                }
-                catch (HL7Exception e)
-                {
-                    throw new System.ApplicationException("HL7Exception arising from bad index: " + e.Message);
-                }
-            }
-            else
-            {
-                newSegment(currPos.parent, direction);
-            }
-            return nextExists;
-        }
-
-        /// <summary> A match exists for the given name somewhere after the given position (in the 
-        /// normal serialization order).  
-        /// </summary>
-        /// <param name="pos">the message position after which to look (note that this specifies 
-        /// the message instance)
-        /// </param>
-        /// <param name="name">the name of the structure to look for
-        /// </param>
-        /// <param name="firstDescendentsOnly">only searches the first children of a group 
-        /// </param>
-        /// <param name="upToFirstRequired">only searches the children of a group up to the first 
-        /// required child (normally the first one).  This is used when we are parsing 
-        /// a message in order and looking for a place to parse a particular segment -- 
-        /// if the message is correct then it can't go after a required position of a 
-        /// different name. 
-        /// </param>
-        public static bool matchExistsAfterPosition(Position pos, System.String name, bool firstDescendentsOnly, bool upToFirstRequired)
-        {
-            bool matchExists = false;
-
-            //check next rep of self (if any)
-            if (pos.parent.IsRepeating(pos.index.name))
-            {
-                IStructure s = pos.parent.GetStructure(pos.index.name, pos.index.rep);
-                matchExists = contains(s, name, firstDescendentsOnly, upToFirstRequired);
-            }
-
-            //check later siblings (if any) 
-            if (!matchExists)
-            {
-                System.String[] siblings = pos.parent.Names;
-                bool after = false;
-                for (int i = 0; i < siblings.Length && !matchExists; i++)
-                {
-                    if (after)
-                    {
-                        matchExists = contains(pos.parent.GetStructure(siblings[i]), name, firstDescendentsOnly, upToFirstRequired);
-                        if (upToFirstRequired && pos.parent.IsRequired(siblings[i]))
-                            break;
-                    }
-                    if (pos.index.name.Equals(siblings[i]))
-                        after = true;
-                }
-            }
-
-            //recurse to parent (if parent is not message root)
-            if (!matchExists && !typeof(IMessage).IsAssignableFrom(pos.parent.GetType()))
-            {
-                IGroup grandparent = pos.parent.ParentStructure;
-                Position parentPos = new Position(grandparent, getIndex(grandparent, pos.parent));
-                matchExists = matchExistsAfterPosition(parentPos, name, firstDescendentsOnly, upToFirstRequired);
-            }
-            log.Debug("Match exists after position " + pos + " for " + name + "? " + matchExists);
-            return matchExists;
-        }
-
-        /// <summary> Sets the next position to a new segment of the given name, within the 
-        /// given group. 
-        /// </summary>
-        private void newSegment(IGroup parent, System.String name)
-        {
-            log.Info("MessageIterator creating new segment: " + name);
-            parent.addNonstandardSegment(name);
-            next_Renamed_Field = new Position(parent, parent.Names[parent.Names.Length - 1], 0);
-        }
+        #region Public Methods and Operators
 
         /// <summary> Determines whether the given structure matches the given name, or contains 
         /// a child that does.  
@@ -337,7 +184,9 @@ namespace NHapi.Base.Util
             if (typeof(ISegment).IsAssignableFrom(s.GetType()))
             {
                 if (s.GetStructureName().Equals(name))
+                {
                     contains = true;
+                }
             }
             else
             {
@@ -347,11 +196,19 @@ namespace NHapi.Base.Util
                 {
                     try
                     {
-                        contains = MessageIterator.contains(g.GetStructure(names[i], 0), name, firstDescendentsOnly, upToFirstRequired);
+                        contains = MessageIterator.contains(
+                            g.GetStructure(names[i], 0),
+                            name,
+                            firstDescendentsOnly,
+                            upToFirstRequired);
                         if (firstDescendentsOnly)
+                        {
                             break;
+                        }
                         if (upToFirstRequired && g.IsRequired(names[i]))
+                        {
                             break;
+                        }
                     }
                     catch (HL7Exception e)
                     {
@@ -360,41 +217,6 @@ namespace NHapi.Base.Util
                 }
             }
             return contains;
-        }
-
-        /// <summary> Tests whether the name of the given Index matches 
-        /// the name of the last child of the given group. 
-        /// </summary>
-        public static bool isLast(Position p)
-        {
-            System.String[] names = p.parent.Names;
-            return names[names.Length - 1].Equals(p.index.name);
-        }
-
-        /// <summary> Sets the next location to the next sibling of the given 
-        /// index.  
-        /// </summary>
-        private void nextSibling(Position pos)
-        {
-            System.String[] names = pos.parent.Names;
-            int i = 0;
-            for (; i < names.Length && !names[i].Equals(pos.index.name); i++)
-            {
-            }
-            System.String nextName = names[i + 1];
-
-            this.next_Renamed_Field = new Position(pos.parent, nextName, 0);
-        }
-
-        /// <summary>Not supported </summary>
-        public virtual void remove()
-        {
-            throw new System.NotSupportedException("Can't remove a node from a message");
-        }
-
-        private void clearNext()
-        {
-            next_Renamed_Field = null;
         }
 
         /// <summary> Returns the index of the given structure as a child of the 
@@ -423,26 +245,274 @@ namespace NHapi.Base.Util
                     catch (HL7Exception e)
                     {
                         log.Error("", e);
-                        throw new System.ApplicationException("Internal HL7Exception finding structure index: " + e.Message);
+                        throw new System.ApplicationException(
+                            "Internal HL7Exception finding structure index: " + e.Message);
                     }
                 }
             }
             return index;
         }
 
+        /// <summary> Tests whether the name of the given Index matches 
+        /// the name of the last child of the given group. 
+        /// </summary>
+        public static bool isLast(Position p)
+        {
+            System.String[] names = p.parent.Names;
+            return names[names.Length - 1].Equals(p.index.name);
+        }
+
+        /// <summary> A match exists for the given name somewhere after the given position (in the 
+        /// normal serialization order).  
+        /// </summary>
+        /// <param name="pos">the message position after which to look (note that this specifies 
+        /// the message instance)
+        /// </param>
+        /// <param name="name">the name of the structure to look for
+        /// </param>
+        /// <param name="firstDescendentsOnly">only searches the first children of a group 
+        /// </param>
+        /// <param name="upToFirstRequired">only searches the children of a group up to the first 
+        /// required child (normally the first one).  This is used when we are parsing 
+        /// a message in order and looking for a place to parse a particular segment -- 
+        /// if the message is correct then it can't go after a required position of a 
+        /// different name. 
+        /// </param>
+        public static bool matchExistsAfterPosition(
+            Position pos,
+            System.String name,
+            bool firstDescendentsOnly,
+            bool upToFirstRequired)
+        {
+            bool matchExists = false;
+
+            //check next rep of self (if any)
+            if (pos.parent.IsRepeating(pos.index.name))
+            {
+                IStructure s = pos.parent.GetStructure(pos.index.name, pos.index.rep);
+                matchExists = contains(s, name, firstDescendentsOnly, upToFirstRequired);
+            }
+
+            //check later siblings (if any) 
+            if (!matchExists)
+            {
+                System.String[] siblings = pos.parent.Names;
+                bool after = false;
+                for (int i = 0; i < siblings.Length && !matchExists; i++)
+                {
+                    if (after)
+                    {
+                        matchExists = contains(
+                            pos.parent.GetStructure(siblings[i]),
+                            name,
+                            firstDescendentsOnly,
+                            upToFirstRequired);
+                        if (upToFirstRequired && pos.parent.IsRequired(siblings[i]))
+                        {
+                            break;
+                        }
+                    }
+                    if (pos.index.name.Equals(siblings[i]))
+                    {
+                        after = true;
+                    }
+                }
+            }
+
+            //recurse to parent (if parent is not message root)
+            if (!matchExists && !typeof(IMessage).IsAssignableFrom(pos.parent.GetType()))
+            {
+                IGroup grandparent = pos.parent.ParentStructure;
+                Position parentPos = new Position(grandparent, getIndex(grandparent, pos.parent));
+                matchExists = matchExistsAfterPosition(parentPos, name, firstDescendentsOnly, upToFirstRequired);
+            }
+            log.Debug("Match exists after position " + pos + " for " + name + "? " + matchExists);
+            return matchExists;
+        }
+
+        /// <summary> Returns true if another object exists in the iteration sequence.  </summary>
+        public virtual bool MoveNext()
+        {
+            bool has = true;
+            if (this.next_Renamed_Field == null)
+            {
+                if (typeof(IGroup).IsAssignableFrom(this.currentStructure.GetType()))
+                {
+                    this.groupNext((IGroup)this.currentStructure);
+                }
+                else
+                {
+                    IGroup parent = this.currentStructure.ParentStructure;
+                    Index i = getIndex(parent, this.currentStructure);
+                    Position currentPosition = new Position(parent, i);
+
+                    try
+                    {
+                        if (parent.IsRepeating(i.name)
+                            && this.currentStructure.GetStructureName().Equals(this.direction))
+                        {
+                            this.nextRep(currentPosition);
+                        }
+                        else
+                        {
+                            has = this.nextPosition(currentPosition, this.direction, this.handleUnexpectedSegments);
+                        }
+                    }
+                    catch (HL7Exception e)
+                    {
+                        throw new System.ApplicationException("HL7Exception arising from bad index: " + e.Message);
+                    }
+                }
+            }
+            log.Debug("MessageIterator.hasNext() in direction " + this.direction + "? " + has);
+            return has;
+        }
+
+        /// <summary>
+        /// Reset the iterator
+        /// </summary>
+        public virtual void Reset()
+        {
+        }
+
+        /// <summary>Not supported </summary>
+        public virtual void remove()
+        {
+            throw new System.NotSupportedException("Can't remove a node from a message");
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void clearNext()
+        {
+            this.next_Renamed_Field = null;
+        }
+
+        /// <summary> Sets next to the first child of the given group (iteration 
+        /// always proceeds from group to first child). 
+        /// </summary>
+        private void groupNext(IGroup current)
+        {
+            this.next_Renamed_Field = new Position(current, current.Names[0], 0);
+        }
+
+        /// <summary> Sets the next position to a new segment of the given name, within the 
+        /// given group. 
+        /// </summary>
+        private void newSegment(IGroup parent, System.String name)
+        {
+            log.Info("MessageIterator creating new segment: " + name);
+            parent.addNonstandardSegment(name);
+            this.next_Renamed_Field = new Position(parent, parent.Names[parent.Names.Length - 1], 0);
+        }
+
+        /// <summary>Navigates from end of group </summary>
+        private bool nextFromGroupEnd(Position currPos, System.String direction, bool makeNewSegmentIfNeeded)
+        {
+            //assert isLast(currPos);
+            bool nextExists = true;
+
+            //the following conditional logic is a little convoluted -- its meant as an optimization 
+            // i.e. trying to avoid calling matchExistsAfterCurrentPosition
+
+            if (!makeNewSegmentIfNeeded && typeof(IMessage).IsAssignableFrom(currPos.parent.GetType()))
+            {
+                nextExists = false;
+            }
+            else if (!makeNewSegmentIfNeeded || matchExistsAfterPosition(currPos, direction, false, true))
+            {
+                IGroup grandparent = currPos.parent.ParentStructure;
+                Index parentIndex = getIndex(grandparent, currPos.parent);
+                Position parentPos = new Position(grandparent, parentIndex);
+
+                try
+                {
+                    bool parentRepeats = parentPos.parent.IsRepeating(parentPos.index.name);
+                    if (parentRepeats
+                        && contains(parentPos.parent.GetStructure(parentPos.index.name, 0), direction, false, true))
+                    {
+                        this.nextRep(parentPos);
+                    }
+                    else
+                    {
+                        nextExists = this.nextPosition(parentPos, direction, makeNewSegmentIfNeeded);
+                    }
+                }
+                catch (HL7Exception e)
+                {
+                    throw new System.ApplicationException("HL7Exception arising from bad index: " + e.Message);
+                }
+            }
+            else
+            {
+                this.newSegment(currPos.parent, direction);
+            }
+            return nextExists;
+        }
+
+        /// <summary> Sets this.next to the next position in the message (from the given position), 
+        /// which could be the next sibling, a new segment, or the next rep 
+        /// of the parent.  See next() for details. 
+        /// </summary>
+        private bool nextPosition(Position currPos, System.String direction, bool makeNewSegmentIfNeeded)
+        {
+            bool nextExists = true;
+            if (isLast(currPos))
+            {
+                nextExists = this.nextFromGroupEnd(currPos, direction, makeNewSegmentIfNeeded);
+            }
+            else
+            {
+                this.nextSibling(currPos);
+            }
+            return nextExists;
+        }
+
+        /// <summary> Sets next to the next repetition of the current structure.  </summary>
+        private void nextRep(Position current)
+        {
+            this.next_Renamed_Field = new Position(current.parent, current.index.name, current.index.rep + 1);
+        }
+
+        /// <summary> Sets the next location to the next sibling of the given 
+        /// index.  
+        /// </summary>
+        private void nextSibling(Position pos)
+        {
+            System.String[] names = pos.parent.Names;
+            int i = 0;
+            for (; i < names.Length && !names[i].Equals(pos.index.name); i++)
+            {
+            }
+            System.String nextName = names[i + 1];
+
+            this.next_Renamed_Field = new Position(pos.parent, nextName, 0);
+        }
+
+        #endregion
+
         /// <summary> An index of a child structure within a group, consisting of the name and rep of 
         /// of the child.
         /// </summary>
         public class Index
         {
+            #region Fields
+
             /// <summary>
             /// The name
             /// </summary>
             public System.String name;
+
             /// <summary>
             /// The repetition
             /// </summary>
             public int rep;
+
+            #endregion
+
+            #region Constructors and Destructors
 
             /// <summary>
             /// The index
@@ -455,6 +525,10 @@ namespace NHapi.Base.Util
                 this.rep = rep;
             }
 
+            #endregion
+
+            #region Public Methods and Operators
+
             /// <summary>
             /// Override equals
             /// </summary>
@@ -466,8 +540,10 @@ namespace NHapi.Base.Util
                 if (o != null && o is Index)
                 {
                     Index i = (Index)o;
-                    if (i.rep == rep && i.name.Equals(name))
+                    if (i.rep == this.rep && i.name.Equals(this.name))
+                    {
                         equals = true;
+                    }
                 }
                 return equals;
             }
@@ -478,7 +554,7 @@ namespace NHapi.Base.Util
             /// <returns></returns>
             public override int GetHashCode()
             {
-                return name.GetHashCode() + 700 * rep;
+                return this.name.GetHashCode() + 700 * this.rep;
             }
 
             /// <summary>
@@ -489,19 +565,28 @@ namespace NHapi.Base.Util
             {
                 return this.name + ":" + this.rep;
             }
+
+            #endregion
         }
 
         /// <summary> A structure position within a message. </summary>
         public class Position
         {
-            /// <summary>
-            /// The parent
-            /// </summary>
-            public IGroup parent;
+            #region Fields
+
             /// <summary>
             /// The index
             /// </summary>
             public Index index;
+
+            /// <summary>
+            /// The parent
+            /// </summary>
+            public IGroup parent;
+
+            #endregion
+
+            #region Constructors and Destructors
 
             /// <summary>
             /// The position of the element
@@ -514,6 +599,7 @@ namespace NHapi.Base.Util
                 this.parent = parent;
                 this.index = new Index(name, rep);
             }
+
             /// <summary>
             /// The position of the element
             /// </summary>
@@ -524,6 +610,10 @@ namespace NHapi.Base.Util
                 this.parent = parent;
                 this.index = i;
             }
+
+            #endregion
+
+            #region Public Methods and Operators
 
             /// <summary>
             /// Override equals operator
@@ -536,8 +626,10 @@ namespace NHapi.Base.Util
                 if (o != null && o is Position)
                 {
                     Position p = (Position)o;
-                    if (p.parent.Equals(parent) && p.index.Equals(index))
+                    if (p.parent.Equals(this.parent) && p.index.Equals(this.index))
+                    {
                         equals = true;
+                    }
                 }
                 return equals;
             }
@@ -548,7 +640,7 @@ namespace NHapi.Base.Util
             /// <returns></returns>
             public override int GetHashCode()
             {
-                return parent.GetHashCode() + index.GetHashCode();
+                return this.parent.GetHashCode() + this.index.GetHashCode();
             }
 
             /// <summary>
@@ -557,24 +649,16 @@ namespace NHapi.Base.Util
             /// <returns></returns>
             public override System.String ToString()
             {
-                System.Text.StringBuilder ret = new System.Text.StringBuilder(parent.GetStructureName());
+                System.Text.StringBuilder ret = new System.Text.StringBuilder(this.parent.GetStructureName());
                 ret.Append(":");
-                ret.Append(index.name);
+                ret.Append(this.index.name);
                 ret.Append("(");
-                ret.Append(index.rep);
+                ret.Append(this.index.rep);
                 ret.Append(")");
                 return ret.ToString();
             }
-        }
-        /// <summary>
-        /// Reset the iterator
-        /// </summary>
-        virtual public void Reset()
-        {
-        }
-        static MessageIterator()
-        {
-            log = HapiLogFactory.GetHapiLog(typeof(MessageIterator));
+
+            #endregion
         }
     }
 }

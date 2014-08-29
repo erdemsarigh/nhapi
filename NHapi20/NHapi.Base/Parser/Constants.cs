@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace NHapi.Base.Parser
 {
     /// <summary>
@@ -13,14 +9,17 @@ namespace NHapi.Base.Parser
         /// A message
         /// </summary>
         Message,
+
         /// <summary>
         /// A segment
         /// </summary>
         Segment,
+
         /// <summary>
         /// A datatype
         /// </summary>
         Datatype,
+
         /// <summary>
         /// A group
         /// </summary>

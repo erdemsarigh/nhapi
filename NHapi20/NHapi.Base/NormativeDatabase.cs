@@ -18,12 +18,13 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using System.Data;
-using NHapi.Base.Log;
 
 namespace NHapi.Base
 {
+    using System;
+    using System.Data;
+
+    using NHapi.Base.Log;
 
     /// <summary> <p>Point of access to a copy of the HL7 normative database.  A typical way of 
     /// obtaining and using a database connection would be ...</p>
@@ -44,8 +45,44 @@ namespace NHapi.Base
     /// </author>
     public class NormativeDatabase
     {
+        #region Static Fields
+
+        private static readonly IHapiLog log;
+
+        private static NormativeDatabase db;
+
+        #endregion
+
+        #region Fields
+
         /// <summary> Returns the singleton instance of NormativeDatabase.  </summary>
         private System.Data.OleDb.OleDbConnection _conn;
+
+        private string _connectionString;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        static NormativeDatabase()
+        {
+            log = HapiLogFactory.GetHapiLog(typeof(NormativeDatabase));
+        }
+
+        /// <summary> Private constructor ... checks system properties for connection 
+        /// information
+        /// </summary>
+        private NormativeDatabase()
+        {
+            this._connectionString = ConfigurationSettings.ConnectionString;
+            this._conn = new System.Data.OleDb.OleDbConnection(this._connectionString);
+            this._conn.Open();
+        }
+
+        #endregion
+
+        #region Public Properties
+
         public static NormativeDatabase Instance
         {
             get
@@ -59,12 +96,12 @@ namespace NHapi.Base
                     return db;
                 }
             }
-
         }
+
         /// <summary> Provides a Connection to the normative database. 
         /// A new connection may be created if none are available.
         /// </summary>
-        virtual public System.Data.OleDb.OleDbConnection Connection
+        public virtual System.Data.OleDb.OleDbConnection Connection
         {
             get
             {
@@ -72,59 +109,27 @@ namespace NHapi.Base
                 {
                     try
                     {
-                        if (_conn.State != ConnectionState.Open)
-                            _conn.Open();
+                        if (this._conn.State != ConnectionState.Open)
+                        {
+                            this._conn.Open();
+                        }
                     }
                     catch (Exception)
                     {
-                        _conn = new System.Data.OleDb.OleDbConnection(_connectionString);
-                        _conn.Open();
+                        this._conn = new System.Data.OleDb.OleDbConnection(this._connectionString);
+                        this._conn.Open();
                     }
-                    return _conn;
+                    return this._conn;
                 }
             }
-
         }
 
-        public void OpenNewConnection(string conn)
-        {
-            lock (this)
-            {
-                _connectionString = conn;
-                if (_conn.State == ConnectionState.Open)
-                    _conn.Close();
-                _conn.ConnectionString = conn;
-                _conn.Open();
-            }
-
-        }
-
-        private static readonly IHapiLog log;
-
-        private static NormativeDatabase db = null;
-        private string _connectionString;
-
-        /// <summary> Private constructor ... checks system properties for connection 
-        /// information
-        /// </summary>
-        private NormativeDatabase()
-        {
-            _connectionString = ConfigurationSettings.ConnectionString;
-            _conn = new System.Data.OleDb.OleDbConnection(_connectionString);
-            _conn.Open();
-        }
-
-        /// <summary> Used to return an HL7 normative database connection to the connection pool.  If the
-        /// given connection is not in fact a connection to the normative database, it is
-        /// discarded. 
-        /// </summary>
-        public virtual void returnConnection(System.Data.OleDb.OleDbConnection conn)
-        {
-            //check if this is a normative DB connection 
-            _conn.Close();
-        }
+        #endregion
 
         //test
+
+        #region Public Methods and Operators
+
         [STAThread]
         public static void Main(System.String[] args)
         {
@@ -153,9 +158,31 @@ namespace NHapi.Base
                 log.Error("test msg!!", e);
             }
         }
-        static NormativeDatabase()
+
+        public void OpenNewConnection(string conn)
         {
-            log = HapiLogFactory.GetHapiLog(typeof(NormativeDatabase));
+            lock (this)
+            {
+                this._connectionString = conn;
+                if (this._conn.State == ConnectionState.Open)
+                {
+                    this._conn.Close();
+                }
+                this._conn.ConnectionString = conn;
+                this._conn.Open();
+            }
         }
+
+        /// <summary> Used to return an HL7 normative database connection to the connection pool.  If the
+        /// given connection is not in fact a connection to the normative database, it is
+        /// discarded. 
+        /// </summary>
+        public virtual void returnConnection(System.Data.OleDb.OleDbConnection conn)
+        {
+            //check if this is a normative DB connection 
+            this._conn.Close();
+        }
+
+        #endregion
     }
 }

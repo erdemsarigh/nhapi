@@ -24,11 +24,9 @@
 /// this file under either the MPL or the GPL.
 /// 
 /// </summary>
-using System;
-using NHapi.Base.Model;
+
 namespace NHapi.Base.Model.Primitive
 {
-
     /// <summary> This class contains functionality used by the IS class
     /// in the version 2.3.0, 2.3.1, 2.4, and 2.5 packages
     /// 
@@ -51,25 +49,13 @@ namespace NHapi.Base.Model.Primitive
     /// </version>
     public abstract class IS : AbstractPrimitive
     {
-        /// <returns> number of HL7 table from which values should be drawn (defaults to 0) 
-        /// </returns>
-        /// <param name="theTable">HL7 table from which values are to be drawn 
-        /// </param>
-        virtual public int Table
-        {
-            get
-            {
-                return myTable;
-            }
+        #region Fields
 
-            set
-            {
-                myTable = value;
-            }
+        private int myTable;
 
-        }
+        #endregion
 
-        private int myTable = 0;
+        #region Constructors and Destructors
 
         /// <param name="theMessage">message to which this Type belongs
         /// </param>
@@ -77,7 +63,6 @@ namespace NHapi.Base.Model.Primitive
             : base(theMessage)
         {
         }
-
 
         public IS(IMessage theMessage, string description)
             : base(theMessage, description)
@@ -91,7 +76,7 @@ namespace NHapi.Base.Model.Primitive
         public IS(IMessage theMessage, int theTable)
             : base(theMessage)
         {
-            myTable = theTable;
+            this.myTable = theTable;
         }
 
         /// <param name="theMessage">message to which this Type belongs
@@ -101,7 +86,30 @@ namespace NHapi.Base.Model.Primitive
         public IS(IMessage theMessage, int theTable, string description)
             : base(theMessage, description)
         {
-            myTable = theTable;
+            this.myTable = theTable;
         }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <returns> number of HL7 table from which values should be drawn (defaults to 0) 
+        /// </returns>
+        /// <param name="theTable">HL7 table from which values are to be drawn 
+        /// </param>
+        public virtual int Table
+        {
+            get
+            {
+                return this.myTable;
+            }
+
+            set
+            {
+                this.myTable = value;
+            }
+        }
+
+        #endregion
     }
 }

@@ -23,11 +23,10 @@
 /// this file under either the MPL or the GPL.
 /// 
 /// </summary>
-using System;
-using NHapi.Base.Model;
-using HL7Exception = NHapi.Base.HL7Exception;
+
 namespace NHapi.Base.Util
 {
+    using NHapi.Base.Model;
 
     /// <summary> <p>Used to navigate the nested group structure of a message.  This is an alternate
     /// way of accessing parts of a message, ie rather than getting a segment through
@@ -46,81 +45,21 @@ namespace NHapi.Base.Util
     /// </author>
     public class MessageNavigator
     {
-        private class AnonymousClassPredicate : FilterIterator.IPredicate
-        {
-            public AnonymousClassPredicate(MessageNavigator enclosingInstance)
-            {
-                InitBlock(enclosingInstance);
-            }
-            private void InitBlock(MessageNavigator enclosingInstance)
-            {
-                this.enclosingInstance = enclosingInstance;
-            }
-            private MessageNavigator enclosingInstance;
-            public MessageNavigator Enclosing_Instance
-            {
-                get
-                {
-                    return enclosingInstance;
-                }
+        #region Fields
 
-            }
-            public virtual bool evaluate(System.Object obj)
-            {
-                if (typeof(ISegment).IsAssignableFrom(obj.GetType()))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
+        private System.Collections.ArrayList ancestors;
 
-        /// <summary>
-        /// THe root element of this message
-        /// </summary>
-        virtual public IGroup Root
-        {
-            get
-            {
-                return this.root;
-            }
+        private System.String[] childNames;
 
-        }
-        /// <summary> Returns the group within which the pointer is currently located. 
-        /// If at the root, the root is returned.  
-        /// </summary>
-        virtual public IGroup CurrentGroup
-        {
-            get
-            {
-                return this.currentGroup;
-            }
+        private int currentChild; // -1 means current structure is current group (special case used for root)
 
-        }
-        /// <summary> Returns the array of structures at the current location.  
-        /// Throws an exception if pointer is at root.  
-        /// </summary>
-        virtual public IStructure[] CurrentChildReps
-        {
-            get
-            {
-                if (this.currentGroup == this.root && this.currentChild == -1)
-                    throw new HL7Exception("Pointer is at root of navigator: there is no current child");
-
-                System.String childName = this.childNames[this.currentChild];
-                return this.currentGroup.GetAll(childName);
-            }
-
-        }
+        private IGroup currentGroup;
 
         private IGroup root;
-        private System.Collections.ArrayList ancestors;
-        private int currentChild; // -1 means current structure is current group (special case used for root)
-        private IGroup currentGroup;
-        private System.String[] childNames;
+
+        #endregion
+
+        #region Constructors and Destructors
 
         /// <summary> Creates a new instance of MessageNavigator</summary>
         /// <param name="root">the root of navigation -- may be a message or a group
@@ -130,8 +69,55 @@ namespace NHapi.Base.Util
         public MessageNavigator(IGroup root)
         {
             this.root = root;
-            reset();
+            this.reset();
         }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary> Returns the array of structures at the current location.  
+        /// Throws an exception if pointer is at root.  
+        /// </summary>
+        public virtual IStructure[] CurrentChildReps
+        {
+            get
+            {
+                if (this.currentGroup == this.root && this.currentChild == -1)
+                {
+                    throw new HL7Exception("Pointer is at root of navigator: there is no current child");
+                }
+
+                System.String childName = this.childNames[this.currentChild];
+                return this.currentGroup.GetAll(childName);
+            }
+        }
+
+        /// <summary> Returns the group within which the pointer is currently located. 
+        /// If at the root, the root is returned.  
+        /// </summary>
+        public virtual IGroup CurrentGroup
+        {
+            get
+            {
+                return this.currentGroup;
+            }
+        }
+
+        /// <summary>
+        /// THe root element of this message
+        /// </summary>
+        public virtual IGroup Root
+        {
+            get
+            {
+                return this.root;
+            }
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         /// <summary> Drills down into the group at the given index within the current
         /// group -- ie sets the location pointer to the first structure within the child
@@ -144,7 +130,7 @@ namespace NHapi.Base.Util
         {
             if (childNumber != -1)
             {
-                IStructure s = currentGroup.GetStructure(childNames[childNumber], rep);
+                IStructure s = this.currentGroup.GetStructure(this.childNames[childNumber], rep);
                 if (!(s is IGroup))
                 {
                     throw new HL7Exception("Can't drill into segment", HL7Exception.APPLICATION_INTERNAL_ERROR);
@@ -165,7 +151,7 @@ namespace NHapi.Base.Util
         /// <summary> Drills down into the group at the CURRENT location.</summary>
         public virtual void drillDown(int rep)
         {
-            drillDown(this.currentChild, rep);
+            this.drillDown(this.currentChild, rep);
         }
 
         /// <summary> Switches the group context to the parent of the current group,
@@ -184,60 +170,12 @@ namespace NHapi.Base.Util
                 this.childNames = this.currentGroup.Names;
                 return true;
             }
-            else
-            {
-                if (this.currentChild == -1)
-                {
-                    return false;
-                }
-                else
-                {
-                    this.currentChild = -1;
-                    return true;
-                }
-            }
-        }
-
-        /// <summary> Returns true if there is a sibling following the current location.</summary>
-        public virtual bool hasNextChild()
-        {
-            if (this.childNames.Length > this.currentChild + 1)
-            {
-                return true;
-            }
-            else
+            if (this.currentChild == -1)
             {
                 return false;
             }
-        }
-
-        /// <summary> Moves to the next sibling of the current location.</summary>
-        public virtual void nextChild()
-        {
-            int child = this.currentChild + 1;
-            toChild(child);
-        }
-
-        /// <summary> Moves to the sibling of the current location at the specified index.</summary>
-        public virtual void toChild(int child)
-        {
-            if (child >= 0 && child < this.childNames.Length)
-            {
-                this.currentChild = child;
-            }
-            else
-            {
-                throw new HL7Exception("Can't advance to child " + child + " -- only " + this.childNames.Length + " children", HL7Exception.APPLICATION_INTERNAL_ERROR);
-            }
-        }
-
-        /// <summary>Resets the location to the beginning of the tree (the root) </summary>
-        public virtual void reset()
-        {
-            this.ancestors = new System.Collections.ArrayList();
-            this.currentGroup = root;
             this.currentChild = -1;
-            this.childNames = currentGroup.Names;
+            return true;
         }
 
         /// <summary> Returns the given rep of the structure at the current location.  
@@ -256,6 +194,16 @@ namespace NHapi.Base.Util
                 ret = this.currentGroup;
             }
             return ret;
+        }
+
+        /// <summary> Returns true if there is a sibling following the current location.</summary>
+        public virtual bool hasNextChild()
+        {
+            if (this.childNames.Length > this.currentChild + 1)
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary> Iterates through the message tree to the next segment/group location (regardless
@@ -294,7 +242,7 @@ namespace NHapi.Base.Util
             if (it.MoveNext())
             {
                 IStructure next = (IStructure)it.Current;
-                drillHere(next);
+                this.drillHere(next);
             }
             else if (loop)
             {
@@ -302,9 +250,46 @@ namespace NHapi.Base.Util
             }
             else
             {
-                throw new HL7Exception("End of message reached while iterating without loop", HL7Exception.APPLICATION_INTERNAL_ERROR);
+                throw new HL7Exception(
+                    "End of message reached while iterating without loop",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
             }
         }
+
+        /// <summary> Moves to the next sibling of the current location.</summary>
+        public virtual void nextChild()
+        {
+            int child = this.currentChild + 1;
+            this.toChild(child);
+        }
+
+        /// <summary>Resets the location to the beginning of the tree (the root) </summary>
+        public virtual void reset()
+        {
+            this.ancestors = new System.Collections.ArrayList();
+            this.currentGroup = this.root;
+            this.currentChild = -1;
+            this.childNames = this.currentGroup.Names;
+        }
+
+        /// <summary> Moves to the sibling of the current location at the specified index.</summary>
+        public virtual void toChild(int child)
+        {
+            if (child >= 0 && child < this.childNames.Length)
+            {
+                this.currentChild = child;
+            }
+            else
+            {
+                throw new HL7Exception(
+                    "Can't advance to child " + child + " -- only " + this.childNames.Length + " children",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
+        }
+
+        #endregion
+
+        #region Methods
 
         /// <summary> Navigates to a specific location in the message</summary>
         private void drillHere(IStructure destination)
@@ -319,9 +304,9 @@ namespace NHapi.Base.Util
                 pathElem = pathElem.ParentStructure;
                 pathStack.Add(pathElem);
             }
-            while (!root.Equals(pathElem) && !typeof(IMessage).IsAssignableFrom(pathElem.GetType()));
+            while (!this.root.Equals(pathElem) && !typeof(IMessage).IsAssignableFrom(pathElem.GetType()));
 
-            if (!root.Equals(pathElem))
+            if (!this.root.Equals(pathElem))
             {
                 throw new HL7Exception("The destination provided is not under the root of this navigator");
             }
@@ -331,7 +316,7 @@ namespace NHapi.Base.Util
             {
                 IGroup parent = (IGroup)SupportClass.StackSupport.Pop(pathStack);
                 MessageIterator.Index index = (MessageIterator.Index)SupportClass.StackSupport.Pop(indexStack);
-                int child = search(parent.Names, index.name);
+                int child = this.search(parent.Names, index.name);
                 if (!(pathStack.Count == 0))
                 {
                     this.drillDown(child, 0);
@@ -340,6 +325,22 @@ namespace NHapi.Base.Util
                 {
                     this.toChild(child);
                 }
+            }
+        }
+
+        /// <summary> Drills down recursively until a segment is reached.</summary>
+        private void findLeaf()
+        {
+            if (this.currentChild == -1)
+            {
+                this.currentChild = 0;
+            }
+
+            System.Type c = this.currentGroup.GetClass(this.childNames[this.currentChild]);
+            if (typeof(IGroup).IsAssignableFrom(c))
+            {
+                this.drillDown(this.currentChild, 0);
+                this.findLeaf();
             }
         }
 
@@ -352,23 +353,65 @@ namespace NHapi.Base.Util
             for (int i = 0; i < list.Length && found == -1; i++)
             {
                 if (list[i].Equals(item))
+                {
                     found = i;
+                }
             }
             return found;
         }
 
-        /// <summary> Drills down recursively until a segment is reached.</summary>
-        private void findLeaf()
-        {
-            if (this.currentChild == -1)
-                this.currentChild = 0;
+        #endregion
 
-            System.Type c = this.currentGroup.GetClass(this.childNames[this.currentChild]);
-            if (typeof(IGroup).IsAssignableFrom(c))
+        private class AnonymousClassPredicate : FilterIterator.IPredicate
+        {
+            #region Fields
+
+            private MessageNavigator enclosingInstance;
+
+            #endregion
+
+            #region Constructors and Destructors
+
+            public AnonymousClassPredicate(MessageNavigator enclosingInstance)
             {
-                drillDown(this.currentChild, 0);
-                findLeaf();
+                this.InitBlock(enclosingInstance);
             }
+
+            #endregion
+
+            #region Public Properties
+
+            public MessageNavigator Enclosing_Instance
+            {
+                get
+                {
+                    return this.enclosingInstance;
+                }
+            }
+
+            #endregion
+
+            #region Public Methods and Operators
+
+            public virtual bool evaluate(System.Object obj)
+            {
+                if (typeof(ISegment).IsAssignableFrom(obj.GetType()))
+                {
+                    return true;
+                }
+                return false;
+            }
+
+            #endregion
+
+            #region Methods
+
+            private void InitBlock(MessageNavigator enclosingInstance)
+            {
+                this.enclosingInstance = enclosingInstance;
+            }
+
+            #endregion
         }
 
         /// <summary> A structure to hold current location information at
@@ -377,28 +420,47 @@ namespace NHapi.Base.Util
         /// </summary>
         private class GroupContext
         {
-            private void InitBlock(MessageNavigator enclosingInstance)
-            {
-                this.enclosingInstance = enclosingInstance;
-            }
+            #region Fields
+
+            public int child;
+
+            public IGroup group;
+
             private MessageNavigator enclosingInstance;
+
+            #endregion
+
+            #region Constructors and Destructors
+
+            public GroupContext(MessageNavigator enclosingInstance, IGroup g, int c)
+            {
+                this.InitBlock(enclosingInstance);
+                this.@group = g;
+                this.child = c;
+            }
+
+            #endregion
+
+            #region Public Properties
+
             public MessageNavigator Enclosing_Instance
             {
                 get
                 {
-                    return enclosingInstance;
+                    return this.enclosingInstance;
                 }
-
             }
-            public IGroup group;
-            public int child;
 
-            public GroupContext(MessageNavigator enclosingInstance, IGroup g, int c)
+            #endregion
+
+            #region Methods
+
+            private void InitBlock(MessageNavigator enclosingInstance)
             {
-                InitBlock(enclosingInstance);
-                group = g;
-                child = c;
+                this.enclosingInstance = enclosingInstance;
             }
+
+            #endregion
         }
     }
 }

@@ -25,10 +25,8 @@
 /// 
 */
 
-using System;
 namespace NHapi.Base.Model
 {
-
     /// <summary> An abstract Type that provides a default implementation of getName(). 
     /// 
     /// </summary>
@@ -36,57 +34,17 @@ namespace NHapi.Base.Model
     /// </author>
     public class AbstractType : IType
     {
-        private ExtraComponents extra;
-        private IMessage message;
+        #region Fields
+
         private string description;
 
+        private ExtraComponents extra;
 
-        /// <summary>
-        /// Returns the name of the type (used in XML encoding and profile checking)  
-        /// </summary>
-        virtual public System.String TypeName
-        {
-            get
-            {
-                System.String longClassName = this.GetType().FullName;
-                return longClassName.Substring(longClassName.LastIndexOf('.') + 1);
-            }
+        private IMessage message;
 
-        }
+        #endregion
 
-        /// <summary>
-        /// Extra components
-        /// </summary>
-        virtual public ExtraComponents ExtraComponents
-        {
-            get
-            {
-                return this.extra;
-            }
-
-        }
-        /// <returns> the message to which this Type belongs
-        /// </returns>
-        virtual public IMessage Message
-        {
-            get
-            {
-                return message;
-            }
-
-        }
-
-        /// <summary>
-        /// Return the description of the type
-        /// </summary>
-        virtual public string Description
-        {
-            get
-            {
-                return description;
-            }
-        }
-
+        #region Constructors and Destructors
 
         /// <summary> Creates a new instance of AbstractType</summary>
         /// <param name="message">message to which this type belongs 
@@ -102,9 +60,59 @@ namespace NHapi.Base.Model
         /// </param>
         public AbstractType(IMessage message, string description)
         {
-            extra = new ExtraComponents(message);
+            this.extra = new ExtraComponents(message);
             this.description = description;
             this.message = message;
         }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Return the description of the type
+        /// </summary>
+        public virtual string Description
+        {
+            get
+            {
+                return this.description;
+            }
+        }
+
+        /// <summary>
+        /// Extra components
+        /// </summary>
+        public virtual ExtraComponents ExtraComponents
+        {
+            get
+            {
+                return this.extra;
+            }
+        }
+
+        /// <returns> the message to which this Type belongs
+        /// </returns>
+        public virtual IMessage Message
+        {
+            get
+            {
+                return this.message;
+            }
+        }
+
+        /// <summary>
+        /// Returns the name of the type (used in XML encoding and profile checking)  
+        /// </summary>
+        public virtual System.String TypeName
+        {
+            get
+            {
+                System.String longClassName = this.GetType().FullName;
+                return longClassName.Substring(longClassName.LastIndexOf('.') + 1);
+            }
+        }
+
+        #endregion
     }
 }

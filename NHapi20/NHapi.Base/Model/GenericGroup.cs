@@ -1,8 +1,6 @@
-using System;
-using NHapi.Base.Parser;
-
 namespace NHapi.Base.Model
 {
+    using NHapi.Base.Parser;
 
     /// <summary> An undefined segment group.  This is for storing undefined groups
     /// that appear in XML-encoded messages.  Note that if an undefined group appears 
@@ -13,8 +11,13 @@ namespace NHapi.Base.Model
     /// </author>
     public class GenericGroup : AbstractGroup
     {
+        #region Fields
 
         private System.String name;
+
+        #endregion
+
+        #region Constructors and Destructors
 
         /// <summary>Creates a new instance of GenericGroup </summary>
         public GenericGroup(IGroup parent, System.String name, IModelClassFactory factory)
@@ -22,6 +25,10 @@ namespace NHapi.Base.Model
         {
             this.name = name;
         }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         /// <summary>Returns the Message object to which this segment belongs.  This should normally be set at
         /// construction time.  A Structure can only belong to a single Message.  This is primarily
@@ -31,7 +38,6 @@ namespace NHapi.Base.Model
         /*public Message getMessage() {
         return super.message;
         }*/
-
         /// <summary> Returns the name specified at construction time. </summary>
         /// <seealso cref="Structure.getName()">
         /// </seealso>
@@ -39,5 +45,7 @@ namespace NHapi.Base.Model
         {
             return this.name;
         }
+
+        #endregion
     }
 }

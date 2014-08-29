@@ -18,9 +18,10 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
+
 namespace NHapi.Base
 {
+    using System;
 
     /// <summary> Thrown when a lookup table is not known to a TableRepository. </summary>
     /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
@@ -28,10 +29,13 @@ namespace NHapi.Base
     [Serializable]
     public class UndefinedTableException : UnknownValueException
     {
+        #region Constructors and Destructors
 
         public UndefinedTableException(System.String message)
             : base(message)
         {
         }
+
+        #endregion
     }
 }

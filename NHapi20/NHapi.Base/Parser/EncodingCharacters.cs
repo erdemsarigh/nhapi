@@ -50,12 +50,9 @@
 /// 
 /// 
 /// </summary>
-using System;
+
 namespace NHapi.Base.Parser
 {
-
-
-
     /// <summary> 
     /// Represents the set of special characters used to encode traditionally
     /// 
@@ -65,122 +62,17 @@ namespace NHapi.Base.Parser
     /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
     /// 
     /// </author>
-
     public class EncodingCharacters : System.Object, System.ICloneable
     {
-        /// <summary> 
-        /// Returns the field separator.
-        /// 
-        /// </summary>
-        virtual public char FieldSeparator
-        {
-
-
-            get
-            {
-
-                return this.fieldSep;
-            }
-
-            set
-            {
-
-                this.fieldSep = value;
-            }
-
-        }
-        /// <summary> 
-        /// Returns the component separator.
-        /// 
-        /// </summary>
-        virtual public char ComponentSeparator
-        {
-
-
-            get
-            {
-
-                return this.encChars[0];
-            }
-
-            set
-            {
-
-                this.encChars[0] = value;
-            }
-
-        }
-        /// <summary> 
-        /// Returns the repetition separator.
-        /// 
-        /// </summary>
-        virtual public char RepetitionSeparator
-        {
-
-
-            get
-            {
-
-                return this.encChars[1];
-            }
-
-            set
-            {
-
-                this.encChars[1] = value;
-            }
-
-        }
-        /// <summary> 
-        /// Returns the escape character.
-        /// 
-        /// </summary>
-        virtual public char EscapeCharacter
-        {
-
-
-            get
-            {
-
-                return this.encChars[2];
-            }
-
-            set
-            {
-
-                this.encChars[2] = value;
-            }
-
-        }
-        /// <summary> 
-        /// Returns the subcomponent separator.
-        /// 
-        /// </summary>
-        virtual public char SubcomponentSeparator
-        {
-
-
-            get
-            {
-
-                return this.encChars[3];
-            }
-
-            set
-            {
-
-                this.encChars[3] = value;
-            }
-
-        }
-
-
-
-        private char fieldSep;
+        #region Fields
 
         private char[] encChars;
 
+        private char fieldSep;
 
+        #endregion
+
+        #region Constructors and Destructors
 
         /// <summary> 
         /// Creates new EncodingCharacters object with the given character
@@ -199,17 +91,14 @@ namespace NHapi.Base.Parser
         /// Subcomponent Separator (in that order).
         /// 
         /// </param>
-
         public EncodingCharacters(char fieldSeparator, System.String encodingCharacters)
         {
-
             this.fieldSep = fieldSeparator;
 
             this.encChars = new char[4];
 
             if (encodingCharacters == null)
             {
-
                 this.encChars[0] = '^';
 
                 this.encChars[1] = '~';
@@ -220,25 +109,26 @@ namespace NHapi.Base.Parser
             }
             else
             {
-
                 SupportClass.GetCharsFromString(encodingCharacters, 0, 4, this.encChars, 0);
             }
         }
 
-
-
-        public EncodingCharacters(char fieldSeparator, char componentSeparator, char repetitionSeparator, char escapeCharacter, char subcomponentSeparator)
-            : this(fieldSeparator, System.Convert.ToString(componentSeparator) + repetitionSeparator + escapeCharacter + subcomponentSeparator)
+        public EncodingCharacters(
+            char fieldSeparator,
+            char componentSeparator,
+            char repetitionSeparator,
+            char escapeCharacter,
+            char subcomponentSeparator)
+            : this(
+                fieldSeparator,
+                System.Convert.ToString(componentSeparator) + repetitionSeparator + escapeCharacter
+                + subcomponentSeparator)
         {
         }
 
-
-
         /// <summary>copies contents of "other" </summary>
-
         public EncodingCharacters(EncodingCharacters other)
         {
-
             this.fieldSep = other.FieldSeparator;
 
             this.encChars = new char[4];
@@ -252,34 +142,101 @@ namespace NHapi.Base.Parser
             this.encChars[3] = other.SubcomponentSeparator;
         }
 
+        #endregion
 
+        #region Public Properties
 
         /// <summary> 
-        /// Returns the encoding characters (not including field separator)
-        /// 
-        /// as a string.
+        /// Returns the component separator.
         /// 
         /// </summary>
-
-        public override System.String ToString()
+        public virtual char ComponentSeparator
         {
-
-            System.Text.StringBuilder ret = new System.Text.StringBuilder();
-
-            for (int i = 0; i < this.encChars.Length; i++)
+            get
             {
-
-                ret.Append(this.encChars[i]);
+                return this.encChars[0];
             }
 
-            return ret.ToString();
+            set
+            {
+                this.encChars[0] = value;
+            }
         }
 
+        /// <summary> 
+        /// Returns the escape character.
+        /// 
+        /// </summary>
+        public virtual char EscapeCharacter
+        {
+            get
+            {
+                return this.encChars[2];
+            }
 
+            set
+            {
+                this.encChars[2] = value;
+            }
+        }
+
+        /// <summary> 
+        /// Returns the field separator.
+        /// 
+        /// </summary>
+        public virtual char FieldSeparator
+        {
+            get
+            {
+                return this.fieldSep;
+            }
+
+            set
+            {
+                this.fieldSep = value;
+            }
+        }
+
+        /// <summary> 
+        /// Returns the repetition separator.
+        /// 
+        /// </summary>
+        public virtual char RepetitionSeparator
+        {
+            get
+            {
+                return this.encChars[1];
+            }
+
+            set
+            {
+                this.encChars[1] = value;
+            }
+        }
+
+        /// <summary> 
+        /// Returns the subcomponent separator.
+        /// 
+        /// </summary>
+        public virtual char SubcomponentSeparator
+        {
+            get
+            {
+                return this.encChars[3];
+            }
+
+            set
+            {
+                this.encChars[3] = value;
+            }
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         public virtual System.Object Clone()
         {
-
             return new EncodingCharacters(this);
         }
 
@@ -290,27 +247,45 @@ namespace NHapi.Base.Parser
             if (o is EncodingCharacters)
             {
                 EncodingCharacters other = (EncodingCharacters)o;
-                if (this.FieldSeparator == other.FieldSeparator && this.ComponentSeparator == other.ComponentSeparator && this.EscapeCharacter == other.EscapeCharacter && this.RepetitionSeparator == other.RepetitionSeparator && this.SubcomponentSeparator == other.SubcomponentSeparator)
+                if (this.FieldSeparator == other.FieldSeparator && this.ComponentSeparator == other.ComponentSeparator
+                    && this.EscapeCharacter == other.EscapeCharacter
+                    && this.RepetitionSeparator == other.RepetitionSeparator
+                    && this.SubcomponentSeparator == other.SubcomponentSeparator)
                 {
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
                 return false;
             }
+            return false;
         }
 
         /// <seealso cref="java.lang.Object.hashCode">
         /// </seealso>
         public override int GetHashCode()
         {
-            return 7 * (int)this.ComponentSeparator * (int)this.EscapeCharacter * (int)this.FieldSeparator * (int)this.RepetitionSeparator * (int)this.SubcomponentSeparator;
+            return 7 * this.ComponentSeparator * this.EscapeCharacter * this.FieldSeparator * this.RepetitionSeparator
+                   * this.SubcomponentSeparator;
         }
+
+        /// <summary> 
+        /// Returns the encoding characters (not including field separator)
+        /// 
+        /// as a string.
+        /// 
+        /// </summary>
+        public override System.String ToString()
+        {
+            System.Text.StringBuilder ret = new System.Text.StringBuilder();
+
+            for (int i = 0; i < this.encChars.Length; i++)
+            {
+                ret.Append(this.encChars[i]);
+            }
+
+            return ret.ToString();
+        }
+
+        #endregion
 
         /// <summary> 
         /// Test harness ...

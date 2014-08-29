@@ -1,0 +1,7 @@
+C:\Code\nhapi\NHapi20\nHapi.Base\bin\Debug\NHapi.Base.dll.config
+C:\Code\nhapi\NHapi20\nHapi.Base\bin\Debug\NHapi.Base.XML
+C:\Code\nhapi\NHapi20\nHapi.Base\bin\Debug\NHapi.Base.dll
+C:\Code\nhapi\NHapi20\nHapi.Base\bin\Debug\NHapi.Base.pdb
+C:\Code\nhapi\NHapi20\nHapi.Base\obj\Debug\NHapi.Base.csprojResolveAssemblyReference.cache
+C:\Code\nhapi\NHapi20\nHapi.Base\obj\Debug\NHapi.Base.dll
+C:\Code\nhapi\NHapi20\nHapi.Base\obj\Debug\NHapi.Base.pdb

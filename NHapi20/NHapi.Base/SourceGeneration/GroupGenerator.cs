@@ -20,12 +20,12 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using NHapi.Base;
-using NHapi.Base.Log;
 
 namespace NHapi.Base.SourceGeneration
 {
+    using System;
+
+    using NHapi.Base.Log;
 
     /// <summary> Creates source code for Group classes - these are aggregations of 
     /// segments and/or other groups that may repeat together within a message.
@@ -38,58 +38,97 @@ namespace NHapi.Base.SourceGeneration
     /// </author>
     public class GroupGenerator : System.Object
     {
+        #region Static Fields
+
         private static readonly IHapiLog log;
 
-        /// <summary>Creates new GroupGenerator </summary>
-        public GroupGenerator()
+        #endregion
+
+        #region Constructors and Destructors
+
+        static GroupGenerator()
         {
+            log = HapiLogFactory.GetHapiLog(typeof(GroupGenerator));
         }
 
-        /// <summary> Creates source code for a Group and returns a GroupDef object that 
-        /// describes the Group's name, optionality, repeatability.  The source 
-        /// code is written under the given directory.
-        /// The structures list may contain [] and {} pairs representing 
-        /// nested groups and their optionality and repeastability.  In these cases
-        /// this method is called recursively.
-        /// If the given structures list begins and ends with repetition and/or 
-        /// optionality markers the repetition and optionality of the returned 
-        /// GroupDef are set accordingly.  
-        /// <param name="structures">a list of the structures that comprise this group - must 
-        /// be at least 2 long
-        /// </param>
-        /// <param name="groupName">The group name</param>
-        /// <param name="version">The version of message</param>
-        /// <param name="baseDirectory">the directory to which files should be written
-        /// </param>
-        /// <param name="message">the message to which this group belongs
-        /// </param>
-        /// <throws>  HL7Exception if the repetition and optionality markers are not  </throws>
+        #endregion
+
+        #region Public Methods and Operators
+
+        /// <summary> Given a list of structures and the position of a SegmentDef that 
+        /// indicates the start of a group (ie "{" or "["), returns the position
+        /// of the corresponding end of the group.  Nested group markers are ignored.  
         /// </summary>
-        public static GroupDef writeGroup(IStructureDef[] structures, System.String groupName, System.String baseDirectory, System.String version, System.String message)
+        /// <throws>  IllegalArgumentException if groupStart is out of range or does not  </throws>
+        /// <summary>      point to a group opening marker. 
+        /// </summary>
+        /// <throws>  HL7Exception if the end of the group is not found or if other pairs  </throws>
+        /// <summary>      are not properly nested inside this one.  
+        /// </summary>
+        public static int findGroupEnd(IStructureDef[] structures, int groupStart)
         {
-
-            //make base directory
-            if (!(baseDirectory.EndsWith("\\") || baseDirectory.EndsWith("/")))
+            //  {} is rep; [] is optionality
+            System.String endMarker = null;
+            try
             {
-                baseDirectory = baseDirectory + "/";
-            }
-            System.IO.FileInfo targetDir = SourceGenerator.makeDirectory(baseDirectory + PackageManager.GetVersionPackagePath(version) + "Group");
-
-            GroupDef group = getGroupDef(structures, groupName, baseDirectory, version, message);
-            using (System.IO.StreamWriter out_Renamed = new System.IO.StreamWriter(targetDir.FullName + "/" + group.Name + ".cs"))
-            {
-                out_Renamed.Write(makePreamble(group, version));
-                out_Renamed.Write(makeConstructor(group, version));
-
-                IStructureDef[] shallow = group.Structures;
-                for (int i = 0; i < shallow.Length; i++)
+                System.String startMarker = structures[groupStart].Name;
+                if (startMarker.Equals("["))
                 {
-                    out_Renamed.Write(makeAccessor(group, i));
+                    endMarker = "]";
                 }
-                out_Renamed.Write("}\r\n"); //Closing class
-                out_Renamed.Write("}\r\n"); //Closing namespace
+                else if (startMarker.Equals("{"))
+                {
+                    endMarker = "}";
+                }
+                else if (startMarker.Equals("[{"))
+                {
+                    endMarker = "}]";
+                }
+                else
+                {
+                    log.Error("Problem starting at " + groupStart);
+                    for (int i = 0; i < structures.Length; i++)
+                    {
+                        log.Error("Structure " + i + ": " + structures[i].Name);
+                    }
+                    throw new System.ArgumentException(
+                        "The segment " + startMarker + " does not begin a group - must be [ or {");
+                }
             }
-            return group;
+            catch (System.IndexOutOfRangeException)
+            {
+                throw new System.ArgumentException("The given start location is out of bounds");
+            }
+
+            //loop, increment and decrement opening and closing markers until we get back to 0 
+            System.String segName = null;
+            int offset = 0;
+            try
+            {
+                int nestedInside = 1;
+                while (nestedInside > 0)
+                {
+                    offset++;
+                    segName = structures[groupStart + offset].Name;
+                    if (segName.Equals("{") || segName.Equals("[") || segName.Equals("[{"))
+                    {
+                        nestedInside++;
+                    }
+                    else if (segName.Equals("}") || segName.Equals("]") || segName.Equals("}]"))
+                    {
+                        nestedInside--;
+                    }
+                }
+            }
+            catch (System.IndexOutOfRangeException)
+            {
+                throw new HL7Exception("Couldn't find end of group", HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
+            if (!endMarker.Equals(segName))
+            {
+                throw new HL7Exception("Group markers are not nested properly", HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
+            return groupStart + offset;
         }
 
         /// <summary> <p>Given a list of structures defining the deep content of a group (as provided in 
@@ -102,7 +141,12 @@ namespace NHapi.Base.SourceGeneration
         /// <p>This method calls writeGroup(...) where necessary in order to create source code for 
         /// any nested groups before returning corresponding GroupDefs.</p>
         /// </summary>
-        public static GroupDef getGroupDef(IStructureDef[] structures, System.String groupName, System.String baseDirectory, System.String version, System.String message)
+        public static GroupDef getGroupDef(
+            IStructureDef[] structures,
+            System.String groupName,
+            System.String baseDirectory,
+            System.String version,
+            System.String message)
         {
             GroupDef ret = null;
             bool required = true;
@@ -110,7 +154,8 @@ namespace NHapi.Base.SourceGeneration
             bool rep_opt = false;
 
             int len = structures.Length;
-            IStructureDef[] shortList = new IStructureDef[len]; //place to put final list of groups/seg's w/o opt & rep markers
+            IStructureDef[] shortList = new IStructureDef[len];
+            //place to put final list of groups/seg's w/o opt & rep markers
             int currShortListPos = 0;
             int currLongListPos = 0;
 
@@ -119,27 +164,46 @@ namespace NHapi.Base.SourceGeneration
                 //check for rep and opt (see if start & end elements are [] or {} AND they are each others' pair) ... 
                 //System.out.println(len + " " + structures[0].getName() +structures[1].getName()+ ".." +structures[len-2].getName() + structures[len-1].getName()+ " " + message);
                 if (optMarkers(structures[0].Name, structures[len - 1].Name) && (findGroupEnd(structures, 0) == len - 1))
+                {
                     required = false;
+                }
                 if (repMarkers(structures[0].Name, structures[len - 1].Name) && (findGroupEnd(structures, 0) == len - 1))
+                {
                     repeating = true;
-                if (repoptMarkers(structures[0].Name, structures[len - 1].Name) && (findGroupEnd(structures, 0) == len - 1))
+                }
+                if (repoptMarkers(structures[0].Name, structures[len - 1].Name)
+                    && (findGroupEnd(structures, 0) == len - 1))
+                {
                     rep_opt = true;
+                }
                 if (repeating || !required)
                 {
-                    if (optMarkers(structures[1].Name, structures[len - 2].Name) && (findGroupEnd(structures, 1) == len - 2))
+                    if (optMarkers(structures[1].Name, structures[len - 2].Name)
+                        && (findGroupEnd(structures, 1) == len - 2))
+                    {
                         required = false;
-                    if (repMarkers(structures[1].Name, structures[len - 2].Name) && (findGroupEnd(structures, 1) == len - 2))
+                    }
+                    if (repMarkers(structures[1].Name, structures[len - 2].Name)
+                        && (findGroupEnd(structures, 1) == len - 2))
+                    {
                         repeating = true;
+                    }
                 }
 
                 //loop through, recurse nested groups, and build short list of structures for this group
                 int skip = 0;
                 if (!required)
+                {
                     skip++;
+                }
                 if (repeating)
+                {
                     skip++;
+                }
                 if (rep_opt)
+                {
                     skip++;
+                }
                 currLongListPos = skip;
                 while (currLongListPos < len - skip)
                 {
@@ -151,7 +215,12 @@ namespace NHapi.Base.SourceGeneration
                         int endOfNewGroup = findGroupEnd(structures, currLongListPos);
                         IStructureDef[] newGroupStructures = new IStructureDef[endOfNewGroup - currLongListPos + 1];
                         Array.Copy(structures, currLongListPos, newGroupStructures, 0, newGroupStructures.Length);
-                        shortList[currShortListPos] = writeGroup(newGroupStructures, name, baseDirectory, version, message);
+                        shortList[currShortListPos] = writeGroup(
+                            newGroupStructures,
+                            name,
+                            baseDirectory,
+                            version,
+                            message);
                         currLongListPos = endOfNewGroup + 1;
                     }
                     else
@@ -165,13 +234,19 @@ namespace NHapi.Base.SourceGeneration
             }
             catch (System.ArgumentException e)
             {
-                throw new HL7Exception("Problem creating nested group: " + e.GetType().FullName + ": " + e.Message, HL7Exception.APPLICATION_INTERNAL_ERROR);
+                throw new HL7Exception(
+                    "Problem creating nested group: " + e.GetType().FullName + ": " + e.Message,
+                    HL7Exception.APPLICATION_INTERNAL_ERROR);
             }
 
-            if(rep_opt)
+            if (rep_opt)
+            {
                 ret = new GroupDef(message, groupName, false, true, "a Group object");
+            }
             else
+            {
                 ret = new GroupDef(message, groupName, required, repeating, "a Group object");
+            }
             IStructureDef[] finalList = new IStructureDef[currShortListPos]; //note: incremented after last assignment
             Array.Copy(shortList, 0, finalList, 0, currShortListPos);
             for (int i = 0; i < finalList.Length; i++)
@@ -182,73 +257,124 @@ namespace NHapi.Base.SourceGeneration
             return ret;
         }
 
-        /// <summary> Returns true if opening is "[{" and closing is "}]"</summary>
-        private static bool repoptMarkers(System.String opening, System.String closing)
+        /// <summary> Returns source code for an accessor method for a particular Structure. </summary>
+        public static System.String makeAccessor(GroupDef group, int structure)
         {
-            bool ret = false;
-            if (opening.Equals("[{") && closing.Equals("}]"))
+            System.Text.StringBuilder source = new System.Text.StringBuilder();
+
+            IStructureDef def = group.Structures[structure];
+
+            System.String name = def.Name;
+            System.String indexName = group.getIndexName(name);
+            System.String getterName = indexName;
+
+            if (def is GroupDef)
             {
-                ret = true;
+                System.String unqualifiedName = ((GroupDef)def).UnqualifiedName;
+                getterName = group.getIndexName(unqualifiedName);
             }
-            return ret;
-        }
 
-
-        /// <summary> Returns true if opening is "[" and closing is "]"</summary>
-        private static bool optMarkers(System.String opening, System.String closing)
-        {
-            bool ret = false;
-            if (opening.Equals("[") && closing.Equals("]"))
+            //make accessor for first (or only) rep ... 
+            source.Append("\t///<summary>\r\n");
+            source.Append("\t/// Returns ");
+            if (def.Repeating)
             {
-                ret = true;
+                source.Append(" first repetition of ");
             }
-            return ret;
-        }
-
-        /// <summary> Returns true if opening is "{" and closing is "}"</summary>
-        private static bool repMarkers(System.String opening, System.String closing)
-        {
-            bool ret = false;
-            if (opening.Equals("{") && closing.Equals("}"))
+            source.Append(indexName);
+            source.Append(" (");
+            source.Append(def.Description);
+            source.Append(") - creates it if necessary\r\n");
+            source.Append("\t///</summary>\r\n");
+            source.Append("\tpublic ");
+            source.Append(def.Name);
+            source.Append(" ");
+            if (def.Repeating)
             {
-                ret = true;
+                source.Append("Get");
+                source.Append(getterName);
+                source.Append("() {\r\n");
             }
-            return ret;
-        }
+            else
+            {
+                source.Append(getterName);
+                source.Append(" { \r\n");
+                source.Append("get{\r\n");
+            }
+            source.Append("\t   ");
+            source.Append(def.Name);
+            source.Append(" ret = null;\r\n");
+            source.Append("\t   try {\r\n");
+            source.Append("\t      ret = (");
+            source.Append(def.Name);
+            source.Append(")this.GetStructure(\"");
+            source.Append(getterName);
+            source.Append("\");\r\n");
+            source.Append("\t   } catch(HL7Exception e) {\r\n");
+            source.Append(
+                "\t      HapiLogFactory.GetHapiLog(GetType()).Error(\"Unexpected error accessing data - this is probably a bug in the source code generator.\", e);\r\n");
+            source.Append("\t      throw new System.Exception(\"An unexpected error ocurred\",e);\r\n");
+            source.Append("\t   }\r\n");
+            source.Append("\t   return ret;\r\n");
+            if (!def.Repeating)
+            {
+                source.Append("\t}\r\n");
+            }
+            source.Append("\t}\r\n\r\n");
 
-        /// <summary> Returns heading material for class source code (package, imports, JavaDoc, class
-        /// declaration).
-        /// </summary>
-        public static System.String makePreamble(GroupDef group, System.String version)
-        {
-            System.Text.StringBuilder preamble = new System.Text.StringBuilder();
-            preamble.Append("using NHapi.Base.Parser;\r\n");
-            preamble.Append("using NHapi.Base;\r\n");
-            preamble.Append("using NHapi.Base.Log;\r\n");
-            preamble.Append("using System;\r\n");
-            preamble.Append("using ");
-            preamble.Append(PackageManager.GetVersionPackageName(version));
-            preamble.Append("Segment;\r\n\r\n");
-            preamble.Append("using NHapi.Base.Model;\r\n\r\n");
-            preamble.Append("namespace ");
-            preamble.Append(PackageManager.GetVersionPackageName(version));
-            preamble.Append("Group\n");
-            preamble.Append("{\r\n");
-            preamble.Append("///<summary>\r\n");
-            preamble.Append("///Represents the ");
-            preamble.Append(group.Name);
-            preamble.Append(" Group.  A Group is an ordered collection of message \r\n");
-            preamble.Append("/// segments that can repeat together or be optionally in/excluded together.\r\n");
-            preamble.Append("/// This Group contains the following elements: \r\n");
-            preamble.Append(makeElementsDoc(group.Structures));
-            preamble.Append("///</summary>\r\n");
-            preamble.Append("[Serializable]\r\n");
-            preamble.Append("public class ");
-            preamble.Append(group.Name);
-            preamble.Append(" : AbstractGroup {\r\n\r\n");
-            return preamble.ToString();
-        }
+            if (def.Repeating)
+            {
+                //make accessor for specific rep ... 
+                source.Append("\t///<summary>\r\n");
+                source.Append("\t///Returns a specific repetition of ");
+                source.Append(indexName);
+                source.Append("\r\n");
+                source.Append("\t/// * (");
+                source.Append(def.Description);
+                source.Append(") - creates it if necessary\r\n");
+                source.Append("\t/// throws HL7Exception if the repetition requested is more than one \r\n");
+                source.Append("\t///     greater than the number of existing repetitions.\r\n");
+                source.Append("\t///</summary>\r\n");
+                source.Append("\tpublic ");
+                source.Append(def.Name);
+                source.Append(" Get");
+                source.Append(getterName);
+                source.Append("(int rep) { \r\n");
+                source.Append("\t   return (");
+                source.Append(def.Name);
+                source.Append(")this.GetStructure(\"");
+                source.Append(getterName);
+                source.Append("\", rep);\r\n");
+                source.Append("\t}\r\n\r\n");
 
+                //make accessor for number of reps
+                source.Append("\t/** \r\n");
+                source.Append("\t * Returns the number of existing repetitions of ");
+                source.Append(indexName);
+                source.Append(" \r\n");
+                source.Append("\t */ \r\n");
+                source.Append("\tpublic int ");
+                source.Append(getterName);
+                source.Append("RepetitionsUsed { \r\n");
+                source.Append("get{\r\n");
+                source.Append("\t    int reps = -1; \r\n");
+                source.Append("\t    try { \r\n");
+                source.Append("\t        reps = this.GetAll(\"");
+                source.Append(getterName);
+                source.Append("\").Length; \r\n");
+                source.Append("\t    } catch (HL7Exception e) { \r\n");
+                source.Append(
+                    "\t        string message = \"Unexpected error accessing data - this is probably a bug in the source code generator.\"; \r\n");
+                source.Append("\t        HapiLogFactory.GetHapiLog(GetType()).Error(message, e); \r\n");
+                source.Append("\t        throw new System.Exception(message);\r\n");
+                source.Append("\t    } \r\n");
+                source.Append("\t    return reps; \r\n");
+                source.Append("\t}\r\n");
+                source.Append("\t} \r\n\r\n");
+            }
+
+            return source.ToString();
+        }
 
         /// <summary> Returns source code for the contructor for this Group class. </summary>
         public static System.String makeConstructor(GroupDef group, System.String version)
@@ -328,204 +454,143 @@ namespace NHapi.Base.SourceGeneration
                 elements.Append(def.Description);
                 elements.Append(") ");
                 if (!def.Required)
+                {
                     elements.Append("optional ");
+                }
                 if (def.Repeating)
+                {
                     elements.Append("repeating");
+                }
                 elements.Append("</li>\r\n");
             }
             elements.Append("///</ol>\r\n");
             return elements.ToString();
         }
 
-        /// <summary> Returns source code for an accessor method for a particular Structure. </summary>
-        public static System.String makeAccessor(GroupDef group, int structure)
+        /// <summary> Returns heading material for class source code (package, imports, JavaDoc, class
+        /// declaration).
+        /// </summary>
+        public static System.String makePreamble(GroupDef group, System.String version)
         {
-            System.Text.StringBuilder source = new System.Text.StringBuilder();
-
-            IStructureDef def = group.Structures[structure];
-
-            System.String name = def.Name;
-            System.String indexName = group.getIndexName(name);
-            System.String getterName = indexName;
-
-            if (def is GroupDef)
-            {
-                System.String unqualifiedName = ((GroupDef)def).UnqualifiedName;
-                getterName = group.getIndexName(unqualifiedName);
-            }
-
-            //make accessor for first (or only) rep ... 
-            source.Append("\t///<summary>\r\n");
-            source.Append("\t/// Returns ");
-            if (def.Repeating)
-                source.Append(" first repetition of ");
-            source.Append(indexName);
-            source.Append(" (");
-            source.Append(def.Description);
-            source.Append(") - creates it if necessary\r\n");
-            source.Append("\t///</summary>\r\n");
-            source.Append("\tpublic ");
-            source.Append(def.Name);
-            source.Append(" ");
-            if (def.Repeating)
-            {
-                source.Append("Get");
-                source.Append(getterName);
-                source.Append("() {\r\n");
-            }
-            else
-            {
-                source.Append(getterName);
-                source.Append(" { \r\n");
-                source.Append("get{\r\n");
-            }
-            source.Append("\t   ");
-            source.Append(def.Name);
-            source.Append(" ret = null;\r\n");
-            source.Append("\t   try {\r\n");
-            source.Append("\t      ret = (");
-            source.Append(def.Name);
-            source.Append(")this.GetStructure(\"");
-            source.Append(getterName);
-            source.Append("\");\r\n");
-            source.Append("\t   } catch(HL7Exception e) {\r\n");
-            source.Append("\t      HapiLogFactory.GetHapiLog(GetType()).Error(\"Unexpected error accessing data - this is probably a bug in the source code generator.\", e);\r\n");
-            source.Append("\t      throw new System.Exception(\"An unexpected error ocurred\",e);\r\n");
-            source.Append("\t   }\r\n");
-            source.Append("\t   return ret;\r\n");
-            if (!def.Repeating)
-                source.Append("\t}\r\n");
-            source.Append("\t}\r\n\r\n");
-
-            if (def.Repeating)
-            {
-                //make accessor for specific rep ... 
-                source.Append("\t///<summary>\r\n");
-                source.Append("\t///Returns a specific repetition of ");
-                source.Append(indexName);
-                source.Append("\r\n");
-                source.Append("\t/// * (");
-                source.Append(def.Description);
-                source.Append(") - creates it if necessary\r\n");
-                source.Append("\t/// throws HL7Exception if the repetition requested is more than one \r\n");
-                source.Append("\t///     greater than the number of existing repetitions.\r\n");
-                source.Append("\t///</summary>\r\n");
-                source.Append("\tpublic ");
-                source.Append(def.Name);
-                source.Append(" Get");
-                source.Append(getterName);
-                source.Append("(int rep) { \r\n");
-                source.Append("\t   return (");
-                source.Append(def.Name);
-                source.Append(")this.GetStructure(\"");
-                source.Append(getterName);
-                source.Append("\", rep);\r\n");
-                source.Append("\t}\r\n\r\n");
-
-                //make accessor for number of reps
-                source.Append("\t/** \r\n");
-                source.Append("\t * Returns the number of existing repetitions of ");
-                source.Append(indexName);
-                source.Append(" \r\n");
-                source.Append("\t */ \r\n");
-                source.Append("\tpublic int ");
-                source.Append(getterName);
-                source.Append("RepetitionsUsed { \r\n");
-                source.Append("get{\r\n");
-                source.Append("\t    int reps = -1; \r\n");
-                source.Append("\t    try { \r\n");
-                source.Append("\t        reps = this.GetAll(\"");
-                source.Append(getterName);
-                source.Append("\").Length; \r\n");
-                source.Append("\t    } catch (HL7Exception e) { \r\n");
-                source.Append("\t        string message = \"Unexpected error accessing data - this is probably a bug in the source code generator.\"; \r\n");
-                source.Append("\t        HapiLogFactory.GetHapiLog(GetType()).Error(message, e); \r\n");
-                source.Append("\t        throw new System.Exception(message);\r\n");
-                source.Append("\t    } \r\n");
-                source.Append("\t    return reps; \r\n");
-                source.Append("\t}\r\n");
-                source.Append("\t} \r\n\r\n");
-            }
-
-            return source.ToString();
+            System.Text.StringBuilder preamble = new System.Text.StringBuilder();
+            preamble.Append("using NHapi.Base.Parser;\r\n");
+            preamble.Append("using NHapi.Base;\r\n");
+            preamble.Append("using NHapi.Base.Log;\r\n");
+            preamble.Append("using System;\r\n");
+            preamble.Append("using ");
+            preamble.Append(PackageManager.GetVersionPackageName(version));
+            preamble.Append("Segment;\r\n\r\n");
+            preamble.Append("using NHapi.Base.Model;\r\n\r\n");
+            preamble.Append("namespace ");
+            preamble.Append(PackageManager.GetVersionPackageName(version));
+            preamble.Append("Group\n");
+            preamble.Append("{\r\n");
+            preamble.Append("///<summary>\r\n");
+            preamble.Append("///Represents the ");
+            preamble.Append(group.Name);
+            preamble.Append(" Group.  A Group is an ordered collection of message \r\n");
+            preamble.Append("/// segments that can repeat together or be optionally in/excluded together.\r\n");
+            preamble.Append("/// This Group contains the following elements: \r\n");
+            preamble.Append(makeElementsDoc(group.Structures));
+            preamble.Append("///</summary>\r\n");
+            preamble.Append("[Serializable]\r\n");
+            preamble.Append("public class ");
+            preamble.Append(group.Name);
+            preamble.Append(" : AbstractGroup {\r\n\r\n");
+            return preamble.ToString();
         }
 
-        /// <summary> Given a list of structures and the position of a SegmentDef that 
-        /// indicates the start of a group (ie "{" or "["), returns the position
-        /// of the corresponding end of the group.  Nested group markers are ignored.  
+        /// <summary> Creates source code for a Group and returns a GroupDef object that 
+        /// describes the Group's name, optionality, repeatability.  The source 
+        /// code is written under the given directory.
+        /// The structures list may contain [] and {} pairs representing 
+        /// nested groups and their optionality and repeastability.  In these cases
+        /// this method is called recursively.
+        /// If the given structures list begins and ends with repetition and/or 
+        /// optionality markers the repetition and optionality of the returned 
+        /// GroupDef are set accordingly.  
+        /// <param name="structures">a list of the structures that comprise this group - must 
+        /// be at least 2 long
+        /// </param>
+        /// <param name="groupName">The group name</param>
+        /// <param name="version">The version of message</param>
+        /// <param name="baseDirectory">the directory to which files should be written
+        /// </param>
+        /// <param name="message">the message to which this group belongs
+        /// </param>
+        /// <throws>  HL7Exception if the repetition and optionality markers are not  </throws>
         /// </summary>
-        /// <throws>  IllegalArgumentException if groupStart is out of range or does not  </throws>
-        /// <summary>      point to a group opening marker. 
-        /// </summary>
-        /// <throws>  HL7Exception if the end of the group is not found or if other pairs  </throws>
-        /// <summary>      are not properly nested inside this one.  
-        /// </summary>
-        public static int findGroupEnd(IStructureDef[] structures, int groupStart)
+        public static GroupDef writeGroup(
+            IStructureDef[] structures,
+            System.String groupName,
+            System.String baseDirectory,
+            System.String version,
+            System.String message)
         {
+            //make base directory
+            if (!(baseDirectory.EndsWith("\\") || baseDirectory.EndsWith("/")))
+            {
+                baseDirectory = baseDirectory + "/";
+            }
+            System.IO.FileInfo targetDir =
+                SourceGenerator.makeDirectory(baseDirectory + PackageManager.GetVersionPackagePath(version) + "Group");
 
-            //  {} is rep; [] is optionality
-            System.String endMarker = null;
-            try
+            GroupDef group = getGroupDef(structures, groupName, baseDirectory, version, message);
+            using (
+                System.IO.StreamWriter out_Renamed =
+                    new System.IO.StreamWriter(targetDir.FullName + "/" + group.Name + ".cs"))
             {
-                System.String startMarker = structures[groupStart].Name;
-                if (startMarker.Equals("["))
-                {
-                    endMarker = "]";
-                }
-                else if (startMarker.Equals("{"))
-                {
-                    endMarker = "}";
-                }
-                else if (startMarker.Equals("[{"))
-                {
-                    endMarker = "}]";
-                }
-                else
-                {
-                    log.Error("Problem starting at " + groupStart);
-                    for (int i = 0; i < structures.Length; i++)
-                    {
-                        log.Error("Structure " + i + ": " + structures[i].Name);
-                    }
-                    throw new System.ArgumentException("The segment " + startMarker + " does not begin a group - must be [ or {");
-                }
-            }
-            catch (System.IndexOutOfRangeException)
-            {
-                throw new System.ArgumentException("The given start location is out of bounds");
-            }
+                out_Renamed.Write(makePreamble(group, version));
+                out_Renamed.Write(makeConstructor(group, version));
 
-            //loop, increment and decrement opening and closing markers until we get back to 0 
-            System.String segName = null;
-            int offset = 0;
-            try
-            {
-                int nestedInside = 1;
-                while (nestedInside > 0)
+                IStructureDef[] shallow = group.Structures;
+                for (int i = 0; i < shallow.Length; i++)
                 {
-                    offset++;
-                    segName = structures[groupStart + offset].Name;
-                    if (segName.Equals("{") || segName.Equals("[") || segName.Equals("[{"))
-                    {
-                        nestedInside++;
-                    }
-                    else if (segName.Equals("}") || segName.Equals("]") || segName.Equals("}]"))
-                    {
-                        nestedInside--;
-                    }
+                    out_Renamed.Write(makeAccessor(group, i));
                 }
+                out_Renamed.Write("}\r\n"); //Closing class
+                out_Renamed.Write("}\r\n"); //Closing namespace
             }
-            catch (System.IndexOutOfRangeException)
-            {
-                throw new HL7Exception("Couldn't find end of group", HL7Exception.APPLICATION_INTERNAL_ERROR);
-            }
-            if (!endMarker.Equals(segName))
-                throw new HL7Exception("Group markers are not nested properly", HL7Exception.APPLICATION_INTERNAL_ERROR);
-            return groupStart + offset;
+            return group;
         }
-        static GroupGenerator()
+
+        #endregion
+
+        #region Methods
+
+        /// <summary> Returns true if opening is "[" and closing is "]"</summary>
+        private static bool optMarkers(System.String opening, System.String closing)
         {
-            log = HapiLogFactory.GetHapiLog(typeof(GroupGenerator));
+            bool ret = false;
+            if (opening.Equals("[") && closing.Equals("]"))
+            {
+                ret = true;
+            }
+            return ret;
         }
+
+        /// <summary> Returns true if opening is "{" and closing is "}"</summary>
+        private static bool repMarkers(System.String opening, System.String closing)
+        {
+            bool ret = false;
+            if (opening.Equals("{") && closing.Equals("}"))
+            {
+                ret = true;
+            }
+            return ret;
+        }
+
+        /// <summary> Returns true if opening is "[{" and closing is "}]"</summary>
+        private static bool repoptMarkers(System.String opening, System.String closing)
+        {
+            bool ret = false;
+            if (opening.Equals("[{") && closing.Equals("}]"))
+            {
+                ret = true;
+            }
+            return ret;
+        }
+
+        #endregion
     }
 }

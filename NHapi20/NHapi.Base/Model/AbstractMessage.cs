@@ -18,37 +18,72 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 */
-using System;
-using NHapi.Base.Parser;
-using NHapi.Base.validation;
-using System.Text.RegularExpressions;
 
 namespace NHapi.Base.Model
 {
+    using System.Text.RegularExpressions;
+
+    using NHapi.Base.Parser;
+    using NHapi.Base.validation;
 
     /// <summary> A default implementation of Message. </summary>
     /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
     /// </author>
     public abstract class AbstractMessage : AbstractGroup, IMessage
     {
+        #region Fields
+
+        private IValidationContext myContext;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        /// <param name="theFactory">factory for model classes (e.g. group, segment) for this message 
+        /// </param>
+        public AbstractMessage(IModelClassFactory theFactory)
+            : base(theFactory)
+        {
+        }
+
+        #endregion
+
+        #region Public Properties
+
         /// <summary> Returns this Message object - this is an implementation of the 
         /// abstract method in AbstractGroup.  
         /// </summary>
-        override public IMessage Message
+        public override IMessage Message
         {
             get
             {
                 return this;
             }
-
         }
+
+        /// <summary>
+        /// The validation contect 
+        /// </summary>
+        public virtual IValidationContext ValidationContext
+        {
+            get
+            {
+                return this.myContext;
+            }
+
+            set
+            {
+                this.myContext = value;
+            }
+        }
+
         /// <summary> Returns the version number.  This default implementation inspects 
         /// this.GetClass().getName().  This should be overridden if you are putting
         /// a custom message definition in your own package, or it will default.  
         /// </summary>
         /// <returns>s 2.4 if not obvious from package name
         /// </returns>
-        virtual public System.String Version
+        public virtual System.String Version
         {
             get
             {
@@ -70,44 +105,23 @@ namespace NHapi.Base.Model
                             //start at 1 to avoid the 'v'
                             buf.Append(chars[i]);
                             if (i < chars.Length - 1)
+                            {
                                 buf.Append('.');
+                            }
                         }
                         version = buf.ToString();
                     }
                 }
 
                 if (version == null)
+                {
                     version = "2.4";
+                }
 
                 return version;
             }
-
         }
 
-        /// <summary>
-        /// The validation contect 
-        /// </summary>
-        virtual public IValidationContext ValidationContext
-        {
-            get
-            {
-                return myContext;
-            }
-
-            set
-            {
-                myContext = value;
-            }
-
-        }
-
-        private IValidationContext myContext;
-
-        /// <param name="theFactory">factory for model classes (e.g. group, segment) for this message 
-        /// </param>
-        public AbstractMessage(IModelClassFactory theFactory)
-            : base(theFactory)
-        {
-        }
+        #endregion
     }
 }

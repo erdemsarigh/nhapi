@@ -18,10 +18,9 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
+
 namespace NHapi.Base
 {
-
     /// <summary> A place where table keys and values are stored.  This may be implemented
     /// with a database, an LDAP directory, local RAM, etc.  At a minimum, any
     /// underlying repository must supply the values for standard HL7 tables.
@@ -31,6 +30,14 @@ namespace NHapi.Base
     /// </author>
     public abstract class TableRepository
     {
+        #region Static Fields
+
+        private static TableRepository rep;
+
+        #endregion
+
+        #region Public Properties
+
         /// <summary> Returns a TableRepository object.</summary>
         public static TableRepository Instance
         {
@@ -44,22 +51,26 @@ namespace NHapi.Base
 
                 return rep;
             }
-
         }
-        /// <summary> Returns a list of HL7 tables.  </summary>
-        public abstract int[] Tables { get;}
 
-        private static TableRepository rep = null;
+        /// <summary> Returns a list of HL7 tables.  </summary>
+        public abstract int[] Tables { get; }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         /// <summary> Returns true if the given value exists in the given table.</summary>
         public abstract bool checkValue(int table, System.String value_Renamed);
 
-        /// <summary> Returns a list of the values in the given table. </summary>
-        public abstract System.String[] getValues(int table);
-
         /// <summary> Returns the value corresponding to the given table and key.</summary>
         /// <throws>  UnknownValueException if the value can not be found.  This may be an UnknownTableException.   </throws>
         public abstract System.String getDescription(int table, System.String value_Renamed);
+
+        /// <summary> Returns a list of the values in the given table. </summary>
+        public abstract System.String[] getValues(int table);
+
+        #endregion
 
         //test
         /*

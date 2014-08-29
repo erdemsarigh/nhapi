@@ -23,12 +23,13 @@
 /// this file under either the MPL or the GPL.
 /// 
 /// </summary>
-using System;
-using NHapi.Base.Model;
-using HL7Exception = NHapi.Base.HL7Exception;
-using NHapi.Base.Log;
+
 namespace NHapi.Base.Util
 {
+    using System;
+
+    using NHapi.Base.Log;
+    using NHapi.Base.Model;
 
     /// <summary> <p>Wraps a message to provide access to fields using a terse location
     /// specification syntax.  For example: </p>
@@ -68,28 +69,51 @@ namespace NHapi.Base.Util
     /// </author>
     public class Terser
     {
+        #region Static Fields
+
+        private static IHapiLog log;
+
+        #endregion
+
+        #region Fields
+
+        private SegmentFinder finder;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        static Terser()
+        {
+            log = HapiLogFactory.GetHapiLog(typeof(Terser));
+        }
+
+        /// <summary>Creates a new instance of Terser </summary>
+        public Terser(IMessage message)
+        {
+            this.finder = new SegmentFinder(message);
+        }
+
+        #endregion
+
+        #region Public Properties
+
         /// <summary> Returns the segment finder used by this Terser.  Navigating the
         /// finder will influence the behaviour of the Terser accordingly.  Ie
         /// when the full path of the segment is not specified the segment will
         /// be sought beginning at the current location of the finder.
         /// </summary>
-        virtual public SegmentFinder Finder
+        public virtual SegmentFinder Finder
         {
             get
             {
-                return finder;
+                return this.finder;
             }
-
         }
 
-        private SegmentFinder finder;
-        private static IHapiLog log;
+        #endregion
 
-        /// <summary>Creates a new instance of Terser </summary>
-        public Terser(IMessage message)
-        {
-            finder = new SegmentFinder(message);
-        }
+        #region Public Methods and Operators
 
         /// <summary> Returns the string value of the Primitive at the given location.</summary>
         /// <param name="segment">the segment from which to get the primitive
@@ -109,17 +133,61 @@ namespace NHapi.Base.Util
         }
 
         /// <summary> Sets the string value of the Primitive at the given location.</summary>
-        public static void Set(ISegment segment, int field, int rep, int component, int subcomponent, System.String value_Renamed)
+        public static void Set(
+            ISegment segment,
+            int field,
+            int rep,
+            int component,
+            int subcomponent,
+            System.String value_Renamed)
         {
             IPrimitive prim = getPrimitive(segment, field, rep, component, subcomponent);
             prim.Value = value_Renamed;
         }
 
-        /// <summary> Returns the Primitive object at the given location.</summary>
-        private static IPrimitive getPrimitive(ISegment segment, int field, int rep, int component, int subcomponent)
+        /// <summary> Given a Terser path, returns an array containing field num, field rep, 
+        /// component, and subcomponent.  
+        /// </summary>
+        public static int[] getIndices(System.String spec)
         {
-            IType type = segment.GetField(field, rep);
-            return getPrimitive(type, component, subcomponent);
+            SupportClass.Tokenizer tok = new SupportClass.Tokenizer(spec, "-", false);
+            tok.NextToken(); //skip over segment
+            if (!tok.HasMoreTokens())
+            {
+                throw new HL7Exception("Must specify field in spec " + spec, HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
+
+            int[] ret = null;
+            try
+            {
+                SupportClass.Tokenizer fieldSpec = new SupportClass.Tokenizer(tok.NextToken(), "()", false);
+                int fieldNum = System.Int32.Parse(fieldSpec.NextToken());
+                int fieldRep = 0;
+                if (fieldSpec.HasMoreTokens())
+                {
+                    fieldRep = System.Int32.Parse(fieldSpec.NextToken());
+                }
+
+                int component = 1;
+                if (tok.HasMoreTokens())
+                {
+                    component = System.Int32.Parse(tok.NextToken());
+                }
+
+                int subcomponent = 1;
+                if (tok.HasMoreTokens())
+                {
+                    subcomponent = System.Int32.Parse(tok.NextToken());
+                }
+                int[] result = { fieldNum, fieldRep, component, subcomponent };
+                ret = result;
+            }
+            catch (System.FormatException)
+            {
+                throw new HL7Exception("Invalid integer in spec " + spec, HL7Exception.APPLICATION_INTERNAL_ERROR);
+            }
+
+            return ret;
         }
 
         /// <summary> Returns the Primitive object at the given location in the given field.  
@@ -134,88 +202,62 @@ namespace NHapi.Base.Util
             return getPrimitive(sub);
         }
 
-        /// <summary> Attempts to extract a Primitive from the given type. If it's a composite, 
-        /// drills down through first components until a primitive is reached. 
+        /// <summary> Returns the number of components in the given type, i.e. the
+        /// number of standard components (e.g. 6 for CE) plus any extra components that
+        /// have been added at runtime.  
         /// </summary>
-        private static IPrimitive getPrimitive(IType type)
+        public static int numComponents(IType type)
         {
-            IPrimitive p = null;
             if (typeof(Varies).IsAssignableFrom(type.GetType()))
             {
-                p = getPrimitive(((Varies)type).Data);
+                return numComponents(((Varies)type).Data);
             }
-            else if (typeof(IComposite).IsAssignableFrom(type.GetType()))
-            {
-                try
-                {
-                    p = getPrimitive(((IComposite)type)[0]);
-                }
-                catch (HL7Exception)
-                {
-                    throw new System.ApplicationException("Internal error: HL7Exception thrown on Composite.getComponent(0).");
-                }
-            }
-            else if (type is IPrimitive)
-            {
-                p = (IPrimitive)type;
-            }
-            return p;
+            return numStandardComponents(type) + type.ExtraComponents.numComponents();
         }
 
-        /// <summary> Returns the component (or sub-component, as the case may be) at the given
-        /// index.  If it does not exist, it is added as an "extra component".  
-        /// If comp > 1 is requested from a Varies with GenericPrimitive data, the 
-        /// data is set to GenericComposite (this avoids the creation of a chain of 
-        /// ExtraComponents on GenericPrimitives).  
-        /// Components are numbered from 1.  
+        /// <summary> Returns the number of components in the given field, i.e. the
+        /// number of standard components (e.g. 6 for CE) plus any extra components that
+        /// have been added at runtime.  This may vary by repetition, as different reps
+        /// may have different extra components.
         /// </summary>
-        private static IType getComponent(IType type, int comp)
+        /*public static int numComponents(Type field) throws HL7Exception {
+        return numComponents(seg.GetField(field, rep));
+        }*/
+        /// <summary> Returns the number of sub-components in the specified component, i.e. 
+        /// the number of standard sub-components (e.g. 6 for CE) plus any extra components that
+        /// that have been added at runtime.
+        /// </summary>
+        /// <param name="component">numbered from 1 
+        /// </param>
+        public static int numSubComponents(IType type, int component)
         {
-            IType ret = null;
-            if (typeof(Varies).IsAssignableFrom(type.GetType()))
+            int n = -1;
+            if (component == 1 && typeof(IPrimitive).IsAssignableFrom(type.GetType()))
             {
-                Varies v = (Varies)type;
-
-                try
-                {
-                    if (comp > 1 && typeof(GenericPrimitive).IsAssignableFrom(v.Data.GetType()))
-                        v.Data = new GenericComposite(v.Message);
-                }
-                catch (DataTypeException de)
-                {
-                    System.String message = "Unexpected exception copying data to generic composite: " + de.Message;
-                    log.Error(message, de);
-                    throw new System.ApplicationException(message);
-                }
-
-                ret = getComponent(v.Data, comp);
+                //note that getComponent(primitive, 1) below returns the primitive 
+                //itself -- if we do numComponents on it, we'll end up with the 
+                //number of components in the field, not the number of subcomponents
+                n = 1;
             }
             else
             {
-                if (typeof(IPrimitive).IsAssignableFrom(type.GetType()) && comp == 1)
-                {
-                    ret = type;
-                }
-                else if (typeof(GenericComposite).IsAssignableFrom(type.GetType()) || (typeof(IComposite).IsAssignableFrom(type.GetType()) && comp <= numStandardComponents(type)))
-                {
-                    //note that GenericComposite can return components > number of standard components
-
-                    try
-                    {
-                        ret = ((IComposite)type)[comp - 1];
-                    }
-                    catch (System.Exception e)
-                    {
-                        //TODO:  This may not be the write exception type:  Error() was originally thrown, but was not in project.
-                        throw new ApplicationException("Internal error: HL7Exception thrown on getComponent(x) where x < # standard components.", e);
-                    }
-                }
-                else
-                {
-                    ret = type.ExtraComponents.getComponent(comp - numStandardComponents(type) - 1);
-                }
+                IType comp = getComponent(type, component);
+                n = numComponents(comp);
             }
-            return ret;
+            return n;
+            /*
+            //Type t = seg.GetField(field, rep);
+            if (Varies.class.isAssignableFrom(type.GetClass())) {
+            return numSubComponents(((Varies) type).getData(), component);
+            } else if (Primitive.class.isAssignableFrom(type.GetClass()) && component == 1) {
+            n = 1;  
+            } else if (Composite.class.isAssignableFrom(type.GetClass()) && component <= numStandardComponents(t)) {
+            n = numComponents(((Composite) type).getComponent(component - 1));
+            } else { //we're being asked about subcomponents of an extra component
+            n = numComponents(t.getExtraComponents().getComponent(component - numStandardComponents(t) - 1));
+            }
+            return n;
+            */
         }
 
         /// <summary> <p>Gets the string value of the field specified.  See the class docs for syntax
@@ -228,10 +270,26 @@ namespace NHapi.Base.Util
         public virtual System.String Get(System.String spec)
         {
             SupportClass.Tokenizer tok = new SupportClass.Tokenizer(spec, "-", false);
-            ISegment segment = getSegment(tok.NextToken());
+            ISegment segment = this.getSegment(tok.NextToken());
 
             int[] ind = getIndices(spec);
             return Get(segment, ind[0], ind[1], ind[2], ind[3]);
+        }
+
+        /// <summary> Sets the string value of the field specified.  See class docs for location spec syntax.</summary>
+        public virtual void Set(System.String spec, System.String value_Renamed)
+        {
+            SupportClass.Tokenizer tok = new SupportClass.Tokenizer(spec, "-", false);
+            ISegment segment = this.getSegment(tok.NextToken());
+
+            int[] ind = getIndices(spec);
+            if (log.DebugEnabled)
+            {
+                log.Debug(
+                    "Setting " + spec + " seg: " + segment.GetStructureName() + " ind: " + ind[0] + " " + ind[1] + " "
+                    + ind[2] + " " + ind[3]);
+            }
+            Set(segment, ind[0], ind[1], ind[2], ind[3], value_Renamed);
         }
 
         /// <summary> Returns the segment specified in the given segment_path_spec. </summary>
@@ -241,15 +299,15 @@ namespace NHapi.Base.Util
 
             if (segSpec.Substring(0, (1) - (0)).Equals("/"))
             {
-                Finder.reset();
+                this.Finder.reset();
             }
 
             SupportClass.Tokenizer tok = new SupportClass.Tokenizer(segSpec, "/", false);
-            SegmentFinder finder = Finder;
+            SegmentFinder finder = this.Finder;
             while (tok.HasMoreTokens())
             {
                 System.String pathSpec = tok.NextToken();
-                Terser.PathSpec ps = parsePathSpec(pathSpec);
+                Terser.PathSpec ps = this.parsePathSpec(pathSpec);
                 if (tok.HasMoreTokens())
                 {
                     ps.isGroup = true;
@@ -286,6 +344,125 @@ namespace NHapi.Base.Util
             }
 
             return seg;
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary> Returns the component (or sub-component, as the case may be) at the given
+        /// index.  If it does not exist, it is added as an "extra component".  
+        /// If comp > 1 is requested from a Varies with GenericPrimitive data, the 
+        /// data is set to GenericComposite (this avoids the creation of a chain of 
+        /// ExtraComponents on GenericPrimitives).  
+        /// Components are numbered from 1.  
+        /// </summary>
+        private static IType getComponent(IType type, int comp)
+        {
+            IType ret = null;
+            if (typeof(Varies).IsAssignableFrom(type.GetType()))
+            {
+                Varies v = (Varies)type;
+
+                try
+                {
+                    if (comp > 1 && typeof(GenericPrimitive).IsAssignableFrom(v.Data.GetType()))
+                    {
+                        v.Data = new GenericComposite(v.Message);
+                    }
+                }
+                catch (DataTypeException de)
+                {
+                    System.String message = "Unexpected exception copying data to generic composite: " + de.Message;
+                    log.Error(message, de);
+                    throw new System.ApplicationException(message);
+                }
+
+                ret = getComponent(v.Data, comp);
+            }
+            else
+            {
+                if (typeof(IPrimitive).IsAssignableFrom(type.GetType()) && comp == 1)
+                {
+                    ret = type;
+                }
+                else if (typeof(GenericComposite).IsAssignableFrom(type.GetType())
+                         || (typeof(IComposite).IsAssignableFrom(type.GetType()) && comp <= numStandardComponents(type)))
+                {
+                    //note that GenericComposite can return components > number of standard components
+
+                    try
+                    {
+                        ret = ((IComposite)type)[comp - 1];
+                    }
+                    catch (System.Exception e)
+                    {
+                        //TODO:  This may not be the write exception type:  Error() was originally thrown, but was not in project.
+                        throw new ApplicationException(
+                            "Internal error: HL7Exception thrown on getComponent(x) where x < # standard components.",
+                            e);
+                    }
+                }
+                else
+                {
+                    ret = type.ExtraComponents.getComponent(comp - numStandardComponents(type) - 1);
+                }
+            }
+            return ret;
+        }
+
+        /// <summary> Returns the Primitive object at the given location.</summary>
+        private static IPrimitive getPrimitive(ISegment segment, int field, int rep, int component, int subcomponent)
+        {
+            IType type = segment.GetField(field, rep);
+            return getPrimitive(type, component, subcomponent);
+        }
+
+        /// <summary> Attempts to extract a Primitive from the given type. If it's a composite, 
+        /// drills down through first components until a primitive is reached. 
+        /// </summary>
+        private static IPrimitive getPrimitive(IType type)
+        {
+            IPrimitive p = null;
+            if (typeof(Varies).IsAssignableFrom(type.GetType()))
+            {
+                p = getPrimitive(((Varies)type).Data);
+            }
+            else if (typeof(IComposite).IsAssignableFrom(type.GetType()))
+            {
+                try
+                {
+                    p = getPrimitive(((IComposite)type)[0]);
+                }
+                catch (HL7Exception)
+                {
+                    throw new System.ApplicationException(
+                        "Internal error: HL7Exception thrown on Composite.getComponent(0).");
+                }
+            }
+            else if (type is IPrimitive)
+            {
+                p = (IPrimitive)type;
+            }
+            return p;
+        }
+
+        private static int numStandardComponents(IType t)
+        {
+            int n = 0;
+            if (typeof(Varies).IsAssignableFrom(t.GetType()))
+            {
+                n = numStandardComponents(((Varies)t).Data);
+            }
+            else if (typeof(IComposite).IsAssignableFrom(t.GetType()))
+            {
+                n = ((IComposite)t).Components.Length;
+            }
+            else
+            {
+                n = 1;
+            }
+            return n;
         }
 
         /// <summary>Gets path information from a path spec. </summary>
@@ -328,171 +505,54 @@ namespace NHapi.Base.Util
             return ps;
         }
 
-        /// <summary> Given a Terser path, returns an array containing field num, field rep, 
-        /// component, and subcomponent.  
-        /// </summary>
-        public static int[] getIndices(System.String spec)
-        {
-            SupportClass.Tokenizer tok = new SupportClass.Tokenizer(spec, "-", false);
-            tok.NextToken(); //skip over segment
-            if (!tok.HasMoreTokens())
-                throw new HL7Exception("Must specify field in spec " + spec, HL7Exception.APPLICATION_INTERNAL_ERROR);
-
-            int[] ret = null;
-            try
-            {
-                SupportClass.Tokenizer fieldSpec = new SupportClass.Tokenizer(tok.NextToken(), "()", false);
-                int fieldNum = System.Int32.Parse(fieldSpec.NextToken());
-                int fieldRep = 0;
-                if (fieldSpec.HasMoreTokens())
-                {
-                    fieldRep = System.Int32.Parse(fieldSpec.NextToken());
-                }
-
-                int component = 1;
-                if (tok.HasMoreTokens())
-                {
-                    component = System.Int32.Parse(tok.NextToken());
-                }
-
-                int subcomponent = 1;
-                if (tok.HasMoreTokens())
-                {
-                    subcomponent = System.Int32.Parse(tok.NextToken());
-                }
-                int[] result = new int[] { fieldNum, fieldRep, component, subcomponent };
-                ret = result;
-            }
-            catch (System.FormatException)
-            {
-                throw new HL7Exception("Invalid integer in spec " + spec, HL7Exception.APPLICATION_INTERNAL_ERROR);
-            }
-
-            return ret;
-        }
-
-        /// <summary> Sets the string value of the field specified.  See class docs for location spec syntax.</summary>
-        public virtual void Set(System.String spec, System.String value_Renamed)
-        {
-            SupportClass.Tokenizer tok = new SupportClass.Tokenizer(spec, "-", false);
-            ISegment segment = getSegment(tok.NextToken());
-
-            int[] ind = getIndices(spec);
-            if (log.DebugEnabled)
-            {
-                log.Debug("Setting " + spec + " seg: " + segment.GetStructureName() + " ind: " + ind[0] + " " + ind[1] + " " + ind[2] + " " + ind[3]);
-            }
-            Set(segment, ind[0], ind[1], ind[2], ind[3], value_Renamed);
-        }
-
-        /// <summary> Returns the number of components in the given field, i.e. the
-        /// number of standard components (e.g. 6 for CE) plus any extra components that
-        /// have been added at runtime.  This may vary by repetition, as different reps
-        /// may have different extra components.
-        /// </summary>
-        /*public static int numComponents(Type field) throws HL7Exception {
-        return numComponents(seg.GetField(field, rep));
-        }*/
-
-        /// <summary> Returns the number of sub-components in the specified component, i.e. 
-        /// the number of standard sub-components (e.g. 6 for CE) plus any extra components that
-        /// that have been added at runtime.
-        /// </summary>
-        /// <param name="component">numbered from 1 
-        /// </param>
-        public static int numSubComponents(IType type, int component)
-        {
-            int n = -1;
-            if (component == 1 && typeof(IPrimitive).IsAssignableFrom(type.GetType()))
-            {
-                //note that getComponent(primitive, 1) below returns the primitive 
-                //itself -- if we do numComponents on it, we'll end up with the 
-                //number of components in the field, not the number of subcomponents
-                n = 1;
-            }
-            else
-            {
-                IType comp = getComponent(type, component);
-                n = numComponents(comp);
-            }
-            return n;
-            /*
-            //Type t = seg.GetField(field, rep);
-            if (Varies.class.isAssignableFrom(type.GetClass())) {
-            return numSubComponents(((Varies) type).getData(), component);
-            } else if (Primitive.class.isAssignableFrom(type.GetClass()) && component == 1) {
-            n = 1;  
-            } else if (Composite.class.isAssignableFrom(type.GetClass()) && component <= numStandardComponents(t)) {
-            n = numComponents(((Composite) type).getComponent(component - 1));
-            } else { //we're being asked about subcomponents of an extra component
-            n = numComponents(t.getExtraComponents().getComponent(component - numStandardComponents(t) - 1));
-            }
-            return n;
-            */
-        }
-
-        /// <summary> Returns the number of components in the given type, i.e. the
-        /// number of standard components (e.g. 6 for CE) plus any extra components that
-        /// have been added at runtime.  
-        /// </summary>
-        public static int numComponents(IType type)
-        {
-            if (typeof(Varies).IsAssignableFrom(type.GetType()))
-            {
-                return numComponents(((Varies)type).Data);
-            }
-            else
-            {
-                return numStandardComponents(type) + type.ExtraComponents.numComponents();
-            }
-        }
-
-        private static int numStandardComponents(IType t)
-        {
-            int n = 0;
-            if (typeof(Varies).IsAssignableFrom(t.GetType()))
-            {
-                n = numStandardComponents(((Varies)t).Data);
-            }
-            else if (typeof(IComposite).IsAssignableFrom(t.GetType()))
-            {
-                n = ((IComposite)t).Components.Length;
-            }
-            else
-            {
-                n = 1;
-            }
-            return n;
-        }
+        #endregion
 
         /// <summary>Struct for information about a step in a segment path. </summary>
         private class PathSpec
         {
+            #region Fields
+
+            public bool find;
+
+            public bool isGroup;
+
+            public System.String pattern;
+
+            public int rep;
+
+            private Terser enclosingInstance;
+
+            #endregion
+
+            #region Constructors and Destructors
+
             public PathSpec(Terser enclosingInstance)
             {
-                InitBlock(enclosingInstance);
+                this.InitBlock(enclosingInstance);
             }
-            private void InitBlock(Terser enclosingInstance)
-            {
-                this.enclosingInstance = enclosingInstance;
-            }
-            private Terser enclosingInstance;
+
+            #endregion
+
+            #region Public Properties
+
             public Terser Enclosing_Instance
             {
                 get
                 {
-                    return enclosingInstance;
+                    return this.enclosingInstance;
                 }
-
             }
-            public System.String pattern;
-            public bool isGroup;
-            public bool find;
-            public int rep;
-        }
-        static Terser()
-        {
-            log = HapiLogFactory.GetHapiLog(typeof(Terser));
+
+            #endregion
+
+            #region Methods
+
+            private void InitBlock(Terser enclosingInstance)
+            {
+                this.enclosingInstance = enclosingInstance;
+            }
+
+            #endregion
         }
     }
 }

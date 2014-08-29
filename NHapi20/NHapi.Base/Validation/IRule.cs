@@ -18,10 +18,9 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
+
 namespace NHapi.Base.validation
 {
-
     /// <summary> <p>A testable rule to which HL7 messages (at least certain specific message) should conform.  
     /// This is the central interface of the new HAPI validation model (as of HAPI 0.4).  
     /// Previously, the only run-time message validation HAPI performs is within the
@@ -52,23 +51,20 @@ namespace NHapi.Base.validation
     /// </author>
     public interface IRule
     {
+        #region Public Properties
+
         /// <summary> Returns a text description of the rule.  This description may be used as a message 
         /// in exceptions generated if validation against the rule fails, or in a user 
         /// interface for rule configuration.   
         /// </summary>
-        System.String Description
-        {
-            get;
+        System.String Description { get; }
 
-        }
         /// <summary> A string indicating the section of the HL7 standard from which this rule 
         /// is derived (if applicable).  Like the description, this may be used in an exception 
         /// message or configuration UI. 
         /// </summary>
-        System.String SectionReference
-        {
-            get;
+        System.String SectionReference { get; }
 
-        }
+        #endregion
     }
 }

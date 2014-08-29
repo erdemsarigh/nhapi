@@ -19,14 +19,12 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using System.IO;
-using NHapi.Base.Model;
-using NHapi.Base.Log;
 
 namespace NHapi.Base.SourceGeneration
 {
+    using System;
 
+    using NHapi.Base.Log;
 
     /// <summary> Generates skeletal source code for Datatype classes based on the 
     /// HL7 database.  
@@ -37,59 +35,38 @@ namespace NHapi.Base.SourceGeneration
     /// </author>
     public class DataTypeGenerator : System.Object
     {
+        #region Static Fields
+
         private static readonly IHapiLog log;
 
-        /// <summary> Creates skeletal source code (without correct data structure but no business
-        /// logic) for all data types found in the normative database.  For versions > 2.2, Primitive data types
-        /// are not generated, because they are coded manually (as of HAPI 0.3).  
-        /// </summary>
-        public static void makeAll(System.String baseDirectory, System.String version)
+        #endregion
+
+        #region Constructors and Destructors
+
+        static DataTypeGenerator()
         {
-            //make base directory
-            if (!(baseDirectory.EndsWith("\\") || baseDirectory.EndsWith("/")))
-            {
-                baseDirectory = baseDirectory + "/";
-            }
-            System.IO.FileInfo targetDir = SourceGenerator.makeDirectory(baseDirectory + PackageManager.GetVersionPackagePath(version) + "Datatype");
-            SourceGenerator.makeDirectory(baseDirectory + PackageManager.GetVersionPackagePath(version) + "Datatype");
-            //get list of data types
-            System.Collections.ArrayList types = new System.Collections.ArrayList();
-            System.Data.OleDb.OleDbConnection conn = NormativeDatabase.Instance.Connection;
-            System.Data.OleDb.OleDbCommand stmt = SupportClass.TransactionManager.manager.CreateStatement(conn);
-            //get normal data types ... 
-            System.Data.OleDb.OleDbCommand temp_OleDbCommand;
-            temp_OleDbCommand = stmt;
-            temp_OleDbCommand.CommandText = "select data_type_code from HL7DataTypes, HL7Versions where HL7Versions.version_id = HL7DataTypes.version_id and HL7Versions.hl7_version = '" + version + "'";
-            System.Data.OleDb.OleDbDataReader rs = temp_OleDbCommand.ExecuteReader();
-            while (rs.Read())
-            {
-                types.Add(System.Convert.ToString(rs[1 - 1]));
-            }
-            rs.Close();
-            //get CF, CK, CM, CN, CQ sub-types ... 
+            log = HapiLogFactory.GetHapiLog(typeof(DataTypeGenerator));
+        }
 
-            System.Data.OleDb.OleDbCommand temp_OleDbCommand2;
-            temp_OleDbCommand2 = stmt;
-            temp_OleDbCommand2.CommandText = "select data_structure from HL7DataStructures, HL7Versions where (" + "data_type_code  = 'CF' or " + "data_type_code  = 'CK' or " + "data_type_code  = 'CM' or " + "data_type_code  = 'CN' or " + "data_type_code  = 'CQ') and " + "HL7Versions.version_id = HL7DataStructures.version_id and  HL7Versions.hl7_version = '" + version + "'";
-            rs = temp_OleDbCommand2.ExecuteReader();
-            while (rs.Read())
+        #endregion
+
+        #region Public Methods and Operators
+
+        [STAThread]
+        public static void Main(System.String[] args)
+        {
+            //System.out.println(makePrimitive("ID", "identifier"));
+            try
             {
-                types.Add(System.Convert.ToString(rs[1 - 1]));
+                System.Type.GetType("sun.jdbc.odbc.JdbcOdbcDriver");
+                //System.setProperty("ca.on.uhn.hl7.database.url", "jdbc:odbc:hl7v25");        
+                //make(new File("c:/testsourcegen"), args[0], args[1]);
+                //make(new File("c:/testsourcegen"), "CE_0048", "2.3");
+                makeAll("c:/testsourcegen", "2.5");
             }
-
-            stmt.Dispose();
-            NormativeDatabase.Instance.returnConnection(conn);
-
-            System.Console.Out.WriteLine("Generating " + types.Count + " datatypes for version " + version);
-            if (types.Count == 0)
+            catch (System.Exception e)
             {
-                log.Warn("No version " + version + " data types found in database " + conn.Database);
-            }
-
-            for (int i = 0; i < types.Count; i++)
-            {
-                if (!((String)types[i]).Equals("*"))
-                    make(targetDir, (System.String)types[i], version);
+                SupportClass.WriteStackTrace(e, Console.Error);
             }
         }
 
@@ -107,16 +84,21 @@ namespace NHapi.Base.SourceGeneration
             Console.WriteLine(" Writing " + targetDirectory.FullName + dataType);
             //make sure that targetDirectory is a directory ... 
             if (!System.IO.Directory.Exists(targetDirectory.FullName))
-                throw new System.IO.IOException("Can't create file in " + targetDirectory.ToString() + " - it is not a directory.");
+            {
+                throw new System.IO.IOException("Can't create file in " + targetDirectory + " - it is not a directory.");
+            }
 
             //get any components for this data type
             System.Data.OleDb.OleDbConnection conn = NormativeDatabase.Instance.Connection;
             System.Data.OleDb.OleDbCommand stmt = SupportClass.TransactionManager.manager.CreateStatement(conn);
             System.Text.StringBuilder sql = new System.Text.StringBuilder();
             //this query is adapted from the XML SIG informative document
-            sql.Append("SELECT HL7DataStructures.data_structure, HL7DataStructureComponents.seq_no, HL7DataStructures.description, HL7DataStructureComponents.table_id,  ");
-            sql.Append("HL7Components.description, HL7Components.table_id, HL7Components.data_type_code, HL7Components.data_structure ");
-            sql.Append("FROM HL7Versions LEFT JOIN (HL7DataStructures LEFT JOIN (HL7DataStructureComponents LEFT JOIN HL7Components ");
+            sql.Append(
+                "SELECT HL7DataStructures.data_structure, HL7DataStructureComponents.seq_no, HL7DataStructures.description, HL7DataStructureComponents.table_id,  ");
+            sql.Append(
+                "HL7Components.description, HL7Components.table_id, HL7Components.data_type_code, HL7Components.data_structure ");
+            sql.Append(
+                "FROM HL7Versions LEFT JOIN (HL7DataStructures LEFT JOIN (HL7DataStructureComponents LEFT JOIN HL7Components ");
             sql.Append("ON HL7DataStructureComponents.comp_no = HL7Components.comp_no AND ");
             sql.Append("HL7DataStructureComponents.version_id = HL7Components.version_id) ");
             sql.Append("ON HL7DataStructures.version_id = HL7DataStructureComponents.version_id ");
@@ -139,21 +121,29 @@ namespace NHapi.Base.SourceGeneration
             while (rs.Read())
             {
                 if (description == null)
+                {
                     description = System.Convert.ToString(rs[3 - 1]);
+                }
 
                 System.String de = System.Convert.ToString(rs[5 - 1]);
                 System.String dt = System.Convert.ToString(rs[8 - 1]);
                 int ta = -1;
                 if (!rs.IsDBNull(4 - 1))
+                {
                     ta = rs.GetInt32(4 - 1);
+                }
                 //trim all CE_x to CE
                 if (dt != null)
+                {
                     if (dt.StartsWith("CE"))
+                    {
                         dt = "CE";
+                    }
+                }
                 //System.out.println("Component: " + de + "  Data Type: " + dt);  //for debugging
                 dataTypes.Add(dt);
                 descriptions.Add(de);
-                tables.Add((System.Int32)ta);
+                tables.Add(ta);
             }
             if (dataType.ToUpper().Equals("TS"))
             {
@@ -168,7 +158,8 @@ namespace NHapi.Base.SourceGeneration
             System.String source = null;
             if (dataTypes.Count == 1)
             {
-                if (dataType.Equals("FT") || dataType.Equals("ST") || dataType.Equals("TX") || dataType.Equals("NM") || dataType.Equals("SI") || dataType.Equals("TN") || dataType.Equals("GTS"))
+                if (dataType.Equals("FT") || dataType.Equals("ST") || dataType.Equals("TX") || dataType.Equals("NM")
+                    || dataType.Equals("SI") || dataType.Equals("TN") || dataType.Equals("GTS"))
                 {
                     source = makePrimitive(dataType, description, version);
                 }
@@ -203,92 +194,106 @@ namespace NHapi.Base.SourceGeneration
             //write to file ... 
             if (source != null)
             {
-                System.String targetFile = targetDirectory.ToString() + "/" + dataType + ".cs";
+                System.String targetFile = targetDirectory + "/" + dataType + ".cs";
                 using (System.IO.StreamWriter writer = new System.IO.StreamWriter(targetFile))
                 {
                     writer.Write(source);
-                    writer.Write("}");//End namespace
+                    writer.Write("}"); //End namespace
                 }
             }
             else
+            {
                 Console.WriteLine("No Source for " + dataType);
+            }
         }
 
-        /// <summary> Returns a String containing the complete source code for a Primitive HL7 data
-        /// type.  Note: this method is no longer used, as all Primitives are now coded manually.  
+        /// <summary> Creates skeletal source code (without correct data structure but no business
+        /// logic) for all data types found in the normative database.  For versions > 2.2, Primitive data types
+        /// are not generated, because they are coded manually (as of HAPI 0.3).  
         /// </summary>
-        private static System.String makePrimitive(System.String datatype, System.String description, System.String version)
+        public static void makeAll(System.String baseDirectory, System.String version)
         {
-            System.Text.StringBuilder source = new System.Text.StringBuilder();
+            //make base directory
+            if (!(baseDirectory.EndsWith("\\") || baseDirectory.EndsWith("/")))
+            {
+                baseDirectory = baseDirectory + "/";
+            }
+            System.IO.FileInfo targetDir =
+                SourceGenerator.makeDirectory(
+                    baseDirectory + PackageManager.GetVersionPackagePath(version) + "Datatype");
+            SourceGenerator.makeDirectory(baseDirectory + PackageManager.GetVersionPackagePath(version) + "Datatype");
+            //get list of data types
+            System.Collections.ArrayList types = new System.Collections.ArrayList();
+            System.Data.OleDb.OleDbConnection conn = NormativeDatabase.Instance.Connection;
+            System.Data.OleDb.OleDbCommand stmt = SupportClass.TransactionManager.manager.CreateStatement(conn);
+            //get normal data types ... 
+            System.Data.OleDb.OleDbCommand temp_OleDbCommand;
+            temp_OleDbCommand = stmt;
+            temp_OleDbCommand.CommandText =
+                "select data_type_code from HL7DataTypes, HL7Versions where HL7Versions.version_id = HL7DataTypes.version_id and HL7Versions.hl7_version = '"
+                + version + "'";
+            System.Data.OleDb.OleDbDataReader rs = temp_OleDbCommand.ExecuteReader();
+            while (rs.Read())
+            {
+                types.Add(System.Convert.ToString(rs[1 - 1]));
+            }
+            rs.Close();
+            //get CF, CK, CM, CN, CQ sub-types ... 
 
-            source.Append("using System;\n");
-            source.Append("using NHapi.Base.Model;\n");
-            source.Append("using NHapi.Base;\n");
-            source.Append("using NHapi.Base.Model.Primitive;\r\n");
-            source.Append("namespace ");
-            source.Append(PackageManager.GetVersionPackageName(version));
-            source.Append("Datatype\r\n");
-            source.Append("{\r\n");
-            source.Append("///<summary>\r\n");
-            source.Append("///Represents the HL7 ");
-            source.Append(datatype);
-            source.Append(" (");
-            source.Append(description);
-            source.Append(") datatype.  A ");
-            source.Append(datatype);
-            source.Append(" contains a single String value.\r\n");
-            source.Append("///</summary>\r\n");
-            source.Append("[Serializable]\r\n");
-            source.Append("public class ");
-            source.Append(datatype);
-            source.Append(" : AbstractPrimitive ");
-            source.Append(" {\r\n\r\n");
-            //source.append("\tprotected String value;\r\n\r\n");
-            source.Append("\t///<summary>\r\n");
-            source.Append("\t///Constructs an uninitialized ");
-            source.Append(datatype);
-            source.Append(".\r\n");
-            source.Append("\t///<param name=\"message\">The Message to which this Type belongs</param>\r\n");
-            source.Append("\t///</summary>\r\n");
-            source.Append("\tpublic ");
-            source.Append(datatype);
-            source.Append("(IMessage message) : base(message){\r\n");
-            source.Append("\t}\r\n\r\n");
+            System.Data.OleDb.OleDbCommand temp_OleDbCommand2;
+            temp_OleDbCommand2 = stmt;
+            temp_OleDbCommand2.CommandText = "select data_structure from HL7DataStructures, HL7Versions where ("
+                                             + "data_type_code  = 'CF' or " + "data_type_code  = 'CK' or "
+                                             + "data_type_code  = 'CM' or " + "data_type_code  = 'CN' or "
+                                             + "data_type_code  = 'CQ') and "
+                                             + "HL7Versions.version_id = HL7DataStructures.version_id and  HL7Versions.hl7_version = '"
+                                             + version + "'";
+            rs = temp_OleDbCommand2.ExecuteReader();
+            while (rs.Read())
+            {
+                types.Add(System.Convert.ToString(rs[1 - 1]));
+            }
 
-            source.Append("\t///<summary>\r\n");
-            source.Append("\t///Constructs an uninitialized ");
-            source.Append(datatype);
-            source.Append(".\r\n");
-            source.Append("\t///<param name=\"message\">The Message to which this Type belongs</param>\r\n");
-            source.Append("\t///<param name=\"description\">The description of this type</param>\r\n");
-            source.Append("\t///</summary>\r\n");
-            source.Append("\tpublic ");
-            source.Append(datatype);
-            source.Append("(IMessage message, string description) : base(message,description){\r\n");
-            source.Append("\t}\r\n\r\n");
-            source.Append("\t///<summary>\r\n");
-            source.Append("\t///  @return \"");
-            source.Append(version);
-            source.Append("\"\r\n");
-            source.Append("\t///</summary>\r\n");
-            source.Append("\tpublic string getVersion() {\r\n");
-            source.Append("\t    return \"");
-            if (version.IndexOf("UCH") > -1)
-                source.Append("2.3");
-            else
-                source.Append(version);
-            source.Append("\";\r\n");
-            source.Append("}\r\n");
-            source.Append("}\r\n");
+            stmt.Dispose();
+            NormativeDatabase.Instance.returnConnection(conn);
 
-            return source.ToString();
+            System.Console.Out.WriteLine("Generating " + types.Count + " datatypes for version " + version);
+            if (types.Count == 0)
+            {
+                log.Warn("No version " + version + " data types found in database " + conn.Database);
+            }
+
+            for (int i = 0; i < types.Count; i++)
+            {
+                if (!((String)types[i]).Equals("*"))
+                {
+                    make(targetDir, (System.String)types[i], version);
+                }
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+        private static string GetDescription(string description)
+        {
+            string ret = description;
+            ret = ret.Replace("&", "and");
+            return ret;
         }
 
         /// <summary> Returns a String containing source code for a Composite data type. The 
         /// dataTypes array contains the data type names (e.g. ST) of each component. 
         /// The descriptions array contains the corresponding descriptions (e.g. string).
         /// </summary>
-        private static System.String makeComposite(System.String dataType, System.String description, System.String[] dataTypes, System.String[] descriptions, int[] tables, System.String version)
+        private static System.String makeComposite(
+            System.String dataType,
+            System.String description,
+            System.String[] dataTypes,
+            System.String[] descriptions,
+            int[] tables,
+            System.String version)
         {
             System.Text.StringBuilder source = new System.Text.StringBuilder();
             source.Append("using System;\n");
@@ -354,7 +359,6 @@ namespace NHapi.Base.SourceGeneration
                 {
                     source.Append("(message, ");
                     source.Append(tables[i]);
-
                 }
                 else
                 {
@@ -384,7 +388,8 @@ namespace NHapi.Base.SourceGeneration
             source.Append("\t/// Returns an individual data component.\r\n");
             source.Append("\t/// @throws DataTypeException if the given element number is out of range.\r\n");
             source.Append("\t///<param name=\"index\">The index item to get (zero based)</param>\r\n");
-            source.Append("\t///<returns>The data component (as a type) at the requested number (ordinal)</returns>\r\n");
+            source.Append(
+                "\t///<returns>The data component (as a type) at the requested number (ordinal)</returns>\r\n");
             source.Append("\t///</summary>\r\n");
             source.Append("\tpublic IType this[int index] { \r\n\r\n");
             source.Append("get{\r\n");
@@ -427,7 +432,8 @@ namespace NHapi.Base.SourceGeneration
                 source.Append(i);
                 source.Append("];\r\n");
                 source.Append("\t   } catch (DataTypeException e) {\r\n");
-                source.Append("\t      HapiLogFactory.GetHapiLog(this.GetType()).Error(\"Unexpected problem accessing known data type component - this is a bug.\", e);\r\n");
+                source.Append(
+                    "\t      HapiLogFactory.GetHapiLog(this.GetType()).Error(\"Unexpected problem accessing known data type component - this is a bug.\", e);\r\n");
                 source.Append("\t      throw new System.Exception(\"An unexpected error ocurred\",e);\r\n");
                 source.Append("\t   }\r\n");
                 source.Append("\t   return ret;\r\n");
@@ -442,35 +448,85 @@ namespace NHapi.Base.SourceGeneration
             return source.ToString();
         }
 
-        private static string GetDescription(string description)
+        /// <summary> Returns a String containing the complete source code for a Primitive HL7 data
+        /// type.  Note: this method is no longer used, as all Primitives are now coded manually.  
+        /// </summary>
+        private static System.String makePrimitive(
+            System.String datatype,
+            System.String description,
+            System.String version)
         {
-            string ret = description;
-            ret = ret.Replace("&", "and");
-            return ret;
+            System.Text.StringBuilder source = new System.Text.StringBuilder();
+
+            source.Append("using System;\n");
+            source.Append("using NHapi.Base.Model;\n");
+            source.Append("using NHapi.Base;\n");
+            source.Append("using NHapi.Base.Model.Primitive;\r\n");
+            source.Append("namespace ");
+            source.Append(PackageManager.GetVersionPackageName(version));
+            source.Append("Datatype\r\n");
+            source.Append("{\r\n");
+            source.Append("///<summary>\r\n");
+            source.Append("///Represents the HL7 ");
+            source.Append(datatype);
+            source.Append(" (");
+            source.Append(description);
+            source.Append(") datatype.  A ");
+            source.Append(datatype);
+            source.Append(" contains a single String value.\r\n");
+            source.Append("///</summary>\r\n");
+            source.Append("[Serializable]\r\n");
+            source.Append("public class ");
+            source.Append(datatype);
+            source.Append(" : AbstractPrimitive ");
+            source.Append(" {\r\n\r\n");
+            //source.append("\tprotected String value;\r\n\r\n");
+            source.Append("\t///<summary>\r\n");
+            source.Append("\t///Constructs an uninitialized ");
+            source.Append(datatype);
+            source.Append(".\r\n");
+            source.Append("\t///<param name=\"message\">The Message to which this Type belongs</param>\r\n");
+            source.Append("\t///</summary>\r\n");
+            source.Append("\tpublic ");
+            source.Append(datatype);
+            source.Append("(IMessage message) : base(message){\r\n");
+            source.Append("\t}\r\n\r\n");
+
+            source.Append("\t///<summary>\r\n");
+            source.Append("\t///Constructs an uninitialized ");
+            source.Append(datatype);
+            source.Append(".\r\n");
+            source.Append("\t///<param name=\"message\">The Message to which this Type belongs</param>\r\n");
+            source.Append("\t///<param name=\"description\">The description of this type</param>\r\n");
+            source.Append("\t///</summary>\r\n");
+            source.Append("\tpublic ");
+            source.Append(datatype);
+            source.Append("(IMessage message, string description) : base(message,description){\r\n");
+            source.Append("\t}\r\n\r\n");
+            source.Append("\t///<summary>\r\n");
+            source.Append("\t///  @return \"");
+            source.Append(version);
+            source.Append("\"\r\n");
+            source.Append("\t///</summary>\r\n");
+            source.Append("\tpublic string getVersion() {\r\n");
+            source.Append("\t    return \"");
+            if (version.IndexOf("UCH") > -1)
+            {
+                source.Append("2.3");
+            }
+            else
+            {
+                source.Append(version);
+            }
+            source.Append("\";\r\n");
+            source.Append("}\r\n");
+            source.Append("}\r\n");
+
+            return source.ToString();
         }
+
+        #endregion
 
         //test
-        [STAThread]
-        public static void Main(System.String[] args)
-        {
-            //System.out.println(makePrimitive("ID", "identifier"));
-            try
-            {
-                System.Type.GetType("sun.jdbc.odbc.JdbcOdbcDriver");
-                //System.setProperty("ca.on.uhn.hl7.database.url", "jdbc:odbc:hl7v25");        
-                //make(new File("c:/testsourcegen"), args[0], args[1]);
-                //make(new File("c:/testsourcegen"), "CE_0048", "2.3");
-                makeAll("c:/testsourcegen", "2.5");
-            }
-            catch (System.Exception e)
-            {
-                SupportClass.WriteStackTrace(e, Console.Error);
-            }
-
-        }
-        static DataTypeGenerator()
-        {
-            log = HapiLogFactory.GetHapiLog(typeof(DataTypeGenerator));
-        }
     }
 }

@@ -24,12 +24,9 @@
 /// 
 */
 
-using System;
-using NHapi.Base.Model;
-using NHapi.Base.Log;
-
 namespace NHapi.Base.Model.Primitive
 {
+    using NHapi.Base.Log;
 
     /// <summary> This class contains functionality used by the DT class
     /// in the version 2.3.0, 2.3.1, and 2.4 packages
@@ -47,26 +44,91 @@ namespace NHapi.Base.Model.Primitive
     /// </summary>
     /// <author>  Neal Acharya
     /// </author>
-
     public class CommonDT
     {
+        #region Static Fields
+
+        private static readonly IHapiLog log;
+
+        #endregion
+
+        #region Fields
+
+        private int day;
+
+        private int month;
+
+        private System.String value_Renamed;
+
+        private int year;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        static CommonDT()
+        {
+            log = HapiLogFactory.GetHapiLog(typeof(CommonDT));
+        }
+
+        /// <summary> Constructs a DT datatype with fields initialzed to zero and value initialized
+        /// to null.
+        /// </summary>
+        public CommonDT()
+        {
+            //initialize all DT fields
+            this.value_Renamed = null;
+            this.year = 0;
+            this.month = 0;
+            this.day = 0;
+        }
+
+        /// <summary> Constructs a DT object with the given value.
+        /// The stored value will be in the following
+        /// format YYYY[MM[DD]].
+        /// </summary>
+        public CommonDT(System.String val)
+        {
+            this.Value = val;
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary> Returns the day as an integer.</summary>
+        public virtual int Day
+        {
+            get
+            {
+                return this.day;
+            }
+        }
+
+        /// <summary> Returns the month as an integer.</summary>
+        public virtual int Month
+        {
+            get
+            {
+                return this.month;
+            }
+        }
+
         /// <summary> Returns the HL7 DT string value.</summary>
         /// <summary> This method takes in a string HL7 date value and performs validations
         /// then sets the value field. The stored value will be in the following
         /// format YYYY[MM[DD]].
         /// 
         /// </summary>
-        virtual public System.String Value
+        public virtual System.String Value
         {
             get
             {
-                return value_Renamed;
+                return this.value_Renamed;
             }
-
 
             set
             {
-
                 if (value != null && !value.Equals("") && !value.Equals("\"\""))
                 {
                     try
@@ -76,7 +138,8 @@ namespace NHapi.Base.Model.Primitive
                         //check the length, must be either four, six, or eight digits
                         if ((value.Length != 4) && (value.Length != 6) && (value.Length != 8))
                         {
-                            System.String msg = "The length of the DT datatype value does not conform to an allowable" + " format. Format should conform to YYYY[MM[DD]]";
+                            System.String msg = "The length of the DT datatype value does not conform to an allowable"
+                                                + " format. Format should conform to YYYY[MM[DD]]";
                             DataTypeException e = new DataTypeException(msg);
                             throw e;
                         }
@@ -89,7 +152,7 @@ namespace NHapi.Base.Model.Primitive
                             //this value.  If an error occurs then processing will stop in this try block
                             SupportClass.CalendarManager.manager.Set(cal, yrInt, 0, 1);
                             SupportClass.CalendarManager.manager.GetDateTime(cal); //for error detection
-                            year = yrInt;
+                            this.year = yrInt;
                         }
 
                         if (value.Length >= 6)
@@ -98,9 +161,9 @@ namespace NHapi.Base.Model.Primitive
                             int mnthInt = System.Int32.Parse(value.Substring(4, (6) - (4)));
                             //check to see if the month is valid by creating a Gregorian calendar object with
                             //this value.  If an error occurs then processing will stop in this try block
-                            SupportClass.CalendarManager.manager.Set(cal, year, mnthInt - 1, 1);
+                            SupportClass.CalendarManager.manager.Set(cal, this.year, mnthInt - 1, 1);
                             SupportClass.CalendarManager.manager.GetDateTime(cal); //for error detection
-                            month = mnthInt;
+                            this.month = mnthInt;
                         }
 
                         if (value.Length == 8)
@@ -110,39 +173,47 @@ namespace NHapi.Base.Model.Primitive
                             //check to see if the day is valid by creating a Gregorian calendar object with
                             //the year/month/day combination.  If an error occurs then processing will stop
                             // in this try block
-                            SupportClass.CalendarManager.manager.Set(cal, year, month - 1, dayInt);
+                            SupportClass.CalendarManager.manager.Set(cal, this.year, this.month - 1, dayInt);
                             SupportClass.CalendarManager.manager.GetDateTime(cal); //for error detection
-                            day = dayInt;
+                            this.day = dayInt;
                         }
                         //validations are complete now store the input value into the private value field
-                        value_Renamed = value;
+                        this.value_Renamed = value;
                     }
-                    //end try
+                        //end try
                     catch (DataTypeException e)
                     {
                         throw e;
                     }
-                    //end catch
+                        //end catch
                     catch (System.Exception e)
                     {
                         throw new DataTypeException("An unexpected exception ocurred", e);
                     } //end catch
                 }
-                //end if
+                    //end if
                 else
                 {
                     //set the private value field to null or empty space.
-                    value_Renamed = value;
+                    this.value_Renamed = value;
                 } //end else       
             }
-
-
         }
+
+        /// <summary> Returns the year as an integer.</summary>
+        public virtual int Year
+        {
+            get
+            {
+                return this.year;
+            }
+        }
+
         /// <summary> This method takes in an integer value for the year and performs validations,
         /// it then sets the value field formatted as an HL7 date.
         /// value with year precision (YYYY)
         /// </summary>
-        virtual public int YearPrecision
+        public virtual int YearPrecision
         {
             set
             {
@@ -162,153 +233,27 @@ namespace NHapi.Base.Model.Primitive
                     //GregorianCalendar cal = new GregorianCalendar(yr,0,1);
                     SupportClass.CalendarManager.manager.Set(cal, value, 0, 1);
                     SupportClass.CalendarManager.manager.GetDateTime(cal); //for error detection
-                    year = value;
-                    month = 0;
-                    day = 0;
-                    value_Renamed = System.Convert.ToString(value);
+                    this.year = value;
+                    this.month = 0;
+                    this.day = 0;
+                    this.value_Renamed = System.Convert.ToString(value);
                 }
-                //end try
+                    //end try
                 catch (DataTypeException e)
                 {
                     throw e;
                 }
-                //end catch
+                    //end catch
                 catch (System.Exception e)
                 {
                     throw new DataTypeException("An unexpected exception ocurred", e);
                 } //end catch
             }
-
-
-        }
-        /// <summary> Returns the year as an integer.</summary>
-        virtual public int Year
-        {
-            get
-            {
-                return year;
-            }
-
-
-        }
-        /// <summary> Returns the month as an integer.</summary>
-        virtual public int Month
-        {
-            get
-            {
-                return month;
-            }
-
-
-        }
-        /// <summary> Returns the day as an integer.</summary>
-        virtual public int Day
-        {
-            get
-            {
-                return day;
-            }
         }
 
-        private static readonly IHapiLog log;
+        #endregion
 
-        private System.String value_Renamed;
-        private int year;
-        private int month;
-        private int day;
-
-        /// <summary> Constructs a DT datatype with fields initialzed to zero and value initialized
-        /// to null.
-        /// </summary>
-        public CommonDT()
-        {
-            //initialize all DT fields
-            value_Renamed = null;
-            year = 0;
-            month = 0;
-            day = 0;
-        }
-
-        /// <summary> Constructs a DT object with the given value.
-        /// The stored value will be in the following
-        /// format YYYY[MM[DD]].
-        /// </summary>
-        public CommonDT(System.String val)
-        {
-            this.Value = val;
-        }
-
-        /// <summary> This method takes in integer values for the year and month and performs validations,
-        /// it then sets the value field formatted as an HL7 date
-        /// value with year and month precision (YYYYMM).
-        /// Note: The first month = 1 = January.
-        /// </summary>
-        public virtual void setYearMonthPrecision(int yr, int mnth)
-        {
-            try
-            {
-                System.Globalization.GregorianCalendar cal = new System.Globalization.GregorianCalendar();
-                SupportClass.CalendarManager.manager.Clear(cal);
-                //ensure that the year field is four digits long
-                if (System.Convert.ToString(yr).Length != 4)
-                {
-                    System.String msg = "The input year value must be four digits long";
-                    DataTypeException e = new DataTypeException(msg);
-                    throw e;
-                }
-                //validate the input month
-                //GregorianCalendar cal = new GregorianCalendar(yr,(mnth-1),1);
-                SupportClass.CalendarManager.manager.Set(cal, yr, (mnth - 1), 1);
-                SupportClass.CalendarManager.manager.GetDateTime(cal); //for error detection
-                year = yr;
-                month = mnth;
-                day = 0;
-                value_Renamed = System.Convert.ToString(yr) + DataTypeUtil.preAppendZeroes(mnth, 2);
-            }
-            catch (DataTypeException e)
-            {
-                throw e;
-            }
-            catch (System.Exception e)
-            {
-                throw new DataTypeException("An unexpected exception ocurred", e);
-            }
-        }
-
-        /// <summary> This method takes in integer values for the year and month and day
-        /// and performs validations, it then sets the value in the object
-        /// formatted as an HL7 date value with year and month and day precision (YYYYMMDD).
-        /// </summary>
-        public virtual void setYearMonthDayPrecision(int yr, int mnth, int dy)
-        {
-            try
-            {
-                System.Globalization.GregorianCalendar cal = new System.Globalization.GregorianCalendar();
-                SupportClass.CalendarManager.manager.Clear(cal);
-                //ensure that the year field is four digits long
-                if (System.Convert.ToString(yr).Length != 4)
-                {
-                    System.String msg = "The input year value must be four digits long";
-                    DataTypeException e = new DataTypeException(msg);
-                    throw e;
-                }
-                //validate the input month/day combination
-                SupportClass.CalendarManager.manager.Set(cal, yr, (mnth - 1), dy);
-                SupportClass.CalendarManager.manager.GetDateTime(cal); //for error detection
-                year = yr;
-                month = mnth;
-                day = dy;
-                value_Renamed = System.Convert.ToString(yr) + DataTypeUtil.preAppendZeroes(mnth, 2) + DataTypeUtil.preAppendZeroes(dy, 2);
-            }
-            catch (DataTypeException e)
-            {
-                throw e;
-            }
-            catch (System.Exception e)
-            {
-                throw new DataTypeException("An unexpected exception ocurred", e);
-            }
-        }
+        #region Public Methods and Operators
 
         /// <summary> Returns a string value representing the input Gregorian Calendar object in
         /// an Hl7 Date Format.
@@ -337,9 +282,80 @@ namespace NHapi.Base.Model.Primitive
             }
             return val;
         }
-        static CommonDT()
+
+        /// <summary> This method takes in integer values for the year and month and day
+        /// and performs validations, it then sets the value in the object
+        /// formatted as an HL7 date value with year and month and day precision (YYYYMMDD).
+        /// </summary>
+        public virtual void setYearMonthDayPrecision(int yr, int mnth, int dy)
         {
-            log = HapiLogFactory.GetHapiLog(typeof(CommonDT));
+            try
+            {
+                System.Globalization.GregorianCalendar cal = new System.Globalization.GregorianCalendar();
+                SupportClass.CalendarManager.manager.Clear(cal);
+                //ensure that the year field is four digits long
+                if (System.Convert.ToString(yr).Length != 4)
+                {
+                    System.String msg = "The input year value must be four digits long";
+                    DataTypeException e = new DataTypeException(msg);
+                    throw e;
+                }
+                //validate the input month/day combination
+                SupportClass.CalendarManager.manager.Set(cal, yr, (mnth - 1), dy);
+                SupportClass.CalendarManager.manager.GetDateTime(cal); //for error detection
+                this.year = yr;
+                this.month = mnth;
+                this.day = dy;
+                this.value_Renamed = System.Convert.ToString(yr) + DataTypeUtil.preAppendZeroes(mnth, 2)
+                                     + DataTypeUtil.preAppendZeroes(dy, 2);
+            }
+            catch (DataTypeException e)
+            {
+                throw e;
+            }
+            catch (System.Exception e)
+            {
+                throw new DataTypeException("An unexpected exception ocurred", e);
+            }
         }
+
+        /// <summary> This method takes in integer values for the year and month and performs validations,
+        /// it then sets the value field formatted as an HL7 date
+        /// value with year and month precision (YYYYMM).
+        /// Note: The first month = 1 = January.
+        /// </summary>
+        public virtual void setYearMonthPrecision(int yr, int mnth)
+        {
+            try
+            {
+                System.Globalization.GregorianCalendar cal = new System.Globalization.GregorianCalendar();
+                SupportClass.CalendarManager.manager.Clear(cal);
+                //ensure that the year field is four digits long
+                if (System.Convert.ToString(yr).Length != 4)
+                {
+                    System.String msg = "The input year value must be four digits long";
+                    DataTypeException e = new DataTypeException(msg);
+                    throw e;
+                }
+                //validate the input month
+                //GregorianCalendar cal = new GregorianCalendar(yr,(mnth-1),1);
+                SupportClass.CalendarManager.manager.Set(cal, yr, (mnth - 1), 1);
+                SupportClass.CalendarManager.manager.GetDateTime(cal); //for error detection
+                this.year = yr;
+                this.month = mnth;
+                this.day = 0;
+                this.value_Renamed = System.Convert.ToString(yr) + DataTypeUtil.preAppendZeroes(mnth, 2);
+            }
+            catch (DataTypeException e)
+            {
+                throw e;
+            }
+            catch (System.Exception e)
+            {
+                throw new DataTypeException("An unexpected exception ocurred", e);
+            }
+        }
+
+        #endregion
     } //end class
 }

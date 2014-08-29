@@ -18,9 +18,10 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
+
 namespace NHapi.Base
 {
+    using System;
 
     /// <summary> Thrown when a table value can not be found by a TableRepository. </summary>
     /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
@@ -28,6 +29,8 @@ namespace NHapi.Base
     [Serializable]
     public class UnknownValueException : HL7Exception
     {
+        #region Constructors and Destructors
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -36,5 +39,7 @@ namespace NHapi.Base
             : base(message, HL7Exception.TABLE_VALUE_NOT_FOUND)
         {
         }
+
+        #endregion
     }
 }

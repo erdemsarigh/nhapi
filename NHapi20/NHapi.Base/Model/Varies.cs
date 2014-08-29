@@ -19,14 +19,14 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using NHapi.Base.Util;
-using NHapi.Base;
-using NHapi.Base.Parser;
-using NHapi.Base.Log;
 
 namespace NHapi.Base.Model
 {
+    using System;
+
+    using NHapi.Base.Log;
+    using NHapi.Base.Parser;
+    using NHapi.Base.Util;
 
     /// <summary> <p>Varies is a Type used as a placeholder for another Type in cases where 
     /// the appropriate Type is not known until run-time (e.g. OBX-5).  
@@ -43,6 +43,42 @@ namespace NHapi.Base.Model
     /// </author>
     public class Varies : IType
     {
+        #region Static Fields
+
+        private static readonly IHapiLog log;
+
+        #endregion
+
+        #region Fields
+
+        private IType data;
+
+        private IMessage message;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        static Varies()
+        {
+            log = HapiLogFactory.GetHapiLog(typeof(Varies));
+        }
+
+        /// <summary> Creates new Varies. 
+        /// 
+        /// </summary>
+        /// <param name="message">message to which this type belongs
+        /// </param>
+        public Varies(IMessage message)
+        {
+            this.data = new GenericPrimitive(message);
+            this.message = message;
+        }
+
+        #endregion
+
+        #region Public Properties
+
         /// <summary> Returns the data contained by this instance of Varies.  Returns a GenericPrimitive unless 
         /// setData() has been called. 
         /// </summary>
@@ -52,7 +88,7 @@ namespace NHapi.Base.Model
         /// setData(new DT()), then subsequent calls to getData() will return the same DT, with the value 
         /// set to "19901012".   
         /// </summary>
-        virtual public IType Data
+        public virtual IType Data
         {
             get
             {
@@ -70,11 +106,30 @@ namespace NHapi.Base.Model
                 }
                 this.data = value;
             }
-
         }
+
+        /// <summary>Returns extra components from the underlying Type </summary>
+        public virtual ExtraComponents ExtraComponents
+        {
+            get
+            {
+                return this.data.ExtraComponents;
+            }
+        }
+
+        /// <returns> the message to which this Type belongs
+        /// </returns>
+        public virtual IMessage Message
+        {
+            get
+            {
+                return this.message;
+            }
+        }
+
         /// <seealso cref="Type.getName">
         /// </seealso>
-        virtual public System.String TypeName
+        public virtual System.String TypeName
         {
             get
             {
@@ -85,43 +140,11 @@ namespace NHapi.Base.Model
                 }
                 return name;
             }
-
-        }
-        /// <summary>Returns extra components from the underlying Type </summary>
-        virtual public ExtraComponents ExtraComponents
-        {
-            get
-            {
-                return this.data.ExtraComponents;
-            }
-
-        }
-        /// <returns> the message to which this Type belongs
-        /// </returns>
-        virtual public IMessage Message
-        {
-            get
-            {
-                return message;
-            }
-
         }
 
-        private static readonly IHapiLog log;
+        #endregion
 
-        private IType data;
-        private IMessage message;
-
-        /// <summary> Creates new Varies. 
-        /// 
-        /// </summary>
-        /// <param name="message">message to which this type belongs
-        /// </param>
-        public Varies(IMessage message)
-        {
-            data = new GenericPrimitive(message);
-            this.message = message;
-        }
+        #region Public Methods and Operators
 
         /// <summary> Sets the data type of field 5 in the given OBX segment to the value of OBX-2.  The argument 
         /// is a Segment as opposed to a particular OBX because it is meant to work with any version.  
@@ -140,7 +163,9 @@ namespace NHapi.Base.Model
                     {
                         if (!(v.Data is IPrimitive) || ((IPrimitive)v.Data).Value != null)
                         {
-                            throw new HL7Exception("OBX-5 is valued, but OBX-2 is not.  A datatype for OBX-5 must be specified using OBX-2.", HL7Exception.REQUIRED_FIELD_MISSING);
+                            throw new HL7Exception(
+                                "OBX-5 is valued, but OBX-2 is not.  A datatype for OBX-5 must be specified using OBX-2.",
+                                HL7Exception.REQUIRED_FIELD_MISSING);
                         }
                     }
                 }
@@ -151,7 +176,8 @@ namespace NHapi.Base.Model
                     //                Class c = NHapi.Base.Parser.ParserBase.findClass(obx2.getValue(), 
                     //                                                segment.getMessage().getVersion(), 
                     //                                                "datatype");
-                    v.Data = (IType)c.GetConstructor(new System.Type[] { typeof(IMessage) }).Invoke(new System.Object[] { v.Message });
+                    v.Data =
+                        (IType)c.GetConstructor(new[] { typeof(IMessage) }).Invoke(new System.Object[] { v.Message });
                 }
             }
             catch (HL7Exception e)
@@ -160,12 +186,13 @@ namespace NHapi.Base.Model
             }
             catch (System.Exception e)
             {
-                throw new HL7Exception(e.GetType().FullName + " trying to set data type of OBX-5", HL7Exception.APPLICATION_INTERNAL_ERROR, e);
+                throw new HL7Exception(
+                    e.GetType().FullName + " trying to set data type of OBX-5",
+                    HL7Exception.APPLICATION_INTERNAL_ERROR,
+                    e);
             }
         }
-        static Varies()
-        {
-            log = HapiLogFactory.GetHapiLog(typeof(Varies));
-        }
+
+        #endregion
     }
 }

@@ -19,13 +19,14 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using NHapi.Base.Log;
-using NHapi.Base.Util;
-using NHapi.Base.Model;
 
 namespace NHapi.Base
 {
+    using System;
+
+    using NHapi.Base.Log;
+    using NHapi.Base.Model;
+    using NHapi.Base.Util;
 
     /// <summary> Represents an exception encountered while processing 
     /// an HL7 message.  
@@ -35,166 +36,114 @@ namespace NHapi.Base
     [Serializable]
     public class HL7Exception : System.Exception
     {
-        /// <summary> Returns the name of the segment where the error occured, if this has been set
-        /// (null otherwise).
-        /// </summary>
-        /// <summary> Sets the name of the segment where the error occured. </summary>
-        virtual public System.String SegmentName
-        {
-            get
-            {
-                return this.segment;
-            }
-
-            set
-            {
-                this.segment = value;
-            }
-
-        }
-        /// <summary> Returns the sequence number of the segment where the error occured (if there 
-        /// are multiple segments with the same name) if this has been set, -1 otherwise - 
-        /// numbering starts at 1.
-        /// </summary>
-        /// <summary> Sets the sequence number of the segment where the error occured if there 
-        /// are multiplt segments with the same name (ie the sequenceNum'th segment 
-        /// with the name specified in <code>setSegmentName</code>).  Numbering 
-        /// starts at 1.
-        /// </summary>
-        virtual public int SegmentRepetition
-        {
-            get
-            {
-                return this.segmentRep;
-            }
-
-            set
-            {
-                this.segmentRep = value;
-            }
-
-        }
-        /// <summary> Returns the field number within the segment where the error occured if it has been 
-        /// set, -1 otherwise; numbering starts at 1.
-        /// </summary>
-        /// <summary> Sets the field number (within a segment) where the error occured; numbering 
-        /// starts at 1. 
-        /// </summary>
-        virtual public int FieldPosition
-        {
-            get
-            {
-                return this.fieldPosition;
-            }
-
-            set
-            {
-                this.fieldPosition = value;
-            }
-
-        }
-        /// <summary> Overrides Throwable.getMessage() to add the field location of the problem if 
-        /// available.
-        /// </summary>
-        public override System.String Message
-        {
-            get
-            {
-                System.Text.StringBuilder msg = new System.Text.StringBuilder();
-                msg.Append(base.Message);
-                if (SegmentName != null)
-                {
-                    msg.Append(": Segment: ");
-                    msg.Append(SegmentName);
-                }
-                if (SegmentRepetition != -1)
-                {
-                    msg.Append(" (rep ");
-                    msg.Append(SegmentRepetition);
-                    msg.Append(")");
-                }
-                if (FieldPosition != -1)
-                {
-                    msg.Append(" Field #");
-                    msg.Append(FieldPosition);
-                }
-                return msg.ToString();
-            }
-
-        }
-
-        private static readonly IHapiLog ourLog;
+        #region Constants
 
         /// <summary>
         /// Acknowledgement Application Accept 
         /// </summary>
         public const int ACK_AA = 1;
+
         /// <summary>
         /// Acknowledgement Application Error
         /// </summary>
         public const int ACK_AE = 2;
+
         /// <summary>
         /// Acknowledgement Application Reject
         /// </summary>
         public const int ACK_AR = 3;
 
         /// <summary>
-        /// Message accepted
-        /// </summary>
-        public const int MESSAGE_ACCEPTED = 0;
-        /// <summary>
-        /// Segment sequence error
-        /// </summary>
-        public const int SEGMENT_SEQUENCE_ERROR = 100;
-        /// <summary>
-        /// Required field missing
-        /// </summary>
-        public const int REQUIRED_FIELD_MISSING = 101;
-        /// <summary>
-        /// Date type error
-        /// </summary>
-        public const int DATA_TYPE_ERROR = 102;
-        /// <summary>
-        /// Table value not found
-        /// </summary>
-        public const int TABLE_VALUE_NOT_FOUND = 103;
-        /// <summary>
-        /// Unsupported message type
-        /// </summary>
-        public const int UNSUPPORTED_MESSAGE_TYPE = 200;
-        /// <summary>
-        /// Unsupported event code
-        /// </summary>
-        public const int UNSUPPORTED_EVENT_CODE = 201;
-        /// <summary>
-        /// Unsupported processing id
-        /// </summary>
-        public const int UNSUPPORTED_PROCESSING_ID = 202;
-        /// <summary>
-        /// Unsupported version id
-        /// </summary>
-        public const int UNSUPPORTED_VERSION_ID = 203;
-        /// <summary>
-        /// Unknown key id
-        /// </summary>
-        public const int UNKNOWN_KEY_IDENTIFIER = 204;
-        /// <summary>
-        /// Duplicate key id
-        /// </summary>
-        public const int DUPLICATE_KEY_IDENTIFIER = 205;
-        /// <summary>
-        /// Application record locked
-        /// </summary>
-        public const int APPLICATION_RECORD_LOCKED = 206;
-        /// <summary>
         /// Appplication error
         /// </summary>
         public const int APPLICATION_INTERNAL_ERROR = 207;
 
-        private System.String segment = null;
-        private int segmentRep = -1;
-        private int fieldPosition = -1;
+        /// <summary>
+        /// Application record locked
+        /// </summary>
+        public const int APPLICATION_RECORD_LOCKED = 206;
+
+        /// <summary>
+        /// Date type error
+        /// </summary>
+        public const int DATA_TYPE_ERROR = 102;
+
+        /// <summary>
+        /// Duplicate key id
+        /// </summary>
+        public const int DUPLICATE_KEY_IDENTIFIER = 205;
+
+        /// <summary>
+        /// Message accepted
+        /// </summary>
+        public const int MESSAGE_ACCEPTED = 0;
+
+        /// <summary>
+        /// Required field missing
+        /// </summary>
+        public const int REQUIRED_FIELD_MISSING = 101;
+
+        /// <summary>
+        /// Segment sequence error
+        /// </summary>
+        public const int SEGMENT_SEQUENCE_ERROR = 100;
+
+        /// <summary>
+        /// Table value not found
+        /// </summary>
+        public const int TABLE_VALUE_NOT_FOUND = 103;
+
+        /// <summary>
+        /// Unknown key id
+        /// </summary>
+        public const int UNKNOWN_KEY_IDENTIFIER = 204;
+
+        /// <summary>
+        /// Unsupported event code
+        /// </summary>
+        public const int UNSUPPORTED_EVENT_CODE = 201;
+
+        /// <summary>
+        /// Unsupported message type
+        /// </summary>
+        public const int UNSUPPORTED_MESSAGE_TYPE = 200;
+
+        /// <summary>
+        /// Unsupported processing id
+        /// </summary>
+        public const int UNSUPPORTED_PROCESSING_ID = 202;
+
+        /// <summary>
+        /// Unsupported version id
+        /// </summary>
+        public const int UNSUPPORTED_VERSION_ID = 203;
+
+        #endregion
+
+        #region Static Fields
+
+        private static readonly IHapiLog ourLog;
+
+        #endregion
+
+        #region Fields
+
         private int errCode = -1;
+
+        private int fieldPosition = -1;
+
+        private System.String segment;
+
+        private int segmentRep = -1;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        static HL7Exception()
+        {
+            ourLog = HapiLogFactory.GetHapiLog(typeof(HL7Exception));
+        }
 
         /// <summary> Creates an HL7Exception.
         /// <param name="message">The error message</param>
@@ -244,23 +193,127 @@ namespace NHapi.Base
             this.errCode = HL7Exception.APPLICATION_INTERNAL_ERROR;
         }
 
+        #endregion
+
+        #region Public Properties
+
+        /// <summary> Returns the field number within the segment where the error occured if it has been 
+        /// set, -1 otherwise; numbering starts at 1.
+        /// </summary>
+        /// <summary> Sets the field number (within a segment) where the error occured; numbering 
+        /// starts at 1. 
+        /// </summary>
+        public virtual int FieldPosition
+        {
+            get
+            {
+                return this.fieldPosition;
+            }
+
+            set
+            {
+                this.fieldPosition = value;
+            }
+        }
+
+        /// <summary> Overrides Throwable.getMessage() to add the field location of the problem if 
+        /// available.
+        /// </summary>
+        public override System.String Message
+        {
+            get
+            {
+                System.Text.StringBuilder msg = new System.Text.StringBuilder();
+                msg.Append(base.Message);
+                if (this.SegmentName != null)
+                {
+                    msg.Append(": Segment: ");
+                    msg.Append(this.SegmentName);
+                }
+                if (this.SegmentRepetition != -1)
+                {
+                    msg.Append(" (rep ");
+                    msg.Append(this.SegmentRepetition);
+                    msg.Append(")");
+                }
+                if (this.FieldPosition != -1)
+                {
+                    msg.Append(" Field #");
+                    msg.Append(this.FieldPosition);
+                }
+                return msg.ToString();
+            }
+        }
+
+        /// <summary> Returns the name of the segment where the error occured, if this has been set
+        /// (null otherwise).
+        /// </summary>
+        /// <summary> Sets the name of the segment where the error occured. </summary>
+        public virtual System.String SegmentName
+        {
+            get
+            {
+                return this.segment;
+            }
+
+            set
+            {
+                this.segment = value;
+            }
+        }
+
+        /// <summary> Returns the sequence number of the segment where the error occured (if there 
+        /// are multiple segments with the same name) if this has been set, -1 otherwise - 
+        /// numbering starts at 1.
+        /// </summary>
+        /// <summary> Sets the sequence number of the segment where the error occured if there 
+        /// are multiplt segments with the same name (ie the sequenceNum'th segment 
+        /// with the name specified in <code>setSegmentName</code>).  Numbering 
+        /// starts at 1.
+        /// </summary>
+        public virtual int SegmentRepetition
+        {
+            get
+            {
+                return this.segmentRep;
+            }
+
+            set
+            {
+                this.segmentRep = value;
+            }
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
+
         /// <summary> Populates the given error segment with information from this Exception.</summary>
         public virtual void populate(ISegment errorSegment)
         {
             //make sure it's an ERR
             if (!errorSegment.GetStructureName().Equals("ERR"))
-                throw new HL7Exception("Can only populate an ERR segment with an exception -- got: " + errorSegment.GetType().FullName);
+            {
+                throw new HL7Exception(
+                    "Can only populate an ERR segment with an exception -- got: " + errorSegment.GetType().FullName);
+            }
 
             int rep = errorSegment.GetField(1).Length; //append after existing reps
 
             if (this.SegmentName != null)
+            {
                 Terser.Set(errorSegment, 1, rep, 1, 1, this.SegmentName);
+            }
 
             if (this.SegmentRepetition >= 0)
+            {
                 Terser.Set(errorSegment, 1, rep, 2, 1, System.Convert.ToString(this.SegmentRepetition));
+            }
 
             if (this.FieldPosition >= 0)
+            {
                 Terser.Set(errorSegment, 1, rep, 3, 1, System.Convert.ToString(this.FieldPosition));
+            }
 
             Terser.Set(errorSegment, 1, rep, 4, 1, System.Convert.ToString(this.errCode));
             Terser.Set(errorSegment, 1, rep, 4, 3, "hl70357");
@@ -274,12 +327,12 @@ namespace NHapi.Base
             }
             catch (LookupException e)
             {
-                ourLog.Debug("Warning: LookupException getting error condition text (are we connected to a TableRepository?)", e);
+                ourLog.Debug(
+                    "Warning: LookupException getting error condition text (are we connected to a TableRepository?)",
+                    e);
             }
         }
-        static HL7Exception()
-        {
-            ourLog = HapiLogFactory.GetHapiLog(typeof(HL7Exception));
-        }
+
+        #endregion
     }
 }

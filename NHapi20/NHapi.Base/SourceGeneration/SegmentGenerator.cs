@@ -23,13 +23,12 @@
 /// this file under either the MPL or the GPL.
 /// 
 /// </summary>
-using System;
-using NHapi.Base;
-using NHapi.Base.Log;
 
 namespace NHapi.Base.SourceGeneration
 {
+    using System;
 
+    using NHapi.Base.Log;
 
     /// <summary> This class is responsible for generating source code for HL7 segment objects.
     /// Each automatically generated segment inherits from AbstractSegment.
@@ -41,7 +40,80 @@ namespace NHapi.Base.SourceGeneration
     /// </author>
     public class SegmentGenerator : System.Object
     {
+        #region Static Fields
+
         private static readonly IHapiLog log;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        static SegmentGenerator()
+        {
+            log = HapiLogFactory.GetHapiLog(typeof(SegmentGenerator));
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
+
+        /// <summary>
+        /// Main class
+        /// </summary>
+        /// <param name="args"></param>
+        [STAThread]
+        public static void Main(System.String[] args)
+        {
+            if (args.Length != 1 && args.Length != 2)
+            {
+                System.Console.Out.WriteLine("Usage: SegmentGenerator target_dir [segment_name]");
+                System.Environment.Exit(1);
+            }
+            try
+            {
+                System.Type.GetType("sun.jdbc.odbc.JdbcOdbcDriver");
+                if (args.Length == 1)
+                {
+                    makeAll(args[0], "2.4");
+                }
+                else
+                {
+                    System.String source = makeSegment(args[1], "2.4");
+                    System.IO.StreamWriter w =
+                        new System.IO.StreamWriter(
+                            new System.IO.StreamWriter(
+                                args[0] + "/" + args[1] + ".java",
+                                false,
+                                System.Text.Encoding.Default).BaseStream,
+                            new System.IO.StreamWriter(
+                                args[0] + "/" + args[1] + ".java",
+                                false,
+                                System.Text.Encoding.Default).Encoding);
+                    w.Write(source);
+                    w.Flush();
+                    w.Close();
+                }
+            }
+            catch (System.Exception e)
+            {
+                SupportClass.WriteStackTrace(e, Console.Error);
+            }
+        }
+
+        /// <summary> <p>Returns an alternate segment name to replace the given segment name.  Substitutions
+        /// made include:  </p>
+        /// <ul><li>Replacing Z.. with Z</li>
+        /// <li>Replacing ??? with ???</li></ul>
+        /// </summary>
+        public static System.String altSegName(System.String segmentName)
+        {
+            System.String ret = segmentName;
+            if (ret.Equals("Z.."))
+            {
+                ret = "Z";
+            }
+            return ret;
+        }
 
         /// <summary> <p>Creates skeletal source code (without correct data structure but no business
         /// logic) for all segments found in the normative database.  </p>
@@ -53,23 +125,27 @@ namespace NHapi.Base.SourceGeneration
             {
                 baseDirectory = baseDirectory + "/";
             }
-            System.IO.FileInfo targetDir = SourceGenerator.makeDirectory(baseDirectory + PackageManager.GetVersionPackagePath(version) + "Segment");
+            System.IO.FileInfo targetDir =
+                SourceGenerator.makeDirectory(baseDirectory + PackageManager.GetVersionPackagePath(version) + "Segment");
 
             //get list of data types
             System.Data.OleDb.OleDbConnection conn = NormativeDatabase.Instance.Connection;
-            System.String sql = "SELECT seg_code, [section] from HL7Segments, HL7Versions where HL7Segments.version_id = HL7Versions.version_id AND hl7_version = '" + version + "'";
+            System.String sql =
+                "SELECT seg_code, [section] from HL7Segments, HL7Versions where HL7Segments.version_id = HL7Versions.version_id AND hl7_version = '"
+                + version + "'";
             System.Data.OleDb.OleDbCommand temp_OleDbCommand = new System.Data.OleDb.OleDbCommand();
             temp_OleDbCommand.Connection = conn;
             temp_OleDbCommand.CommandText = sql;
             System.Data.OleDb.OleDbDataReader rs = temp_OleDbCommand.ExecuteReader();
-
 
             System.Collections.ArrayList segments = new System.Collections.ArrayList();
             while (rs.Read())
             {
                 System.String segName = System.Convert.ToString(rs[1 - 1]);
                 if (System.Char.IsLetter(segName[0]))
+                {
                     segments.Add(altSegName(segName));
+                }
             }
             temp_OleDbCommand.Dispose();
             NormativeDatabase.Instance.returnConnection(conn);
@@ -85,7 +161,9 @@ namespace NHapi.Base.SourceGeneration
                 {
                     System.String seg = (System.String)segments[i];
                     System.String source = makeSegment(seg, version);
-                    using (System.IO.StreamWriter w = new System.IO.StreamWriter(targetDir.ToString() + @"\" + GetSpecialFilename(seg) + ".cs"))
+                    using (
+                        System.IO.StreamWriter w =
+                            new System.IO.StreamWriter(targetDir + @"\" + GetSpecialFilename(seg) + ".cs"))
                     {
                         w.Write(source);
                         w.Write("}");
@@ -97,32 +175,6 @@ namespace NHapi.Base.SourceGeneration
                     SupportClass.WriteStackTrace(e, Console.Error);
                 }
             }
-
-        }
-
-        /// <summary>
-        /// There are certain filenames that are reserved in windows.  CON is one of them.
-        /// </summary>
-        /// <param name="seg"></param>
-        /// <returns></returns>
-        private static string GetSpecialFilename(string seg)
-        {
-            if (seg.Equals("CON"))
-                return "CON1";
-            return seg;
-        }
-
-        /// <summary> <p>Returns an alternate segment name to replace the given segment name.  Substitutions
-        /// made include:  </p>
-        /// <ul><li>Replacing Z.. with Z</li>
-        /// <li>Replacing ??? with ???</li></ul>
-        /// </summary>
-        public static System.String altSegName(System.String segmentName)
-        {
-            System.String ret = segmentName;
-            if (ret.Equals("Z.."))
-                ret = "Z";
-            return ret;
         }
 
         /// <summary> Returns the Java source code for a class that represents the specified segment.</summary>
@@ -141,8 +193,10 @@ namespace NHapi.Base.SourceGeneration
                     sql.Append("SELECT HL7SegmentDataElements.seg_code, HL7SegmentDataElements.seq_no, ");
                     sql.Append("HL7SegmentDataElements.repetitional, HL7SegmentDataElements.repetitions, ");
                     sql.Append("HL7DataElements.description, HL7DataElements.length, HL7DataElements.table_id, ");
-                    sql.Append("HL7SegmentDataElements.req_opt, HL7Segments.description, HL7DataElements.data_structure ");
-                    sql.Append("FROM HL7Versions RIGHT JOIN (HL7Segments INNER JOIN (HL7DataElements INNER JOIN HL7SegmentDataElements ");
+                    sql.Append(
+                        "HL7SegmentDataElements.req_opt, HL7Segments.description, HL7DataElements.data_structure ");
+                    sql.Append(
+                        "FROM HL7Versions RIGHT JOIN (HL7Segments INNER JOIN (HL7DataElements INNER JOIN HL7SegmentDataElements ");
                     sql.Append("ON (HL7DataElements.version_id = HL7SegmentDataElements.version_id) ");
                     sql.Append("AND (HL7DataElements.data_item = HL7SegmentDataElements.data_item)) ");
                     sql.Append("ON (HL7Segments.version_id = HL7SegmentDataElements.version_id) ");
@@ -162,14 +216,20 @@ namespace NHapi.Base.SourceGeneration
                     while (rs.Read())
                     {
                         if (segDesc == null)
+                        {
                             segDesc = System.Convert.ToString(rs[9 - 1]);
+                        }
                         se = new SegmentElement();
                         se.field = Convert.ToInt32(rs.GetValue(2 - 1));
                         se.rep = System.Convert.ToString(rs[3 - 1]);
                         if (rs.IsDBNull(4 - 1))
+                        {
                             se.repetitions = 0;
+                        }
                         else
+                        {
                             se.repetitions = Convert.ToInt32(rs.GetValue(4 - 1));
+                        }
 
                         if (se.repetitions == 0)
                         {
@@ -180,13 +240,17 @@ namespace NHapi.Base.SourceGeneration
                         }
                         se.desc = System.Convert.ToString(rs[5 - 1]);
                         if (!rs.IsDBNull(6 - 1))
+                        {
                             se.length = Convert.ToInt32(rs.GetValue(6 - 1));
+                        }
                         se.table = Convert.ToInt32(rs.GetValue(7 - 1));
                         se.opt = System.Convert.ToString(rs[8 - 1]);
                         se.type = System.Convert.ToString(rs[10 - 1]);
                         //shorten CE_x to CE
                         if (se.type.StartsWith("CE"))
+                        {
                             se.type = "CE";
+                        }
 
                         elements.Add(se);
                         /*System.out.println("Segment: " + name + " Field: " + se.field + " Rep: " + se.rep +
@@ -232,7 +296,8 @@ namespace NHapi.Base.SourceGeneration
                 }
                 source.Append("///</ol>\r\n");
                 source.Append("/// The get...() methods return data from individual fields.  These methods \r\n");
-                source.Append("/// do not throw exceptions and may therefore have to handle exceptions internally.  \r\n");
+                source.Append(
+                    "/// do not throw exceptions and may therefore have to handle exceptions internally.  \r\n");
                 source.Append("/// If an exception is handled internally, it is logged and null is returned.  \r\n");
                 source.Append("/// This is not expected to happen - if it does happen this indicates not so much \r\n");
                 source.Append("/// an exceptional circumstance as a bug in the code for this class.\r\n");
@@ -316,13 +381,13 @@ namespace NHapi.Base.SourceGeneration
                         {
                             source.Append(", ");
 
-
                             source.Append("\"" + se.GetDescriptionWithoutSpecialCharacters() + "\"");
                         }
                         source.Append(");\r\n");
                     }
                     source.Append("    } catch (HL7Exception he) {\r\n");
-                    source.Append("        HapiLogFactory.GetHapiLog(GetType()).Error(\"Can't instantiate \" + GetType().Name, he);\r\n");
+                    source.Append(
+                        "        HapiLogFactory.GetHapiLog(GetType()).Error(\"Can't instantiate \" + GetType().Name, he);\r\n");
                     source.Append("    }\r\n");
                 }
                 source.Append("  }\r\n\r\n");
@@ -338,7 +403,9 @@ namespace NHapi.Base.SourceGeneration
                         source.Append("\t///<summary>\r\n");
                         source.Append("\t/// Returns ");
                         if (se.repetitions != 1)
+                        {
                             source.Append("a single repetition of ");
+                        }
                         source.Append(se.GetDescriptionWithoutSpecialCharacters());
                         source.Append("(");
                         source.Append(name);
@@ -348,7 +415,8 @@ namespace NHapi.Base.SourceGeneration
                         if (se.repetitions != 1)
                         {
                             source.Append("\t/// throws HL7Exception if the repetition number is invalid.\r\n");
-                            source.Append("\t/// <param name=\"rep\">The repetition number (this is a repeating field)</param>\r\n");
+                            source.Append(
+                                "\t/// <param name=\"rep\">The repetition number (this is a repeating field)</param>\r\n");
                         }
                         source.Append("\t///</summary>\r\n");
                         source.Append("\tpublic ");
@@ -356,10 +424,14 @@ namespace NHapi.Base.SourceGeneration
                         source.Append(" ");
                         source.Append(SourceGenerator.MakeAccessorName(se.desc, se.repetitions));
                         if (se.repetitions != 1)
+                        {
                             source.Append("(int rep)");
+                        }
                         source.Append("\n\t{\r\n");
                         if (se.repetitions == 1)
+                        {
                             source.Append("\t\tget{\r\n");
+                        }
                         source.Append("\t\t\t");
                         source.Append(type);
                         source.Append(" ret = null;\r\n");
@@ -382,18 +454,22 @@ namespace NHapi.Base.SourceGeneration
                         if (se.repetitions == 1)
                         {
                             source.Append("\t\t\t}\n\t\t\t catch (HL7Exception he) {\r\n");
-                            source.Append("\t\t\tHapiLogFactory.GetHapiLog(GetType()).Error(\"Unexpected problem obtaining field value.  This is a bug.\", he);\r\n");
-                            source.Append("\t\t\t\tthrow new System.Exception(\"An unexpected error ocurred\", he);\r\n");
+                            source.Append(
+                                "\t\t\tHapiLogFactory.GetHapiLog(GetType()).Error(\"Unexpected problem obtaining field value.  This is a bug.\", he);\r\n");
+                            source.Append(
+                                "\t\t\t\tthrow new System.Exception(\"An unexpected error ocurred\", he);\r\n");
                         }
                         source.Append("\t\t} catch (System.Exception ex) {\r\n");
-                        source.Append("\t\t\tHapiLogFactory.GetHapiLog(GetType()).Error(\"Unexpected problem obtaining field value.  This is a bug.\", ex);\r\n");
+                        source.Append(
+                            "\t\t\tHapiLogFactory.GetHapiLog(GetType()).Error(\"Unexpected problem obtaining field value.  This is a bug.\", ex);\r\n");
                         source.Append("\t\t\t\tthrow new System.Exception(\"An unexpected error ocurred\", ex);\r\n");
                         source.Append("    }\r\n");
                         source.Append("\t\t\treturn ret;\r\n");
                         if (se.repetitions == 1)
+                        {
                             source.Append("\t}\r\n"); //End get
+                        }
                         source.Append("  }\r\n\r\n");
-
 
                         //add an array accessor as well for repeating fields
                         if (se.repetitions != 1)
@@ -428,11 +504,15 @@ namespace NHapi.Base.SourceGeneration
                             source.Append(")t[i];\r\n");
                             source.Append("        }\r\n");
                             source.Append("    } catch (HL7Exception he) {\r\n");
-                            source.Append("        HapiLogFactory.GetHapiLog(this.GetType()).Error(\"Unexpected problem obtaining field value.  This is a bug.\", he);\r\n");
-                            source.Append("        throw new System.Exception(\"An unexpected error ocurred\", he);\r\n");
+                            source.Append(
+                                "        HapiLogFactory.GetHapiLog(this.GetType()).Error(\"Unexpected problem obtaining field value.  This is a bug.\", he);\r\n");
+                            source.Append(
+                                "        throw new System.Exception(\"An unexpected error ocurred\", he);\r\n");
                             source.Append("    } catch (System.Exception cce) {\r\n");
-                            source.Append("        HapiLogFactory.GetHapiLog(GetType()).Error(\"Unexpected problem obtaining field value.  This is a bug.\", cce);\r\n");
-                            source.Append("        throw new System.Exception(\"An unexpected error ocurred\", cce);\r\n");
+                            source.Append(
+                                "        HapiLogFactory.GetHapiLog(GetType()).Error(\"Unexpected problem obtaining field value.  This is a bug.\", cce);\r\n");
+                            source.Append(
+                                "        throw new System.Exception(\"An unexpected error ocurred\", cce);\r\n");
                             source.Append("  }\r\n");
                             source.Append(" return ret;\r\n");
                             source.Append("}\r\n\r\n");
@@ -456,11 +536,15 @@ namespace NHapi.Base.SourceGeneration
                             source.Append("\treturn GetTotalFieldRepetitionsUsed(" + se.field + ");\r\n");
                             source.Append("    }\r\n");
                             source.Append("catch (HL7Exception he) {\r\n");
-                            source.Append("        HapiLogFactory.GetHapiLog(this.GetType()).Error(\"Unexpected problem obtaining field value.  This is a bug.\", he);\r\n");
-                            source.Append("        throw new System.Exception(\"An unexpected error ocurred\", he);\r\n");
+                            source.Append(
+                                "        HapiLogFactory.GetHapiLog(this.GetType()).Error(\"Unexpected problem obtaining field value.  This is a bug.\", he);\r\n");
+                            source.Append(
+                                "        throw new System.Exception(\"An unexpected error ocurred\", he);\r\n");
                             source.Append("} catch (System.Exception cce) {\r\n");
-                            source.Append("        HapiLogFactory.GetHapiLog(GetType()).Error(\"Unexpected problem obtaining field value.  This is a bug.\", cce);\r\n");
-                            source.Append("        throw new System.Exception(\"An unexpected error ocurred\", cce);\r\n");
+                            source.Append(
+                                "        HapiLogFactory.GetHapiLog(GetType()).Error(\"Unexpected problem obtaining field value.  This is a bug.\", cce);\r\n");
+                            source.Append(
+                                "        throw new System.Exception(\"An unexpected error ocurred\", cce);\r\n");
                             source.Append("}\r\n");
                             source.Append("}\r\n");
                             source.Append("}\r\n");
@@ -481,42 +565,24 @@ namespace NHapi.Base.SourceGeneration
             return source.ToString();
         }
 
+        #endregion
+
+        #region Methods
+
         /// <summary>
-        /// Main class
+        /// There are certain filenames that are reserved in windows.  CON is one of them.
         /// </summary>
-        /// <param name="args"></param>
-        [STAThread]
-        public static void Main(System.String[] args)
+        /// <param name="seg"></param>
+        /// <returns></returns>
+        private static string GetSpecialFilename(string seg)
         {
-            if (args.Length != 1 && args.Length != 2)
+            if (seg.Equals("CON"))
             {
-                System.Console.Out.WriteLine("Usage: SegmentGenerator target_dir [segment_name]");
-                System.Environment.Exit(1);
+                return "CON1";
             }
-            try
-            {
-                System.Type.GetType("sun.jdbc.odbc.JdbcOdbcDriver");
-                if (args.Length == 1)
-                {
-                    makeAll(args[0], "2.4");
-                }
-                else
-                {
-                    System.String source = makeSegment(args[1], "2.4");
-                    System.IO.StreamWriter w = new System.IO.StreamWriter(new System.IO.StreamWriter(args[0] + "/" + args[1] + ".java", false, System.Text.Encoding.Default).BaseStream, new System.IO.StreamWriter(args[0] + "/" + args[1] + ".java", false, System.Text.Encoding.Default).Encoding);
-                    w.Write(source);
-                    w.Flush();
-                    w.Close();
-                }
-            }
-            catch (System.Exception e)
-            {
-                SupportClass.WriteStackTrace(e, Console.Error);
-            }
+            return seg;
         }
-        static SegmentGenerator()
-        {
-            log = HapiLogFactory.GetHapiLog(typeof(SegmentGenerator));
-        }
+
+        #endregion
     }
 }

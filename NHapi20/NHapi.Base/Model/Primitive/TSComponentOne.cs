@@ -22,11 +22,10 @@
 /// If you do not delete the provisions above, a recipient may use your version of
 /// this file under either the MPL or the GPL.
 /// </summary>
-using System;
-using NHapi.Base.Model;
 
 namespace NHapi.Base.Model.Primitive
 {
+    using System;
 
     /// <summary> Represents an HL7 timestamp, which is related to the HL7 TS type.  In version 2.5, 
     /// TS is a composite type.  The first component is type DTM, which corresponds to this class
@@ -44,31 +43,153 @@ namespace NHapi.Base.Model.Primitive
     /// </version>
     public class TSComponentOne : AbstractPrimitive
     {
-        private CommonTS Detail
+        #region Fields
+
+        private CommonTS myDetail;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        /// <param name="theMessage">message to which this Type belongs
+        /// </param>
+        public TSComponentOne(IMessage theMessage)
+            : base(theMessage)
+        {
+        }
+
+        public TSComponentOne(IMessage theMessage, string description)
+            : base(theMessage, description)
+        {
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary> Returns the day as an integer.</summary>
+        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
+        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
+        /// this method is called.  
+        /// </summary>
+        public virtual int Day
         {
             get
             {
-                if (myDetail == null)
-                {
-                    myDetail = new CommonTS(Value);
-                }
-                return myDetail;
+                return this.Detail.Day;
+            }
+        }
+
+        /// <summary> Returns the fractional second value as a float.</summary>
+        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
+        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
+        /// this method is called.  
+        /// </summary>
+        public virtual float FractSecond
+        {
+            get
+            {
+                return this.Detail.FractSecond;
+            }
+        }
+
+        /// <summary> Returns the GMT offset value as an integer.</summary>
+        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
+        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
+        /// this method is called.  
+        /// </summary>
+        public virtual int GMTOffset
+        {
+            get
+            {
+                return this.Detail.GMTOffset;
             }
 
+            /// <summary>Returns the name of the type (used in XML encoding and profile checking)  </summary>
+            //    public String getName() {
+            //        return "NM"; //seems to be called an NM in XML representation prior to 2.5  
+            //    }
         }
+
+        /// <summary> Returns the hour as an integer.</summary>
+        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
+        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
+        /// this method is called.  
+        /// </summary>
+        public virtual int Hour
+        {
+            get
+            {
+                return this.Detail.Hour;
+            }
+        }
+
+        /// <summary> Returns the minute as an integer.</summary>
+        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
+        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
+        /// this method is called.  
+        /// </summary>
+        public virtual int Minute
+        {
+            get
+            {
+                return this.Detail.Minute;
+            }
+        }
+
+        /// <summary> Returns the month as an integer.</summary>
+        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
+        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
+        /// this method is called.  
+        /// </summary>
+        public virtual int Month
+        {
+            get
+            {
+                return this.Detail.Month;
+            }
+        }
+
+        /// <seealso cref="CommonTS.setOffset(int)">
+        /// </seealso>
+        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
+        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
+        /// this method is called.  
+        /// </summary>
+        public virtual int Offset
+        {
+            set
+            {
+                this.Detail.Offset = value;
+            }
+        }
+
+        /// <summary> Returns the second as an integer.</summary>
+        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
+        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
+        /// this method is called.  
+        /// </summary>
+        public virtual int Second
+        {
+            get
+            {
+                return this.Detail.Second;
+            }
+        }
+
         /// <throws>  DataTypeException if the value is incorrectly formatted and either validation is  </throws>
         /// <summary>      enabled for this primitive or detail setters / getters have been called, forcing further
         /// parsing.   
         /// </summary>
-        override public System.String Value
+        public override System.String Value
         {
             get
             {
                 System.String result = base.Value;
 
-                if (myDetail != null)
+                if (this.myDetail != null)
                 {
-                    result = myDetail.Value;
+                    result = this.myDetail.Value;
                 }
 
                 return result;
@@ -78,184 +199,29 @@ namespace NHapi.Base.Model.Primitive
             {
                 base.Value = value;
 
-                if (myDetail != null)
+                if (this.myDetail != null)
                 {
-                    myDetail.Value = value;
+                    this.myDetail.Value = value;
                 }
             }
-
         }
-        /// <seealso cref="CommonTS.setOffset(int)">
-        /// </seealso>
-        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
-        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
-        /// this method is called.  
-        /// </summary>
-        virtual public int Offset
-        {
-            set
-            {
-                Detail.Offset = value;
-            }
 
-        }
         /// <summary> Returns the year as an integer.</summary>
         /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
         /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
         /// this method is called.  
         /// </summary>
-        virtual public int Year
+        public virtual int Year
         {
             get
             {
-                return Detail.Year;
+                return this.Detail.Year;
             }
-
-        }
-        /// <summary> Returns the month as an integer.</summary>
-        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
-        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
-        /// this method is called.  
-        /// </summary>
-        virtual public int Month
-        {
-            get
-            {
-                return Detail.Month;
-            }
-
-        }
-        /// <summary> Returns the day as an integer.</summary>
-        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
-        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
-        /// this method is called.  
-        /// </summary>
-        virtual public int Day
-        {
-            get
-            {
-                return Detail.Day;
-            }
-
-        }
-        /// <summary> Returns the hour as an integer.</summary>
-        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
-        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
-        /// this method is called.  
-        /// </summary>
-        virtual public int Hour
-        {
-            get
-            {
-                return Detail.Hour;
-            }
-
-        }
-        /// <summary> Returns the minute as an integer.</summary>
-        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
-        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
-        /// this method is called.  
-        /// </summary>
-        virtual public int Minute
-        {
-            get
-            {
-                return Detail.Minute;
-            }
-
-        }
-        /// <summary> Returns the second as an integer.</summary>
-        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
-        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
-        /// this method is called.  
-        /// </summary>
-        virtual public int Second
-        {
-            get
-            {
-                return Detail.Second;
-            }
-
-        }
-        /// <summary> Returns the fractional second value as a float.</summary>
-        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
-        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
-        /// this method is called.  
-        /// </summary>
-        virtual public float FractSecond
-        {
-            get
-            {
-                return Detail.FractSecond;
-            }
-
-        }
-        /// <summary> Returns the GMT offset value as an integer.</summary>
-        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
-        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
-        /// this method is called.  
-        /// </summary>
-        virtual public int GMTOffset
-        {
-            get
-            {
-                return Detail.GMTOffset;
-            }
-
-            /// <summary>Returns the name of the type (used in XML encoding and profile checking)  </summary>
-            //    public String getName() {
-            //        return "NM"; //seems to be called an NM in XML representation prior to 2.5  
-            //    }
-
         }
 
-        private CommonTS myDetail;
+        #endregion
 
-        /// <param name="theMessage">message to which this Type belongs
-        /// </param>
-        public TSComponentOne(IMessage theMessage)
-            : base(theMessage)
-        {
-        }
-
-
-        public TSComponentOne(IMessage theMessage, string description)
-            : base(theMessage, description)
-        {
-        }
-
-        /// <seealso cref="CommonTS.setDatePrecision(int, int, int)">
-        /// </seealso>
-        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
-        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
-        /// this method is called.  
-        /// </summary>
-        public virtual void setDatePrecision(int yr, int mnth, int dy)
-        {
-            Detail.setDatePrecision(yr, mnth, dy);
-        }
-
-        /// <seealso cref="CommonTS.setDateMinutePrecision(int, int, int, int, int)">
-        /// </seealso>
-        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
-        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
-        /// this method is called.  
-        /// </summary>
-        public virtual void setDateMinutePrecision(int yr, int mnth, int dy, int hr, int min)
-        {
-            Detail.setDateMinutePrecision(yr, mnth, dy, hr, min);
-        }
-
-        /// <seealso cref="CommonTS.setDateSecondPrecision(int, int, int, int, int, float)">
-        /// </seealso>
-        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
-        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
-        /// this method is called.  
-        /// </summary>
-        public virtual void setDateSecondPrecision(int yr, int mnth, int dy, int hr, int min, float sec)
-        {
-            Detail.setDateSecondPrecision(yr, mnth, dy, hr, min, sec);
-        }
+        #region Properties
 
         /// <summary>
         /// Used for setting the format of a long date (Year, Month, Day, Hour, Minute)
@@ -265,17 +231,6 @@ namespace NHapi.Base.Model.Primitive
             get
             {
                 return "yyyyMMddHHmm";
-            }
-        }
-
-        /// <summary>
-        /// Used for setting the format of a long date (Year, Month, Day, Hour, Minute, Second)
-        /// </summary>
-        protected virtual string LongDateTimeFormatWithSecond
-        {
-            get
-            {
-                return "yyyyMMddHHmmss";
             }
         }
 
@@ -291,6 +246,17 @@ namespace NHapi.Base.Model.Primitive
         }
 
         /// <summary>
+        /// Used for setting the format of a long date (Year, Month, Day, Hour, Minute, Second)
+        /// </summary>
+        protected virtual string LongDateTimeFormatWithSecond
+        {
+            get
+            {
+                return "yyyyMMddHHmmss";
+            }
+        }
+
+        /// <summary>
         /// Used for setting the format of a short date (Year, Month, Day)
         /// </summary>
         protected virtual string ShortDateTimeFormat
@@ -301,6 +267,22 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
+        private CommonTS Detail
+        {
+            get
+            {
+                if (this.myDetail == null)
+                {
+                    this.myDetail = new CommonTS(this.Value);
+                }
+                return this.myDetail;
+            }
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
+
         /// <summary>
         /// Get the value as a date.  Throws hl7Exception if error.
         /// </summary>
@@ -309,53 +291,27 @@ namespace NHapi.Base.Model.Primitive
         {
             try
             {
-                string[] dateFormats = new string[] { LongDateTimeFormat, ShortDateTimeFormat, LongDateTimeFormatWithSecond };
+                string[] dateFormats =
+                {
+                    this.LongDateTimeFormat, this.ShortDateTimeFormat,
+                    this.LongDateTimeFormatWithSecond
+                };
                 DateTime val = DateTime.MinValue;
                 System.Globalization.CultureInfo culture = System.Threading.Thread.CurrentThread.CurrentCulture;
-                if (Value != null && Value.Length > 0)
-                    val = DateTime.ParseExact(Value, dateFormats, culture, System.Globalization.DateTimeStyles.NoCurrentDateDefault);
+                if (this.Value != null && this.Value.Length > 0)
+                {
+                    val = DateTime.ParseExact(
+                        this.Value,
+                        dateFormats,
+                        culture,
+                        System.Globalization.DateTimeStyles.NoCurrentDateDefault);
+                }
                 return val;
             }
             catch (Exception)
             {
                 throw new HL7Exception("Could not get field as dateTime");
             }
-        }
-
-        /// <summary>
-        /// Set the value as a short date
-        /// </summary>
-        /// <param name="value"></param>
-        public virtual void SetShortDate(DateTime value)
-        {
-            Set(value, ShortDateTimeFormat);
-        }
-
-        /// <summary>
-        /// Set the value as a long date
-        /// </summary>
-        /// <param name="value"></param>
-        public virtual void SetLongDate(DateTime value)
-        {
-            Set(value, LongDateTimeFormat);
-        }
-
-        /// <summary>
-        /// Set the value as a lond date with second
-        /// </summary>
-        /// <param name="value"></param>
-        public virtual void SetLongDateWithSecond(DateTime value)
-        {
-            Set(value, LongDateTimeFormatWithSecond);
-        }
-
-        /// <summary>
-        /// Set the value as a lond date with fraction of second
-        /// </summary>
-        /// <param name="value"></param>
-        public virtual void SetLongDateWithFractionOfSecond(DateTime value)
-        {
-            Set(value, LongDateTimeFormatWithFactionOfSecond);
         }
 
         /// <summary>
@@ -367,12 +323,84 @@ namespace NHapi.Base.Model.Primitive
         {
             try
             {
-                Value = value.ToString(format);
+                this.Value = value.ToString(format);
             }
             catch (FormatException)
             {
-                throw new HL7Exception("Could not format the date " + value + " to a long date.  Format must be " + LongDateTimeFormat);
+                throw new HL7Exception(
+                    "Could not format the date " + value + " to a long date.  Format must be " + this.LongDateTimeFormat);
             }
         }
+
+        /// <summary>
+        /// Set the value as a long date
+        /// </summary>
+        /// <param name="value"></param>
+        public virtual void SetLongDate(DateTime value)
+        {
+            this.Set(value, this.LongDateTimeFormat);
+        }
+
+        /// <summary>
+        /// Set the value as a lond date with fraction of second
+        /// </summary>
+        /// <param name="value"></param>
+        public virtual void SetLongDateWithFractionOfSecond(DateTime value)
+        {
+            this.Set(value, this.LongDateTimeFormatWithFactionOfSecond);
+        }
+
+        /// <summary>
+        /// Set the value as a lond date with second
+        /// </summary>
+        /// <param name="value"></param>
+        public virtual void SetLongDateWithSecond(DateTime value)
+        {
+            this.Set(value, this.LongDateTimeFormatWithSecond);
+        }
+
+        /// <summary>
+        /// Set the value as a short date
+        /// </summary>
+        /// <param name="value"></param>
+        public virtual void SetShortDate(DateTime value)
+        {
+            this.Set(value, this.ShortDateTimeFormat);
+        }
+
+        /// <seealso cref="CommonTS.setDateMinutePrecision(int, int, int, int, int)">
+        /// </seealso>
+        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
+        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
+        /// this method is called.  
+        /// </summary>
+        public virtual void setDateMinutePrecision(int yr, int mnth, int dy, int hr, int min)
+        {
+            this.Detail.setDateMinutePrecision(yr, mnth, dy, hr, min);
+        }
+
+        /// <seealso cref="CommonTS.setDatePrecision(int, int, int)">
+        /// </seealso>
+        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
+        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
+        /// this method is called.  
+        /// </summary>
+        public virtual void setDatePrecision(int yr, int mnth, int dy)
+        {
+            this.Detail.setDatePrecision(yr, mnth, dy);
+        }
+
+        /// <seealso cref="CommonTS.setDateSecondPrecision(int, int, int, int, int, float)">
+        /// </seealso>
+        /// <throws>  DataTypeException if the value is incorrectly formatted.  If validation is enabled, this  </throws>
+        /// <summary>      exception should be thrown at setValue(), but if not, detailed parsing may be deferred until 
+        /// this method is called.  
+        /// </summary>
+        public virtual void setDateSecondPrecision(int yr, int mnth, int dy, int hr, int min, float sec)
+        {
+            this.Detail.setDateSecondPrecision(yr, mnth, dy, hr, min, sec);
+        }
+
+        #endregion
     }
 }

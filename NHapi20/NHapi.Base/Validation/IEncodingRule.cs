@@ -18,10 +18,9 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
+
 namespace NHapi.Base.validation
 {
-
     /// <summary> A validation rule that applies to encoded message strings.  Rules that 
     /// apply to message content are not included in this category (they are MessageRules
     /// and are evaluated against parsed Message object).  EncodingRules are intended 
@@ -32,6 +31,7 @@ namespace NHapi.Base.validation
     /// </author>
     public interface IEncodingRule : IRule
     {
+        #region Public Methods and Operators
 
         /// <summary> Tests the given encoded message text against the criteria 
         /// defined by this rule class.  
@@ -41,5 +41,7 @@ namespace NHapi.Base.validation
         /// not be a complete list as testing may be aborted after failure).  
         /// </returns>
         ValidationException[] test(System.String msg);
+
+        #endregion
     }
 }

@@ -19,11 +19,12 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using NHapi.Base.Log;
 
 namespace NHapi.Base
 {
+    using System;
+
+    using NHapi.Base.Log;
 
     /// <summary> Implements TableRepository by looking up values from the default HL7
     /// normative database.  Values are cached after they are looked up once.  
@@ -32,8 +33,44 @@ namespace NHapi.Base
     /// </author>
     public class DBTableRepository : TableRepository
     {
+        #region Static Fields
+
+        private static readonly IHapiLog log;
+
+        #endregion
+
+        #region Fields
+
+        private int bufferSize = 3000; //max # of tables or values that can be cached at a time
+
+        private int[] tableList;
+
+        private System.Collections.Hashtable tables;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        static DBTableRepository()
+        {
+            log = HapiLogFactory.GetHapiLog(typeof(DBTableRepository));
+        }
+
+        /// <summary>
+        /// Table repository
+        /// </summary>
+        protected internal DBTableRepository()
+        {
+            this.tableList = null;
+            this.tables = new System.Collections.Hashtable();
+        }
+
+        #endregion
+
+        #region Public Properties
+
         /// <summary> Returns a list of HL7 lookup tables that are defined in the normative database.  </summary>
-        override public int[] Tables
+        public override int[] Tables
         {
             get
             {
@@ -42,12 +79,13 @@ namespace NHapi.Base
                     try
                     {
                         System.Data.OleDb.OleDbConnection conn = NormativeDatabase.Instance.Connection;
-                        System.Data.OleDb.OleDbCommand stmt = SupportClass.TransactionManager.manager.CreateStatement(conn);
+                        System.Data.OleDb.OleDbCommand stmt =
+                            SupportClass.TransactionManager.manager.CreateStatement(conn);
                         System.Data.OleDb.OleDbCommand temp_OleDbCommand;
                         temp_OleDbCommand = stmt;
                         temp_OleDbCommand.CommandText = "select distinct table_id from TableValues";
                         System.Data.OleDb.OleDbDataReader rs = temp_OleDbCommand.ExecuteReader();
-                        int[] roomyList = new int[bufferSize];
+                        int[] roomyList = new int[this.bufferSize];
                         int c = 0;
                         while (rs.Read())
                         {
@@ -66,23 +104,11 @@ namespace NHapi.Base
                 }
                 return this.tableList;
             }
-
         }
 
-        private static readonly IHapiLog log;
+        #endregion
 
-        private int[] tableList;
-        private System.Collections.Hashtable tables;
-        private int bufferSize = 3000; //max # of tables or values that can be cached at a time
-
-        /// <summary>
-        /// Table repository
-        /// </summary>
-        protected internal DBTableRepository()
-        {
-            tableList = null;
-            tables = new System.Collections.Hashtable();
-        }
+        #region Public Methods and Operators
 
         /// <summary> Returns true if the given value exists in the given table.</summary>
         public override bool checkValue(int table, System.String value_Renamed)
@@ -95,16 +121,61 @@ namespace NHapi.Base
             while (c < values.Length && !exists)
             {
                 if (value_Renamed.Equals(values[c++]))
+                {
                     exists = true;
+                }
             }
 
             return exists;
         }
 
+        /// <summary> Returns the description matching the table and value given.  As currently implemented
+        /// this method performs a database call each time - caching should probably be added,
+        /// although this method will probably not be used very often.   
+        /// </summary>
+        public override System.String getDescription(int table, System.String value_Renamed)
+        {
+            System.String description = null;
+
+            System.Text.StringBuilder sql =
+                new System.Text.StringBuilder("select Description from TableValues where table_id = ");
+            sql.Append(table);
+            sql.Append(" and table_value = '");
+            sql.Append(value_Renamed);
+            sql.Append("'");
+
+            try
+            {
+                System.Data.OleDb.OleDbConnection conn = NormativeDatabase.Instance.Connection;
+                System.Data.OleDb.OleDbCommand stmt = SupportClass.TransactionManager.manager.CreateStatement(conn);
+                System.Data.OleDb.OleDbCommand temp_OleDbCommand;
+                temp_OleDbCommand = stmt;
+                temp_OleDbCommand.CommandText = sql.ToString();
+                System.Data.OleDb.OleDbDataReader rs = temp_OleDbCommand.ExecuteReader();
+                if (rs.Read())
+                {
+                    description = System.Convert.ToString(rs[1 - 1]);
+                }
+                else
+                {
+                    throw new UnknownValueException(
+                        "The value " + value_Renamed + " could not be found in the table " + table + " - SQL: " + sql);
+                }
+                stmt.Dispose();
+                NormativeDatabase.Instance.returnConnection(conn);
+            }
+            catch (System.Data.OleDb.OleDbException e)
+            {
+                throw new LookupException("Can't find value " + value_Renamed + " in table " + table, e);
+            }
+
+            return description;
+        }
+
         /// <summary> Returns a list of the values for the given table in the normative database. </summary>
         public override System.String[] getValues(int table)
         {
-            System.Int32 key = (System.Int32)table;
+            System.Int32 key = table;
             System.String[] values = null;
 
             //see if the value list exists in the cache
@@ -118,13 +189,14 @@ namespace NHapi.Base
             {
                 //not cached yet ...
                 int c;
-                System.String[] roomyValues = new System.String[bufferSize];
+                System.String[] roomyValues = new System.String[this.bufferSize];
 
                 try
                 {
                     System.Data.OleDb.OleDbConnection conn = NormativeDatabase.Instance.Connection;
                     System.Data.OleDb.OleDbCommand stmt = SupportClass.TransactionManager.manager.CreateStatement(conn);
-                    System.Text.StringBuilder sql = new System.Text.StringBuilder("select table_value from TableValues where table_id = ");
+                    System.Text.StringBuilder sql =
+                        new System.Text.StringBuilder("select table_value from TableValues where table_id = ");
                     sql.Append(table);
                     System.Data.OleDb.OleDbCommand temp_OleDbCommand;
                     temp_OleDbCommand = stmt;
@@ -146,62 +218,19 @@ namespace NHapi.Base
                 }
 
                 if (c == 0)
+                {
                     throw new UndefinedTableException("No values found for table " + table);
+                }
 
                 values = new System.String[c];
                 Array.Copy(roomyValues, 0, values, 0, c);
 
-                tables[key] = values;
+                this.tables[key] = values;
             }
 
             return values;
         }
 
-        /// <summary> Returns the description matching the table and value given.  As currently implemented
-        /// this method performs a database call each time - caching should probably be added,
-        /// although this method will probably not be used very often.   
-        /// </summary>
-        public override System.String getDescription(int table, System.String value_Renamed)
-        {
-            System.String description = null;
-
-            System.Text.StringBuilder sql = new System.Text.StringBuilder("select Description from TableValues where table_id = ");
-            sql.Append(table);
-            sql.Append(" and table_value = '");
-            sql.Append(value_Renamed);
-            sql.Append("'");
-
-            try
-            {
-                System.Data.OleDb.OleDbConnection conn = NormativeDatabase.Instance.Connection;
-                System.Data.OleDb.OleDbCommand stmt = SupportClass.TransactionManager.manager.CreateStatement(conn);
-                System.Data.OleDb.OleDbCommand temp_OleDbCommand;
-                temp_OleDbCommand = stmt;
-                temp_OleDbCommand.CommandText = sql.ToString();
-                System.Data.OleDb.OleDbDataReader rs = temp_OleDbCommand.ExecuteReader();
-                if (rs.Read())
-                {
-                    description = System.Convert.ToString(rs[1 - 1]);
-                }
-                else
-                {
-                    throw new UnknownValueException("The value " + value_Renamed + " could not be found in the table " + table + " - SQL: " + sql.ToString());
-                }
-                stmt.Dispose();
-                NormativeDatabase.Instance.returnConnection(conn);
-            }
-            catch (System.Data.OleDb.OleDbException e)
-            {
-                throw new LookupException("Can't find value " + value_Renamed + " in table " + table, e);
-            }
-
-            return description;
-        }
-
-
-        static DBTableRepository()
-        {
-            log = HapiLogFactory.GetHapiLog(typeof(DBTableRepository));
-        }
+        #endregion
     }
 }

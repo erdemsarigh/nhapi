@@ -23,11 +23,9 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </author>
-using System;
-using HL7Exception = NHapi.Base.HL7Exception;
+
 namespace NHapi.Base.Model
 {
-
     /// <summary> An abstraction representing >1 message parts which may repeated together.
     /// An implementation of Group should enforce contraints about on the contents of the group
     /// and throw an exception if an attempt is made to add a Structure that the Group instance
@@ -37,15 +35,17 @@ namespace NHapi.Base.Model
     /// </author>
     public interface IGroup : IStructure
     {
+        #region Public Properties
+
         /// <summary> Returns an ordered array of the names of the Structures in this 
         /// Group.  These names can be used to iterate through the group using 
         /// repeated calls to <code>get(name)</code>. 
         /// </summary>
-        System.String[] Names
-        {
-            get;
+        System.String[] Names { get; }
 
-        }
+        #endregion
+
+        #region Public Methods and Operators
 
         /// <summary> Returns an array of Structure objects by name.  For example, if the Group contains
         /// an MSH segment and "MSH" is supplied then this call would return a 1-element array 
@@ -55,6 +55,9 @@ namespace NHapi.Base.Model
         /// </summary>
         /// <throws>  HL7Exception if the named Structure is not part of this Group.  </throws>
         IStructure[] GetAll(System.String name);
+
+        /// <summary> Returns the Class of the Structure at the given name index.  </summary>
+        System.Type GetClass(System.String name);
 
         /// <summary> Returns the named structure.  If this Structure is repeating then the first 
         /// repetition is returned.  Creates the Structure if necessary.  
@@ -73,14 +76,11 @@ namespace NHapi.Base.Model
         /// </summary>
         IStructure GetStructure(System.String name, int rep);
 
-        /// <summary> Returns true if the named structure is required. </summary>
-        bool IsRequired(System.String name);
-
         /// <summary> Returns true if the named structure is repeating. </summary>
         bool IsRepeating(System.String name);
 
-        /// <summary> Returns the Class of the Structure at the given name index.  </summary>
-        System.Type GetClass(System.String name);
+        /// <summary> Returns true if the named structure is required. </summary>
+        bool IsRequired(System.String name);
 
         /// <summary> Expands the group by introducing a new child Structure (i.e. 
         /// a new Segment or Group).  This method is used to support handling 
@@ -100,7 +100,6 @@ namespace NHapi.Base.Model
         /// name already used)
         /// </returns>
         //public String insert(Class c, boolean required, boolean repeating, int index, String name) throws HL7Exception;
-
         /// <summary> Expands the group definition to include a segment that is not 
         /// defined by HL7 to be part of this group (eg an unregistered Z segment). 
         /// The new segment is slotted at the end of the group.  Thenceforward if 
@@ -109,6 +108,8 @@ namespace NHapi.Base.Model
         /// segment is defined as repeating and not required.  
         /// </summary>
         System.String addNonstandardSegment(System.String name);
+
+        #endregion
     }
 
     // sample code ... 

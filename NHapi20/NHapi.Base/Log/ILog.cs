@@ -1,36 +1,56 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace NHapi.Base.Log
 {
+    using System;
+
     /// <summary>
     /// 
     /// </summary>
     /// <remarks>Added for conversion will need to replace.</remarks>
     public interface ILog
     {
-        bool DebugEnabled { get;}
-        bool ErrorEnabled { get;}
-        bool FatalEnabled { get;}
-        bool InfoEnabled { get;}
-        bool TraceEnabled { get;}
-        bool WarnEnabled { get;}
+        #region Public Properties
 
+        bool DebugEnabled { get; }
+
+        bool ErrorEnabled { get; }
+
+        bool FatalEnabled { get; }
+
+        bool InfoEnabled { get; }
+
+        bool TraceEnabled { get; }
+
+        bool WarnEnabled { get; }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         void Debug(System.Object message);
+
         void Debug(System.Object message, System.Exception t);
+
         void Error(System.Object message);
+
         void Error(System.Object message, System.Exception t);
+
         void Fatal(System.Object message);
+
         void Fatal(System.Object message, System.Exception t);
+
         void Info(System.Object message);
+
         void Info(System.Object message, System.Exception t);
+
         void Trace(System.Object message);
+
         void Trace(System.Object message, System.Exception t);
+
         void Warn(System.Object message);
+
         void Warn(System.Object message, System.Exception t);
 
+        #endregion
     }
 
     /// <summary>
@@ -38,13 +58,17 @@ namespace NHapi.Base.Log
     /// </summary>
     public sealed class DummyLogger : ILog
     {
-        #region Log Members
+        #region Public Properties
+
         /// <summary>
         /// Is debug enabled
         /// </summary>
         public bool DebugEnabled
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -52,7 +76,10 @@ namespace NHapi.Base.Log
         /// </summary>
         public bool ErrorEnabled
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -60,7 +87,10 @@ namespace NHapi.Base.Log
         /// </summary>
         public bool FatalEnabled
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -68,7 +98,10 @@ namespace NHapi.Base.Log
         /// </summary>
         public bool InfoEnabled
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -76,7 +109,10 @@ namespace NHapi.Base.Log
         /// </summary>
         public bool TraceEnabled
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -84,8 +120,15 @@ namespace NHapi.Base.Log
         /// </summary>
         public bool WarnEnabled
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         /// <summary>
         /// Write debug message

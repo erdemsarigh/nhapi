@@ -1,75 +1,80 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using Microsoft.Test.CommandLineParsing;
-using NHapi.Base.SourceGeneration;
-
-namespace ModelGenerator
+﻿namespace ModelGenerator
 {
+    using System;
+    using System.Configuration;
+
+    using Microsoft.Test.CommandLineParsing;
+
+    using NHapi.Base.SourceGeneration;
+
     public class ModelBuilder : Command
     {
+        #region Constructors and Destructors
+
+        public ModelBuilder()
+        {
+            this.BasePath = @"D:\projects\nhapi\SourceForge\nhapi20";
+            this.ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
+            this.MessageTypeToBuild = MessageType.All;
+        }
+
+        #endregion
+
+        #region Enums
+
         public enum MessageType
         {
             All,
+
             Message,
+
             Segment,
+
             DataType,
+
             EventMapping
         }
-        public ModelBuilder()
-        {
-            BasePath = @"D:\projects\nhapi\SourceForge\nhapi20";
-            ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
-            MessageTypeToBuild = MessageType.All;
-        }
-        
-        public string BasePath
-        {
-            get; set;
-        }
 
-        public string Version
-        {
-            get; set;
-        }
+        #endregion
 
-        public string ConnectionString
-        {
-            get; set;
-        }
+        #region Public Properties
 
-        public MessageType MessageTypeToBuild
-        {
-            get; set;
-        }
+        public string BasePath { get; set; }
+
+        public string ConnectionString { get; set; }
+
+        public MessageType MessageTypeToBuild { get; set; }
+
+        public string Version { get; set; }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         public override void Execute()
         {
-            NHapi.Base.NormativeDatabase.Instance.OpenNewConnection(ConnectionString);
-
-
+            NHapi.Base.NormativeDatabase.Instance.OpenNewConnection(this.ConnectionString);
 
             Console.WriteLine("Using Database:{0}", NHapi.Base.NormativeDatabase.Instance.Connection.ConnectionString);
-            Console.WriteLine("Base Path:{0}", BasePath);
-            
+            Console.WriteLine("Base Path:{0}", this.BasePath);
 
-            switch (MessageTypeToBuild)
+            switch (this.MessageTypeToBuild)
             {
                 case MessageType.All:
-                    SourceGenerator.makeAll(BasePath, Version);
+                    SourceGenerator.makeAll(this.BasePath, this.Version);
                     break;
                 case MessageType.EventMapping:
-                    SourceGenerator.MakeEventMapping(BasePath, Version);
+                    SourceGenerator.MakeEventMapping(this.BasePath, this.Version);
                     break;
                 case MessageType.Segment:
-                    SegmentGenerator.makeAll(BasePath, Version);
+                    SegmentGenerator.makeAll(this.BasePath, this.Version);
                     break;
                 case MessageType.Message:
-                    MessageGenerator.makeAll(BasePath, Version);
+                    MessageGenerator.makeAll(this.BasePath, this.Version);
                     break;
             }
         }
+
+        #endregion
     }
 }

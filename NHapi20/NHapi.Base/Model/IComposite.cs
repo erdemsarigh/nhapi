@@ -18,10 +18,9 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
+
 namespace NHapi.Base.Model
 {
-
     /// <summary> <p>Represents the category of HL7 data types that contain more than one component (e.g. CE).
     /// Implementing classes (i.e. composite data types) should initialize their components
     /// either when they are initialized or when they are first accessed.  Only leaf values
@@ -31,16 +30,17 @@ namespace NHapi.Base.Model
     /// </author>
     public interface IComposite : IType
     {
+        #region Public Properties
+
         /// <summary> Returns an array containing the components of this field.</summary>
-        IType[] Components
-        {
-            get;
+        IType[] Components { get; }
 
-        }
+        #endregion
 
-        IType this[int index]
-        {
-            get;
-        }
+        #region Public Indexers
+
+        IType this[int index] { get; }
+
+        #endregion
     }
 }

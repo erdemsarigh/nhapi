@@ -20,14 +20,12 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using NHapi.Base;
-using NHapi.Base.Model;
-using NHapi.Base.Util;
-using NHapi.Base.Log;
 
 namespace NHapi.Base.validation
 {
+    using NHapi.Base.Log;
+    using NHapi.Base.Model;
+    using NHapi.Base.Util;
 
     /// <summary> Validation utilities for parsed and encoded messages.  
     /// 
@@ -36,10 +34,26 @@ namespace NHapi.Base.validation
     /// </author>
     public class MessageValidator
     {
+        #region Static Fields
+
         private static readonly IHapiLog ourLog;
 
-        private IValidationContext myContext;
+        #endregion
+
+        #region Fields
+
         private bool failOnError;
+
+        private IValidationContext myContext;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        static MessageValidator()
+        {
+            ourLog = HapiLogFactory.GetHapiLog(typeof(MessageValidator));
+        }
 
         /// <param name="theContext">context that determines which validation rules apply 
         /// </param>
@@ -47,9 +61,13 @@ namespace NHapi.Base.validation
         /// </param>
         public MessageValidator(IValidationContext theContext, bool theFailOnErrorFlag)
         {
-            myContext = theContext;
-            failOnError = theFailOnErrorFlag;
+            this.myContext = theContext;
+            this.failOnError = theFailOnErrorFlag;
         }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         /// <param name="message">a parsed message to validate (note that MSH-9-1 and MSH-9-2 must be valued)
         /// </param>
@@ -59,7 +77,7 @@ namespace NHapi.Base.validation
         public virtual bool validate(IMessage message)
         {
             Terser t = new Terser(message);
-            IMessageRule[] rules = myContext.getMessageRules(message.Version, t.Get("MSH-9-1"), t.Get("MSH-9-2"));
+            IMessageRule[] rules = this.myContext.getMessageRules(message.Version, t.Get("MSH-9-1"), t.Get("MSH-9-2"));
 
             ValidationException toThrow = null;
             bool result = true;
@@ -70,7 +88,7 @@ namespace NHapi.Base.validation
                 {
                     result = false;
                     ourLog.Error("Invalid message", ex[j]);
-                    if (failOnError && toThrow == null)
+                    if (this.failOnError && toThrow == null)
                     {
                         toThrow = ex[j];
                     }
@@ -96,7 +114,7 @@ namespace NHapi.Base.validation
         /// <throws>  HL7Exception if there is at least one error and this validator is set to fail on errors </throws>
         public virtual bool validate(System.String message, bool isXML, System.String version)
         {
-            IEncodingRule[] rules = myContext.getEncodingRules(version, isXML ? "XML" : "ER7");
+            IEncodingRule[] rules = this.myContext.getEncodingRules(version, isXML ? "XML" : "ER7");
             ValidationException toThrow = null;
             bool result = true;
             for (int i = 0; i < rules.Length; i++)
@@ -106,7 +124,7 @@ namespace NHapi.Base.validation
                 {
                     result = false;
                     ourLog.Error("Invalid message", ex[j]);
-                    if (failOnError && toThrow == null)
+                    if (this.failOnError && toThrow == null)
                     {
                         toThrow = ex[j];
                     }
@@ -120,9 +138,7 @@ namespace NHapi.Base.validation
 
             return result;
         }
-        static MessageValidator()
-        {
-            ourLog = HapiLogFactory.GetHapiLog(typeof(MessageValidator));
-        }
+
+        #endregion
     }
 }

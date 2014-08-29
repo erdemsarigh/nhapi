@@ -1,20 +1,27 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using NHapi.Base.Model;
-
 namespace NHapi.Base.Model
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Abstract group item
     /// </summary>
     public class AbstractGroupItem
     {
-        private string _name;
-        private List<IStructure> _structures = new List<IStructure>();
-        private bool _isRequired = false;
-        private bool _isRepeating = false;
+        #region Fields
+
         private System.Type _class;
+
+        private bool _isRepeating;
+
+        private bool _isRequired;
+
+        private string _name;
+
+        private List<IStructure> _structures = new List<IStructure>();
+
+        #endregion
+
+        #region Constructors and Destructors
 
         /// <summary>
         /// Constructor
@@ -25,26 +32,25 @@ namespace NHapi.Base.Model
         /// <param name="classType"></param>
         public AbstractGroupItem(string name, bool required, bool repeating, System.Type classType)
         {
-            _name = name;
-            _isRequired = required;
-            _isRepeating = repeating;
-            _class = classType;
+            this._name = name;
+            this._isRequired = required;
+            this._isRepeating = repeating;
+            this._class = classType;
         }
 
-        /// <summary>
-        /// Name of the item
-        /// </summary>
-        public string Name
-        {
-            get { return _name; }
-        }
+        #endregion
+
+        #region Public Properties
 
         /// <summary>
         /// The type of class
         /// </summary>
         public System.Type ClassType
         {
-            get { return _class; }
+            get
+            {
+                return this._class;
+            }
         }
 
         /// <summary>
@@ -52,7 +58,10 @@ namespace NHapi.Base.Model
         /// </summary>
         public bool IsRepeating
         {
-            get { return _isRepeating; }
+            get
+            {
+                return this._isRepeating;
+            }
         }
 
         /// <summary>
@@ -60,7 +69,21 @@ namespace NHapi.Base.Model
         /// </summary>
         public bool IsRequired
         {
-            get { return _isRequired; }
+            get
+            {
+                return this._isRequired;
+            }
+        }
+
+        /// <summary>
+        /// Name of the item
+        /// </summary>
+        public string Name
+        {
+            get
+            {
+                return this._name;
+            }
         }
 
         /// <summary>
@@ -70,9 +93,13 @@ namespace NHapi.Base.Model
         {
             get
             {
-                return _structures;
+                return this._structures;
             }
         }
+
+        #endregion
+
+        #region Public Indexers
 
         /// <summary>
         /// Structure indexer
@@ -83,16 +110,20 @@ namespace NHapi.Base.Model
         {
             get
             {
-                return _structures[index];
+                return this._structures[index];
             }
             set
             {
-                if (index > 0 && !_isRepeating)
-                    throw new HL7Exception("Cannot add multiple strucutres to " + _name + ".  Item is non-repeating");
+                if (index > 0 && !this._isRepeating)
+                {
+                    throw new HL7Exception(
+                        "Cannot add multiple strucutres to " + this._name + ".  Item is non-repeating");
+                }
 
-                _structures[index] = value;
-
+                this._structures[index] = value;
             }
         }
+
+        #endregion
     }
 }

@@ -1,11 +1,12 @@
-using System;
-using System.Configuration;
-using System.Collections.Generic;
-using System.Text;
 namespace NHapi.Base.Model.Configuration
 {
+    using System;
+    using System.Configuration;
+
     public class HL7PackageConfigurationSection : ConfigurationSection
     {
+        #region Public Properties
+
         [ConfigurationProperty("", IsDefaultCollection = true)]
         public HL7PackageCollection Packages
         {
@@ -14,14 +15,25 @@ namespace NHapi.Base.Model.Configuration
                 return (HL7PackageCollection)this[""];
             }
         }
+
+        #endregion
     }
 
     public class HL7PackageCollection : ConfigurationElementCollection
     {
-        protected override ConfigurationElement CreateNewElement()
+        #region Public Properties
+
+        public override ConfigurationElementCollectionType CollectionType
         {
-            return new HL7PackageElement();
+            get
+            {
+                return ConfigurationElementCollectionType.BasicMap;
+            }
         }
+
+        #endregion
+
+        #region Properties
 
         protected override string ElementName
         {
@@ -30,31 +42,35 @@ namespace NHapi.Base.Model.Configuration
                 return "HL7Package";
             }
         }
-        public override ConfigurationElementCollectionType CollectionType
+
+        #endregion
+
+        #region Methods
+
+        protected override ConfigurationElement CreateNewElement()
         {
-            get
-            {
-                return ConfigurationElementCollectionType.BasicMap;
-            }
+            return new HL7PackageElement();
         }
-        
 
         protected override object GetElementKey(ConfigurationElement element)
         {
             if ((element) is HL7PackageElement)
             {
-                HL7PackageElement el =
-                    (HL7PackageElement)element;
+                HL7PackageElement el = (HL7PackageElement)element;
 
                 return el.Name;
             }
 
             throw new ArgumentException("The specified element is not of the correct type.");
         }
+
+        #endregion
     }
 
     public class HL7PackageElement : ConfigurationElement
     {
+        #region Public Properties
+
         [ConfigurationProperty("name", IsKey = true, IsRequired = true)]
         public string Name
         {
@@ -80,8 +96,7 @@ namespace NHapi.Base.Model.Configuration
                 this["version"] = value;
             }
         }
-    }	
 
-
-
+        #endregion
+    }
 }

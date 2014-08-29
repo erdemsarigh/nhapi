@@ -3,10 +3,9 @@
 * 
 * Created on May 7, 2003 at 3:53:44 PM
 */
-using System;
+
 namespace NHapi.Base.Log
 {
-
     /// <summary> A logging interface that enhances the <code> Log </code>
     /// interface with ancillary method to easy up the log messages generation
     /// by adding MessageFormat like functionality.
@@ -58,6 +57,7 @@ namespace NHapi.Base.Log
     /// TODO: HapiLog inherited from base Log interface using Log = org.apache.commons.logging.Log;
     public interface IHapiLog : ILog
     {
+        #region Public Methods and Operators
 
         /// <summary>
         /// debug method
@@ -66,5 +66,7 @@ namespace NHapi.Base.Log
         /// <param name="values"></param>
         /// <param name="e"></param>
         void Debug(System.String msgPattern, System.Object[] values, System.Exception e);
+
+        #endregion
     }
 }

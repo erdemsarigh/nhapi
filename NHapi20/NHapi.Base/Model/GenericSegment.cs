@@ -1,7 +1,5 @@
-using System;
 namespace NHapi.Base.Model
 {
-
     /// <summary> An unspecified segment that has an undefined number of fields, each 
     /// of which is a Varies.  The primary intended use is to store data from 
     /// Z segments.  More precisely, any unknown segment that is encountered during
@@ -14,8 +12,13 @@ namespace NHapi.Base.Model
     /// </author>
     public class GenericSegment : AbstractSegment
     {
+        #region Fields
 
         private System.String name;
+
+        #endregion
+
+        #region Constructors and Destructors
 
         /// <summary>Creates a new instance of GenericSegment </summary>
         public GenericSegment(IGroup parent, System.String name)
@@ -24,6 +27,10 @@ namespace NHapi.Base.Model
             this.name = name;
         }
 
+        #endregion
+
+        #region Public Methods and Operators
+
         /// <summary> Returns the name specified at construction time. </summary>
         /// <seealso cref="Structure.getName()">
         /// </seealso>
@@ -31,5 +38,7 @@ namespace NHapi.Base.Model
         {
             return this.name;
         }
+
+        #endregion
     }
 }

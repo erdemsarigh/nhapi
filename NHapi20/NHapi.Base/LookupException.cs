@@ -18,9 +18,10 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
+
 namespace NHapi.Base
 {
+    using System;
 
     /// <summary> Represents a technical problem accessing table values in the normative database.  This  
     /// exception is thrown when the database values can not be accessed, and is distinct from 
@@ -33,6 +34,7 @@ namespace NHapi.Base
     [Serializable]
     public class LookupException : System.Exception
     {
+        #region Constructors and Destructors
 
         /// <summary> Constructs an <code>LookupException</code> with the specified detail message.
         /// 
@@ -55,5 +57,7 @@ namespace NHapi.Base
             : base(message, cause)
         {
         }
+
+        #endregion
     }
 }

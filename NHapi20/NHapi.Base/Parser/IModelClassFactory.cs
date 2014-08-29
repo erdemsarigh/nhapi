@@ -1,11 +1,9 @@
 /*
 * Created on 21-Apr-2005
 */
-using System;
-using HL7Exception = NHapi.Base.HL7Exception;
+
 namespace NHapi.Base.Parser
 {
-
     /// <summary> Looks up classes for message model components (e.g. concrete implementations of 
     /// Message, Group, Segment).  A custom factory can be used to point to custom model 
     /// components. 
@@ -17,6 +15,16 @@ namespace NHapi.Base.Parser
     /// </version>
     public interface IModelClassFactory
     {
+        #region Public Methods and Operators
+
+        /// <param name="theName">name of group 
+        /// </param>
+        /// <param name="theVersion">HL7 version 
+        /// </param>
+        /// <returns> a class that implements the specified group
+        /// </returns>
+        /// <throws>  HL7Exception if the version if not recognized or an appropriate class can not be found </throws>
+        System.Type GetGroupClass(System.String theName, System.String theVersion);
 
         /// <param name="theName">name of message 
         /// </param>
@@ -30,15 +38,6 @@ namespace NHapi.Base.Parser
         /// </returns>
         /// <throws>  HL7Exception if the version if not recognized or an appropriate class can not be found </throws>
         System.Type GetMessageClass(System.String theName, System.String theVersion, bool isExplicit);
-
-        /// <param name="theName">name of group 
-        /// </param>
-        /// <param name="theVersion">HL7 version 
-        /// </param>
-        /// <returns> a class that implements the specified group
-        /// </returns>
-        /// <throws>  HL7Exception if the version if not recognized or an appropriate class can not be found </throws>
-        System.Type GetGroupClass(System.String theName, System.String theVersion);
 
         /// <param name="theName">name of segment 
         /// </param>
@@ -57,5 +56,7 @@ namespace NHapi.Base.Parser
         /// </returns>
         /// <throws>  HL7Exception if the version if not recognized or an appropriate class can not be found </throws>
         System.Type GetTypeClass(System.String theName, System.String theVersion);
+
+        #endregion
     }
 }

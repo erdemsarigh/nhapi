@@ -18,11 +18,9 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using NHapi.Base.validation;
+
 namespace NHapi.Base.validation.impl
 {
-
     /// <summary> Performs no validation but removes leading whitespace in the correct() method.
     /// 
     /// </summary>
@@ -32,29 +30,33 @@ namespace NHapi.Base.validation.impl
     /// </version>
     public class TrimLeadingWhitespace : IPrimitiveTypeRule
     {
+        #region Public Properties
+
         /// <summary>
         /// Description of the rule
         /// </summary>
-        virtual public System.String Description
+        public virtual System.String Description
         {
             get
             {
                 return "Leading whitespace removed";
             }
-
         }
 
         /// <summary>
         /// Section reference
         /// </summary>
-        virtual public System.String SectionReference
+        public virtual System.String SectionReference
         {
             get
             {
                 return null;
             }
-
         }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         /// <summary> Removes leading whitespace.</summary>
         public virtual System.String correct(System.String value_Renamed)
@@ -79,5 +81,7 @@ namespace NHapi.Base.validation.impl
         {
             return true;
         }
+
+        #endregion
     }
 }

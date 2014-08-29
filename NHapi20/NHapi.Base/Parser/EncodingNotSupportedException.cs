@@ -18,10 +18,10 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using HL7Exception = NHapi.Base.HL7Exception;
+
 namespace NHapi.Base.Parser
 {
+    using System;
 
     /// <summary> Represents a problem where a Parser does not support a particular HL7 encoding.  
     /// Encodings include "|" (traditional) and "XML".
@@ -31,6 +31,7 @@ namespace NHapi.Base.Parser
     [Serializable]
     public class EncodingNotSupportedException : HL7Exception
     {
+        #region Constructors and Destructors
 
         /// <summary> Constructs an <code>EncodingNotSupportedException</code> with the specified detail message.</summary>
         /// <param name="msg">the detail message.
@@ -39,5 +40,7 @@ namespace NHapi.Base.Parser
             : base(msg, HL7Exception.APPLICATION_INTERNAL_ERROR)
         {
         }
+
+        #endregion
     }
 }

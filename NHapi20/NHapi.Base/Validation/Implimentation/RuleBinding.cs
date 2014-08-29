@@ -18,12 +18,9 @@
 /// If you do not delete the provisions above, a recipient may use your version of 
 /// this file under either the MPL or the GPL. 
 /// </summary>
-using System;
-using NHapi.Base.validation;
 
 namespace NHapi.Base.validation.impl
 {
-
     /// <summary> An association between a type of item to be validated (eg a datatype or 
     /// message) and a validation <code>Rule</code>.  
     /// 
@@ -34,61 +31,19 @@ namespace NHapi.Base.validation.impl
     /// </version>
     public class RuleBinding
     {
-        /// <returns> true if the binding is currently active
-        /// </returns>
-        /// <param name="isActive">true if the binding is currently active
-        /// </param>
-        virtual public bool Active
-        {
-            get
-            {
-                return myActiveFlag;
-            }
-
-            set
-            {
-                myActiveFlag = value;
-            }
-
-        }
-        /// <returns> the version to which the binding applies (* means all versions)
-        /// </returns>
-        virtual public System.String Version
-        {
-            get
-            {
-                return myVersion;
-            }
-
-        }
-        /// <returns> the scope of item types to which the rule applies.  For <code>MessageRule</code>s
-        /// this is the message type and trigger event, separated by a ^ (either value may be *, meaning 
-        /// any).  For <code>PrimitiveTypeRule</code>s this is the datatype name (* means any).  For 
-        /// <code>EncodingRule</code>s this is the encoding name (again, * means any).   
-        /// </returns>
-        virtual public System.String Scope
-        {
-            get
-            {
-                return myScope;
-            }
-
-        }
-        /// <returns> a <code>Rule</code> that applies to the associated version and scope
-        /// </returns>
-        virtual public IRule Rule
-        {
-            get
-            {
-                return myRule;
-            }
-
-        }
+        #region Fields
 
         private bool myActiveFlag;
-        private System.String myVersion;
-        private System.String myScope;
+
         private IRule myRule;
+
+        private System.String myScope;
+
+        private System.String myVersion;
+
+        #endregion
+
+        #region Constructors and Destructors
 
         /// <summary> Active by default.  
         /// 
@@ -101,10 +56,77 @@ namespace NHapi.Base.validation.impl
         /// </param>
         public RuleBinding(System.String theVersion, System.String theScope, IRule theRule)
         {
-            myActiveFlag = true;
-            myVersion = theVersion;
-            myScope = theScope;
-            myRule = theRule;
+            this.myActiveFlag = true;
+            this.myVersion = theVersion;
+            this.myScope = theScope;
+            this.myRule = theRule;
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <returns> true if the binding is currently active
+        /// </returns>
+        /// <param name="isActive">true if the binding is currently active
+        /// </param>
+        public virtual bool Active
+        {
+            get
+            {
+                return this.myActiveFlag;
+            }
+
+            set
+            {
+                this.myActiveFlag = value;
+            }
+        }
+
+        /// <returns> a <code>Rule</code> that applies to the associated version and scope
+        /// </returns>
+        public virtual IRule Rule
+        {
+            get
+            {
+                return this.myRule;
+            }
+        }
+
+        /// <returns> the scope of item types to which the rule applies.  For <code>MessageRule</code>s
+        /// this is the message type and trigger event, separated by a ^ (either value may be *, meaning 
+        /// any).  For <code>PrimitiveTypeRule</code>s this is the datatype name (* means any).  For 
+        /// <code>EncodingRule</code>s this is the encoding name (again, * means any).   
+        /// </returns>
+        public virtual System.String Scope
+        {
+            get
+            {
+                return this.myScope;
+            }
+        }
+
+        /// <returns> the version to which the binding applies (* means all versions)
+        /// </returns>
+        public virtual System.String Version
+        {
+            get
+            {
+                return this.myVersion;
+            }
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
+
+        /// <param name="theType">an item description to be checked against getScope()  
+        /// </param>
+        /// <returns> true if the given type is within scope, ie if it matches getScope() or getScope() is * 
+        /// </returns>
+        public virtual bool appliesToScope(System.String theType)
+        {
+            return this.applies(this.Scope, theType);
         }
 
         /// <param name="theVersion">an HL7 version
@@ -113,17 +135,12 @@ namespace NHapi.Base.validation.impl
         /// </returns>
         public virtual bool appliesToVersion(System.String theVersion)
         {
-            return applies(Version, theVersion);
+            return this.applies(this.Version, theVersion);
         }
 
-        /// <param name="theType">an item description to be checked against getScope()  
-        /// </param>
-        /// <returns> true if the given type is within scope, ie if it matches getScope() or getScope() is * 
-        /// </returns>
-        public virtual bool appliesToScope(System.String theType)
-        {
-            return applies(Scope, theType);
-        }
+        #endregion
+
+        #region Methods
 
         /// <summary> An abstraction of appliesToVersion() and appliesToScope(). 
         /// 
@@ -143,5 +160,7 @@ namespace NHapi.Base.validation.impl
             }
             return applies;
         }
+
+        #endregion
     }
 }

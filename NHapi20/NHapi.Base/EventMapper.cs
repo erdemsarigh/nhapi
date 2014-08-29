@@ -1,17 +1,26 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace NHapi.Base
 {
-    class EventMapper
+    using System.Collections.Generic;
+
+    internal class EventMapper
     {
-        private System.Collections.Hashtable _map = new System.Collections.Hashtable();
+        #region Static Fields
+
         private static readonly EventMapper _instance = new EventMapper();
 
-        #region Constructors
+        #endregion
+
+        #region Fields
+
+        private System.Collections.Hashtable _map = new System.Collections.Hashtable();
+
+        #endregion
+
+        #region Constructors and Destructors
+
         static EventMapper()
-        { }
+        {
+        }
 
         private EventMapper()
         {
@@ -28,32 +37,46 @@ namespace NHapi.Base
                     //Just skip, this assembly is not used
                 }
 
-                System.Collections.Specialized.NameValueCollection structures = new System.Collections.Specialized.NameValueCollection();
+                System.Collections.Specialized.NameValueCollection structures =
+                    new System.Collections.Specialized.NameValueCollection();
                 if (assembly != null)
                 {
-                    structures = GetAssemblyEventMapping(assembly, package);
+                    structures = this.GetAssemblyEventMapping(assembly, package);
                 }
-                _map[package.Version] = structures;
+                this._map[package.Version] = structures;
             }
         }
+
         #endregion
 
-        #region Properties
+        #region Public Properties
+
         public static EventMapper Instance
         {
-            get { return _instance; }
+            get
+            {
+                return _instance;
+            }
         }
 
         public System.Collections.Hashtable Maps
         {
-            get { return _map; }
+            get
+            {
+                return this._map;
+            }
         }
+
         #endregion
 
         #region Methods
-        private System.Collections.Specialized.NameValueCollection GetAssemblyEventMapping(System.Reflection.Assembly assembly, Hl7Package package)
+
+        private System.Collections.Specialized.NameValueCollection GetAssemblyEventMapping(
+            System.Reflection.Assembly assembly,
+            Hl7Package package)
         {
-            System.Collections.Specialized.NameValueCollection structures = new System.Collections.Specialized.NameValueCollection();
+            System.Collections.Specialized.NameValueCollection structures =
+                new System.Collections.Specialized.NameValueCollection();
             using (System.IO.Stream inResource = assembly.GetManifestResourceStream(package.EventMappingResourceName))
             {
                 if (inResource != null)
@@ -69,14 +92,13 @@ namespace NHapi.Base
                                 structures.Add(lineElements[0], lineElements[1]);
                             }
                             line = sr.ReadLine();
-
                         }
                     }
                 }
             }
             return structures;
         }
-        #endregion
 
+        #endregion
     }
 }

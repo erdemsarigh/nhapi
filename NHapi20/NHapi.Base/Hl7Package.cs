@@ -1,42 +1,55 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Reflection;
-
 namespace NHapi.Base
 {
-    class Hl7Package
+    internal class Hl7Package
     {
-        private string _version;
+        #region Fields
+
         private string _packageName;
-        
+
+        private string _version;
+
+        #endregion
+
+        #region Constructors and Destructors
+
         public Hl7Package(string packageName, string version)
         {
-            _version = version;
-            _packageName = packageName;            
+            this._version = version;
+            this._packageName = packageName;
         }
 
-        
+        #endregion
 
-        public string Version
-        {
-            get { return _version; }
-            set { _version = value; }
-        }
-
-        public string PackageName
-        {
-            get { return _packageName; }
-        }
+        #region Public Properties
 
         public string EventMappingResourceName
         {
             get
             {
-                return _packageName + ".EventMapping.EventMap.properties";
+                return this._packageName + ".EventMapping.EventMap.properties";
             }
         }
-	
 
+        public string PackageName
+        {
+            get
+            {
+                return this._packageName;
+            }
+        }
+
+        public string Version
+        {
+            get
+            {
+                return this._version;
+            }
+            set
+            {
+                this._version = value;
+            }
+        }
+
+        #endregion
     }
 }

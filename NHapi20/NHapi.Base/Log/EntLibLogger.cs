@@ -1,18 +1,26 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Diagnostics;
-
 namespace NHapi.Base.Log
 {
+    using System;
+    using System.Diagnostics;
+
     /// <summary>
     /// Logger implementation logging to Enterprise Library Logging Block.
     /// </summary>
-    class EntLibLogger : ILog
+    internal class EntLibLogger : ILog
     {
+        #region Constants
+
         private const string DefaultDebugCategory = "Debug";
-		private static TraceSwitch _traceSwitch = new TraceSwitch("nHapi", "nHapi Trace Switch");
-        #region Log Members
+
+        #endregion
+
+        #region Static Fields
+
+        private static TraceSwitch _traceSwitch = new TraceSwitch("nHapi", "nHapi Trace Switch");
+
+        #endregion
+
+        #region Public Properties
 
         /// <summary>
         /// EntLib does not allow us to check for DebugEnabled, so we return true always.  
@@ -20,32 +28,42 @@ namespace NHapi.Base.Log
         /// </summary>
         public bool DebugEnabled
         {
-
             get
             {
-
                 return false;
             }
         }
 
         public bool ErrorEnabled
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
         public bool FatalEnabled
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
         public bool InfoEnabled
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
         public bool TraceEnabled
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
         public bool WarnEnabled
@@ -56,9 +74,13 @@ namespace NHapi.Base.Log
             }
         }
 
+        #endregion
+
+        #region Public Methods and Operators
+
         public void Debug(object message)
         {
-            Debug(message, null);
+            this.Debug(message, null);
         }
 
         public void Debug(object message, Exception t)
@@ -71,7 +93,7 @@ namespace NHapi.Base.Log
 
         public void Error(object message)
         {
-            Error(message, null);
+            this.Error(message, null);
         }
 
         public void Error(object message, Exception t)
@@ -81,7 +103,7 @@ namespace NHapi.Base.Log
 
         public void Fatal(object message)
         {
-            Fatal(message, null);
+            this.Fatal(message, null);
         }
 
         public void Fatal(object message, Exception t)
@@ -91,7 +113,7 @@ namespace NHapi.Base.Log
 
         public void Info(object message)
         {
-            Info(message, null);
+            this.Info(message, null);
         }
 
         public void Info(object message, Exception t)
@@ -101,7 +123,7 @@ namespace NHapi.Base.Log
 
         public void Trace(object message)
         {
-            Trace(message, null);
+            this.Trace(message, null);
         }
 
         public void Trace(object message, Exception t)
@@ -111,7 +133,7 @@ namespace NHapi.Base.Log
 
         public void Warn(object message)
         {
-            Warn(message, null);
+            this.Warn(message, null);
         }
 
         public void Warn(object message, Exception t)
@@ -121,40 +143,53 @@ namespace NHapi.Base.Log
 
         #endregion
 
+        #region Methods
+
         private static void WriteLog(object message, Exception t, System.Diagnostics.TraceLevel severity)
         {
             WriteLog(message, t, severity, null);
         }
 
-
-        private static void WriteLog(object message, Exception t, System.Diagnostics.TraceLevel severity, string category)
+        private static void WriteLog(
+            object message,
+            Exception t,
+            System.Diagnostics.TraceLevel severity,
+            string category)
         {
-           
-
             bool writeTrace = false;
-			if (_traceSwitch.Level >= severity)
+            if (_traceSwitch.Level >= severity)
+            {
                 writeTrace = true;
+            }
 
             if (writeTrace)
             {
                 Exception ex;
                 if (message == null)
+                {
                     ex = t;
+                }
                 else
+                {
                     ex = new Exception(message.ToString(), t);
+                }
 
-
-				WriteTrace(_traceSwitch, ex, category);
+                WriteTrace(_traceSwitch, ex, category);
             }
         }
 
         private static void WriteTrace(TraceSwitch ts, Exception ex, string category)
         {
             if (category == null)
-				System.Diagnostics.Trace.WriteLine(ex);
+            {
+                System.Diagnostics.Trace.WriteLine(ex);
+            }
             else
+            {
                 System.Diagnostics.Trace.WriteLine(ex, category);
+            }
         }
 
+        #endregion
     }
 }
