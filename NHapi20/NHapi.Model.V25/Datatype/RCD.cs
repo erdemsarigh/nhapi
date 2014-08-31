@@ -6,29 +6,31 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 RCD (Row Column Definition) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 RCD (Row Column Definition) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>Segment Field Name (ST)</li>
 /// <li>HL7 Data Type (ID)</li>
 /// <li>Maximum Column Width (NM)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class RCD : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a RCD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a RCD. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public RCD(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a RCD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a RCD. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public RCD(IMessage message, string description) : base(message, description){
 		data = new IType[3];
 		data[0] = new ST(message,"Segment Field Name");
@@ -36,9 +38,10 @@ public class RCD : AbstractType, IComposite{
 		data[2] = new NM(message,"Maximum Column Width");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -46,12 +49,15 @@ public class RCD : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -62,10 +68,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Segment Field Name (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Segment Field Name (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the segment field. </value>
+
 	public ST SegmentFieldName {
 get{
 	   ST ret = null;
@@ -79,10 +89,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns HL7 Data Type (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns HL7 Data Type (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the hl 7 data. </value>
+
 	public ID HL7DataType {
 get{
 	   ID ret = null;
@@ -96,10 +110,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Maximum Column Width (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Maximum Column Width (component #2).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The width of the maximum column. </value>
+
 	public NM MaximumColumnWidth {
 get{
 	   NM ret = null;

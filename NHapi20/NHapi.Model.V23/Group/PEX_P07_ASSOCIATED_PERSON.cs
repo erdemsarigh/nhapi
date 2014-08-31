@@ -8,24 +8,27 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the PEX_P07_ASSOCIATED_PERSON Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: NK1 (Next of kin) </li>
-///<li>1: PEX_P07_ASSOCIATED_RX_ORDER (a Group object) optional </li>
-///<li>2: PEX_P07_ASSOCIATED_RX_ADMIN (a Group object) optional repeating</li>
-///<li>3: PRB (Problem Detail) optional repeating</li>
-///<li>4: OBX (Observation segment) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the PEX_P07_ASSOCIATED_PERSON Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: NK1 (Next of kin) </li>
+/// <li>1: PEX_P07_ASSOCIATED_RX_ORDER (a Group object) optional </li>
+/// <li>2: PEX_P07_ASSOCIATED_RX_ADMIN (a Group object) optional repeating</li>
+/// <li>3: PRB (Problem Detail) optional repeating</li>
+/// <li>4: OBX (Observation segment) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class PEX_P07_ASSOCIATED_PERSON : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new PEX_P07_ASSOCIATED_PERSON Group.
-	///</summary>
+    /// <summary>   Creates a new PEX_P07_ASSOCIATED_PERSON Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PEX_P07_ASSOCIATED_PERSON(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(NK1), true, false);
@@ -38,9 +41,10 @@ public class PEX_P07_ASSOCIATED_PERSON : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns NK1 (Next of kin) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns NK1 (Next of kin) - creates it if necessary. </summary>
+    ///
+    /// <value> The nk 1. </value>
+
 	public NK1 NK1 { 
 get{
 	   NK1 ret = null;
@@ -54,9 +58,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PEX_P07_ASSOCIATED_RX_ORDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PEX_P07_ASSOCIATED_RX_ORDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The associated receive order. </value>
+
 	public PEX_P07_ASSOCIATED_RX_ORDER ASSOCIATED_RX_ORDER { 
 get{
 	   PEX_P07_ASSOCIATED_RX_ORDER ret = null;
@@ -70,9 +77,15 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of PEX_P07_ASSOCIATED_RX_ADMIN (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of PEX_P07_ASSOCIATED_RX_ADMIN (a Group object) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   a ssociated receive admin. </returns>
+
 	public PEX_P07_ASSOCIATED_RX_ADMIN GetASSOCIATED_RX_ADMIN() {
 	   PEX_P07_ASSOCIATED_RX_ADMIN ret = null;
 	   try {
@@ -84,19 +97,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of PEX_P07_ASSOCIATED_RX_ADMIN
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of PEX_P07_ASSOCIATED_RX_ADMIN
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   a ssociated receive admin. </returns>
+
 	public PEX_P07_ASSOCIATED_RX_ADMIN GetASSOCIATED_RX_ADMIN(int rep) { 
 	   return (PEX_P07_ASSOCIATED_RX_ADMIN)this.GetStructure("ASSOCIATED_RX_ADMIN", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of PEX_P07_ASSOCIATED_RX_ADMIN 
-	 */ 
+    /// <summary>   Gets the associated receive admin repetitions used. </summary>
+    ///
+    /// <value> The associated receive admin repetitions used. </value>
+
 	public int ASSOCIATED_RX_ADMINRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -111,9 +130,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of PRB (Problem Detail) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of PRB (Problem Detail) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The prb. </returns>
+
 	public PRB GetPRB() {
 	   PRB ret = null;
 	   try {
@@ -125,19 +149,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of PRB
-	/// * (Problem Detail) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of PRB
+    ///  * (Problem Detail) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The prb. </returns>
+
 	public PRB GetPRB(int rep) { 
 	   return (PRB)this.GetStructure("PRB", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of PRB 
-	 */ 
+    /// <summary>   Gets the prb repetitions used. </summary>
+    ///
+    /// <value> The prb repetitions used. </value>
+
 	public int PRBRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -152,9 +182,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of OBX (Observation segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of OBX (Observation segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The obx. </returns>
+
 	public OBX GetOBX() {
 	   OBX ret = null;
 	   try {
@@ -166,19 +201,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of OBX
-	/// * (Observation segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of OBX
+    ///  * (Observation segment) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The obx. </returns>
+
 	public OBX GetOBX(int rep) { 
 	   return (OBX)this.GetStructure("OBX", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of OBX 
-	 */ 
+    /// <summary>   Gets the obx repetitions used. </summary>
+    ///
+    /// <value> The obx repetitions used. </value>
+
 	public int OBXRepetitionsUsed { 
 get{
 	    int reps = -1; 

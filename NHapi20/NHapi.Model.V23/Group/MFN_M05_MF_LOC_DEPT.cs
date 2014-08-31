@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the MFN_M05_MF_LOC_DEPT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: LDP (Location Department) </li>
-///<li>1: LCH (Location Characteristic) optional repeating</li>
-///<li>2: LCC (Location Charge Code) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the MFN_M05_MF_LOC_DEPT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: LDP (Location Department) </li>
+/// <li>1: LCH (Location Characteristic) optional repeating</li>
+/// <li>2: LCC (Location Charge Code) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFN_M05_MF_LOC_DEPT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new MFN_M05_MF_LOC_DEPT Group.
-	///</summary>
+    /// <summary>   Creates a new MFN_M05_MF_LOC_DEPT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFN_M05_MF_LOC_DEPT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(LDP), true, false);
@@ -34,9 +37,10 @@ public class MFN_M05_MF_LOC_DEPT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns LDP (Location Department) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns LDP (Location Department) - creates it if necessary. </summary>
+    ///
+    /// <value> The ldp. </value>
+
 	public LDP LDP { 
 get{
 	   LDP ret = null;
@@ -50,9 +54,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of LCH (Location Characteristic) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of LCH (Location Characteristic) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The lch. </returns>
+
 	public LCH GetLCH() {
 	   LCH ret = null;
 	   try {
@@ -64,19 +73,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of LCH
-	/// * (Location Characteristic) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of LCH
+    ///  * (Location Characteristic) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The lch. </returns>
+
 	public LCH GetLCH(int rep) { 
 	   return (LCH)this.GetStructure("LCH", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of LCH 
-	 */ 
+    /// <summary>   Gets the lch repetitions used. </summary>
+    ///
+    /// <value> The lch repetitions used. </value>
+
 	public int LCHRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -91,9 +106,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of LCC (Location Charge Code) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of LCC (Location Charge Code) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The lcc. </returns>
+
 	public LCC GetLCC() {
 	   LCC ret = null;
 	   try {
@@ -105,19 +125,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of LCC
-	/// * (Location Charge Code) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of LCC
+    ///  * (Location Charge Code) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The lcc. </returns>
+
 	public LCC GetLCC(int rep) { 
 	   return (LCC)this.GetStructure("LCC", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of LCC 
-	 */ 
+    /// <summary>   Gets the lcc repetitions used. </summary>
+    ///
+    /// <value> The lcc repetitions used. </value>
+
 	public int LCCRepetitionsUsed { 
 get{
 	    int reps = -1; 

@@ -8,22 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the ADT_A04_INSURANCE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: IN1 (IN1 - insurance segment) </li>
-///<li>1: IN2 (IN2 - insurance additional information segment) optional </li>
-///<li>2: IN3 (IN3 - insurance additional information, certification segment) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ADT_A04_INSURANCE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: IN1 (IN1 - insurance segment) </li>
+/// <li>1: IN2 (IN2 - insurance additional information segment) optional </li>
+/// <li>2: IN3 (IN3 - insurance additional information, certification segment) optional
+/// repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ADT_A04_INSURANCE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ADT_A04_INSURANCE Group.
-	///</summary>
+    /// <summary>   Creates a new ADT_A04_INSURANCE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ADT_A04_INSURANCE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(IN1), true, false);
@@ -34,9 +38,10 @@ public class ADT_A04_INSURANCE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns IN1 (IN1 - insurance segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns IN1 (IN1 - insurance segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The in 1. </value>
+
 	public IN1 IN1 { 
 get{
 	   IN1 ret = null;
@@ -50,9 +55,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns IN2 (IN2 - insurance additional information segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns IN2 (IN2 - insurance additional information segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The in 2. </value>
+
 	public IN2 IN2 { 
 get{
 	   IN2 ret = null;
@@ -66,9 +74,15 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of IN3 (IN3 - insurance additional information, certification segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of IN3 (IN3 - insurance additional information, certification
+    /// segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The in 3. </returns>
+
 	public IN3 GetIN3() {
 	   IN3 ret = null;
 	   try {
@@ -80,19 +94,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of IN3
-	/// * (IN3 - insurance additional information, certification segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of IN3
+    ///  * (IN3 - insurance additional information, certification segment) - creates it if necessary
+    ///  throws HL7Exception if the repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The in 3. </returns>
+
 	public IN3 GetIN3(int rep) { 
 	   return (IN3)this.GetStructure("IN3", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of IN3 
-	 */ 
+    /// <summary>   Gets the in 3 repetitions used. </summary>
+    ///
+    /// <value> The in 3 repetitions used. </value>
+
 	public int IN3RepetitionsUsed { 
 get{
 	    int reps = -1; 

@@ -31,8 +31,9 @@ namespace NHapi.Base.Util
     using NHapi.Base.Log;
     using NHapi.Base.Model;
 
-    /// <summary> <p>Wraps a message to provide access to fields using a terse location
-    /// specification syntax.  For example: </p>
+    /// <summary>
+    /// <p>Wraps a message to provide access to fields using a terse location specification syntax.
+    /// For example: </p>
     /// <p><code>terser.set("MSH-9-3", "ADT_A01");</code>  <br/>
     /// can be used instead of <br/>
     /// <code>message.getMSH().getMessageType().getMessageStructure().setValue("ADT_A01"); </code> </p>
@@ -43,14 +44,14 @@ namespace NHapi.Base.Util
     /// numbers (starting at 1).  Omitting the rep is equivalent to specifying 0; omitting the
     /// component or subcomponent is equivalent to specifying 1.</p>
     /// <p>The syntax for the segment_path_spec is as follows: </p>
-    /// <p>segment_path_spec: </code> ["/"] (group_spec ["(" rep ")"] "/")* segment_spec ["(" rep ")"]</code></p>
+    /// &lt;p&gt;segment_path_spec: </code> ["/"] (group_spec ["(" rep ")"] "/")* segment_spec ["(" rep ")"]</code></p>
     /// <p> ... where rep has the same meaning as for fields.  A leading "/" indicates that navigation to the
     /// location begins at the root of the message; ommitting this indicates that navigation begins at the
     /// current location of the underlying SegmentFinder (see getFinder() -- this allows manual navigation
     /// if desired).  The syntax for group_spec is: </p>
     /// <p>group_spec: <code>["."] group_name_pattern</code></p>
     /// <p>Here, a . indicates that the group should be searched for (using a SegmentFinder) starting at the
-    /// current location in the message.  The wildcards "*" and "?" represent any number of arbitrary characters, 
+    /// current location in the message.  The wildcards "*" and "?" represent any number of arbitrary characters,
     /// and a single arbitrary character, respectively.  For example, "M*" and "?S?" match MSH.  The first
     /// group with a name that matches the given group_name_pattern will be matched.  </p>
     /// <p>The segment_spec is analogous to the group_spec. </p>
@@ -65,30 +66,35 @@ namespace NHapi.Base.Util
     /// only one AIG segment position in SUI_S12): </p>
     /// <p><code>/.AIG-5(1)</code></p>
     /// </summary>
-    /// <author>  Bryan Tripp
-    /// </author>
+
     public class Terser
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static IHapiLog log;
 
         #endregion
 
         #region Fields
 
+        /// <summary>   The finder. </summary>
         private SegmentFinder finder;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the Terser class. </summary>
         static Terser()
         {
             log = HapiLogFactory.GetHapiLog(typeof(Terser));
         }
 
-        /// <summary>Creates a new instance of Terser </summary>
+        /// <summary>   Creates a new instance of Terser. </summary>
+        ///
+        /// <param name="message">  The message. </param>
+
         public Terser(IMessage message)
         {
             this.finder = new SegmentFinder(message);
@@ -98,11 +104,14 @@ namespace NHapi.Base.Util
 
         #region Public Properties
 
-        /// <summary> Returns the segment finder used by this Terser.  Navigating the
-        /// finder will influence the behaviour of the Terser accordingly.  Ie
-        /// when the full path of the segment is not specified the segment will
-        /// be sought beginning at the current location of the finder.
+        /// <summary>
+        /// Returns the segment finder used by this Terser.  Navigating the finder will influence the
+        /// behaviour of the Terser accordingly.  Ie when the full path of the segment is not specified
+        /// the segment will be sought beginning at the current location of the finder.
         /// </summary>
+        ///
+        /// <value> The finder. </value>
+
         public virtual SegmentFinder Finder
         {
             get
@@ -115,24 +124,31 @@ namespace NHapi.Base.Util
 
         #region Public Methods and Operators
 
-        /// <summary> Returns the string value of the Primitive at the given location.</summary>
-        /// <param name="segment">the segment from which to get the primitive
-        /// </param>
-        /// <param name="field">the field number
-        /// </param>
-        /// <param name="rep">the field repetition
-        /// </param>
-        /// <param name="component">the component number (use 1 for primitive field)
-        /// </param>
-        /// <param name="subcomponent">the subcomponent number (use 1 for primitive component)
-        /// </param>
+        /// <summary>   Returns the string value of the Primitive at the given location. </summary>
+        ///
+        /// <param name="segment">      the segment from which to get the primitive. </param>
+        /// <param name="field">        the field number. </param>
+        /// <param name="rep">          the field repetition. </param>
+        /// <param name="component">    the component number (use 1 for primitive field) </param>
+        /// <param name="subcomponent"> the subcomponent number (use 1 for primitive component) </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String Get(ISegment segment, int field, int rep, int component, int subcomponent)
         {
             IPrimitive prim = getPrimitive(segment, field, rep, component, subcomponent);
             return prim.Value;
         }
 
-        /// <summary> Sets the string value of the Primitive at the given location.</summary>
+        /// <summary>   Sets the string value of the Primitive at the given location. </summary>
+        ///
+        /// <param name="segment">          the segment from which to get the primitive. </param>
+        /// <param name="field">            the field number. </param>
+        /// <param name="rep">              the field repetition. </param>
+        /// <param name="component">        the component number (use 1 for primitive field) </param>
+        /// <param name="subcomponent">     the subcomponent number (use 1 for primitive component) </param>
+        /// <param name="value_Renamed">    The value renamed. </param>
+
         public static void Set(
             ISegment segment,
             int field,
@@ -145,9 +161,17 @@ namespace NHapi.Base.Util
             prim.Value = value_Renamed;
         }
 
-        /// <summary> Given a Terser path, returns an array containing field num, field rep, 
-        /// component, and subcomponent.  
+        /// <summary>
+        /// Given a Terser path, returns an array containing field num, field rep, component, and
+        /// subcomponent.  
         /// </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="spec"> The specifier. </param>
+        ///
+        /// <returns>   An array of int. </returns>
+
         public static int[] getIndices(System.String spec)
         {
             SupportClass.Tokenizer tok = new SupportClass.Tokenizer(spec, "-", false);
@@ -190,11 +214,19 @@ namespace NHapi.Base.Util
             return ret;
         }
 
-        /// <summary> Returns the Primitive object at the given location in the given field.  
-        /// It is intended that the given type be at the field level, although extra components 
-        /// will be added blindly if, for example, you provide a primitive subcomponent instead 
-        /// and specify component or subcomponent > 1
+        /// <summary>
+        /// Returns the Primitive object at the given location in the given field.  
+        /// It is intended that the given type be at the field level, although extra components will be
+        /// added blindly if, for example, you provide a primitive subcomponent instead and specify
+        /// component or subcomponent > 1.
         /// </summary>
+        ///
+        /// <param name="type">         The type. </param>
+        /// <param name="component">    the component number (use 1 for primitive field) </param>
+        /// <param name="subcomponent"> the subcomponent number (use 1 for primitive component) </param>
+        ///
+        /// <returns>   The primitive. </returns>
+
         public static IPrimitive getPrimitive(IType type, int component, int subcomponent)
         {
             IType comp = getComponent(type, component);
@@ -202,10 +234,15 @@ namespace NHapi.Base.Util
             return getPrimitive(sub);
         }
 
-        /// <summary> Returns the number of components in the given type, i.e. the
-        /// number of standard components (e.g. 6 for CE) plus any extra components that
-        /// have been added at runtime.  
+        /// <summary>
+        /// Returns the number of components in the given type, i.e. the number of standard components
+        /// (e.g. 6 for CE) plus any extra components that have been added at runtime.  
         /// </summary>
+        ///
+        /// <param name="type"> The type. </param>
+        ///
+        /// <returns>   The total number of components. </returns>
+
         public static int numComponents(IType type)
         {
             if (typeof(Varies).IsAssignableFrom(type.GetType()))
@@ -223,12 +260,17 @@ namespace NHapi.Base.Util
         /*public static int numComponents(Type field) throws HL7Exception {
         return numComponents(seg.GetField(field, rep));
         }*/
-        /// <summary> Returns the number of sub-components in the specified component, i.e. 
-        /// the number of standard sub-components (e.g. 6 for CE) plus any extra components that
-        /// that have been added at runtime.
+
+        /// <summary>
+        /// Returns the number of sub-components in the specified component, i.e. the number of standard
+        /// sub-components (e.g. 6 for CE) plus any extra components that that have been added at runtime.
         /// </summary>
-        /// <param name="component">numbered from 1 
-        /// </param>
+        ///
+        /// <param name="type">         The type. </param>
+        /// <param name="component">    numbered from 1. </param>
+        ///
+        /// <returns>   The total number of sub components. </returns>
+
         public static int numSubComponents(IType type, int component)
         {
             int n = -1;
@@ -260,13 +302,19 @@ namespace NHapi.Base.Util
             */
         }
 
-        /// <summary> <p>Gets the string value of the field specified.  See the class docs for syntax
-        /// of the location spec.  </p>
-        /// <p>If a repetition is omitted for a repeating segment or field, the first rep is used.
-        /// If the component or subcomponent is not specified for a composite field, the first
-        /// component is used (this allows one to write code that will work with later versions of
-        /// the HL7 standard).
+        /// <summary>
+        /// <p>Gets the string value of the field specified.  See the class docs for syntax of the
+        /// location spec.  </p>
+        /// &lt;p&gt;If a repetition is omitted for a repeating segment or field, the first rep is used.
+        /// If the component or subcomponent is not specified for a composite field, the first component
+        /// is used (this allows one to write code that will work with later versions of the HL7
+        /// standard).
         /// </summary>
+        ///
+        /// <param name="spec"> The specifier. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public virtual System.String Get(System.String spec)
         {
             SupportClass.Tokenizer tok = new SupportClass.Tokenizer(spec, "-", false);
@@ -276,7 +324,13 @@ namespace NHapi.Base.Util
             return Get(segment, ind[0], ind[1], ind[2], ind[3]);
         }
 
-        /// <summary> Sets the string value of the field specified.  See class docs for location spec syntax.</summary>
+        /// <summary>
+        /// Sets the string value of the field specified.  See class docs for location spec syntax.
+        /// </summary>
+        ///
+        /// <param name="spec">             The specifier. </param>
+        /// <param name="value_Renamed">    The value renamed. </param>
+
         public virtual void Set(System.String spec, System.String value_Renamed)
         {
             SupportClass.Tokenizer tok = new SupportClass.Tokenizer(spec, "-", false);
@@ -292,7 +346,12 @@ namespace NHapi.Base.Util
             Set(segment, ind[0], ind[1], ind[2], ind[3], value_Renamed);
         }
 
-        /// <summary> Returns the segment specified in the given segment_path_spec. </summary>
+        /// <summary>   Returns the segment specified in the given segment_path_spec. </summary>
+        ///
+        /// <param name="segSpec">  Information describing the segment. </param>
+        ///
+        /// <returns>   The segment. </returns>
+
         public virtual ISegment getSegment(System.String segSpec)
         {
             ISegment seg = null;
@@ -350,13 +409,22 @@ namespace NHapi.Base.Util
 
         #region Methods
 
-        /// <summary> Returns the component (or sub-component, as the case may be) at the given
-        /// index.  If it does not exist, it is added as an "extra component".  
-        /// If comp > 1 is requested from a Varies with GenericPrimitive data, the 
-        /// data is set to GenericComposite (this avoids the creation of a chain of 
-        /// ExtraComponents on GenericPrimitives).  
+        /// <summary>
+        /// Returns the component (or sub-component, as the case may be) at the given index.  If it does
+        /// not exist, it is added as an "extra component".  
+        /// If comp > 1 is requested from a Varies with GenericPrimitive data, the data is set to
+        /// GenericComposite (this avoids the creation of a chain of ExtraComponents on
+        /// GenericPrimitives).  
         /// Components are numbered from 1.  
         /// </summary>
+        ///
+        /// <exception cref="ApplicationException"> Thrown when an Application error condition occurs. </exception>
+        ///
+        /// <param name="type"> The type. </param>
+        /// <param name="comp"> The component. </param>
+        ///
+        /// <returns>   The component. </returns>
+
         private static IType getComponent(IType type, int comp)
         {
             IType ret = null;
@@ -411,16 +479,33 @@ namespace NHapi.Base.Util
             return ret;
         }
 
-        /// <summary> Returns the Primitive object at the given location.</summary>
+        /// <summary>   Returns the Primitive object at the given location. </summary>
+        ///
+        /// <param name="segment">      the segment from which to get the primitive. </param>
+        /// <param name="field">        the field number. </param>
+        /// <param name="rep">          the field repetition. </param>
+        /// <param name="component">    the component number (use 1 for primitive field) </param>
+        /// <param name="subcomponent"> the subcomponent number (use 1 for primitive component) </param>
+        ///
+        /// <returns>   The primitive. </returns>
+
         private static IPrimitive getPrimitive(ISegment segment, int field, int rep, int component, int subcomponent)
         {
             IType type = segment.GetField(field, rep);
             return getPrimitive(type, component, subcomponent);
         }
 
-        /// <summary> Attempts to extract a Primitive from the given type. If it's a composite, 
-        /// drills down through first components until a primitive is reached. 
+        /// <summary>
+        /// Attempts to extract a Primitive from the given type. If it's a composite, drills down through
+        /// first components until a primitive is reached.
         /// </summary>
+        ///
+        /// <exception cref="ApplicationException"> Thrown when an Application error condition occurs. </exception>
+        ///
+        /// <param name="type"> The type. </param>
+        ///
+        /// <returns>   The primitive. </returns>
+
         private static IPrimitive getPrimitive(IType type)
         {
             IPrimitive p = null;
@@ -447,6 +532,12 @@ namespace NHapi.Base.Util
             return p;
         }
 
+        /// <summary>   Number standard components. </summary>
+        ///
+        /// <param name="t">    The IType to process. </param>
+        ///
+        /// <returns>   The total number of standard components. </returns>
+
         private static int numStandardComponents(IType t)
         {
             int n = 0;
@@ -465,7 +556,14 @@ namespace NHapi.Base.Util
             return n;
         }
 
-        /// <summary>Gets path information from a path spec. </summary>
+        /// <summary>   Gets path information from a path spec. </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="spec"> The specifier. </param>
+        ///
+        /// <returns>   A PathSpec. </returns>
+
         private PathSpec parsePathSpec(System.String spec)
         {
             PathSpec ps = new PathSpec(this);
@@ -507,24 +605,33 @@ namespace NHapi.Base.Util
 
         #endregion
 
-        /// <summary>Struct for information about a step in a segment path. </summary>
+        /// <summary>   Struct for information about a step in a segment path. </summary>
         private class PathSpec
         {
             #region Fields
 
+            /// <summary>   true to find. </summary>
             public bool find;
 
+            /// <summary>   true if this object is group. </summary>
             public bool isGroup;
 
+            /// <summary>   Specifies the pattern. </summary>
             public System.String pattern;
 
+            /// <summary>   The rep. </summary>
             public int rep;
 
+            /// <summary>   The enclosing instance. </summary>
             private Terser enclosingInstance;
 
             #endregion
 
             #region Constructors and Destructors
+
+            /// <summary>   Initializes a new instance of the PathSpec class. </summary>
+            ///
+            /// <param name="enclosingInstance">    The enclosing instance. </param>
 
             public PathSpec(Terser enclosingInstance)
             {
@@ -534,6 +641,10 @@ namespace NHapi.Base.Util
             #endregion
 
             #region Public Properties
+
+            /// <summary>   Gets the enclosing instance. </summary>
+            ///
+            /// <value> The enclosing instance. </value>
 
             public Terser Enclosing_Instance
             {
@@ -546,6 +657,10 @@ namespace NHapi.Base.Util
             #endregion
 
             #region Methods
+
+            /// <summary>   Initialises the block. </summary>
+            ///
+            /// <param name="enclosingInstance">    The enclosing instance. </param>
 
             private void InitBlock(Terser enclosingInstance)
             {

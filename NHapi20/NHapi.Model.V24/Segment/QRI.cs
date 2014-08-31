@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 QRI message segment. 
-/// This segment has the following fields:<ol>
-///<li>QRI-1: Candidate Confidence (NM)</li>
-///<li>QRI-2: Match Reason Code (IS)</li>
-///<li>QRI-3: Algorithm Descriptor (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 QRI message segment. This segment has the following fields:<ol>
+/// <li>QRI-1: Candidate Confidence (NM)</li>
+/// <li>QRI-2: Match Reason Code (IS)</li>
+/// <li>QRI-3: Algorithm Descriptor (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class QRI : AbstractSegment  {
 
-  /**
-   * Creates a QRI (Query Response Instance) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the QRI class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public QRI(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class QRI : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Candidate Confidence(QRI-1).
-	///</summary>
+    /// <summary>   Returns Candidate Confidence(QRI-1). </summary>
+    ///
+    /// <value> The candidate confidence. </value>
+
 	public NM CandidateConfidence
 	{
 		get{
@@ -61,11 +63,17 @@ public class QRI : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Match Reason Code(QRI-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Match Reason Code(QRI-2). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The match reason code. </returns>
+
 	public IS GetMatchReasonCode(int rep)
 	{
 			IS ret = null;
@@ -80,9 +88,12 @@ public class QRI : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Match Reason Code (QRI-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Match Reason Code (QRI-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetMatchReasonCode() {
      IS[] ret = null;
     try {
@@ -101,9 +112,10 @@ public class QRI : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Match Reason Code (QRI-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Match Reason Code (QRI-2). </summary>
+  ///
+  /// <value>   The match reason code repetitions used. </value>
+
   public int MatchReasonCodeRepetitionsUsed
 {
 get{
@@ -119,9 +131,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Algorithm Descriptor(QRI-3).
-	///</summary>
+
+    /// <summary>   Returns Algorithm Descriptor(QRI-3). </summary>
+    ///
+    /// <value> The algorithm descriptor. </value>
+
 	public CE AlgorithmDescriptor
 	{
 		get{

@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RSP_Z90_QUERY_RESPONSE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: RSP_Z90_PATIENT (a Group object) optional </li>
-///<li>1: RSP_Z90_COMMON_ORDER (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RSP_Z90_QUERY_RESPONSE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: RSP_Z90_PATIENT (a Group object) optional </li>
+/// <li>1: RSP_Z90_COMMON_ORDER (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RSP_Z90_QUERY_RESPONSE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RSP_Z90_QUERY_RESPONSE Group.
-	///</summary>
+    /// <summary>   Creates a new RSP_Z90_QUERY_RESPONSE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RSP_Z90_QUERY_RESPONSE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(RSP_Z90_PATIENT), false, false);
@@ -32,9 +35,10 @@ public class RSP_Z90_QUERY_RESPONSE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns RSP_Z90_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RSP_Z90_PATIENT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient. </value>
+
 	public RSP_Z90_PATIENT PATIENT { 
 get{
 	   RSP_Z90_PATIENT ret = null;
@@ -48,9 +52,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RSP_Z90_COMMON_ORDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RSP_Z90_COMMON_ORDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The common order. </returns>
+
 	public RSP_Z90_COMMON_ORDER GetCOMMON_ORDER() {
 	   RSP_Z90_COMMON_ORDER ret = null;
 	   try {
@@ -62,19 +71,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RSP_Z90_COMMON_ORDER
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RSP_Z90_COMMON_ORDER
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The common order. </returns>
+
 	public RSP_Z90_COMMON_ORDER GetCOMMON_ORDER(int rep) { 
 	   return (RSP_Z90_COMMON_ORDER)this.GetStructure("COMMON_ORDER", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RSP_Z90_COMMON_ORDER 
-	 */ 
+    /// <summary>   Gets the common order repetitions used. </summary>
+    ///
+    /// <value> The common order repetitions used. </value>
+
 	public int COMMON_ORDERRepetitionsUsed { 
 get{
 	    int reps = -1; 

@@ -6,8 +6,7 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 CD (Channel Definition) data type.  Consists of the following components: </p><ol>
 /// <li>Channel Identifier (WVI)</li>
 /// <li>Waveform Source (WVS)</li>
@@ -16,22 +15,24 @@ namespace NHapi.Model.V25.Datatype
 /// <li>Channel Sampling Frequency (NM)</li>
 /// <li>Minimum/Maximum Data Values (NR)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CD : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CD. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CD(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CD. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CD(IMessage message, string description) : base(message, description){
 		data = new IType[6];
 		data[0] = new WVI(message,"Channel Identifier");
@@ -42,9 +43,10 @@ public class CD : AbstractType, IComposite{
 		data[5] = new NR(message,"Minimum/Maximum Data Values");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -52,12 +54,15 @@ public class CD : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -68,10 +73,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Channel Identifier (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Channel Identifier (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the channel. </value>
+
 	public WVI ChannelIdentifier {
 get{
 	   WVI ret = null;
@@ -85,10 +94,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Waveform Source (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Waveform Source (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The waveform source. </value>
+
 	public WVS WaveformSource {
 get{
 	   WVS ret = null;
@@ -102,10 +115,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Channel Sensitivity/Units (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Channel Sensitivity/Units (component #2).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The channel sensitivity units. </value>
+
 	public CSU ChannelSensitivityUnits {
 get{
 	   CSU ret = null;
@@ -119,10 +136,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Channel Calibration Parameters (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Channel Calibration Parameters (component #3).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> Options that control the channel calibration. </value>
+
 	public CCP ChannelCalibrationParameters {
 get{
 	   CCP ret = null;
@@ -136,10 +157,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Channel Sampling Frequency (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Channel Sampling Frequency (component #4).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The channel sampling frequency. </value>
+
 	public NM ChannelSamplingFrequency {
 get{
 	   NM ret = null;
@@ -153,10 +178,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Minimum/Maximum Data Values (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Minimum/Maximum Data Values (component #5).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The minimum maximum data values. </value>
+
 	public NR MinimumMaximumDataValues {
 get{
 	   NR ret = null;

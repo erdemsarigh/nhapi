@@ -7,34 +7,35 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 LDP message segment. 
-/// This segment has the following fields:<ol>
-///<li>LDP-1: LDP Primary Key Value (PL)</li>
-///<li>LDP-2: Location Department (IS)</li>
-///<li>LDP-3: Location Service (IS)</li>
-///<li>LDP-4: Speciality Type (CE)</li>
-///<li>LDP-5: Valid Patient Classes (ID)</li>
-///<li>LDP-6: Active/Inactive Flag (ID)</li>
-///<li>LDP-7: Activation Date (TS)</li>
-///<li>LDP-8: Inactivation Date - LDP (TS)</li>
-///<li>LDP-9: Inactivated Reason (ST)</li>
-///<li>LDP-10: Visiting Hours (VH)</li>
-///<li>LDP-11: Contact Phone (XTN)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 LDP message segment. This segment has the following fields:<ol>
+/// <li>LDP-1: LDP Primary Key Value (PL)</li>
+/// <li>LDP-2: Location Department (IS)</li>
+/// <li>LDP-3: Location Service (IS)</li>
+/// <li>LDP-4: Speciality Type (CE)</li>
+/// <li>LDP-5: Valid Patient Classes (ID)</li>
+/// <li>LDP-6: Active/Inactive Flag (ID)</li>
+/// <li>LDP-7: Activation Date (TS)</li>
+/// <li>LDP-8: Inactivation Date - LDP (TS)</li>
+/// <li>LDP-9: Inactivated Reason (ST)</li>
+/// <li>LDP-10: Visiting Hours (VH)</li>
+/// <li>LDP-11: Contact Phone (XTN)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class LDP : AbstractSegment  {
 
-  /**
-   * Creates a LDP (Location Department) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the LDP class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public LDP(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -54,9 +55,10 @@ public class LDP : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns LDP Primary Key Value(LDP-1).
-	///</summary>
+    /// <summary>   Returns LDP Primary Key Value(LDP-1). </summary>
+    ///
+    /// <value> The ldp primary key value. </value>
+
 	public PL LDPPrimaryKeyValue
 	{
 		get{
@@ -77,9 +79,10 @@ public class LDP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Location Department(LDP-2).
-	///</summary>
+    /// <summary>   Returns Location Department(LDP-2). </summary>
+    ///
+    /// <value> The location department. </value>
+
 	public IS LocationDepartment
 	{
 		get{
@@ -100,11 +103,17 @@ public class LDP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Location Service(LDP-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Location Service(LDP-3). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The location service. </returns>
+
 	public IS GetLocationService(int rep)
 	{
 			IS ret = null;
@@ -119,9 +128,12 @@ public class LDP : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Location Service (LDP-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Location Service (LDP-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetLocationService() {
      IS[] ret = null;
     try {
@@ -140,9 +152,10 @@ public class LDP : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Location Service (LDP-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Location Service (LDP-3). </summary>
+  ///
+  /// <value>   The location service repetitions used. </value>
+
   public int LocationServiceRepetitionsUsed
 {
 get{
@@ -158,11 +171,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Speciality Type(LDP-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Speciality Type(LDP-4). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The speciality type. </returns>
+
 	public CE GetSpecialityType(int rep)
 	{
 			CE ret = null;
@@ -177,9 +197,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Speciality Type (LDP-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Speciality Type (LDP-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetSpecialityType() {
      CE[] ret = null;
     try {
@@ -198,9 +221,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Speciality Type (LDP-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Speciality Type (LDP-4). </summary>
+  ///
+  /// <value>   The speciality type repetitions used. </value>
+
   public int SpecialityTypeRepetitionsUsed
 {
 get{
@@ -216,11 +240,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Valid Patient Classes(LDP-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Valid Patient Classes(LDP-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The valid patient classes. </returns>
+
 	public ID GetValidPatientClasses(int rep)
 	{
 			ID ret = null;
@@ -235,9 +266,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Valid Patient Classes (LDP-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Valid Patient Classes (LDP-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetValidPatientClasses() {
      ID[] ret = null;
     try {
@@ -256,9 +290,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Valid Patient Classes (LDP-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Valid Patient Classes (LDP-5). </summary>
+  ///
+  /// <value>   The valid patient classes repetitions used. </value>
+
   public int ValidPatientClassesRepetitionsUsed
 {
 get{
@@ -274,9 +309,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Active/Inactive Flag(LDP-6).
-	///</summary>
+
+    /// <summary>   Returns Active/Inactive Flag(LDP-6). </summary>
+    ///
+    /// <value> The active inactive flag. </value>
+
 	public ID ActiveInactiveFlag
 	{
 		get{
@@ -297,9 +334,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Activation Date(LDP-7).
-	///</summary>
+    /// <summary>   Returns Activation Date(LDP-7). </summary>
+    ///
+    /// <value> The activation date. </value>
+
 	public TS ActivationDate
 	{
 		get{
@@ -320,9 +358,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Inactivation Date - LDP(LDP-8).
-	///</summary>
+    /// <summary>   Returns Inactivation Date - LDP(LDP-8). </summary>
+    ///
+    /// <value> The inactivation date ldp. </value>
+
 	public TS InactivationDateLDP
 	{
 		get{
@@ -343,9 +382,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Inactivated Reason(LDP-9).
-	///</summary>
+    /// <summary>   Returns Inactivated Reason(LDP-9). </summary>
+    ///
+    /// <value> The inactivated reason. </value>
+
 	public ST InactivatedReason
 	{
 		get{
@@ -366,11 +406,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Visiting Hours(LDP-10).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Visiting Hours(LDP-10). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The visiting hours. </returns>
+
 	public VH GetVisitingHours(int rep)
 	{
 			VH ret = null;
@@ -385,9 +431,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Visiting Hours (LDP-10).
-   ///</summary>
+  /// <summary> Returns all repetitions of Visiting Hours (LDP-10). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of vh. </returns>
+
   public VH[] GetVisitingHours() {
      VH[] ret = null;
     try {
@@ -406,9 +455,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Visiting Hours (LDP-10).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Visiting Hours (LDP-10). </summary>
+  ///
+  /// <value>   The visiting hours repetitions used. </value>
+
   public int VisitingHoursRepetitionsUsed
 {
 get{
@@ -424,9 +474,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Contact Phone(LDP-11).
-	///</summary>
+
+    /// <summary>   Returns Contact Phone(LDP-11). </summary>
+    ///
+    /// <value> The contact phone. </value>
+
 	public XTN ContactPhone
 	{
 		get{

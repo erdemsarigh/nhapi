@@ -2,34 +2,37 @@ namespace NHapi.Base.Model
 {
     using System.Collections.Generic;
 
-    /// <summary>
-    /// Abstract group item
-    /// </summary>
+    /// <summary>   Abstract group item. </summary>
     public class AbstractGroupItem
     {
         #region Fields
 
+        /// <summary>   The class. </summary>
         private System.Type _class;
 
+        /// <summary>   true if this object is repeating. </summary>
         private bool _isRepeating;
 
+        /// <summary>   true if this object is required. </summary>
         private bool _isRequired;
 
+        /// <summary>   The name. </summary>
         private string _name;
 
+        /// <summary>   The structures. </summary>
         private List<IStructure> _structures = new List<IStructure>();
 
         #endregion
 
         #region Constructors and Destructors
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="required"></param>
-        /// <param name="repeating"></param>
-        /// <param name="classType"></param>
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <param name="name">         . </param>
+        /// <param name="required">     . </param>
+        /// <param name="repeating">    . </param>
+        /// <param name="classType">    . </param>
+
         public AbstractGroupItem(string name, bool required, bool repeating, System.Type classType)
         {
             this._name = name;
@@ -42,9 +45,10 @@ namespace NHapi.Base.Model
 
         #region Public Properties
 
-        /// <summary>
-        /// The type of class
-        /// </summary>
+        /// <summary>   The type of class. </summary>
+        ///
+        /// <value> The type of the class. </value>
+
         public System.Type ClassType
         {
             get
@@ -53,9 +57,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        /// Is item repeating
-        /// </summary>
+        /// <summary>   Is item repeating. </summary>
+        ///
+        /// <value> true if this object is repeating, false if not. </value>
+
         public bool IsRepeating
         {
             get
@@ -64,9 +69,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        /// Is item required
-        /// </summary>
+        /// <summary>   Is item required. </summary>
+        ///
+        /// <value> true if this object is required, false if not. </value>
+
         public bool IsRequired
         {
             get
@@ -75,9 +81,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        /// Name of the item
-        /// </summary>
+        /// <summary>   Name of the item. </summary>
+        ///
+        /// <value> The name. </value>
+
         public string Name
         {
             get
@@ -86,9 +93,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        /// The structures of the group item
-        /// </summary>
+        /// <summary>   The structures of the group item. </summary>
+        ///
+        /// <value> The structures. </value>
+
         public List<IStructure> Structures
         {
             get
@@ -101,11 +109,12 @@ namespace NHapi.Base.Model
 
         #region Public Indexers
 
-        /// <summary>
-        /// Structure indexer
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
+        /// <summary>   Structure indexer. </summary>
+        ///
+        /// <param name="index">    . </param>
+        ///
+        /// <returns>   The indexed item. </returns>
+
         public IStructure this[int index]
         {
             get

@@ -6,8 +6,7 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V24.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 ED (encapsulated data) data type.  Consists of the following components: </p><ol>
 /// <li>source application (HD)</li>
 /// <li>type of data (ID)</li>
@@ -15,22 +14,24 @@ namespace NHapi.Model.V24.Datatype
 /// <li>encoding (ID)</li>
 /// <li>data2 (ST)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class ED : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a ED.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a ED. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public ED(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a ED.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a ED. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public ED(IMessage message, string description) : base(message, description){
 		data = new IType[5];
 		data[0] = new HD(message,"Source application");
@@ -40,9 +41,10 @@ public class ED : AbstractType, IComposite{
 		data[4] = new ST(message,"Data2");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -50,12 +52,15 @@ public class ED : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -66,10 +71,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns source application (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns source application (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The source application. </value>
+
 	public HD SourceApplication {
 get{
 	   HD ret = null;
@@ -83,10 +92,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns type of data (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns type of data (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the data. </value>
+
 	public ID TypeOfData {
 get{
 	   ID ret = null;
@@ -100,10 +113,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns data (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns data (component #2).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The data. </value>
+
 	public ID Data {
 get{
 	   ID ret = null;
@@ -117,10 +134,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns encoding (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns encoding (component #3).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The encoding. </value>
+
 	public ID Encoding {
 get{
 	   ID ret = null;
@@ -134,10 +155,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns data2 (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns data2 (component #4).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The data 2. </value>
+
 	public ST Data2 {
 get{
 	   ST ret = null;

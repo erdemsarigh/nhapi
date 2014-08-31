@@ -7,39 +7,40 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 OBX message segment. 
-/// This segment has the following fields:<ol>
-///<li>OBX-1: Set ID - Observational Simple (SI)</li>
-///<li>OBX-2: Value Type (ID)</li>
-///<li>OBX-3: Observation Identifier (CE)</li>
-///<li>OBX-4: Observation Sub-ID (ST)</li>
-///<li>OBX-5: Observation Value (varies)</li>
-///<li>OBX-6: Units (CE)</li>
-///<li>OBX-7: References Range (ST)</li>
-///<li>OBX-8: Abnormal Flags (ID)</li>
-///<li>OBX-9: Probability (NM)</li>
-///<li>OBX-10: Nature of Abnormal Test (ID)</li>
-///<li>OBX-11: Observation result status (ID)</li>
-///<li>OBX-12: Effective date last observation normal values (TS)</li>
-///<li>OBX-13: User Defined Access Checks (ST)</li>
-///<li>OBX-14: Date / time of the observation (TS)</li>
-///<li>OBX-15: Producer's ID (CE)</li>
-///<li>OBX-16: Responsible Observer (CN_PHYSICIAN)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 OBX message segment. This segment has the following fields:<ol>
+/// <li>OBX-1: Set ID - Observational Simple (SI)</li>
+/// <li>OBX-2: Value Type (ID)</li>
+/// <li>OBX-3: Observation Identifier (CE)</li>
+/// <li>OBX-4: Observation Sub-ID (ST)</li>
+/// <li>OBX-5: Observation Value (varies)</li>
+/// <li>OBX-6: Units (CE)</li>
+/// <li>OBX-7: References Range (ST)</li>
+/// <li>OBX-8: Abnormal Flags (ID)</li>
+/// <li>OBX-9: Probability (NM)</li>
+/// <li>OBX-10: Nature of Abnormal Test (ID)</li>
+/// <li>OBX-11: Observation result status (ID)</li>
+/// <li>OBX-12: Effective date last observation normal values (TS)</li>
+/// <li>OBX-13: User Defined Access Checks (ST)</li>
+/// <li>OBX-14: Date / time of the observation (TS)</li>
+/// <li>OBX-15: Producer's ID (CE)</li>
+/// <li>OBX-16: Responsible Observer (CN_PHYSICIAN)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class OBX : AbstractSegment  {
 
-  /**
-   * Creates a OBX (OBSERVATION RESULT) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the OBX class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OBX(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -64,9 +65,10 @@ public class OBX : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - Observational Simple(OBX-1).
-	///</summary>
+    /// <summary>   Returns Set ID - Observational Simple(OBX-1). </summary>
+    ///
+    /// <value> The set identifier observational simple. </value>
+
 	public SI SetIDObservationalSimple
 	{
 		get{
@@ -87,9 +89,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Value Type(OBX-2).
-	///</summary>
+    /// <summary>   Returns Value Type(OBX-2). </summary>
+    ///
+    /// <value> The type of the value. </value>
+
 	public ID ValueType
 	{
 		get{
@@ -110,9 +113,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Observation Identifier(OBX-3).
-	///</summary>
+    /// <summary>   Returns Observation Identifier(OBX-3). </summary>
+    ///
+    /// <value> The identifier of the observation. </value>
+
 	public CE ObservationIdentifier
 	{
 		get{
@@ -133,9 +137,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Observation Sub-ID(OBX-4).
-	///</summary>
+    /// <summary>   Returns Observation Sub-ID(OBX-4). </summary>
+    ///
+    /// <value> The identifier of the observation sub. </value>
+
 	public ST ObservationSubID
 	{
 		get{
@@ -156,9 +161,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Observation Value(OBX-5).
-	///</summary>
+    /// <summary>   Returns Observation Value(OBX-5). </summary>
+    ///
+    /// <value> The observation value. </value>
+
 	public Varies ObservationValue
 	{
 		get{
@@ -179,9 +185,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Units(OBX-6).
-	///</summary>
+    /// <summary>   Returns Units(OBX-6). </summary>
+    ///
+    /// <value> The units. </value>
+
 	public CE Units
 	{
 		get{
@@ -202,9 +209,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns References Range(OBX-7).
-	///</summary>
+    /// <summary>   Returns References Range(OBX-7). </summary>
+    ///
+    /// <value> The references range. </value>
+
 	public ST ReferencesRange
 	{
 		get{
@@ -225,11 +233,17 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Abnormal Flags(OBX-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Abnormal Flags(OBX-8). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The abnormal flags. </returns>
+
 	public ID GetAbnormalFlags(int rep)
 	{
 			ID ret = null;
@@ -244,9 +258,12 @@ public class OBX : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Abnormal Flags (OBX-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of Abnormal Flags (OBX-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetAbnormalFlags() {
      ID[] ret = null;
     try {
@@ -265,9 +282,10 @@ public class OBX : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Abnormal Flags (OBX-8).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Abnormal Flags (OBX-8). </summary>
+  ///
+  /// <value>   The abnormal flags repetitions used. </value>
+
   public int AbnormalFlagsRepetitionsUsed
 {
 get{
@@ -283,9 +301,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Probability(OBX-9).
-	///</summary>
+
+    /// <summary>   Returns Probability(OBX-9). </summary>
+    ///
+    /// <value> The probability. </value>
+
 	public NM Probability
 	{
 		get{
@@ -306,9 +326,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Nature of Abnormal Test(OBX-10).
-	///</summary>
+    /// <summary>   Returns Nature of Abnormal Test(OBX-10). </summary>
+    ///
+    /// <value> The nature of abnormal test. </value>
+
 	public ID NatureOfAbnormalTest
 	{
 		get{
@@ -329,9 +350,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Observation result status(OBX-11).
-	///</summary>
+    /// <summary>   Returns Observation result status(OBX-11). </summary>
+    ///
+    /// <value> The observation result status. </value>
+
 	public ID ObservationResultStatus
 	{
 		get{
@@ -352,9 +374,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Effective date last observation normal values(OBX-12).
-	///</summary>
+    /// <summary>   Returns Effective date last observation normal values(OBX-12). </summary>
+    ///
+    /// <value> The effective date last observation normal values. </value>
+
 	public TS EffectiveDateLastObservationNormalValues
 	{
 		get{
@@ -375,9 +398,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns User Defined Access Checks(OBX-13).
-	///</summary>
+    /// <summary>   Returns User Defined Access Checks(OBX-13). </summary>
+    ///
+    /// <value> The user defined access checks. </value>
+
 	public ST UserDefinedAccessChecks
 	{
 		get{
@@ -398,9 +422,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date / time of the observation(OBX-14).
-	///</summary>
+    /// <summary>   Returns Date / time of the observation(OBX-14). </summary>
+    ///
+    /// <value> The date time of the observation. </value>
+
 	public TS DateTimeOfTheObservation
 	{
 		get{
@@ -421,9 +446,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Producer's ID(OBX-15).
-	///</summary>
+    /// <summary>   Returns Producer's ID(OBX-15). </summary>
+    ///
+    /// <value> The producer SID. </value>
+
 	public CE ProducerSID
 	{
 		get{
@@ -444,9 +470,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Responsible Observer(OBX-16).
-	///</summary>
+    /// <summary>   Returns Responsible Observer(OBX-16). </summary>
+    ///
+    /// <value> The responsible observer. </value>
+
 	public CN_PHYSICIAN ResponsibleObserver
 	{
 		get{

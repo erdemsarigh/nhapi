@@ -6,29 +6,30 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V231.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 PI (person identifier) data type.  Consists of the following components: </p><ol>
 /// <li>ID number (ST) (ST)</li>
 /// <li>type of ID number (IS) (IS)</li>
 /// <li>other qualifying info (ST)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class PI : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a PI.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a PI. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public PI(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a PI.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a PI. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public PI(IMessage message, string description) : base(message, description){
 		data = new IType[3];
 		data[0] = new ST(message,"ID number (ST)");
@@ -36,9 +37,10 @@ public class PI : AbstractType, IComposite{
 		data[2] = new ST(message,"Other qualifying info");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -46,12 +48,15 @@ public class PI : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -62,10 +67,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns ID number (ST) (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns ID number (ST) (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier number. </value>
+
 	public ST IDNumber {
 get{
 	   ST ret = null;
@@ -79,10 +88,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns type of ID number (IS) (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns type of ID number (IS) (component #1).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the identifier number. </value>
+
 	public IS TypeOfIDNumber {
 get{
 	   IS ret = null;
@@ -96,10 +109,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns other qualifying info (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns other qualifying info (component #2).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> Information describing the other qualifying. </value>
+
 	public ST OtherQualifyingInfo {
 get{
 	   ST ret = null;

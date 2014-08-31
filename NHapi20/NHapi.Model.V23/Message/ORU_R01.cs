@@ -9,35 +9,38 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V23.Message
 
 {
-///<summary>
-/// Represents a ORU_R01 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a ORU_R01 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message header segment) </li>
-///<li>1: ORU_R01_RESPONSE (a Group object) repeating</li>
-///<li>2: DSC (Continuation pointer segment) optional </li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message header segment) </li>
+/// <li>1: ORU_R01_RESPONSE (a Group object) repeating</li>
+/// <li>2: DSC (Continuation pointer segment) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ORU_R01 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new ORU_R01 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new ORU_R01 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public ORU_R01(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new ORU_R01 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new ORU_R01 Group with DefaultModelClassFactory. </summary>
 	public ORU_R01() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for ORU_R01.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for ORU_R01.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -48,6 +51,13 @@ public class ORU_R01 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -55,9 +65,11 @@ public class ORU_R01 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -71,9 +83,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of ORU_R01_RESPONSE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of ORU_R01_RESPONSE (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The response. </returns>
+
 	public ORU_R01_RESPONSE GetRESPONSE() {
 	   ORU_R01_RESPONSE ret = null;
 	   try {
@@ -85,19 +102,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of ORU_R01_RESPONSE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of ORU_R01_RESPONSE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The response. </returns>
+
 	public ORU_R01_RESPONSE GetRESPONSE(int rep) { 
 	   return (ORU_R01_RESPONSE)this.GetStructure("RESPONSE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of ORU_R01_RESPONSE 
-	 */ 
+    /// <summary>   Gets the response repetitions used. </summary>
+    ///
+    /// <value> The response repetitions used. </value>
+
 	public int RESPONSERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -112,9 +135,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns DSC (Continuation pointer segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns DSC (Continuation pointer segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The dsc. </value>
+
 	public DSC DSC { 
 get{
 	   DSC ret = null;

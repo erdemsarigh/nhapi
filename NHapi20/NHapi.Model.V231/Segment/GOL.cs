@@ -7,44 +7,45 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 GOL message segment. 
-/// This segment has the following fields:<ol>
-///<li>GOL-1: Action Code (ID)</li>
-///<li>GOL-2: Action Date/Time (TS)</li>
-///<li>GOL-3: Goal ID (CE)</li>
-///<li>GOL-4: Goal Instance ID (EI)</li>
-///<li>GOL-5: Episode of Care ID (EI)</li>
-///<li>GOL-6: Goal List Priority (NM)</li>
-///<li>GOL-7: Goal Established Date/Time (TS)</li>
-///<li>GOL-8: Expected Goal Achieve Date/Time (TS)</li>
-///<li>GOL-9: Goal Classification (CE)</li>
-///<li>GOL-10: Goal Management Discipline (CE)</li>
-///<li>GOL-11: Current Goal Review Status (CE)</li>
-///<li>GOL-12: Current Goal Review Date/Time (TS)</li>
-///<li>GOL-13: Next Goal Review Date/Time (TS)</li>
-///<li>GOL-14: Previous Goal Review Date/Time (TS)</li>
-///<li>GOL-15: Goal Review Interval (TQ)</li>
-///<li>GOL-16: Goal Evaluation (CE)</li>
-///<li>GOL-17: Goal Evaluation Comment (ST)</li>
-///<li>GOL-18: Goal Life Cycle Status (CE)</li>
-///<li>GOL-19: Goal Life Cycle Status Date/Time (TS)</li>
-///<li>GOL-20: Goal Target Type (CE)</li>
-///<li>GOL-21: Goal Target Name (XPN)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 GOL message segment. This segment has the following fields:<ol>
+/// <li>GOL-1: Action Code (ID)</li>
+/// <li>GOL-2: Action Date/Time (TS)</li>
+/// <li>GOL-3: Goal ID (CE)</li>
+/// <li>GOL-4: Goal Instance ID (EI)</li>
+/// <li>GOL-5: Episode of Care ID (EI)</li>
+/// <li>GOL-6: Goal List Priority (NM)</li>
+/// <li>GOL-7: Goal Established Date/Time (TS)</li>
+/// <li>GOL-8: Expected Goal Achieve Date/Time (TS)</li>
+/// <li>GOL-9: Goal Classification (CE)</li>
+/// <li>GOL-10: Goal Management Discipline (CE)</li>
+/// <li>GOL-11: Current Goal Review Status (CE)</li>
+/// <li>GOL-12: Current Goal Review Date/Time (TS)</li>
+/// <li>GOL-13: Next Goal Review Date/Time (TS)</li>
+/// <li>GOL-14: Previous Goal Review Date/Time (TS)</li>
+/// <li>GOL-15: Goal Review Interval (TQ)</li>
+/// <li>GOL-16: Goal Evaluation (CE)</li>
+/// <li>GOL-17: Goal Evaluation Comment (ST)</li>
+/// <li>GOL-18: Goal Life Cycle Status (CE)</li>
+/// <li>GOL-19: Goal Life Cycle Status Date/Time (TS)</li>
+/// <li>GOL-20: Goal Target Type (CE)</li>
+/// <li>GOL-21: Goal Target Name (XPN)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class GOL : AbstractSegment  {
 
-  /**
-   * Creates a GOL (Goal Detail) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the GOL class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public GOL(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -74,9 +75,10 @@ public class GOL : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Action Code(GOL-1).
-	///</summary>
+    /// <summary>   Returns Action Code(GOL-1). </summary>
+    ///
+    /// <value> The action code. </value>
+
 	public ID ActionCode
 	{
 		get{
@@ -97,9 +99,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Action Date/Time(GOL-2).
-	///</summary>
+    /// <summary>   Returns Action Date/Time(GOL-2). </summary>
+    ///
+    /// <value> The action date time. </value>
+
 	public TS ActionDateTime
 	{
 		get{
@@ -120,9 +123,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Goal ID(GOL-3).
-	///</summary>
+    /// <summary>   Returns Goal ID(GOL-3). </summary>
+    ///
+    /// <value> The identifier of the goal. </value>
+
 	public CE GoalID
 	{
 		get{
@@ -143,9 +147,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Goal Instance ID(GOL-4).
-	///</summary>
+    /// <summary>   Returns Goal Instance ID(GOL-4). </summary>
+    ///
+    /// <value> The identifier of the goal instance. </value>
+
 	public EI GoalInstanceID
 	{
 		get{
@@ -166,9 +171,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Episode of Care ID(GOL-5).
-	///</summary>
+    /// <summary>   Returns Episode of Care ID(GOL-5). </summary>
+    ///
+    /// <value> The identifier of the episode of care. </value>
+
 	public EI EpisodeOfCareID
 	{
 		get{
@@ -189,9 +195,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Goal List Priority(GOL-6).
-	///</summary>
+    /// <summary>   Returns Goal List Priority(GOL-6). </summary>
+    ///
+    /// <value> The goal list priority. </value>
+
 	public NM GoalListPriority
 	{
 		get{
@@ -212,9 +219,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Goal Established Date/Time(GOL-7).
-	///</summary>
+    /// <summary>   Returns Goal Established Date/Time(GOL-7). </summary>
+    ///
+    /// <value> The goal established date time. </value>
+
 	public TS GoalEstablishedDateTime
 	{
 		get{
@@ -235,9 +243,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Expected Goal Achieve Date/Time(GOL-8).
-	///</summary>
+    /// <summary>   Returns Expected Goal Achieve Date/Time(GOL-8). </summary>
+    ///
+    /// <value> The expected goal achieve date time. </value>
+
 	public TS ExpectedGoalAchieveDateTime
 	{
 		get{
@@ -258,9 +267,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Goal Classification(GOL-9).
-	///</summary>
+    /// <summary>   Returns Goal Classification(GOL-9). </summary>
+    ///
+    /// <value> The goal classification. </value>
+
 	public CE GoalClassification
 	{
 		get{
@@ -281,9 +291,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Goal Management Discipline(GOL-10).
-	///</summary>
+    /// <summary>   Returns Goal Management Discipline(GOL-10). </summary>
+    ///
+    /// <value> The goal management discipline. </value>
+
 	public CE GoalManagementDiscipline
 	{
 		get{
@@ -304,9 +315,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Current Goal Review Status(GOL-11).
-	///</summary>
+    /// <summary>   Returns Current Goal Review Status(GOL-11). </summary>
+    ///
+    /// <value> The current goal review status. </value>
+
 	public CE CurrentGoalReviewStatus
 	{
 		get{
@@ -327,9 +339,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Current Goal Review Date/Time(GOL-12).
-	///</summary>
+    /// <summary>   Returns Current Goal Review Date/Time(GOL-12). </summary>
+    ///
+    /// <value> The current goal review date time. </value>
+
 	public TS CurrentGoalReviewDateTime
 	{
 		get{
@@ -350,9 +363,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Next Goal Review Date/Time(GOL-13).
-	///</summary>
+    /// <summary>   Returns Next Goal Review Date/Time(GOL-13). </summary>
+    ///
+    /// <value> The next goal review date time. </value>
+
 	public TS NextGoalReviewDateTime
 	{
 		get{
@@ -373,9 +387,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Previous Goal Review Date/Time(GOL-14).
-	///</summary>
+    /// <summary>   Returns Previous Goal Review Date/Time(GOL-14). </summary>
+    ///
+    /// <value> The previous goal review date time. </value>
+
 	public TS PreviousGoalReviewDateTime
 	{
 		get{
@@ -396,9 +411,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Goal Review Interval(GOL-15).
-	///</summary>
+    /// <summary>   Returns Goal Review Interval(GOL-15). </summary>
+    ///
+    /// <value> The goal review interval. </value>
+
 	public TQ GoalReviewInterval
 	{
 		get{
@@ -419,9 +435,10 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Goal Evaluation(GOL-16).
-	///</summary>
+    /// <summary>   Returns Goal Evaluation(GOL-16). </summary>
+    ///
+    /// <value> The goal evaluation. </value>
+
 	public CE GoalEvaluation
 	{
 		get{
@@ -442,11 +459,17 @@ public class GOL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Goal Evaluation Comment(GOL-17).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Goal Evaluation Comment(GOL-17). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The goal evaluation comment. </returns>
+
 	public ST GetGoalEvaluationComment(int rep)
 	{
 			ST ret = null;
@@ -461,9 +484,12 @@ public class GOL : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Goal Evaluation Comment (GOL-17).
-   ///</summary>
+  /// <summary> Returns all repetitions of Goal Evaluation Comment (GOL-17). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetGoalEvaluationComment() {
      ST[] ret = null;
     try {
@@ -482,9 +508,10 @@ public class GOL : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Goal Evaluation Comment (GOL-17).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Goal Evaluation Comment (GOL-17). </summary>
+  ///
+  /// <value>   The goal evaluation comment repetitions used. </value>
+
   public int GoalEvaluationCommentRepetitionsUsed
 {
 get{
@@ -500,9 +527,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Goal Life Cycle Status(GOL-18).
-	///</summary>
+
+    /// <summary>   Returns Goal Life Cycle Status(GOL-18). </summary>
+    ///
+    /// <value> The goal life cycle status. </value>
+
 	public CE GoalLifeCycleStatus
 	{
 		get{
@@ -523,9 +552,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Goal Life Cycle Status Date/Time(GOL-19).
-	///</summary>
+    /// <summary>   Returns Goal Life Cycle Status Date/Time(GOL-19). </summary>
+    ///
+    /// <value> The goal life cycle status date time. </value>
+
 	public TS GoalLifeCycleStatusDateTime
 	{
 		get{
@@ -546,11 +576,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Goal Target Type(GOL-20).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Goal Target Type(GOL-20). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The goal target type. </returns>
+
 	public CE GetGoalTargetType(int rep)
 	{
 			CE ret = null;
@@ -565,9 +601,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Goal Target Type (GOL-20).
-   ///</summary>
+  /// <summary> Returns all repetitions of Goal Target Type (GOL-20). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetGoalTargetType() {
      CE[] ret = null;
     try {
@@ -586,9 +625,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Goal Target Type (GOL-20).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Goal Target Type (GOL-20). </summary>
+  ///
+  /// <value>   The goal target type repetitions used. </value>
+
   public int GoalTargetTypeRepetitionsUsed
 {
 get{
@@ -604,11 +644,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Goal Target Name(GOL-21).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Goal Target Name(GOL-21). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The goal target name. </returns>
+
 	public XPN GetGoalTargetName(int rep)
 	{
 			XPN ret = null;
@@ -623,9 +670,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Goal Target Name (GOL-21).
-   ///</summary>
+  /// <summary> Returns all repetitions of Goal Target Name (GOL-21). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetGoalTargetName() {
      XPN[] ret = null;
     try {
@@ -644,9 +694,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Goal Target Name (GOL-21).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Goal Target Name (GOL-21). </summary>
+  ///
+  /// <value>   The goal target name repetitions used. </value>
+
   public int GoalTargetNameRepetitionsUsed
 {
 get{

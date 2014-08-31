@@ -6,30 +6,31 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 VH (Visiting Hours) data type.  Consists of the following components: </p><ol>
 /// <li>Start Day Range (ID)</li>
 /// <li>End Day Range (ID)</li>
 /// <li>Start Hour Range (TM)</li>
 /// <li>End Hour Range (TM)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class VH : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a VH.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a VH. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public VH(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a VH.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a VH. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public VH(IMessage message, string description) : base(message, description){
 		data = new IType[4];
 		data[0] = new ID(message, 267,"Start Day Range");
@@ -38,9 +39,10 @@ public class VH : AbstractType, IComposite{
 		data[3] = new TM(message,"End Hour Range");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -48,12 +50,15 @@ public class VH : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -64,10 +69,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Start Day Range (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Start Day Range (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The start day range. </value>
+
 	public ID StartDayRange {
 get{
 	   ID ret = null;
@@ -81,10 +90,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns End Day Range (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns End Day Range (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The end day range. </value>
+
 	public ID EndDayRange {
 get{
 	   ID ret = null;
@@ -98,10 +111,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Start Hour Range (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Start Hour Range (component #2).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The start hour range. </value>
+
 	public TM StartHourRange {
 get{
 	   TM ret = null;
@@ -115,10 +132,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns End Hour Range (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns End Hour Range (component #3).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The end hour range. </value>
+
 	public TM EndHourRange {
 get{
 	   TM ret = null;

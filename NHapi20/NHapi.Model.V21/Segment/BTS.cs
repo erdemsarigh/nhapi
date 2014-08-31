@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 BTS message segment. 
-/// This segment has the following fields:<ol>
-///<li>BTS-1: BATCH MESSAGE COUNT (ST)</li>
-///<li>BTS-2: BATCH COMMENT (ST)</li>
-///<li>BTS-3: BATCH TOTALS (CM)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 BTS message segment. This segment has the following fields:<ol>
+/// <li>BTS-1: BATCH MESSAGE COUNT (ST)</li>
+/// <li>BTS-2: BATCH COMMENT (ST)</li>
+/// <li>BTS-3: BATCH TOTALS (CM)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class BTS : AbstractSegment  {
 
-  /**
-   * Creates a BTS (BATCH TRAILER) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the BTS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public BTS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class BTS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns BATCH MESSAGE COUNT(BTS-1).
-	///</summary>
+    /// <summary>   Returns BATCH MESSAGE COUNT(BTS-1). </summary>
+    ///
+    /// <value> The batchmessagecount. </value>
+
 	public ST BATCHMESSAGECOUNT
 	{
 		get{
@@ -61,9 +63,10 @@ public class BTS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns BATCH COMMENT(BTS-2).
-	///</summary>
+    /// <summary>   Returns BATCH COMMENT(BTS-2). </summary>
+    ///
+    /// <value> The batchcomment. </value>
+
 	public ST BATCHCOMMENT
 	{
 		get{
@@ -84,9 +87,10 @@ public class BTS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns BATCH TOTALS(BTS-3).
-	///</summary>
+    /// <summary>   Returns BATCH TOTALS(BTS-3). </summary>
+    ///
+    /// <value> The batchtotals. </value>
+
 	public CM BATCHTOTALS
 	{
 		get{

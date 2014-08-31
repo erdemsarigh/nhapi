@@ -9,38 +9,41 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V231.Message
 
 {
-///<summary>
-/// Represents a ADT_A51 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a ADT_A51 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (MSH - message header segment) </li>
-///<li>1: EVN (EVN - event type segment) </li>
-///<li>2: PID (PID - patient identification segment) </li>
-///<li>3: PD1 (PD1 - patient additional demographic segment) optional </li>
-///<li>4: MRG (MRG - merge patient information segment-) </li>
-///<li>5: PV1 (PV1 - patient visit segment-) </li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (MSH - message header segment) </li>
+/// <li>1: EVN (EVN - event type segment) </li>
+/// <li>2: PID (PID - patient identification segment) </li>
+/// <li>3: PD1 (PD1 - patient additional demographic segment) optional </li>
+/// <li>4: MRG (MRG - merge patient information segment-) </li>
+/// <li>5: PV1 (PV1 - patient visit segment-) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ADT_A51 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new ADT_A51 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new ADT_A51 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public ADT_A51(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new ADT_A51 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new ADT_A51 Group with DefaultModelClassFactory. </summary>
 	public ADT_A51() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for ADT_A51.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for ADT_A51.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -54,6 +57,13 @@ public class ADT_A51 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -61,9 +71,11 @@ public class ADT_A51 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MSH - message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MSH - message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -77,9 +89,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns EVN (EVN - event type segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns EVN (EVN - event type segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The evn. </value>
+
 	public EVN EVN { 
 get{
 	   EVN ret = null;
@@ -93,9 +106,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PID (PID - patient identification segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PID (PID - patient identification segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -109,9 +125,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (PD1 - patient additional demographic segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PD1 (PD1 - patient additional demographic segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;
@@ -125,9 +144,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MRG (MRG - merge patient information segment-) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns MRG (MRG - merge patient information segment-) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The mrg. </value>
+
 	public MRG MRG { 
 get{
 	   MRG ret = null;
@@ -141,9 +163,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV1 (PV1 - patient visit segment-) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PV1 (PV1 - patient visit segment-) - creates it if necessary. </summary>
+    ///
+    /// <value> The pv 1. </value>
+
 	public PV1 PV1 { 
 get{
 	   PV1 ret = null;

@@ -7,29 +7,30 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 CNS message segment. 
-/// This segment has the following fields:<ol>
-///<li>CNS-1: Starting Notification Reference Number (NM)</li>
-///<li>CNS-2: Ending Notification Reference Number (NM)</li>
-///<li>CNS-3: Starting Notification Date/Time (TS)</li>
-///<li>CNS-4: Ending Notification Date/Time (TS)</li>
-///<li>CNS-5: Starting Notification Code (CE)</li>
-///<li>CNS-6: Ending Notification Code (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 CNS message segment. This segment has the following fields:<ol>
+/// <li>CNS-1: Starting Notification Reference Number (NM)</li>
+/// <li>CNS-2: Ending Notification Reference Number (NM)</li>
+/// <li>CNS-3: Starting Notification Date/Time (TS)</li>
+/// <li>CNS-4: Ending Notification Date/Time (TS)</li>
+/// <li>CNS-5: Starting Notification Code (CE)</li>
+/// <li>CNS-6: Ending Notification Code (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class CNS : AbstractSegment  {
 
-  /**
-   * Creates a CNS (Clear Notification) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the CNS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public CNS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -44,9 +45,10 @@ public class CNS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Starting Notification Reference Number(CNS-1).
-	///</summary>
+    /// <summary>   Returns Starting Notification Reference Number(CNS-1). </summary>
+    ///
+    /// <value> The starting notification reference number. </value>
+
 	public NM StartingNotificationReferenceNumber
 	{
 		get{
@@ -67,9 +69,10 @@ public class CNS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Ending Notification Reference Number(CNS-2).
-	///</summary>
+    /// <summary>   Returns Ending Notification Reference Number(CNS-2). </summary>
+    ///
+    /// <value> The ending notification reference number. </value>
+
 	public NM EndingNotificationReferenceNumber
 	{
 		get{
@@ -90,9 +93,10 @@ public class CNS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Starting Notification Date/Time(CNS-3).
-	///</summary>
+    /// <summary>   Returns Starting Notification Date/Time(CNS-3). </summary>
+    ///
+    /// <value> The starting notification date time. </value>
+
 	public TS StartingNotificationDateTime
 	{
 		get{
@@ -113,9 +117,10 @@ public class CNS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Ending Notification Date/Time(CNS-4).
-	///</summary>
+    /// <summary>   Returns Ending Notification Date/Time(CNS-4). </summary>
+    ///
+    /// <value> The ending notification date time. </value>
+
 	public TS EndingNotificationDateTime
 	{
 		get{
@@ -136,9 +141,10 @@ public class CNS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Starting Notification Code(CNS-5).
-	///</summary>
+    /// <summary>   Returns Starting Notification Code(CNS-5). </summary>
+    ///
+    /// <value> The starting notification code. </value>
+
 	public CE StartingNotificationCode
 	{
 		get{
@@ -159,9 +165,10 @@ public class CNS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Ending Notification Code(CNS-6).
-	///</summary>
+    /// <summary>   Returns Ending Notification Code(CNS-6). </summary>
+    ///
+    /// <value> The ending notification code. </value>
+
 	public CE EndingNotificationCode
 	{
 		get{

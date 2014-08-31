@@ -9,34 +9,37 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V21.Message
 
 {
-///<summary>
-/// Represents a MCF_Q02 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a MCF_Q02 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (MESSAGE HEADER) </li>
-///<li>1: MSA (MESSAGE ACKNOWLEDGMENT) </li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (MESSAGE HEADER) </li>
+/// <li>1: MSA (MESSAGE ACKNOWLEDGMENT) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MCF_Q02 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new MCF_Q02 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new MCF_Q02 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public MCF_Q02(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new MCF_Q02 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new MCF_Q02 Group with DefaultModelClassFactory. </summary>
 	public MCF_Q02() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for MCF_Q02.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for MCF_Q02.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -46,6 +49,13 @@ public class MCF_Q02 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -53,9 +63,11 @@ public class MCF_Q02 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MESSAGE HEADER) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MESSAGE HEADER) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -69,9 +81,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MSA (MESSAGE ACKNOWLEDGMENT) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MSA (MESSAGE ACKNOWLEDGMENT) - creates it if necessary. </summary>
+    ///
+    /// <value> The msa. </value>
+
 	public MSA MSA { 
 get{
 	   MSA ret = null;

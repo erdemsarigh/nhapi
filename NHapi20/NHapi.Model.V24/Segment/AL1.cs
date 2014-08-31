@@ -7,29 +7,30 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 AL1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>AL1-1: Set ID - AL1 (CE)</li>
-///<li>AL1-2: Allergen Type Code (CE)</li>
-///<li>AL1-3: Allergen Code/Mnemonic/Description (CE)</li>
-///<li>AL1-4: Allergy Severity Code (CE)</li>
-///<li>AL1-5: Allergy Reaction Code (ST)</li>
-///<li>AL1-6: Identification Date (DT)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 AL1 message segment. This segment has the following fields:<ol>
+/// <li>AL1-1: Set ID - AL1 (CE)</li>
+/// <li>AL1-2: Allergen Type Code (CE)</li>
+/// <li>AL1-3: Allergen Code/Mnemonic/Description (CE)</li>
+/// <li>AL1-4: Allergy Severity Code (CE)</li>
+/// <li>AL1-5: Allergy Reaction Code (ST)</li>
+/// <li>AL1-6: Identification Date (DT)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class AL1 : AbstractSegment  {
 
-  /**
-   * Creates a AL1 (Patient allergy information) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the AL1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public AL1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -44,9 +45,10 @@ public class AL1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - AL1(AL1-1).
-	///</summary>
+    /// <summary>   Returns Set ID - AL1(AL1-1). </summary>
+    ///
+    /// <value> The set idal 1. </value>
+
 	public CE SetIDAL1
 	{
 		get{
@@ -67,9 +69,10 @@ public class AL1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Allergen Type Code(AL1-2).
-	///</summary>
+    /// <summary>   Returns Allergen Type Code(AL1-2). </summary>
+    ///
+    /// <value> The allergen type code. </value>
+
 	public CE AllergenTypeCode
 	{
 		get{
@@ -90,9 +93,10 @@ public class AL1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Allergen Code/Mnemonic/Description(AL1-3).
-	///</summary>
+    /// <summary>   Returns Allergen Code/Mnemonic/Description(AL1-3). </summary>
+    ///
+    /// <value> Information describing the allergen code mnemonic. </value>
+
 	public CE AllergenCodeMnemonicDescription
 	{
 		get{
@@ -113,9 +117,10 @@ public class AL1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Allergy Severity Code(AL1-4).
-	///</summary>
+    /// <summary>   Returns Allergy Severity Code(AL1-4). </summary>
+    ///
+    /// <value> The allergy severity code. </value>
+
 	public CE AllergySeverityCode
 	{
 		get{
@@ -136,11 +141,17 @@ public class AL1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Allergy Reaction Code(AL1-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Allergy Reaction Code(AL1-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The allergy reaction code. </returns>
+
 	public ST GetAllergyReactionCode(int rep)
 	{
 			ST ret = null;
@@ -155,9 +166,12 @@ public class AL1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Allergy Reaction Code (AL1-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Allergy Reaction Code (AL1-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetAllergyReactionCode() {
      ST[] ret = null;
     try {
@@ -176,9 +190,10 @@ public class AL1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Allergy Reaction Code (AL1-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Allergy Reaction Code (AL1-5). </summary>
+  ///
+  /// <value>   The allergy reaction code repetitions used. </value>
+
   public int AllergyReactionCodeRepetitionsUsed
 {
 get{
@@ -194,9 +209,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Identification Date(AL1-6).
-	///</summary>
+
+    /// <summary>   Returns Identification Date(AL1-6). </summary>
+    ///
+    /// <value> The identification date. </value>
+
 	public DT IdentificationDate
 	{
 		get{

@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the SRM_S03_PERSONNEL_RESOURCE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: AIP (Appointment Information - Personnel Resource) </li>
-///<li>1: APR (Appointment Preferences) optional </li>
-///<li>2: NTE (Notes and comments segment) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the SRM_S03_PERSONNEL_RESOURCE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: AIP (Appointment Information - Personnel Resource) </li>
+/// <li>1: APR (Appointment Preferences) optional </li>
+/// <li>2: NTE (Notes and comments segment) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class SRM_S03_PERSONNEL_RESOURCE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new SRM_S03_PERSONNEL_RESOURCE Group.
-	///</summary>
+    /// <summary>   Creates a new SRM_S03_PERSONNEL_RESOURCE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SRM_S03_PERSONNEL_RESOURCE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(AIP), true, false);
@@ -34,9 +37,12 @@ public class SRM_S03_PERSONNEL_RESOURCE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns AIP (Appointment Information - Personnel Resource) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns AIP (Appointment Information - Personnel Resource) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The aip. </value>
+
 	public AIP AIP { 
 get{
 	   AIP ret = null;
@@ -50,9 +56,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns APR (Appointment Preferences) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns APR (Appointment Preferences) - creates it if necessary. </summary>
+    ///
+    /// <value> The APR. </value>
+
 	public APR APR { 
 get{
 	   APR ret = null;
@@ -66,9 +73,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -80,19 +92,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 

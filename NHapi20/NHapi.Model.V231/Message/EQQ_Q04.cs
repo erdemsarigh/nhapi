@@ -9,35 +9,38 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V231.Message
 
 {
-///<summary>
-/// Represents a EQQ_Q04 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a EQQ_Q04 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (MSH - message header segment) </li>
-///<li>1: EQL (EQL - embedded query language segment) </li>
-///<li>2: DSC (DSC - Continuation pointer segment) optional </li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (MSH - message header segment) </li>
+/// <li>1: EQL (EQL - embedded query language segment) </li>
+/// <li>2: DSC (DSC - Continuation pointer segment) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class EQQ_Q04 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new EQQ_Q04 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new EQQ_Q04 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public EQQ_Q04(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new EQQ_Q04 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new EQQ_Q04 Group with DefaultModelClassFactory. </summary>
 	public EQQ_Q04() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for EQQ_Q04.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for EQQ_Q04.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -48,6 +51,13 @@ public class EQQ_Q04 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -55,9 +65,11 @@ public class EQQ_Q04 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MSH - message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MSH - message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -71,9 +83,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns EQL (EQL - embedded query language segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns EQL (EQL - embedded query language segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The eql. </value>
+
 	public EQL EQL { 
 get{
 	   EQL ret = null;
@@ -87,9 +102,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns DSC (DSC - Continuation pointer segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns DSC (DSC - Continuation pointer segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The dsc. </value>
+
 	public DSC DSC { 
 get{
 	   DSC ret = null;

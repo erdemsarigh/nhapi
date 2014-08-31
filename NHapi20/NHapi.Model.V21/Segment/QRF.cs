@@ -7,28 +7,29 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 QRF message segment. 
-/// This segment has the following fields:<ol>
-///<li>QRF-1: WHERE SUBJECT FILTER (ST)</li>
-///<li>QRF-2: WHEN DATA START DATE/TIME (TS)</li>
-///<li>QRF-3: WHEN DATA END DATE/TIME (TS)</li>
-///<li>QRF-4: WHAT USER QUALIFIER (ST)</li>
-///<li>QRF-5: OTHER QRY SUBJECT FILTER (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 QRF message segment. This segment has the following fields:<ol>
+/// <li>QRF-1: WHERE SUBJECT FILTER (ST)</li>
+/// <li>QRF-2: WHEN DATA START DATE/TIME (TS)</li>
+/// <li>QRF-3: WHEN DATA END DATE/TIME (TS)</li>
+/// <li>QRF-4: WHAT USER QUALIFIER (ST)</li>
+/// <li>QRF-5: OTHER QRY SUBJECT FILTER (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class QRF : AbstractSegment  {
 
-  /**
-   * Creates a QRF (QUERY FILTER) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the QRF class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public QRF(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -42,11 +43,17 @@ public class QRF : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns a single repetition of WHERE SUBJECT FILTER(QRF-1).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of WHERE SUBJECT FILTER(QRF-1). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The wheresubjectfilter. </returns>
+
 	public ST GetWHERESUBJECTFILTER(int rep)
 	{
 			ST ret = null;
@@ -61,9 +68,12 @@ public class QRF : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of WHERE SUBJECT FILTER (QRF-1).
-   ///</summary>
+  /// <summary> Returns all repetitions of WHERE SUBJECT FILTER (QRF-1). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetWHERESUBJECTFILTER() {
      ST[] ret = null;
     try {
@@ -82,9 +92,10 @@ public class QRF : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of WHERE SUBJECT FILTER (QRF-1).
-   ///</summary>
+  /// <summary> Returns the total repetitions of WHERE SUBJECT FILTER (QRF-1). </summary>
+  ///
+  /// <value>   The wheresubjectfilter repetitions used. </value>
+
   public int WHERESUBJECTFILTERRepetitionsUsed
 {
 get{
@@ -100,9 +111,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns WHEN DATA START DATE/TIME(QRF-2).
-	///</summary>
+
+    /// <summary>   Returns WHEN DATA START DATE/TIME(QRF-2). </summary>
+    ///
+    /// <value> The whendatastartdatetime. </value>
+
 	public TS WHENDATASTARTDATETIME
 	{
 		get{
@@ -123,9 +136,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns WHEN DATA END DATE/TIME(QRF-3).
-	///</summary>
+    /// <summary>   Returns WHEN DATA END DATE/TIME(QRF-3). </summary>
+    ///
+    /// <value> The whendataenddatetime. </value>
+
 	public TS WHENDATAENDDATETIME
 	{
 		get{
@@ -146,11 +160,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of WHAT USER QUALIFIER(QRF-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of WHAT USER QUALIFIER(QRF-4). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The whatuserqualifier. </returns>
+
 	public ST GetWHATUSERQUALIFIER(int rep)
 	{
 			ST ret = null;
@@ -165,9 +185,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of WHAT USER QUALIFIER (QRF-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of WHAT USER QUALIFIER (QRF-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetWHATUSERQUALIFIER() {
      ST[] ret = null;
     try {
@@ -186,9 +209,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of WHAT USER QUALIFIER (QRF-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of WHAT USER QUALIFIER (QRF-4). </summary>
+  ///
+  /// <value>   The whatuserqualifier repetitions used. </value>
+
   public int WHATUSERQUALIFIERRepetitionsUsed
 {
 get{
@@ -204,11 +228,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of OTHER QRY SUBJECT FILTER(QRF-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of OTHER QRY SUBJECT FILTER(QRF-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The otherqrysubjectfilter. </returns>
+
 	public ST GetOTHERQRYSUBJECTFILTER(int rep)
 	{
 			ST ret = null;
@@ -223,9 +254,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of OTHER QRY SUBJECT FILTER (QRF-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of OTHER QRY SUBJECT FILTER (QRF-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetOTHERQRYSUBJECTFILTER() {
      ST[] ret = null;
     try {
@@ -244,9 +278,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of OTHER QRY SUBJECT FILTER (QRF-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of OTHER QRY SUBJECT FILTER (QRF-5). </summary>
+  ///
+  /// <value>   The otherqrysubjectfilter repetitions used. </value>
+
   public int OTHERQRYSUBJECTFILTERRepetitionsUsed
 {
 get{

@@ -9,37 +9,40 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V24.Message
 
 {
-///<summary>
-/// Represents a PMU_B04 message structure (see chapter 15). This structure contains the 
+/// <summary>
+/// Represents a PMU_B04 message structure (see chapter 15). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message Header) </li>
-///<li>1: EVN (Event Type) </li>
-///<li>2: STF (Staff Identification) </li>
-///<li>3: PRA (Practitioner Detail) optional repeating</li>
-///<li>4: ORG (Practitioner Organization Unit) optional </li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message Header) </li>
+/// <li>1: EVN (Event Type) </li>
+/// <li>2: STF (Staff Identification) </li>
+/// <li>3: PRA (Practitioner Detail) optional repeating</li>
+/// <li>4: ORG (Practitioner Organization Unit) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class PMU_B04 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new PMU_B04 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new PMU_B04 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public PMU_B04(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new PMU_B04 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new PMU_B04 Group with DefaultModelClassFactory. </summary>
 	public PMU_B04() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for PMU_B04.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for PMU_B04.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -52,6 +55,13 @@ public class PMU_B04 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -59,9 +69,11 @@ public class PMU_B04 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message Header) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message Header) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -75,9 +87,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns EVN (Event Type) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns EVN (Event Type) - creates it if necessary. </summary>
+    ///
+    /// <value> The evn. </value>
+
 	public EVN EVN { 
 get{
 	   EVN ret = null;
@@ -91,9 +104,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns STF (Staff Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns STF (Staff Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The stf. </value>
+
 	public STF STF { 
 get{
 	   STF ret = null;
@@ -107,9 +121,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of PRA (Practitioner Detail) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of PRA (Practitioner Detail) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The pra. </returns>
+
 	public PRA GetPRA() {
 	   PRA ret = null;
 	   try {
@@ -121,19 +140,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of PRA
-	/// * (Practitioner Detail) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of PRA
+    ///  * (Practitioner Detail) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The pra. </returns>
+
 	public PRA GetPRA(int rep) { 
 	   return (PRA)this.GetStructure("PRA", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of PRA 
-	 */ 
+    /// <summary>   Gets the pra repetitions used. </summary>
+    ///
+    /// <value> The pra repetitions used. </value>
+
 	public int PRARepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -148,9 +173,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns ORG (Practitioner Organization Unit) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORG (Practitioner Organization Unit) - creates it if necessary. </summary>
+    ///
+    /// <value> The organisation. </value>
+
 	public ORG ORG { 
 get{
 	   ORG ret = null;

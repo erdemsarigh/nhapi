@@ -38,30 +38,32 @@
 
 namespace NHapi.Base.Util
 {
-    /// <summary>
-    /// Filter iterator class
-    /// </summary>
+    /// <summary>   Filter iterator class. </summary>
     public class FilterIterator : System.Collections.IEnumerator
     {
         #region Fields
 
+        /// <summary>   The iterator. </summary>
         private System.Collections.IEnumerator iter;
 
+        /// <summary>   The next object. </summary>
         private System.Object nextObject;
 
+        /// <summary>   true to next object set. </summary>
         private bool nextObjectSet;
 
+        /// <summary>   The predicate. </summary>
         private FilterIterator.IPredicate predicate;
 
         #endregion
 
         #region Constructors and Destructors
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="iter"></param>
-        /// <param name="predicate"></param>
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <param name="iter">         . </param>
+        /// <param name="predicate">    . </param>
+
         public FilterIterator(System.Collections.IEnumerator iter, FilterIterator.IPredicate predicate)
         {
             this.iter = iter;
@@ -72,18 +74,17 @@ namespace NHapi.Base.Util
 
         #region Interfaces
 
-        /// <summary>
-        /// IPredicate interface
-        /// </summary>
+        /// <summary>   IPredicate interface. </summary>
         public interface IPredicate
         {
             #region Public Methods and Operators
 
-            /// <summary>
-            /// Evaluate the object
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <returns></returns>
+            /// <summary>   Evaluate the object. </summary>
+            ///
+            /// <param name="obj">  . </param>
+            ///
+            /// <returns>   true if it succeeds, false if it fails. </returns>
+
             bool evaluate(System.Object obj);
 
             #endregion
@@ -93,9 +94,10 @@ namespace NHapi.Base.Util
 
         #region Public Properties
 
-        /// <summary>
-        /// The current item
-        /// </summary>
+        /// <summary>   The current item. </summary>
+        ///
+        /// <value> The current. </value>
+
         public virtual System.Object Current
         {
             get
@@ -116,10 +118,10 @@ namespace NHapi.Base.Util
 
         #region Public Methods and Operators
 
-        /// <summary>
-        /// Move next
-        /// </summary>
-        /// <returns></returns>
+        /// <summary>   Move next. </summary>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         public virtual bool MoveNext()
         {
             if (this.nextObjectSet)
@@ -129,14 +131,16 @@ namespace NHapi.Base.Util
             return this.setNextObject();
         }
 
-        /// <summary>
-        /// Reset
-        /// </summary>
+        /// <summary>   Reset. </summary>
         public virtual void Reset()
         {
         }
 
-        /// <summary>Throws UnsupportedOperationException </summary>
+        /// <summary>   Throws UnsupportedOperationException. </summary>
+        ///
+        /// <exception cref="NotSupportedException">    Thrown when the requested operation is not
+        ///                                             supported. </exception>
+
         public virtual void remove()
         {
             throw new System.NotSupportedException();
@@ -146,9 +150,13 @@ namespace NHapi.Base.Util
 
         #region Methods
 
-        /// <summary> Set nextObject to the next object. If there are no more
-        /// objects then return false. Otherwise, return true.
+        /// <summary>
+        /// Set nextObject to the next object. If there are no more objects then return false. Otherwise,
+        /// return true.
         /// </summary>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         private bool setNextObject()
         {
             while (this.iter.MoveNext())

@@ -6,30 +6,32 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V24.Datatype
 {
-
-///<summary>
-/// <p>The HL7 QSC (query selection criteria) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 QSC (query selection criteria) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>segment field name (ST)</li>
 /// <li>relational operator (ID)</li>
 /// <li>Value (ST)</li>
 /// <li>relational conjunction (ID)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class QSC : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a QSC.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a QSC. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public QSC(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a QSC.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a QSC. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public QSC(IMessage message, string description) : base(message, description){
 		data = new IType[4];
 		data[0] = new ST(message,"Segment field name");
@@ -38,9 +40,10 @@ public class QSC : AbstractType, IComposite{
 		data[3] = new ID(message, 0,"Relational conjunction");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -48,12 +51,15 @@ public class QSC : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -64,10 +70,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns segment field name (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns segment field name (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the segment field. </value>
+
 	public ST SegmentFieldName {
 get{
 	   ST ret = null;
@@ -81,10 +91,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns relational operator (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns relational operator (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The relational operator. </value>
+
 	public ID RelationalOperator {
 get{
 	   ID ret = null;
@@ -98,10 +112,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Value (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Value (component #2).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The value. </value>
+
 	public ST Value {
 get{
 	   ST ret = null;
@@ -115,10 +133,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns relational conjunction (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns relational conjunction (component #3).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The relational conjunction. </value>
+
 	public ID RelationalConjunction {
 get{
 	   ID ret = null;

@@ -9,46 +9,49 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V23.Message
 
 {
-///<summary>
-/// Represents a RRI_I14 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a RRI_I14 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message header segment) </li>
-///<li>1: MSA (Message acknowledgement segment) optional </li>
-///<li>2: RF1 (Referral Information Segment) optional </li>
-///<li>3: RRI_I14_AUTHORIZATION (a Group object) optional </li>
-///<li>4: RRI_I14_PROVIDER (a Group object) repeating</li>
-///<li>5: PID (Patient Identification) </li>
-///<li>6: ACC (Accident) optional </li>
-///<li>7: DG1 (Diagnosis) optional repeating</li>
-///<li>8: DRG (Diagnosis Related Group) optional repeating</li>
-///<li>9: AL1 (Patient allergy information) optional repeating</li>
-///<li>10: RRI_I14_PROCEDURE (a Group object) optional repeating</li>
-///<li>11: RRI_I14_RESULTS (a Group object) optional repeating</li>
-///<li>12: RRI_I14_VISIT (a Group object) optional </li>
-///<li>13: NTE (Notes and comments segment) optional repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message header segment) </li>
+/// <li>1: MSA (Message acknowledgement segment) optional </li>
+/// <li>2: RF1 (Referral Information Segment) optional </li>
+/// <li>3: RRI_I14_AUTHORIZATION (a Group object) optional </li>
+/// <li>4: RRI_I14_PROVIDER (a Group object) repeating</li>
+/// <li>5: PID (Patient Identification) </li>
+/// <li>6: ACC (Accident) optional </li>
+/// <li>7: DG1 (Diagnosis) optional repeating</li>
+/// <li>8: DRG (Diagnosis Related Group) optional repeating</li>
+/// <li>9: AL1 (Patient allergy information) optional repeating</li>
+/// <li>10: RRI_I14_PROCEDURE (a Group object) optional repeating</li>
+/// <li>11: RRI_I14_RESULTS (a Group object) optional repeating</li>
+/// <li>12: RRI_I14_VISIT (a Group object) optional </li>
+/// <li>13: NTE (Notes and comments segment) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RRI_I14 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new RRI_I14 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new RRI_I14 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public RRI_I14(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new RRI_I14 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new RRI_I14 Group with DefaultModelClassFactory. </summary>
 	public RRI_I14() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for RRI_I14.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for RRI_I14.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -70,6 +73,13 @@ public class RRI_I14 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -77,9 +87,11 @@ public class RRI_I14 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -93,9 +105,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MSA (Message acknowledgement segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MSA (Message acknowledgement segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msa. </value>
+
 	public MSA MSA { 
 get{
 	   MSA ret = null;
@@ -109,9 +122,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RF1 (Referral Information Segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RF1 (Referral Information Segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The rf 1. </value>
+
 	public RF1 RF1 { 
 get{
 	   RF1 ret = null;
@@ -125,9 +139,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RRI_I14_AUTHORIZATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RRI_I14_AUTHORIZATION (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The authorization. </value>
+
 	public RRI_I14_AUTHORIZATION AUTHORIZATION { 
 get{
 	   RRI_I14_AUTHORIZATION ret = null;
@@ -141,9 +156,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RRI_I14_PROVIDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RRI_I14_PROVIDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The provider. </returns>
+
 	public RRI_I14_PROVIDER GetPROVIDER() {
 	   RRI_I14_PROVIDER ret = null;
 	   try {
@@ -155,19 +175,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RRI_I14_PROVIDER
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RRI_I14_PROVIDER
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The provider. </returns>
+
 	public RRI_I14_PROVIDER GetPROVIDER(int rep) { 
 	   return (RRI_I14_PROVIDER)this.GetStructure("PROVIDER", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RRI_I14_PROVIDER 
-	 */ 
+    /// <summary>   Gets the provider repetitions used. </summary>
+    ///
+    /// <value> The provider repetitions used. </value>
+
 	public int PROVIDERRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -182,9 +208,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns PID (Patient Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -198,9 +225,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ACC (Accident) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ACC (Accident) - creates it if necessary. </summary>
+    ///
+    /// <value> The accumulate. </value>
+
 	public ACC ACC { 
 get{
 	   ACC ret = null;
@@ -214,9 +242,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of DG1 (Diagnosis) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns  first repetition of DG1 (Diagnosis) - creates it if necessary. </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The dg 1. </returns>
+
 	public DG1 GetDG1() {
 	   DG1 ret = null;
 	   try {
@@ -228,19 +259,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of DG1
-	/// * (Diagnosis) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of DG1
+    ///  * (Diagnosis) - creates it if necessary throws HL7Exception if the repetition requested is
+    ///  more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The dg 1. </returns>
+
 	public DG1 GetDG1(int rep) { 
 	   return (DG1)this.GetStructure("DG1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of DG1 
-	 */ 
+    /// <summary>   Gets the dg 1 repetitions used. </summary>
+    ///
+    /// <value> The dg 1 repetitions used. </value>
+
 	public int DG1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -255,9 +292,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of DRG (Diagnosis Related Group) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of DRG (Diagnosis Related Group) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The drg. </returns>
+
 	public DRG GetDRG() {
 	   DRG ret = null;
 	   try {
@@ -269,19 +311,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of DRG
-	/// * (Diagnosis Related Group) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of DRG
+    ///  * (Diagnosis Related Group) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The drg. </returns>
+
 	public DRG GetDRG(int rep) { 
 	   return (DRG)this.GetStructure("DRG", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of DRG 
-	 */ 
+    /// <summary>   Gets the drg repetitions used. </summary>
+    ///
+    /// <value> The drg repetitions used. </value>
+
 	public int DRGRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -296,9 +344,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of AL1 (Patient allergy information) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of AL1 (Patient allergy information) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   a l 1. </returns>
+
 	public AL1 GetAL1() {
 	   AL1 ret = null;
 	   try {
@@ -310,19 +363,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of AL1
-	/// * (Patient allergy information) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of AL1
+    ///  * (Patient allergy information) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   a l 1. </returns>
+
 	public AL1 GetAL1(int rep) { 
 	   return (AL1)this.GetStructure("AL1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of AL1 
-	 */ 
+    /// <summary>   Gets the al 1 repetitions used. </summary>
+    ///
+    /// <value> The al 1 repetitions used. </value>
+
 	public int AL1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -337,9 +396,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of RRI_I14_PROCEDURE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RRI_I14_PROCEDURE (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The procedure. </returns>
+
 	public RRI_I14_PROCEDURE GetPROCEDURE() {
 	   RRI_I14_PROCEDURE ret = null;
 	   try {
@@ -351,19 +415,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RRI_I14_PROCEDURE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RRI_I14_PROCEDURE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The procedure. </returns>
+
 	public RRI_I14_PROCEDURE GetPROCEDURE(int rep) { 
 	   return (RRI_I14_PROCEDURE)this.GetStructure("PROCEDURE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RRI_I14_PROCEDURE 
-	 */ 
+    /// <summary>   Gets the procedure repetitions used. </summary>
+    ///
+    /// <value> The procedure repetitions used. </value>
+
 	public int PROCEDURERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -378,9 +448,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of RRI_I14_RESULTS (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RRI_I14_RESULTS (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The results. </returns>
+
 	public RRI_I14_RESULTS GetRESULTS() {
 	   RRI_I14_RESULTS ret = null;
 	   try {
@@ -392,19 +467,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RRI_I14_RESULTS
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RRI_I14_RESULTS
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The results. </returns>
+
 	public RRI_I14_RESULTS GetRESULTS(int rep) { 
 	   return (RRI_I14_RESULTS)this.GetStructure("RESULTS", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RRI_I14_RESULTS 
-	 */ 
+    /// <summary>   Gets the results repetitions used. </summary>
+    ///
+    /// <value> The results repetitions used. </value>
+
 	public int RESULTSRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -419,9 +500,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns RRI_I14_VISIT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RRI_I14_VISIT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The visit. </value>
+
 	public RRI_I14_VISIT VISIT { 
 get{
 	   RRI_I14_VISIT ret = null;
@@ -435,9 +517,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -449,19 +536,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 

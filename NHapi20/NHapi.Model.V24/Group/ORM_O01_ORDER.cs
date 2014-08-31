@@ -8,24 +8,27 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the ORM_O01_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common Order) </li>
-///<li>1: ORM_O01_ORDER_DETAIL (a Group object) optional </li>
-///<li>2: FT1 (Financial Transaction) optional repeating</li>
-///<li>3: CTI (Clinical Trial Identification) optional repeating</li>
-///<li>4: BLG (Billing) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ORM_O01_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common Order) </li>
+/// <li>1: ORM_O01_ORDER_DETAIL (a Group object) optional </li>
+/// <li>2: FT1 (Financial Transaction) optional repeating</li>
+/// <li>3: CTI (Clinical Trial Identification) optional repeating</li>
+/// <li>4: BLG (Billing) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ORM_O01_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ORM_O01_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new ORM_O01_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORM_O01_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -38,9 +41,10 @@ public class ORM_O01_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common Order) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common Order) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -54,9 +58,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ORM_O01_ORDER_DETAIL (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORM_O01_ORDER_DETAIL (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The order detail. </value>
+
 	public ORM_O01_ORDER_DETAIL ORDER_DETAIL { 
 get{
 	   ORM_O01_ORDER_DETAIL ret = null;
@@ -70,9 +75,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of FT1 (Financial Transaction) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of FT1 (Financial Transaction) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The ft 1. </returns>
+
 	public FT1 GetFT1() {
 	   FT1 ret = null;
 	   try {
@@ -84,19 +94,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of FT1
-	/// * (Financial Transaction) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of FT1
+    ///  * (Financial Transaction) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The ft 1. </returns>
+
 	public FT1 GetFT1(int rep) { 
 	   return (FT1)this.GetStructure("FT1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of FT1 
-	 */ 
+    /// <summary>   Gets the ft 1 repetitions used. </summary>
+    ///
+    /// <value> The ft 1 repetitions used. </value>
+
 	public int FT1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -111,9 +127,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of CTI (Clinical Trial Identification) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of CTI (Clinical Trial Identification) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The cti. </returns>
+
 	public CTI GetCTI() {
 	   CTI ret = null;
 	   try {
@@ -125,19 +146,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of CTI
-	/// * (Clinical Trial Identification) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of CTI
+    ///  * (Clinical Trial Identification) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The cti. </returns>
+
 	public CTI GetCTI(int rep) { 
 	   return (CTI)this.GetStructure("CTI", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of CTI 
-	 */ 
+    /// <summary>   Gets the cti repetitions used. </summary>
+    ///
+    /// <value> The cti repetitions used. </value>
+
 	public int CTIRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -152,9 +179,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns BLG (Billing) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns BLG (Billing) - creates it if necessary. </summary>
+    ///
+    /// <value> The blg. </value>
+
 	public BLG BLG { 
 get{
 	   BLG ret = null;

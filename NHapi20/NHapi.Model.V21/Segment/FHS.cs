@@ -7,35 +7,36 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 FHS message segment. 
-/// This segment has the following fields:<ol>
-///<li>FHS-1: FILE FIELD SEPARATOR (ST)</li>
-///<li>FHS-2: FILE ENCODING CHARACTERS (ST)</li>
-///<li>FHS-3: FILE SENDING APPLICATION (ST)</li>
-///<li>FHS-4: FILE SENDING FACILITY (ST)</li>
-///<li>FHS-5: FILE RECEIVING APPLICATION (ST)</li>
-///<li>FHS-6: FILE RECEIVING FACILITY (ST)</li>
-///<li>FHS-7: DATE/TIME OF FILE CREATION (TS)</li>
-///<li>FHS-8: FILE SECURITY (ST)</li>
-///<li>FHS-9: FILE NAME/ID (ST)</li>
-///<li>FHS-10: FILE HEADER COMMENT (ST)</li>
-///<li>FHS-11: FILE CONTROL ID (ST)</li>
-///<li>FHS-12: REFERENCE FILE CONTROL ID (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 FHS message segment. This segment has the following fields:<ol>
+/// <li>FHS-1: FILE FIELD SEPARATOR (ST)</li>
+/// <li>FHS-2: FILE ENCODING CHARACTERS (ST)</li>
+/// <li>FHS-3: FILE SENDING APPLICATION (ST)</li>
+/// <li>FHS-4: FILE SENDING FACILITY (ST)</li>
+/// <li>FHS-5: FILE RECEIVING APPLICATION (ST)</li>
+/// <li>FHS-6: FILE RECEIVING FACILITY (ST)</li>
+/// <li>FHS-7: DATE/TIME OF FILE CREATION (TS)</li>
+/// <li>FHS-8: FILE SECURITY (ST)</li>
+/// <li>FHS-9: FILE NAME/ID (ST)</li>
+/// <li>FHS-10: FILE HEADER COMMENT (ST)</li>
+/// <li>FHS-11: FILE CONTROL ID (ST)</li>
+/// <li>FHS-12: REFERENCE FILE CONTROL ID (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class FHS : AbstractSegment  {
 
-  /**
-   * Creates a FHS (FILE HEADER) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the FHS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public FHS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -56,9 +57,10 @@ public class FHS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns FILE FIELD SEPARATOR(FHS-1).
-	///</summary>
+    /// <summary>   Returns FILE FIELD SEPARATOR(FHS-1). </summary>
+    ///
+    /// <value> The filefieldseparator. </value>
+
 	public ST FILEFIELDSEPARATOR
 	{
 		get{
@@ -79,9 +81,10 @@ public class FHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns FILE ENCODING CHARACTERS(FHS-2).
-	///</summary>
+    /// <summary>   Returns FILE ENCODING CHARACTERS(FHS-2). </summary>
+    ///
+    /// <value> The fileencodingcharacters. </value>
+
 	public ST FILEENCODINGCHARACTERS
 	{
 		get{
@@ -102,9 +105,10 @@ public class FHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns FILE SENDING APPLICATION(FHS-3).
-	///</summary>
+    /// <summary>   Returns FILE SENDING APPLICATION(FHS-3). </summary>
+    ///
+    /// <value> The filesendingapplication. </value>
+
 	public ST FILESENDINGAPPLICATION
 	{
 		get{
@@ -125,9 +129,10 @@ public class FHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns FILE SENDING FACILITY(FHS-4).
-	///</summary>
+    /// <summary>   Returns FILE SENDING FACILITY(FHS-4). </summary>
+    ///
+    /// <value> The filesendingfacility. </value>
+
 	public ST FILESENDINGFACILITY
 	{
 		get{
@@ -148,9 +153,10 @@ public class FHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns FILE RECEIVING APPLICATION(FHS-5).
-	///</summary>
+    /// <summary>   Returns FILE RECEIVING APPLICATION(FHS-5). </summary>
+    ///
+    /// <value> The filereceivingapplication. </value>
+
 	public ST FILERECEIVINGAPPLICATION
 	{
 		get{
@@ -171,9 +177,10 @@ public class FHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns FILE RECEIVING FACILITY(FHS-6).
-	///</summary>
+    /// <summary>   Returns FILE RECEIVING FACILITY(FHS-6). </summary>
+    ///
+    /// <value> The filereceivingfacility. </value>
+
 	public ST FILERECEIVINGFACILITY
 	{
 		get{
@@ -194,9 +201,10 @@ public class FHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DATE/TIME OF FILE CREATION(FHS-7).
-	///</summary>
+    /// <summary>   Returns DATE/TIME OF FILE CREATION(FHS-7). </summary>
+    ///
+    /// <value> The datetimeoffilecreation. </value>
+
 	public TS DATETIMEOFFILECREATION
 	{
 		get{
@@ -217,9 +225,10 @@ public class FHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns FILE SECURITY(FHS-8).
-	///</summary>
+    /// <summary>   Returns FILE SECURITY(FHS-8). </summary>
+    ///
+    /// <value> The filesecurity. </value>
+
 	public ST FILESECURITY
 	{
 		get{
@@ -240,9 +249,10 @@ public class FHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns FILE NAME/ID(FHS-9).
-	///</summary>
+    /// <summary>   Returns FILE NAME/ID(FHS-9). </summary>
+    ///
+    /// <value> The filenameid. </value>
+
 	public ST FILENAMEID
 	{
 		get{
@@ -263,9 +273,10 @@ public class FHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns FILE HEADER COMMENT(FHS-10).
-	///</summary>
+    /// <summary>   Returns FILE HEADER COMMENT(FHS-10). </summary>
+    ///
+    /// <value> The fileheadercomment. </value>
+
 	public ST FILEHEADERCOMMENT
 	{
 		get{
@@ -286,9 +297,10 @@ public class FHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns FILE CONTROL ID(FHS-11).
-	///</summary>
+    /// <summary>   Returns FILE CONTROL ID(FHS-11). </summary>
+    ///
+    /// <value> The filecontrolid. </value>
+
 	public ST FILECONTROLID
 	{
 		get{
@@ -309,9 +321,10 @@ public class FHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns REFERENCE FILE CONTROL ID(FHS-12).
-	///</summary>
+    /// <summary>   Returns REFERENCE FILE CONTROL ID(FHS-12). </summary>
+    ///
+    /// <value> The referencefilecontrolid. </value>
+
 	public ST REFERENCEFILECONTROLID
 	{
 		get{

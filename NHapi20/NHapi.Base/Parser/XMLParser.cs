@@ -32,50 +32,62 @@ namespace NHapi.Base.Parser
     using NHapi.Base.Model;
     using NHapi.Base.Util;
 
-    /// <summary> Parses and encodes HL7 messages in XML form, according to HL7's normative XML encoding
+    /// <summary>
+    /// Parses and encodes HL7 messages in XML form, according to HL7's normative XML encoding
     /// specification.  This is an abstract class that handles datatype and segment parsing/encoding,
     /// but not the parsing/encoding of entire messages.  To use the XML parser, you should create a
     /// subclass for a certain message structure.  This subclass must be able to identify the Segment
-    /// objects that correspond to various Segment nodes in an XML document, and call the methods <code>
+    /// objects that correspond to various Segment nodes in an XML document, and call the methods
+    /// <code>
     /// parse(Segment segment, ElementNode segmentNode)</code> and <code>encode(Segment segment, ElementNode segmentNode)
-    /// </code> as appropriate.  XMLParser uses the Xerces parser, which must be installed in your classpath.
+    /// </code> as appropriate.  XMLParser uses the Xerces parser, which must be installed in your
+    /// classpath.
     /// </summary>
-    /// <author>  Bryan Tripp, Shawn Bellina
-    /// </author>
+
     public abstract class XMLParser : ParserBase
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Fields
 
-        /// <summary> All keepAsOriginalNodes names, concatenated by a pipe (|)</summary>
+        /// <summary>   All keepAsOriginalNodes names, concatenated by a pipe (|) </summary>
         private System.String concatKeepAsOriginalNodes = "";
 
-        /// <summary> The nodes whose names match these strings will be kept as original, 
-        /// meaning that no white space treaming will occur on them
+        /// <summary>
+        /// The nodes whose names match these strings will be kept as original, meaning that no white
+        /// space treaming will occur on them.
         /// </summary>
+
         private System.String[] keepAsOriginalNodes;
 
+        /// <summary>   The parser. </summary>
         private System.Xml.XmlDocument parser;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the XMLParser class. </summary>
         static XMLParser()
         {
             log = HapiLogFactory.GetHapiLog(typeof(XMLParser));
         }
 
+        /// <summary>   Initializes a new instance of the XMLParser class. </summary>
         public XMLParser()
         {
             this.parser = new System.Xml.XmlDocument();
             this.parser.PreserveWhitespace = false; // this may not be similar functionality.
         }
+
+        /// <summary>   Initializes a new instance of the XMLParser class. </summary>
+        ///
+        /// <param name="factory">  The factory. </param>
 
         public XMLParser(IModelClassFactory factory)
             : base(factory)
@@ -88,8 +100,10 @@ namespace NHapi.Base.Parser
 
         #region Public Properties
 
-        /// <returns> the preferred encoding of this Parser
-        /// </returns>
+        /// <summary>   Gets the default encoding. </summary>
+        ///
+        /// <value> the preferred encoding of this Parser. </value>
+
         public override System.String DefaultEncoding
         {
             get
@@ -98,12 +112,14 @@ namespace NHapi.Base.Parser
             }
         }
 
-        /// <summary> Sets the <i>keepAsOriginalNodes<i></summary>
-        /// <summary> Sets the <i>keepAsOriginalNodes<i>
-        /// 
-        /// The nodes whose names match the <i>keepAsOriginalNodes<i> will be kept as original, 
-        /// meaning that no white space treaming will occur on them
-        /// </summary>
+        /// <summary>   Gets or sets the &lt;i&gt;keepAsOriginalNodes&lt;i&gt; </summary>
+        /// <summary>   Sets the &lt;i&gt;keepAsOriginalNodes&lt;i&gt;
+        ///             
+        ///             The nodes whose names match the &lt;i&gt;keepAsOriginalNodes&lt;i&gt; will be
+        ///             kept as original, meaning that no white space treaming will occur on them. </summary>
+        ///
+        /// <value> The keep as original nodes. </value>
+
         public virtual System.String[] KeepAsOriginalNodes
         {
             get
@@ -137,7 +153,10 @@ namespace NHapi.Base.Parser
 
         #region Public Methods and Operators
 
-        /// <summary>Test harness </summary>
+        /// <summary>   Test harness. </summary>
+        ///
+        /// <param name="args"> Array of command-line argument strings. </param>
+
         [STAThread]
         public static void Main(System.String[] args)
         {
@@ -217,10 +236,19 @@ namespace NHapi.Base.Parser
             }
         }
 
-        /// <summary> Populates the given Element with data from the given Segment, by inserting
-        /// Elements corresponding to the Segment's fields, their components, etc.  Returns 
-        /// true if there is at least one data value in the segment.   
+        /// <summary>
+        /// Populates the given Element with data from the given Segment, by inserting Elements
+        /// corresponding to the Segment's fields, their components, etc.  Returns true if there is at
+        /// least one data value in the segment.
         /// </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="segmentObject">    The segment object. </param>
+        /// <param name="segmentElement">   Element describing the segment. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         public virtual bool Encode(ISegment segmentObject, System.Xml.XmlElement segmentElement)
         {
             bool hasValue = false;
@@ -253,24 +281,36 @@ namespace NHapi.Base.Parser
             return hasValue;
         }
 
-        /// <summary> <p>Creates an XML Document that corresponds to the given Message object. </p>
-        /// <p>If you are implementing this method, you should create an XML Document, and insert XML Elements
-        /// into it that correspond to the groups and segments that belong to the message type that your subclass
-        /// of XMLParser supports.  Then, for each segment in the message, call the method
+        /// <summary>
+        /// <p>Creates an XML Document that corresponds to the given Message object. </p>
+        /// <p>If you are implementing this method, you should create an XML Document, and insert XML
+        /// Elements
+        /// into it that correspond to the groups and segments that belong to the message type that your
+        /// subclass of XMLParser supports.  Then, for each segment in the message, call the method
         /// <code>encode(Segment segmentObject, Element segmentElement)</code> using the Element for
         /// that segment and the corresponding Segment object from the given Message.</p>
         /// </summary>
+        ///
+        /// <param name="source">   a Message object from which to construct an encoded message string. </param>
+        ///
+        /// <returns>   A System.Xml.XmlDocument. </returns>
+
         public abstract System.Xml.XmlDocument EncodeDocument(IMessage source);
 
-        /// <summary> For response messages, returns the value of MSA-2 (the message ID of the message
-        /// sent by the sending system).  This value may be needed prior to main message parsing,
-        /// so that (particularly in a multi-threaded scenario) the message can be routed to
-        /// the thread that sent the request.  We need this information first so that any
-        /// parse exceptions are thrown to the correct thread.  Implementers of Parsers should
-        /// take care to make the implementation of this method very fast and robust.
-        /// Returns null if MSA-2 can not be found (e.g. if the message is not a
-        /// response message).  Trims whitespace from around the MSA-2 field.  
+        /// <summary>
+        /// For response messages, returns the value of MSA-2 (the message ID of the message sent by the
+        /// sending system).  This value may be needed prior to main message parsing, so that
+        /// (particularly in a multi-threaded scenario) the message can be routed to the thread that sent
+        /// the request.  We need this information first so that any parse exceptions are thrown to the
+        /// correct thread.  Implementers of Parsers should take care to make the implementation of this
+        /// method very fast and robust. Returns null if MSA-2 can not be found (e.g. if the message is
+        /// not a response message).  Trims whitespace from around the MSA-2 field.  
         /// </summary>
+        ///
+        /// <param name="message">  a String that contains an HL7 message. </param>
+        ///
+        /// <returns>   The acknowledge identifier. </returns>
+
         public override System.String GetAckID(System.String message)
         {
             System.String ackID = null;
@@ -285,19 +325,23 @@ namespace NHapi.Base.Parser
             return ackID;
         }
 
-        /// <summary> <p>Returns a minimal amount of data from a message string, including only the
-        /// data needed to send a response to the remote system.  This includes the
-        /// following fields:
+        /// <summary>
+        /// <p>Returns a minimal amount of data from a message string, including only the data needed to
+        /// send a response to the remote system.  This includes the following fields:
         /// <ul><li>field separator</li>
         /// <li>encoding characters</li>
         /// <li>processing ID</li>
         /// <li>message control ID</li></ul>
-        /// This method is intended for use when there is an error parsing a message,
-        /// (so the Message object is unavailable) but an error message must be sent
-        /// back to the remote system including some of the information in the inbound
-        /// message.  This method parses only that required information, hopefully
-        /// avoiding the condition that caused the original error.</p>
+        /// This method is intended for use when there is an error parsing a message, (so the Message
+        /// object is unavailable) but an error message must be sent back to the remote system including
+        /// some of the information in the inbound message.  This method parses only that required
+        /// information, hopefully avoiding the condition that caused the original error.</p>
         /// </summary>
+        ///
+        /// <param name="message">  a String that contains an HL7 message. </param>
+        ///
+        /// <returns>   The critical response data. </returns>
+
         public override ISegment GetCriticalResponseData(System.String message)
         {
             System.String version = this.GetVersion(message);
@@ -317,15 +361,19 @@ namespace NHapi.Base.Parser
             return criticalData;
         }
 
-        /// <summary> Returns a String representing the encoding of the given message, if
-        /// the encoding is recognized.  For example if the given message appears
-        /// to be encoded using HL7 2.x XML rules then "XML" would be returned.
-        /// If the encoding is not recognized then null is returned.  That this
-        /// method returns a specific encoding does not guarantee that the
-        /// message is correctly encoded (e.g. well formed XML) - just that
-        /// it is not encoded using any other encoding than the one returned.
-        /// Returns null if the encoding is not recognized.
+        /// <summary>
+        /// Returns a String representing the encoding of the given message, if the encoding is
+        /// recognized.  For example if the given message appears to be encoded using HL7 2.x XML rules
+        /// then "XML" would be returned. If the encoding is not recognized then null is returned.  That
+        /// this method returns a specific encoding does not guarantee that the message is correctly
+        /// encoded (e.g. well formed XML) - just that it is not encoded using any other encoding than
+        /// the one returned. Returns null if the encoding is not recognized.
         /// </summary>
+        ///
+        /// <param name="message">  a String that contains an HL7 message. </param>
+        ///
+        /// <returns>   The encoding. </returns>
+
         public override System.String GetEncoding(System.String message)
         {
             System.String encoding = null;
@@ -348,6 +396,16 @@ namespace NHapi.Base.Parser
             return encoding;
         }
 
+        /// <summary>
+        /// Returns the version ID (MSH-12) from the given message, without fully parsing the message.
+        /// The version is needed prior to parsing in order to determine the message class into which the
+        /// text of the message should be parsed.
+        /// </summary>
+        ///
+        /// <param name="message">  a String that contains an HL7 message. </param>
+        ///
+        /// <returns>   The version. </returns>
+
         public override System.String GetVersion(System.String message)
         {
             System.String version = this.ParseLeaf(message, "MSH.12", 0);
@@ -358,10 +416,13 @@ namespace NHapi.Base.Parser
             return version;
         }
 
-        /// <summary> Populates the given Segment object with data from the given XML Element.</summary>
-        /// <throws>  HL7Exception if the XML Element does not have the correct name and structure </throws>
-        /// <summary>      for the given Segment, or if there is an error while setting individual field values.
-        /// </summary>
+        /// <summary>   Populates the given Segment object with data from the given XML Element. </summary>
+        /// <summary>   for the given Segment, or if there is an error while setting individual field
+        ///             values. </summary>
+        ///
+        /// <param name="segmentObject">    The segment object. </param>
+        /// <param name="segmentElement">   Element describing the segment. </param>
+
         public virtual void Parse(ISegment segmentObject, System.Xml.XmlElement segmentElement)
         {
             SupportClass.HashSetSupport done = new SupportClass.HashSetSupport();
@@ -405,7 +466,11 @@ namespace NHapi.Base.Parser
             }
         }
 
-        /// <summary> Populates the given Type object with data from the given XML Element.</summary>
+        /// <summary>   Populates the given Type object with data from the given XML Element. </summary>
+        ///
+        /// <param name="datatypeObject">   The datatype object. </param>
+        /// <param name="datatypeElement">  Element describing the datatype. </param>
+
         public virtual void Parse(IType datatypeObject, System.Xml.XmlElement datatypeElement)
         {
             if (datatypeObject is Varies)
@@ -422,26 +487,42 @@ namespace NHapi.Base.Parser
             }
         }
 
-        /// <summary> <p>Creates and populates a Message object from an XML Document that contains an XML-encoded HL7 message.</p>
+        /// <summary>
+        /// <p>Creates and populates a Message object from an XML Document that contains an XML-encoded
+        /// HL7 message.</p>
         /// <p>The easiest way to implement this method for a particular message structure is as follows:
         /// <ol><li>Create an instance of the Message type you are going to handle with your subclass
         /// of XMLParser</li>
         /// <li>Go through the given Document and find the Elements that represent the top level of
         /// each message segment. </li>
-        /// <li>For each of these segments, call <code>parse(Segment segmentObject, Element segmentElement)</code>,
-        /// providing the appropriate Segment from your Message object, and the corresponding Element.</li></ol>
+        /// <li>For each of these segments, call <code>parse(Segment segmentObject, Element
+        /// segmentElement)</code>,
+        /// providing the appropriate Segment from your Message object, and the corresponding
+        /// Element.</li></ol>
         /// At the end of this process, your Message object should be populated with data from the XML
         /// Document.</p>
         /// </summary>
-        /// <throws>  HL7Exception if the message is not correctly formatted. </throws>
-        /// <throws>  EncodingNotSupportedException if the message encoded </throws>
-        /// <summary>      is not supported by this parser.
-        /// </summary>
+        ///
+        /// <summary>   is not supported by this parser. </summary>
+        ///
+        /// <param name="XMLMessage">   Message describing the XML. </param>
+        /// <param name="version">      the name of the HL7 version to which the message belongs (eg
+        ///                             "2.5") </param>
+        ///
+        /// <returns>   An IMessage. </returns>
+
         public abstract IMessage ParseDocument(System.Xml.XmlDocument XMLMessage, System.String version);
 
-        /// <summary> Returns true if and only if the given encoding is supported
-        /// by this Parser.
+        /// <summary>
+        /// Returns true if and only if the given encoding is supported by this Parser.
         /// </summary>
+        ///
+        /// <param name="encoding"> the name of the HL7 encoding to use (eg "XML"; most implementations
+        ///                         support only  
+        ///                         one encoding) </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         public override bool SupportsEncoding(System.String encoding)
         {
             if (encoding.Equals("XML"))
@@ -455,15 +536,19 @@ namespace NHapi.Base.Parser
 
         #region Methods
 
-        /// <summary> Formats a Message object into an HL7 message string using the given
-        /// encoding.
-        /// </summary>
-        /// <throws>  HL7Exception if the data fields in the message do not permit encoding </throws>
-        /// <summary>      (e.g. required fields are null)
-        /// </summary>
-        /// <throws>  EncodingNotSupportedException if the requested encoding is not </throws>
-        /// <summary>      supported by this parser.
-        /// </summary>
+        /// <summary>   Formats a Message object into an HL7 message string using the given encoding. </summary>
+        /// <summary>   (e.g. required fields are null) </summary>
+        /// <summary>   supported by this parser. </summary>
+        ///
+        /// <exception cref="EncodingNotSupportedException">    Thrown when an Encoding Not Supported
+        ///                                                     error condition occurs. </exception>
+        ///
+        /// <param name="source">   a Message object from which to construct an encoded message string. </param>
+        /// <param name="encoding"> the name of the HL7 encoding to use (eg "XML"; most implementations
+        ///                         support only one encoding) </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         protected internal override System.String DoEncode(IMessage source, System.String encoding)
         {
             if (!encoding.Equals("XML"))
@@ -473,14 +558,18 @@ namespace NHapi.Base.Parser
             return this.Encode(source);
         }
 
-        /// <summary> Formats a Message object into an HL7 message string using this parser's
-        /// default encoding (XML encoding). This method calls the abstract method
-        /// <code>encodeDocument(...)</code> in order to obtain XML Document object
-        /// representation of the Message, then serializes it to a String.
-        /// </summary>
-        /// <throws>  HL7Exception if the data fields in the message do not permit encoding </throws>
-        /// <summary>      (e.g. required fields are null)
-        /// </summary>
+        /// <summary>   Formats a Message object into an HL7 message string using this parser's default
+        ///             encoding (XML encoding). This method calls the abstract method
+        ///             <code>encodeDocument(...)</code> in order to obtain XML Document object
+        ///             representation of the Message, then serializes it to a String. </summary>
+        /// <summary>   (e.g. required fields are null) </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="source">   a Message object from which to construct an encoded message string. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         protected internal override System.String DoEncode(IMessage source)
         {
             if (source is GenericMessage)
@@ -496,11 +585,20 @@ namespace NHapi.Base.Parser
             return doc.OuterXml;
         }
 
-        /// <summary> <p>Parses a message string and returns the corresponding Message
-        /// object.  This method checks that the given message string is XML encoded, creates an
-        /// XML Document object (using Xerces) from the given String, and calls the abstract
-        /// method <code>parse(Document XMLMessage)</code></p>
+        /// <summary>
+        /// <p>Parses a message string and returns the corresponding Message object.  This method checks
+        /// that the given message string is XML encoded, creates an XML Document object (using Xerces)
+        /// from the given String, and calls the abstract method <code>parse(Document
+        /// XMLMessage)</code></p>
         /// </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="message">  a String that contains an HL7 message. </param>
+        /// <param name="version">  the name of the HL7 version to which the message belongs (eg "2.5") </param>
+        ///
+        /// <returns>   An IMessage. </returns>
+
         protected internal override IMessage DoParse(System.String message, System.String version)
         {
             IMessage m = null;
@@ -532,14 +630,18 @@ namespace NHapi.Base.Parser
             return m;
         }
 
-        /// <summary> Checks if <code>Node</code> content should be kept as original (ie.: whitespaces won't be removed)
-        /// 
+        /// <summary>
+        /// Checks if <code>Node</code> content should be kept as original (ie.: whitespaces won't be
+        /// removed)
         /// </summary>
-        /// <param name="node">The target <code>Node</code> 
-        /// </param>
-        /// <returns> boolean <code>true</code> if whitespaces should not be removed from node content, 
-        /// <code>false</code> otherwise
+        ///
+        /// <param name="node"> The target <code>Node</code> </param>
+        ///
+        /// <returns>
+        /// boolean <code>true</code> if whitespaces should not be removed from node content,
+        /// <code>false</code> otherwise.
         /// </returns>
+
         protected internal virtual bool KeepAsOriginal(System.Xml.XmlNode node)
         {
             if (node.Name == null)
@@ -549,20 +651,22 @@ namespace NHapi.Base.Parser
             return this.concatKeepAsOriginalNodes.IndexOf(node.Name) != -1;
         }
 
-        /// <summary> Attempts to retrieve the value of a leaf tag without using DOM or SAX.  
-        /// This method searches the given message string for the given tag name, and returns 
-        /// everything after the given tag and before the start of the next tag.  Whitespace
-        /// is stripped.  This is intended only for lead nodes, as the value is considered to 
-        /// end at the start of the next tag, regardless of whether it is the matching end 
-        /// tag or some other nested tag.  
+        /// <summary>
+        /// Attempts to retrieve the value of a leaf tag without using DOM or SAX.  
+        /// This method searches the given message string for the given tag name, and returns everything
+        /// after the given tag and before the start of the next tag.  Whitespace is stripped.  This is
+        /// intended only for lead nodes, as the value is considered to end at the start of the next tag,
+        /// regardless of whether it is the matching end tag or some other nested tag.  
         /// </summary>
-        /// <param name="message">a string message in XML form
-        /// </param>
-        /// <param name="tagName">the name of the XML tag, e.g. "MSA.2"
-        /// </param>
-        /// <param name="startAt">the character location at which to start searching
-        /// </param>
-        /// <throws>  HL7Exception if the tag can not be found </throws>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="message">  a string message in XML form. </param>
+        /// <param name="tagName">  the name of the XML tag, e.g. "MSA.2". </param>
+        /// <param name="startAt">  the character location at which to start searching. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         protected internal virtual System.String ParseLeaf(System.String message, System.String tagName, int startAt)
         {
             System.String value_Renamed = null;
@@ -590,10 +694,17 @@ namespace NHapi.Base.Parser
             return value_Renamed;
         }
 
-        /// <summary> Removes all unecessary whitespace from the given String (intended to be used with Primitive values).  
-        /// This includes leading and trailing whitespace, and repeated space characters.  Carriage returns, 
-        /// line feeds, and tabs are replaced with spaces. 
+        /// <summary>
+        /// Removes all unecessary whitespace from the given String (intended to be used with Primitive
+        /// values).  
+        /// This includes leading and trailing whitespace, and repeated space characters.  Carriage
+        /// returns, line feeds, and tabs are replaced with spaces.
         /// </summary>
+        ///
+        /// <param name="s">    The ISegment to process. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         protected internal virtual System.String RemoveWhitespace(System.String s)
         {
             s = s.Replace('\r', ' ');
@@ -620,12 +731,18 @@ namespace NHapi.Base.Parser
             return s.Trim();
         }
 
-        /// <summary> Populates the given Element with data from the given Type, by inserting
-        /// Elements corresponding to the Type's components and values.  Returns true if 
-        /// the given type contains a value (i.e. for Primitives, if getValue() doesn't 
-        /// return null, and for Composites, if at least one underlying Primitive doesn't 
-        /// return null).
+        /// <summary>
+        /// Populates the given Element with data from the given Type, by inserting Elements
+        /// corresponding to the Type's components and values.  Returns true if the given type contains a
+        /// value (i.e. for Primitives, if getValue() doesn't return null, and for Composites, if at
+        /// least one underlying Primitive doesn't return null).
         /// </summary>
+        ///
+        /// <param name="datatypeObject">   The datatype object. </param>
+        /// <param name="datatypeElement">  Element describing the datatype. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         private bool Encode(IType datatypeObject, System.Xml.XmlElement datatypeElement)
         {
             bool hasData = false;
@@ -644,11 +761,19 @@ namespace NHapi.Base.Parser
             return hasData;
         }
 
-        /// <summary> Encodes a Composite in XML by looping through it's components, creating new 
-        /// children for each of them (with the appropriate names) and populating them by 
-        /// calling encode(Type, Element) using these children.  Returns true if at least 
-        /// one component contains a value.  
+        /// <summary>
+        /// Encodes a Composite in XML by looping through it's components, creating new children for each
+        /// of them (with the appropriate names) and populating them by calling encode(Type, Element)
+        /// using these children.  Returns true if at least one component contains a value.  
         /// </summary>
+        ///
+        /// <exception cref="DataTypeException">    Thrown when a Data Type error condition occurs. </exception>
+        ///
+        /// <param name="datatypeObject">   The datatype object. </param>
+        /// <param name="datatypeElement">  Element describing the datatype. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         private bool EncodeComposite(IComposite datatypeObject, System.Xml.XmlElement datatypeElement)
         {
             IType[] components = datatypeObject.Components;
@@ -674,9 +799,18 @@ namespace NHapi.Base.Parser
             return hasValue;
         }
 
-        /// <summary> Encodes a Primitive in XML by adding it's value as a child of the given Element.  
+        /// <summary>
+        /// Encodes a Primitive in XML by adding it's value as a child of the given Element.  
         /// Returns true if the given Primitive contains a value.  
         /// </summary>
+        ///
+        /// <exception cref="DataTypeException">    Thrown when a Data Type error condition occurs. </exception>
+        ///
+        /// <param name="datatypeObject">   The datatype object. </param>
+        /// <param name="datatypeElement">  Element describing the datatype. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         private bool EncodePrimitive(IPrimitive datatypeObject, System.Xml.XmlElement datatypeElement)
         {
             bool hasValue = false;
@@ -700,9 +834,16 @@ namespace NHapi.Base.Parser
             return hasValue;
         }
 
-        /// <summary> Encodes a Varies type by extracting it's data field and encoding that.  Returns true 
-        /// if the data field (or one of its components) contains a value.  
+        /// <summary>
+        /// Encodes a Varies type by extracting it's data field and encoding that.  Returns true if the
+        /// data field (or one of its components) contains a value.  
         /// </summary>
+        ///
+        /// <param name="datatypeObject">   The datatype object. </param>
+        /// <param name="datatypeElement">  Element describing the datatype. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         private bool EncodeVaries(Varies datatypeObject, System.Xml.XmlElement datatypeElement)
         {
             bool hasData = false;
@@ -713,7 +854,12 @@ namespace NHapi.Base.Parser
             return hasData;
         }
 
-        /// <summary>Returns true if any of the given element's children are elements </summary>
+        /// <summary>   Returns true if any of the given element's children are elements. </summary>
+        ///
+        /// <param name="e">    Element describing the e. </param>
+        ///
+        /// <returns>   true if child element, false if not. </returns>
+
         private bool HasChildElement(System.Xml.XmlElement e)
         {
             System.Xml.XmlNodeList children = e.ChildNodes;
@@ -741,22 +887,43 @@ namespace NHapi.Base.Parser
         }
         return shortClassName + "." + child;
         }*/
-        /// <summary>Returns the expected XML element name for the given child of the given Segment </summary>
+
+        /// <summary>
+        /// Returns the expected XML element name for the given child of the given Segment.
+        /// </summary>
+        ///
+        /// <param name="s">        The ISegment to process. </param>
+        /// <param name="child">    The child. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         private System.String MakeElementName(ISegment s, int child)
         {
             return s.GetStructureName() + "." + child;
         }
 
-        /// <summary>Returns the expected XML element name for the given child of the given Composite </summary>
+        /// <summary>
+        /// Returns the expected XML element name for the given child of the given Composite.
+        /// </summary>
+        ///
+        /// <param name="composite">    The composite. </param>
+        /// <param name="child">        The child. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         private System.String MakeElementName(IComposite composite, int child)
         {
             return composite.TypeName + "." + child;
         }
 
-        /// <summary> Populates a Composite type by looping through it's children, finding corresponding 
-        /// Elements among the children of the given Element, and calling parse(Type, Element) for
-        /// each.
+        /// <summary>
+        /// Populates a Composite type by looping through it's children, finding corresponding Elements
+        /// among the children of the given Element, and calling parse(Type, Element) for each.
         /// </summary>
+        ///
+        /// <param name="datatypeObject">   The datatype object. </param>
+        /// <param name="datatypeElement">  Element describing the datatype. </param>
+
         private void ParseComposite(IComposite datatypeObject, System.Xml.XmlElement datatypeElement)
         {
             if (datatypeObject is GenericComposite)
@@ -789,7 +956,11 @@ namespace NHapi.Base.Parser
             }
         }
 
-        /// <summary>Parses a primitive type by filling it with text child, if any </summary>
+        /// <summary>   Parses a primitive type by filling it with text child, if any. </summary>
+        ///
+        /// <param name="datatypeObject">   The datatype object. </param>
+        /// <param name="datatypeElement">  Element describing the datatype. </param>
+
         private void ParsePrimitive(IPrimitive datatypeObject, System.Xml.XmlElement datatypeElement)
         {
             System.Xml.XmlNodeList children = datatypeElement.ChildNodes;
@@ -823,6 +994,13 @@ namespace NHapi.Base.Parser
             }
         }
 
+        /// <summary>   Parse reps. </summary>
+        ///
+        /// <param name="segmentObject">    The segment object. </param>
+        /// <param name="segmentElement">   Element describing the segment. </param>
+        /// <param name="fieldName">        Name of the field. </param>
+        /// <param name="fieldNum">         The field number. </param>
+
         private void ParseReps(
             ISegment segmentObject,
             System.Xml.XmlElement segmentElement,
@@ -836,10 +1014,15 @@ namespace NHapi.Base.Parser
             }
         }
 
-        /// <summary> Parses an XML element into a Varies by determining whether the element is primitive or 
-        /// composite, calling setData() on the Varies with a new generic primitive or composite as appropriate, 
-        /// and then calling parse again with the new Type object.  
+        /// <summary>
+        /// Parses an XML element into a Varies by determining whether the element is primitive or
+        /// composite, calling setData() on the Varies with a new generic primitive or composite as
+        /// appropriate, and then calling parse again with the new Type object.  
         /// </summary>
+        ///
+        /// <param name="datatypeObject">   The datatype object. </param>
+        /// <param name="datatypeElement">  Element describing the datatype. </param>
+
         private void ParseVaries(Varies datatypeObject, System.Xml.XmlElement datatypeElement)
         {
             //figure out what data type it holds 
@@ -859,19 +1042,61 @@ namespace NHapi.Base.Parser
 
         #endregion
 
+        /// <summary>   The anonymous class XML parser. </summary>
         private class AnonymousClassXMLParser : XMLParser
         {
             #region Public Methods and Operators
+
+            /// <summary>
+            /// <p>Creates an XML Document that corresponds to the given Message object.</p><p>If you are
+            /// implementing this method, you should create an XML Document, and insert XML Elements into it
+            /// that correspond to the groups and segments that belong to the message type that your subclass
+            /// of XMLParser supports.  Then, for each segment in the message, call the method
+            /// <code>encode(Segment segmentObject, Element segmentElement)</code> using the Element for
+            /// that segment and the corresponding Segment object from the given Message.</p>
+            /// </summary>
+            ///
+            /// <param name="source">   Source for the. </param>
+            ///
+            /// <returns>   A System.Xml.XmlDocument. </returns>
 
             public override System.Xml.XmlDocument EncodeDocument(IMessage source)
             {
                 return null;
             }
 
+            /// <summary>
+            /// Returns the version ID (MSH-12) from the given message, without fully parsing the message.
+            /// The version is needed prior to parsing in order to determine the message class into which the
+            /// text of the message should be parsed.
+            /// </summary>
+            ///
+            /// <param name="message">  a String that contains an HL7 message. </param>
+            ///
+            /// <returns>   The version. </returns>
+
             public override System.String GetVersion(System.String message)
             {
                 return null;
             }
+
+            /// <summary>   <p>Creates and populates a Message object from an XML Document that contains an
+            ///             XML-encoded HL7 message.</p><p>The easiest way to implement this method for a
+            ///             particular message structure is as follows:
+            ///             <ol><li>Create an instance of the Message type you are going to handle with your
+            ///             subclass
+            ///             of XMLParser</li><li>Go through the given Document and find the Elements that
+            ///             represent the top level of each message segment.</li><li>For each of these
+            ///             segments, call <code>parse(Segment segmentObject, Element segmentElement)</code>,
+            ///             providing the appropriate Segment from your Message object, and the corresponding
+            ///             Element.</li></ol>At the end of this process, your Message object should be
+            ///             populated with data from the XML Document.</p> </summary>
+            /// <summary>   is not supported by this parser. </summary>
+            ///
+            /// <param name="XMLMessage">   Message describing the XML. </param>
+            /// <param name="version">      The version. </param>
+            ///
+            /// <returns>   An IMessage. </returns>
 
             public override IMessage ParseDocument(System.Xml.XmlDocument XMLMessage, System.String version)
             {

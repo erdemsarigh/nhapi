@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 NTE message segment. 
-/// This segment has the following fields:<ol>
-///<li>NTE-1: Set ID - Notes and Comments (SI)</li>
-///<li>NTE-2: Source of Comment (ID)</li>
-///<li>NTE-3: Comment (FT)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 NTE message segment. This segment has the following fields:<ol>
+/// <li>NTE-1: Set ID - Notes and Comments (SI)</li>
+/// <li>NTE-2: Source of Comment (ID)</li>
+/// <li>NTE-3: Comment (FT)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class NTE : AbstractSegment  {
 
-  /**
-   * Creates a NTE (NOTES AND COMMENTS) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the NTE class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public NTE(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class NTE : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - Notes and Comments(NTE-1).
-	///</summary>
+    /// <summary>   Returns Set ID - Notes and Comments(NTE-1). </summary>
+    ///
+    /// <value> The set identifier notes and comments. </value>
+
 	public SI SetIDNotesAndComments
 	{
 		get{
@@ -61,9 +63,10 @@ public class NTE : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Source of Comment(NTE-2).
-	///</summary>
+    /// <summary>   Returns Source of Comment(NTE-2). </summary>
+    ///
+    /// <value> The source of comment. </value>
+
 	public ID SourceOfComment
 	{
 		get{
@@ -84,11 +87,17 @@ public class NTE : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Comment(NTE-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Comment(NTE-3). throws HL7Exception if the repetition number
+    /// is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The comment. </returns>
+
 	public FT GetComment(int rep)
 	{
 			FT ret = null;
@@ -103,9 +112,12 @@ public class NTE : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Comment (NTE-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Comment (NTE-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ft. </returns>
+
   public FT[] GetComment() {
      FT[] ret = null;
     try {
@@ -124,9 +136,10 @@ public class NTE : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Comment (NTE-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Comment (NTE-3). </summary>
+  ///
+  /// <value>   The comment repetitions used. </value>
+
   public int CommentRepetitionsUsed
 {
 get{

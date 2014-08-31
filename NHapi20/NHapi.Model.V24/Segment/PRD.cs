@@ -7,32 +7,33 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 PRD message segment. 
-/// This segment has the following fields:<ol>
-///<li>PRD-1: Provider Role (CE)</li>
-///<li>PRD-2: Provider Name (XPN)</li>
-///<li>PRD-3: Provider Address (XAD)</li>
-///<li>PRD-4: Provider Location (PL)</li>
-///<li>PRD-5: Provider Communication Information (XTN)</li>
-///<li>PRD-6: Preferred Method of Contact (CE)</li>
-///<li>PRD-7: Provider Identifiers (PI)</li>
-///<li>PRD-8: Effective Start Date of Provider Role (TS)</li>
-///<li>PRD-9: Effective End Date of Provider Role (TS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PRD message segment. This segment has the following fields:<ol>
+/// <li>PRD-1: Provider Role (CE)</li>
+/// <li>PRD-2: Provider Name (XPN)</li>
+/// <li>PRD-3: Provider Address (XAD)</li>
+/// <li>PRD-4: Provider Location (PL)</li>
+/// <li>PRD-5: Provider Communication Information (XTN)</li>
+/// <li>PRD-6: Preferred Method of Contact (CE)</li>
+/// <li>PRD-7: Provider Identifiers (PI)</li>
+/// <li>PRD-8: Effective Start Date of Provider Role (TS)</li>
+/// <li>PRD-9: Effective End Date of Provider Role (TS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PRD : AbstractSegment  {
 
-  /**
-   * Creates a PRD (Provider Data) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PRD class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PRD(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -50,11 +51,17 @@ public class PRD : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns a single repetition of Provider Role(PRD-1).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Provider Role(PRD-1). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The provider role. </returns>
+
 	public CE GetProviderRole(int rep)
 	{
 			CE ret = null;
@@ -69,9 +76,12 @@ public class PRD : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Provider Role (PRD-1).
-   ///</summary>
+  /// <summary> Returns all repetitions of Provider Role (PRD-1). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetProviderRole() {
      CE[] ret = null;
     try {
@@ -90,9 +100,10 @@ public class PRD : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Provider Role (PRD-1).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Provider Role (PRD-1). </summary>
+  ///
+  /// <value>   The provider role repetitions used. </value>
+
   public int ProviderRoleRepetitionsUsed
 {
 get{
@@ -108,11 +119,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Provider Name(PRD-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Provider Name(PRD-2). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The provider name. </returns>
+
 	public XPN GetProviderName(int rep)
 	{
 			XPN ret = null;
@@ -127,9 +145,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Provider Name (PRD-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Provider Name (PRD-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetProviderName() {
      XPN[] ret = null;
     try {
@@ -148,9 +169,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Provider Name (PRD-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Provider Name (PRD-2). </summary>
+  ///
+  /// <value>   The provider name repetitions used. </value>
+
   public int ProviderNameRepetitionsUsed
 {
 get{
@@ -166,11 +188,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Provider Address(PRD-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Provider Address(PRD-3). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The provider address. </returns>
+
 	public XAD GetProviderAddress(int rep)
 	{
 			XAD ret = null;
@@ -185,9 +214,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Provider Address (PRD-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Provider Address (PRD-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetProviderAddress() {
      XAD[] ret = null;
     try {
@@ -206,9 +238,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Provider Address (PRD-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Provider Address (PRD-3). </summary>
+  ///
+  /// <value>   The provider address repetitions used. </value>
+
   public int ProviderAddressRepetitionsUsed
 {
 get{
@@ -224,9 +257,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Provider Location(PRD-4).
-	///</summary>
+
+    /// <summary>   Returns Provider Location(PRD-4). </summary>
+    ///
+    /// <value> The provider location. </value>
+
 	public PL ProviderLocation
 	{
 		get{
@@ -247,11 +282,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Provider Communication Information(PRD-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Provider Communication Information(PRD-5). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The provider communication information. </returns>
+
 	public XTN GetProviderCommunicationInformation(int rep)
 	{
 			XTN ret = null;
@@ -266,9 +307,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Provider Communication Information (PRD-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Provider Communication Information (PRD-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetProviderCommunicationInformation() {
      XTN[] ret = null;
     try {
@@ -287,9 +331,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Provider Communication Information (PRD-5).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The provider communication information repetitions used. </value>
+
   public int ProviderCommunicationInformationRepetitionsUsed
 {
 get{
@@ -305,9 +352,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Preferred Method of Contact(PRD-6).
-	///</summary>
+
+    /// <summary>   Returns Preferred Method of Contact(PRD-6). </summary>
+    ///
+    /// <value> The preferred method of contact. </value>
+
 	public CE PreferredMethodOfContact
 	{
 		get{
@@ -328,11 +377,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Provider Identifiers(PRD-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Provider Identifiers(PRD-7). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The provider identifiers. </returns>
+
 	public PI GetProviderIdentifiers(int rep)
 	{
 			PI ret = null;
@@ -347,9 +402,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Provider Identifiers (PRD-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Provider Identifiers (PRD-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of pi. </returns>
+
   public PI[] GetProviderIdentifiers() {
      PI[] ret = null;
     try {
@@ -368,9 +426,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Provider Identifiers (PRD-7).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Provider Identifiers (PRD-7). </summary>
+  ///
+  /// <value>   The provider identifiers repetitions used. </value>
+
   public int ProviderIdentifiersRepetitionsUsed
 {
 get{
@@ -386,9 +445,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Effective Start Date of Provider Role(PRD-8).
-	///</summary>
+
+    /// <summary>   Returns Effective Start Date of Provider Role(PRD-8). </summary>
+    ///
+    /// <value> The effective start date of provider role. </value>
+
 	public TS EffectiveStartDateOfProviderRole
 	{
 		get{
@@ -409,9 +470,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Effective End Date of Provider Role(PRD-9).
-	///</summary>
+    /// <summary>   Returns Effective End Date of Provider Role(PRD-9). </summary>
+    ///
+    /// <value> The effective end date of provider role. </value>
+
 	public TS EffectiveEndDateOfProviderRole
 	{
 		get{

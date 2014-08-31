@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the EAN_U09_NOTIFICATION Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: NDS (Notification Detail) </li>
-///<li>1: NTE (Notes and Comments) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the EAN_U09_NOTIFICATION Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: NDS (Notification Detail) </li>
+/// <li>1: NTE (Notes and Comments) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class EAN_U09_NOTIFICATION : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new EAN_U09_NOTIFICATION Group.
-	///</summary>
+    /// <summary>   Creates a new EAN_U09_NOTIFICATION Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public EAN_U09_NOTIFICATION(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(NDS), true, false);
@@ -32,9 +35,10 @@ public class EAN_U09_NOTIFICATION : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns NDS (Notification Detail) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns NDS (Notification Detail) - creates it if necessary. </summary>
+    ///
+    /// <value> The nds. </value>
+
 	public NDS NDS { 
 get{
 	   NDS ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns NTE (Notes and Comments) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns NTE (Notes and Comments) - creates it if necessary. </summary>
+    ///
+    /// <value> The nte. </value>
+
 	public NTE NTE { 
 get{
 	   NTE ret = null;

@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the OMD_O01_DIET Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ODS (ODS - dietary orders, supplements, and preferences segment) repeating</li>
-///<li>1: NTE (NTE - notes and comments segment) optional repeating</li>
-///<li>2: OMD_O01_OBSERVATION (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the OMD_O01_DIET Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ODS (ODS - dietary orders, supplements, and preferences segment) repeating</li>
+/// <li>1: NTE (NTE - notes and comments segment) optional repeating</li>
+/// <li>2: OMD_O01_OBSERVATION (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class OMD_O01_DIET : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new OMD_O01_DIET Group.
-	///</summary>
+    /// <summary>   Creates a new OMD_O01_DIET Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OMD_O01_DIET(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ODS), true, true);
@@ -34,9 +37,15 @@ public class OMD_O01_DIET : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns  first repetition of ODS (ODS - dietary orders, supplements, and preferences segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of ODS (ODS - dietary orders, supplements, and preferences segment)
+    /// - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The ods. </returns>
+
 	public ODS GetODS() {
 	   ODS ret = null;
 	   try {
@@ -48,19 +57,25 @@ public class OMD_O01_DIET : AbstractGroup {
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of ODS
-	/// * (ODS - dietary orders, supplements, and preferences segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of ODS
+    ///  * (ODS - dietary orders, supplements, and preferences segment) - creates it if necessary
+    ///  throws HL7Exception if the repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The ods. </returns>
+
 	public ODS GetODS(int rep) { 
 	   return (ODS)this.GetStructure("ODS", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of ODS 
-	 */ 
+    /// <summary>   Gets the ods repetitions used. </summary>
+    ///
+    /// <value> The ods repetitions used. </value>
+
 	public int ODSRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -75,9 +90,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -89,19 +109,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (NTE - notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (NTE - notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -116,9 +142,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of OMD_O01_OBSERVATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of OMD_O01_OBSERVATION (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public OMD_O01_OBSERVATION GetOBSERVATION() {
 	   OMD_O01_OBSERVATION ret = null;
 	   try {
@@ -130,19 +161,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of OMD_O01_OBSERVATION
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of OMD_O01_OBSERVATION
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public OMD_O01_OBSERVATION GetOBSERVATION(int rep) { 
 	   return (OMD_O01_OBSERVATION)this.GetStructure("OBSERVATION", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of OMD_O01_OBSERVATION 
-	 */ 
+    /// <summary>   Gets the observation repetitions used. </summary>
+    ///
+    /// <value> The observation repetitions used. </value>
+
 	public int OBSERVATIONRepetitionsUsed { 
 get{
 	    int reps = -1; 

@@ -6,9 +6,9 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 CNN (Composite ID Number and Name Simplified) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 CNN (Composite ID Number and Name Simplified) data type.  Consists of the
+/// following components: </p><ol>
 /// <li>ID Number (ST)</li>
 /// <li>Family Name (ST)</li>
 /// <li>Given Name (ST)</li>
@@ -21,22 +21,24 @@ namespace NHapi.Model.V25.Datatype
 /// <li>Assigning Authority  - Universal ID (ST)</li>
 /// <li>Assigning Authority  - Universal ID Type (ID)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CNN : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CNN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CNN. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CNN(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CNN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CNN. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CNN(IMessage message, string description) : base(message, description){
 		data = new IType[11];
 		data[0] = new ST(message,"ID Number");
@@ -52,9 +54,10 @@ public class CNN : AbstractType, IComposite{
 		data[10] = new ID(message, 301,"Assigning Authority  - Universal ID Type");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -62,12 +65,15 @@ public class CNN : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -78,10 +84,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns ID Number (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns ID Number (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier number. </value>
+
 	public ST IDNumber {
 get{
 	   ST ret = null;
@@ -95,10 +105,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Family Name (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Family Name (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the family. </value>
+
 	public ST FamilyName {
 get{
 	   ST ret = null;
@@ -112,10 +126,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Given Name (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Given Name (component #2).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the given. </value>
+
 	public ST GivenName {
 get{
 	   ST ret = null;
@@ -129,10 +147,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Second and Further Given Names or Initials Thereof (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Second and Further Given Names or Initials Thereof (component #3).  This is a
+    /// convenience method that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The second and further given names or initials thereof. </value>
+
 	public ST SecondAndFurtherGivenNamesOrInitialsThereof {
 get{
 	   ST ret = null;
@@ -146,10 +168,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Suffix (e.g., JR or III) (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Suffix (e.g., JR or III) (component #4).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The suffix eg j ror iii. </value>
+
 	public ST SuffixEgJRorIII {
 get{
 	   ST ret = null;
@@ -163,10 +189,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Prefix (e.g., DR) (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Prefix (e.g., DR) (component #5).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The prefix eg dr. </value>
+
 	public ST PrefixEgDR {
 get{
 	   ST ret = null;
@@ -180,10 +210,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Degree (e.g., MD (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Degree (e.g., MD (component #6).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The degree eg md. </value>
+
 	public IS DegreeEgMD {
 get{
 	   IS ret = null;
@@ -197,10 +231,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Source Table (component #7).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Source Table (component #7).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The source table. </value>
+
 	public IS SourceTable {
 get{
 	   IS ret = null;
@@ -214,10 +252,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Assigning Authority   - Namespace ID (component #8).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Assigning Authority   - Namespace ID (component #8).  This is a convenience method
+    /// that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the assigning authority namespace. </value>
+
 	public IS AssigningAuthorityNamespaceID {
 get{
 	   IS ret = null;
@@ -231,10 +273,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Assigning Authority  - Universal ID (component #9).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Assigning Authority  - Universal ID (component #9).  This is a convenience method
+    /// that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the assigning authority universal. </value>
+
 	public ST AssigningAuthorityUniversalID {
 get{
 	   ST ret = null;
@@ -248,10 +294,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Assigning Authority  - Universal ID Type (component #10).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Assigning Authority  - Universal ID Type (component #10).  This is a convenience
+    /// method that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the assigning authority universal identifier. </value>
+
 	public ID AssigningAuthorityUniversalIDType {
 get{
 	   ID ret = null;

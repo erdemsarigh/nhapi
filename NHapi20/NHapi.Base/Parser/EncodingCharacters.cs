@@ -53,44 +53,45 @@
 
 namespace NHapi.Base.Parser
 {
-    /// <summary> 
+    /// <summary>
     /// Represents the set of special characters used to encode traditionally
     /// 
     /// encoded HL7 messages.
-    /// 
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// 
-    /// </author>
+
     public class EncodingCharacters : System.Object, System.ICloneable
     {
         #region Fields
 
+        /// <summary>   The encode characters. </summary>
         private char[] encChars;
 
+        /// <summary>   The field separator. </summary>
         private char fieldSep;
 
         #endregion
 
         #region Constructors and Destructors
 
-        /// <summary> 
+        /// <summary>
         /// Creates new EncodingCharacters object with the given character
         /// 
         /// values. If the encodingCharacters argument is null, the default
         /// 
         /// values are used.
-        /// 
         /// </summary>
-        /// <param name="encodingCharacters">consists of the characters that appear in
-        /// 
-        /// MSH-2 (see section 2.8 of the HL7 spec).  The characters are
-        /// 
-        /// Component Separator, Repetition Separator, Escape Character, and
-        /// 
-        /// Subcomponent Separator (in that order).
-        /// 
-        /// </param>
+        ///
+        /// <param name="fieldSeparator">       The field separator. </param>
+        /// <param name="encodingCharacters">   consists of the characters that appear in
+        ///                                     
+        ///                                     MSH-2 (see section 2.8 of the HL7 spec).  The characters
+        ///                                     are
+        ///                                     
+        ///                                     Component Separator, Repetition Separator, Escape
+        ///                                     Character, and
+        ///                                     
+        ///                                     Subcomponent Separator (in that order). </param>
+
         public EncodingCharacters(char fieldSeparator, System.String encodingCharacters)
         {
             this.fieldSep = fieldSeparator;
@@ -113,6 +114,20 @@ namespace NHapi.Base.Parser
             }
         }
 
+        /// <summary>
+        /// Creates new EncodingCharacters object with the given character
+        /// 
+        /// values. If the encodingCharacters argument is null, the default
+        /// 
+        /// values are used.
+        /// </summary>
+        ///
+        /// <param name="fieldSeparator">           The field separator. </param>
+        /// <param name="componentSeparator">       The component separator. </param>
+        /// <param name="repetitionSeparator">      The repetition separator. </param>
+        /// <param name="escapeCharacter">          The escape character. </param>
+        /// <param name="subcomponentSeparator">    The subcomponent separator. </param>
+
         public EncodingCharacters(
             char fieldSeparator,
             char componentSeparator,
@@ -126,7 +141,10 @@ namespace NHapi.Base.Parser
         {
         }
 
-        /// <summary>copies contents of "other" </summary>
+        /// <summary>   copies contents of "other". </summary>
+        ///
+        /// <param name="other">    The other. </param>
+
         public EncodingCharacters(EncodingCharacters other)
         {
             this.fieldSep = other.FieldSeparator;
@@ -146,10 +164,10 @@ namespace NHapi.Base.Parser
 
         #region Public Properties
 
-        /// <summary> 
-        /// Returns the component separator.
-        /// 
-        /// </summary>
+        /// <summary>   Returns the component separator. </summary>
+        ///
+        /// <value> The component separator. </value>
+
         public virtual char ComponentSeparator
         {
             get
@@ -163,10 +181,10 @@ namespace NHapi.Base.Parser
             }
         }
 
-        /// <summary> 
-        /// Returns the escape character.
-        /// 
-        /// </summary>
+        /// <summary>   Returns the escape character. </summary>
+        ///
+        /// <value> The escape character. </value>
+
         public virtual char EscapeCharacter
         {
             get
@@ -180,10 +198,10 @@ namespace NHapi.Base.Parser
             }
         }
 
-        /// <summary> 
-        /// Returns the field separator.
-        /// 
-        /// </summary>
+        /// <summary>   Returns the field separator. </summary>
+        ///
+        /// <value> The field separator. </value>
+
         public virtual char FieldSeparator
         {
             get
@@ -197,10 +215,10 @@ namespace NHapi.Base.Parser
             }
         }
 
-        /// <summary> 
-        /// Returns the repetition separator.
-        /// 
-        /// </summary>
+        /// <summary>   Returns the repetition separator. </summary>
+        ///
+        /// <value> The repetition separator. </value>
+
         public virtual char RepetitionSeparator
         {
             get
@@ -214,10 +232,10 @@ namespace NHapi.Base.Parser
             }
         }
 
-        /// <summary> 
-        /// Returns the subcomponent separator.
-        /// 
-        /// </summary>
+        /// <summary>   Returns the subcomponent separator. </summary>
+        ///
+        /// <value> The subcomponent separator. </value>
+
         public virtual char SubcomponentSeparator
         {
             get
@@ -235,13 +253,25 @@ namespace NHapi.Base.Parser
 
         #region Public Methods and Operators
 
+        /// <summary>   Creates a new object that is a copy of the current instance. </summary>
+        ///
+        /// <returns>   A new object that is a copy of this instance. </returns>
+
         public virtual System.Object Clone()
         {
             return new EncodingCharacters(this);
         }
 
-        /// <seealso cref="java.lang.Object.equals">
-        /// </seealso>
+        /// <summary>   Tests if this System.Object is considered equal to another. </summary>
+        ///
+        /// <param name="o">    The object to compare to this object. </param>
+        ///
+        /// <returns>   true if the objects are considered equal, false if they are not. </returns>
+        ///
+        /// <seealso cref="java.lang.Object.equals"/>
+        /// ### <param name="obj">  The <see cref="T:System.Object" /> to compare with the current
+        ///                         <see cref="T:System.Object" />. </param>
+
         public override bool Equals(System.Object o)
         {
             if (o is EncodingCharacters)
@@ -259,20 +289,26 @@ namespace NHapi.Base.Parser
             return false;
         }
 
-        /// <seealso cref="java.lang.Object.hashCode">
-        /// </seealso>
+        /// <summary>   Returns a hash code for this object. </summary>
+        ///
+        /// <returns>   A hash code for this object. </returns>
+        ///
+        /// <seealso cref="java.lang.Object.hashCode"/>
+
         public override int GetHashCode()
         {
             return 7 * this.ComponentSeparator * this.EscapeCharacter * this.FieldSeparator * this.RepetitionSeparator
                    * this.SubcomponentSeparator;
         }
 
-        /// <summary> 
+        /// <summary>
         /// Returns the encoding characters (not including field separator)
         /// 
         /// as a string.
-        /// 
         /// </summary>
+        ///
+        /// <returns>   A System.String that represents this object. </returns>
+
         public override System.String ToString()
         {
             System.Text.StringBuilder ret = new System.Text.StringBuilder();

@@ -7,29 +7,30 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 QAK message segment. 
-/// This segment has the following fields:<ol>
-///<li>QAK-1: Query Tag (ST)</li>
-///<li>QAK-2: Query Response Status (ID)</li>
-///<li>QAK-3: Message Query Name (CE)</li>
-///<li>QAK-4: Hit Count Total (NM)</li>
-///<li>QAK-5: This payload (NM)</li>
-///<li>QAK-6: Hits remaining (NM)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 QAK message segment. This segment has the following fields:<ol>
+/// <li>QAK-1: Query Tag (ST)</li>
+/// <li>QAK-2: Query Response Status (ID)</li>
+/// <li>QAK-3: Message Query Name (CE)</li>
+/// <li>QAK-4: Hit Count Total (NM)</li>
+/// <li>QAK-5: This payload (NM)</li>
+/// <li>QAK-6: Hits remaining (NM)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class QAK : AbstractSegment  {
 
-  /**
-   * Creates a QAK (Query Acknowledgment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the QAK class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public QAK(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -44,9 +45,10 @@ public class QAK : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Query Tag(QAK-1).
-	///</summary>
+    /// <summary>   Returns Query Tag(QAK-1). </summary>
+    ///
+    /// <value> The query tag. </value>
+
 	public ST QueryTag
 	{
 		get{
@@ -67,9 +69,10 @@ public class QAK : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Query Response Status(QAK-2).
-	///</summary>
+    /// <summary>   Returns Query Response Status(QAK-2). </summary>
+    ///
+    /// <value> The query response status. </value>
+
 	public ID QueryResponseStatus
 	{
 		get{
@@ -90,9 +93,10 @@ public class QAK : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Message Query Name(QAK-3).
-	///</summary>
+    /// <summary>   Returns Message Query Name(QAK-3). </summary>
+    ///
+    /// <value> The name of the message query. </value>
+
 	public CE MessageQueryName
 	{
 		get{
@@ -113,9 +117,10 @@ public class QAK : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Hit Count Total(QAK-4).
-	///</summary>
+    /// <summary>   Returns Hit Count Total(QAK-4). </summary>
+    ///
+    /// <value> The hit count total. </value>
+
 	public NM HitCountTotal
 	{
 		get{
@@ -136,9 +141,10 @@ public class QAK : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns This payload(QAK-5).
-	///</summary>
+    /// <summary>   Returns This payload(QAK-5). </summary>
+    ///
+    /// <value> this payload. </value>
+
 	public NM ThisPayload
 	{
 		get{
@@ -159,9 +165,10 @@ public class QAK : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Hits remaining(QAK-6).
-	///</summary>
+    /// <summary>   Returns Hits remaining(QAK-6). </summary>
+    ///
+    /// <value> The hits remaining. </value>
+
 	public NM HitsRemaining
 	{
 		get{

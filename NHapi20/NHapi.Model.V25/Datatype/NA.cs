@@ -6,30 +6,31 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 NA (Numeric Array) data type.  Consists of the following components: </p><ol>
 /// <li>Value1 (NM)</li>
 /// <li>Value2 (NM)</li>
 /// <li>Value3 (NM)</li>
 /// <li>Value4 (NM)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class NA : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a NA.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a NA. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public NA(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a NA.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a NA. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public NA(IMessage message, string description) : base(message, description){
 		data = new IType[4];
 		data[0] = new NM(message,"Value1");
@@ -38,9 +39,10 @@ public class NA : AbstractType, IComposite{
 		data[3] = new NM(message,"Value4");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -48,12 +50,15 @@ public class NA : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -64,10 +69,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Value1 (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Value1 (component #0).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The value 1. </value>
+
 	public NM Value1 {
 get{
 	   NM ret = null;
@@ -81,10 +90,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Value2 (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Value2 (component #1).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The value 2. </value>
+
 	public NM Value2 {
 get{
 	   NM ret = null;
@@ -98,10 +111,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Value3 (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Value3 (component #2).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The value 3. </value>
+
 	public NM Value3 {
 get{
 	   NM ret = null;
@@ -115,10 +132,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Value4 (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Value4 (component #3).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The value 4. </value>
+
 	public NM Value4 {
 get{
 	   NM ret = null;

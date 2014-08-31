@@ -7,46 +7,47 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 TXA message segment. 
-/// This segment has the following fields:<ol>
-///<li>TXA-1: Set ID- TXA (SI)</li>
-///<li>TXA-2: Document Type (IS)</li>
-///<li>TXA-3: Document Content Presentation (ID)</li>
-///<li>TXA-4: Activity Date/Time (TS)</li>
-///<li>TXA-5: Primary Activity Provider Code/Name (XCN)</li>
-///<li>TXA-6: Origination Date/Time (TS)</li>
-///<li>TXA-7: Transcription Date/Time (TS)</li>
-///<li>TXA-8: Edit Date/Time (TS)</li>
-///<li>TXA-9: Originator Code/Name (XCN)</li>
-///<li>TXA-10: Assigned Document Authenticator (XCN)</li>
-///<li>TXA-11: Transcriptionist Code/Name (XCN)</li>
-///<li>TXA-12: Unique Document Number (EI)</li>
-///<li>TXA-13: Parent Document Number (EI)</li>
-///<li>TXA-14: Placer Order Number (EI)</li>
-///<li>TXA-15: Filler Order Number (EI)</li>
-///<li>TXA-16: Unique Document File Name (ST)</li>
-///<li>TXA-17: Document Completion Status (ID)</li>
-///<li>TXA-18: Document Confidentiality Status (ID)</li>
-///<li>TXA-19: Document Availability Status (ID)</li>
-///<li>TXA-20: Document Storage Status (ID)</li>
-///<li>TXA-21: Document Change Reason (ST)</li>
-///<li>TXA-22: Authentication Person, Time Stamp (PPN)</li>
-///<li>TXA-23: Distributed Copies (Code and Name of Recipients) (XCN)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 TXA message segment. This segment has the following fields:<ol>
+/// <li>TXA-1: Set ID- TXA (SI)</li>
+/// <li>TXA-2: Document Type (IS)</li>
+/// <li>TXA-3: Document Content Presentation (ID)</li>
+/// <li>TXA-4: Activity Date/Time (TS)</li>
+/// <li>TXA-5: Primary Activity Provider Code/Name (XCN)</li>
+/// <li>TXA-6: Origination Date/Time (TS)</li>
+/// <li>TXA-7: Transcription Date/Time (TS)</li>
+/// <li>TXA-8: Edit Date/Time (TS)</li>
+/// <li>TXA-9: Originator Code/Name (XCN)</li>
+/// <li>TXA-10: Assigned Document Authenticator (XCN)</li>
+/// <li>TXA-11: Transcriptionist Code/Name (XCN)</li>
+/// <li>TXA-12: Unique Document Number (EI)</li>
+/// <li>TXA-13: Parent Document Number (EI)</li>
+/// <li>TXA-14: Placer Order Number (EI)</li>
+/// <li>TXA-15: Filler Order Number (EI)</li>
+/// <li>TXA-16: Unique Document File Name (ST)</li>
+/// <li>TXA-17: Document Completion Status (ID)</li>
+/// <li>TXA-18: Document Confidentiality Status (ID)</li>
+/// <li>TXA-19: Document Availability Status (ID)</li>
+/// <li>TXA-20: Document Storage Status (ID)</li>
+/// <li>TXA-21: Document Change Reason (ST)</li>
+/// <li>TXA-22: Authentication Person, Time Stamp (PPN)</li>
+/// <li>TXA-23: Distributed Copies (Code and Name of Recipients) (XCN)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class TXA : AbstractSegment  {
 
-  /**
-   * Creates a TXA (Document notification segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the TXA class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public TXA(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -78,9 +79,10 @@ public class TXA : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID- TXA(TXA-1).
-	///</summary>
+    /// <summary>   Returns Set ID- TXA(TXA-1). </summary>
+    ///
+    /// <value> The set idtxa. </value>
+
 	public SI SetIDTXA
 	{
 		get{
@@ -101,9 +103,10 @@ public class TXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Document Type(TXA-2).
-	///</summary>
+    /// <summary>   Returns Document Type(TXA-2). </summary>
+    ///
+    /// <value> The type of the document. </value>
+
 	public IS DocumentType
 	{
 		get{
@@ -124,9 +127,10 @@ public class TXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Document Content Presentation(TXA-3).
-	///</summary>
+    /// <summary>   Returns Document Content Presentation(TXA-3). </summary>
+    ///
+    /// <value> The document content presentation. </value>
+
 	public ID DocumentContentPresentation
 	{
 		get{
@@ -147,9 +151,10 @@ public class TXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Activity Date/Time(TXA-4).
-	///</summary>
+    /// <summary>   Returns Activity Date/Time(TXA-4). </summary>
+    ///
+    /// <value> The activity date time. </value>
+
 	public TS ActivityDateTime
 	{
 		get{
@@ -170,9 +175,10 @@ public class TXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Primary Activity Provider Code/Name(TXA-5).
-	///</summary>
+    /// <summary>   Returns Primary Activity Provider Code/Name(TXA-5). </summary>
+    ///
+    /// <value> The name of the primary activity provider code. </value>
+
 	public XCN PrimaryActivityProviderCodeName
 	{
 		get{
@@ -193,9 +199,10 @@ public class TXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Origination Date/Time(TXA-6).
-	///</summary>
+    /// <summary>   Returns Origination Date/Time(TXA-6). </summary>
+    ///
+    /// <value> The origination date time. </value>
+
 	public TS OriginationDateTime
 	{
 		get{
@@ -216,9 +223,10 @@ public class TXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transcription Date/Time(TXA-7).
-	///</summary>
+    /// <summary>   Returns Transcription Date/Time(TXA-7). </summary>
+    ///
+    /// <value> The transcription date time. </value>
+
 	public TS TranscriptionDateTime
 	{
 		get{
@@ -239,11 +247,17 @@ public class TXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Edit Date/Time(TXA-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Edit Date/Time(TXA-8). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The edit date time. </returns>
+
 	public TS GetEditDateTime(int rep)
 	{
 			TS ret = null;
@@ -258,9 +272,12 @@ public class TXA : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Edit Date/Time (TXA-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of Edit Date/Time (TXA-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ts. </returns>
+
   public TS[] GetEditDateTime() {
      TS[] ret = null;
     try {
@@ -279,9 +296,10 @@ public class TXA : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Edit Date/Time (TXA-8).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Edit Date/Time (TXA-8). </summary>
+  ///
+  /// <value>   The edit date time repetitions used. </value>
+
   public int EditDateTimeRepetitionsUsed
 {
 get{
@@ -297,9 +315,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Originator Code/Name(TXA-9).
-	///</summary>
+
+    /// <summary>   Returns Originator Code/Name(TXA-9). </summary>
+    ///
+    /// <value> The name of the originator code. </value>
+
 	public XCN OriginatorCodeName
 	{
 		get{
@@ -320,11 +340,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Assigned Document Authenticator(TXA-10).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Assigned Document Authenticator(TXA-10). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The assigned document authenticator. </returns>
+
 	public XCN GetAssignedDocumentAuthenticator(int rep)
 	{
 			XCN ret = null;
@@ -339,9 +365,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Assigned Document Authenticator (TXA-10).
-   ///</summary>
+  /// <summary> Returns all repetitions of Assigned Document Authenticator (TXA-10). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetAssignedDocumentAuthenticator() {
      XCN[] ret = null;
     try {
@@ -360,9 +389,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Assigned Document Authenticator (TXA-10).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Assigned Document Authenticator (TXA-10). </summary>
+  ///
+  /// <value>   The assigned document authenticator repetitions used. </value>
+
   public int AssignedDocumentAuthenticatorRepetitionsUsed
 {
 get{
@@ -378,9 +408,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Transcriptionist Code/Name(TXA-11).
-	///</summary>
+
+    /// <summary>   Returns Transcriptionist Code/Name(TXA-11). </summary>
+    ///
+    /// <value> The name of the transcriptionist code. </value>
+
 	public XCN TranscriptionistCodeName
 	{
 		get{
@@ -401,9 +433,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Unique Document Number(TXA-12).
-	///</summary>
+    /// <summary>   Returns Unique Document Number(TXA-12). </summary>
+    ///
+    /// <value> The unique document number. </value>
+
 	public EI UniqueDocumentNumber
 	{
 		get{
@@ -424,9 +457,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Parent Document Number(TXA-13).
-	///</summary>
+    /// <summary>   Returns Parent Document Number(TXA-13). </summary>
+    ///
+    /// <value> The parent document number. </value>
+
 	public EI ParentDocumentNumber
 	{
 		get{
@@ -447,11 +481,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Placer Order Number(TXA-14).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Placer Order Number(TXA-14). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The placer order number. </returns>
+
 	public EI GetPlacerOrderNumber(int rep)
 	{
 			EI ret = null;
@@ -466,9 +506,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Placer Order Number (TXA-14).
-   ///</summary>
+  /// <summary> Returns all repetitions of Placer Order Number (TXA-14). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ei. </returns>
+
   public EI[] GetPlacerOrderNumber() {
      EI[] ret = null;
     try {
@@ -487,9 +530,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Placer Order Number (TXA-14).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Placer Order Number (TXA-14). </summary>
+  ///
+  /// <value>   The placer order number repetitions used. </value>
+
   public int PlacerOrderNumberRepetitionsUsed
 {
 get{
@@ -505,9 +549,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Filler Order Number(TXA-15).
-	///</summary>
+
+    /// <summary>   Returns Filler Order Number(TXA-15). </summary>
+    ///
+    /// <value> The filler order number. </value>
+
 	public EI FillerOrderNumber
 	{
 		get{
@@ -528,9 +574,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Unique Document File Name(TXA-16).
-	///</summary>
+    /// <summary>   Returns Unique Document File Name(TXA-16). </summary>
+    ///
+    /// <value> The filename of the unique document file. </value>
+
 	public ST UniqueDocumentFileName
 	{
 		get{
@@ -551,11 +598,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Document Completion Status(TXA-17).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Document Completion Status(TXA-17). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The document completion status. </returns>
+
 	public ID GetDocumentCompletionStatus(int rep)
 	{
 			ID ret = null;
@@ -570,9 +623,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Document Completion Status (TXA-17).
-   ///</summary>
+  /// <summary> Returns all repetitions of Document Completion Status (TXA-17). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetDocumentCompletionStatus() {
      ID[] ret = null;
     try {
@@ -591,9 +647,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Document Completion Status (TXA-17).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Document Completion Status (TXA-17). </summary>
+  ///
+  /// <value>   The document completion status repetitions used. </value>
+
   public int DocumentCompletionStatusRepetitionsUsed
 {
 get{
@@ -609,9 +666,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Document Confidentiality Status(TXA-18).
-	///</summary>
+
+    /// <summary>   Returns Document Confidentiality Status(TXA-18). </summary>
+    ///
+    /// <value> The document confidentiality status. </value>
+
 	public ID DocumentConfidentialityStatus
 	{
 		get{
@@ -632,9 +691,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Document Availability Status(TXA-19).
-	///</summary>
+    /// <summary>   Returns Document Availability Status(TXA-19). </summary>
+    ///
+    /// <value> The document availability status. </value>
+
 	public ID DocumentAvailabilityStatus
 	{
 		get{
@@ -655,9 +715,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Document Storage Status(TXA-20).
-	///</summary>
+    /// <summary>   Returns Document Storage Status(TXA-20). </summary>
+    ///
+    /// <value> The document storage status. </value>
+
 	public ID DocumentStorageStatus
 	{
 		get{
@@ -678,9 +739,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Document Change Reason(TXA-21).
-	///</summary>
+    /// <summary>   Returns Document Change Reason(TXA-21). </summary>
+    ///
+    /// <value> The document change reason. </value>
+
 	public ST DocumentChangeReason
 	{
 		get{
@@ -701,11 +763,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Authentication Person, Time Stamp(TXA-22).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Authentication Person, Time Stamp(TXA-22). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The authentication person time stamp. </returns>
+
 	public PPN GetAuthenticationPersonTimeStamp(int rep)
 	{
 			PPN ret = null;
@@ -720,9 +788,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Authentication Person, Time Stamp (TXA-22).
-   ///</summary>
+  /// <summary> Returns all repetitions of Authentication Person, Time Stamp (TXA-22). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ppn. </returns>
+
   public PPN[] GetAuthenticationPersonTimeStamp() {
      PPN[] ret = null;
     try {
@@ -741,9 +812,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Authentication Person, Time Stamp (TXA-22).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The authentication person time stamp repetitions used. </value>
+
   public int AuthenticationPersonTimeStampRepetitionsUsed
 {
 get{
@@ -759,11 +833,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Distributed Copies (Code and Name of Recipients)(TXA-23).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Distributed Copies (Code and Name of Recipients)(TXA-23).
+    /// throws HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The distributed copies codeand nameof recipients. </returns>
+
 	public XCN GetDistributedCopiesCodeandNameofRecipients(int rep)
 	{
 			XCN ret = null;
@@ -778,9 +859,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Distributed Copies (Code and Name of Recipients) (TXA-23).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetDistributedCopiesCodeandNameofRecipients() {
      XCN[] ret = null;
     try {
@@ -799,9 +885,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Distributed Copies (Code and Name of Recipients) (TXA-23).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The distributed copies codeand nameof recipients repetitions used. </value>
+
   public int DistributedCopiesCodeandNameofRecipientsRepetitionsUsed
 {
 get{

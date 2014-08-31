@@ -6,30 +6,32 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 SPD (Specialty Description) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 SPD (Specialty Description) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>Specialty Name (ST)</li>
 /// <li>Governing Board (ST)</li>
 /// <li>Eligible or Certified (ID)</li>
 /// <li>Date of Certification (DT)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class SPD : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a SPD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a SPD. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public SPD(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a SPD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a SPD. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public SPD(IMessage message, string description) : base(message, description){
 		data = new IType[4];
 		data[0] = new ST(message,"Specialty Name");
@@ -38,9 +40,10 @@ public class SPD : AbstractType, IComposite{
 		data[3] = new DT(message,"Date of Certification");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -48,12 +51,15 @@ public class SPD : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -64,10 +70,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Specialty Name (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Specialty Name (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the specialty. </value>
+
 	public ST SpecialtyName {
 get{
 	   ST ret = null;
@@ -81,10 +91,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Governing Board (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Governing Board (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The governing board. </value>
+
 	public ST GoverningBoard {
 get{
 	   ST ret = null;
@@ -98,10 +112,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Eligible or Certified (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Eligible or Certified (component #2).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The eligible or certified. </value>
+
 	public ID EligibleOrCertified {
 get{
 	   ID ret = null;
@@ -115,10 +133,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Date of Certification (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Date of Certification (component #3).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The date of certification. </value>
+
 	public DT DateOfCertification {
 get{
 	   DT ret = null;

@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the RRG_O02_GIVE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: RXG (RXG - pharmacy/treatment give segment) </li>
-///<li>1: RXR (RXR - pharmacy/treatment route segment) repeating</li>
-///<li>2: RXC (RXC - pharmacy/treatment component order segment) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RRG_O02_GIVE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: RXG (RXG - pharmacy/treatment give segment) </li>
+/// <li>1: RXR (RXR - pharmacy/treatment route segment) repeating</li>
+/// <li>2: RXC (RXC - pharmacy/treatment component order segment) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RRG_O02_GIVE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RRG_O02_GIVE Group.
-	///</summary>
+    /// <summary>   Creates a new RRG_O02_GIVE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RRG_O02_GIVE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(RXG), true, false);
@@ -34,9 +37,12 @@ public class RRG_O02_GIVE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns RXG (RXG - pharmacy/treatment give segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns RXG (RXG - pharmacy/treatment give segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The rxg. </value>
+
 	public RXG RXG { 
 get{
 	   RXG ret = null;
@@ -50,9 +56,15 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RXR (RXR - pharmacy/treatment route segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RXR (RXR - pharmacy/treatment route segment) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The rxr. </returns>
+
 	public RXR GetRXR() {
 	   RXR ret = null;
 	   try {
@@ -64,19 +76,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RXR
-	/// * (RXR - pharmacy/treatment route segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RXR
+    ///  * (RXR - pharmacy/treatment route segment) - creates it if necessary throws HL7Exception if
+    ///  the repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The rxr. </returns>
+
 	public RXR GetRXR(int rep) { 
 	   return (RXR)this.GetStructure("RXR", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RXR 
-	 */ 
+    /// <summary>   Gets the rxr repetitions used. </summary>
+    ///
+    /// <value> The rxr repetitions used. </value>
+
 	public int RXRRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -91,9 +109,15 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of RXC (RXC - pharmacy/treatment component order segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RXC (RXC - pharmacy/treatment component order segment) - creates
+    /// it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The rxc. </returns>
+
 	public RXC GetRXC() {
 	   RXC ret = null;
 	   try {
@@ -105,19 +129,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RXC
-	/// * (RXC - pharmacy/treatment component order segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RXC
+    ///  * (RXC - pharmacy/treatment component order segment) - creates it if necessary throws
+    ///  HL7Exception if the repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The rxc. </returns>
+
 	public RXC GetRXC(int rep) { 
 	   return (RXC)this.GetStructure("RXC", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RXC 
-	 */ 
+    /// <summary>   Gets the rxc repetitions used. </summary>
+    ///
+    /// <value> The rxc repetitions used. </value>
+
 	public int RXCRepetitionsUsed { 
 get{
 	    int reps = -1; 

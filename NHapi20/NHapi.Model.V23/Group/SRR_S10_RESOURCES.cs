@@ -8,24 +8,27 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the SRR_S10_RESOURCES Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: RGS (Resource Group) </li>
-///<li>1: SRR_S10_SERVICE (a Group object) optional repeating</li>
-///<li>2: SRR_S10_GENERAL_RESOURCE (a Group object) optional repeating</li>
-///<li>3: SRR_S10_LOCATION_RESOURCE (a Group object) optional repeating</li>
-///<li>4: SRR_S10_PERSONNEL_RESOURCE (a Group object) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the SRR_S10_RESOURCES Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: RGS (Resource Group) </li>
+/// <li>1: SRR_S10_SERVICE (a Group object) optional repeating</li>
+/// <li>2: SRR_S10_GENERAL_RESOURCE (a Group object) optional repeating</li>
+/// <li>3: SRR_S10_LOCATION_RESOURCE (a Group object) optional repeating</li>
+/// <li>4: SRR_S10_PERSONNEL_RESOURCE (a Group object) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class SRR_S10_RESOURCES : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new SRR_S10_RESOURCES Group.
-	///</summary>
+    /// <summary>   Creates a new SRR_S10_RESOURCES Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SRR_S10_RESOURCES(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(RGS), true, false);
@@ -38,9 +41,10 @@ public class SRR_S10_RESOURCES : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns RGS (Resource Group) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RGS (Resource Group) - creates it if necessary. </summary>
+    ///
+    /// <value> The rgs. </value>
+
 	public RGS RGS { 
 get{
 	   RGS ret = null;
@@ -54,9 +58,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of SRR_S10_SERVICE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of SRR_S10_SERVICE (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The service. </returns>
+
 	public SRR_S10_SERVICE GetSERVICE() {
 	   SRR_S10_SERVICE ret = null;
 	   try {
@@ -68,19 +77,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of SRR_S10_SERVICE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of SRR_S10_SERVICE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The service. </returns>
+
 	public SRR_S10_SERVICE GetSERVICE(int rep) { 
 	   return (SRR_S10_SERVICE)this.GetStructure("SERVICE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of SRR_S10_SERVICE 
-	 */ 
+    /// <summary>   Gets the service repetitions used. </summary>
+    ///
+    /// <value> The service repetitions used. </value>
+
 	public int SERVICERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -95,9 +110,15 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of SRR_S10_GENERAL_RESOURCE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of SRR_S10_GENERAL_RESOURCE (a Group object) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The general resource. </returns>
+
 	public SRR_S10_GENERAL_RESOURCE GetGENERAL_RESOURCE() {
 	   SRR_S10_GENERAL_RESOURCE ret = null;
 	   try {
@@ -109,19 +130,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of SRR_S10_GENERAL_RESOURCE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of SRR_S10_GENERAL_RESOURCE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The general resource. </returns>
+
 	public SRR_S10_GENERAL_RESOURCE GetGENERAL_RESOURCE(int rep) { 
 	   return (SRR_S10_GENERAL_RESOURCE)this.GetStructure("GENERAL_RESOURCE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of SRR_S10_GENERAL_RESOURCE 
-	 */ 
+    /// <summary>   Gets the general resource repetitions used. </summary>
+    ///
+    /// <value> The general resource repetitions used. </value>
+
 	public int GENERAL_RESOURCERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -136,9 +163,15 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of SRR_S10_LOCATION_RESOURCE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of SRR_S10_LOCATION_RESOURCE (a Group object) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The location resource. </returns>
+
 	public SRR_S10_LOCATION_RESOURCE GetLOCATION_RESOURCE() {
 	   SRR_S10_LOCATION_RESOURCE ret = null;
 	   try {
@@ -150,19 +183,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of SRR_S10_LOCATION_RESOURCE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of SRR_S10_LOCATION_RESOURCE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The location resource. </returns>
+
 	public SRR_S10_LOCATION_RESOURCE GetLOCATION_RESOURCE(int rep) { 
 	   return (SRR_S10_LOCATION_RESOURCE)this.GetStructure("LOCATION_RESOURCE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of SRR_S10_LOCATION_RESOURCE 
-	 */ 
+    /// <summary>   Gets the location resource repetitions used. </summary>
+    ///
+    /// <value> The location resource repetitions used. </value>
+
 	public int LOCATION_RESOURCERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -177,9 +216,15 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of SRR_S10_PERSONNEL_RESOURCE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of SRR_S10_PERSONNEL_RESOURCE (a Group object) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The personnel resource. </returns>
+
 	public SRR_S10_PERSONNEL_RESOURCE GetPERSONNEL_RESOURCE() {
 	   SRR_S10_PERSONNEL_RESOURCE ret = null;
 	   try {
@@ -191,19 +236,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of SRR_S10_PERSONNEL_RESOURCE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of SRR_S10_PERSONNEL_RESOURCE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The personnel resource. </returns>
+
 	public SRR_S10_PERSONNEL_RESOURCE GetPERSONNEL_RESOURCE(int rep) { 
 	   return (SRR_S10_PERSONNEL_RESOURCE)this.GetStructure("PERSONNEL_RESOURCE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of SRR_S10_PERSONNEL_RESOURCE 
-	 */ 
+    /// <summary>   Gets the personnel resource repetitions used. </summary>
+    ///
+    /// <value> The personnel resource repetitions used. </value>
+
 	public int PERSONNEL_RESOURCERepetitionsUsed { 
 get{
 	    int reps = -1; 

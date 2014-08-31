@@ -27,93 +27,105 @@ namespace NHapi.Base.Model.Primitive
 {
     using NHapi.Base.Log;
 
-    /// <summary> 
-    /// This class contains functionality used by the TS class
-    /// in the version 2.3.0, 2.3.1, and 2.4 packages
+    /// <summary>
+    /// This class contains functionality used by the TS class in the version 2.3.0, 2.3.1, and 2.4
+    /// packages
     /// 
-    /// Note: The class description below has been excerpted from the Hl7 2.4 documentation. Sectional
-    /// references made below also refer to the same documentation.
+    /// Note: The class description below has been excerpted from the Hl7 2.4 documentation.
+    /// Sectional references made below also refer to the same documentation.
     /// 
-    /// Format: YYYY[MM[DD[HHMM[SS[.S[S[S[S]]]]]]]][+/-ZZZZ]^[Degree of precision]
-    /// Contains the exact time of an event, including the date and time. The date portion of a time stamp follows the rules of a
-    /// date field and the time portion follows the rules of a time field. The time zone (+/-ZZZZ) is represented as +/-HHMM
-    /// offset from UTC (formerly Greenwich Mean Time (GMT)), where +0000 or -0000 both represent UTC (without offset).
-    /// The specific data representations used in the HL7 encoding rules are compatible with ISO 8824-1987(E).
-    /// In prior versions of HL7, an optional second component indicates the degree of precision of the time stamp (Y = year, L
-    /// = month, D = day, H = hour, M = minute, S = second). This optional second component is retained only for purposes of
-    /// backward compatibility.
-    /// By site-specific agreement, YYYYMMDD[HHMM[SS[.S[S[S[S]]]]]][+/-ZZZZ]^[degree of precision] may be used
-    /// where backward compatibility must be maintained.
-    /// In the current and future versions of HL7, the precision is indicated by limiting the number of digits used, unless the
-    /// optional second component is present. Thus, YYYY is used to specify a precision of "year," YYYYMM specifies a
-    /// precision of "month," YYYYMMDD specifies a precision of "day," YYYYMMDDHH is used to specify a precision of
-    /// "hour," YYYYMMDDHHMM is used to specify a precision of "minute," YYYYMMDDHHMMSS is used to specify a
-    /// precision of seconds, and YYYYMMDDHHMMSS.SSSS is used to specify a precision of ten thousandths of a second.
-    /// In each of these cases, the time zone is an optional component. Note that if the time zone is not included, the timezone
-    /// defaults to that of the local time zone of the sender. Also note that a TS valued field with the HHMM part set to "0000"
-    /// represents midnight of the night extending from the previous day to the day given by the YYYYMMDD part (see example
-    /// below). Maximum length of the time stamp is 26. Examples:
+    /// Format: YYYY[MM[DD[HHMM[SS[.S[S[S[S]]]]]]]][+/-ZZZZ]^[Degree of precision] Contains the exact
+    /// time of an event, including the date and time. The date portion of a time stamp follows the
+    /// rules of a date field and the time portion follows the rules of a time field. The time zone
+    /// (+/-ZZZZ) is represented as +/-HHMM offset from UTC (formerly Greenwich Mean Time (GMT)),
+    /// where +0000 or -0000 both represent UTC (without offset). The specific data representations
+    /// used in the HL7 encoding rules are compatible with ISO 8824-1987(E). In prior versions of HL7,
+    /// an optional second component indicates the degree of precision of the time stamp (Y = year, L
+    /// = month, D = day, H = hour, M = minute, S = second). This optional second component is
+    /// retained only for purposes of
+    /// backward compatibility. By site-specific agreement, YYYYMMDD[HHMM[SS[.S[S[S[S]]]]]][+/-
+    /// ZZZZ]^[degree of precision] may be used where backward compatibility must be maintained. In
+    /// the current and future versions of HL7, the precision is indicated by limiting the number of
+    /// digits used, unless the optional second component is present. Thus, YYYY is used to specify a
+    /// precision of "year," YYYYMM specifies a precision of "month," YYYYMMDD specifies a precision
+    /// of "day," YYYYMMDDHH is used to specify a precision of "hour," YYYYMMDDHHMM is used to
+    /// specify a precision of "minute," YYYYMMDDHHMMSS is used to specify a precision of seconds,
+    /// and YYYYMMDDHHMMSS.SSSS is used to specify a precision of ten thousandths of a second. In
+    /// each of these cases, the time zone is an optional component. Note that if the time zone is
+    /// not included, the timezone defaults to that of the local time zone of the sender. Also note
+    /// that a TS valued field with the HHMM part set to "0000" represents midnight of the night
+    /// extending from the previous day to the day given by the YYYYMMDD part (see example below).
+    /// Maximum length of the time stamp is 26. Examples:
     /// |19760704010159-0500|
     /// 1:01:59 on July 4, 1976 in the Eastern Standard Time zone (USA).
     /// |19760704010159-0400|
     /// 1:01:59 on July 4, 1976 in the Eastern Daylight Saving Time zone (USA).
     /// |198807050000|
-    /// Midnight of the night extending from July 4 to July 5, 1988 in the local time zone of the sender.
+    /// Midnight of the night extending from July 4 to July 5, 1988 in the local time zone of the
+    /// sender.
     /// |19880705|
-    /// Same as prior example, but precision extends only to the day. Could be used for a birthdate, if the time of birth is
-    /// unknown.
+    /// Same as prior example, but precision extends only to the day. Could be used for a birthdate,
+    /// if the time of birth is unknown.
     /// |19981004010159+0100|
-    /// 1:01:59 on October 4, 1998 in Amsterdam, NL. (Time zone=+0100).
-    /// The HL7 Standard strongly recommends that all systems routinely send the time zone offset but does not require it. All
-    /// HL7 systems are required to accept the time zone offset, but its implementation is application specific. For many
-    /// applications the time of interest is the local time of the sender. For example, an application in the Eastern Standard Time
-    /// zone receiving notification of an admission that takes place at 11:00 PM in San Francisco on December 11 would prefer
-    /// to treat the admission as having occurred on December 11 rather than advancing the date to December 12.
-    /// Note: The time zone [+/-ZZZZ], when used, is restricted to legally-defined time zones and is represented in HHMM
-    /// format.
-    /// One exception to this rule would be a clinical system that processed patient data collected in a clinic and a nearby hospital
-    /// that happens to be in a different time zone. Such applications may choose to convert the data to a common
-    /// representation. Similar concerns apply to the transitions to and from daylight saving time. HL7 supports such requirements
-    /// by requiring that the time zone information be present when the information is sent. It does not, however, specify which of
-    /// the treatments discussed here will be applied by the receiving system.
+    /// 1:01:59 on October 4, 1998 in Amsterdam, NL. (Time zone=+0100). The HL7 Standard strongly
+    /// recommends that all systems routinely send the time zone offset but does not require it. All
+    /// HL7 systems are required to accept the time zone offset, but its implementation is
+    /// application specific. For many applications the time of interest is the local time of the
+    /// sender. For example, an application in the Eastern Standard Time zone receiving notification
+    /// of an admission that takes place at 11:00 PM in San Francisco on December 11 would prefer to
+    /// treat the admission as having occurred on December 11 rather than advancing the date to
+    /// December 12. Note: The time zone [+/-ZZZZ], when used, is restricted to legally-defined time
+    /// zones and is represented in HHMM format. One exception to this rule would be a clinical
+    /// system that processed patient data collected in a clinic and a nearby hospital that happens
+    /// to be in a different time zone. Such applications may choose to convert the data to a common
+    /// representation. Similar concerns apply to the transitions to and from daylight saving time.
+    /// HL7 supports such requirements by requiring that the time zone information be present when
+    /// the information is sent. It does not, however, specify which of the treatments discussed here
+    /// will be applied by the receiving system.
     /// </summary>
-    /// <author>  Neal Acharya
-    /// </author>
+
     public class CommonTS
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Fields
 
+        /// <summary>   The dt. </summary>
         private CommonDT dt;
 
+        /// <summary>   The time. </summary>
         private CommonTM tm;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the CommonTS class. </summary>
         static CommonTS()
         {
             log = HapiLogFactory.GetHapiLog(typeof(CommonTS));
         }
 
-        /// <summary>Creates new ValidTS
-        /// zero argument constructor.
-        /// Creates an uninitailized TS datatype
+        /// <summary>
+        /// Creates new ValidTS zero argument constructor. Creates an uninitailized TS datatype.
         /// </summary>
+
         public CommonTS()
         {
         } //zero arg constructor
 
-        /// <summary> Constructs a TS object with the given value.
-        /// The stored value will be in the following
-        /// format YYYY[MM[DD[HHMM[SS[.S[S[S[S]]]]]]]][+/-ZZZZ]
+        /// <summary>
+        /// Constructs a TS object with the given value. The stored value will be in the following format
+        /// YYYY[MM[DD[HHMM[SS[.S[S[S[S]]]]]]]][+/-ZZZZ].
         /// </summary>
+        ///
+        /// <param name="val">  The value. </param>
+
         public CommonTS(System.String val)
         {
             this.Value = val;
@@ -123,7 +135,10 @@ namespace NHapi.Base.Model.Primitive
 
         #region Public Properties
 
-        /// <summary> Returns the day as an integer.</summary>
+        /// <summary>   Returns the day as an integer. </summary>
+        ///
+        /// <value> The day. </value>
+
         public virtual int Day
         {
             get
@@ -137,7 +152,10 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the fractional second value as a float.</summary>
+        /// <summary>   Returns the fractional second value as a float. </summary>
+        ///
+        /// <value> The fract second. </value>
+
         public virtual float FractSecond
         {
             get
@@ -151,7 +169,10 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the GMT offset value as an integer.</summary>
+        /// <summary>   Returns the GMT offset value as an integer. </summary>
+        ///
+        /// <value> The GMT offset. </value>
+
         public virtual int GMTOffset
         {
             get
@@ -165,7 +186,10 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the hour as an integer.</summary>
+        /// <summary>   Returns the hour as an integer. </summary>
+        ///
+        /// <value> The hour. </value>
+
         public virtual int Hour
         {
             get
@@ -179,7 +203,10 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the minute as an integer.</summary>
+        /// <summary>   Returns the minute as an integer. </summary>
+        ///
+        /// <value> The minute. </value>
+
         public virtual int Minute
         {
             get
@@ -193,7 +220,10 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the month as an integer.</summary>
+        /// <summary>   Returns the month as an integer. </summary>
+        ///
+        /// <value> The month. </value>
+
         public virtual int Month
         {
             get
@@ -207,9 +237,12 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> This method takes in the four digit (signed) GMT offset and sets the offset
-        /// field
+        /// <summary>
+        /// This method takes in the four digit (signed) GMT offset and sets the offset field.
         /// </summary>
+        ///
+        /// <value> The offset. </value>
+
         public virtual int Offset
         {
             set
@@ -236,7 +269,10 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the second as an integer.</summary>
+        /// <summary>   Returns the second as an integer. </summary>
+        ///
+        /// <value> The second. </value>
+
         public virtual int Second
         {
             get
@@ -250,16 +286,18 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the HL7 TS string value.</summary>
-        /// <summary> This method takes in a string HL7 Time Stamp value and performs validations.
-        /// The stored value will be in the following
-        /// format YYYY[MM[DD[HHMM[SS[.S[S[S[S]]]]]]]][+/-ZZZZ].
-        /// Note: Trailing zeros supplied in the time value (HHMM[SS[.S[S[S[S]]]]]])
-        /// and GMT offset ([+/-ZZZZ]) will be preserved.
-        /// Note: If the GMT offset is not supplied then the local
-        /// time zone (using standard time zone format which is not modified for daylight savings)
-        /// will be stored as a default.
-        /// </summary>
+        /// <summary>   Returns the HL7 TS string value. </summary>
+        /// <summary>   This method takes in a string HL7 Time Stamp value and performs validations. The
+        ///             stored value will be in the following format
+        ///             YYYY[MM[DD[HHMM[SS[.S[S[S[S]]]]]]]][+/-ZZZZ]. Note: Trailing zeros supplied in
+        ///             the time value (HHMM[SS[.S[S[S[S]]]]]])
+        ///             and GMT offset ([+/-ZZZZ]) will be preserved. Note: If the GMT offset is not
+        ///             supplied then the local time zone (using standard time zone format which is not
+        ///             modified for daylight savings)
+        ///             will be stored as a default. </summary>
+        ///
+        /// <value> The value. </value>
+
         public virtual System.String Value
         {
             get
@@ -485,7 +523,10 @@ namespace NHapi.Base.Model.Primitive
             // end method
         }
 
-        /// <summary> Returns the year as an integer.</summary>
+        /// <summary>   Returns the year as an integer. </summary>
+        ///
+        /// <value> The year. </value>
+
         public virtual int Year
         {
             get
@@ -503,9 +544,17 @@ namespace NHapi.Base.Model.Primitive
 
         #region Public Methods and Operators
 
-        /// <summary> Returns a string value representing the input Gregorian Calendar object in
-        /// an Hl7 TimeStamp Format.
+        /// <summary>
+        /// Returns a string value representing the input Gregorian Calendar object in an Hl7 TimeStamp
+        /// Format.
         /// </summary>
+        ///
+        /// <exception cref="DataTypeException">    Thrown when a Data Type error condition occurs. </exception>
+        ///
+        /// <param name="cal">  The cal. </param>
+        ///
+        /// <returns>   cal as a System.String. </returns>
+
         public static System.String toHl7TSFormat(System.Globalization.GregorianCalendar cal)
         {
             System.String val = "";
@@ -563,10 +612,20 @@ namespace NHapi.Base.Model.Primitive
 
         //end constructor
 
-        /// <summary> This method takes in integer values for the year, month, day, hour
-        /// and minute and performs validations, it then sets the value in the object
-        /// formatted as an HL7 Time Stamp value with year and month and day and hour and minute precision (YYYYMMDDHHMM).
+        /// <summary>
+        /// This method takes in integer values for the year, month, day, hour and minute and performs
+        /// validations, it then sets the value in the object formatted as an HL7 Time Stamp value with
+        /// year and month and day and hour and minute precision (YYYYMMDDHHMM).
         /// </summary>
+        ///
+        /// <exception cref="DataTypeException">    Thrown when a Data Type error condition occurs. </exception>
+        ///
+        /// <param name="yr">   The yr. </param>
+        /// <param name="mnth"> The mnth. </param>
+        /// <param name="dy">   The dy. </param>
+        /// <param name="hr">   The hr. </param>
+        /// <param name="min">  The minimum. </param>
+
         public virtual void setDateMinutePrecision(int yr, int mnth, int dy, int hr, int min)
         {
             try
@@ -593,11 +652,18 @@ namespace NHapi.Base.Model.Primitive
             } //end catch
         }
 
-        /// <summary> This method takes in integer values for the year and month and day
-        /// and performs validations, it then sets the value in the object
-        /// formatted as an HL7 Time Stamp value with year and month and day precision (YYYYMMDD).
-        /// 
+        /// <summary>
+        /// This method takes in integer values for the year and month and day and performs validations,
+        /// it then sets the value in the object formatted as an HL7 Time Stamp value with year and month
+        /// and day precision (YYYYMMDD).
         /// </summary>
+        ///
+        /// <exception cref="DataTypeException">    Thrown when a Data Type error condition occurs. </exception>
+        ///
+        /// <param name="yr">   The yr. </param>
+        /// <param name="mnth"> The mnth. </param>
+        /// <param name="dy">   The dy. </param>
+
         public virtual void setDatePrecision(int yr, int mnth, int dy)
         {
             try
@@ -624,16 +690,25 @@ namespace NHapi.Base.Model.Primitive
             } //end catch
         }
 
-        /// <summary> This method takes in integer values for the year, month, day, hour, minute, seconds,
-        /// and fractional seconds (going to the tenthousandths precision).
-        /// The method performs validations and then sets the value in the object formatted as an
-        /// HL7 time value with a precision that starts from the year and goes down to the tenthousandths
-        /// of a second (YYYYMMDDHHMMSS.SSSS).
-        /// The Gmt Offset will not be effected.
-        /// Note: all of the precisions from tenths down to
-        /// tenthousandths of a second are optional. If the precision goes below tenthousandths
-        /// of a second then the second value will be rounded to the nearest tenthousandths of a second.
+        /// <summary>
+        /// This method takes in integer values for the year, month, day, hour, minute, seconds, and
+        /// fractional seconds (going to the tenthousandths precision). The method performs validations
+        /// and then sets the value in the object formatted as an HL7 time value with a precision that
+        /// starts from the year and goes down to the tenthousandths of a second (YYYYMMDDHHMMSS.SSSS).
+        /// The Gmt Offset will not be effected. Note: all of the precisions from tenths down to
+        /// tenthousandths of a second are optional. If the precision goes below tenthousandths of a
+        /// second then the second value will be rounded to the nearest tenthousandths of a second.
         /// </summary>
+        ///
+        /// <exception cref="DataTypeException">    Thrown when a Data Type error condition occurs. </exception>
+        ///
+        /// <param name="yr">   The yr. </param>
+        /// <param name="mnth"> The mnth. </param>
+        /// <param name="dy">   The dy. </param>
+        /// <param name="hr">   The hr. </param>
+        /// <param name="min">  The minimum. </param>
+        /// <param name="sec">  The security. </param>
+
         public virtual void setDateSecondPrecision(int yr, int mnth, int dy, int hr, int min, float sec)
         {
             try

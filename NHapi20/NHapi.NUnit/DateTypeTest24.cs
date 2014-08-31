@@ -7,12 +7,11 @@ using NUnit.Framework;
 
 namespace NHapi.NUnit
 {
-	/// <summary>
-	/// Summary description for DateTypeTest.
-	/// </summary>
+    /// <summary>   Summary description for DateTypeTest. </summary>
 	[TestFixture]
 	public class DateTypeTest24
 	{
+        /// <summary>   Converts this object to a date. </summary>
 		[Test]
 		public void ConvertToDate()
 		{
@@ -23,6 +22,7 @@ namespace NHapi.NUnit
             Assert.AreEqual(a01.PV1.AdmitDateTime.TimeOfAnEvent.Value, checkDate.ToString("yyyyMMdd"));
 		}
 
+        /// <summary>   Converts this object to a long date. </summary>
 		[Test]
 		public void ConvertToLongDate()
 		{
@@ -32,6 +32,7 @@ namespace NHapi.NUnit
 			Assert.AreEqual(ack.MSH.DateTimeOfMessage.TimeOfAnEvent.Value, checkDate.ToString("yyyyMMddHHmm"));
 		}
 
+        /// <summary>   Converts this object to a long date with second. </summary>
 		[Test]
 		public void ConvertToLongDateWithSecond()
 		{
@@ -41,6 +42,7 @@ namespace NHapi.NUnit
 			Assert.AreEqual(ack.MSH.DateTimeOfMessage.TimeOfAnEvent.Value, checkDate.ToString("yyyyMMddHHmmss"));
 		}
 		
+        /// <summary>   Converts this object to a long date with fraction of second. </summary>
 		[Test]
 		public void ConvertToLongDateWithFractionOfSecond()
 		{
@@ -50,6 +52,7 @@ namespace NHapi.NUnit
 			Assert.AreEqual(ack.MSH.DateTimeOfMessage.TimeOfAnEvent.Value, checkDate.ToString("yyyyMMddHHmmss.FFFF"));
 		}
 		
+        /// <summary>   Converts this object to a short date. </summary>
 		[Test]
 		public void ConvertToShortDate()
 		{
@@ -59,6 +62,7 @@ namespace NHapi.NUnit
 			Assert.AreEqual(ack.MSH.DateTimeOfMessage.TimeOfAnEvent.Value, checkDate.ToString("yyyyMMdd"));
 		}
 
+        /// <summary>   Convert back to short date. </summary>
 		[Test]
 		public void ConvertBackToShortDate()
 		{
@@ -71,6 +75,7 @@ namespace NHapi.NUnit
 			Assert.AreEqual(checkDate.ToShortDateString(), checkDate2.ToShortDateString());
 		}
 
+        /// <summary>   Convert back to long date. </summary>
 		[Test]
 		public void ConvertBackToLongDate()
 		{

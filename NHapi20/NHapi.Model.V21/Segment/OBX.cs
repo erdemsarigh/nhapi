@@ -7,35 +7,36 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 OBX message segment. 
-/// This segment has the following fields:<ol>
-///<li>OBX-1: SET ID - OBSERVATION SIMPLE (SI)</li>
-///<li>OBX-2: VALUE TYPE (ID)</li>
-///<li>OBX-3: OBSERVATION IDENTIFIER (CE)</li>
-///<li>OBX-4: OBSERVATION SUB-ID (NM)</li>
-///<li>OBX-5: OBSERVATION RESULTS (ST)</li>
-///<li>OBX-6: UNITS (ID)</li>
-///<li>OBX-7: REFERENCES RANGE (ST)</li>
-///<li>OBX-8: ABNORMAL FLAGS (ST)</li>
-///<li>OBX-9: PROBABILITY (NM)</li>
-///<li>OBX-10: NATURE OF ABNORMAL TEST (ID)</li>
-///<li>OBX-11: OBSERV RESULT STATUS (ID)</li>
-///<li>OBX-12: DATE LAST OBS NORMAL VALUES (TS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 OBX message segment. This segment has the following fields:<ol>
+/// <li>OBX-1: SET ID - OBSERVATION SIMPLE (SI)</li>
+/// <li>OBX-2: VALUE TYPE (ID)</li>
+/// <li>OBX-3: OBSERVATION IDENTIFIER (CE)</li>
+/// <li>OBX-4: OBSERVATION SUB-ID (NM)</li>
+/// <li>OBX-5: OBSERVATION RESULTS (ST)</li>
+/// <li>OBX-6: UNITS (ID)</li>
+/// <li>OBX-7: REFERENCES RANGE (ST)</li>
+/// <li>OBX-8: ABNORMAL FLAGS (ST)</li>
+/// <li>OBX-9: PROBABILITY (NM)</li>
+/// <li>OBX-10: NATURE OF ABNORMAL TEST (ID)</li>
+/// <li>OBX-11: OBSERV RESULT STATUS (ID)</li>
+/// <li>OBX-12: DATE LAST OBS NORMAL VALUES (TS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class OBX : AbstractSegment  {
 
-  /**
-   * Creates a OBX (RESULT) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the OBX class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OBX(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -56,9 +57,10 @@ public class OBX : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns SET ID - OBSERVATION SIMPLE(OBX-1).
-	///</summary>
+    /// <summary>   Returns SET ID - OBSERVATION SIMPLE(OBX-1). </summary>
+    ///
+    /// <value> The setidobservationsimple. </value>
+
 	public SI SETIDOBSERVATIONSIMPLE
 	{
 		get{
@@ -79,9 +81,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns VALUE TYPE(OBX-2).
-	///</summary>
+    /// <summary>   Returns VALUE TYPE(OBX-2). </summary>
+    ///
+    /// <value> The valuetype. </value>
+
 	public ID VALUETYPE
 	{
 		get{
@@ -102,9 +105,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns OBSERVATION IDENTIFIER(OBX-3).
-	///</summary>
+    /// <summary>   Returns OBSERVATION IDENTIFIER(OBX-3). </summary>
+    ///
+    /// <value> The observationidentifier. </value>
+
 	public CE OBSERVATIONIDENTIFIER
 	{
 		get{
@@ -125,9 +129,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns OBSERVATION SUB-ID(OBX-4).
-	///</summary>
+    /// <summary>   Returns OBSERVATION SUB-ID(OBX-4). </summary>
+    ///
+    /// <value> The observationsubid. </value>
+
 	public NM OBSERVATIONSUBID
 	{
 		get{
@@ -148,9 +153,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns OBSERVATION RESULTS(OBX-5).
-	///</summary>
+    /// <summary>   Returns OBSERVATION RESULTS(OBX-5). </summary>
+    ///
+    /// <value> The observationresults. </value>
+
 	public ST OBSERVATIONRESULTS
 	{
 		get{
@@ -171,9 +177,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns UNITS(OBX-6).
-	///</summary>
+    /// <summary>   Returns UNITS(OBX-6). </summary>
+    ///
+    /// <value> The units. </value>
+
 	public ID UNITS
 	{
 		get{
@@ -194,9 +201,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns REFERENCES RANGE(OBX-7).
-	///</summary>
+    /// <summary>   Returns REFERENCES RANGE(OBX-7). </summary>
+    ///
+    /// <value> The referencesrange. </value>
+
 	public ST REFERENCESRANGE
 	{
 		get{
@@ -217,11 +225,17 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of ABNORMAL FLAGS(OBX-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of ABNORMAL FLAGS(OBX-8). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   a bnormalflags. </returns>
+
 	public ST GetABNORMALFLAGS(int rep)
 	{
 			ST ret = null;
@@ -236,9 +250,12 @@ public class OBX : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of ABNORMAL FLAGS (OBX-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of ABNORMAL FLAGS (OBX-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetABNORMALFLAGS() {
      ST[] ret = null;
     try {
@@ -257,9 +274,10 @@ public class OBX : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of ABNORMAL FLAGS (OBX-8).
-   ///</summary>
+  /// <summary> Returns the total repetitions of ABNORMAL FLAGS (OBX-8). </summary>
+  ///
+  /// <value>   The abnormalflags repetitions used. </value>
+
   public int ABNORMALFLAGSRepetitionsUsed
 {
 get{
@@ -275,9 +293,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns PROBABILITY(OBX-9).
-	///</summary>
+
+    /// <summary>   Returns PROBABILITY(OBX-9). </summary>
+    ///
+    /// <value> The probability. </value>
+
 	public NM PROBABILITY
 	{
 		get{
@@ -298,9 +318,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns NATURE OF ABNORMAL TEST(OBX-10).
-	///</summary>
+    /// <summary>   Returns NATURE OF ABNORMAL TEST(OBX-10). </summary>
+    ///
+    /// <value> The natureofabnormaltest. </value>
+
 	public ID NATUREOFABNORMALTEST
 	{
 		get{
@@ -321,9 +342,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns OBSERV RESULT STATUS(OBX-11).
-	///</summary>
+    /// <summary>   Returns OBSERV RESULT STATUS(OBX-11). </summary>
+    ///
+    /// <value> The observresultstatus. </value>
+
 	public ID OBSERVRESULTSTATUS
 	{
 		get{
@@ -344,9 +366,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns DATE LAST OBS NORMAL VALUES(OBX-12).
-	///</summary>
+    /// <summary>   Returns DATE LAST OBS NORMAL VALUES(OBX-12). </summary>
+    ///
+    /// <value> The datelastobsnormalvalues. </value>
+
 	public TS DATELASTOBSNORMALVALUES
 	{
 		get{

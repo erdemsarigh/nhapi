@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 RMI message segment. 
-/// This segment has the following fields:<ol>
-///<li>RMI-1: Risk Management Incident Code (CE)</li>
-///<li>RMI-2: Date/Time Incident (TS)</li>
-///<li>RMI-3: Incident Type Code (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 RMI message segment. This segment has the following fields:<ol>
+/// <li>RMI-1: Risk Management Incident Code (CE)</li>
+/// <li>RMI-2: Date/Time Incident (TS)</li>
+/// <li>RMI-3: Incident Type Code (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class RMI : AbstractSegment  {
 
-  /**
-   * Creates a RMI (Risk Management Incident) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the RMI class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RMI(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class RMI : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Risk Management Incident Code(RMI-1).
-	///</summary>
+    /// <summary>   Returns Risk Management Incident Code(RMI-1). </summary>
+    ///
+    /// <value> The risk management incident code. </value>
+
 	public CE RiskManagementIncidentCode
 	{
 		get{
@@ -61,9 +63,10 @@ public class RMI : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date/Time Incident(RMI-2).
-	///</summary>
+    /// <summary>   Returns Date/Time Incident(RMI-2). </summary>
+    ///
+    /// <value> The date time incident. </value>
+
 	public TS DateTimeIncident
 	{
 		get{
@@ -84,9 +87,10 @@ public class RMI : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Incident Type Code(RMI-3).
-	///</summary>
+    /// <summary>   Returns Incident Type Code(RMI-3). </summary>
+    ///
+    /// <value> The incident type code. </value>
+
 	public CE IncidentTypeCode
 	{
 		get{

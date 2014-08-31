@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RRA_O18_RESPONSE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: RRA_O18_PATIENT (a Group object) optional </li>
-///<li>1: RRA_O18_ORDER (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RRA_O18_RESPONSE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: RRA_O18_PATIENT (a Group object) optional </li>
+/// <li>1: RRA_O18_ORDER (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RRA_O18_RESPONSE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RRA_O18_RESPONSE Group.
-	///</summary>
+    /// <summary>   Creates a new RRA_O18_RESPONSE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RRA_O18_RESPONSE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(RRA_O18_PATIENT), false, false);
@@ -32,9 +35,10 @@ public class RRA_O18_RESPONSE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns RRA_O18_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RRA_O18_PATIENT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient. </value>
+
 	public RRA_O18_PATIENT PATIENT { 
 get{
 	   RRA_O18_PATIENT ret = null;
@@ -48,9 +52,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RRA_O18_ORDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RRA_O18_ORDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order. </returns>
+
 	public RRA_O18_ORDER GetORDER() {
 	   RRA_O18_ORDER ret = null;
 	   try {
@@ -62,19 +71,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RRA_O18_ORDER
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RRA_O18_ORDER
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order. </returns>
+
 	public RRA_O18_ORDER GetORDER(int rep) { 
 	   return (RRA_O18_ORDER)this.GetStructure("ORDER", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RRA_O18_ORDER 
-	 */ 
+    /// <summary>   Gets the order repetitions used. </summary>
+    ///
+    /// <value> The order repetitions used. </value>
+
 	public int ORDERRepetitionsUsed { 
 get{
 	    int reps = -1; 

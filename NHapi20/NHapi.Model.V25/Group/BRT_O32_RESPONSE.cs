@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V25.Group
 {
-///<summary>
-///Represents the BRT_O32_RESPONSE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PID (Patient Identification) optional </li>
-///<li>1: BRT_O32_ORDER (a Group object) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the BRT_O32_RESPONSE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PID (Patient Identification) optional </li>
+/// <li>1: BRT_O32_ORDER (a Group object) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class BRT_O32_RESPONSE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new BRT_O32_RESPONSE Group.
-	///</summary>
+    /// <summary>   Creates a new BRT_O32_RESPONSE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public BRT_O32_RESPONSE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PID), false, false);
@@ -32,9 +35,10 @@ public class BRT_O32_RESPONSE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PID (Patient Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -48,9 +52,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of BRT_O32_ORDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of BRT_O32_ORDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order. </returns>
+
 	public BRT_O32_ORDER GetORDER() {
 	   BRT_O32_ORDER ret = null;
 	   try {
@@ -62,19 +71,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of BRT_O32_ORDER
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of BRT_O32_ORDER
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order. </returns>
+
 	public BRT_O32_ORDER GetORDER(int rep) { 
 	   return (BRT_O32_ORDER)this.GetStructure("ORDER", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of BRT_O32_ORDER 
-	 */ 
+    /// <summary>   Gets the order repetitions used. </summary>
+    ///
+    /// <value> The order repetitions used. </value>
+
 	public int ORDERRepetitionsUsed { 
 get{
 	    int reps = -1; 

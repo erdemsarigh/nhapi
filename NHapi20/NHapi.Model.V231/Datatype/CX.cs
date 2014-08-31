@@ -6,9 +6,9 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V231.Datatype
 {
-
-///<summary>
-/// <p>The HL7 CX (extended composite ID with check digit) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 CX (extended composite ID with check digit) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>ID (ST)</li>
 /// <li>check digit (NM)</li>
 /// <li>code identifying the check digit scheme employed (ID)</li>
@@ -16,22 +16,24 @@ namespace NHapi.Model.V231.Datatype
 /// <li>identifier type code (IS)</li>
 /// <li>assigning facility (HD)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CX : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CX.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CX. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CX(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CX.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CX. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CX(IMessage message, string description) : base(message, description){
 		data = new IType[6];
 		data[0] = new ST(message,"ID");
@@ -42,9 +44,10 @@ public class CX : AbstractType, IComposite{
 		data[5] = new HD(message,"Assigning facility");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -52,12 +55,15 @@ public class CX : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -68,10 +74,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns ID (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns ID (component #0).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier. </value>
+
 	public ST ID {
 get{
 	   ST ret = null;
@@ -85,10 +95,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns check digit (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns check digit (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The check digit. </value>
+
 	public NM CheckDigit {
 get{
 	   NM ret = null;
@@ -102,10 +116,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns code identifying the check digit scheme employed (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns code identifying the check digit scheme employed (component #2).  This is a
+    /// convenience method that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The code identifying the check digit scheme employed. </value>
+
 	public ID CodeIdentifyingTheCheckDigitSchemeEmployed {
 get{
 	   ID ret = null;
@@ -119,10 +137,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns assigning authority (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns assigning authority (component #3).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The assigning authority. </value>
+
 	public HD AssigningAuthority {
 get{
 	   HD ret = null;
@@ -136,10 +158,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns identifier type code (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns identifier type code (component #4).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier type code. </value>
+
 	public IS IdentifierTypeCode {
 get{
 	   IS ret = null;
@@ -153,10 +179,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns assigning facility (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns assigning facility (component #5).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The assigning facility. </value>
+
 	public HD AssigningFacility {
 get{
 	   HD ret = null;

@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the SQM_S25_SERVICE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: AIS (AIS - appointment information - service segment) </li>
-///<li>1: APR (APR - appointment preferences segment) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the SQM_S25_SERVICE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: AIS (AIS - appointment information - service segment) </li>
+/// <li>1: APR (APR - appointment preferences segment) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class SQM_S25_SERVICE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new SQM_S25_SERVICE Group.
-	///</summary>
+    /// <summary>   Creates a new SQM_S25_SERVICE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SQM_S25_SERVICE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(AIS), true, false);
@@ -32,9 +35,12 @@ public class SQM_S25_SERVICE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns AIS (AIS - appointment information - service segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns AIS (AIS - appointment information - service segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The ais. </value>
+
 	public AIS AIS { 
 get{
 	   AIS ret = null;
@@ -48,9 +54,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns APR (APR - appointment preferences segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns APR (APR - appointment preferences segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The APR. </value>
+
 	public APR APR { 
 get{
 	   APR ret = null;

@@ -6,8 +6,7 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 XAD (Extended Address) data type.  Consists of the following components: </p><ol>
 /// <li>Street Address (SAD)</li>
 /// <li>Other Designation (ST)</li>
@@ -24,22 +23,24 @@ namespace NHapi.Model.V25.Datatype
 /// <li>Effective Date (TS)</li>
 /// <li>Expiration Date (TS)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class XAD : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a XAD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a XAD. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public XAD(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a XAD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a XAD. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public XAD(IMessage message, string description) : base(message, description){
 		data = new IType[14];
 		data[0] = new SAD(message,"Street Address");
@@ -58,9 +59,10 @@ public class XAD : AbstractType, IComposite{
 		data[13] = new TS(message,"Expiration Date");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -68,12 +70,15 @@ public class XAD : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -84,10 +89,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Street Address (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Street Address (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The street address. </value>
+
 	public SAD StreetAddress {
 get{
 	   SAD ret = null;
@@ -101,10 +110,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Other Designation (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Other Designation (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The other designation. </value>
+
 	public ST OtherDesignation {
 get{
 	   ST ret = null;
@@ -118,10 +131,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns City (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns City (component #2).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The city. </value>
+
 	public ST City {
 get{
 	   ST ret = null;
@@ -135,10 +152,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns State or Province (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns State or Province (component #3).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The state or province. </value>
+
 	public ST StateOrProvince {
 get{
 	   ST ret = null;
@@ -152,10 +173,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Zip or Postal Code (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Zip or Postal Code (component #4).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The zip or postal code. </value>
+
 	public ST ZipOrPostalCode {
 get{
 	   ST ret = null;
@@ -169,10 +194,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Country (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Country (component #5).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The total number of ry. </value>
+
 	public ID Country {
 get{
 	   ID ret = null;
@@ -186,10 +215,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Address Type (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Address Type (component #6).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the address. </value>
+
 	public ID AddressType {
 get{
 	   ID ret = null;
@@ -203,10 +236,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Other Geographic Designation (component #7).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Other Geographic Designation (component #7).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The other geographic designation. </value>
+
 	public ST OtherGeographicDesignation {
 get{
 	   ST ret = null;
@@ -220,10 +257,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns County/Parish Code (component #8).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns County/Parish Code (component #8).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The total number of y coordinate parish code. </value>
+
 	public IS CountyParishCode {
 get{
 	   IS ret = null;
@@ -237,10 +278,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Census Tract (component #9).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Census Tract (component #9).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The census tract. </value>
+
 	public IS CensusTract {
 get{
 	   IS ret = null;
@@ -254,10 +299,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Address Representation Code (component #10).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Address Representation Code (component #10).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The address representation code. </value>
+
 	public ID AddressRepresentationCode {
 get{
 	   ID ret = null;
@@ -271,10 +320,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Address Validity Range (component #11).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Address Validity Range (component #11).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The address validity range. </value>
+
 	public DR AddressValidityRange {
 get{
 	   DR ret = null;
@@ -288,10 +341,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Effective Date (component #12).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Effective Date (component #12).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The effective date. </value>
+
 	public TS EffectiveDate {
 get{
 	   TS ret = null;
@@ -305,10 +362,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Expiration Date (component #13).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Expiration Date (component #13).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The expiration date. </value>
+
 	public TS ExpirationDate {
 get{
 	   TS ret = null;

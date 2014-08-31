@@ -8,27 +8,30 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the PGL_PC7_GOAL Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: GOL (Goal Detail) </li>
-///<li>1: NTE (Notes and comments segment) optional repeating</li>
-///<li>2: VAR (Variance) optional repeating</li>
-///<li>3: PGL_PC7_GOAL_ROLE (a Group object) optional repeating</li>
-///<li>4: PGL_PC7_PATHWAY (a Group object) optional repeating</li>
-///<li>5: PGL_PC7_OBSERVATION (a Group object) optional repeating</li>
-///<li>6: PGL_PC7_PROBLEM (a Group object) optional repeating</li>
-///<li>7: PGL_PC7_ORDER (a Group object) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the PGL_PC7_GOAL Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: GOL (Goal Detail) </li>
+/// <li>1: NTE (Notes and comments segment) optional repeating</li>
+/// <li>2: VAR (Variance) optional repeating</li>
+/// <li>3: PGL_PC7_GOAL_ROLE (a Group object) optional repeating</li>
+/// <li>4: PGL_PC7_PATHWAY (a Group object) optional repeating</li>
+/// <li>5: PGL_PC7_OBSERVATION (a Group object) optional repeating</li>
+/// <li>6: PGL_PC7_PROBLEM (a Group object) optional repeating</li>
+/// <li>7: PGL_PC7_ORDER (a Group object) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class PGL_PC7_GOAL : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new PGL_PC7_GOAL Group.
-	///</summary>
+    /// <summary>   Creates a new PGL_PC7_GOAL Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PGL_PC7_GOAL(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(GOL), true, false);
@@ -44,9 +47,10 @@ public class PGL_PC7_GOAL : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns GOL (Goal Detail) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns GOL (Goal Detail) - creates it if necessary. </summary>
+    ///
+    /// <value> The gol. </value>
+
 	public GOL GOL { 
 get{
 	   GOL ret = null;
@@ -60,9 +64,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -74,19 +83,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -101,9 +116,12 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of VAR (Variance) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns  first repetition of VAR (Variance) - creates it if necessary. </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The variable. </returns>
+
 	public VAR GetVAR() {
 	   VAR ret = null;
 	   try {
@@ -115,19 +133,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of VAR
-	/// * (Variance) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of VAR
+    ///  * (Variance) - creates it if necessary throws HL7Exception if the repetition requested is
+    ///  more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The variable. </returns>
+
 	public VAR GetVAR(int rep) { 
 	   return (VAR)this.GetStructure("VAR", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of VAR 
-	 */ 
+    /// <summary>   Gets the variable repetitions used. </summary>
+    ///
+    /// <value> The variable repetitions used. </value>
+
 	public int VARRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -142,9 +166,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of PGL_PC7_GOAL_ROLE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of PGL_PC7_GOAL_ROLE (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The goal role. </returns>
+
 	public PGL_PC7_GOAL_ROLE GetGOAL_ROLE() {
 	   PGL_PC7_GOAL_ROLE ret = null;
 	   try {
@@ -156,19 +185,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of PGL_PC7_GOAL_ROLE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of PGL_PC7_GOAL_ROLE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The goal role. </returns>
+
 	public PGL_PC7_GOAL_ROLE GetGOAL_ROLE(int rep) { 
 	   return (PGL_PC7_GOAL_ROLE)this.GetStructure("GOAL_ROLE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of PGL_PC7_GOAL_ROLE 
-	 */ 
+    /// <summary>   Gets the goal role repetitions used. </summary>
+    ///
+    /// <value> The goal role repetitions used. </value>
+
 	public int GOAL_ROLERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -183,9 +218,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of PGL_PC7_PATHWAY (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of PGL_PC7_PATHWAY (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The pathway. </returns>
+
 	public PGL_PC7_PATHWAY GetPATHWAY() {
 	   PGL_PC7_PATHWAY ret = null;
 	   try {
@@ -197,19 +237,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of PGL_PC7_PATHWAY
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of PGL_PC7_PATHWAY
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The pathway. </returns>
+
 	public PGL_PC7_PATHWAY GetPATHWAY(int rep) { 
 	   return (PGL_PC7_PATHWAY)this.GetStructure("PATHWAY", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of PGL_PC7_PATHWAY 
-	 */ 
+    /// <summary>   Gets the pathway repetitions used. </summary>
+    ///
+    /// <value> The pathway repetitions used. </value>
+
 	public int PATHWAYRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -224,9 +270,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of PGL_PC7_OBSERVATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of PGL_PC7_OBSERVATION (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public PGL_PC7_OBSERVATION GetOBSERVATION() {
 	   PGL_PC7_OBSERVATION ret = null;
 	   try {
@@ -238,19 +289,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of PGL_PC7_OBSERVATION
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of PGL_PC7_OBSERVATION
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public PGL_PC7_OBSERVATION GetOBSERVATION(int rep) { 
 	   return (PGL_PC7_OBSERVATION)this.GetStructure("OBSERVATION", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of PGL_PC7_OBSERVATION 
-	 */ 
+    /// <summary>   Gets the observation repetitions used. </summary>
+    ///
+    /// <value> The observation repetitions used. </value>
+
 	public int OBSERVATIONRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -265,9 +322,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of PGL_PC7_PROBLEM (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of PGL_PC7_PROBLEM (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The problem. </returns>
+
 	public PGL_PC7_PROBLEM GetPROBLEM() {
 	   PGL_PC7_PROBLEM ret = null;
 	   try {
@@ -279,19 +341,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of PGL_PC7_PROBLEM
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of PGL_PC7_PROBLEM
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The problem. </returns>
+
 	public PGL_PC7_PROBLEM GetPROBLEM(int rep) { 
 	   return (PGL_PC7_PROBLEM)this.GetStructure("PROBLEM", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of PGL_PC7_PROBLEM 
-	 */ 
+    /// <summary>   Gets the problem repetitions used. </summary>
+    ///
+    /// <value> The problem repetitions used. </value>
+
 	public int PROBLEMRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -306,9 +374,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of PGL_PC7_ORDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of PGL_PC7_ORDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order. </returns>
+
 	public PGL_PC7_ORDER GetORDER() {
 	   PGL_PC7_ORDER ret = null;
 	   try {
@@ -320,19 +393,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of PGL_PC7_ORDER
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of PGL_PC7_ORDER
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order. </returns>
+
 	public PGL_PC7_ORDER GetORDER(int rep) { 
 	   return (PGL_PC7_ORDER)this.GetStructure("ORDER", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of PGL_PC7_ORDER 
-	 */ 
+    /// <summary>   Gets the order repetitions used. </summary>
+    ///
+    /// <value> The order repetitions used. </value>
+
 	public int ORDERRepetitionsUsed { 
 get{
 	    int reps = -1; 

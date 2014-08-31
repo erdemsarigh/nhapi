@@ -9,38 +9,41 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V24.Message
 
 {
-///<summary>
-/// Represents a QBP_Q13 message structure (see chapter 5). This structure contains the 
-/// following elements:
-///<ol>
-///<li>0: MSH (Message Header) </li>
-///<li>1: QPD (Query Parameter Definition) </li>
-///<li>2: QBP_Q13_QBP (a Group object) optional </li>
-///<li>3: RDF (Table Row Definition) optional </li>
-///<li>4: RCP (Response Control Parameter) </li>
-///<li>5: DSC (Continuation Pointer) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents a QBP_Q13 message structure (see chapter 5). This structure contains the following
+/// elements:
+/// <ol>
+/// <li>0: MSH (Message Header) </li>
+/// <li>1: QPD (Query Parameter Definition) </li>
+/// <li>2: QBP_Q13_QBP (a Group object) optional </li>
+/// <li>3: RDF (Table Row Definition) optional </li>
+/// <li>4: RCP (Response Control Parameter) </li>
+/// <li>5: DSC (Continuation Pointer) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class QBP_Q13 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new QBP_Q13 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new QBP_Q13 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public QBP_Q13(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new QBP_Q13 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new QBP_Q13 Group with DefaultModelClassFactory. </summary>
 	public QBP_Q13() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for QBP_Q13.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for QBP_Q13.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -54,6 +57,13 @@ public class QBP_Q13 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -61,9 +71,11 @@ public class QBP_Q13 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message Header) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message Header) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -77,9 +89,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QPD (Query Parameter Definition) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QPD (Query Parameter Definition) - creates it if necessary. </summary>
+    ///
+    /// <value> The qpd. </value>
+
 	public QPD QPD { 
 get{
 	   QPD ret = null;
@@ -93,9 +106,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QBP_Q13_QBP (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QBP_Q13_QBP (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The qbp. </value>
+
 	public QBP_Q13_QBP QBP { 
 get{
 	   QBP_Q13_QBP ret = null;
@@ -109,9 +123,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RDF (Table Row Definition) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RDF (Table Row Definition) - creates it if necessary. </summary>
+    ///
+    /// <value> The rdf. </value>
+
 	public RDF RDF { 
 get{
 	   RDF ret = null;
@@ -125,9 +140,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RCP (Response Control Parameter) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RCP (Response Control Parameter) - creates it if necessary. </summary>
+    ///
+    /// <value> The rcp. </value>
+
 	public RCP RCP { 
 get{
 	   RCP ret = null;
@@ -141,9 +157,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns DSC (Continuation Pointer) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns DSC (Continuation Pointer) - creates it if necessary. </summary>
+    ///
+    /// <value> The dsc. </value>
+
 	public DSC DSC { 
 get{
 	   DSC ret = null;

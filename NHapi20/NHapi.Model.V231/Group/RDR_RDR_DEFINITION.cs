@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the RDR_RDR_DEFINITION Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: QRD (QRD - original-style query definition segment) </li>
-///<li>1: QRF (QRF - original style query filter segment) optional </li>
-///<li>2: RDR_RDR_PATIENT (a Group object) optional </li>
-///<li>3: RDR_RDR_ORDER (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RDR_RDR_DEFINITION Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: QRD (QRD - original-style query definition segment) </li>
+/// <li>1: QRF (QRF - original style query filter segment) optional </li>
+/// <li>2: RDR_RDR_PATIENT (a Group object) optional </li>
+/// <li>3: RDR_RDR_ORDER (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RDR_RDR_DEFINITION : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RDR_RDR_DEFINITION Group.
-	///</summary>
+    /// <summary>   Creates a new RDR_RDR_DEFINITION Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RDR_RDR_DEFINITION(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(QRD), true, false);
@@ -36,9 +39,12 @@ public class RDR_RDR_DEFINITION : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns QRD (QRD - original-style query definition segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns QRD (QRD - original-style query definition segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The qrd. </value>
+
 	public QRD QRD { 
 get{
 	   QRD ret = null;
@@ -52,9 +58,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QRF (QRF - original style query filter segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns QRF (QRF - original style query filter segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The qrf. </value>
+
 	public QRF QRF { 
 get{
 	   QRF ret = null;
@@ -68,9 +77,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RDR_RDR_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RDR_RDR_PATIENT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient. </value>
+
 	public RDR_RDR_PATIENT PATIENT { 
 get{
 	   RDR_RDR_PATIENT ret = null;
@@ -84,9 +94,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RDR_RDR_ORDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RDR_RDR_ORDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order. </returns>
+
 	public RDR_RDR_ORDER GetORDER() {
 	   RDR_RDR_ORDER ret = null;
 	   try {
@@ -98,19 +113,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RDR_RDR_ORDER
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RDR_RDR_ORDER
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order. </returns>
+
 	public RDR_RDR_ORDER GetORDER(int rep) { 
 	   return (RDR_RDR_ORDER)this.GetStructure("ORDER", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RDR_RDR_ORDER 
-	 */ 
+    /// <summary>   Gets the order repetitions used. </summary>
+    ///
+    /// <value> The order repetitions used. </value>
+
 	public int ORDERRepetitionsUsed { 
 get{
 	    int reps = -1; 

@@ -6,37 +6,40 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 EIP (Entity Identifier Pair) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 EIP (Entity Identifier Pair) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>Placer Assigned Identifier (EI)</li>
 /// <li>Filler Assigned Identifier (EI)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class EIP : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a EIP.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a EIP. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public EIP(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a EIP.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a EIP. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public EIP(IMessage message, string description) : base(message, description){
 		data = new IType[2];
 		data[0] = new EI(message,"Placer Assigned Identifier");
 		data[1] = new EI(message,"Filler Assigned Identifier");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -44,12 +47,15 @@ public class EIP : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -60,10 +66,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Placer Assigned Identifier (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Placer Assigned Identifier (component #0).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the placer assigned. </value>
+
 	public EI PlacerAssignedIdentifier {
 get{
 	   EI ret = null;
@@ -77,10 +87,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Filler Assigned Identifier (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Filler Assigned Identifier (component #1).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the filler assigned. </value>
+
 	public EI FillerAssignedIdentifier {
 get{
 	   EI ret = null;

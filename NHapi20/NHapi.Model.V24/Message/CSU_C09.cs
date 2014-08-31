@@ -9,34 +9,37 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V24.Message
 
 {
-///<summary>
-/// Represents a CSU_C09 message structure (see chapter 7). This structure contains the 
-/// following elements:
-///<ol>
-///<li>0: MSH (Message Header) </li>
-///<li>1: CSU_C09_PATIENT (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents a CSU_C09 message structure (see chapter 7). This structure contains the following
+/// elements:
+/// <ol>
+/// <li>0: MSH (Message Header) </li>
+/// <li>1: CSU_C09_PATIENT (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class CSU_C09 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new CSU_C09 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new CSU_C09 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public CSU_C09(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new CSU_C09 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new CSU_C09 Group with DefaultModelClassFactory. </summary>
 	public CSU_C09() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for CSU_C09.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for CSU_C09.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -46,6 +49,13 @@ public class CSU_C09 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -53,9 +63,11 @@ public class CSU_C09 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message Header) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message Header) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -69,9 +81,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of CSU_C09_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of CSU_C09_PATIENT (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The patient. </returns>
+
 	public CSU_C09_PATIENT GetPATIENT() {
 	   CSU_C09_PATIENT ret = null;
 	   try {
@@ -83,19 +100,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of CSU_C09_PATIENT
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of CSU_C09_PATIENT
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The patient. </returns>
+
 	public CSU_C09_PATIENT GetPATIENT(int rep) { 
 	   return (CSU_C09_PATIENT)this.GetStructure("PATIENT", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of CSU_C09_PATIENT 
-	 */ 
+    /// <summary>   Gets the patient repetitions used. </summary>
+    ///
+    /// <value> The patient repetitions used. </value>
+
 	public int PATIENTRepetitionsUsed { 
 get{
 	    int reps = -1; 

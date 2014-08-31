@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the ORD_O02_RESPONSE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORD_O02_PATIENT (a Group object) optional </li>
-///<li>1: ORD_O02_ORDER_DIET (a Group object) repeating</li>
-///<li>2: ORD_O02_ORDER_TRAY (a Group object) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ORD_O02_RESPONSE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORD_O02_PATIENT (a Group object) optional </li>
+/// <li>1: ORD_O02_ORDER_DIET (a Group object) repeating</li>
+/// <li>2: ORD_O02_ORDER_TRAY (a Group object) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ORD_O02_RESPONSE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ORD_O02_RESPONSE Group.
-	///</summary>
+    /// <summary>   Creates a new ORD_O02_RESPONSE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORD_O02_RESPONSE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORD_O02_PATIENT), false, false);
@@ -34,9 +37,10 @@ public class ORD_O02_RESPONSE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORD_O02_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORD_O02_PATIENT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient. </value>
+
 	public ORD_O02_PATIENT PATIENT { 
 get{
 	   ORD_O02_PATIENT ret = null;
@@ -50,9 +54,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of ORD_O02_ORDER_DIET (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of ORD_O02_ORDER_DIET (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order diet. </returns>
+
 	public ORD_O02_ORDER_DIET GetORDER_DIET() {
 	   ORD_O02_ORDER_DIET ret = null;
 	   try {
@@ -64,19 +73,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of ORD_O02_ORDER_DIET
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of ORD_O02_ORDER_DIET
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order diet. </returns>
+
 	public ORD_O02_ORDER_DIET GetORDER_DIET(int rep) { 
 	   return (ORD_O02_ORDER_DIET)this.GetStructure("ORDER_DIET", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of ORD_O02_ORDER_DIET 
-	 */ 
+    /// <summary>   Gets the order diet repetitions used. </summary>
+    ///
+    /// <value> The order diet repetitions used. </value>
+
 	public int ORDER_DIETRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -91,9 +106,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of ORD_O02_ORDER_TRAY (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of ORD_O02_ORDER_TRAY (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order tray. </returns>
+
 	public ORD_O02_ORDER_TRAY GetORDER_TRAY() {
 	   ORD_O02_ORDER_TRAY ret = null;
 	   try {
@@ -105,19 +125,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of ORD_O02_ORDER_TRAY
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of ORD_O02_ORDER_TRAY
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order tray. </returns>
+
 	public ORD_O02_ORDER_TRAY GetORDER_TRAY(int rep) { 
 	   return (ORD_O02_ORDER_TRAY)this.GetStructure("ORDER_TRAY", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of ORD_O02_ORDER_TRAY 
-	 */ 
+    /// <summary>   Gets the order tray repetitions used. </summary>
+    ///
+    /// <value> The order tray repetitions used. </value>
+
 	public int ORDER_TRAYRepetitionsUsed { 
 get{
 	    int reps = -1; 

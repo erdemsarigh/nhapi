@@ -9,35 +9,38 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V231.Message
 
 {
-///<summary>
-/// Represents a MFN_M05 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a MFN_M05 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (MSH - message header segment) </li>
-///<li>1: MFI (MFI - master file identification segment) </li>
-///<li>2: MFN_M05_MF_LOCATION (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (MSH - message header segment) </li>
+/// <li>1: MFI (MFI - master file identification segment) </li>
+/// <li>2: MFN_M05_MF_LOCATION (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFN_M05 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new MFN_M05 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new MFN_M05 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public MFN_M05(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new MFN_M05 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new MFN_M05 Group with DefaultModelClassFactory. </summary>
 	public MFN_M05() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for MFN_M05.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for MFN_M05.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -48,6 +51,13 @@ public class MFN_M05 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -55,9 +65,11 @@ public class MFN_M05 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MSH - message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MSH - message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -71,9 +83,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MFI (MFI - master file identification segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns MFI (MFI - master file identification segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The mfi. </value>
+
 	public MFI MFI { 
 get{
 	   MFI ret = null;
@@ -87,9 +102,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of MFN_M05_MF_LOCATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of MFN_M05_MF_LOCATION (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The mf location. </returns>
+
 	public MFN_M05_MF_LOCATION GetMF_LOCATION() {
 	   MFN_M05_MF_LOCATION ret = null;
 	   try {
@@ -101,19 +121,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of MFN_M05_MF_LOCATION
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of MFN_M05_MF_LOCATION
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The mf location. </returns>
+
 	public MFN_M05_MF_LOCATION GetMF_LOCATION(int rep) { 
 	   return (MFN_M05_MF_LOCATION)this.GetStructure("MF_LOCATION", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of MFN_M05_MF_LOCATION 
-	 */ 
+    /// <summary>   Gets the mf location repetitions used. </summary>
+    ///
+    /// <value> The mf location repetitions used. </value>
+
 	public int MF_LOCATIONRepetitionsUsed { 
 get{
 	    int reps = -1; 

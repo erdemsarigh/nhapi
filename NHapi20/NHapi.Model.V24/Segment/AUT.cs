@@ -7,33 +7,34 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 AUT message segment. 
-/// This segment has the following fields:<ol>
-///<li>AUT-1: Authorizing Payor, Plan ID (CE)</li>
-///<li>AUT-2: Authorizing Payor, Company ID (CE)</li>
-///<li>AUT-3: Authorizing Payor, Company Name (ST)</li>
-///<li>AUT-4: Authorization Effective Date (TS)</li>
-///<li>AUT-5: Authorization Expiration Date (TS)</li>
-///<li>AUT-6: Authorization Identifier (EI)</li>
-///<li>AUT-7: Reimbursement Limit (CP)</li>
-///<li>AUT-8: Requested Number of Treatments (NM)</li>
-///<li>AUT-9: Authorized Number of Treatments (NM)</li>
-///<li>AUT-10: Process Date (TS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 AUT message segment. This segment has the following fields:<ol>
+/// <li>AUT-1: Authorizing Payor, Plan ID (CE)</li>
+/// <li>AUT-2: Authorizing Payor, Company ID (CE)</li>
+/// <li>AUT-3: Authorizing Payor, Company Name (ST)</li>
+/// <li>AUT-4: Authorization Effective Date (TS)</li>
+/// <li>AUT-5: Authorization Expiration Date (TS)</li>
+/// <li>AUT-6: Authorization Identifier (EI)</li>
+/// <li>AUT-7: Reimbursement Limit (CP)</li>
+/// <li>AUT-8: Requested Number of Treatments (NM)</li>
+/// <li>AUT-9: Authorized Number of Treatments (NM)</li>
+/// <li>AUT-10: Process Date (TS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class AUT : AbstractSegment  {
 
-  /**
-   * Creates a AUT (Authorization Information) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the AUT class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public AUT(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -52,9 +53,10 @@ public class AUT : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Authorizing Payor, Plan ID(AUT-1).
-	///</summary>
+    /// <summary>   Returns Authorizing Payor, Plan ID(AUT-1). </summary>
+    ///
+    /// <value> The identifier of the authorizing payor plan. </value>
+
 	public CE AuthorizingPayorPlanID
 	{
 		get{
@@ -75,9 +77,10 @@ public class AUT : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Authorizing Payor, Company ID(AUT-2).
-	///</summary>
+    /// <summary>   Returns Authorizing Payor, Company ID(AUT-2). </summary>
+    ///
+    /// <value> The identifier of the authorizing payor company. </value>
+
 	public CE AuthorizingPayorCompanyID
 	{
 		get{
@@ -98,9 +101,10 @@ public class AUT : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Authorizing Payor, Company Name(AUT-3).
-	///</summary>
+    /// <summary>   Returns Authorizing Payor, Company Name(AUT-3). </summary>
+    ///
+    /// <value> The name of the authorizing payor company. </value>
+
 	public ST AuthorizingPayorCompanyName
 	{
 		get{
@@ -121,9 +125,10 @@ public class AUT : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Authorization Effective Date(AUT-4).
-	///</summary>
+    /// <summary>   Returns Authorization Effective Date(AUT-4). </summary>
+    ///
+    /// <value> The authorization effective date. </value>
+
 	public TS AuthorizationEffectiveDate
 	{
 		get{
@@ -144,9 +149,10 @@ public class AUT : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Authorization Expiration Date(AUT-5).
-	///</summary>
+    /// <summary>   Returns Authorization Expiration Date(AUT-5). </summary>
+    ///
+    /// <value> The authorization expiration date. </value>
+
 	public TS AuthorizationExpirationDate
 	{
 		get{
@@ -167,9 +173,10 @@ public class AUT : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Authorization Identifier(AUT-6).
-	///</summary>
+    /// <summary>   Returns Authorization Identifier(AUT-6). </summary>
+    ///
+    /// <value> The identifier of the authorization. </value>
+
 	public EI AuthorizationIdentifier
 	{
 		get{
@@ -190,9 +197,10 @@ public class AUT : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Reimbursement Limit(AUT-7).
-	///</summary>
+    /// <summary>   Returns Reimbursement Limit(AUT-7). </summary>
+    ///
+    /// <value> The reimbursement limit. </value>
+
 	public CP ReimbursementLimit
 	{
 		get{
@@ -213,9 +221,10 @@ public class AUT : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Number of Treatments(AUT-8).
-	///</summary>
+    /// <summary>   Returns Requested Number of Treatments(AUT-8). </summary>
+    ///
+    /// <value> The requested number of treatments. </value>
+
 	public NM RequestedNumberOfTreatments
 	{
 		get{
@@ -236,9 +245,10 @@ public class AUT : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Authorized Number of Treatments(AUT-9).
-	///</summary>
+    /// <summary>   Returns Authorized Number of Treatments(AUT-9). </summary>
+    ///
+    /// <value> The authorized number of treatments. </value>
+
 	public NM AuthorizedNumberOfTreatments
 	{
 		get{
@@ -259,9 +269,10 @@ public class AUT : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Process Date(AUT-10).
-	///</summary>
+    /// <summary>   Returns Process Date(AUT-10). </summary>
+    ///
+    /// <value> The process date. </value>
+
 	public TS ProcessDate
 	{
 		get{

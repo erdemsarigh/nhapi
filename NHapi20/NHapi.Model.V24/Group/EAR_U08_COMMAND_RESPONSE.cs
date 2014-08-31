@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the EAR_U08_COMMAND_RESPONSE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ECD (Equipment Command) </li>
-///<li>1: SAC (Specimen and container detail) optional </li>
-///<li>2: ECR (Equipment Command Response) </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the EAR_U08_COMMAND_RESPONSE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ECD (Equipment Command) </li>
+/// <li>1: SAC (Specimen and container detail) optional </li>
+/// <li>2: ECR (Equipment Command Response) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class EAR_U08_COMMAND_RESPONSE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new EAR_U08_COMMAND_RESPONSE Group.
-	///</summary>
+    /// <summary>   Creates a new EAR_U08_COMMAND_RESPONSE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public EAR_U08_COMMAND_RESPONSE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ECD), true, false);
@@ -34,9 +37,10 @@ public class EAR_U08_COMMAND_RESPONSE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ECD (Equipment Command) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ECD (Equipment Command) - creates it if necessary. </summary>
+    ///
+    /// <value> The ecd. </value>
+
 	public ECD ECD { 
 get{
 	   ECD ret = null;
@@ -50,9 +54,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns SAC (Specimen and container detail) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns SAC (Specimen and container detail) - creates it if necessary. </summary>
+    ///
+    /// <value> The sac. </value>
+
 	public SAC SAC { 
 get{
 	   SAC ret = null;
@@ -66,9 +71,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ECR (Equipment Command Response) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ECR (Equipment Command Response) - creates it if necessary. </summary>
+    ///
+    /// <value> The ecr. </value>
+
 	public ECR ECR { 
 get{
 	   ECR ret = null;

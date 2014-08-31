@@ -7,37 +7,38 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 MSH message segment. 
-/// This segment has the following fields:<ol>
-///<li>MSH-1: FIELD SEPARATOR (ST)</li>
-///<li>MSH-2: ENCODING CHARACTERS (ST)</li>
-///<li>MSH-3: SENDING APPLICATION (ST)</li>
-///<li>MSH-4: SENDING FACILITY (ST)</li>
-///<li>MSH-5: RECEIVING APPLICATION (ST)</li>
-///<li>MSH-6: RECEIVING FACILITY (ST)</li>
-///<li>MSH-7: DATE/TIME OF MESSAGE (TS)</li>
-///<li>MSH-8: Security (ST)</li>
-///<li>MSH-9: MESSAGE TYPE (ID)</li>
-///<li>MSH-10: MESSAGE CONTROL ID (ST)</li>
-///<li>MSH-11: PROCESSING ID (ID)</li>
-///<li>MSH-12: VERSION ID (NM)</li>
-///<li>MSH-13: SEQUENCE NUMBER (NM)</li>
-///<li>MSH-14: CONTINUATION POINTER (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 MSH message segment. This segment has the following fields:<ol>
+/// <li>MSH-1: FIELD SEPARATOR (ST)</li>
+/// <li>MSH-2: ENCODING CHARACTERS (ST)</li>
+/// <li>MSH-3: SENDING APPLICATION (ST)</li>
+/// <li>MSH-4: SENDING FACILITY (ST)</li>
+/// <li>MSH-5: RECEIVING APPLICATION (ST)</li>
+/// <li>MSH-6: RECEIVING FACILITY (ST)</li>
+/// <li>MSH-7: DATE/TIME OF MESSAGE (TS)</li>
+/// <li>MSH-8: Security (ST)</li>
+/// <li>MSH-9: MESSAGE TYPE (ID)</li>
+/// <li>MSH-10: MESSAGE CONTROL ID (ST)</li>
+/// <li>MSH-11: PROCESSING ID (ID)</li>
+/// <li>MSH-12: VERSION ID (NM)</li>
+/// <li>MSH-13: SEQUENCE NUMBER (NM)</li>
+/// <li>MSH-14: CONTINUATION POINTER (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class MSH : AbstractSegment  {
 
-  /**
-   * Creates a MSH (MESSAGE HEADER) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the MSH class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MSH(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -60,9 +61,10 @@ public class MSH : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns FIELD SEPARATOR(MSH-1).
-	///</summary>
+    /// <summary>   Returns FIELD SEPARATOR(MSH-1). </summary>
+    ///
+    /// <value> The fieldseparator. </value>
+
 	public ST FIELDSEPARATOR
 	{
 		get{
@@ -83,9 +85,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns ENCODING CHARACTERS(MSH-2).
-	///</summary>
+    /// <summary>   Returns ENCODING CHARACTERS(MSH-2). </summary>
+    ///
+    /// <value> The encodingcharacters. </value>
+
 	public ST ENCODINGCHARACTERS
 	{
 		get{
@@ -106,9 +109,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns SENDING APPLICATION(MSH-3).
-	///</summary>
+    /// <summary>   Returns SENDING APPLICATION(MSH-3). </summary>
+    ///
+    /// <value> The sendingapplication. </value>
+
 	public ST SENDINGAPPLICATION
 	{
 		get{
@@ -129,9 +133,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns SENDING FACILITY(MSH-4).
-	///</summary>
+    /// <summary>   Returns SENDING FACILITY(MSH-4). </summary>
+    ///
+    /// <value> The sendingfacility. </value>
+
 	public ST SENDINGFACILITY
 	{
 		get{
@@ -152,9 +157,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns RECEIVING APPLICATION(MSH-5).
-	///</summary>
+    /// <summary>   Returns RECEIVING APPLICATION(MSH-5). </summary>
+    ///
+    /// <value> The receivingapplication. </value>
+
 	public ST RECEIVINGAPPLICATION
 	{
 		get{
@@ -175,9 +181,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns RECEIVING FACILITY(MSH-6).
-	///</summary>
+    /// <summary>   Returns RECEIVING FACILITY(MSH-6). </summary>
+    ///
+    /// <value> The receivingfacility. </value>
+
 	public ST RECEIVINGFACILITY
 	{
 		get{
@@ -198,9 +205,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DATE/TIME OF MESSAGE(MSH-7).
-	///</summary>
+    /// <summary>   Returns DATE/TIME OF MESSAGE(MSH-7). </summary>
+    ///
+    /// <value> The datetimeofmessage. </value>
+
 	public TS DATETIMEOFMESSAGE
 	{
 		get{
@@ -221,9 +229,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Security(MSH-8).
-	///</summary>
+    /// <summary>   Returns Security(MSH-8). </summary>
+    ///
+    /// <value> The security. </value>
+
 	public ST Security
 	{
 		get{
@@ -244,9 +253,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns MESSAGE TYPE(MSH-9).
-	///</summary>
+    /// <summary>   Returns MESSAGE TYPE(MSH-9). </summary>
+    ///
+    /// <value> The messagetype. </value>
+
 	public ID MESSAGETYPE
 	{
 		get{
@@ -267,9 +277,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns MESSAGE CONTROL ID(MSH-10).
-	///</summary>
+    /// <summary>   Returns MESSAGE CONTROL ID(MSH-10). </summary>
+    ///
+    /// <value> The messagecontrolid. </value>
+
 	public ST MESSAGECONTROLID
 	{
 		get{
@@ -290,9 +301,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns PROCESSING ID(MSH-11).
-	///</summary>
+    /// <summary>   Returns PROCESSING ID(MSH-11). </summary>
+    ///
+    /// <value> The processingid. </value>
+
 	public ID PROCESSINGID
 	{
 		get{
@@ -313,9 +325,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns VERSION ID(MSH-12).
-	///</summary>
+    /// <summary>   Returns VERSION ID(MSH-12). </summary>
+    ///
+    /// <value> The versionid. </value>
+
 	public NM VERSIONID
 	{
 		get{
@@ -336,9 +349,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns SEQUENCE NUMBER(MSH-13).
-	///</summary>
+    /// <summary>   Returns SEQUENCE NUMBER(MSH-13). </summary>
+    ///
+    /// <value> The sequencenumber. </value>
+
 	public NM SEQUENCENUMBER
 	{
 		get{
@@ -359,9 +373,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns CONTINUATION POINTER(MSH-14).
-	///</summary>
+    /// <summary>   Returns CONTINUATION POINTER(MSH-14). </summary>
+    ///
+    /// <value> The continuationpointer. </value>
+
 	public ST CONTINUATIONPOINTER
 	{
 		get{

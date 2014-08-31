@@ -8,20 +8,23 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the MFK_M01_MF Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: MFA (Master file acknowledgement segment) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the MFK_M01_MF Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: MFA (Master file acknowledgement segment) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFK_M01_MF : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new MFK_M01_MF Group.
-	///</summary>
+    /// <summary>   Creates a new MFK_M01_MF Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFK_M01_MF(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(MFA), false, false);
@@ -30,9 +33,12 @@ public class MFK_M01_MF : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns MFA (Master file acknowledgement segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns MFA (Master file acknowledgement segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The mfa. </value>
+
 	public MFA MFA { 
 get{
 	   MFA ret = null;

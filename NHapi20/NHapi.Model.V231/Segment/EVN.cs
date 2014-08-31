@@ -7,29 +7,30 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 EVN message segment. 
-/// This segment has the following fields:<ol>
-///<li>EVN-1: Event Type Code (ID)</li>
-///<li>EVN-2: Recorded Date/Time (TS)</li>
-///<li>EVN-3: Date/Time Planned Event (TS)</li>
-///<li>EVN-4: Event Reason Code (IS)</li>
-///<li>EVN-5: Operator ID (XCN)</li>
-///<li>EVN-6: Event Occurred (TS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 EVN message segment. This segment has the following fields:<ol>
+/// <li>EVN-1: Event Type Code (ID)</li>
+/// <li>EVN-2: Recorded Date/Time (TS)</li>
+/// <li>EVN-3: Date/Time Planned Event (TS)</li>
+/// <li>EVN-4: Event Reason Code (IS)</li>
+/// <li>EVN-5: Operator ID (XCN)</li>
+/// <li>EVN-6: Event Occurred (TS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class EVN : AbstractSegment  {
 
-  /**
-   * Creates a EVN (EVN - event type segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the EVN class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public EVN(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -44,9 +45,10 @@ public class EVN : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Event Type Code(EVN-1).
-	///</summary>
+    /// <summary>   Returns Event Type Code(EVN-1). </summary>
+    ///
+    /// <value> The event type code. </value>
+
 	public ID EventTypeCode
 	{
 		get{
@@ -67,9 +69,10 @@ public class EVN : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Recorded Date/Time(EVN-2).
-	///</summary>
+    /// <summary>   Returns Recorded Date/Time(EVN-2). </summary>
+    ///
+    /// <value> The recorded date time. </value>
+
 	public TS RecordedDateTime
 	{
 		get{
@@ -90,9 +93,10 @@ public class EVN : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date/Time Planned Event(EVN-3).
-	///</summary>
+    /// <summary>   Returns Date/Time Planned Event(EVN-3). </summary>
+    ///
+    /// <value> The date time planned event. </value>
+
 	public TS DateTimePlannedEvent
 	{
 		get{
@@ -113,9 +117,10 @@ public class EVN : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Event Reason Code(EVN-4).
-	///</summary>
+    /// <summary>   Returns Event Reason Code(EVN-4). </summary>
+    ///
+    /// <value> The event reason code. </value>
+
 	public IS EventReasonCode
 	{
 		get{
@@ -136,11 +141,17 @@ public class EVN : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Operator ID(EVN-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Operator ID(EVN-5). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The operator identifier. </returns>
+
 	public XCN GetOperatorID(int rep)
 	{
 			XCN ret = null;
@@ -155,9 +166,12 @@ public class EVN : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Operator ID (EVN-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Operator ID (EVN-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetOperatorID() {
      XCN[] ret = null;
     try {
@@ -176,9 +190,10 @@ public class EVN : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Operator ID (EVN-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Operator ID (EVN-5). </summary>
+  ///
+  /// <value>   The operator identifier repetitions used. </value>
+
   public int OperatorIDRepetitionsUsed
 {
 get{
@@ -194,9 +209,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Event Occurred(EVN-6).
-	///</summary>
+
+    /// <summary>   Returns Event Occurred(EVN-6). </summary>
+    ///
+    /// <value> The event occurred. </value>
+
 	public TS EventOccurred
 	{
 		get{

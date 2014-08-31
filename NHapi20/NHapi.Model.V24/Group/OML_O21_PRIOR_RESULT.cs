@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the OML_O21_PRIOR_RESULT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: OML_O21_PATIENT_PRIOR (a Group object) optional </li>
-///<li>1: OML_O21_PATIENT_VISIT_PRIOR (a Group object) optional </li>
-///<li>2: AL1 (Patient allergy information) optional repeating</li>
-///<li>3: OML_O21_ORDER_PRIOR (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the OML_O21_PRIOR_RESULT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: OML_O21_PATIENT_PRIOR (a Group object) optional </li>
+/// <li>1: OML_O21_PATIENT_VISIT_PRIOR (a Group object) optional </li>
+/// <li>2: AL1 (Patient allergy information) optional repeating</li>
+/// <li>3: OML_O21_ORDER_PRIOR (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class OML_O21_PRIOR_RESULT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new OML_O21_PRIOR_RESULT Group.
-	///</summary>
+    /// <summary>   Creates a new OML_O21_PRIOR_RESULT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OML_O21_PRIOR_RESULT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(OML_O21_PATIENT_PRIOR), false, false);
@@ -36,9 +39,10 @@ public class OML_O21_PRIOR_RESULT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns OML_O21_PATIENT_PRIOR (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OML_O21_PATIENT_PRIOR (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient prior. </value>
+
 	public OML_O21_PATIENT_PRIOR PATIENT_PRIOR { 
 get{
 	   OML_O21_PATIENT_PRIOR ret = null;
@@ -52,9 +56,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns OML_O21_PATIENT_VISIT_PRIOR (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns OML_O21_PATIENT_VISIT_PRIOR (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The patient visit prior. </value>
+
 	public OML_O21_PATIENT_VISIT_PRIOR PATIENT_VISIT_PRIOR { 
 get{
 	   OML_O21_PATIENT_VISIT_PRIOR ret = null;
@@ -68,9 +75,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of AL1 (Patient allergy information) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of AL1 (Patient allergy information) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   a l 1. </returns>
+
 	public AL1 GetAL1() {
 	   AL1 ret = null;
 	   try {
@@ -82,19 +94,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of AL1
-	/// * (Patient allergy information) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of AL1
+    ///  * (Patient allergy information) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   a l 1. </returns>
+
 	public AL1 GetAL1(int rep) { 
 	   return (AL1)this.GetStructure("AL1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of AL1 
-	 */ 
+    /// <summary>   Gets the al 1 repetitions used. </summary>
+    ///
+    /// <value> The al 1 repetitions used. </value>
+
 	public int AL1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -109,9 +127,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of OML_O21_ORDER_PRIOR (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of OML_O21_ORDER_PRIOR (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order prior. </returns>
+
 	public OML_O21_ORDER_PRIOR GetORDER_PRIOR() {
 	   OML_O21_ORDER_PRIOR ret = null;
 	   try {
@@ -123,19 +146,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of OML_O21_ORDER_PRIOR
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of OML_O21_ORDER_PRIOR
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order prior. </returns>
+
 	public OML_O21_ORDER_PRIOR GetORDER_PRIOR(int rep) { 
 	   return (OML_O21_ORDER_PRIOR)this.GetStructure("ORDER_PRIOR", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of OML_O21_ORDER_PRIOR 
-	 */ 
+    /// <summary>   Gets the order prior repetitions used. </summary>
+    ///
+    /// <value> The order prior repetitions used. </value>
+
 	public int ORDER_PRIORRepetitionsUsed { 
 get{
 	    int reps = -1; 

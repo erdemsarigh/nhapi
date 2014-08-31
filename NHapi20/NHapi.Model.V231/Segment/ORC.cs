@@ -7,47 +7,48 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 ORC message segment. 
-/// This segment has the following fields:<ol>
-///<li>ORC-1: Order Control (ID)</li>
-///<li>ORC-2: Placer Order Number (EI)</li>
-///<li>ORC-3: Filler Order Number (EI)</li>
-///<li>ORC-4: Placer Group Number (EI)</li>
-///<li>ORC-5: Order Status (ID)</li>
-///<li>ORC-6: Response Flag (ID)</li>
-///<li>ORC-7: Quantity/Timing (TQ)</li>
-///<li>ORC-8: Parent (EIP)</li>
-///<li>ORC-9: Date/Time of Transaction (TS)</li>
-///<li>ORC-10: Entered By (XCN)</li>
-///<li>ORC-11: Verified By (XCN)</li>
-///<li>ORC-12: Ordering Provider (XCN)</li>
-///<li>ORC-13: Enterer’s Location (PL)</li>
-///<li>ORC-14: Call Back Phone Number (XTN)</li>
-///<li>ORC-15: Order Effective Date/Time (TS)</li>
-///<li>ORC-16: Order Control Code Reason (CE)</li>
-///<li>ORC-17: Entering Organization (CE)</li>
-///<li>ORC-18: Entering Device (CE)</li>
-///<li>ORC-19: Action By (XCN)</li>
-///<li>ORC-20: Advanced Beneficiary Notice Code (CE)</li>
-///<li>ORC-21: Ordering Facility Name (XON)</li>
-///<li>ORC-22: Ordering Facility Address (XAD)</li>
-///<li>ORC-23: Ordering Facility Phone Number (XTN)</li>
-///<li>ORC-24: Ordering Provider Address (XAD)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ORC message segment. This segment has the following fields:<ol>
+/// <li>ORC-1: Order Control (ID)</li>
+/// <li>ORC-2: Placer Order Number (EI)</li>
+/// <li>ORC-3: Filler Order Number (EI)</li>
+/// <li>ORC-4: Placer Group Number (EI)</li>
+/// <li>ORC-5: Order Status (ID)</li>
+/// <li>ORC-6: Response Flag (ID)</li>
+/// <li>ORC-7: Quantity/Timing (TQ)</li>
+/// <li>ORC-8: Parent (EIP)</li>
+/// <li>ORC-9: Date/Time of Transaction (TS)</li>
+/// <li>ORC-10: Entered By (XCN)</li>
+/// <li>ORC-11: Verified By (XCN)</li>
+/// <li>ORC-12: Ordering Provider (XCN)</li>
+/// <li>ORC-13: Enterer’s Location (PL)</li>
+/// <li>ORC-14: Call Back Phone Number (XTN)</li>
+/// <li>ORC-15: Order Effective Date/Time (TS)</li>
+/// <li>ORC-16: Order Control Code Reason (CE)</li>
+/// <li>ORC-17: Entering Organization (CE)</li>
+/// <li>ORC-18: Entering Device (CE)</li>
+/// <li>ORC-19: Action By (XCN)</li>
+/// <li>ORC-20: Advanced Beneficiary Notice Code (CE)</li>
+/// <li>ORC-21: Ordering Facility Name (XON)</li>
+/// <li>ORC-22: Ordering Facility Address (XAD)</li>
+/// <li>ORC-23: Ordering Facility Phone Number (XTN)</li>
+/// <li>ORC-24: Ordering Provider Address (XAD)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ORC : AbstractSegment  {
 
-  /**
-   * Creates a ORC (ORC - common order segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ORC class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORC(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -80,9 +81,10 @@ public class ORC : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Order Control(ORC-1).
-	///</summary>
+    /// <summary>   Returns Order Control(ORC-1). </summary>
+    ///
+    /// <value> The order control. </value>
+
 	public ID OrderControl
 	{
 		get{
@@ -103,9 +105,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Placer Order Number(ORC-2).
-	///</summary>
+    /// <summary>   Returns Placer Order Number(ORC-2). </summary>
+    ///
+    /// <value> The placer order number. </value>
+
 	public EI PlacerOrderNumber
 	{
 		get{
@@ -126,9 +129,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Order Number(ORC-3).
-	///</summary>
+    /// <summary>   Returns Filler Order Number(ORC-3). </summary>
+    ///
+    /// <value> The filler order number. </value>
+
 	public EI FillerOrderNumber
 	{
 		get{
@@ -149,9 +153,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Placer Group Number(ORC-4).
-	///</summary>
+    /// <summary>   Returns Placer Group Number(ORC-4). </summary>
+    ///
+    /// <value> The placer group number. </value>
+
 	public EI PlacerGroupNumber
 	{
 		get{
@@ -172,9 +177,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Order Status(ORC-5).
-	///</summary>
+    /// <summary>   Returns Order Status(ORC-5). </summary>
+    ///
+    /// <value> The order status. </value>
+
 	public ID OrderStatus
 	{
 		get{
@@ -195,9 +201,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Response Flag(ORC-6).
-	///</summary>
+    /// <summary>   Returns Response Flag(ORC-6). </summary>
+    ///
+    /// <value> The response flag. </value>
+
 	public ID ResponseFlag
 	{
 		get{
@@ -218,9 +225,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Quantity/Timing(ORC-7).
-	///</summary>
+    /// <summary>   Returns Quantity/Timing(ORC-7). </summary>
+    ///
+    /// <value> The quantity timing. </value>
+
 	public TQ QuantityTiming
 	{
 		get{
@@ -241,9 +249,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Parent(ORC-8).
-	///</summary>
+    /// <summary>   Returns Parent(ORC-8). </summary>
+    ///
+    /// <value> The parent. </value>
+
 	public EIP Parent
 	{
 		get{
@@ -264,9 +273,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date/Time of Transaction(ORC-9).
-	///</summary>
+    /// <summary>   Returns Date/Time of Transaction(ORC-9). </summary>
+    ///
+    /// <value> The date time of transaction. </value>
+
 	public TS DateTimeOfTransaction
 	{
 		get{
@@ -287,11 +297,17 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Entered By(ORC-10).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Entered By(ORC-10). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The entered by. </returns>
+
 	public XCN GetEnteredBy(int rep)
 	{
 			XCN ret = null;
@@ -306,9 +322,12 @@ public class ORC : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Entered By (ORC-10).
-   ///</summary>
+  /// <summary> Returns all repetitions of Entered By (ORC-10). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetEnteredBy() {
      XCN[] ret = null;
     try {
@@ -327,9 +346,10 @@ public class ORC : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Entered By (ORC-10).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Entered By (ORC-10). </summary>
+  ///
+  /// <value>   The entered by repetitions used. </value>
+
   public int EnteredByRepetitionsUsed
 {
 get{
@@ -345,11 +365,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Verified By(ORC-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Verified By(ORC-11). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The verified by. </returns>
+
 	public XCN GetVerifiedBy(int rep)
 	{
 			XCN ret = null;
@@ -364,9 +391,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Verified By (ORC-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of Verified By (ORC-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetVerifiedBy() {
      XCN[] ret = null;
     try {
@@ -385,9 +415,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Verified By (ORC-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Verified By (ORC-11). </summary>
+  ///
+  /// <value>   The verified by repetitions used. </value>
+
   public int VerifiedByRepetitionsUsed
 {
 get{
@@ -403,11 +434,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Ordering Provider(ORC-12).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Ordering Provider(ORC-12). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ordering provider. </returns>
+
 	public XCN GetOrderingProvider(int rep)
 	{
 			XCN ret = null;
@@ -422,9 +460,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Ordering Provider (ORC-12).
-   ///</summary>
+  /// <summary> Returns all repetitions of Ordering Provider (ORC-12). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetOrderingProvider() {
      XCN[] ret = null;
     try {
@@ -443,9 +484,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Ordering Provider (ORC-12).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Ordering Provider (ORC-12). </summary>
+  ///
+  /// <value>   The ordering provider repetitions used. </value>
+
   public int OrderingProviderRepetitionsUsed
 {
 get{
@@ -461,9 +503,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Enterer’s Location(ORC-13).
-	///</summary>
+
+    /// <summary>   Returns Enterer’s Location(ORC-13). </summary>
+    ///
+    /// <value> The enterer s location. </value>
+
 	public PL EntererSLocation
 	{
 		get{
@@ -484,11 +528,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Call Back Phone Number(ORC-14).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Call Back Phone Number(ORC-14). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The call back phone number. </returns>
+
 	public XTN GetCallBackPhoneNumber(int rep)
 	{
 			XTN ret = null;
@@ -503,9 +553,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Call Back Phone Number (ORC-14).
-   ///</summary>
+  /// <summary> Returns all repetitions of Call Back Phone Number (ORC-14). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetCallBackPhoneNumber() {
      XTN[] ret = null;
     try {
@@ -524,9 +577,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Call Back Phone Number (ORC-14).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Call Back Phone Number (ORC-14). </summary>
+  ///
+  /// <value>   The call back phone number repetitions used. </value>
+
   public int CallBackPhoneNumberRepetitionsUsed
 {
 get{
@@ -542,9 +596,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Order Effective Date/Time(ORC-15).
-	///</summary>
+
+    /// <summary>   Returns Order Effective Date/Time(ORC-15). </summary>
+    ///
+    /// <value> The order effective date time. </value>
+
 	public TS OrderEffectiveDateTime
 	{
 		get{
@@ -565,9 +621,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Order Control Code Reason(ORC-16).
-	///</summary>
+    /// <summary>   Returns Order Control Code Reason(ORC-16). </summary>
+    ///
+    /// <value> The order control code reason. </value>
+
 	public CE OrderControlCodeReason
 	{
 		get{
@@ -588,9 +645,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Entering Organization(ORC-17).
-	///</summary>
+    /// <summary>   Returns Entering Organization(ORC-17). </summary>
+    ///
+    /// <value> The entering organization. </value>
+
 	public CE EnteringOrganization
 	{
 		get{
@@ -611,9 +669,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Entering Device(ORC-18).
-	///</summary>
+    /// <summary>   Returns Entering Device(ORC-18). </summary>
+    ///
+    /// <value> The entering device. </value>
+
 	public CE EnteringDevice
 	{
 		get{
@@ -634,11 +693,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Action By(ORC-19).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Action By(ORC-19). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The action by. </returns>
+
 	public XCN GetActionBy(int rep)
 	{
 			XCN ret = null;
@@ -653,9 +718,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Action By (ORC-19).
-   ///</summary>
+  /// <summary> Returns all repetitions of Action By (ORC-19). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetActionBy() {
      XCN[] ret = null;
     try {
@@ -674,9 +742,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Action By (ORC-19).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Action By (ORC-19). </summary>
+  ///
+  /// <value>   The action by repetitions used. </value>
+
   public int ActionByRepetitionsUsed
 {
 get{
@@ -692,9 +761,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Advanced Beneficiary Notice Code(ORC-20).
-	///</summary>
+
+    /// <summary>   Returns Advanced Beneficiary Notice Code(ORC-20). </summary>
+    ///
+    /// <value> The advanced beneficiary notice code. </value>
+
 	public CE AdvancedBeneficiaryNoticeCode
 	{
 		get{
@@ -715,11 +786,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Ordering Facility Name(ORC-21).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Ordering Facility Name(ORC-21). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ordering facility name. </returns>
+
 	public XON GetOrderingFacilityName(int rep)
 	{
 			XON ret = null;
@@ -734,9 +811,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Ordering Facility Name (ORC-21).
-   ///</summary>
+  /// <summary> Returns all repetitions of Ordering Facility Name (ORC-21). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of XON. </returns>
+
   public XON[] GetOrderingFacilityName() {
      XON[] ret = null;
     try {
@@ -755,9 +835,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Ordering Facility Name (ORC-21).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Ordering Facility Name (ORC-21). </summary>
+  ///
+  /// <value>   The ordering facility name repetitions used. </value>
+
   public int OrderingFacilityNameRepetitionsUsed
 {
 get{
@@ -773,11 +854,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Ordering Facility Address(ORC-22).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Ordering Facility Address(ORC-22). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ordering facility address. </returns>
+
 	public XAD GetOrderingFacilityAddress(int rep)
 	{
 			XAD ret = null;
@@ -792,9 +880,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Ordering Facility Address (ORC-22).
-   ///</summary>
+  /// <summary> Returns all repetitions of Ordering Facility Address (ORC-22). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetOrderingFacilityAddress() {
      XAD[] ret = null;
     try {
@@ -813,9 +904,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Ordering Facility Address (ORC-22).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Ordering Facility Address (ORC-22). </summary>
+  ///
+  /// <value>   The ordering facility address repetitions used. </value>
+
   public int OrderingFacilityAddressRepetitionsUsed
 {
 get{
@@ -831,11 +923,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Ordering Facility Phone Number(ORC-23).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Ordering Facility Phone Number(ORC-23). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ordering facility phone number. </returns>
+
 	public XTN GetOrderingFacilityPhoneNumber(int rep)
 	{
 			XTN ret = null;
@@ -850,9 +949,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Ordering Facility Phone Number (ORC-23).
-   ///</summary>
+  /// <summary> Returns all repetitions of Ordering Facility Phone Number (ORC-23). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetOrderingFacilityPhoneNumber() {
      XTN[] ret = null;
     try {
@@ -871,9 +973,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Ordering Facility Phone Number (ORC-23).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Ordering Facility Phone Number (ORC-23). </summary>
+  ///
+  /// <value>   The ordering facility phone number repetitions used. </value>
+
   public int OrderingFacilityPhoneNumberRepetitionsUsed
 {
 get{
@@ -889,11 +992,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Ordering Provider Address(ORC-24).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Ordering Provider Address(ORC-24). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ordering provider address. </returns>
+
 	public XAD GetOrderingProviderAddress(int rep)
 	{
 			XAD ret = null;
@@ -908,9 +1018,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Ordering Provider Address (ORC-24).
-   ///</summary>
+  /// <summary> Returns all repetitions of Ordering Provider Address (ORC-24). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetOrderingProviderAddress() {
      XAD[] ret = null;
     try {
@@ -929,9 +1042,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Ordering Provider Address (ORC-24).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Ordering Provider Address (ORC-24). </summary>
+  ///
+  /// <value>   The ordering provider address repetitions used. </value>
+
   public int OrderingProviderAddressRepetitionsUsed
 {
 get{

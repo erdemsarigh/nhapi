@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RQA_I08_PROVIDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PRD (Provider Data) </li>
-///<li>1: CTD (Contact Data) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RQA_I08_PROVIDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PRD (Provider Data) </li>
+/// <li>1: CTD (Contact Data) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RQA_I08_PROVIDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RQA_I08_PROVIDER Group.
-	///</summary>
+    /// <summary>   Creates a new RQA_I08_PROVIDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RQA_I08_PROVIDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PRD), true, false);
@@ -32,9 +35,10 @@ public class RQA_I08_PROVIDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PRD (Provider Data) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PRD (Provider Data) - creates it if necessary. </summary>
+    ///
+    /// <value> The prd. </value>
+
 	public PRD PRD { 
 get{
 	   PRD ret = null;
@@ -48,9 +52,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of CTD (Contact Data) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns  first repetition of CTD (Contact Data) - creates it if necessary. </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The ctd. </returns>
+
 	public CTD GetCTD() {
 	   CTD ret = null;
 	   try {
@@ -62,19 +69,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of CTD
-	/// * (Contact Data) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of CTD
+    ///  * (Contact Data) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The ctd. </returns>
+
 	public CTD GetCTD(int rep) { 
 	   return (CTD)this.GetStructure("CTD", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of CTD 
-	 */ 
+    /// <summary>   Gets the ctd repetitions used. </summary>
+    ///
+    /// <value> The ctd repetitions used. </value>
+
 	public int CTDRepetitionsUsed { 
 get{
 	    int reps = -1; 

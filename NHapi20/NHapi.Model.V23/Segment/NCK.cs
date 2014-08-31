@@ -7,24 +7,25 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 NCK message segment. 
-/// This segment has the following fields:<ol>
-///<li>NCK-1: System Date/Time (TS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 NCK message segment. This segment has the following fields:<ol>
+/// <li>NCK-1: System Date/Time (TS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class NCK : AbstractSegment  {
 
-  /**
-   * Creates a NCK (System Clock) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the NCK class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public NCK(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -34,9 +35,10 @@ public class NCK : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns System Date/Time(NCK-1).
-	///</summary>
+    /// <summary>   Returns System Date/Time(NCK-1). </summary>
+    ///
+    /// <value> The system date time. </value>
+
 	public TS SystemDateTime
 	{
 		get{

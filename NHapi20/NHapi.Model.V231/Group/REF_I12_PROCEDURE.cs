@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the REF_I12_PROCEDURE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PR1 (PR1 - procedures segment) </li>
-///<li>1: REF_I12_AUTHORIZATION_CONTACT (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the REF_I12_PROCEDURE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PR1 (PR1 - procedures segment) </li>
+/// <li>1: REF_I12_AUTHORIZATION_CONTACT (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class REF_I12_PROCEDURE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new REF_I12_PROCEDURE Group.
-	///</summary>
+    /// <summary>   Creates a new REF_I12_PROCEDURE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public REF_I12_PROCEDURE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PR1), true, false);
@@ -32,9 +35,10 @@ public class REF_I12_PROCEDURE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PR1 (PR1 - procedures segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PR1 (PR1 - procedures segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The pr 1. </value>
+
 	public PR1 PR1 { 
 get{
 	   PR1 ret = null;
@@ -48,9 +52,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns REF_I12_AUTHORIZATION_CONTACT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns REF_I12_AUTHORIZATION_CONTACT (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The authorization contact. </value>
+
 	public REF_I12_AUTHORIZATION_CONTACT AUTHORIZATION_CONTACT { 
 get{
 	   REF_I12_AUTHORIZATION_CONTACT ret = null;

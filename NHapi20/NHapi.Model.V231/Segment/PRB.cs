@@ -7,48 +7,49 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 PRB message segment. 
-/// This segment has the following fields:<ol>
-///<li>PRB-1: Action Code (ID)</li>
-///<li>PRB-2: Action Date/Time (TS)</li>
-///<li>PRB-3: Problem ID (CE)</li>
-///<li>PRB-4: Problem Instance ID (EI)</li>
-///<li>PRB-5: Episode of Care ID (EI)</li>
-///<li>PRB-6: Problem List Priority (NM)</li>
-///<li>PRB-7: Problem Established Date/Time (TS)</li>
-///<li>PRB-8: Anticipated Problem Resolution Date/Time (TS)</li>
-///<li>PRB-9: Actual Problem Resolution Date/Time (TS)</li>
-///<li>PRB-10: Problem Classification (CE)</li>
-///<li>PRB-11: Problem Management Discipline (CE)</li>
-///<li>PRB-12: Problem Persistence (CE)</li>
-///<li>PRB-13: Problem Confirmation Status (CE)</li>
-///<li>PRB-14: Problem Life Cycle Status (CE)</li>
-///<li>PRB-15: Problem Life Cycle Status Date/Time (TS)</li>
-///<li>PRB-16: Problem Date of Onset (TS)</li>
-///<li>PRB-17: Problem Onset Text (ST)</li>
-///<li>PRB-18: Problem Ranking (CE)</li>
-///<li>PRB-19: Certainty of Problem (CE)</li>
-///<li>PRB-20: Probability of Problem (0-1) (NM)</li>
-///<li>PRB-21: Individual Awareness of Problem (CE)</li>
-///<li>PRB-22: Problem Prognosis (CE)</li>
-///<li>PRB-23: Individual Awareness of Prognosis (CE)</li>
-///<li>PRB-24: Family/Significant Other Awareness of Problem/Prognosis (ST)</li>
-///<li>PRB-25: Security/Sensitivity (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PRB message segment. This segment has the following fields:<ol>
+/// <li>PRB-1: Action Code (ID)</li>
+/// <li>PRB-2: Action Date/Time (TS)</li>
+/// <li>PRB-3: Problem ID (CE)</li>
+/// <li>PRB-4: Problem Instance ID (EI)</li>
+/// <li>PRB-5: Episode of Care ID (EI)</li>
+/// <li>PRB-6: Problem List Priority (NM)</li>
+/// <li>PRB-7: Problem Established Date/Time (TS)</li>
+/// <li>PRB-8: Anticipated Problem Resolution Date/Time (TS)</li>
+/// <li>PRB-9: Actual Problem Resolution Date/Time (TS)</li>
+/// <li>PRB-10: Problem Classification (CE)</li>
+/// <li>PRB-11: Problem Management Discipline (CE)</li>
+/// <li>PRB-12: Problem Persistence (CE)</li>
+/// <li>PRB-13: Problem Confirmation Status (CE)</li>
+/// <li>PRB-14: Problem Life Cycle Status (CE)</li>
+/// <li>PRB-15: Problem Life Cycle Status Date/Time (TS)</li>
+/// <li>PRB-16: Problem Date of Onset (TS)</li>
+/// <li>PRB-17: Problem Onset Text (ST)</li>
+/// <li>PRB-18: Problem Ranking (CE)</li>
+/// <li>PRB-19: Certainty of Problem (CE)</li>
+/// <li>PRB-20: Probability of Problem (0-1) (NM)</li>
+/// <li>PRB-21: Individual Awareness of Problem (CE)</li>
+/// <li>PRB-22: Problem Prognosis (CE)</li>
+/// <li>PRB-23: Individual Awareness of Prognosis (CE)</li>
+/// <li>PRB-24: Family/Significant Other Awareness of Problem/Prognosis (ST)</li>
+/// <li>PRB-25: Security/Sensitivity (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PRB : AbstractSegment  {
 
-  /**
-   * Creates a PRB (Problem Detail) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PRB class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PRB(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -82,9 +83,10 @@ public class PRB : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Action Code(PRB-1).
-	///</summary>
+    /// <summary>   Returns Action Code(PRB-1). </summary>
+    ///
+    /// <value> The action code. </value>
+
 	public ID ActionCode
 	{
 		get{
@@ -105,9 +107,10 @@ public class PRB : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Action Date/Time(PRB-2).
-	///</summary>
+    /// <summary>   Returns Action Date/Time(PRB-2). </summary>
+    ///
+    /// <value> The action date time. </value>
+
 	public TS ActionDateTime
 	{
 		get{
@@ -128,9 +131,10 @@ public class PRB : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Problem ID(PRB-3).
-	///</summary>
+    /// <summary>   Returns Problem ID(PRB-3). </summary>
+    ///
+    /// <value> The identifier of the problem. </value>
+
 	public CE ProblemID
 	{
 		get{
@@ -151,9 +155,10 @@ public class PRB : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Problem Instance ID(PRB-4).
-	///</summary>
+    /// <summary>   Returns Problem Instance ID(PRB-4). </summary>
+    ///
+    /// <value> The identifier of the problem instance. </value>
+
 	public EI ProblemInstanceID
 	{
 		get{
@@ -174,9 +179,10 @@ public class PRB : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Episode of Care ID(PRB-5).
-	///</summary>
+    /// <summary>   Returns Episode of Care ID(PRB-5). </summary>
+    ///
+    /// <value> The identifier of the episode of care. </value>
+
 	public EI EpisodeOfCareID
 	{
 		get{
@@ -197,9 +203,10 @@ public class PRB : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Problem List Priority(PRB-6).
-	///</summary>
+    /// <summary>   Returns Problem List Priority(PRB-6). </summary>
+    ///
+    /// <value> The problem list priority. </value>
+
 	public NM ProblemListPriority
 	{
 		get{
@@ -220,9 +227,10 @@ public class PRB : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Problem Established Date/Time(PRB-7).
-	///</summary>
+    /// <summary>   Returns Problem Established Date/Time(PRB-7). </summary>
+    ///
+    /// <value> The problem established date time. </value>
+
 	public TS ProblemEstablishedDateTime
 	{
 		get{
@@ -243,9 +251,10 @@ public class PRB : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Anticipated Problem Resolution Date/Time(PRB-8).
-	///</summary>
+    /// <summary>   Returns Anticipated Problem Resolution Date/Time(PRB-8). </summary>
+    ///
+    /// <value> The anticipated problem resolution date time. </value>
+
 	public TS AnticipatedProblemResolutionDateTime
 	{
 		get{
@@ -266,9 +275,10 @@ public class PRB : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Actual Problem Resolution Date/Time(PRB-9).
-	///</summary>
+    /// <summary>   Returns Actual Problem Resolution Date/Time(PRB-9). </summary>
+    ///
+    /// <value> The actual problem resolution date time. </value>
+
 	public TS ActualProblemResolutionDateTime
 	{
 		get{
@@ -289,9 +299,10 @@ public class PRB : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Problem Classification(PRB-10).
-	///</summary>
+    /// <summary>   Returns Problem Classification(PRB-10). </summary>
+    ///
+    /// <value> The problem classification. </value>
+
 	public CE ProblemClassification
 	{
 		get{
@@ -312,11 +323,17 @@ public class PRB : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Problem Management Discipline(PRB-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Problem Management Discipline(PRB-11). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The problem management discipline. </returns>
+
 	public CE GetProblemManagementDiscipline(int rep)
 	{
 			CE ret = null;
@@ -331,9 +348,12 @@ public class PRB : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Problem Management Discipline (PRB-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of Problem Management Discipline (PRB-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetProblemManagementDiscipline() {
      CE[] ret = null;
     try {
@@ -352,9 +372,10 @@ public class PRB : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Problem Management Discipline (PRB-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Problem Management Discipline (PRB-11). </summary>
+  ///
+  /// <value>   The problem management discipline repetitions used. </value>
+
   public int ProblemManagementDisciplineRepetitionsUsed
 {
 get{
@@ -370,9 +391,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Problem Persistence(PRB-12).
-	///</summary>
+
+    /// <summary>   Returns Problem Persistence(PRB-12). </summary>
+    ///
+    /// <value> The problem persistence. </value>
+
 	public CE ProblemPersistence
 	{
 		get{
@@ -393,9 +416,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Problem Confirmation Status(PRB-13).
-	///</summary>
+    /// <summary>   Returns Problem Confirmation Status(PRB-13). </summary>
+    ///
+    /// <value> The problem confirmation status. </value>
+
 	public CE ProblemConfirmationStatus
 	{
 		get{
@@ -416,9 +440,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Problem Life Cycle Status(PRB-14).
-	///</summary>
+    /// <summary>   Returns Problem Life Cycle Status(PRB-14). </summary>
+    ///
+    /// <value> The problem life cycle status. </value>
+
 	public CE ProblemLifeCycleStatus
 	{
 		get{
@@ -439,9 +464,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Problem Life Cycle Status Date/Time(PRB-15).
-	///</summary>
+    /// <summary>   Returns Problem Life Cycle Status Date/Time(PRB-15). </summary>
+    ///
+    /// <value> The problem life cycle status date time. </value>
+
 	public TS ProblemLifeCycleStatusDateTime
 	{
 		get{
@@ -462,9 +488,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Problem Date of Onset(PRB-16).
-	///</summary>
+    /// <summary>   Returns Problem Date of Onset(PRB-16). </summary>
+    ///
+    /// <value> The problem date of onset. </value>
+
 	public TS ProblemDateOfOnset
 	{
 		get{
@@ -485,9 +512,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Problem Onset Text(PRB-17).
-	///</summary>
+    /// <summary>   Returns Problem Onset Text(PRB-17). </summary>
+    ///
+    /// <value> The problem onset text. </value>
+
 	public ST ProblemOnsetText
 	{
 		get{
@@ -508,9 +536,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Problem Ranking(PRB-18).
-	///</summary>
+    /// <summary>   Returns Problem Ranking(PRB-18). </summary>
+    ///
+    /// <value> The problem ranking. </value>
+
 	public CE ProblemRanking
 	{
 		get{
@@ -531,9 +560,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Certainty of Problem(PRB-19).
-	///</summary>
+    /// <summary>   Returns Certainty of Problem(PRB-19). </summary>
+    ///
+    /// <value> The certainty of problem. </value>
+
 	public CE CertaintyOfProblem
 	{
 		get{
@@ -554,9 +584,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Probability of Problem (0-1)(PRB-20).
-	///</summary>
+    /// <summary>   Returns Probability of Problem (0-1)(PRB-20). </summary>
+    ///
+    /// <value> The probability of problem. </value>
+
 	public NM ProbabilityOfProblem
 	{
 		get{
@@ -577,9 +608,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Individual Awareness of Problem(PRB-21).
-	///</summary>
+    /// <summary>   Returns Individual Awareness of Problem(PRB-21). </summary>
+    ///
+    /// <value> The individual awareness of problem. </value>
+
 	public CE IndividualAwarenessOfProblem
 	{
 		get{
@@ -600,9 +632,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Problem Prognosis(PRB-22).
-	///</summary>
+    /// <summary>   Returns Problem Prognosis(PRB-22). </summary>
+    ///
+    /// <value> The problem prognosis. </value>
+
 	public CE ProblemPrognosis
 	{
 		get{
@@ -623,9 +656,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Individual Awareness of Prognosis(PRB-23).
-	///</summary>
+    /// <summary>   Returns Individual Awareness of Prognosis(PRB-23). </summary>
+    ///
+    /// <value> The individual awareness of prognosis. </value>
+
 	public CE IndividualAwarenessOfPrognosis
 	{
 		get{
@@ -646,9 +680,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Family/Significant Other Awareness of Problem/Prognosis(PRB-24).
-	///</summary>
+    /// <summary>   Returns Family/Significant Other Awareness of Problem/Prognosis(PRB-24). </summary>
+    ///
+    /// <value> The family significant other awareness of problem prognosis. </value>
+
 	public ST FamilySignificantOtherAwarenessOfProblemPrognosis
 	{
 		get{
@@ -669,9 +704,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Security/Sensitivity(PRB-25).
-	///</summary>
+    /// <summary>   Returns Security/Sensitivity(PRB-25). </summary>
+    ///
+    /// <value> The security sensitivity. </value>
+
 	public CE SecuritySensitivity
 	{
 		get{

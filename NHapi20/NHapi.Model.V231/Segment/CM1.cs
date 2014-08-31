@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 CM1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>CM1-1: Set ID - CM1 (SI)</li>
-///<li>CM1-2: Study Phase Identifier (CE)</li>
-///<li>CM1-3: Description of Study Phase (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 CM1 message segment. This segment has the following fields:<ol>
+/// <li>CM1-1: Set ID - CM1 (SI)</li>
+/// <li>CM1-2: Study Phase Identifier (CE)</li>
+/// <li>CM1-3: Description of Study Phase (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class CM1 : AbstractSegment  {
 
-  /**
-   * Creates a CM1 (CM1 - clinical study phase master segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the CM1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public CM1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class CM1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - CM1(CM1-1).
-	///</summary>
+    /// <summary>   Returns Set ID - CM1(CM1-1). </summary>
+    ///
+    /// <value> The set idcm 1. </value>
+
 	public SI SetIDCM1
 	{
 		get{
@@ -61,9 +63,10 @@ public class CM1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Study Phase Identifier(CM1-2).
-	///</summary>
+    /// <summary>   Returns Study Phase Identifier(CM1-2). </summary>
+    ///
+    /// <value> The identifier of the study phase. </value>
+
 	public CE StudyPhaseIdentifier
 	{
 		get{
@@ -84,9 +87,10 @@ public class CM1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Description of Study Phase(CM1-3).
-	///</summary>
+    /// <summary>   Returns Description of Study Phase(CM1-3). </summary>
+    ///
+    /// <value> The description of study phase. </value>
+
 	public ST DescriptionOfStudyPhase
 	{
 		get{

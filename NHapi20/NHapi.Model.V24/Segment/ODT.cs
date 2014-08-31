@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 ODT message segment. 
-/// This segment has the following fields:<ol>
-///<li>ODT-1: Tray Type (CE)</li>
-///<li>ODT-2: Service Period (CE)</li>
-///<li>ODT-3: Text Instruction (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ODT message segment. This segment has the following fields:<ol>
+/// <li>ODT-1: Tray Type (CE)</li>
+/// <li>ODT-2: Service Period (CE)</li>
+/// <li>ODT-3: Text Instruction (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ODT : AbstractSegment  {
 
-  /**
-   * Creates a ODT (Diet Tray Instructions) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ODT class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ODT(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class ODT : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Tray Type(ODT-1).
-	///</summary>
+    /// <summary>   Returns Tray Type(ODT-1). </summary>
+    ///
+    /// <value> The type of the tray. </value>
+
 	public CE TrayType
 	{
 		get{
@@ -61,11 +63,17 @@ public class ODT : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Service Period(ODT-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Service Period(ODT-2). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The service period. </returns>
+
 	public CE GetServicePeriod(int rep)
 	{
 			CE ret = null;
@@ -80,9 +88,12 @@ public class ODT : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Service Period (ODT-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Service Period (ODT-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetServicePeriod() {
      CE[] ret = null;
     try {
@@ -101,9 +112,10 @@ public class ODT : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Service Period (ODT-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Service Period (ODT-2). </summary>
+  ///
+  /// <value>   The service period repetitions used. </value>
+
   public int ServicePeriodRepetitionsUsed
 {
 get{
@@ -119,9 +131,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Text Instruction(ODT-3).
-	///</summary>
+
+    /// <summary>   Returns Text Instruction(ODT-3). </summary>
+    ///
+    /// <value> The text instruction. </value>
+
 	public ST TextInstruction
 	{
 		get{

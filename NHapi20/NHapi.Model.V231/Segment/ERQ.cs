@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 ERQ message segment. 
-/// This segment has the following fields:<ol>
-///<li>ERQ-1: Query Tag (ST)</li>
-///<li>ERQ-2: Event Identifier (CE)</li>
-///<li>ERQ-3: Input Parameter List (QIP)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ERQ message segment. This segment has the following fields:<ol>
+/// <li>ERQ-1: Query Tag (ST)</li>
+/// <li>ERQ-2: Event Identifier (CE)</li>
+/// <li>ERQ-3: Input Parameter List (QIP)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ERQ : AbstractSegment  {
 
-  /**
-   * Creates a ERQ (ERQ - event replay query segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ERQ class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ERQ(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class ERQ : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Query Tag(ERQ-1).
-	///</summary>
+    /// <summary>   Returns Query Tag(ERQ-1). </summary>
+    ///
+    /// <value> The query tag. </value>
+
 	public ST QueryTag
 	{
 		get{
@@ -61,9 +63,10 @@ public class ERQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Event Identifier(ERQ-2).
-	///</summary>
+    /// <summary>   Returns Event Identifier(ERQ-2). </summary>
+    ///
+    /// <value> The identifier of the event. </value>
+
 	public CE EventIdentifier
 	{
 		get{
@@ -84,11 +87,17 @@ public class ERQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Input Parameter List(ERQ-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Input Parameter List(ERQ-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The input parameter list. </returns>
+
 	public QIP GetInputParameterList(int rep)
 	{
 			QIP ret = null;
@@ -103,9 +112,12 @@ public class ERQ : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Input Parameter List (ERQ-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Input Parameter List (ERQ-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of qip. </returns>
+
   public QIP[] GetInputParameterList() {
      QIP[] ret = null;
     try {
@@ -124,9 +136,10 @@ public class ERQ : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Input Parameter List (ERQ-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Input Parameter List (ERQ-3). </summary>
+  ///
+  /// <value>   The input parameter list repetitions used. </value>
+
   public int InputParameterListRepetitionsUsed
 {
 get{

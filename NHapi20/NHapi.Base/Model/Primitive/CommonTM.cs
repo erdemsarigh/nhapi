@@ -28,78 +28,83 @@ namespace NHapi.Base.Model.Primitive
 {
     using NHapi.Base.Log;
 
-    /// <summary> This class contains functionality used by the TM class
-    /// in the version 2.3.0, 2.3.1, and 2.4 packages
+    /// <summary>
+    /// This class contains functionality used by the TM class in the version 2.3.0, 2.3.1, and 2.4
+    /// packages
     /// 
-    /// Note: The class description below has been excerpted from the Hl7 2.4 documentation. Sectional
-    /// references made below also refer to the same documentation.
+    /// Note: The class description below has been excerpted from the Hl7 2.4 documentation.
+    /// Sectional references made below also refer to the same documentation.
     /// 
-    /// Format: HH[MM[SS[.S[S[S[S]]]]]][+/-ZZZZ]
-    /// In prior versions of HL7, this data type was always specified to be in the
-    /// format HHMM[SS[.SSSS]][+/-ZZZZ] using a 24 hour clock notation. In the
-    /// current and future versions, the precision of a time may be expressed by
-    /// limiting the number of digits used with the format specification as shown
-    /// above. By site-specific agreement, HHMM[SS[.SSSS]][+/-ZZZZ] may be used where
-    /// backward compatibility must be maintained.
-    /// Thus, HH is used to specify a precision of "hour," HHMM is used to specify a
-    /// precision of "minute," HHMMSS is used to specify a precision of seconds, and
-    /// HHMMSS.SSSS is used to specify a precision of ten-thousandths of a second.
-    /// In each of these cases, the time zone is an optional component. The fractional
-    /// seconds could be sent by a transmitter who requires greater precision than whole
-    /// seconds. Fractional representations of minutes, hours or other higher-order units
-    /// of time are not permitted.
-    /// Note: The time zone [+/-ZZZZ], when used, is restricted to legally-defined time zones
-    /// and is represented in HHMM format.
-    /// The time zone of the sender may be sent optionally as an offset from the coordinated
-    /// universal time (previously known as Greenwich Mean Time). Where the time zone
-    /// is not present in a particular TM field but is included as part of the date/time
-    /// field in the MSH segment, the MSH value will be used as the default time zone.
-    /// Otherwise, the time is understood to refer to the local time of the sender.
-    /// Midnight is represented as 0000.
-    /// Examples:|235959+1100| 1 second before midnight in a time zone eleven hours
-    /// ahead of Universal Coordinated Time (i.e., east of Greenwich).
+    /// Format: HH[MM[SS[.S[S[S[S]]]]]][+/-ZZZZ] In prior versions of HL7, this data type was always
+    /// specified to be in the format HHMM[SS[.SSSS]][+/-ZZZZ] using a 24 hour clock notation. In the
+    /// current and future versions, the precision of a time may be expressed by limiting the number
+    /// of digits used with the format specification as shown above. By site-specific agreement,
+    /// HHMM[SS[.SSSS]][+/-ZZZZ] may be used where backward compatibility must be maintained. Thus,
+    /// HH is used to specify a precision of "hour," HHMM is used to specify a precision of "minute,"
+    /// HHMMSS is used to specify a precision of seconds, and HHMMSS.SSSS is used to specify a
+    /// precision of ten-thousandths of a second. In each of these cases, the time zone is an
+    /// optional component. The fractional seconds could be sent by a transmitter who requires
+    /// greater precision than whole seconds. Fractional representations of minutes, hours or other
+    /// higher-order units of time are not permitted. Note: The time zone [+/-ZZZZ], when used, is
+    /// restricted to legally-defined time zones and is represented in HHMM format. The time zone of
+    /// the sender may be sent optionally as an offset from the coordinated universal time
+    /// (previously known as Greenwich Mean Time). Where the time zone is not present in a particular
+    /// TM field but is included as part of the date/time field in the MSH segment, the MSH value
+    /// will be used as the default time zone. Otherwise, the time is understood to refer to the
+    /// local time of the sender. Midnight is represented as 0000. Examples:|235959+1100| 1 second
+    /// before midnight in a time zone eleven hours ahead of Universal Coordinated Time (i.e., east
+    /// of Greenwich).
     /// |0800| Eight AM, local time of the sender.
     /// |093544.2312| 44.2312 seconds after Nine thirty-five AM, local time of sender.
     /// |13| 1pm (with a precision of hours), local time of sender.
     /// </summary>
-    /// <author>  Neal Acharya
-    /// </author>
+
     public class CommonTM
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Fields
 
+        /// <summary>   The fraction of security. </summary>
         private float fractionOfSec;
 
+        /// <summary>   The hour. </summary>
         private int hour;
 
+        /// <summary>   The minute. </summary>
         private int minute;
 
+        /// <summary>   Set the off belongs to. </summary>
         private int offSet;
 
+        /// <summary>   The omit offset foreground. </summary>
         private char omitOffsetFg = 'n';
 
+        /// <summary>   The second. </summary>
         private int second;
 
+        /// <summary>   The value renamed. </summary>
         private System.String value_Renamed;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the CommonTM class. </summary>
         static CommonTM()
         {
             log = HapiLogFactory.GetHapiLog(typeof(CommonTM));
         }
 
-        /// <summary> Constructs a TM datatype with fields initialzed to zero and the value set to
-        /// null.
+        /// <summary>
+        /// Constructs a TM datatype with fields initialzed to zero and the value set to null.
         /// </summary>
+
         public CommonTM()
         {
             //initialize all DT fields
@@ -111,10 +116,13 @@ namespace NHapi.Base.Model.Primitive
             this.offSet = -99;
         } //end constructor
 
-        /// <summary> Constructs a TM object with the given value.
-        /// The stored value will be in the following
-        /// format HH[MM[SS[.S[S[S[S]]]]]][+/-ZZZZ].
+        /// <summary>
+        /// Constructs a TM object with the given value. The stored value will be in the following format
+        /// HH[MM[SS[.S[S[S[S]]]]]][+/-ZZZZ].
         /// </summary>
+        ///
+        /// <param name="val">  The value. </param>
+
         public CommonTM(System.String val)
         {
             this.Value = val;
@@ -124,7 +132,10 @@ namespace NHapi.Base.Model.Primitive
 
         #region Public Properties
 
-        /// <summary> Returns the fractional second value as a float.</summary>
+        /// <summary>   Returns the fractional second value as a float. </summary>
+        ///
+        /// <value> The fract second. </value>
+
         public virtual float FractSecond
         {
             get
@@ -133,7 +144,10 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the GMT offset value as an integer, -99 if not set.  </summary>
+        /// <summary>   Returns the GMT offset value as an integer, -99 if not set. </summary>
+        ///
+        /// <value> The GMT offset. </value>
+
         public virtual int GMTOffset
         {
             get
@@ -142,7 +156,10 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the hour as an integer.</summary>
+        /// <summary>   Returns the hour as an integer. </summary>
+        ///
+        /// <value> The hour. </value>
+
         public virtual int Hour
         {
             get
@@ -151,10 +168,13 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> This method takes in an integer value for the hour and performs validations,
-        /// it then sets the value field formatted as an HL7 time
-        /// value with hour precision (HH).
+        /// <summary>
+        /// This method takes in an integer value for the hour and performs validations, it then sets the
+        /// value field formatted as an HL7 time value with hour precision (HH).
         /// </summary>
+        ///
+        /// <value> The hour precision. </value>
+
         public virtual int HourPrecision
         {
             set
@@ -191,7 +211,10 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the minute as an integer.</summary>
+        /// <summary>   Returns the minute as an integer. </summary>
+        ///
+        /// <value> The minute. </value>
+
         public virtual int Minute
         {
             get
@@ -200,9 +223,12 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> This method takes in the four digit (signed) GMT offset and sets the offset
-        /// field
+        /// <summary>
+        /// This method takes in the four digit (signed) GMT offset and sets the offset field.
         /// </summary>
+        ///
+        /// <value> The offset. </value>
+
         public virtual int Offset
         {
             set
@@ -260,7 +286,10 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the second as an integer.</summary>
+        /// <summary>   Returns the second as an integer. </summary>
+        ///
+        /// <value> The second. </value>
+
         public virtual int Second
         {
             get
@@ -269,16 +298,18 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the HL7 TM string value.</summary>
-        /// <summary> This method takes in a string HL7 Time value and performs validations
-        /// then sets the value field.  The stored value will be in the following
-        /// format HH[MM[SS[.S[S[S[S]]]]]][+/-ZZZZ].
-        /// Note: Trailing zeros supplied in the time value (HH[MM[SS[.S[S[S[S]]]]]])
-        /// and GMT offset ([+/-ZZZZ]) will be preserved.
-        /// Note: If the GMT offset is not supplied then the local
-        /// time zone (using standard time zone format which is not modified for daylight savings)
-        /// will be stored as a default.
-        /// </summary>
+        /// <summary>   Returns the HL7 TM string value. </summary>
+        /// <summary>   This method takes in a string HL7 Time value and performs validations then sets
+        ///             the value field.  The stored value will be in the following format
+        ///             HH[MM[SS[.S[S[S[S]]]]]][+/-ZZZZ]. Note: Trailing zeros supplied in the time value
+        ///             (HH[MM[SS[.S[S[S[S]]]]]])
+        ///             and GMT offset ([+/-ZZZZ]) will be preserved. Note: If the GMT offset is not
+        ///             supplied then the local time zone (using standard time zone format which is not
+        ///             modified for daylight savings)
+        ///             will be stored as a default. </summary>
+        ///
+        /// <value> The value. </value>
+
         public virtual System.String Value
         {
             get
@@ -528,9 +559,16 @@ namespace NHapi.Base.Model.Primitive
 
         #region Public Methods and Operators
 
-        /// <summary> Returns a string value representing the input Gregorian Calendar object in
-        /// an Hl7 Time Format.
+        /// <summary>
+        /// Returns a string value representing the input Gregorian Calendar object in an Hl7 Time Format.
         /// </summary>
+        ///
+        /// <exception cref="DataTypeException">    Thrown when a Data Type error condition occurs. </exception>
+        ///
+        /// <param name="cal">  The cal. </param>
+        ///
+        /// <returns>   cal as a System.String. </returns>
+
         public static System.String toHl7TMFormat(System.Globalization.GregorianCalendar cal)
         {
             System.String val = "";
@@ -584,15 +622,22 @@ namespace NHapi.Base.Model.Primitive
             return val;
         }
 
-        /// <summary> This method takes in integer values for the hour, minute, seconds, and fractional seconds
-        /// (going to the tenthousandths precision).
-        /// The method performs validations and then sets the value field formatted as an
-        /// HL7 time value with a precision that starts from the hour and goes down to the tenthousandths
-        /// of a second (HHMMSS.SSSS).
-        /// Note: all of the precisions from tenths down to tenthousandths of a
-        /// second are optional. If the precision goes below tenthousandths of a second then the second
-        /// value will be rounded to the nearest tenthousandths of a second.
+        /// <summary>
+        /// This method takes in integer values for the hour, minute, seconds, and fractional seconds
+        /// (going to the tenthousandths precision). The method performs validations and then sets the
+        /// value field formatted as an HL7 time value with a precision that starts from the hour and
+        /// goes down to the tenthousandths of a second (HHMMSS.SSSS). Note: all of the precisions from
+        /// tenths down to tenthousandths of a second are optional. If the precision goes below
+        /// tenthousandths of a second then the second value will be rounded to the nearest
+        /// tenthousandths of a second.
         /// </summary>
+        ///
+        /// <exception cref="DataTypeException">    Thrown when a Data Type error condition occurs. </exception>
+        ///
+        /// <param name="hr">   The hr. </param>
+        /// <param name="min">  The minimum. </param>
+        /// <param name="sec">  The security. </param>
+
         public virtual void setHourMinSecondPrecision(int hr, int min, float sec)
         {
             try
@@ -639,10 +684,16 @@ namespace NHapi.Base.Model.Primitive
             } //end catch
         }
 
-        /// <summary> This method takes in integer values for the hour and minute and performs validations,
-        /// it then sets the value field formatted as an HL7 time value
-        /// with hour and minute precision (HHMM).
+        /// <summary>
+        /// This method takes in integer values for the hour and minute and performs validations, it then
+        /// sets the value field formatted as an HL7 time value with hour and minute precision (HHMM).
         /// </summary>
+        ///
+        /// <exception cref="DataTypeException">    Thrown when a Data Type error condition occurs. </exception>
+        ///
+        /// <param name="hr">   The hr. </param>
+        /// <param name="min">  The minimum. </param>
+
         public virtual void setHourMinutePrecision(int hr, int min)
         {
             try

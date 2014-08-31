@@ -7,28 +7,29 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 GP1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>GP1-1: Type of Bill Code (IS)</li>
-///<li>GP1-2: Revenue Code (IS)</li>
-///<li>GP1-3: Overall Claim Disposition Code (IS)</li>
-///<li>GP1-4: OCE Edits per Visit Code (IS)</li>
-///<li>GP1-5: Outlier Cost (CP)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 GP1 message segment. This segment has the following fields:<ol>
+/// <li>GP1-1: Type of Bill Code (IS)</li>
+/// <li>GP1-2: Revenue Code (IS)</li>
+/// <li>GP1-3: Overall Claim Disposition Code (IS)</li>
+/// <li>GP1-4: OCE Edits per Visit Code (IS)</li>
+/// <li>GP1-5: Outlier Cost (CP)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class GP1 : AbstractSegment  {
 
-  /**
-   * Creates a GP1 (Grouping/Reimbursement - Visit) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the GP1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public GP1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -42,9 +43,10 @@ public class GP1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Type of Bill Code(GP1-1).
-	///</summary>
+    /// <summary>   Returns Type of Bill Code(GP1-1). </summary>
+    ///
+    /// <value> The type of the bill code. </value>
+
 	public IS TypeOfBillCode
 	{
 		get{
@@ -65,11 +67,17 @@ public class GP1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Revenue Code(GP1-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Revenue Code(GP1-2). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The revenue code. </returns>
+
 	public IS GetRevenueCode(int rep)
 	{
 			IS ret = null;
@@ -84,9 +92,12 @@ public class GP1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Revenue Code (GP1-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Revenue Code (GP1-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetRevenueCode() {
      IS[] ret = null;
     try {
@@ -105,9 +116,10 @@ public class GP1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Revenue Code (GP1-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Revenue Code (GP1-2). </summary>
+  ///
+  /// <value>   The revenue code repetitions used. </value>
+
   public int RevenueCodeRepetitionsUsed
 {
 get{
@@ -123,9 +135,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Overall Claim Disposition Code(GP1-3).
-	///</summary>
+
+    /// <summary>   Returns Overall Claim Disposition Code(GP1-3). </summary>
+    ///
+    /// <value> The overall claim disposition code. </value>
+
 	public IS OverallClaimDispositionCode
 	{
 		get{
@@ -146,11 +160,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of OCE Edits per Visit Code(GP1-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of OCE Edits per Visit Code(GP1-4). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The oce edits per visit code. </returns>
+
 	public IS GetOCEEditsPerVisitCode(int rep)
 	{
 			IS ret = null;
@@ -165,9 +185,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of OCE Edits per Visit Code (GP1-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of OCE Edits per Visit Code (GP1-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetOCEEditsPerVisitCode() {
      IS[] ret = null;
     try {
@@ -186,9 +209,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of OCE Edits per Visit Code (GP1-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of OCE Edits per Visit Code (GP1-4). </summary>
+  ///
+  /// <value>   The oce edits per visit code repetitions used. </value>
+
   public int OCEEditsPerVisitCodeRepetitionsUsed
 {
 get{
@@ -204,9 +228,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Outlier Cost(GP1-5).
-	///</summary>
+
+    /// <summary>   Returns Outlier Cost(GP1-5). </summary>
+    ///
+    /// <value> The outlier cost. </value>
+
 	public CP OutlierCost
 	{
 		get{

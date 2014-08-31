@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the REF_I12_AUTHORIZATION Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: AUT (Authorization Information) </li>
-///<li>1: CTD (Contact Data) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the REF_I12_AUTHORIZATION Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: AUT (Authorization Information) </li>
+/// <li>1: CTD (Contact Data) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class REF_I12_AUTHORIZATION : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new REF_I12_AUTHORIZATION Group.
-	///</summary>
+    /// <summary>   Creates a new REF_I12_AUTHORIZATION Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public REF_I12_AUTHORIZATION(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(AUT), true, false);
@@ -32,9 +35,10 @@ public class REF_I12_AUTHORIZATION : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns AUT (Authorization Information) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns AUT (Authorization Information) - creates it if necessary. </summary>
+    ///
+    /// <value> The aut. </value>
+
 	public AUT AUT { 
 get{
 	   AUT ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns CTD (Contact Data) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns CTD (Contact Data) - creates it if necessary. </summary>
+    ///
+    /// <value> The ctd. </value>
+
 	public CTD CTD { 
 get{
 	   CTD ret = null;

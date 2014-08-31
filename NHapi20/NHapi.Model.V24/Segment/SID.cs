@@ -7,27 +7,28 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 SID message segment. 
-/// This segment has the following fields:<ol>
-///<li>SID-1: Application / Method Identifier (CE)</li>
-///<li>SID-2: Substance Lot Number (ST)</li>
-///<li>SID-3: Substance Container Identifier (ST)</li>
-///<li>SID-4: Substance Manufacturer Identifier (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 SID message segment. This segment has the following fields:<ol>
+/// <li>SID-1: Application / Method Identifier (CE)</li>
+/// <li>SID-2: Substance Lot Number (ST)</li>
+/// <li>SID-3: Substance Container Identifier (ST)</li>
+/// <li>SID-4: Substance Manufacturer Identifier (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class SID : AbstractSegment  {
 
-  /**
-   * Creates a SID (Substance Identifier) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the SID class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SID(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -40,9 +41,10 @@ public class SID : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Application / Method Identifier(SID-1).
-	///</summary>
+    /// <summary>   Returns Application / Method Identifier(SID-1). </summary>
+    ///
+    /// <value> The identifier of the application method. </value>
+
 	public CE ApplicationMethodIdentifier
 	{
 		get{
@@ -63,9 +65,10 @@ public class SID : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Substance Lot Number(SID-2).
-	///</summary>
+    /// <summary>   Returns Substance Lot Number(SID-2). </summary>
+    ///
+    /// <value> The substance lot number. </value>
+
 	public ST SubstanceLotNumber
 	{
 		get{
@@ -86,9 +89,10 @@ public class SID : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Substance Container Identifier(SID-3).
-	///</summary>
+    /// <summary>   Returns Substance Container Identifier(SID-3). </summary>
+    ///
+    /// <value> The identifier of the substance container. </value>
+
 	public ST SubstanceContainerIdentifier
 	{
 		get{
@@ -109,9 +113,10 @@ public class SID : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Substance Manufacturer Identifier(SID-4).
-	///</summary>
+    /// <summary>   Returns Substance Manufacturer Identifier(SID-4). </summary>
+    ///
+    /// <value> The identifier of the substance manufacturer. </value>
+
 	public CE SubstanceManufacturerIdentifier
 	{
 		get{

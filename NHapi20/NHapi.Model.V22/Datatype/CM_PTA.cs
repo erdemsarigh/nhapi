@@ -6,29 +6,30 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V22.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 CM_PTA (Policy Type) data type.  Consists of the following components: </p><ol>
 /// <li>policy type (ID)</li>
 /// <li>amount class (ID)</li>
 /// <li>amount (NM)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CM_PTA : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CM_PTA.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CM_PTA. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CM_PTA(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CM_PTA.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CM_PTA. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CM_PTA(IMessage message, string description) : base(message, description){
 		data = new IType[3];
 		data[0] = new ID(message, 147,"Policy type");
@@ -36,9 +37,10 @@ public class CM_PTA : AbstractType, IComposite{
 		data[2] = new NM(message,"Amount");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -46,12 +48,15 @@ public class CM_PTA : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -62,10 +67,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns policy type (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns policy type (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the policy. </value>
+
 	public ID PolicyType {
 get{
 	   ID ret = null;
@@ -79,10 +88,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns amount class (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns amount class (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The amount class. </value>
+
 	public ID AmountClass {
 get{
 	   ID ret = null;
@@ -96,10 +109,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns amount (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns amount (component #2).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The amount. </value>
+
 	public NM Amount {
 get{
 	   NM ret = null;

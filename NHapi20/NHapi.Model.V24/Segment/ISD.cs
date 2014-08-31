@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 ISD message segment. 
-/// This segment has the following fields:<ol>
-///<li>ISD-1: Reference Interaction Number (unique identifier) (NM)</li>
-///<li>ISD-2: Interaction Type Identifier (CE)</li>
-///<li>ISD-3: Interaction Active State (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ISD message segment. This segment has the following fields:<ol>
+/// <li>ISD-1: Reference Interaction Number (unique identifier) (NM)</li>
+/// <li>ISD-2: Interaction Type Identifier (CE)</li>
+/// <li>ISD-3: Interaction Active State (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ISD : AbstractSegment  {
 
-  /**
-   * Creates a ISD (Interaction Status Detail) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ISD class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ISD(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class ISD : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Reference Interaction Number (unique identifier)(ISD-1).
-	///</summary>
+    /// <summary>   Returns Reference Interaction Number (unique identifier)(ISD-1). </summary>
+    ///
+    /// <value> The reference interaction number uniqueidentifier. </value>
+
 	public NM ReferenceInteractionNumberUniqueidentifier
 	{
 		get{
@@ -61,9 +63,10 @@ public class ISD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Interaction Type Identifier(ISD-2).
-	///</summary>
+    /// <summary>   Returns Interaction Type Identifier(ISD-2). </summary>
+    ///
+    /// <value> The identifier of the interaction type. </value>
+
 	public CE InteractionTypeIdentifier
 	{
 		get{
@@ -84,9 +87,10 @@ public class ISD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Interaction Active State(ISD-3).
-	///</summary>
+    /// <summary>   Returns Interaction Active State(ISD-3). </summary>
+    ///
+    /// <value> The interaction active state. </value>
+
 	public CE InteractionActiveState
 	{
 		get{

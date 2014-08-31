@@ -27,25 +27,24 @@ namespace NHapi.Base.SourceGeneration
 
     using NHapi.Base.Log;
 
-    /// <summary> Creates source code for Group classes - these are aggregations of 
-    /// segments and/or other groups that may repeat together within a message.
-    /// Source code is generated from the normative database.  
-    /// 
+    /// <summary>
+    /// Creates source code for Group classes - these are aggregations of segments and/or other
+    /// groups that may repeat together within a message. Source code is generated from the normative
+    /// database.  
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
-    /// <author>  Eric Poiseau
-    /// </author>
+
     public class GroupGenerator : System.Object
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the GroupGenerator class. </summary>
         static GroupGenerator()
         {
             log = HapiLogFactory.GetHapiLog(typeof(GroupGenerator));
@@ -55,16 +54,22 @@ namespace NHapi.Base.SourceGeneration
 
         #region Public Methods and Operators
 
-        /// <summary> Given a list of structures and the position of a SegmentDef that 
-        /// indicates the start of a group (ie "{" or "["), returns the position
-        /// of the corresponding end of the group.  Nested group markers are ignored.  
-        /// </summary>
-        /// <throws>  IllegalArgumentException if groupStart is out of range or does not  </throws>
-        /// <summary>      point to a group opening marker. 
-        /// </summary>
-        /// <throws>  HL7Exception if the end of the group is not found or if other pairs  </throws>
-        /// <summary>      are not properly nested inside this one.  
-        /// </summary>
+        /// <summary>   Given a list of structures and the position of a SegmentDef that indicates the
+        ///             start of a group (ie "{" or "["), returns the position of the corresponding end
+        ///             of the group.  Nested group markers are ignored.  </summary>
+        /// <summary>   point to a group opening marker. </summary>
+        /// <summary>   are not properly nested inside this one.  </summary>
+        ///
+        /// <exception cref="ArgumentException">    Thrown when one or more arguments have unsupported or
+        ///                                         illegal values. </exception>
+        /// <exception cref="HL7Exception">         Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="structures">   a list of the structures that comprise this group - must be at
+        ///                             least 2 long. </param>
+        /// <param name="groupStart">   The group start. </param>
+        ///
+        /// <returns>   The found group end. </returns>
+
         public static int findGroupEnd(IStructureDef[] structures, int groupStart)
         {
             //  {} is rep; [] is optionality
@@ -131,16 +136,29 @@ namespace NHapi.Base.SourceGeneration
             return groupStart + offset;
         }
 
-        /// <summary> <p>Given a list of structures defining the deep content of a group (as provided in 
-        /// the normative database, some being pairs of optionality and repetition markers
-        /// and segments nested within) returns a GroupDef including a short list of the shallow contents of the 
-        /// group (including segments and groups that are immediate children).</p> 
-        /// <p>For example given MSH [PID PV1] {[ERR NTE]}, short list would be something like 
-        /// MSH PID_GROUP ERR_GROUP (with PID_GROUP marked as optional and ERR_GROUP marked as 
-        /// optional and repeating).</p>
-        /// <p>This method calls writeGroup(...) where necessary in order to create source code for 
+        /// <summary>
+        /// <p>Given a list of structures defining the deep content of a group (as provided in the
+        /// normative database, some being pairs of optionality and repetition markers and segments
+        /// nested within) returns a GroupDef including a short list of the shallow contents of the group
+        /// (including segments and groups that are immediate children).</p>
+        /// <p>For example given MSH [PID PV1] {[ERR NTE]}, short list would be something like
+        /// MSH PID_GROUP ERR_GROUP (with PID_GROUP marked as optional and ERR_GROUP marked as optional
+        /// and repeating).</p>
+        /// <p>This method calls writeGroup(...) where necessary in order to create source code for
         /// any nested groups before returning corresponding GroupDefs.</p>
         /// </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="structures">       a list of the structures that comprise this group - must be
+        ///                                 at least 2 long. </param>
+        /// <param name="groupName">        The group name. </param>
+        /// <param name="baseDirectory">    the directory to which files should be written. </param>
+        /// <param name="version">          The version of message. </param>
+        /// <param name="message">          the message to which this group belongs. </param>
+        ///
+        /// <returns>   The group definition. </returns>
+
         public static GroupDef getGroupDef(
             IStructureDef[] structures,
             System.String groupName,
@@ -257,7 +275,15 @@ namespace NHapi.Base.SourceGeneration
             return ret;
         }
 
-        /// <summary> Returns source code for an accessor method for a particular Structure. </summary>
+        /// <summary>   Returns source code for an accessor method for a particular Structure. </summary>
+        ///
+        /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+        ///
+        /// <param name="group">        The group. </param>
+        /// <param name="structure">    The structure. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String makeAccessor(GroupDef group, int structure)
         {
             System.Text.StringBuilder source = new System.Text.StringBuilder();
@@ -376,7 +402,13 @@ namespace NHapi.Base.SourceGeneration
             return source.ToString();
         }
 
-        /// <summary> Returns source code for the contructor for this Group class. </summary>
+        /// <summary>   Returns source code for the contructor for this Group class. </summary>
+        ///
+        /// <param name="group">    The group. </param>
+        /// <param name="version">  The version of message. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String makeConstructor(GroupDef group, System.String version)
         {
             bool useFactory = NHapi.Base.ConfigurationSettings.UseFactory;
@@ -436,9 +468,15 @@ namespace NHapi.Base.SourceGeneration
             return source.ToString();
         }
 
-        /// <summary> Returns source code for a JavaDoc snippet listing the contents of a Group 
-        /// or Message.  
+        /// <summary>
+        /// Returns source code for a JavaDoc snippet listing the contents of a Group or Message.  
         /// </summary>
+        ///
+        /// <param name="structures">   a list of the structures that comprise this group - must be at
+        ///                             least 2 long. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String makeElementsDoc(IStructureDef[] structures)
         {
             System.Text.StringBuilder elements = new System.Text.StringBuilder();
@@ -467,9 +505,15 @@ namespace NHapi.Base.SourceGeneration
             return elements.ToString();
         }
 
-        /// <summary> Returns heading material for class source code (package, imports, JavaDoc, class
-        /// declaration).
+        /// <summary>
+        /// Returns heading material for class source code (package, imports, JavaDoc, class declaration).
         /// </summary>
+        ///
+        /// <param name="group">    The group. </param>
+        /// <param name="version">  The version of message. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String makePreamble(GroupDef group, System.String version)
         {
             System.Text.StringBuilder preamble = new System.Text.StringBuilder();
@@ -500,26 +544,24 @@ namespace NHapi.Base.SourceGeneration
             return preamble.ToString();
         }
 
-        /// <summary> Creates source code for a Group and returns a GroupDef object that 
-        /// describes the Group's name, optionality, repeatability.  The source 
-        /// code is written under the given directory.
-        /// The structures list may contain [] and {} pairs representing 
-        /// nested groups and their optionality and repeastability.  In these cases
-        /// this method is called recursively.
-        /// If the given structures list begins and ends with repetition and/or 
-        /// optionality markers the repetition and optionality of the returned 
-        /// GroupDef are set accordingly.  
-        /// <param name="structures">a list of the structures that comprise this group - must 
-        /// be at least 2 long
-        /// </param>
-        /// <param name="groupName">The group name</param>
-        /// <param name="version">The version of message</param>
-        /// <param name="baseDirectory">the directory to which files should be written
-        /// </param>
-        /// <param name="message">the message to which this group belongs
-        /// </param>
-        /// <throws>  HL7Exception if the repetition and optionality markers are not  </throws>
+        /// <summary>
+        /// Creates source code for a Group and returns a GroupDef object that describes the Group's name,
+        /// optionality, repeatability.  The source code is written under the given directory. The
+        /// structures list may contain [] and {} pairs representing nested groups and their optionality
+        /// and repeastability.  In these cases this method is called recursively. If the given
+        /// structures list begins and ends with repetition and/or optionality markers the repetition and
+        /// optionality of the returned GroupDef are set accordingly.  
         /// </summary>
+        ///
+        /// <param name="structures">       a list of the structures that comprise this group - must be
+        ///                                 at least 2 long. </param>
+        /// <param name="groupName">        The group name. </param>
+        /// <param name="baseDirectory">    the directory to which files should be written. </param>
+        /// <param name="version">          The version of message. </param>
+        /// <param name="message">          the message to which this group belongs. </param>
+        ///
+        /// <returns>   A GroupDef. </returns>
+
         public static GroupDef writeGroup(
             IStructureDef[] structures,
             System.String groupName,
@@ -558,7 +600,13 @@ namespace NHapi.Base.SourceGeneration
 
         #region Methods
 
-        /// <summary> Returns true if opening is "[" and closing is "]"</summary>
+        /// <summary>   Returns true if opening is "[" and closing is "]". </summary>
+        ///
+        /// <param name="opening">  The opening. </param>
+        /// <param name="closing">  The closing. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         private static bool optMarkers(System.String opening, System.String closing)
         {
             bool ret = false;
@@ -569,7 +617,13 @@ namespace NHapi.Base.SourceGeneration
             return ret;
         }
 
-        /// <summary> Returns true if opening is "{" and closing is "}"</summary>
+        /// <summary>   Returns true if opening is "{" and closing is "}". </summary>
+        ///
+        /// <param name="opening">  The opening. </param>
+        /// <param name="closing">  The closing. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         private static bool repMarkers(System.String opening, System.String closing)
         {
             bool ret = false;
@@ -580,7 +634,13 @@ namespace NHapi.Base.SourceGeneration
             return ret;
         }
 
-        /// <summary> Returns true if opening is "[{" and closing is "}]"</summary>
+        /// <summary>   Returns true if opening is "[{" and closing is "}]". </summary>
+        ///
+        /// <param name="opening">  The opening. </param>
+        /// <param name="closing">  The closing. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         private static bool repoptMarkers(System.String opening, System.String closing)
         {
             bool ret = false;

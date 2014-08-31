@@ -27,38 +27,39 @@ namespace NHapi.Base.validation
     using NHapi.Base.Model;
     using NHapi.Base.Util;
 
-    /// <summary> Validation utilities for parsed and encoded messages.  
-    /// 
-    /// </summary>
-    /// <author>  Bryan Tripp
-    /// </author>
+    /// <summary>   Validation utilities for parsed and encoded messages.   </summary>
     public class MessageValidator
     {
         #region Static Fields
 
+        /// <summary>   our log. </summary>
         private static readonly IHapiLog ourLog;
 
         #endregion
 
         #region Fields
 
+        /// <summary>   true to fail on error. </summary>
         private bool failOnError;
 
+        /// <summary>   Context for my. </summary>
         private IValidationContext myContext;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the MessageValidator class. </summary>
         static MessageValidator()
         {
             ourLog = HapiLogFactory.GetHapiLog(typeof(MessageValidator));
         }
 
-        /// <param name="theContext">context that determines which validation rules apply 
-        /// </param>
-        /// <param name="theFailOnErrorFlag">
-        /// </param>
+        /// <summary>   Initializes a new instance of the MessageValidator class. </summary>
+        ///
+        /// <param name="theContext">           context that determines which validation rules apply. </param>
+        /// <param name="theFailOnErrorFlag">   . </param>
+
         public MessageValidator(IValidationContext theContext, bool theFailOnErrorFlag)
         {
             this.myContext = theContext;
@@ -69,11 +70,15 @@ namespace NHapi.Base.validation
 
         #region Public Methods and Operators
 
-        /// <param name="message">a parsed message to validate (note that MSH-9-1 and MSH-9-2 must be valued)
-        /// </param>
-        /// <returns> true if the message is OK
-        /// </returns>
-        /// <throws>  HL7Exception if there is at least one error and this validator is set to fail on errors </throws>
+        /// <summary>   Validates the given message. </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="message">  a parsed message to validate (note that MSH-9-1 and MSH-9-2 must be
+        ///                         valued) </param>
+        ///
+        /// <returns>   true if the message is OK. </returns>
+
         public virtual bool validate(IMessage message)
         {
             Terser t = new Terser(message);
@@ -103,15 +108,16 @@ namespace NHapi.Base.validation
             return result;
         }
 
-        /// <param name="message">an ER7 or XML encoded message to validate 
-        /// </param>
-        /// <param name="isXML">true if XML, false if ER7
-        /// </param>
-        /// <param name="version">HL7 version (e.g. "2.2") to which the message belongs
-        /// </param>
-        /// <returns> true if the message is OK
-        /// </returns>
-        /// <throws>  HL7Exception if there is at least one error and this validator is set to fail on errors </throws>
+        /// <summary>   Validates. </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="message">  an ER7 or XML encoded message to validate. </param>
+        /// <param name="isXML">    true if XML, false if ER7. </param>
+        /// <param name="version">  HL7 version (e.g. "2.2") to which the message belongs. </param>
+        ///
+        /// <returns>   true if the message is OK. </returns>
+
         public virtual bool validate(System.String message, bool isXML, System.String version)
         {
             IEncodingRule[] rules = this.myContext.getEncodingRules(version, isXML ? "XML" : "ER7");

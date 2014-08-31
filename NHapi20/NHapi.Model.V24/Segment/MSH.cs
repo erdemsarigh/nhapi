@@ -7,44 +7,45 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 MSH message segment. 
-/// This segment has the following fields:<ol>
-///<li>MSH-1: Field Separator (ST)</li>
-///<li>MSH-2: Encoding Characters (ST)</li>
-///<li>MSH-3: Sending Application (HD)</li>
-///<li>MSH-4: Sending Facility (HD)</li>
-///<li>MSH-5: Receiving Application (HD)</li>
-///<li>MSH-6: Receiving Facility (HD)</li>
-///<li>MSH-7: Date/Time Of Message (TS)</li>
-///<li>MSH-8: Security (ST)</li>
-///<li>MSH-9: Message Type (MSG)</li>
-///<li>MSH-10: Message Control ID (ST)</li>
-///<li>MSH-11: Processing ID (PT)</li>
-///<li>MSH-12: Version ID (VID)</li>
-///<li>MSH-13: Sequence Number (NM)</li>
-///<li>MSH-14: Continuation Pointer (ST)</li>
-///<li>MSH-15: Accept Acknowledgment Type (ID)</li>
-///<li>MSH-16: Application Acknowledgment Type (ID)</li>
-///<li>MSH-17: Country Code (ID)</li>
-///<li>MSH-18: Character Set (ID)</li>
-///<li>MSH-19: Principal Language Of Message (CE)</li>
-///<li>MSH-20: Alternate Character Set Handling Scheme (ID)</li>
-///<li>MSH-21: Conformance Statement ID (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 MSH message segment. This segment has the following fields:<ol>
+/// <li>MSH-1: Field Separator (ST)</li>
+/// <li>MSH-2: Encoding Characters (ST)</li>
+/// <li>MSH-3: Sending Application (HD)</li>
+/// <li>MSH-4: Sending Facility (HD)</li>
+/// <li>MSH-5: Receiving Application (HD)</li>
+/// <li>MSH-6: Receiving Facility (HD)</li>
+/// <li>MSH-7: Date/Time Of Message (TS)</li>
+/// <li>MSH-8: Security (ST)</li>
+/// <li>MSH-9: Message Type (MSG)</li>
+/// <li>MSH-10: Message Control ID (ST)</li>
+/// <li>MSH-11: Processing ID (PT)</li>
+/// <li>MSH-12: Version ID (VID)</li>
+/// <li>MSH-13: Sequence Number (NM)</li>
+/// <li>MSH-14: Continuation Pointer (ST)</li>
+/// <li>MSH-15: Accept Acknowledgment Type (ID)</li>
+/// <li>MSH-16: Application Acknowledgment Type (ID)</li>
+/// <li>MSH-17: Country Code (ID)</li>
+/// <li>MSH-18: Character Set (ID)</li>
+/// <li>MSH-19: Principal Language Of Message (CE)</li>
+/// <li>MSH-20: Alternate Character Set Handling Scheme (ID)</li>
+/// <li>MSH-21: Conformance Statement ID (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class MSH : AbstractSegment  {
 
-  /**
-   * Creates a MSH (Message Header) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the MSH class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MSH(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -74,9 +75,10 @@ public class MSH : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Field Separator(MSH-1).
-	///</summary>
+    /// <summary>   Returns Field Separator(MSH-1). </summary>
+    ///
+    /// <value> The field separator. </value>
+
 	public ST FieldSeparator
 	{
 		get{
@@ -97,9 +99,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Encoding Characters(MSH-2).
-	///</summary>
+    /// <summary>   Returns Encoding Characters(MSH-2). </summary>
+    ///
+    /// <value> The encoding characters. </value>
+
 	public ST EncodingCharacters
 	{
 		get{
@@ -120,9 +123,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Sending Application(MSH-3).
-	///</summary>
+    /// <summary>   Returns Sending Application(MSH-3). </summary>
+    ///
+    /// <value> The sending application. </value>
+
 	public HD SendingApplication
 	{
 		get{
@@ -143,9 +147,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Sending Facility(MSH-4).
-	///</summary>
+    /// <summary>   Returns Sending Facility(MSH-4). </summary>
+    ///
+    /// <value> The sending facility. </value>
+
 	public HD SendingFacility
 	{
 		get{
@@ -166,9 +171,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Receiving Application(MSH-5).
-	///</summary>
+    /// <summary>   Returns Receiving Application(MSH-5). </summary>
+    ///
+    /// <value> The receiving application. </value>
+
 	public HD ReceivingApplication
 	{
 		get{
@@ -189,9 +195,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Receiving Facility(MSH-6).
-	///</summary>
+    /// <summary>   Returns Receiving Facility(MSH-6). </summary>
+    ///
+    /// <value> The receiving facility. </value>
+
 	public HD ReceivingFacility
 	{
 		get{
@@ -212,9 +219,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date/Time Of Message(MSH-7).
-	///</summary>
+    /// <summary>   Returns Date/Time Of Message(MSH-7). </summary>
+    ///
+    /// <value> A message describing the date time of. </value>
+
 	public TS DateTimeOfMessage
 	{
 		get{
@@ -235,9 +243,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Security(MSH-8).
-	///</summary>
+    /// <summary>   Returns Security(MSH-8). </summary>
+    ///
+    /// <value> The security. </value>
+
 	public ST Security
 	{
 		get{
@@ -258,9 +267,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Message Type(MSH-9).
-	///</summary>
+    /// <summary>   Returns Message Type(MSH-9). </summary>
+    ///
+    /// <value> The type of the message. </value>
+
 	public MSG MessageType
 	{
 		get{
@@ -281,9 +291,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Message Control ID(MSH-10).
-	///</summary>
+    /// <summary>   Returns Message Control ID(MSH-10). </summary>
+    ///
+    /// <value> The identifier of the message control. </value>
+
 	public ST MessageControlID
 	{
 		get{
@@ -304,9 +315,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Processing ID(MSH-11).
-	///</summary>
+    /// <summary>   Returns Processing ID(MSH-11). </summary>
+    ///
+    /// <value> The identifier of the processing. </value>
+
 	public PT ProcessingID
 	{
 		get{
@@ -327,9 +339,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Version ID(MSH-12).
-	///</summary>
+    /// <summary>   Returns Version ID(MSH-12). </summary>
+    ///
+    /// <value> The identifier of the version. </value>
+
 	public VID VersionID
 	{
 		get{
@@ -350,9 +363,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Sequence Number(MSH-13).
-	///</summary>
+    /// <summary>   Returns Sequence Number(MSH-13). </summary>
+    ///
+    /// <value> The sequence number. </value>
+
 	public NM SequenceNumber
 	{
 		get{
@@ -373,9 +387,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Continuation Pointer(MSH-14).
-	///</summary>
+    /// <summary>   Returns Continuation Pointer(MSH-14). </summary>
+    ///
+    /// <value> The continuation pointer. </value>
+
 	public ST ContinuationPointer
 	{
 		get{
@@ -396,9 +411,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Accept Acknowledgment Type(MSH-15).
-	///</summary>
+    /// <summary>   Returns Accept Acknowledgment Type(MSH-15). </summary>
+    ///
+    /// <value> The type of the accept acknowledgment. </value>
+
 	public ID AcceptAcknowledgmentType
 	{
 		get{
@@ -419,9 +435,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Application Acknowledgment Type(MSH-16).
-	///</summary>
+    /// <summary>   Returns Application Acknowledgment Type(MSH-16). </summary>
+    ///
+    /// <value> The type of the application acknowledgment. </value>
+
 	public ID ApplicationAcknowledgmentType
 	{
 		get{
@@ -442,9 +459,10 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Country Code(MSH-17).
-	///</summary>
+    /// <summary>   Returns Country Code(MSH-17). </summary>
+    ///
+    /// <value> The total number of ry code. </value>
+
 	public ID CountryCode
 	{
 		get{
@@ -465,11 +483,17 @@ public class MSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Character Set(MSH-18).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Character Set(MSH-18). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The character set. </returns>
+
 	public ID GetCharacterSet(int rep)
 	{
 			ID ret = null;
@@ -484,9 +508,12 @@ public class MSH : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Character Set (MSH-18).
-   ///</summary>
+  /// <summary> Returns all repetitions of Character Set (MSH-18). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetCharacterSet() {
      ID[] ret = null;
     try {
@@ -505,9 +532,10 @@ public class MSH : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Character Set (MSH-18).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Character Set (MSH-18). </summary>
+  ///
+  /// <value>   The character set repetitions used. </value>
+
   public int CharacterSetRepetitionsUsed
 {
 get{
@@ -523,9 +551,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Principal Language Of Message(MSH-19).
-	///</summary>
+
+    /// <summary>   Returns Principal Language Of Message(MSH-19). </summary>
+    ///
+    /// <value> A message describing the principal language of. </value>
+
 	public CE PrincipalLanguageOfMessage
 	{
 		get{
@@ -546,9 +576,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Alternate Character Set Handling Scheme(MSH-20).
-	///</summary>
+    /// <summary>   Returns Alternate Character Set Handling Scheme(MSH-20). </summary>
+    ///
+    /// <value> The alternate character set handling scheme. </value>
+
 	public ID AlternateCharacterSetHandlingScheme
 	{
 		get{
@@ -569,11 +600,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Conformance Statement ID(MSH-21).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Conformance Statement ID(MSH-21). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The conformance statement identifier. </returns>
+
 	public ID GetConformanceStatementID(int rep)
 	{
 			ID ret = null;
@@ -588,9 +625,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Conformance Statement ID (MSH-21).
-   ///</summary>
+  /// <summary> Returns all repetitions of Conformance Statement ID (MSH-21). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetConformanceStatementID() {
      ID[] ret = null;
     try {
@@ -609,9 +649,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Conformance Statement ID (MSH-21).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Conformance Statement ID (MSH-21). </summary>
+  ///
+  /// <value>   The conformance statement identifier repetitions used. </value>
+
   public int ConformanceStatementIDRepetitionsUsed
 {
 get{

@@ -21,27 +21,32 @@
 
 namespace NHapi.Base.validation
 {
-    /// <summary> A rule that applies to a primitive datatype. </summary>
-    /// <author>  Bryan Tripp
-    /// </author>
+    /// <summary>   A rule that applies to a primitive datatype. </summary>
     public interface IPrimitiveTypeRule : IRule
     {
         #region Public Methods and Operators
 
-        /// <summary> Optionally performs an automatic correction on given data to make it 
-        /// conform (eg trims leading whitespace).  This is to be called prior to 
-        /// test().  If no corrections are performed, the original value is returned. 
-        /// 
+        /// <summary>
+        /// Optionally performs an automatic correction on given data to make it conform (eg trims
+        /// leading whitespace).  This is to be called prior to test().  If no corrections are performed,
+        /// the original value is returned.
         /// </summary>
-        /// <param name="originalValue">an original value to be corrected 
-        /// </param>
-        /// <returns> a corrected version of the given value 
-        /// </returns>
+        ///
+        /// <param name="originalValue">    an original value to be corrected. </param>
+        ///
+        /// <returns>   a corrected version of the given value. </returns>
+
         System.String correct(System.String originalValue);
 
-        /// <summary> Tests the given string against the criteria defined by this 
-        /// rule -- returns true if it passes the test, false otherwise.  
+        /// <summary>
+        /// Tests the given string against the criteria defined by this rule -- returns true if it passes
+        /// the test, false otherwise.  
         /// </summary>
+        ///
+        /// <param name="testValu"> The test valu. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         bool test(System.String testValu);
 
         #endregion

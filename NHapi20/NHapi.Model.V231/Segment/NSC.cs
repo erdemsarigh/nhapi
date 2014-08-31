@@ -7,32 +7,33 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 NSC message segment. 
-/// This segment has the following fields:<ol>
-///<li>NSC-1: Network Change Type (IS)</li>
-///<li>NSC-2: Current CPU (ST)</li>
-///<li>NSC-3: Current Fileserver (ST)</li>
-///<li>NSC-4: Current Application (ST)</li>
-///<li>NSC-5: Current Facility (ST)</li>
-///<li>NSC-6: New CPU (ST)</li>
-///<li>NSC-7: New Fileserver (ST)</li>
-///<li>NSC-8: New Application (ST)</li>
-///<li>NSC-9: New Facility (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 NSC message segment. This segment has the following fields:<ol>
+/// <li>NSC-1: Network Change Type (IS)</li>
+/// <li>NSC-2: Current CPU (ST)</li>
+/// <li>NSC-3: Current Fileserver (ST)</li>
+/// <li>NSC-4: Current Application (ST)</li>
+/// <li>NSC-5: Current Facility (ST)</li>
+/// <li>NSC-6: New CPU (ST)</li>
+/// <li>NSC-7: New Fileserver (ST)</li>
+/// <li>NSC-8: New Application (ST)</li>
+/// <li>NSC-9: New Facility (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class NSC : AbstractSegment  {
 
-  /**
-   * Creates a NSC (Application status change) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the NSC class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public NSC(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -50,9 +51,10 @@ public class NSC : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Network Change Type(NSC-1).
-	///</summary>
+    /// <summary>   Returns Network Change Type(NSC-1). </summary>
+    ///
+    /// <value> The type of the network change. </value>
+
 	public IS NetworkChangeType
 	{
 		get{
@@ -73,9 +75,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Current CPU(NSC-2).
-	///</summary>
+    /// <summary>   Returns Current CPU(NSC-2). </summary>
+    ///
+    /// <value> The current CPU. </value>
+
 	public ST CurrentCPU
 	{
 		get{
@@ -96,9 +99,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Current Fileserver(NSC-3).
-	///</summary>
+    /// <summary>   Returns Current Fileserver(NSC-3). </summary>
+    ///
+    /// <value> The current fileserver. </value>
+
 	public ST CurrentFileserver
 	{
 		get{
@@ -119,9 +123,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Current Application(NSC-4).
-	///</summary>
+    /// <summary>   Returns Current Application(NSC-4). </summary>
+    ///
+    /// <value> The current application. </value>
+
 	public ST CurrentApplication
 	{
 		get{
@@ -142,9 +147,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Current Facility(NSC-5).
-	///</summary>
+    /// <summary>   Returns Current Facility(NSC-5). </summary>
+    ///
+    /// <value> The current facility. </value>
+
 	public ST CurrentFacility
 	{
 		get{
@@ -165,9 +171,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns New CPU(NSC-6).
-	///</summary>
+    /// <summary>   Returns New CPU(NSC-6). </summary>
+    ///
+    /// <value> The new CPU. </value>
+
 	public ST NewCPU
 	{
 		get{
@@ -188,9 +195,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns New Fileserver(NSC-7).
-	///</summary>
+    /// <summary>   Returns New Fileserver(NSC-7). </summary>
+    ///
+    /// <value> The new fileserver. </value>
+
 	public ST NewFileserver
 	{
 		get{
@@ -211,9 +219,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns New Application(NSC-8).
-	///</summary>
+    /// <summary>   Returns New Application(NSC-8). </summary>
+    ///
+    /// <value> The new application. </value>
+
 	public ST NewApplication
 	{
 		get{
@@ -234,9 +243,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns New Facility(NSC-9).
-	///</summary>
+    /// <summary>   Returns New Facility(NSC-9). </summary>
+    ///
+    /// <value> The new facility. </value>
+
 	public ST NewFacility
 	{
 		get{

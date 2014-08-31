@@ -9,38 +9,41 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V231.Message
 
 {
-///<summary>
-/// Represents a ERP_R09 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a ERP_R09 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (MSH - message header segment) </li>
-///<li>1: MSA (MSA - message acknowledgment segment) </li>
-///<li>2: ERR (ERR - error segment) optional </li>
-///<li>3: QAK (Query Acknowledgement) </li>
-///<li>4: ERQ (ERQ - event replay query segment) </li>
-///<li>5: DSC (DSC - Continuation pointer segment) optional </li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (MSH - message header segment) </li>
+/// <li>1: MSA (MSA - message acknowledgment segment) </li>
+/// <li>2: ERR (ERR - error segment) optional </li>
+/// <li>3: QAK (Query Acknowledgement) </li>
+/// <li>4: ERQ (ERQ - event replay query segment) </li>
+/// <li>5: DSC (DSC - Continuation pointer segment) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ERP_R09 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new ERP_R09 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new ERP_R09 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public ERP_R09(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new ERP_R09 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new ERP_R09 Group with DefaultModelClassFactory. </summary>
 	public ERP_R09() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for ERP_R09.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for ERP_R09.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -54,6 +57,13 @@ public class ERP_R09 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -61,9 +71,11 @@ public class ERP_R09 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MSH - message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MSH - message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -77,9 +89,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MSA (MSA - message acknowledgment segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns MSA (MSA - message acknowledgment segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The msa. </value>
+
 	public MSA MSA { 
 get{
 	   MSA ret = null;
@@ -93,9 +108,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ERR (ERR - error segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ERR (ERR - error segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The error. </value>
+
 	public ERR ERR { 
 get{
 	   ERR ret = null;
@@ -109,9 +125,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QAK (Query Acknowledgement) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QAK (Query Acknowledgement) - creates it if necessary. </summary>
+    ///
+    /// <value> The qak. </value>
+
 	public QAK QAK { 
 get{
 	   QAK ret = null;
@@ -125,9 +142,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ERQ (ERQ - event replay query segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ERQ (ERQ - event replay query segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The erq. </value>
+
 	public ERQ ERQ { 
 get{
 	   ERQ ret = null;
@@ -141,9 +159,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns DSC (DSC - Continuation pointer segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns DSC (DSC - Continuation pointer segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The dsc. </value>
+
 	public DSC DSC { 
 get{
 	   DSC ret = null;

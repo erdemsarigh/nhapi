@@ -8,25 +8,28 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the SIU_S12_PATIENT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PID (Patient identification) </li>
-///<li>1: PD1 (patient additional demographic) optional </li>
-///<li>2: PV1 (Patient visit) optional </li>
-///<li>3: PV2 (Patient visit - additional information) optional </li>
-///<li>4: OBX (Observation/Result) optional repeating</li>
-///<li>5: DG1 (Diagnosis) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the SIU_S12_PATIENT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PID (Patient identification) </li>
+/// <li>1: PD1 (patient additional demographic) optional </li>
+/// <li>2: PV1 (Patient visit) optional </li>
+/// <li>3: PV2 (Patient visit - additional information) optional </li>
+/// <li>4: OBX (Observation/Result) optional repeating</li>
+/// <li>5: DG1 (Diagnosis) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class SIU_S12_PATIENT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new SIU_S12_PATIENT Group.
-	///</summary>
+    /// <summary>   Creates a new SIU_S12_PATIENT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SIU_S12_PATIENT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PID), true, false);
@@ -40,9 +43,10 @@ public class SIU_S12_PATIENT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PID (Patient identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -56,9 +60,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (patient additional demographic) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PD1 (patient additional demographic) - creates it if necessary. </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;
@@ -72,9 +77,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV1 (Patient visit) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PV1 (Patient visit) - creates it if necessary. </summary>
+    ///
+    /// <value> The pv 1. </value>
+
 	public PV1 PV1 { 
 get{
 	   PV1 ret = null;
@@ -88,9 +94,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV2 (Patient visit - additional information) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PV2 (Patient visit - additional information) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The pv 2. </value>
+
 	public PV2 PV2 { 
 get{
 	   PV2 ret = null;
@@ -104,9 +113,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of OBX (Observation/Result) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of OBX (Observation/Result) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The obx. </returns>
+
 	public OBX GetOBX() {
 	   OBX ret = null;
 	   try {
@@ -118,19 +132,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of OBX
-	/// * (Observation/Result) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of OBX
+    ///  * (Observation/Result) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The obx. </returns>
+
 	public OBX GetOBX(int rep) { 
 	   return (OBX)this.GetStructure("OBX", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of OBX 
-	 */ 
+    /// <summary>   Gets the obx repetitions used. </summary>
+    ///
+    /// <value> The obx repetitions used. </value>
+
 	public int OBXRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -145,9 +165,12 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of DG1 (Diagnosis) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns  first repetition of DG1 (Diagnosis) - creates it if necessary. </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The dg 1. </returns>
+
 	public DG1 GetDG1() {
 	   DG1 ret = null;
 	   try {
@@ -159,19 +182,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of DG1
-	/// * (Diagnosis) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of DG1
+    ///  * (Diagnosis) - creates it if necessary throws HL7Exception if the repetition requested is
+    ///  more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The dg 1. </returns>
+
 	public DG1 GetDG1(int rep) { 
 	   return (DG1)this.GetStructure("DG1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of DG1 
-	 */ 
+    /// <summary>   Gets the dg 1 repetitions used. </summary>
+    ///
+    /// <value> The dg 1 repetitions used. </value>
+
 	public int DG1RepetitionsUsed { 
 get{
 	    int reps = -1; 

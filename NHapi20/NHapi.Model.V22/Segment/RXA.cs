@@ -7,35 +7,36 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 RXA message segment. 
-/// This segment has the following fields:<ol>
-///<li>RXA-1: Give Sub-ID Counter (NM)</li>
-///<li>RXA-2: Administration Sub-ID Counter (NM)</li>
-///<li>RXA-3: Date / time start of administration (TS)</li>
-///<li>RXA-4: Date / time end of administration (TS)</li>
-///<li>RXA-5: Administered Code (CE)</li>
-///<li>RXA-6: Administered Amount (NM)</li>
-///<li>RXA-7: Administered Units (CE)</li>
-///<li>RXA-8: Administered Dosage Form (CE)</li>
-///<li>RXA-9: Administration Notes (ST)</li>
-///<li>RXA-10: Administering Provider (CN_PERSON)</li>
-///<li>RXA-11: Administered-at Location (CM_LA1)</li>
-///<li>RXA-12: Administered Per (Time Unit) (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 RXA message segment. This segment has the following fields:<ol>
+/// <li>RXA-1: Give Sub-ID Counter (NM)</li>
+/// <li>RXA-2: Administration Sub-ID Counter (NM)</li>
+/// <li>RXA-3: Date / time start of administration (TS)</li>
+/// <li>RXA-4: Date / time end of administration (TS)</li>
+/// <li>RXA-5: Administered Code (CE)</li>
+/// <li>RXA-6: Administered Amount (NM)</li>
+/// <li>RXA-7: Administered Units (CE)</li>
+/// <li>RXA-8: Administered Dosage Form (CE)</li>
+/// <li>RXA-9: Administration Notes (ST)</li>
+/// <li>RXA-10: Administering Provider (CN_PERSON)</li>
+/// <li>RXA-11: Administered-at Location (CM_LA1)</li>
+/// <li>RXA-12: Administered Per (Time Unit) (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class RXA : AbstractSegment  {
 
-  /**
-   * Creates a RXA (PHARMACY AADMINISTRATION) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the RXA class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RXA(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -56,9 +57,10 @@ public class RXA : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Give Sub-ID Counter(RXA-1).
-	///</summary>
+    /// <summary>   Returns Give Sub-ID Counter(RXA-1). </summary>
+    ///
+    /// <value> The give sub identifier counter. </value>
+
 	public NM GiveSubIDCounter
 	{
 		get{
@@ -79,9 +81,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administration Sub-ID Counter(RXA-2).
-	///</summary>
+    /// <summary>   Returns Administration Sub-ID Counter(RXA-2). </summary>
+    ///
+    /// <value> The administration sub identifier counter. </value>
+
 	public NM AdministrationSubIDCounter
 	{
 		get{
@@ -102,9 +105,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date / time start of administration(RXA-3).
-	///</summary>
+    /// <summary>   Returns Date / time start of administration(RXA-3). </summary>
+    ///
+    /// <value> The date time start of administration. </value>
+
 	public TS DateTimeStartOfAdministration
 	{
 		get{
@@ -125,9 +129,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date / time end of administration(RXA-4).
-	///</summary>
+    /// <summary>   Returns Date / time end of administration(RXA-4). </summary>
+    ///
+    /// <value> The date time end of administration. </value>
+
 	public TS DateTimeEndOfAdministration
 	{
 		get{
@@ -148,9 +153,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administered Code(RXA-5).
-	///</summary>
+    /// <summary>   Returns Administered Code(RXA-5). </summary>
+    ///
+    /// <value> The administered code. </value>
+
 	public CE AdministeredCode
 	{
 		get{
@@ -171,9 +177,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administered Amount(RXA-6).
-	///</summary>
+    /// <summary>   Returns Administered Amount(RXA-6). </summary>
+    ///
+    /// <value> The administered amount. </value>
+
 	public NM AdministeredAmount
 	{
 		get{
@@ -194,9 +201,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administered Units(RXA-7).
-	///</summary>
+    /// <summary>   Returns Administered Units(RXA-7). </summary>
+    ///
+    /// <value> The administered units. </value>
+
 	public CE AdministeredUnits
 	{
 		get{
@@ -217,9 +225,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administered Dosage Form(RXA-8).
-	///</summary>
+    /// <summary>   Returns Administered Dosage Form(RXA-8). </summary>
+    ///
+    /// <value> The administered dosage form. </value>
+
 	public CE AdministeredDosageForm
 	{
 		get{
@@ -240,9 +249,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administration Notes(RXA-9).
-	///</summary>
+    /// <summary>   Returns Administration Notes(RXA-9). </summary>
+    ///
+    /// <value> The administration notes. </value>
+
 	public ST AdministrationNotes
 	{
 		get{
@@ -263,9 +273,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administering Provider(RXA-10).
-	///</summary>
+    /// <summary>   Returns Administering Provider(RXA-10). </summary>
+    ///
+    /// <value> The administering provider. </value>
+
 	public CN_PERSON AdministeringProvider
 	{
 		get{
@@ -286,9 +297,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administered-at Location(RXA-11).
-	///</summary>
+    /// <summary>   Returns Administered-at Location(RXA-11). </summary>
+    ///
+    /// <value> The administered at location. </value>
+
 	public CM_LA1 AdministeredAtLocation
 	{
 		get{
@@ -309,9 +321,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administered Per (Time Unit)(RXA-12).
-	///</summary>
+    /// <summary>   Returns Administered Per (Time Unit)(RXA-12). </summary>
+    ///
+    /// <value> The administered per time unit. </value>
+
 	public ST AdministeredPerTimeUnit
 	{
 		get{

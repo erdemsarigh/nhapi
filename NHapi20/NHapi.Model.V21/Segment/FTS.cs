@@ -7,25 +7,26 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 FTS message segment. 
-/// This segment has the following fields:<ol>
-///<li>FTS-1: FILE BATCH COUNT (ST)</li>
-///<li>FTS-2: FILE TRAILER COMMENT (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 FTS message segment. This segment has the following fields:<ol>
+/// <li>FTS-1: FILE BATCH COUNT (ST)</li>
+/// <li>FTS-2: FILE TRAILER COMMENT (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class FTS : AbstractSegment  {
 
-  /**
-   * Creates a FTS (FILE TRAILER) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the FTS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public FTS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -36,9 +37,10 @@ public class FTS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns FILE BATCH COUNT(FTS-1).
-	///</summary>
+    /// <summary>   Returns FILE BATCH COUNT(FTS-1). </summary>
+    ///
+    /// <value> The filebatchcount. </value>
+
 	public ST FILEBATCHCOUNT
 	{
 		get{
@@ -59,9 +61,10 @@ public class FTS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns FILE TRAILER COMMENT(FTS-2).
-	///</summary>
+    /// <summary>   Returns FILE TRAILER COMMENT(FTS-2). </summary>
+    ///
+    /// <value> The filetrailercomment. </value>
+
 	public ST FILETRAILERCOMMENT
 	{
 		get{

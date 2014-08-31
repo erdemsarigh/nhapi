@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the RRG_O02_RESPONSE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: RRG_O02_PATIENT (a Group object) optional </li>
-///<li>1: RRG_O02_ORDER (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RRG_O02_RESPONSE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: RRG_O02_PATIENT (a Group object) optional </li>
+/// <li>1: RRG_O02_ORDER (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RRG_O02_RESPONSE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RRG_O02_RESPONSE Group.
-	///</summary>
+    /// <summary>   Creates a new RRG_O02_RESPONSE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RRG_O02_RESPONSE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(RRG_O02_PATIENT), false, false);
@@ -32,9 +35,10 @@ public class RRG_O02_RESPONSE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns RRG_O02_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RRG_O02_PATIENT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient. </value>
+
 	public RRG_O02_PATIENT PATIENT { 
 get{
 	   RRG_O02_PATIENT ret = null;
@@ -48,9 +52,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RRG_O02_ORDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RRG_O02_ORDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order. </returns>
+
 	public RRG_O02_ORDER GetORDER() {
 	   RRG_O02_ORDER ret = null;
 	   try {
@@ -62,19 +71,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RRG_O02_ORDER
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RRG_O02_ORDER
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order. </returns>
+
 	public RRG_O02_ORDER GetORDER(int rep) { 
 	   return (RRG_O02_ORDER)this.GetStructure("ORDER", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RRG_O02_ORDER 
-	 */ 
+    /// <summary>   Gets the order repetitions used. </summary>
+    ///
+    /// <value> The order repetitions used. </value>
+
 	public int ORDERRepetitionsUsed { 
 get{
 	    int reps = -1; 

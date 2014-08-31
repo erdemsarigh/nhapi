@@ -7,29 +7,30 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 MFA message segment. 
-/// This segment has the following fields:<ol>
-///<li>MFA-1: Record-Level Event Code (ID)</li>
-///<li>MFA-2: MFN Control ID (ST)</li>
-///<li>MFA-3: Event Completion Date/Time (TS)</li>
-///<li>MFA-4: MFN Record Level Error Return (CE)</li>
-///<li>MFA-5: Primary Key Value – MFA (CE)</li>
-///<li>MFA-6: Primary Key Value Type - MFA (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 MFA message segment. This segment has the following fields:<ol>
+/// <li>MFA-1: Record-Level Event Code (ID)</li>
+/// <li>MFA-2: MFN Control ID (ST)</li>
+/// <li>MFA-3: Event Completion Date/Time (TS)</li>
+/// <li>MFA-4: MFN Record Level Error Return (CE)</li>
+/// <li>MFA-5: Primary Key Value – MFA (CE)</li>
+/// <li>MFA-6: Primary Key Value Type - MFA (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class MFA : AbstractSegment  {
 
-  /**
-   * Creates a MFA (MFA - master file acknowledgment segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the MFA class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFA(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -44,9 +45,10 @@ public class MFA : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Record-Level Event Code(MFA-1).
-	///</summary>
+    /// <summary>   Returns Record-Level Event Code(MFA-1). </summary>
+    ///
+    /// <value> The record level event code. </value>
+
 	public ID RecordLevelEventCode
 	{
 		get{
@@ -67,9 +69,10 @@ public class MFA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns MFN Control ID(MFA-2).
-	///</summary>
+    /// <summary>   Returns MFN Control ID(MFA-2). </summary>
+    ///
+    /// <value> The identifier of the mfn control. </value>
+
 	public ST MFNControlID
 	{
 		get{
@@ -90,9 +93,10 @@ public class MFA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Event Completion Date/Time(MFA-3).
-	///</summary>
+    /// <summary>   Returns Event Completion Date/Time(MFA-3). </summary>
+    ///
+    /// <value> The event completion date time. </value>
+
 	public TS EventCompletionDateTime
 	{
 		get{
@@ -113,9 +117,10 @@ public class MFA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns MFN Record Level Error Return(MFA-4).
-	///</summary>
+    /// <summary>   Returns MFN Record Level Error Return(MFA-4). </summary>
+    ///
+    /// <value> The mfn record level error return. </value>
+
 	public CE MFNRecordLevelErrorReturn
 	{
 		get{
@@ -136,11 +141,17 @@ public class MFA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Primary Key Value – MFA(MFA-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Primary Key Value – MFA(MFA-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The primary key value mfa. </returns>
+
 	public CE GetPrimaryKeyValueMFA(int rep)
 	{
 			CE ret = null;
@@ -155,9 +166,12 @@ public class MFA : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Primary Key Value – MFA (MFA-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Primary Key Value – MFA (MFA-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetPrimaryKeyValueMFA() {
      CE[] ret = null;
     try {
@@ -176,9 +190,10 @@ public class MFA : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Primary Key Value – MFA (MFA-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Primary Key Value – MFA (MFA-5). </summary>
+  ///
+  /// <value>   The primary key value mfa repetitions used. </value>
+
   public int PrimaryKeyValueMFARepetitionsUsed
 {
 get{
@@ -194,11 +209,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Primary Key Value Type - MFA(MFA-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Primary Key Value Type - MFA(MFA-6). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The primary key value type mfa. </returns>
+
 	public ID GetPrimaryKeyValueTypeMFA(int rep)
 	{
 			ID ret = null;
@@ -213,9 +235,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Primary Key Value Type - MFA (MFA-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of Primary Key Value Type - MFA (MFA-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetPrimaryKeyValueTypeMFA() {
      ID[] ret = null;
     try {
@@ -234,9 +259,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Primary Key Value Type - MFA (MFA-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Primary Key Value Type - MFA (MFA-6). </summary>
+  ///
+  /// <value>   The primary key value type mfa repetitions used. </value>
+
   public int PrimaryKeyValueTypeMFARepetitionsUsed
 {
 get{

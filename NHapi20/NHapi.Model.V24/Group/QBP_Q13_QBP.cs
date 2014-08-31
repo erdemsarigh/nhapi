@@ -8,20 +8,23 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the QBP_Q13_QBP Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: Zxx (any Z segment) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the QBP_Q13_QBP Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: Zxx (any Z segment) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class QBP_Q13_QBP : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new QBP_Q13_QBP Group.
-	///</summary>
+    /// <summary>   Creates a new QBP_Q13_QBP Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public QBP_Q13_QBP(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(Zxx), false, false);
@@ -30,9 +33,10 @@ public class QBP_Q13_QBP : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns Zxx (any Z segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns Zxx (any Z segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The zxx. </value>
+
 	public Zxx Zxx { 
 get{
 	   Zxx ret = null;

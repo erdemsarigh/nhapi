@@ -6,9 +6,9 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 CX (Extended Composite ID with Check Digit) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 CX (Extended Composite ID with Check Digit) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>ID Number (ST)</li>
 /// <li>Check Digit (ST)</li>
 /// <li>Check Digit Scheme (ID)</li>
@@ -20,22 +20,24 @@ namespace NHapi.Model.V25.Datatype
 /// <li>Assigning Jurisdiction (CWE)</li>
 /// <li>Assigning Agency or Department (CWE)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CX : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CX.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CX. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CX(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CX.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CX. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CX(IMessage message, string description) : base(message, description){
 		data = new IType[10];
 		data[0] = new ST(message,"ID Number");
@@ -50,9 +52,10 @@ public class CX : AbstractType, IComposite{
 		data[9] = new CWE(message,"Assigning Agency or Department");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -60,12 +63,15 @@ public class CX : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -76,10 +82,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns ID Number (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns ID Number (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier number. </value>
+
 	public ST IDNumber {
 get{
 	   ST ret = null;
@@ -93,10 +103,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Check Digit (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Check Digit (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The check digit. </value>
+
 	public ST CheckDigit {
 get{
 	   ST ret = null;
@@ -110,10 +124,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Check Digit Scheme (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Check Digit Scheme (component #2).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The check digit scheme. </value>
+
 	public ID CheckDigitScheme {
 get{
 	   ID ret = null;
@@ -127,10 +145,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Assigning Authority (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Assigning Authority (component #3).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The assigning authority. </value>
+
 	public HD AssigningAuthority {
 get{
 	   HD ret = null;
@@ -144,10 +166,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Identifier Type Code (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Identifier Type Code (component #4).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier type code. </value>
+
 	public ID IdentifierTypeCode {
 get{
 	   ID ret = null;
@@ -161,10 +187,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Assigning Facility (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Assigning Facility (component #5).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The assigning facility. </value>
+
 	public HD AssigningFacility {
 get{
 	   HD ret = null;
@@ -178,10 +208,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Effective Date (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Effective Date (component #6).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The effective date. </value>
+
 	public DT EffectiveDate {
 get{
 	   DT ret = null;
@@ -195,10 +229,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Expiration Date (component #7).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Expiration Date (component #7).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The expiration date. </value>
+
 	public DT ExpirationDate {
 get{
 	   DT ret = null;
@@ -212,10 +250,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Assigning Jurisdiction (component #8).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Assigning Jurisdiction (component #8).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The assigning jurisdiction. </value>
+
 	public CWE AssigningJurisdiction {
 get{
 	   CWE ret = null;
@@ -229,10 +271,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Assigning Agency or Department (component #9).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Assigning Agency or Department (component #9).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The assigning agency or department. </value>
+
 	public CWE AssigningAgencyOrDepartment {
 get{
 	   CWE ret = null;

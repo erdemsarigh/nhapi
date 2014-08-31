@@ -7,60 +7,61 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 NK1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>NK1-1: Set ID - NK1 (SI)</li>
-///<li>NK1-2: Name (XPN)</li>
-///<li>NK1-3: Relationship (CE)</li>
-///<li>NK1-4: Address (XAD)</li>
-///<li>NK1-5: Phone Number (XTN)</li>
-///<li>NK1-6: Business Phone Number (XTN)</li>
-///<li>NK1-7: Contact Role (CE)</li>
-///<li>NK1-8: Start Date (DT)</li>
-///<li>NK1-9: End Date (DT)</li>
-///<li>NK1-10: Next of Kin / Associated Parties Job Title (ST)</li>
-///<li>NK1-11: Next of Kin / Associated Parties Job Code/Class (JCC)</li>
-///<li>NK1-12: Next of Kin / Associated Parties Employee Number (CX)</li>
-///<li>NK1-13: Organization Name - NK1 (XON)</li>
-///<li>NK1-14: Marital Status (CE)</li>
-///<li>NK1-15: Sex (IS)</li>
-///<li>NK1-16: Date/Time Of Birth (TS)</li>
-///<li>NK1-17: Living Dependency (IS)</li>
-///<li>NK1-18: Ambulatory Status (IS)</li>
-///<li>NK1-19: Citizenship (CE)</li>
-///<li>NK1-20: Primary Language (CE)</li>
-///<li>NK1-21: Living Arrangement (IS)</li>
-///<li>NK1-22: Publicity Code (CE)</li>
-///<li>NK1-23: Protection Indicator (ID)</li>
-///<li>NK1-24: Student Indicator (IS)</li>
-///<li>NK1-25: Religion (CE)</li>
-///<li>NK1-26: Mother’s Maiden Name (XPN)</li>
-///<li>NK1-27: Nationality (CE)</li>
-///<li>NK1-28: Ethnic Group (CE)</li>
-///<li>NK1-29: Contact Reason (CE)</li>
-///<li>NK1-30: Contact Person’s Name (XPN)</li>
-///<li>NK1-31: Contact Person’s Telephone Number (XTN)</li>
-///<li>NK1-32: Contact Person’s Address (XAD)</li>
-///<li>NK1-33: Next of Kin/Associated Party’s Identifiers (CX)</li>
-///<li>NK1-34: Job Status (IS)</li>
-///<li>NK1-35: Race (CE)</li>
-///<li>NK1-36: Handicap (IS)</li>
-///<li>NK1-37: Contact Person Social Security Number (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 NK1 message segment. This segment has the following fields:<ol>
+/// <li>NK1-1: Set ID - NK1 (SI)</li>
+/// <li>NK1-2: Name (XPN)</li>
+/// <li>NK1-3: Relationship (CE)</li>
+/// <li>NK1-4: Address (XAD)</li>
+/// <li>NK1-5: Phone Number (XTN)</li>
+/// <li>NK1-6: Business Phone Number (XTN)</li>
+/// <li>NK1-7: Contact Role (CE)</li>
+/// <li>NK1-8: Start Date (DT)</li>
+/// <li>NK1-9: End Date (DT)</li>
+/// <li>NK1-10: Next of Kin / Associated Parties Job Title (ST)</li>
+/// <li>NK1-11: Next of Kin / Associated Parties Job Code/Class (JCC)</li>
+/// <li>NK1-12: Next of Kin / Associated Parties Employee Number (CX)</li>
+/// <li>NK1-13: Organization Name - NK1 (XON)</li>
+/// <li>NK1-14: Marital Status (CE)</li>
+/// <li>NK1-15: Sex (IS)</li>
+/// <li>NK1-16: Date/Time Of Birth (TS)</li>
+/// <li>NK1-17: Living Dependency (IS)</li>
+/// <li>NK1-18: Ambulatory Status (IS)</li>
+/// <li>NK1-19: Citizenship (CE)</li>
+/// <li>NK1-20: Primary Language (CE)</li>
+/// <li>NK1-21: Living Arrangement (IS)</li>
+/// <li>NK1-22: Publicity Code (CE)</li>
+/// <li>NK1-23: Protection Indicator (ID)</li>
+/// <li>NK1-24: Student Indicator (IS)</li>
+/// <li>NK1-25: Religion (CE)</li>
+/// <li>NK1-26: Mother’s Maiden Name (XPN)</li>
+/// <li>NK1-27: Nationality (CE)</li>
+/// <li>NK1-28: Ethnic Group (CE)</li>
+/// <li>NK1-29: Contact Reason (CE)</li>
+/// <li>NK1-30: Contact Person’s Name (XPN)</li>
+/// <li>NK1-31: Contact Person’s Telephone Number (XTN)</li>
+/// <li>NK1-32: Contact Person’s Address (XAD)</li>
+/// <li>NK1-33: Next of Kin/Associated Party’s Identifiers (CX)</li>
+/// <li>NK1-34: Job Status (IS)</li>
+/// <li>NK1-35: Race (CE)</li>
+/// <li>NK1-36: Handicap (IS)</li>
+/// <li>NK1-37: Contact Person Social Security Number (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class NK1 : AbstractSegment  {
 
-  /**
-   * Creates a NK1 (NK1 - next of kin / associated parties segment-) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the NK1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public NK1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -106,9 +107,10 @@ public class NK1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - NK1(NK1-1).
-	///</summary>
+    /// <summary>   Returns Set ID - NK1(NK1-1). </summary>
+    ///
+    /// <value> The set idnk 1. </value>
+
 	public SI SetIDNK1
 	{
 		get{
@@ -129,11 +131,17 @@ public class NK1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Name(NK1-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Name(NK1-2). throws HL7Exception if the repetition number is
+    /// invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The name. </returns>
+
 	public XPN GetName(int rep)
 	{
 			XPN ret = null;
@@ -148,9 +156,12 @@ public class NK1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Name (NK1-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Name (NK1-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetName() {
      XPN[] ret = null;
     try {
@@ -169,9 +180,10 @@ public class NK1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Name (NK1-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Name (NK1-2). </summary>
+  ///
+  /// <value>   The name repetitions used. </value>
+
   public int NameRepetitionsUsed
 {
 get{
@@ -187,9 +199,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Relationship(NK1-3).
-	///</summary>
+
+    /// <summary>   Returns Relationship(NK1-3). </summary>
+    ///
+    /// <value> The relationship. </value>
+
 	public CE Relationship
 	{
 		get{
@@ -210,11 +224,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Address(NK1-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Address(NK1-4). throws HL7Exception if the repetition number
+    /// is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The address. </returns>
+
 	public XAD GetAddress(int rep)
 	{
 			XAD ret = null;
@@ -229,9 +249,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Address (NK1-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Address (NK1-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetAddress() {
      XAD[] ret = null;
     try {
@@ -250,9 +273,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Address (NK1-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Address (NK1-4). </summary>
+  ///
+  /// <value>   The address repetitions used. </value>
+
   public int AddressRepetitionsUsed
 {
 get{
@@ -268,11 +292,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Phone Number(NK1-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Phone Number(NK1-5). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The phone number. </returns>
+
 	public XTN GetPhoneNumber(int rep)
 	{
 			XTN ret = null;
@@ -287,9 +318,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Phone Number (NK1-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Phone Number (NK1-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetPhoneNumber() {
      XTN[] ret = null;
     try {
@@ -308,9 +342,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Phone Number (NK1-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Phone Number (NK1-5). </summary>
+  ///
+  /// <value>   The phone number repetitions used. </value>
+
   public int PhoneNumberRepetitionsUsed
 {
 get{
@@ -326,11 +361,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Business Phone Number(NK1-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Business Phone Number(NK1-6). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The business phone number. </returns>
+
 	public XTN GetBusinessPhoneNumber(int rep)
 	{
 			XTN ret = null;
@@ -345,9 +387,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Business Phone Number (NK1-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of Business Phone Number (NK1-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetBusinessPhoneNumber() {
      XTN[] ret = null;
     try {
@@ -366,9 +411,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Business Phone Number (NK1-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Business Phone Number (NK1-6). </summary>
+  ///
+  /// <value>   The business phone number repetitions used. </value>
+
   public int BusinessPhoneNumberRepetitionsUsed
 {
 get{
@@ -384,9 +430,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Contact Role(NK1-7).
-	///</summary>
+
+    /// <summary>   Returns Contact Role(NK1-7). </summary>
+    ///
+    /// <value> The contact role. </value>
+
 	public CE ContactRole
 	{
 		get{
@@ -407,9 +455,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date(NK1-8).
-	///</summary>
+    /// <summary>   Returns Start Date(NK1-8). </summary>
+    ///
+    /// <value> The start date. </value>
+
 	public DT StartDate
 	{
 		get{
@@ -430,9 +479,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns End Date(NK1-9).
-	///</summary>
+    /// <summary>   Returns End Date(NK1-9). </summary>
+    ///
+    /// <value> The end date. </value>
+
 	public DT EndDate
 	{
 		get{
@@ -453,9 +503,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Next of Kin / Associated Parties Job Title(NK1-10).
-	///</summary>
+    /// <summary>   Returns Next of Kin / Associated Parties Job Title(NK1-10). </summary>
+    ///
+    /// <value> The next of kin associated parties job title. </value>
+
 	public ST NextOfKinAssociatedPartiesJobTitle
 	{
 		get{
@@ -476,9 +527,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Next of Kin / Associated Parties Job Code/Class(NK1-11).
-	///</summary>
+    /// <summary>   Returns Next of Kin / Associated Parties Job Code/Class(NK1-11). </summary>
+    ///
+    /// <value> The next of kin associated parties job code class. </value>
+
 	public JCC NextOfKinAssociatedPartiesJobCodeClass
 	{
 		get{
@@ -499,9 +551,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Next of Kin / Associated Parties Employee Number(NK1-12).
-	///</summary>
+    /// <summary>   Returns Next of Kin / Associated Parties Employee Number(NK1-12). </summary>
+    ///
+    /// <value> The next of kin associated parties employee number. </value>
+
 	public CX NextOfKinAssociatedPartiesEmployeeNumber
 	{
 		get{
@@ -522,11 +575,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Organization Name - NK1(NK1-13).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Organization Name - NK1(NK1-13). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The organization name nk 1. </returns>
+
 	public XON GetOrganizationNameNK1(int rep)
 	{
 			XON ret = null;
@@ -541,9 +600,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Organization Name - NK1 (NK1-13).
-   ///</summary>
+  /// <summary> Returns all repetitions of Organization Name - NK1 (NK1-13). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of XON. </returns>
+
   public XON[] GetOrganizationNameNK1() {
      XON[] ret = null;
     try {
@@ -562,9 +624,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Organization Name - NK1 (NK1-13).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Organization Name - NK1 (NK1-13). </summary>
+  ///
+  /// <value>   The organization name nk 1 repetitions used. </value>
+
   public int OrganizationNameNK1RepetitionsUsed
 {
 get{
@@ -580,9 +643,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Marital Status(NK1-14).
-	///</summary>
+
+    /// <summary>   Returns Marital Status(NK1-14). </summary>
+    ///
+    /// <value> The marital status. </value>
+
 	public CE MaritalStatus
 	{
 		get{
@@ -603,9 +668,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Sex(NK1-15).
-	///</summary>
+    /// <summary>   Returns Sex(NK1-15). </summary>
+    ///
+    /// <value> The sex. </value>
+
 	public IS Sex
 	{
 		get{
@@ -626,9 +692,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date/Time Of Birth(NK1-16).
-	///</summary>
+    /// <summary>   Returns Date/Time Of Birth(NK1-16). </summary>
+    ///
+    /// <value> The date time of birth. </value>
+
 	public TS DateTimeOfBirth
 	{
 		get{
@@ -649,11 +716,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Living Dependency(NK1-17).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Living Dependency(NK1-17). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The living dependency. </returns>
+
 	public IS GetLivingDependency(int rep)
 	{
 			IS ret = null;
@@ -668,9 +741,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Living Dependency (NK1-17).
-   ///</summary>
+  /// <summary> Returns all repetitions of Living Dependency (NK1-17). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetLivingDependency() {
      IS[] ret = null;
     try {
@@ -689,9 +765,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Living Dependency (NK1-17).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Living Dependency (NK1-17). </summary>
+  ///
+  /// <value>   The living dependency repetitions used. </value>
+
   public int LivingDependencyRepetitionsUsed
 {
 get{
@@ -707,11 +784,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Ambulatory Status(NK1-18).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Ambulatory Status(NK1-18). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ambulatory status. </returns>
+
 	public IS GetAmbulatoryStatus(int rep)
 	{
 			IS ret = null;
@@ -726,9 +810,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Ambulatory Status (NK1-18).
-   ///</summary>
+  /// <summary> Returns all repetitions of Ambulatory Status (NK1-18). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetAmbulatoryStatus() {
      IS[] ret = null;
     try {
@@ -747,9 +834,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Ambulatory Status (NK1-18).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Ambulatory Status (NK1-18). </summary>
+  ///
+  /// <value>   The ambulatory status repetitions used. </value>
+
   public int AmbulatoryStatusRepetitionsUsed
 {
 get{
@@ -765,11 +853,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Citizenship(NK1-19).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Citizenship(NK1-19). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The citizenship. </returns>
+
 	public CE GetCitizenship(int rep)
 	{
 			CE ret = null;
@@ -784,9 +879,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Citizenship (NK1-19).
-   ///</summary>
+  /// <summary> Returns all repetitions of Citizenship (NK1-19). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetCitizenship() {
      CE[] ret = null;
     try {
@@ -805,9 +903,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Citizenship (NK1-19).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Citizenship (NK1-19). </summary>
+  ///
+  /// <value>   The citizenship repetitions used. </value>
+
   public int CitizenshipRepetitionsUsed
 {
 get{
@@ -823,9 +922,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Primary Language(NK1-20).
-	///</summary>
+
+    /// <summary>   Returns Primary Language(NK1-20). </summary>
+    ///
+    /// <value> The primary language. </value>
+
 	public CE PrimaryLanguage
 	{
 		get{
@@ -846,9 +947,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Living Arrangement(NK1-21).
-	///</summary>
+    /// <summary>   Returns Living Arrangement(NK1-21). </summary>
+    ///
+    /// <value> The living arrangement. </value>
+
 	public IS LivingArrangement
 	{
 		get{
@@ -869,9 +971,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Publicity Code(NK1-22).
-	///</summary>
+    /// <summary>   Returns Publicity Code(NK1-22). </summary>
+    ///
+    /// <value> The publicity code. </value>
+
 	public CE PublicityCode
 	{
 		get{
@@ -892,9 +995,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Protection Indicator(NK1-23).
-	///</summary>
+    /// <summary>   Returns Protection Indicator(NK1-23). </summary>
+    ///
+    /// <value> The protection indicator. </value>
+
 	public ID ProtectionIndicator
 	{
 		get{
@@ -915,9 +1019,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Student Indicator(NK1-24).
-	///</summary>
+    /// <summary>   Returns Student Indicator(NK1-24). </summary>
+    ///
+    /// <value> The student indicator. </value>
+
 	public IS StudentIndicator
 	{
 		get{
@@ -938,9 +1043,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Religion(NK1-25).
-	///</summary>
+    /// <summary>   Returns Religion(NK1-25). </summary>
+    ///
+    /// <value> The religion. </value>
+
 	public CE Religion
 	{
 		get{
@@ -961,11 +1067,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Mother’s Maiden Name(NK1-26).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Mother’s Maiden Name(NK1-26). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The mother s maiden name. </returns>
+
 	public XPN GetMotherSMaidenName(int rep)
 	{
 			XPN ret = null;
@@ -980,9 +1092,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Mother’s Maiden Name (NK1-26).
-   ///</summary>
+  /// <summary> Returns all repetitions of Mother’s Maiden Name (NK1-26). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetMotherSMaidenName() {
      XPN[] ret = null;
     try {
@@ -1001,9 +1116,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Mother’s Maiden Name (NK1-26).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Mother’s Maiden Name (NK1-26). </summary>
+  ///
+  /// <value>   The mother s maiden name repetitions used. </value>
+
   public int MotherSMaidenNameRepetitionsUsed
 {
 get{
@@ -1019,9 +1135,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Nationality(NK1-27).
-	///</summary>
+
+    /// <summary>   Returns Nationality(NK1-27). </summary>
+    ///
+    /// <value> The nationality. </value>
+
 	public CE Nationality
 	{
 		get{
@@ -1042,11 +1160,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Ethnic Group(NK1-28).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Ethnic Group(NK1-28). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ethnic group. </returns>
+
 	public CE GetEthnicGroup(int rep)
 	{
 			CE ret = null;
@@ -1061,9 +1185,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Ethnic Group (NK1-28).
-   ///</summary>
+  /// <summary> Returns all repetitions of Ethnic Group (NK1-28). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetEthnicGroup() {
      CE[] ret = null;
     try {
@@ -1082,9 +1209,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Ethnic Group (NK1-28).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Ethnic Group (NK1-28). </summary>
+  ///
+  /// <value>   The ethnic group repetitions used. </value>
+
   public int EthnicGroupRepetitionsUsed
 {
 get{
@@ -1100,11 +1228,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Contact Reason(NK1-29).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Contact Reason(NK1-29). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contact reason. </returns>
+
 	public CE GetContactReason(int rep)
 	{
 			CE ret = null;
@@ -1119,9 +1254,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contact Reason (NK1-29).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contact Reason (NK1-29). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetContactReason() {
      CE[] ret = null;
     try {
@@ -1140,9 +1278,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Contact Reason (NK1-29).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Contact Reason (NK1-29). </summary>
+  ///
+  /// <value>   The contact reason repetitions used. </value>
+
   public int ContactReasonRepetitionsUsed
 {
 get{
@@ -1158,11 +1297,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Contact Person’s Name(NK1-30).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Contact Person’s Name(NK1-30). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contact person s name. </returns>
+
 	public XPN GetContactPersonSName(int rep)
 	{
 			XPN ret = null;
@@ -1177,9 +1323,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contact Person’s Name (NK1-30).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contact Person’s Name (NK1-30). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetContactPersonSName() {
      XPN[] ret = null;
     try {
@@ -1198,9 +1347,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Contact Person’s Name (NK1-30).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Contact Person’s Name (NK1-30). </summary>
+  ///
+  /// <value>   The contact person s name repetitions used. </value>
+
   public int ContactPersonSNameRepetitionsUsed
 {
 get{
@@ -1216,11 +1366,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Contact Person’s Telephone Number(NK1-31).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Contact Person’s Telephone Number(NK1-31). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contact person s telephone number. </returns>
+
 	public XTN GetContactPersonSTelephoneNumber(int rep)
 	{
 			XTN ret = null;
@@ -1235,9 +1392,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contact Person’s Telephone Number (NK1-31).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contact Person’s Telephone Number (NK1-31). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetContactPersonSTelephoneNumber() {
      XTN[] ret = null;
     try {
@@ -1256,9 +1416,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Contact Person’s Telephone Number (NK1-31).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The contact person s telephone number repetitions used. </value>
+
   public int ContactPersonSTelephoneNumberRepetitionsUsed
 {
 get{
@@ -1274,11 +1437,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Contact Person’s Address(NK1-32).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Contact Person’s Address(NK1-32). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contact person s address. </returns>
+
 	public XAD GetContactPersonSAddress(int rep)
 	{
 			XAD ret = null;
@@ -1293,9 +1463,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contact Person’s Address (NK1-32).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contact Person’s Address (NK1-32). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetContactPersonSAddress() {
      XAD[] ret = null;
     try {
@@ -1314,9 +1487,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Contact Person’s Address (NK1-32).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Contact Person’s Address (NK1-32). </summary>
+  ///
+  /// <value>   The contact person s address repetitions used. </value>
+
   public int ContactPersonSAddressRepetitionsUsed
 {
 get{
@@ -1332,11 +1506,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Next of Kin/Associated Party’s Identifiers(NK1-33).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Next of Kin/Associated Party’s Identifiers(NK1-33). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The next of kin associated party s identifiers. </returns>
+
 	public CX GetNextOfKinAssociatedPartySIdentifiers(int rep)
 	{
 			CX ret = null;
@@ -1351,9 +1532,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Next of Kin/Associated Party’s Identifiers (NK1-33).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of cx. </returns>
+
   public CX[] GetNextOfKinAssociatedPartySIdentifiers() {
      CX[] ret = null;
     try {
@@ -1372,9 +1558,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Next of Kin/Associated Party’s Identifiers (NK1-33).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The next of kin associated party s identifiers repetitions used. </value>
+
   public int NextOfKinAssociatedPartySIdentifiersRepetitionsUsed
 {
 get{
@@ -1390,9 +1579,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Job Status(NK1-34).
-	///</summary>
+
+    /// <summary>   Returns Job Status(NK1-34). </summary>
+    ///
+    /// <value> The job status. </value>
+
 	public IS JobStatus
 	{
 		get{
@@ -1413,11 +1604,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Race(NK1-35).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Race(NK1-35). throws HL7Exception if the repetition number is
+    /// invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The race. </returns>
+
 	public CE GetRace(int rep)
 	{
 			CE ret = null;
@@ -1432,9 +1629,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Race (NK1-35).
-   ///</summary>
+  /// <summary> Returns all repetitions of Race (NK1-35). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetRace() {
      CE[] ret = null;
     try {
@@ -1453,9 +1653,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Race (NK1-35).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Race (NK1-35). </summary>
+  ///
+  /// <value>   The race repetitions used. </value>
+
   public int RaceRepetitionsUsed
 {
 get{
@@ -1471,9 +1672,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Handicap(NK1-36).
-	///</summary>
+
+    /// <summary>   Returns Handicap(NK1-36). </summary>
+    ///
+    /// <value> The handicap. </value>
+
 	public IS Handicap
 	{
 		get{
@@ -1494,9 +1697,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Contact Person Social Security Number(NK1-37).
-	///</summary>
+    /// <summary>   Returns Contact Person Social Security Number(NK1-37). </summary>
+    ///
+    /// <value> The contact person social security number. </value>
+
 	public ST ContactPersonSocialSecurityNumber
 	{
 		get{

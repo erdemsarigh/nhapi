@@ -7,37 +7,38 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 TCC message segment. 
-/// This segment has the following fields:<ol>
-///<li>TCC-1: Universal Service Identifier (CE)</li>
-///<li>TCC-2: Test Application Identifier (EI)</li>
-///<li>TCC-3: Specimen Source (SPS)</li>
-///<li>TCC-4: Auto-Dilution Factor Default (SN)</li>
-///<li>TCC-5: Rerun Dilution Factor Default (SN)</li>
-///<li>TCC-6: Pre-Dilution Factor Default (SN)</li>
-///<li>TCC-7: Endogenous Content of Pre-Dilution Diluent (SN)</li>
-///<li>TCC-8: Inventory Limits Warning Level (NM)</li>
-///<li>TCC-9: Automatic Rerun Allowed (ID)</li>
-///<li>TCC-10: Automatic Repeat Allowed (ID)</li>
-///<li>TCC-11: Automatic Reflex Allowed (ID)</li>
-///<li>TCC-12: Equipment Dynamic Range (SN)</li>
-///<li>TCC-13: Units (CE)</li>
-///<li>TCC-14: Processing Type (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 TCC message segment. This segment has the following fields:<ol>
+/// <li>TCC-1: Universal Service Identifier (CE)</li>
+/// <li>TCC-2: Test Application Identifier (EI)</li>
+/// <li>TCC-3: Specimen Source (SPS)</li>
+/// <li>TCC-4: Auto-Dilution Factor Default (SN)</li>
+/// <li>TCC-5: Rerun Dilution Factor Default (SN)</li>
+/// <li>TCC-6: Pre-Dilution Factor Default (SN)</li>
+/// <li>TCC-7: Endogenous Content of Pre-Dilution Diluent (SN)</li>
+/// <li>TCC-8: Inventory Limits Warning Level (NM)</li>
+/// <li>TCC-9: Automatic Rerun Allowed (ID)</li>
+/// <li>TCC-10: Automatic Repeat Allowed (ID)</li>
+/// <li>TCC-11: Automatic Reflex Allowed (ID)</li>
+/// <li>TCC-12: Equipment Dynamic Range (SN)</li>
+/// <li>TCC-13: Units (CE)</li>
+/// <li>TCC-14: Processing Type (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class TCC : AbstractSegment  {
 
-  /**
-   * Creates a TCC (Test Code Configuration) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the TCC class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public TCC(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -60,9 +61,10 @@ public class TCC : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Universal Service Identifier(TCC-1).
-	///</summary>
+    /// <summary>   Returns Universal Service Identifier(TCC-1). </summary>
+    ///
+    /// <value> The identifier of the universal service. </value>
+
 	public CE UniversalServiceIdentifier
 	{
 		get{
@@ -83,9 +85,10 @@ public class TCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Test Application Identifier(TCC-2).
-	///</summary>
+    /// <summary>   Returns Test Application Identifier(TCC-2). </summary>
+    ///
+    /// <value> The identifier of the test application. </value>
+
 	public EI TestApplicationIdentifier
 	{
 		get{
@@ -106,9 +109,10 @@ public class TCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Specimen Source(TCC-3).
-	///</summary>
+    /// <summary>   Returns Specimen Source(TCC-3). </summary>
+    ///
+    /// <value> The specimen source. </value>
+
 	public SPS SpecimenSource
 	{
 		get{
@@ -129,9 +133,10 @@ public class TCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Auto-Dilution Factor Default(TCC-4).
-	///</summary>
+    /// <summary>   Returns Auto-Dilution Factor Default(TCC-4). </summary>
+    ///
+    /// <value> The automatic dilution factor default. </value>
+
 	public SN AutoDilutionFactorDefault
 	{
 		get{
@@ -152,9 +157,10 @@ public class TCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Rerun Dilution Factor Default(TCC-5).
-	///</summary>
+    /// <summary>   Returns Rerun Dilution Factor Default(TCC-5). </summary>
+    ///
+    /// <value> The rerun dilution factor default. </value>
+
 	public SN RerunDilutionFactorDefault
 	{
 		get{
@@ -175,9 +181,10 @@ public class TCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Pre-Dilution Factor Default(TCC-6).
-	///</summary>
+    /// <summary>   Returns Pre-Dilution Factor Default(TCC-6). </summary>
+    ///
+    /// <value> The pre dilution factor default. </value>
+
 	public SN PreDilutionFactorDefault
 	{
 		get{
@@ -198,9 +205,10 @@ public class TCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Endogenous Content of Pre-Dilution Diluent(TCC-7).
-	///</summary>
+    /// <summary>   Returns Endogenous Content of Pre-Dilution Diluent(TCC-7). </summary>
+    ///
+    /// <value> The endogenous content of pre dilution diluent. </value>
+
 	public SN EndogenousContentOfPreDilutionDiluent
 	{
 		get{
@@ -221,9 +229,10 @@ public class TCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Inventory Limits Warning Level(TCC-8).
-	///</summary>
+    /// <summary>   Returns Inventory Limits Warning Level(TCC-8). </summary>
+    ///
+    /// <value> The inventory limits warning level. </value>
+
 	public NM InventoryLimitsWarningLevel
 	{
 		get{
@@ -244,9 +253,10 @@ public class TCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Automatic Rerun Allowed(TCC-9).
-	///</summary>
+    /// <summary>   Returns Automatic Rerun Allowed(TCC-9). </summary>
+    ///
+    /// <value> The automatic rerun allowed. </value>
+
 	public ID AutomaticRerunAllowed
 	{
 		get{
@@ -267,9 +277,10 @@ public class TCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Automatic Repeat Allowed(TCC-10).
-	///</summary>
+    /// <summary>   Returns Automatic Repeat Allowed(TCC-10). </summary>
+    ///
+    /// <value> The automatic repeat allowed. </value>
+
 	public ID AutomaticRepeatAllowed
 	{
 		get{
@@ -290,9 +301,10 @@ public class TCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Automatic Reflex Allowed(TCC-11).
-	///</summary>
+    /// <summary>   Returns Automatic Reflex Allowed(TCC-11). </summary>
+    ///
+    /// <value> The automatic reflex allowed. </value>
+
 	public ID AutomaticReflexAllowed
 	{
 		get{
@@ -313,9 +325,10 @@ public class TCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Equipment Dynamic Range(TCC-12).
-	///</summary>
+    /// <summary>   Returns Equipment Dynamic Range(TCC-12). </summary>
+    ///
+    /// <value> The equipment dynamic range. </value>
+
 	public SN EquipmentDynamicRange
 	{
 		get{
@@ -336,9 +349,10 @@ public class TCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Units(TCC-13).
-	///</summary>
+    /// <summary>   Returns Units(TCC-13). </summary>
+    ///
+    /// <value> The units. </value>
+
 	public CE Units
 	{
 		get{
@@ -359,9 +373,10 @@ public class TCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Processing Type(TCC-14).
-	///</summary>
+    /// <summary>   Returns Processing Type(TCC-14). </summary>
+    ///
+    /// <value> The type of the processing. </value>
+
 	public CE ProcessingType
 	{
 		get{

@@ -8,24 +8,27 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the ORU_R01_PATIENT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PID (Patient identification) </li>
-///<li>1: PD1 (patient additional demographic) optional </li>
-///<li>2: NK1 (Next of kin / associated parties) optional repeating</li>
-///<li>3: NTE (Notes and Comments) optional repeating</li>
-///<li>4: ORU_R01_VISIT (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ORU_R01_PATIENT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PID (Patient identification) </li>
+/// <li>1: PD1 (patient additional demographic) optional </li>
+/// <li>2: NK1 (Next of kin / associated parties) optional repeating</li>
+/// <li>3: NTE (Notes and Comments) optional repeating</li>
+/// <li>4: ORU_R01_VISIT (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ORU_R01_PATIENT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ORU_R01_PATIENT Group.
-	///</summary>
+    /// <summary>   Creates a new ORU_R01_PATIENT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORU_R01_PATIENT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PID), true, false);
@@ -38,9 +41,10 @@ public class ORU_R01_PATIENT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PID (Patient identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -54,9 +58,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (patient additional demographic) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PD1 (patient additional demographic) - creates it if necessary. </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;
@@ -70,9 +75,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NK1 (Next of kin / associated parties) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NK1 (Next of kin / associated parties) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nk 1. </returns>
+
 	public NK1 GetNK1() {
 	   NK1 ret = null;
 	   try {
@@ -84,19 +94,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NK1
-	/// * (Next of kin / associated parties) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NK1
+    ///  * (Next of kin / associated parties) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nk 1. </returns>
+
 	public NK1 GetNK1(int rep) { 
 	   return (NK1)this.GetStructure("NK1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NK1 
-	 */ 
+    /// <summary>   Gets the nk 1 repetitions used. </summary>
+    ///
+    /// <value> The nk 1 repetitions used. </value>
+
 	public int NK1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -111,9 +127,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -125,19 +146,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and Comments) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and Comments) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -152,9 +179,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns ORU_R01_VISIT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORU_R01_VISIT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The visit. </value>
+
 	public ORU_R01_VISIT VISIT { 
 get{
 	   ORU_R01_VISIT ret = null;

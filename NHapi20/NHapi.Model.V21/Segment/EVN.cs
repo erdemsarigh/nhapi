@@ -7,27 +7,28 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 EVN message segment. 
-/// This segment has the following fields:<ol>
-///<li>EVN-1: EVENT TYPE CODE (ID)</li>
-///<li>EVN-2: DATE/TIME OF EVENT (TS)</li>
-///<li>EVN-3: DATE/TIME PLANNED EVENT (TS)</li>
-///<li>EVN-4: EVENT REASON CODE (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 EVN message segment. This segment has the following fields:<ol>
+/// <li>EVN-1: EVENT TYPE CODE (ID)</li>
+/// <li>EVN-2: DATE/TIME OF EVENT (TS)</li>
+/// <li>EVN-3: DATE/TIME PLANNED EVENT (TS)</li>
+/// <li>EVN-4: EVENT REASON CODE (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class EVN : AbstractSegment  {
 
-  /**
-   * Creates a EVN (EVENT TYPE) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the EVN class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public EVN(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -40,9 +41,10 @@ public class EVN : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns EVENT TYPE CODE(EVN-1).
-	///</summary>
+    /// <summary>   Returns EVENT TYPE CODE(EVN-1). </summary>
+    ///
+    /// <value> The eventtypecode. </value>
+
 	public ID EVENTTYPECODE
 	{
 		get{
@@ -63,9 +65,10 @@ public class EVN : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DATE/TIME OF EVENT(EVN-2).
-	///</summary>
+    /// <summary>   Returns DATE/TIME OF EVENT(EVN-2). </summary>
+    ///
+    /// <value> The datetimeofevent. </value>
+
 	public TS DATETIMEOFEVENT
 	{
 		get{
@@ -86,9 +89,10 @@ public class EVN : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DATE/TIME PLANNED EVENT(EVN-3).
-	///</summary>
+    /// <summary>   Returns DATE/TIME PLANNED EVENT(EVN-3). </summary>
+    ///
+    /// <value> The datetimeplannedevent. </value>
+
 	public TS DATETIMEPLANNEDEVENT
 	{
 		get{
@@ -109,9 +113,10 @@ public class EVN : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns EVENT REASON CODE(EVN-4).
-	///</summary>
+    /// <summary>   Returns EVENT REASON CODE(EVN-4). </summary>
+    ///
+    /// <value> The eventreasoncode. </value>
+
 	public ID EVENTREASONCODE
 	{
 		get{

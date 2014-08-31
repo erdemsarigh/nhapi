@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the MFN_M11_MF_TEST_CALC_DETAIL Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: OM6 (Observations that are Calculated from Other Observ) </li>
-///<li>1: OM2 (Numeric Observation) </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the MFN_M11_MF_TEST_CALC_DETAIL Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: OM6 (Observations that are Calculated from Other Observ) </li>
+/// <li>1: OM2 (Numeric Observation) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFN_M11_MF_TEST_CALC_DETAIL : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new MFN_M11_MF_TEST_CALC_DETAIL Group.
-	///</summary>
+    /// <summary>   Creates a new MFN_M11_MF_TEST_CALC_DETAIL Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFN_M11_MF_TEST_CALC_DETAIL(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(OM6), true, false);
@@ -32,9 +35,12 @@ public class MFN_M11_MF_TEST_CALC_DETAIL : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns OM6 (Observations that are Calculated from Other Observ) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns OM6 (Observations that are Calculated from Other Observ) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The om 6. </value>
+
 	public OM6 OM6 { 
 get{
 	   OM6 ret = null;
@@ -48,9 +54,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns OM2 (Numeric Observation) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OM2 (Numeric Observation) - creates it if necessary. </summary>
+    ///
+    /// <value> The om 2. </value>
+
 	public OM2 OM2 { 
 get{
 	   OM2 ret = null;

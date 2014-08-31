@@ -7,35 +7,36 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 ORG message segment. 
-/// This segment has the following fields:<ol>
-///<li>ORG-1: Set ID - ORG (SI)</li>
-///<li>ORG-2: Organization Unit Code (CE)</li>
-///<li>ORG-3: Organization Unit Type Code - ORG (CE)</li>
-///<li>ORG-4: Primary Org Unit Indicator (ID)</li>
-///<li>ORG-5: Practitioner Org Unit Identifier (CX)</li>
-///<li>ORG-6: Health Care Provider Type Code (CE)</li>
-///<li>ORG-7: Health Care Provider Classification Code (CE)</li>
-///<li>ORG-8: Health Care Provider Area of Specialization Code (CE)</li>
-///<li>ORG-9: Effective Date Range (DR)</li>
-///<li>ORG-10: Employment Status Code (CE)</li>
-///<li>ORG-11: Board Approval Indicator (ID)</li>
-///<li>ORG-12: Primary Care Physician Indicator (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ORG message segment. This segment has the following fields:<ol>
+/// <li>ORG-1: Set ID - ORG (SI)</li>
+/// <li>ORG-2: Organization Unit Code (CE)</li>
+/// <li>ORG-3: Organization Unit Type Code - ORG (CE)</li>
+/// <li>ORG-4: Primary Org Unit Indicator (ID)</li>
+/// <li>ORG-5: Practitioner Org Unit Identifier (CX)</li>
+/// <li>ORG-6: Health Care Provider Type Code (CE)</li>
+/// <li>ORG-7: Health Care Provider Classification Code (CE)</li>
+/// <li>ORG-8: Health Care Provider Area of Specialization Code (CE)</li>
+/// <li>ORG-9: Effective Date Range (DR)</li>
+/// <li>ORG-10: Employment Status Code (CE)</li>
+/// <li>ORG-11: Board Approval Indicator (ID)</li>
+/// <li>ORG-12: Primary Care Physician Indicator (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ORG : AbstractSegment  {
 
-  /**
-   * Creates a ORG (Practitioner Organization Unit) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ORG class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORG(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -56,9 +57,10 @@ public class ORG : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - ORG(ORG-1).
-	///</summary>
+    /// <summary>   Returns Set ID - ORG(ORG-1). </summary>
+    ///
+    /// <value> The set idorg. </value>
+
 	public SI SetIDORG
 	{
 		get{
@@ -79,9 +81,10 @@ public class ORG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Organization Unit Code(ORG-2).
-	///</summary>
+    /// <summary>   Returns Organization Unit Code(ORG-2). </summary>
+    ///
+    /// <value> The organization unit code. </value>
+
 	public CE OrganizationUnitCode
 	{
 		get{
@@ -102,9 +105,10 @@ public class ORG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Organization Unit Type Code - ORG(ORG-3).
-	///</summary>
+    /// <summary>   Returns Organization Unit Type Code - ORG(ORG-3). </summary>
+    ///
+    /// <value> The organization unit type code organisation. </value>
+
 	public CE OrganizationUnitTypeCodeORG
 	{
 		get{
@@ -125,9 +129,10 @@ public class ORG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Primary Org Unit Indicator(ORG-4).
-	///</summary>
+    /// <summary>   Returns Primary Org Unit Indicator(ORG-4). </summary>
+    ///
+    /// <value> The primary organisation unit indicator. </value>
+
 	public ID PrimaryOrgUnitIndicator
 	{
 		get{
@@ -148,9 +153,10 @@ public class ORG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Practitioner Org Unit Identifier(ORG-5).
-	///</summary>
+    /// <summary>   Returns Practitioner Org Unit Identifier(ORG-5). </summary>
+    ///
+    /// <value> The identifier of the practitioner organisation unit. </value>
+
 	public CX PractitionerOrgUnitIdentifier
 	{
 		get{
@@ -171,9 +177,10 @@ public class ORG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Health Care Provider Type Code(ORG-6).
-	///</summary>
+    /// <summary>   Returns Health Care Provider Type Code(ORG-6). </summary>
+    ///
+    /// <value> The health care provider type code. </value>
+
 	public CE HealthCareProviderTypeCode
 	{
 		get{
@@ -194,9 +201,10 @@ public class ORG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Health Care Provider Classification Code(ORG-7).
-	///</summary>
+    /// <summary>   Returns Health Care Provider Classification Code(ORG-7). </summary>
+    ///
+    /// <value> The health care provider classification code. </value>
+
 	public CE HealthCareProviderClassificationCode
 	{
 		get{
@@ -217,9 +225,10 @@ public class ORG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Health Care Provider Area of Specialization Code(ORG-8).
-	///</summary>
+    /// <summary>   Returns Health Care Provider Area of Specialization Code(ORG-8). </summary>
+    ///
+    /// <value> The health care provider area of specialization code. </value>
+
 	public CE HealthCareProviderAreaOfSpecializationCode
 	{
 		get{
@@ -240,9 +249,10 @@ public class ORG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Effective Date Range(ORG-9).
-	///</summary>
+    /// <summary>   Returns Effective Date Range(ORG-9). </summary>
+    ///
+    /// <value> The effective date range. </value>
+
 	public DR EffectiveDateRange
 	{
 		get{
@@ -263,9 +273,10 @@ public class ORG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Employment Status Code(ORG-10).
-	///</summary>
+    /// <summary>   Returns Employment Status Code(ORG-10). </summary>
+    ///
+    /// <value> The employment status code. </value>
+
 	public CE EmploymentStatusCode
 	{
 		get{
@@ -286,9 +297,10 @@ public class ORG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Board Approval Indicator(ORG-11).
-	///</summary>
+    /// <summary>   Returns Board Approval Indicator(ORG-11). </summary>
+    ///
+    /// <value> The board approval indicator. </value>
+
 	public ID BoardApprovalIndicator
 	{
 		get{
@@ -309,9 +321,10 @@ public class ORG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Primary Care Physician Indicator(ORG-12).
-	///</summary>
+    /// <summary>   Returns Primary Care Physician Indicator(ORG-12). </summary>
+    ///
+    /// <value> The primary care physician indicator. </value>
+
 	public ID PrimaryCarePhysicianIndicator
 	{
 		get{

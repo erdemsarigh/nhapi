@@ -9,35 +9,38 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V24.Message
 
 {
-///<summary>
-/// Represents a ADT_A20 message structure (see chapter 3). This structure contains the 
-/// following elements:
-///<ol>
-///<li>0: MSH (Message Header) </li>
-///<li>1: EVN (Event Type) </li>
-///<li>2: NPU (Bed status update) </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents a ADT_A20 message structure (see chapter 3). This structure contains the following
+/// elements:
+/// <ol>
+/// <li>0: MSH (Message Header) </li>
+/// <li>1: EVN (Event Type) </li>
+/// <li>2: NPU (Bed status update) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ADT_A20 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new ADT_A20 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new ADT_A20 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public ADT_A20(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new ADT_A20 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new ADT_A20 Group with DefaultModelClassFactory. </summary>
 	public ADT_A20() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for ADT_A20.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for ADT_A20.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -48,6 +51,13 @@ public class ADT_A20 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -55,9 +65,11 @@ public class ADT_A20 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message Header) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message Header) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -71,9 +83,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns EVN (Event Type) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns EVN (Event Type) - creates it if necessary. </summary>
+    ///
+    /// <value> The evn. </value>
+
 	public EVN EVN { 
 get{
 	   EVN ret = null;
@@ -87,9 +100,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns NPU (Bed status update) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns NPU (Bed status update) - creates it if necessary. </summary>
+    ///
+    /// <value> The npu. </value>
+
 	public NPU NPU { 
 get{
 	   NPU ret = null;

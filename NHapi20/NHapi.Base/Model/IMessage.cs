@@ -23,21 +23,27 @@ namespace NHapi.Base.Model
 {
     using NHapi.Base.validation;
 
-    /// <summary> Represents a complete HL7 message including all structures, segments, and fields.  </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+    /// <summary>
+    /// Represents a complete HL7 message including all structures, segments, and fields.
+    /// </summary>
+
     public interface IMessage : IGroup
     {
         #region Public Properties
 
-        /// <summary>
-        /// The validation context of the message
-        /// </summary>
+        /// <summary>   The validation context of the message. </summary>
+        ///
+        /// <value> The validation context. </value>
+
         IValidationContext ValidationContext { get; set; }
 
-        /// <summary> Returns the version number of the HL7 version in which this 
-        /// message structure is defined (e.g. "2.4")
+        /// <summary>
+        /// Returns the version number of the HL7 version in which this message structure is defined
+        /// (e.g. "2.4")
         /// </summary>
+        ///
+        /// <value> The version. </value>
+
         System.String Version { get; }
 
         #endregion

@@ -9,46 +9,49 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V23.Message
 
 {
-///<summary>
-/// Represents a ADT_A17 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a ADT_A17 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message header segment) </li>
-///<li>1: EVN (Event type) </li>
-///<li>2: PID (Patient Identification) </li>
-///<li>3: PD1 (Patient Demographic) optional </li>
-///<li>4: PV1 (Patient visit) </li>
-///<li>5: PV2 (Patient visit - additional information) optional </li>
-///<li>6: DB1 (Disability Segment) optional repeating</li>
-///<li>7: OBX (Observation segment) optional repeating</li>
-///<li>8: PID (Patient Identification) </li>
-///<li>9: PD1 (Patient Demographic) optional </li>
-///<li>10: PV1 (Patient visit) </li>
-///<li>11: PV2 (Patient visit - additional information) optional </li>
-///<li>12: DB1 (Disability Segment) optional repeating</li>
-///<li>13: OBX (Observation segment) optional repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message header segment) </li>
+/// <li>1: EVN (Event type) </li>
+/// <li>2: PID (Patient Identification) </li>
+/// <li>3: PD1 (Patient Demographic) optional </li>
+/// <li>4: PV1 (Patient visit) </li>
+/// <li>5: PV2 (Patient visit - additional information) optional </li>
+/// <li>6: DB1 (Disability Segment) optional repeating</li>
+/// <li>7: OBX (Observation segment) optional repeating</li>
+/// <li>8: PID (Patient Identification) </li>
+/// <li>9: PD1 (Patient Demographic) optional </li>
+/// <li>10: PV1 (Patient visit) </li>
+/// <li>11: PV2 (Patient visit - additional information) optional </li>
+/// <li>12: DB1 (Disability Segment) optional repeating</li>
+/// <li>13: OBX (Observation segment) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ADT_A17 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new ADT_A17 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new ADT_A17 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public ADT_A17(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new ADT_A17 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new ADT_A17 Group with DefaultModelClassFactory. </summary>
 	public ADT_A17() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for ADT_A17.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for ADT_A17.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -70,6 +73,13 @@ public class ADT_A17 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -77,9 +87,11 @@ public class ADT_A17 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -93,9 +105,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns EVN (Event type) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns EVN (Event type) - creates it if necessary. </summary>
+    ///
+    /// <value> The evn. </value>
+
 	public EVN EVN { 
 get{
 	   EVN ret = null;
@@ -109,9 +122,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PID (Patient Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -125,9 +139,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (Patient Demographic) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PD1 (Patient Demographic) - creates it if necessary. </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;
@@ -141,9 +156,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV1 (Patient visit) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PV1 (Patient visit) - creates it if necessary. </summary>
+    ///
+    /// <value> The pv 1. </value>
+
 	public PV1 PV1 { 
 get{
 	   PV1 ret = null;
@@ -157,9 +173,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV2 (Patient visit - additional information) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PV2 (Patient visit - additional information) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The pv 2. </value>
+
 	public PV2 PV2 { 
 get{
 	   PV2 ret = null;
@@ -173,9 +192,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of DB1 (Disability Segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of DB1 (Disability Segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The database 1. </returns>
+
 	public DB1 GetDB1() {
 	   DB1 ret = null;
 	   try {
@@ -187,19 +211,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of DB1
-	/// * (Disability Segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of DB1
+    ///  * (Disability Segment) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The database 1. </returns>
+
 	public DB1 GetDB1(int rep) { 
 	   return (DB1)this.GetStructure("DB1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of DB1 
-	 */ 
+    /// <summary>   Gets the database 1 repetitions used. </summary>
+    ///
+    /// <value> The database 1 repetitions used. </value>
+
 	public int DB1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -214,9 +244,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of OBX (Observation segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of OBX (Observation segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The obx. </returns>
+
 	public OBX GetOBX() {
 	   OBX ret = null;
 	   try {
@@ -228,19 +263,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of OBX
-	/// * (Observation segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of OBX
+    ///  * (Observation segment) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The obx. </returns>
+
 	public OBX GetOBX(int rep) { 
 	   return (OBX)this.GetStructure("OBX", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of OBX 
-	 */ 
+    /// <summary>   Gets the obx repetitions used. </summary>
+    ///
+    /// <value> The obx repetitions used. </value>
+
 	public int OBXRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -255,9 +296,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns PID2 (Patient Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID2 (Patient Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID 2. </value>
+
 	public PID PID2 { 
 get{
 	   PID ret = null;
@@ -271,9 +313,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD12 (Patient Demographic) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PD12 (Patient Demographic) - creates it if necessary. </summary>
+    ///
+    /// <value> The pd 12. </value>
+
 	public PD1 PD12 { 
 get{
 	   PD1 ret = null;
@@ -287,9 +330,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV12 (Patient visit) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PV12 (Patient visit) - creates it if necessary. </summary>
+    ///
+    /// <value> The pv 12. </value>
+
 	public PV1 PV12 { 
 get{
 	   PV1 ret = null;
@@ -303,9 +347,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV22 (Patient visit - additional information) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PV22 (Patient visit - additional information) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The pv 22. </value>
+
 	public PV2 PV22 { 
 get{
 	   PV2 ret = null;
@@ -319,9 +366,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of DB12 (Disability Segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of DB12 (Disability Segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The database 12. </returns>
+
 	public DB1 GetDB12() {
 	   DB1 ret = null;
 	   try {
@@ -333,19 +385,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of DB12
-	/// * (Disability Segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of DB12
+    ///  * (Disability Segment) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The database 12. </returns>
+
 	public DB1 GetDB12(int rep) { 
 	   return (DB1)this.GetStructure("DB12", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of DB12 
-	 */ 
+    /// <summary>   Gets the database 12 repetitions used. </summary>
+    ///
+    /// <value> The database 12 repetitions used. </value>
+
 	public int DB12RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -360,9 +418,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of OBX2 (Observation segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of OBX2 (Observation segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The obx 2. </returns>
+
 	public OBX GetOBX2() {
 	   OBX ret = null;
 	   try {
@@ -374,19 +437,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of OBX2
-	/// * (Observation segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of OBX2
+    ///  * (Observation segment) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The obx 2. </returns>
+
 	public OBX GetOBX2(int rep) { 
 	   return (OBX)this.GetStructure("OBX2", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of OBX2 
-	 */ 
+    /// <summary>   Gets the obx 2 repetitions used. </summary>
+    ///
+    /// <value> The obx 2 repetitions used. </value>
+
 	public int OBX2RepetitionsUsed { 
 get{
 	    int reps = -1; 

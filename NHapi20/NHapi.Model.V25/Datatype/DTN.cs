@@ -6,37 +6,40 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 DTN (Day Type and Number) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 DTN (Day Type and Number) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>Day Type (IS)</li>
 /// <li>Number of Days (NM)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class DTN : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a DTN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a DTN. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public DTN(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a DTN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a DTN. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public DTN(IMessage message, string description) : base(message, description){
 		data = new IType[2];
 		data[0] = new IS(message, 149,"Day Type");
 		data[1] = new NM(message,"Number of Days");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -44,12 +47,15 @@ public class DTN : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -60,10 +66,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Day Type (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Day Type (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the day. </value>
+
 	public IS DayType {
 get{
 	   IS ret = null;
@@ -77,10 +87,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Number of Days (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Number of Days (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The total number of days. </value>
+
 	public NM NumberOfDays {
 get{
 	   NM ret = null;

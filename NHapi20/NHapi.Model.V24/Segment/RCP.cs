@@ -7,30 +7,31 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 RCP message segment. 
-/// This segment has the following fields:<ol>
-///<li>RCP-1: Query Priority (ID)</li>
-///<li>RCP-2: Quantity Limited Request (CQ)</li>
-///<li>RCP-3: Response Modality (CE)</li>
-///<li>RCP-4: Execution and Delivery Time (TS)</li>
-///<li>RCP-5: Modify Indicator (ID)</li>
-///<li>RCP-6: Sort-by Field (SRT)</li>
-///<li>RCP-7: Segment group inclusion (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 RCP message segment. This segment has the following fields:<ol>
+/// <li>RCP-1: Query Priority (ID)</li>
+/// <li>RCP-2: Quantity Limited Request (CQ)</li>
+/// <li>RCP-3: Response Modality (CE)</li>
+/// <li>RCP-4: Execution and Delivery Time (TS)</li>
+/// <li>RCP-5: Modify Indicator (ID)</li>
+/// <li>RCP-6: Sort-by Field (SRT)</li>
+/// <li>RCP-7: Segment group inclusion (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class RCP : AbstractSegment  {
 
-  /**
-   * Creates a RCP (Response Control Parameter) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the RCP class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RCP(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -46,9 +47,10 @@ public class RCP : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Query Priority(RCP-1).
-	///</summary>
+    /// <summary>   Returns Query Priority(RCP-1). </summary>
+    ///
+    /// <value> The query priority. </value>
+
 	public ID QueryPriority
 	{
 		get{
@@ -69,9 +71,10 @@ public class RCP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Quantity Limited Request(RCP-2).
-	///</summary>
+    /// <summary>   Returns Quantity Limited Request(RCP-2). </summary>
+    ///
+    /// <value> The quantity limited request. </value>
+
 	public CQ QuantityLimitedRequest
 	{
 		get{
@@ -92,9 +95,10 @@ public class RCP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Response Modality(RCP-3).
-	///</summary>
+    /// <summary>   Returns Response Modality(RCP-3). </summary>
+    ///
+    /// <value> The response modality. </value>
+
 	public CE ResponseModality
 	{
 		get{
@@ -115,9 +119,10 @@ public class RCP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Execution and Delivery Time(RCP-4).
-	///</summary>
+    /// <summary>   Returns Execution and Delivery Time(RCP-4). </summary>
+    ///
+    /// <value> The execution and delivery time. </value>
+
 	public TS ExecutionAndDeliveryTime
 	{
 		get{
@@ -138,9 +143,10 @@ public class RCP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Modify Indicator(RCP-5).
-	///</summary>
+    /// <summary>   Returns Modify Indicator(RCP-5). </summary>
+    ///
+    /// <value> The modify indicator. </value>
+
 	public ID ModifyIndicator
 	{
 		get{
@@ -161,11 +167,17 @@ public class RCP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Sort-by Field(RCP-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Sort-by Field(RCP-6). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The sort by field. </returns>
+
 	public SRT GetSortByField(int rep)
 	{
 			SRT ret = null;
@@ -180,9 +192,12 @@ public class RCP : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Sort-by Field (RCP-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of Sort-by Field (RCP-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of srt. </returns>
+
   public SRT[] GetSortByField() {
      SRT[] ret = null;
     try {
@@ -201,9 +216,10 @@ public class RCP : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Sort-by Field (RCP-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Sort-by Field (RCP-6). </summary>
+  ///
+  /// <value>   The sort by field repetitions used. </value>
+
   public int SortByFieldRepetitionsUsed
 {
 get{
@@ -219,11 +235,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Segment group inclusion(RCP-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Segment group inclusion(RCP-7). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The segment group inclusion. </returns>
+
 	public ID GetSegmentGroupInclusion(int rep)
 	{
 			ID ret = null;
@@ -238,9 +261,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Segment group inclusion (RCP-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Segment group inclusion (RCP-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetSegmentGroupInclusion() {
      ID[] ret = null;
     try {
@@ -259,9 +285,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Segment group inclusion (RCP-7).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Segment group inclusion (RCP-7). </summary>
+  ///
+  /// <value>   The segment group inclusion repetitions used. </value>
+
   public int SegmentGroupInclusionRepetitionsUsed
 {
 get{

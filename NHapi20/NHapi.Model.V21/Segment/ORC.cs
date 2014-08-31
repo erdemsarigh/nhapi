@@ -7,37 +7,38 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 ORC message segment. 
-/// This segment has the following fields:<ol>
-///<li>ORC-1: ORDER CONTROL (ST)</li>
-///<li>ORC-2: PLACER ORDER # (CM)</li>
-///<li>ORC-3: FILLER ORDER # (CM)</li>
-///<li>ORC-4: PLACER GROUP # (CM)</li>
-///<li>ORC-5: ORDER STATUS (ST)</li>
-///<li>ORC-6: RESPONSE FLAG (ST)</li>
-///<li>ORC-7: TIMING/QUANTITY (CM)</li>
-///<li>ORC-8: PARENT (CM)</li>
-///<li>ORC-9: DATE/TIME OF TRANSACTION (TS)</li>
-///<li>ORC-10: ENTERED BY (CN)</li>
-///<li>ORC-11: VERIFIED BY (CN)</li>
-///<li>ORC-12: ORDERING PROVIDER (CN)</li>
-///<li>ORC-13: ENTERER'S LOCATION (CM)</li>
-///<li>ORC-14: CALL BACK PHONE NUMBER (TN)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ORC message segment. This segment has the following fields:<ol>
+/// <li>ORC-1: ORDER CONTROL (ST)</li>
+/// <li>ORC-2: PLACER ORDER # (CM)</li>
+/// <li>ORC-3: FILLER ORDER # (CM)</li>
+/// <li>ORC-4: PLACER GROUP # (CM)</li>
+/// <li>ORC-5: ORDER STATUS (ST)</li>
+/// <li>ORC-6: RESPONSE FLAG (ST)</li>
+/// <li>ORC-7: TIMING/QUANTITY (CM)</li>
+/// <li>ORC-8: PARENT (CM)</li>
+/// <li>ORC-9: DATE/TIME OF TRANSACTION (TS)</li>
+/// <li>ORC-10: ENTERED BY (CN)</li>
+/// <li>ORC-11: VERIFIED BY (CN)</li>
+/// <li>ORC-12: ORDERING PROVIDER (CN)</li>
+/// <li>ORC-13: ENTERER'S LOCATION (CM)</li>
+/// <li>ORC-14: CALL BACK PHONE NUMBER (TN)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ORC : AbstractSegment  {
 
-  /**
-   * Creates a ORC (COMMON ORDER) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ORC class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORC(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -60,9 +61,10 @@ public class ORC : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns ORDER CONTROL(ORC-1).
-	///</summary>
+    /// <summary>   Returns ORDER CONTROL(ORC-1). </summary>
+    ///
+    /// <value> The ordercontrol. </value>
+
 	public ST ORDERCONTROL
 	{
 		get{
@@ -83,9 +85,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns PLACER ORDER #(ORC-2).
-	///</summary>
+    /// <summary>   Returns PLACER ORDER #(ORC-2). </summary>
+    ///
+    /// <value> The placerorder. </value>
+
 	public CM PLACERORDER
 	{
 		get{
@@ -106,9 +109,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns FILLER ORDER #(ORC-3).
-	///</summary>
+    /// <summary>   Returns FILLER ORDER #(ORC-3). </summary>
+    ///
+    /// <value> The fillerorder. </value>
+
 	public CM FILLERORDER
 	{
 		get{
@@ -129,9 +133,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns PLACER GROUP #(ORC-4).
-	///</summary>
+    /// <summary>   Returns PLACER GROUP #(ORC-4). </summary>
+    ///
+    /// <value> The placergroup. </value>
+
 	public CM PLACERGROUP
 	{
 		get{
@@ -152,9 +157,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns ORDER STATUS(ORC-5).
-	///</summary>
+    /// <summary>   Returns ORDER STATUS(ORC-5). </summary>
+    ///
+    /// <value> The orderstatus. </value>
+
 	public ST ORDERSTATUS
 	{
 		get{
@@ -175,9 +181,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns RESPONSE FLAG(ORC-6).
-	///</summary>
+    /// <summary>   Returns RESPONSE FLAG(ORC-6). </summary>
+    ///
+    /// <value> The responseflag. </value>
+
 	public ST RESPONSEFLAG
 	{
 		get{
@@ -198,9 +205,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns TIMING/QUANTITY(ORC-7).
-	///</summary>
+    /// <summary>   Returns TIMING/QUANTITY(ORC-7). </summary>
+    ///
+    /// <value> The timingquantity. </value>
+
 	public CM TIMINGQUANTITY
 	{
 		get{
@@ -221,9 +229,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns PARENT(ORC-8).
-	///</summary>
+    /// <summary>   Returns PARENT(ORC-8). </summary>
+    ///
+    /// <value> The parent. </value>
+
 	public CM PARENT
 	{
 		get{
@@ -244,9 +253,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DATE/TIME OF TRANSACTION(ORC-9).
-	///</summary>
+    /// <summary>   Returns DATE/TIME OF TRANSACTION(ORC-9). </summary>
+    ///
+    /// <value> The datetimeoftransaction. </value>
+
 	public TS DATETIMEOFTRANSACTION
 	{
 		get{
@@ -267,9 +277,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns ENTERED BY(ORC-10).
-	///</summary>
+    /// <summary>   Returns ENTERED BY(ORC-10). </summary>
+    ///
+    /// <value> The enteredby. </value>
+
 	public CN ENTEREDBY
 	{
 		get{
@@ -290,9 +301,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns VERIFIED BY(ORC-11).
-	///</summary>
+    /// <summary>   Returns VERIFIED BY(ORC-11). </summary>
+    ///
+    /// <value> The verifiedby. </value>
+
 	public CN VERIFIEDBY
 	{
 		get{
@@ -313,9 +325,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns ORDERING PROVIDER(ORC-12).
-	///</summary>
+    /// <summary>   Returns ORDERING PROVIDER(ORC-12). </summary>
+    ///
+    /// <value> The orderingprovider. </value>
+
 	public CN ORDERINGPROVIDER
 	{
 		get{
@@ -336,9 +349,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns ENTERER'S LOCATION(ORC-13).
-	///</summary>
+    /// <summary>   Returns ENTERER'S LOCATION(ORC-13). </summary>
+    ///
+    /// <value> The entererslocation. </value>
+
 	public CM ENTERERSLOCATION
 	{
 		get{
@@ -359,11 +373,17 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of CALL BACK PHONE NUMBER(ORC-14).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of CALL BACK PHONE NUMBER(ORC-14). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The callbackphonenumber. </returns>
+
 	public TN GetCALLBACKPHONENUMBER(int rep)
 	{
 			TN ret = null;
@@ -378,9 +398,12 @@ public class ORC : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of CALL BACK PHONE NUMBER (ORC-14).
-   ///</summary>
+  /// <summary> Returns all repetitions of CALL BACK PHONE NUMBER (ORC-14). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tn. </returns>
+
   public TN[] GetCALLBACKPHONENUMBER() {
      TN[] ret = null;
     try {
@@ -399,9 +422,10 @@ public class ORC : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of CALL BACK PHONE NUMBER (ORC-14).
-   ///</summary>
+  /// <summary> Returns the total repetitions of CALL BACK PHONE NUMBER (ORC-14). </summary>
+  ///
+  /// <value>   The callbackphonenumber repetitions used. </value>
+
   public int CALLBACKPHONENUMBERRepetitionsUsed
 {
 get{

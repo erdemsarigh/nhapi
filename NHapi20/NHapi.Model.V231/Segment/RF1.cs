@@ -7,34 +7,35 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 RF1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>RF1-1: Referral Status (CE)</li>
-///<li>RF1-2: Referral Priority (CE)</li>
-///<li>RF1-3: Referral Type (CE)</li>
-///<li>RF1-4: Referral Disposition (CE)</li>
-///<li>RF1-5: Referral Category (CE)</li>
-///<li>RF1-6: Originating Referral Identifier (EI)</li>
-///<li>RF1-7: Effective Date (TS)</li>
-///<li>RF1-8: Expiration Date (TS)</li>
-///<li>RF1-9: Process Date (TS)</li>
-///<li>RF1-10: Referral Reason (CE)</li>
-///<li>RF1-11: External Referral Identifier (EI)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 RF1 message segment. This segment has the following fields:<ol>
+/// <li>RF1-1: Referral Status (CE)</li>
+/// <li>RF1-2: Referral Priority (CE)</li>
+/// <li>RF1-3: Referral Type (CE)</li>
+/// <li>RF1-4: Referral Disposition (CE)</li>
+/// <li>RF1-5: Referral Category (CE)</li>
+/// <li>RF1-6: Originating Referral Identifier (EI)</li>
+/// <li>RF1-7: Effective Date (TS)</li>
+/// <li>RF1-8: Expiration Date (TS)</li>
+/// <li>RF1-9: Process Date (TS)</li>
+/// <li>RF1-10: Referral Reason (CE)</li>
+/// <li>RF1-11: External Referral Identifier (EI)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class RF1 : AbstractSegment  {
 
-  /**
-   * Creates a RF1 (Referral Infomation) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the RF1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RF1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -54,9 +55,10 @@ public class RF1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Referral Status(RF1-1).
-	///</summary>
+    /// <summary>   Returns Referral Status(RF1-1). </summary>
+    ///
+    /// <value> The referral status. </value>
+
 	public CE ReferralStatus
 	{
 		get{
@@ -77,9 +79,10 @@ public class RF1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Referral Priority(RF1-2).
-	///</summary>
+    /// <summary>   Returns Referral Priority(RF1-2). </summary>
+    ///
+    /// <value> The referral priority. </value>
+
 	public CE ReferralPriority
 	{
 		get{
@@ -100,9 +103,10 @@ public class RF1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Referral Type(RF1-3).
-	///</summary>
+    /// <summary>   Returns Referral Type(RF1-3). </summary>
+    ///
+    /// <value> The type of the referral. </value>
+
 	public CE ReferralType
 	{
 		get{
@@ -123,11 +127,17 @@ public class RF1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Referral Disposition(RF1-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Referral Disposition(RF1-4). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The referral disposition. </returns>
+
 	public CE GetReferralDisposition(int rep)
 	{
 			CE ret = null;
@@ -142,9 +152,12 @@ public class RF1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Referral Disposition (RF1-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Referral Disposition (RF1-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetReferralDisposition() {
      CE[] ret = null;
     try {
@@ -163,9 +176,10 @@ public class RF1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Referral Disposition (RF1-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Referral Disposition (RF1-4). </summary>
+  ///
+  /// <value>   The referral disposition repetitions used. </value>
+
   public int ReferralDispositionRepetitionsUsed
 {
 get{
@@ -181,9 +195,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Referral Category(RF1-5).
-	///</summary>
+
+    /// <summary>   Returns Referral Category(RF1-5). </summary>
+    ///
+    /// <value> The referral category. </value>
+
 	public CE ReferralCategory
 	{
 		get{
@@ -204,9 +220,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Originating Referral Identifier(RF1-6).
-	///</summary>
+    /// <summary>   Returns Originating Referral Identifier(RF1-6). </summary>
+    ///
+    /// <value> The identifier of the originating referral. </value>
+
 	public EI OriginatingReferralIdentifier
 	{
 		get{
@@ -227,9 +244,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Effective Date(RF1-7).
-	///</summary>
+    /// <summary>   Returns Effective Date(RF1-7). </summary>
+    ///
+    /// <value> The effective date. </value>
+
 	public TS EffectiveDate
 	{
 		get{
@@ -250,9 +268,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Expiration Date(RF1-8).
-	///</summary>
+    /// <summary>   Returns Expiration Date(RF1-8). </summary>
+    ///
+    /// <value> The expiration date. </value>
+
 	public TS ExpirationDate
 	{
 		get{
@@ -273,9 +292,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Process Date(RF1-9).
-	///</summary>
+    /// <summary>   Returns Process Date(RF1-9). </summary>
+    ///
+    /// <value> The process date. </value>
+
 	public TS ProcessDate
 	{
 		get{
@@ -296,11 +316,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Referral Reason(RF1-10).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Referral Reason(RF1-10). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The referral reason. </returns>
+
 	public CE GetReferralReason(int rep)
 	{
 			CE ret = null;
@@ -315,9 +341,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Referral Reason (RF1-10).
-   ///</summary>
+  /// <summary> Returns all repetitions of Referral Reason (RF1-10). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetReferralReason() {
      CE[] ret = null;
     try {
@@ -336,9 +365,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Referral Reason (RF1-10).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Referral Reason (RF1-10). </summary>
+  ///
+  /// <value>   The referral reason repetitions used. </value>
+
   public int ReferralReasonRepetitionsUsed
 {
 get{
@@ -354,11 +384,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of External Referral Identifier(RF1-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of External Referral Identifier(RF1-11). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The external referral identifier. </returns>
+
 	public EI GetExternalReferralIdentifier(int rep)
 	{
 			EI ret = null;
@@ -373,9 +410,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of External Referral Identifier (RF1-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of External Referral Identifier (RF1-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ei. </returns>
+
   public EI[] GetExternalReferralIdentifier() {
      EI[] ret = null;
     try {
@@ -394,9 +434,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of External Referral Identifier (RF1-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of External Referral Identifier (RF1-11). </summary>
+  ///
+  /// <value>   The external referral identifier repetitions used. </value>
+
   public int ExternalReferralIdentifierRepetitionsUsed
 {
 get{

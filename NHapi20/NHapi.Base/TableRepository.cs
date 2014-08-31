@@ -21,24 +21,27 @@
 
 namespace NHapi.Base
 {
-    /// <summary> A place where table keys and values are stored.  This may be implemented
-    /// with a database, an LDAP directory, local RAM, etc.  At a minimum, any
-    /// underlying repository must supply the values for standard HL7 tables.
-    /// Site-defined tables may also be supported.
+    /// <summary>
+    /// A place where table keys and values are stored.  This may be implemented with a database, an
+    /// LDAP directory, local RAM, etc.  At a minimum, any underlying repository must supply the
+    /// values for standard HL7 tables. Site-defined tables may also be supported.
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+
     public abstract class TableRepository
     {
         #region Static Fields
 
+        /// <summary>   The rep. </summary>
         private static TableRepository rep;
 
         #endregion
 
         #region Public Properties
 
-        /// <summary> Returns a TableRepository object.</summary>
+        /// <summary>   Returns a TableRepository object. </summary>
+        ///
+        /// <value> The instance. </value>
+
         public static TableRepository Instance
         {
             get
@@ -53,21 +56,40 @@ namespace NHapi.Base
             }
         }
 
-        /// <summary> Returns a list of HL7 tables.  </summary>
+        /// <summary>   Returns a list of HL7 tables. </summary>
+        ///
+        /// <value> The tables. </value>
+
         public abstract int[] Tables { get; }
 
         #endregion
 
         #region Public Methods and Operators
 
-        /// <summary> Returns true if the given value exists in the given table.</summary>
+        /// <summary>   Returns true if the given value exists in the given table. </summary>
+        ///
+        /// <param name="table">            The table. </param>
+        /// <param name="value_Renamed">    The value renamed. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         public abstract bool checkValue(int table, System.String value_Renamed);
 
-        /// <summary> Returns the value corresponding to the given table and key.</summary>
-        /// <throws>  UnknownValueException if the value can not be found.  This may be an UnknownTableException.   </throws>
+        /// <summary>   Returns the value corresponding to the given table and key. </summary>
+        ///
+        /// <param name="table">            The table. </param>
+        /// <param name="value_Renamed">    The value renamed. </param>
+        ///
+        /// <returns>   The description. </returns>
+
         public abstract System.String getDescription(int table, System.String value_Renamed);
 
-        /// <summary> Returns a list of the values in the given table. </summary>
+        /// <summary>   Returns a list of the values in the given table. </summary>
+        ///
+        /// <param name="table">    The table. </param>
+        ///
+        /// <returns>   An array of string. </returns>
+
         public abstract System.String[] getValues(int table);
 
         #endregion

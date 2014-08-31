@@ -7,38 +7,39 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 PDC message segment. 
-/// This segment has the following fields:<ol>
-///<li>PDC-1: Manufacturer/Distributor (XON)</li>
-///<li>PDC-2: Country (CE)</li>
-///<li>PDC-3: Brand Name (ST)</li>
-///<li>PDC-4: Device Family Name (ST)</li>
-///<li>PDC-5: Generic Name (CE)</li>
-///<li>PDC-6: Model Identifier (ST)</li>
-///<li>PDC-7: Catalogue Identifier (ST)</li>
-///<li>PDC-8: Other Identifier (ST)</li>
-///<li>PDC-9: Product Code (CE)</li>
-///<li>PDC-10: Marketing Basis (ID)</li>
-///<li>PDC-11: Marketing Approval Identifier (ST)</li>
-///<li>PDC-12: Labeled Shelf Life (CQ)</li>
-///<li>PDC-13: Expected Shelf Life (CQ)</li>
-///<li>PDC-14: Date First Marked (TS)</li>
-///<li>PDC-15: Date Last Marked (TS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PDC message segment. This segment has the following fields:<ol>
+/// <li>PDC-1: Manufacturer/Distributor (XON)</li>
+/// <li>PDC-2: Country (CE)</li>
+/// <li>PDC-3: Brand Name (ST)</li>
+/// <li>PDC-4: Device Family Name (ST)</li>
+/// <li>PDC-5: Generic Name (CE)</li>
+/// <li>PDC-6: Model Identifier (ST)</li>
+/// <li>PDC-7: Catalogue Identifier (ST)</li>
+/// <li>PDC-8: Other Identifier (ST)</li>
+/// <li>PDC-9: Product Code (CE)</li>
+/// <li>PDC-10: Marketing Basis (ID)</li>
+/// <li>PDC-11: Marketing Approval Identifier (ST)</li>
+/// <li>PDC-12: Labeled Shelf Life (CQ)</li>
+/// <li>PDC-13: Expected Shelf Life (CQ)</li>
+/// <li>PDC-14: Date First Marked (TS)</li>
+/// <li>PDC-15: Date Last Marked (TS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PDC : AbstractSegment  {
 
-  /**
-   * Creates a PDC (Product Detail Country) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PDC class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PDC(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -62,9 +63,10 @@ public class PDC : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Manufacturer/Distributor(PDC-1).
-	///</summary>
+    /// <summary>   Returns Manufacturer/Distributor(PDC-1). </summary>
+    ///
+    /// <value> The manufacturer distributor. </value>
+
 	public XON ManufacturerDistributor
 	{
 		get{
@@ -85,9 +87,10 @@ public class PDC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Country(PDC-2).
-	///</summary>
+    /// <summary>   Returns Country(PDC-2). </summary>
+    ///
+    /// <value> The total number of ry. </value>
+
 	public CE Country
 	{
 		get{
@@ -108,9 +111,10 @@ public class PDC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Brand Name(PDC-3).
-	///</summary>
+    /// <summary>   Returns Brand Name(PDC-3). </summary>
+    ///
+    /// <value> The name of the brand. </value>
+
 	public ST BrandName
 	{
 		get{
@@ -131,9 +135,10 @@ public class PDC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Device Family Name(PDC-4).
-	///</summary>
+    /// <summary>   Returns Device Family Name(PDC-4). </summary>
+    ///
+    /// <value> The name of the device family. </value>
+
 	public ST DeviceFamilyName
 	{
 		get{
@@ -154,9 +159,10 @@ public class PDC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Generic Name(PDC-5).
-	///</summary>
+    /// <summary>   Returns Generic Name(PDC-5). </summary>
+    ///
+    /// <value> The name of the generic. </value>
+
 	public CE GenericName
 	{
 		get{
@@ -177,11 +183,17 @@ public class PDC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Model Identifier(PDC-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Model Identifier(PDC-6). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The model identifier. </returns>
+
 	public ST GetModelIdentifier(int rep)
 	{
 			ST ret = null;
@@ -196,9 +208,12 @@ public class PDC : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Model Identifier (PDC-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of Model Identifier (PDC-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetModelIdentifier() {
      ST[] ret = null;
     try {
@@ -217,9 +232,10 @@ public class PDC : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Model Identifier (PDC-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Model Identifier (PDC-6). </summary>
+  ///
+  /// <value>   The model identifier repetitions used. </value>
+
   public int ModelIdentifierRepetitionsUsed
 {
 get{
@@ -235,9 +251,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Catalogue Identifier(PDC-7).
-	///</summary>
+
+    /// <summary>   Returns Catalogue Identifier(PDC-7). </summary>
+    ///
+    /// <value> The identifier of the catalogue. </value>
+
 	public ST CatalogueIdentifier
 	{
 		get{
@@ -258,11 +276,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Other Identifier(PDC-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Other Identifier(PDC-8). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The other identifier. </returns>
+
 	public ST GetOtherIdentifier(int rep)
 	{
 			ST ret = null;
@@ -277,9 +301,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Other Identifier (PDC-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of Other Identifier (PDC-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetOtherIdentifier() {
      ST[] ret = null;
     try {
@@ -298,9 +325,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Other Identifier (PDC-8).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Other Identifier (PDC-8). </summary>
+  ///
+  /// <value>   The other identifier repetitions used. </value>
+
   public int OtherIdentifierRepetitionsUsed
 {
 get{
@@ -316,9 +344,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Product Code(PDC-9).
-	///</summary>
+
+    /// <summary>   Returns Product Code(PDC-9). </summary>
+    ///
+    /// <value> The product code. </value>
+
 	public CE ProductCode
 	{
 		get{
@@ -339,9 +369,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Marketing Basis(PDC-10).
-	///</summary>
+    /// <summary>   Returns Marketing Basis(PDC-10). </summary>
+    ///
+    /// <value> The marketing basis. </value>
+
 	public ID MarketingBasis
 	{
 		get{
@@ -362,9 +393,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Marketing Approval Identifier(PDC-11).
-	///</summary>
+    /// <summary>   Returns Marketing Approval Identifier(PDC-11). </summary>
+    ///
+    /// <value> The identifier of the marketing approval. </value>
+
 	public ST MarketingApprovalIdentifier
 	{
 		get{
@@ -385,9 +417,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Labeled Shelf Life(PDC-12).
-	///</summary>
+    /// <summary>   Returns Labeled Shelf Life(PDC-12). </summary>
+    ///
+    /// <value> The labeled shelf life. </value>
+
 	public CQ LabeledShelfLife
 	{
 		get{
@@ -408,9 +441,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Expected Shelf Life(PDC-13).
-	///</summary>
+    /// <summary>   Returns Expected Shelf Life(PDC-13). </summary>
+    ///
+    /// <value> The expected shelf life. </value>
+
 	public CQ ExpectedShelfLife
 	{
 		get{
@@ -431,9 +465,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date First Marked(PDC-14).
-	///</summary>
+    /// <summary>   Returns Date First Marked(PDC-14). </summary>
+    ///
+    /// <value> The date first marked. </value>
+
 	public TS DateFirstMarked
 	{
 		get{
@@ -454,9 +489,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date Last Marked(PDC-15).
-	///</summary>
+    /// <summary>   Returns Date Last Marked(PDC-15). </summary>
+    ///
+    /// <value> The date last marked. </value>
+
 	public TS DateLastMarked
 	{
 		get{

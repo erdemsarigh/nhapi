@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the MFN_M02_MF_STAFF Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: MFE (MFE - master file entry segment) </li>
-///<li>1: STF (STF - staff identification segment) </li>
-///<li>2: PRA (PRA - practitioner detail segment) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the MFN_M02_MF_STAFF Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: MFE (MFE - master file entry segment) </li>
+/// <li>1: STF (STF - staff identification segment) </li>
+/// <li>2: PRA (PRA - practitioner detail segment) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFN_M02_MF_STAFF : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new MFN_M02_MF_STAFF Group.
-	///</summary>
+    /// <summary>   Creates a new MFN_M02_MF_STAFF Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFN_M02_MF_STAFF(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(MFE), true, false);
@@ -34,9 +37,10 @@ public class MFN_M02_MF_STAFF : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns MFE (MFE - master file entry segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MFE (MFE - master file entry segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The mfe. </value>
+
 	public MFE MFE { 
 get{
 	   MFE ret = null;
@@ -50,9 +54,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns STF (STF - staff identification segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns STF (STF - staff identification segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The stf. </value>
+
 	public STF STF { 
 get{
 	   STF ret = null;
@@ -66,9 +73,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PRA (PRA - practitioner detail segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PRA (PRA - practitioner detail segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The pra. </value>
+
 	public PRA PRA { 
 get{
 	   PRA ret = null;

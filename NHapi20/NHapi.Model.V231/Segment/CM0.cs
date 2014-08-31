@@ -7,34 +7,35 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 CM0 message segment. 
-/// This segment has the following fields:<ol>
-///<li>CM0-1: Set ID - CM0 (SI)</li>
-///<li>CM0-2: Sponsor Study ID (EI)</li>
-///<li>CM0-3: Alternate Study ID (EI)</li>
-///<li>CM0-4: Title of Study (ST)</li>
-///<li>CM0-5: Chairman of Study (XCN)</li>
-///<li>CM0-6: Last IRB Approval Date (DT)</li>
-///<li>CM0-7: Total Accrual to Date (NM)</li>
-///<li>CM0-8: Last Accrual Date (DT)</li>
-///<li>CM0-9: Contact for Study (XCN)</li>
-///<li>CM0-10: Contact's Tel. Number (XTN)</li>
-///<li>CM0-11: Contact's Address (XAD)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 CM0 message segment. This segment has the following fields:<ol>
+/// <li>CM0-1: Set ID - CM0 (SI)</li>
+/// <li>CM0-2: Sponsor Study ID (EI)</li>
+/// <li>CM0-3: Alternate Study ID (EI)</li>
+/// <li>CM0-4: Title of Study (ST)</li>
+/// <li>CM0-5: Chairman of Study (XCN)</li>
+/// <li>CM0-6: Last IRB Approval Date (DT)</li>
+/// <li>CM0-7: Total Accrual to Date (NM)</li>
+/// <li>CM0-8: Last Accrual Date (DT)</li>
+/// <li>CM0-9: Contact for Study (XCN)</li>
+/// <li>CM0-10: Contact's Tel. Number (XTN)</li>
+/// <li>CM0-11: Contact's Address (XAD)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class CM0 : AbstractSegment  {
 
-  /**
-   * Creates a CM0 (CM0 - clinical study master segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the CM0 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public CM0(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -54,9 +55,10 @@ public class CM0 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - CM0(CM0-1).
-	///</summary>
+    /// <summary>   Returns Set ID - CM0(CM0-1). </summary>
+    ///
+    /// <value> The set idcm 0. </value>
+
 	public SI SetIDCM0
 	{
 		get{
@@ -77,9 +79,10 @@ public class CM0 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Sponsor Study ID(CM0-2).
-	///</summary>
+    /// <summary>   Returns Sponsor Study ID(CM0-2). </summary>
+    ///
+    /// <value> The identifier of the sponsor study. </value>
+
 	public EI SponsorStudyID
 	{
 		get{
@@ -100,11 +103,17 @@ public class CM0 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Alternate Study ID(CM0-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Alternate Study ID(CM0-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The alternate study identifier. </returns>
+
 	public EI GetAlternateStudyID(int rep)
 	{
 			EI ret = null;
@@ -119,9 +128,12 @@ public class CM0 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Alternate Study ID (CM0-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Alternate Study ID (CM0-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ei. </returns>
+
   public EI[] GetAlternateStudyID() {
      EI[] ret = null;
     try {
@@ -140,9 +152,10 @@ public class CM0 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Alternate Study ID (CM0-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Alternate Study ID (CM0-3). </summary>
+  ///
+  /// <value>   The alternate study identifier repetitions used. </value>
+
   public int AlternateStudyIDRepetitionsUsed
 {
 get{
@@ -158,9 +171,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Title of Study(CM0-4).
-	///</summary>
+
+    /// <summary>   Returns Title of Study(CM0-4). </summary>
+    ///
+    /// <value> The title of study. </value>
+
 	public ST TitleOfStudy
 	{
 		get{
@@ -181,11 +196,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Chairman of Study(CM0-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Chairman of Study(CM0-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The chairman of study. </returns>
+
 	public XCN GetChairmanOfStudy(int rep)
 	{
 			XCN ret = null;
@@ -200,9 +221,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Chairman of Study (CM0-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Chairman of Study (CM0-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetChairmanOfStudy() {
      XCN[] ret = null;
     try {
@@ -221,9 +245,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Chairman of Study (CM0-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Chairman of Study (CM0-5). </summary>
+  ///
+  /// <value>   The chairman of study repetitions used. </value>
+
   public int ChairmanOfStudyRepetitionsUsed
 {
 get{
@@ -239,9 +264,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Last IRB Approval Date(CM0-6).
-	///</summary>
+
+    /// <summary>   Returns Last IRB Approval Date(CM0-6). </summary>
+    ///
+    /// <value> The last irb approval date. </value>
+
 	public DT LastIRBApprovalDate
 	{
 		get{
@@ -262,9 +289,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Total Accrual to Date(CM0-7).
-	///</summary>
+    /// <summary>   Returns Total Accrual to Date(CM0-7). </summary>
+    ///
+    /// <value> The total number of accrual to date. </value>
+
 	public NM TotalAccrualToDate
 	{
 		get{
@@ -285,9 +313,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Last Accrual Date(CM0-8).
-	///</summary>
+    /// <summary>   Returns Last Accrual Date(CM0-8). </summary>
+    ///
+    /// <value> The last accrual date. </value>
+
 	public DT LastAccrualDate
 	{
 		get{
@@ -308,11 +337,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Contact for Study(CM0-9).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Contact for Study(CM0-9). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contact for study. </returns>
+
 	public XCN GetContactForStudy(int rep)
 	{
 			XCN ret = null;
@@ -327,9 +362,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contact for Study (CM0-9).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contact for Study (CM0-9). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetContactForStudy() {
      XCN[] ret = null;
     try {
@@ -348,9 +386,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Contact for Study (CM0-9).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Contact for Study (CM0-9). </summary>
+  ///
+  /// <value>   The contact for study repetitions used. </value>
+
   public int ContactForStudyRepetitionsUsed
 {
 get{
@@ -366,9 +405,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Contact's Tel. Number(CM0-10).
-	///</summary>
+
+    /// <summary>   Returns Contact's Tel. Number(CM0-10). </summary>
+    ///
+    /// <value> The contact s tel number. </value>
+
 	public XTN ContactSTelNumber
 	{
 		get{
@@ -389,11 +430,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Contact's Address(CM0-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Contact's Address(CM0-11). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contact s address. </returns>
+
 	public XAD GetContactSAddress(int rep)
 	{
 			XAD ret = null;
@@ -408,9 +455,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contact's Address (CM0-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contact's Address (CM0-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetContactSAddress() {
      XAD[] ret = null;
     try {
@@ -429,9 +479,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Contact's Address (CM0-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Contact's Address (CM0-11). </summary>
+  ///
+  /// <value>   The contact s address repetitions used. </value>
+
   public int ContactSAddressRepetitionsUsed
 {
 get{

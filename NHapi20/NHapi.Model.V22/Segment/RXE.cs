@@ -7,47 +7,48 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 RXE message segment. 
-/// This segment has the following fields:<ol>
-///<li>RXE-1: Quantity / timing (TQ)</li>
-///<li>RXE-2: Give Code (CE)</li>
-///<li>RXE-3: Give Amount - Minimum (NM)</li>
-///<li>RXE-4: Give Amount - Maximum (NM)</li>
-///<li>RXE-5: Give Units (CE)</li>
-///<li>RXE-6: Give Dosage Form (CE)</li>
-///<li>RXE-7: Provider's Administration Instructions (CE)</li>
-///<li>RXE-8: Deliver-to location (CM_LA1)</li>
-///<li>RXE-9: Substitution Status (ID)</li>
-///<li>RXE-10: Dispense Amount (NM)</li>
-///<li>RXE-11: Dispense Units (CE)</li>
-///<li>RXE-12: Number of Refills (NM)</li>
-///<li>RXE-13: Ordering Provider's DEA Number (CN_PERSON)</li>
-///<li>RXE-14: Pharmacist Verifier ID (CN_PERSON)</li>
-///<li>RXE-15: Prescription Number (ST)</li>
-///<li>RXE-16: Number of Refills Remaining (NM)</li>
-///<li>RXE-17: Number of refills / doses dispensed (NM)</li>
-///<li>RXE-18: Date / time of most recent refill or dose dispensed (TS)</li>
-///<li>RXE-19: Total Daily Dose (CQ_QUANTITY)</li>
-///<li>RXE-20: Needs Human Review (ID)</li>
-///<li>RXE-21: Pharmacy Special Dispensing Instructions (CE)</li>
-///<li>RXE-22: Give Per (Time Unit) (ST)</li>
-///<li>RXE-23: Give Rate Amount (CE)</li>
-///<li>RXE-24: Give Rate Units (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 RXE message segment. This segment has the following fields:<ol>
+/// <li>RXE-1: Quantity / timing (TQ)</li>
+/// <li>RXE-2: Give Code (CE)</li>
+/// <li>RXE-3: Give Amount - Minimum (NM)</li>
+/// <li>RXE-4: Give Amount - Maximum (NM)</li>
+/// <li>RXE-5: Give Units (CE)</li>
+/// <li>RXE-6: Give Dosage Form (CE)</li>
+/// <li>RXE-7: Provider's Administration Instructions (CE)</li>
+/// <li>RXE-8: Deliver-to location (CM_LA1)</li>
+/// <li>RXE-9: Substitution Status (ID)</li>
+/// <li>RXE-10: Dispense Amount (NM)</li>
+/// <li>RXE-11: Dispense Units (CE)</li>
+/// <li>RXE-12: Number of Refills (NM)</li>
+/// <li>RXE-13: Ordering Provider's DEA Number (CN_PERSON)</li>
+/// <li>RXE-14: Pharmacist Verifier ID (CN_PERSON)</li>
+/// <li>RXE-15: Prescription Number (ST)</li>
+/// <li>RXE-16: Number of Refills Remaining (NM)</li>
+/// <li>RXE-17: Number of refills / doses dispensed (NM)</li>
+/// <li>RXE-18: Date / time of most recent refill or dose dispensed (TS)</li>
+/// <li>RXE-19: Total Daily Dose (CQ_QUANTITY)</li>
+/// <li>RXE-20: Needs Human Review (ID)</li>
+/// <li>RXE-21: Pharmacy Special Dispensing Instructions (CE)</li>
+/// <li>RXE-22: Give Per (Time Unit) (ST)</li>
+/// <li>RXE-23: Give Rate Amount (CE)</li>
+/// <li>RXE-24: Give Rate Units (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class RXE : AbstractSegment  {
 
-  /**
-   * Creates a RXE (PHARMACY ENCODED ORDER) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the RXE class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RXE(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -80,11 +81,17 @@ public class RXE : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns a single repetition of Quantity / timing(RXE-1).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Quantity / timing(RXE-1). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The quantity timing. </returns>
+
 	public TQ GetQuantityTiming(int rep)
 	{
 			TQ ret = null;
@@ -99,9 +106,12 @@ public class RXE : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Quantity / timing (RXE-1).
-   ///</summary>
+  /// <summary> Returns all repetitions of Quantity / timing (RXE-1). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tq. </returns>
+
   public TQ[] GetQuantityTiming() {
      TQ[] ret = null;
     try {
@@ -120,9 +130,10 @@ public class RXE : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Quantity / timing (RXE-1).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Quantity / timing (RXE-1). </summary>
+  ///
+  /// <value>   The quantity timing repetitions used. </value>
+
   public int QuantityTimingRepetitionsUsed
 {
 get{
@@ -138,9 +149,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Give Code(RXE-2).
-	///</summary>
+
+    /// <summary>   Returns Give Code(RXE-2). </summary>
+    ///
+    /// <value> The give code. </value>
+
 	public CE GiveCode
 	{
 		get{
@@ -161,9 +174,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Give Amount - Minimum(RXE-3).
-	///</summary>
+    /// <summary>   Returns Give Amount - Minimum(RXE-3). </summary>
+    ///
+    /// <value> The give amount minimum. </value>
+
 	public NM GiveAmountMinimum
 	{
 		get{
@@ -184,9 +198,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Give Amount - Maximum(RXE-4).
-	///</summary>
+    /// <summary>   Returns Give Amount - Maximum(RXE-4). </summary>
+    ///
+    /// <value> The give amount maximum. </value>
+
 	public NM GiveAmountMaximum
 	{
 		get{
@@ -207,9 +222,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Give Units(RXE-5).
-	///</summary>
+    /// <summary>   Returns Give Units(RXE-5). </summary>
+    ///
+    /// <value> The give units. </value>
+
 	public CE GiveUnits
 	{
 		get{
@@ -230,9 +246,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Give Dosage Form(RXE-6).
-	///</summary>
+    /// <summary>   Returns Give Dosage Form(RXE-6). </summary>
+    ///
+    /// <value> The give dosage form. </value>
+
 	public CE GiveDosageForm
 	{
 		get{
@@ -253,11 +270,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Provider's Administration Instructions(RXE-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Provider's Administration Instructions(RXE-7). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The provider s administration instructions. </returns>
+
 	public CE GetProviderSAdministrationInstructions(int rep)
 	{
 			CE ret = null;
@@ -272,9 +295,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Provider's Administration Instructions (RXE-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Provider's Administration Instructions (RXE-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetProviderSAdministrationInstructions() {
      CE[] ret = null;
     try {
@@ -293,9 +319,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Provider's Administration Instructions (RXE-7).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The provider s administration instructions repetitions used. </value>
+
   public int ProviderSAdministrationInstructionsRepetitionsUsed
 {
 get{
@@ -311,9 +340,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Deliver-to location(RXE-8).
-	///</summary>
+
+    /// <summary>   Returns Deliver-to location(RXE-8). </summary>
+    ///
+    /// <value> The deliver to location. </value>
+
 	public CM_LA1 DeliverToLocation
 	{
 		get{
@@ -334,9 +365,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Substitution Status(RXE-9).
-	///</summary>
+    /// <summary>   Returns Substitution Status(RXE-9). </summary>
+    ///
+    /// <value> The substitution status. </value>
+
 	public ID SubstitutionStatus
 	{
 		get{
@@ -357,9 +389,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Dispense Amount(RXE-10).
-	///</summary>
+    /// <summary>   Returns Dispense Amount(RXE-10). </summary>
+    ///
+    /// <value> The dispense amount. </value>
+
 	public NM DispenseAmount
 	{
 		get{
@@ -380,9 +413,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Dispense Units(RXE-11).
-	///</summary>
+    /// <summary>   Returns Dispense Units(RXE-11). </summary>
+    ///
+    /// <value> The dispense units. </value>
+
 	public CE DispenseUnits
 	{
 		get{
@@ -403,9 +437,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Number of Refills(RXE-12).
-	///</summary>
+    /// <summary>   Returns Number of Refills(RXE-12). </summary>
+    ///
+    /// <value> The total number of refills. </value>
+
 	public NM NumberOfRefills
 	{
 		get{
@@ -426,9 +461,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Ordering Provider's DEA Number(RXE-13).
-	///</summary>
+    /// <summary>   Returns Ordering Provider's DEA Number(RXE-13). </summary>
+    ///
+    /// <value> The ordering provider sdea number. </value>
+
 	public CN_PERSON OrderingProviderSDEANumber
 	{
 		get{
@@ -449,9 +485,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Pharmacist Verifier ID(RXE-14).
-	///</summary>
+    /// <summary>   Returns Pharmacist Verifier ID(RXE-14). </summary>
+    ///
+    /// <value> The identifier of the pharmacist verifier. </value>
+
 	public CN_PERSON PharmacistVerifierID
 	{
 		get{
@@ -472,9 +509,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Prescription Number(RXE-15).
-	///</summary>
+    /// <summary>   Returns Prescription Number(RXE-15). </summary>
+    ///
+    /// <value> The prescription number. </value>
+
 	public ST PrescriptionNumber
 	{
 		get{
@@ -495,9 +533,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Number of Refills Remaining(RXE-16).
-	///</summary>
+    /// <summary>   Returns Number of Refills Remaining(RXE-16). </summary>
+    ///
+    /// <value> The total number of refills remaining. </value>
+
 	public NM NumberOfRefillsRemaining
 	{
 		get{
@@ -518,9 +557,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Number of refills / doses dispensed(RXE-17).
-	///</summary>
+    /// <summary>   Returns Number of refills / doses dispensed(RXE-17). </summary>
+    ///
+    /// <value> The total number of refills doses dispensed. </value>
+
 	public NM NumberOfRefillsDosesDispensed
 	{
 		get{
@@ -541,9 +581,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date / time of most recent refill or dose dispensed(RXE-18).
-	///</summary>
+    /// <summary>   Returns Date / time of most recent refill or dose dispensed(RXE-18). </summary>
+    ///
+    /// <value> The date time of most recent refill or dose dispensed. </value>
+
 	public TS DateTimeOfMostRecentRefillOrDoseDispensed
 	{
 		get{
@@ -564,9 +605,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Total Daily Dose(RXE-19).
-	///</summary>
+    /// <summary>   Returns Total Daily Dose(RXE-19). </summary>
+    ///
+    /// <value> The total number of daily dose. </value>
+
 	public CQ_QUANTITY TotalDailyDose
 	{
 		get{
@@ -587,9 +629,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Needs Human Review(RXE-20).
-	///</summary>
+    /// <summary>   Returns Needs Human Review(RXE-20). </summary>
+    ///
+    /// <value> The needs human review. </value>
+
 	public ID NeedsHumanReview
 	{
 		get{
@@ -610,9 +653,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Pharmacy Special Dispensing Instructions(RXE-21).
-	///</summary>
+    /// <summary>   Returns Pharmacy Special Dispensing Instructions(RXE-21). </summary>
+    ///
+    /// <value> The pharmacy special dispensing instructions. </value>
+
 	public CE PharmacySpecialDispensingInstructions
 	{
 		get{
@@ -633,9 +677,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Give Per (Time Unit)(RXE-22).
-	///</summary>
+    /// <summary>   Returns Give Per (Time Unit)(RXE-22). </summary>
+    ///
+    /// <value> The give per time unit. </value>
+
 	public ST GivePerTimeUnit
 	{
 		get{
@@ -656,9 +701,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Give Rate Amount(RXE-23).
-	///</summary>
+    /// <summary>   Returns Give Rate Amount(RXE-23). </summary>
+    ///
+    /// <value> The give rate amount. </value>
+
 	public CE GiveRateAmount
 	{
 		get{
@@ -679,9 +725,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Give Rate Units(RXE-24).
-	///</summary>
+    /// <summary>   Returns Give Rate Units(RXE-24). </summary>
+    ///
+    /// <value> The give rate units. </value>
+
 	public CE GiveRateUnits
 	{
 		get{

@@ -8,22 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the DFT_P11_FINANCIAL_COMMON_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common Order) optional </li>
-///<li>1: DFT_P11_FINANCIAL_ORDER (a Group object) optional </li>
-///<li>2: DFT_P11_FINANCIAL_OBSERVATION (a Group object) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the DFT_P11_FINANCIAL_COMMON_ORDER Group.  A Group is an ordered collection of
+/// message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common Order) optional </li>
+/// <li>1: DFT_P11_FINANCIAL_ORDER (a Group object) optional </li>
+/// <li>2: DFT_P11_FINANCIAL_OBSERVATION (a Group object) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class DFT_P11_FINANCIAL_COMMON_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new DFT_P11_FINANCIAL_COMMON_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new DFT_P11_FINANCIAL_COMMON_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public DFT_P11_FINANCIAL_COMMON_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), false, false);
@@ -34,9 +38,10 @@ public class DFT_P11_FINANCIAL_COMMON_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common Order) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common Order) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -50,9 +55,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns DFT_P11_FINANCIAL_ORDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns DFT_P11_FINANCIAL_ORDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The financial order. </value>
+
 	public DFT_P11_FINANCIAL_ORDER FINANCIAL_ORDER { 
 get{
 	   DFT_P11_FINANCIAL_ORDER ret = null;
@@ -66,9 +74,15 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of DFT_P11_FINANCIAL_OBSERVATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of DFT_P11_FINANCIAL_OBSERVATION (a Group object) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The financial observation. </returns>
+
 	public DFT_P11_FINANCIAL_OBSERVATION GetFINANCIAL_OBSERVATION() {
 	   DFT_P11_FINANCIAL_OBSERVATION ret = null;
 	   try {
@@ -80,19 +94,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of DFT_P11_FINANCIAL_OBSERVATION
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of DFT_P11_FINANCIAL_OBSERVATION
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The financial observation. </returns>
+
 	public DFT_P11_FINANCIAL_OBSERVATION GetFINANCIAL_OBSERVATION(int rep) { 
 	   return (DFT_P11_FINANCIAL_OBSERVATION)this.GetStructure("FINANCIAL_OBSERVATION", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of DFT_P11_FINANCIAL_OBSERVATION 
-	 */ 
+    /// <summary>   Gets the financial observation repetitions used. </summary>
+    ///
+    /// <value> The financial observation repetitions used. </value>
+
 	public int FINANCIAL_OBSERVATIONRepetitionsUsed { 
 get{
 	    int reps = -1; 

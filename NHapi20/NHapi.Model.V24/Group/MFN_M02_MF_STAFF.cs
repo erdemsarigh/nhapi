@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the MFN_M02_MF_STAFF Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: MFE (Master File Entry) </li>
-///<li>1: STF (Staff Identification) </li>
-///<li>2: PRA (Practitioner Detail) optional </li>
-///<li>3: ORG (Practitioner Organization Unit) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the MFN_M02_MF_STAFF Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: MFE (Master File Entry) </li>
+/// <li>1: STF (Staff Identification) </li>
+/// <li>2: PRA (Practitioner Detail) optional </li>
+/// <li>3: ORG (Practitioner Organization Unit) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFN_M02_MF_STAFF : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new MFN_M02_MF_STAFF Group.
-	///</summary>
+    /// <summary>   Creates a new MFN_M02_MF_STAFF Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFN_M02_MF_STAFF(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(MFE), true, false);
@@ -36,9 +39,10 @@ public class MFN_M02_MF_STAFF : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns MFE (Master File Entry) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MFE (Master File Entry) - creates it if necessary. </summary>
+    ///
+    /// <value> The mfe. </value>
+
 	public MFE MFE { 
 get{
 	   MFE ret = null;
@@ -52,9 +56,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns STF (Staff Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns STF (Staff Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The stf. </value>
+
 	public STF STF { 
 get{
 	   STF ret = null;
@@ -68,9 +73,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PRA (Practitioner Detail) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PRA (Practitioner Detail) - creates it if necessary. </summary>
+    ///
+    /// <value> The pra. </value>
+
 	public PRA PRA { 
 get{
 	   PRA ret = null;
@@ -84,9 +90,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ORG (Practitioner Organization Unit) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORG (Practitioner Organization Unit) - creates it if necessary. </summary>
+    ///
+    /// <value> The organisation. </value>
+
 	public ORG ORG { 
 get{
 	   ORG ret = null;

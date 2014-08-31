@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the ADT_A43_PATIENT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PID (Patient identification) </li>
-///<li>1: PD1 (patient additional demographic) optional </li>
-///<li>2: MRG (Merge patient information) </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ADT_A43_PATIENT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PID (Patient identification) </li>
+/// <li>1: PD1 (patient additional demographic) optional </li>
+/// <li>2: MRG (Merge patient information) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ADT_A43_PATIENT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ADT_A43_PATIENT Group.
-	///</summary>
+    /// <summary>   Creates a new ADT_A43_PATIENT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ADT_A43_PATIENT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PID), true, false);
@@ -34,9 +37,10 @@ public class ADT_A43_PATIENT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PID (Patient identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -50,9 +54,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (patient additional demographic) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PD1 (patient additional demographic) - creates it if necessary. </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;
@@ -66,9 +71,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MRG (Merge patient information) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MRG (Merge patient information) - creates it if necessary. </summary>
+    ///
+    /// <value> The mrg. </value>
+
 	public MRG MRG { 
 get{
 	   MRG ret = null;

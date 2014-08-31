@@ -7,27 +7,28 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 LCC message segment. 
-/// This segment has the following fields:<ol>
-///<li>LCC-1: Primary Key Value - LCC (PL)</li>
-///<li>LCC-2: Location Department (IS)</li>
-///<li>LCC-3: Accommodation Type (CE)</li>
-///<li>LCC-4: Charge Code (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 LCC message segment. This segment has the following fields:<ol>
+/// <li>LCC-1: Primary Key Value - LCC (PL)</li>
+/// <li>LCC-2: Location Department (IS)</li>
+/// <li>LCC-3: Accommodation Type (CE)</li>
+/// <li>LCC-4: Charge Code (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class LCC : AbstractSegment  {
 
-  /**
-   * Creates a LCC (LCC - location charge code segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the LCC class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public LCC(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -40,9 +41,10 @@ public class LCC : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Primary Key Value - LCC(LCC-1).
-	///</summary>
+    /// <summary>   Returns Primary Key Value - LCC(LCC-1). </summary>
+    ///
+    /// <value> The primary key value lcc. </value>
+
 	public PL PrimaryKeyValueLCC
 	{
 		get{
@@ -63,9 +65,10 @@ public class LCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Location Department(LCC-2).
-	///</summary>
+    /// <summary>   Returns Location Department(LCC-2). </summary>
+    ///
+    /// <value> The location department. </value>
+
 	public IS LocationDepartment
 	{
 		get{
@@ -86,11 +89,17 @@ public class LCC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Accommodation Type(LCC-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Accommodation Type(LCC-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The accommodation type. </returns>
+
 	public CE GetAccommodationType(int rep)
 	{
 			CE ret = null;
@@ -105,9 +114,12 @@ public class LCC : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Accommodation Type (LCC-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Accommodation Type (LCC-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetAccommodationType() {
      CE[] ret = null;
     try {
@@ -126,9 +138,10 @@ public class LCC : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Accommodation Type (LCC-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Accommodation Type (LCC-3). </summary>
+  ///
+  /// <value>   The accommodation type repetitions used. </value>
+
   public int AccommodationTypeRepetitionsUsed
 {
 get{
@@ -144,11 +157,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Charge Code(LCC-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Charge Code(LCC-4). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The charge code. </returns>
+
 	public CE GetChargeCode(int rep)
 	{
 			CE ret = null;
@@ -163,9 +183,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Charge Code (LCC-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Charge Code (LCC-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetChargeCode() {
      CE[] ret = null;
     try {
@@ -184,9 +207,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Charge Code (LCC-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Charge Code (LCC-4). </summary>
+  ///
+  /// <value>   The charge code repetitions used. </value>
+
   public int ChargeCodeRepetitionsUsed
 {
 get{

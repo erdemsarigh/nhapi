@@ -6,9 +6,9 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 LA1 (Location with Address Variation 1) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 LA1 (Location with Address Variation 1) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>Point of Care (IS)</li>
 /// <li>Room (IS)</li>
 /// <li>Bed (IS)</li>
@@ -19,22 +19,24 @@ namespace NHapi.Model.V25.Datatype
 /// <li>Floor (IS)</li>
 /// <li>Address (AD)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class LA1 : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a LA1.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a LA1. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public LA1(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a LA1.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a LA1. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public LA1(IMessage message, string description) : base(message, description){
 		data = new IType[9];
 		data[0] = new IS(message, 302,"Point of Care");
@@ -48,9 +50,10 @@ public class LA1 : AbstractType, IComposite{
 		data[8] = new AD(message,"Address");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -58,12 +61,15 @@ public class LA1 : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -74,10 +80,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Point of Care (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Point of Care (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The point of care. </value>
+
 	public IS PointOfCare {
 get{
 	   IS ret = null;
@@ -91,10 +101,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Room (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Room (component #1).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The room. </value>
+
 	public IS Room {
 get{
 	   IS ret = null;
@@ -108,10 +122,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Bed (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Bed (component #2).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The bed. </value>
+
 	public IS Bed {
 get{
 	   IS ret = null;
@@ -125,10 +143,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Facility (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Facility (component #3).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The facility. </value>
+
 	public HD Facility {
 get{
 	   HD ret = null;
@@ -142,10 +164,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Location Status (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Location Status (component #4).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The location status. </value>
+
 	public IS LocationStatus {
 get{
 	   IS ret = null;
@@ -159,10 +185,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Patient Location Type (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Patient Location Type (component #5).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the patient location. </value>
+
 	public IS PatientLocationType {
 get{
 	   IS ret = null;
@@ -176,10 +206,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Building (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Building (component #6).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The building. </value>
+
 	public IS Building {
 get{
 	   IS ret = null;
@@ -193,10 +227,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Floor (component #7).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Floor (component #7).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The floor. </value>
+
 	public IS Floor {
 get{
 	   IS ret = null;
@@ -210,10 +248,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Address (component #8).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Address (component #8).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The address. </value>
+
 	public AD Address {
 get{
 	   AD ret = null;

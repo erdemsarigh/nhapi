@@ -7,29 +7,30 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 AL1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>AL1-1: Set ID - Allergy (SI)</li>
-///<li>AL1-2: Allergy Type (ID)</li>
-///<li>AL1-3: Allergy code / mnemonic / description (CE)</li>
-///<li>AL1-4: Allergy Severity (ID)</li>
-///<li>AL1-5: Allergy Reaction (ST)</li>
-///<li>AL1-6: Identification Date (DT)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 AL1 message segment. This segment has the following fields:<ol>
+/// <li>AL1-1: Set ID - Allergy (SI)</li>
+/// <li>AL1-2: Allergy Type (ID)</li>
+/// <li>AL1-3: Allergy code / mnemonic / description (CE)</li>
+/// <li>AL1-4: Allergy Severity (ID)</li>
+/// <li>AL1-5: Allergy Reaction (ST)</li>
+/// <li>AL1-6: Identification Date (DT)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class AL1 : AbstractSegment  {
 
-  /**
-   * Creates a AL1 (PATIENT ALLERGY INFORMATION) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the AL1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public AL1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -44,9 +45,10 @@ public class AL1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - Allergy(AL1-1).
-	///</summary>
+    /// <summary>   Returns Set ID - Allergy(AL1-1). </summary>
+    ///
+    /// <value> The set identifier allergy. </value>
+
 	public SI SetIDAllergy
 	{
 		get{
@@ -67,9 +69,10 @@ public class AL1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Allergy Type(AL1-2).
-	///</summary>
+    /// <summary>   Returns Allergy Type(AL1-2). </summary>
+    ///
+    /// <value> The type of the allergy. </value>
+
 	public ID AllergyType
 	{
 		get{
@@ -90,9 +93,10 @@ public class AL1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Allergy code / mnemonic / description(AL1-3).
-	///</summary>
+    /// <summary>   Returns Allergy code / mnemonic / description(AL1-3). </summary>
+    ///
+    /// <value> Information describing the allergy code mnemonic. </value>
+
 	public CE AllergyCodeMnemonicDescription
 	{
 		get{
@@ -113,9 +117,10 @@ public class AL1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Allergy Severity(AL1-4).
-	///</summary>
+    /// <summary>   Returns Allergy Severity(AL1-4). </summary>
+    ///
+    /// <value> The allergy severity. </value>
+
 	public ID AllergySeverity
 	{
 		get{
@@ -136,9 +141,10 @@ public class AL1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Allergy Reaction(AL1-5).
-	///</summary>
+    /// <summary>   Returns Allergy Reaction(AL1-5). </summary>
+    ///
+    /// <value> The allergy reaction. </value>
+
 	public ST AllergyReaction
 	{
 		get{
@@ -159,9 +165,10 @@ public class AL1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Identification Date(AL1-6).
-	///</summary>
+    /// <summary>   Returns Identification Date(AL1-6). </summary>
+    ///
+    /// <value> The identification date. </value>
+
 	public DT IdentificationDate
 	{
 		get{

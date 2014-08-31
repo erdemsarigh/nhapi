@@ -3,9 +3,15 @@ namespace NHapi.Base.SourceGeneration
     using System.IO;
     using System.Text;
 
+    /// <summary>   A base data type generator. </summary>
     internal class BaseDataTypeGenerator
     {
         #region Public Methods and Operators
+
+        /// <summary>   Builds base data types. </summary>
+        ///
+        /// <param name="baseDirectory">    Pathname of the base directory. </param>
+        /// <param name="version">          The version. </param>
 
         public static void BuildBaseDataTypes(string baseDirectory, System.String version)
         {
@@ -22,6 +28,12 @@ namespace NHapi.Base.SourceGeneration
 
         #region Methods
 
+        /// <summary>   Builds a file. </summary>
+        ///
+        /// <param name="dataType">     Type of the data. </param>
+        /// <param name="targetDir">    Target dir. </param>
+        /// <param name="version">      The version. </param>
+
         private static void BuildFile(string dataType, string targetDir, string version)
         {
             string fileName = targetDir + @"\" + dataType + ".cs";
@@ -32,6 +44,13 @@ namespace NHapi.Base.SourceGeneration
                 fs.Write(data, 0, data.Length);
             }
         }
+
+        /// <summary>   Gets class source. </summary>
+        ///
+        /// <param name="dataType"> Type of the data. </param>
+        /// <param name="version">  The version. </param>
+        ///
+        /// <returns>   The class source. </returns>
 
         private static string GetClassSource(string dataType, string version)
         {

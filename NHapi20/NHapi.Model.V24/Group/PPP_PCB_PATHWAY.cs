@@ -8,24 +8,27 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the PPP_PCB_PATHWAY Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PTH (Pathway) </li>
-///<li>1: NTE (Notes and Comments) optional repeating</li>
-///<li>2: VAR (Variance) optional repeating</li>
-///<li>3: PPP_PCB_PATHWAY_ROLE (a Group object) optional repeating</li>
-///<li>4: PPP_PCB_PROBLEM (a Group object) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the PPP_PCB_PATHWAY Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PTH (Pathway) </li>
+/// <li>1: NTE (Notes and Comments) optional repeating</li>
+/// <li>2: VAR (Variance) optional repeating</li>
+/// <li>3: PPP_PCB_PATHWAY_ROLE (a Group object) optional repeating</li>
+/// <li>4: PPP_PCB_PROBLEM (a Group object) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class PPP_PCB_PATHWAY : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new PPP_PCB_PATHWAY Group.
-	///</summary>
+    /// <summary>   Creates a new PPP_PCB_PATHWAY Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PPP_PCB_PATHWAY(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PTH), true, false);
@@ -38,9 +41,10 @@ public class PPP_PCB_PATHWAY : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PTH (Pathway) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PTH (Pathway) - creates it if necessary. </summary>
+    ///
+    /// <value> The full pathname of the file. </value>
+
 	public PTH PTH { 
 get{
 	   PTH ret = null;
@@ -54,9 +58,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -68,19 +77,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and Comments) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and Comments) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -95,9 +110,12 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of VAR (Variance) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns  first repetition of VAR (Variance) - creates it if necessary. </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The variable. </returns>
+
 	public VAR GetVAR() {
 	   VAR ret = null;
 	   try {
@@ -109,19 +127,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of VAR
-	/// * (Variance) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of VAR
+    ///  * (Variance) - creates it if necessary throws HL7Exception if the repetition requested is
+    ///  more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The variable. </returns>
+
 	public VAR GetVAR(int rep) { 
 	   return (VAR)this.GetStructure("VAR", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of VAR 
-	 */ 
+    /// <summary>   Gets the variable repetitions used. </summary>
+    ///
+    /// <value> The variable repetitions used. </value>
+
 	public int VARRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -136,9 +160,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of PPP_PCB_PATHWAY_ROLE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of PPP_PCB_PATHWAY_ROLE (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The pathway role. </returns>
+
 	public PPP_PCB_PATHWAY_ROLE GetPATHWAY_ROLE() {
 	   PPP_PCB_PATHWAY_ROLE ret = null;
 	   try {
@@ -150,19 +179,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of PPP_PCB_PATHWAY_ROLE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of PPP_PCB_PATHWAY_ROLE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The pathway role. </returns>
+
 	public PPP_PCB_PATHWAY_ROLE GetPATHWAY_ROLE(int rep) { 
 	   return (PPP_PCB_PATHWAY_ROLE)this.GetStructure("PATHWAY_ROLE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of PPP_PCB_PATHWAY_ROLE 
-	 */ 
+    /// <summary>   Gets the pathway role repetitions used. </summary>
+    ///
+    /// <value> The pathway role repetitions used. </value>
+
 	public int PATHWAY_ROLERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -177,9 +212,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of PPP_PCB_PROBLEM (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of PPP_PCB_PROBLEM (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The problem. </returns>
+
 	public PPP_PCB_PROBLEM GetPROBLEM() {
 	   PPP_PCB_PROBLEM ret = null;
 	   try {
@@ -191,19 +231,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of PPP_PCB_PROBLEM
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of PPP_PCB_PROBLEM
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The problem. </returns>
+
 	public PPP_PCB_PROBLEM GetPROBLEM(int rep) { 
 	   return (PPP_PCB_PROBLEM)this.GetStructure("PROBLEM", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of PPP_PCB_PROBLEM 
-	 */ 
+    /// <summary>   Gets the problem repetitions used. </summary>
+    ///
+    /// <value> The problem repetitions used. </value>
+
 	public int PROBLEMRepetitionsUsed { 
 get{
 	    int reps = -1; 

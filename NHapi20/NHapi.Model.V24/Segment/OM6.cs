@@ -7,25 +7,26 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 OM6 message segment. 
-/// This segment has the following fields:<ol>
-///<li>OM6-1: Sequence Number - Test/ Observation Master File (NM)</li>
-///<li>OM6-2: Derivation Rule (TX)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 OM6 message segment. This segment has the following fields:<ol>
+/// <li>OM6-1: Sequence Number - Test/ Observation Master File (NM)</li>
+/// <li>OM6-2: Derivation Rule (TX)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class OM6 : AbstractSegment  {
 
-  /**
-   * Creates a OM6 (Observations that are Calculated from Other Observ) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the OM6 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OM6(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -36,9 +37,10 @@ public class OM6 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Sequence Number - Test/ Observation Master File(OM6-1).
-	///</summary>
+    /// <summary>   Returns Sequence Number - Test/ Observation Master File(OM6-1). </summary>
+    ///
+    /// <value> The sequence number test observation master file. </value>
+
 	public NM SequenceNumberTestObservationMasterFile
 	{
 		get{
@@ -59,9 +61,10 @@ public class OM6 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Derivation Rule(OM6-2).
-	///</summary>
+    /// <summary>   Returns Derivation Rule(OM6-2). </summary>
+    ///
+    /// <value> The derivation rule. </value>
+
 	public TX DerivationRule
 	{
 		get{

@@ -9,40 +9,43 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V22.Message
 
 {
-///<summary>
-/// Represents a MFR_M02 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a MFR_M02 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (MESSAGE HEADER) </li>
-///<li>1: MSA (MESSAGE ACKNOWLEDGMENT) </li>
-///<li>2: ERR (ERROR) optional </li>
-///<li>3: QRD (QUERY DEFINITION) </li>
-///<li>4: QRF (QUERY FILTER) optional </li>
-///<li>5: MFI (MASTER FILE IDENTIFICATION) </li>
-///<li>6: MFR_M02_MF_STAFF (a Group object) repeating</li>
-///<li>7: DSC (CONTINUATION POINTER) optional </li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (MESSAGE HEADER) </li>
+/// <li>1: MSA (MESSAGE ACKNOWLEDGMENT) </li>
+/// <li>2: ERR (ERROR) optional </li>
+/// <li>3: QRD (QUERY DEFINITION) </li>
+/// <li>4: QRF (QUERY FILTER) optional </li>
+/// <li>5: MFI (MASTER FILE IDENTIFICATION) </li>
+/// <li>6: MFR_M02_MF_STAFF (a Group object) repeating</li>
+/// <li>7: DSC (CONTINUATION POINTER) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFR_M02 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new MFR_M02 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new MFR_M02 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public MFR_M02(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new MFR_M02 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new MFR_M02 Group with DefaultModelClassFactory. </summary>
 	public MFR_M02() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for MFR_M02.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for MFR_M02.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -58,6 +61,13 @@ public class MFR_M02 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -65,9 +75,11 @@ public class MFR_M02 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MESSAGE HEADER) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MESSAGE HEADER) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -81,9 +93,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MSA (MESSAGE ACKNOWLEDGMENT) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MSA (MESSAGE ACKNOWLEDGMENT) - creates it if necessary. </summary>
+    ///
+    /// <value> The msa. </value>
+
 	public MSA MSA { 
 get{
 	   MSA ret = null;
@@ -97,9 +110,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ERR (ERROR) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ERR (ERROR) - creates it if necessary. </summary>
+    ///
+    /// <value> The error. </value>
+
 	public ERR ERR { 
 get{
 	   ERR ret = null;
@@ -113,9 +127,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QRD (QUERY DEFINITION) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QRD (QUERY DEFINITION) - creates it if necessary. </summary>
+    ///
+    /// <value> The qrd. </value>
+
 	public QRD QRD { 
 get{
 	   QRD ret = null;
@@ -129,9 +144,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QRF (QUERY FILTER) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QRF (QUERY FILTER) - creates it if necessary. </summary>
+    ///
+    /// <value> The qrf. </value>
+
 	public QRF QRF { 
 get{
 	   QRF ret = null;
@@ -145,9 +161,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MFI (MASTER FILE IDENTIFICATION) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MFI (MASTER FILE IDENTIFICATION) - creates it if necessary. </summary>
+    ///
+    /// <value> The mfi. </value>
+
 	public MFI MFI { 
 get{
 	   MFI ret = null;
@@ -161,9 +178,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of MFR_M02_MF_STAFF (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of MFR_M02_MF_STAFF (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The mf staff. </returns>
+
 	public MFR_M02_MF_STAFF GetMF_STAFF() {
 	   MFR_M02_MF_STAFF ret = null;
 	   try {
@@ -175,19 +197,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of MFR_M02_MF_STAFF
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of MFR_M02_MF_STAFF
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The mf staff. </returns>
+
 	public MFR_M02_MF_STAFF GetMF_STAFF(int rep) { 
 	   return (MFR_M02_MF_STAFF)this.GetStructure("MF_STAFF", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of MFR_M02_MF_STAFF 
-	 */ 
+    /// <summary>   Gets the mf staff repetitions used. </summary>
+    ///
+    /// <value> The mf staff repetitions used. </value>
+
 	public int MF_STAFFRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -202,9 +230,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns DSC (CONTINUATION POINTER) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns DSC (CONTINUATION POINTER) - creates it if necessary. </summary>
+    ///
+    /// <value> The dsc. </value>
+
 	public DSC DSC { 
 get{
 	   DSC ret = null;

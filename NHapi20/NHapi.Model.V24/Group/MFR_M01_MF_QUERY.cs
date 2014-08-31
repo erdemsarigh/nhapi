@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the MFR_M01_MF_QUERY Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: MFE (Master File Entry) </li>
-///<li>1: Zxx (any Z segment) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the MFR_M01_MF_QUERY Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: MFE (Master File Entry) </li>
+/// <li>1: Zxx (any Z segment) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFR_M01_MF_QUERY : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new MFR_M01_MF_QUERY Group.
-	///</summary>
+    /// <summary>   Creates a new MFR_M01_MF_QUERY Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFR_M01_MF_QUERY(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(MFE), true, false);
@@ -32,9 +35,10 @@ public class MFR_M01_MF_QUERY : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns MFE (Master File Entry) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MFE (Master File Entry) - creates it if necessary. </summary>
+    ///
+    /// <value> The mfe. </value>
+
 	public MFE MFE { 
 get{
 	   MFE ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns Zxx (any Z segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns Zxx (any Z segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The zxx. </value>
+
 	public Zxx Zxx { 
 get{
 	   Zxx ret = null;

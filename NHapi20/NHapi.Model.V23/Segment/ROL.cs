@@ -7,31 +7,32 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 ROL message segment. 
-/// This segment has the following fields:<ol>
-///<li>ROL-1: Role Instance ID (EI)</li>
-///<li>ROL-2: Action Code (ID)</li>
-///<li>ROL-3: Role (CE)</li>
-///<li>ROL-4: Role Person (XCN)</li>
-///<li>ROL-5: Role Begin Date/Time (TS)</li>
-///<li>ROL-6: Role End Date/Time (TS)</li>
-///<li>ROL-7: Role Duration (CE)</li>
-///<li>ROL-8: Role Action (Assumption) Reason (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ROL message segment. This segment has the following fields:<ol>
+/// <li>ROL-1: Role Instance ID (EI)</li>
+/// <li>ROL-2: Action Code (ID)</li>
+/// <li>ROL-3: Role (CE)</li>
+/// <li>ROL-4: Role Person (XCN)</li>
+/// <li>ROL-5: Role Begin Date/Time (TS)</li>
+/// <li>ROL-6: Role End Date/Time (TS)</li>
+/// <li>ROL-7: Role Duration (CE)</li>
+/// <li>ROL-8: Role Action (Assumption) Reason (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ROL : AbstractSegment  {
 
-  /**
-   * Creates a ROL (Role) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ROL class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ROL(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -48,9 +49,10 @@ public class ROL : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Role Instance ID(ROL-1).
-	///</summary>
+    /// <summary>   Returns Role Instance ID(ROL-1). </summary>
+    ///
+    /// <value> The identifier of the role instance. </value>
+
 	public EI RoleInstanceID
 	{
 		get{
@@ -71,9 +73,10 @@ public class ROL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Action Code(ROL-2).
-	///</summary>
+    /// <summary>   Returns Action Code(ROL-2). </summary>
+    ///
+    /// <value> The action code. </value>
+
 	public ID ActionCode
 	{
 		get{
@@ -94,9 +97,10 @@ public class ROL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Role(ROL-3).
-	///</summary>
+    /// <summary>   Returns Role(ROL-3). </summary>
+    ///
+    /// <value> The role. </value>
+
 	public CE Role
 	{
 		get{
@@ -117,9 +121,10 @@ public class ROL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Role Person(ROL-4).
-	///</summary>
+    /// <summary>   Returns Role Person(ROL-4). </summary>
+    ///
+    /// <value> The role person. </value>
+
 	public XCN RolePerson
 	{
 		get{
@@ -140,9 +145,10 @@ public class ROL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Role Begin Date/Time(ROL-5).
-	///</summary>
+    /// <summary>   Returns Role Begin Date/Time(ROL-5). </summary>
+    ///
+    /// <value> The role begin date time. </value>
+
 	public TS RoleBeginDateTime
 	{
 		get{
@@ -163,9 +169,10 @@ public class ROL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Role End Date/Time(ROL-6).
-	///</summary>
+    /// <summary>   Returns Role End Date/Time(ROL-6). </summary>
+    ///
+    /// <value> The role end date time. </value>
+
 	public TS RoleEndDateTime
 	{
 		get{
@@ -186,9 +193,10 @@ public class ROL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Role Duration(ROL-7).
-	///</summary>
+    /// <summary>   Returns Role Duration(ROL-7). </summary>
+    ///
+    /// <value> The role duration. </value>
+
 	public CE RoleDuration
 	{
 		get{
@@ -209,9 +217,10 @@ public class ROL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Role Action (Assumption) Reason(ROL-8).
-	///</summary>
+    /// <summary>   Returns Role Action (Assumption) Reason(ROL-8). </summary>
+    ///
+    /// <value> The role action assumption reason. </value>
+
 	public CE RoleActionAssumptionReason
 	{
 		get{

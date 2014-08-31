@@ -7,48 +7,49 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 SCH message segment. 
-/// This segment has the following fields:<ol>
-///<li>SCH-1: Placer Appointment ID (EI)</li>
-///<li>SCH-2: Filler Appointment ID (EI)</li>
-///<li>SCH-3: Occurrence Number (NM)</li>
-///<li>SCH-4: Placer Group Number (EI)</li>
-///<li>SCH-5: Schedule ID (CE)</li>
-///<li>SCH-6: Event Reason (CE)</li>
-///<li>SCH-7: Appointment Reason (CE)</li>
-///<li>SCH-8: Appointment Type (CE)</li>
-///<li>SCH-9: Appointment Duration (NM)</li>
-///<li>SCH-10: Appointment Duration Units (CE)</li>
-///<li>SCH-11: Appointment Timing Quantity (TQ)</li>
-///<li>SCH-12: Placer Contact Person (XCN)</li>
-///<li>SCH-13: Placer Contact Phone Number (XTN)</li>
-///<li>SCH-14: Placer Contact Address (XAD)</li>
-///<li>SCH-15: Placer Contact Location (PL)</li>
-///<li>SCH-16: Filler Contact Person (XCN)</li>
-///<li>SCH-17: Filler Contact Phone Number (XTN)</li>
-///<li>SCH-18: Filler Contact Address (XAD)</li>
-///<li>SCH-19: Filler Contact Location (PL)</li>
-///<li>SCH-20: Entered By Person (XCN)</li>
-///<li>SCH-21: Entered By Phone Number (XTN)</li>
-///<li>SCH-22: Entered By Location (PL)</li>
-///<li>SCH-23: Parent Placer Appointment ID (EI)</li>
-///<li>SCH-24: Parent Filler Appointment ID (EI)</li>
-///<li>SCH-25: Filler Status Code (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 SCH message segment. This segment has the following fields:<ol>
+/// <li>SCH-1: Placer Appointment ID (EI)</li>
+/// <li>SCH-2: Filler Appointment ID (EI)</li>
+/// <li>SCH-3: Occurrence Number (NM)</li>
+/// <li>SCH-4: Placer Group Number (EI)</li>
+/// <li>SCH-5: Schedule ID (CE)</li>
+/// <li>SCH-6: Event Reason (CE)</li>
+/// <li>SCH-7: Appointment Reason (CE)</li>
+/// <li>SCH-8: Appointment Type (CE)</li>
+/// <li>SCH-9: Appointment Duration (NM)</li>
+/// <li>SCH-10: Appointment Duration Units (CE)</li>
+/// <li>SCH-11: Appointment Timing Quantity (TQ)</li>
+/// <li>SCH-12: Placer Contact Person (XCN)</li>
+/// <li>SCH-13: Placer Contact Phone Number (XTN)</li>
+/// <li>SCH-14: Placer Contact Address (XAD)</li>
+/// <li>SCH-15: Placer Contact Location (PL)</li>
+/// <li>SCH-16: Filler Contact Person (XCN)</li>
+/// <li>SCH-17: Filler Contact Phone Number (XTN)</li>
+/// <li>SCH-18: Filler Contact Address (XAD)</li>
+/// <li>SCH-19: Filler Contact Location (PL)</li>
+/// <li>SCH-20: Entered By Person (XCN)</li>
+/// <li>SCH-21: Entered By Phone Number (XTN)</li>
+/// <li>SCH-22: Entered By Location (PL)</li>
+/// <li>SCH-23: Parent Placer Appointment ID (EI)</li>
+/// <li>SCH-24: Parent Filler Appointment ID (EI)</li>
+/// <li>SCH-25: Filler Status Code (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class SCH : AbstractSegment  {
 
-  /**
-   * Creates a SCH (Schedule Activity Information) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the SCH class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SCH(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -82,9 +83,10 @@ public class SCH : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Placer Appointment ID(SCH-1).
-	///</summary>
+    /// <summary>   Returns Placer Appointment ID(SCH-1). </summary>
+    ///
+    /// <value> The identifier of the placer appointment. </value>
+
 	public EI PlacerAppointmentID
 	{
 		get{
@@ -105,9 +107,10 @@ public class SCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Appointment ID(SCH-2).
-	///</summary>
+    /// <summary>   Returns Filler Appointment ID(SCH-2). </summary>
+    ///
+    /// <value> The identifier of the filler appointment. </value>
+
 	public EI FillerAppointmentID
 	{
 		get{
@@ -128,9 +131,10 @@ public class SCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Occurrence Number(SCH-3).
-	///</summary>
+    /// <summary>   Returns Occurrence Number(SCH-3). </summary>
+    ///
+    /// <value> The occurrence number. </value>
+
 	public NM OccurrenceNumber
 	{
 		get{
@@ -151,9 +155,10 @@ public class SCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Placer Group Number(SCH-4).
-	///</summary>
+    /// <summary>   Returns Placer Group Number(SCH-4). </summary>
+    ///
+    /// <value> The placer group number. </value>
+
 	public EI PlacerGroupNumber
 	{
 		get{
@@ -174,9 +179,10 @@ public class SCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Schedule ID(SCH-5).
-	///</summary>
+    /// <summary>   Returns Schedule ID(SCH-5). </summary>
+    ///
+    /// <value> The identifier of the schedule. </value>
+
 	public CE ScheduleID
 	{
 		get{
@@ -197,9 +203,10 @@ public class SCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Event Reason(SCH-6).
-	///</summary>
+    /// <summary>   Returns Event Reason(SCH-6). </summary>
+    ///
+    /// <value> The event reason. </value>
+
 	public CE EventReason
 	{
 		get{
@@ -220,9 +227,10 @@ public class SCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Appointment Reason(SCH-7).
-	///</summary>
+    /// <summary>   Returns Appointment Reason(SCH-7). </summary>
+    ///
+    /// <value> The appointment reason. </value>
+
 	public CE AppointmentReason
 	{
 		get{
@@ -243,9 +251,10 @@ public class SCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Appointment Type(SCH-8).
-	///</summary>
+    /// <summary>   Returns Appointment Type(SCH-8). </summary>
+    ///
+    /// <value> The type of the appointment. </value>
+
 	public CE AppointmentType
 	{
 		get{
@@ -266,9 +275,10 @@ public class SCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Appointment Duration(SCH-9).
-	///</summary>
+    /// <summary>   Returns Appointment Duration(SCH-9). </summary>
+    ///
+    /// <value> The appointment duration. </value>
+
 	public NM AppointmentDuration
 	{
 		get{
@@ -289,9 +299,10 @@ public class SCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Appointment Duration Units(SCH-10).
-	///</summary>
+    /// <summary>   Returns Appointment Duration Units(SCH-10). </summary>
+    ///
+    /// <value> The appointment duration units. </value>
+
 	public CE AppointmentDurationUnits
 	{
 		get{
@@ -312,11 +323,17 @@ public class SCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Appointment Timing Quantity(SCH-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Appointment Timing Quantity(SCH-11). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The appointment timing quantity. </returns>
+
 	public TQ GetAppointmentTimingQuantity(int rep)
 	{
 			TQ ret = null;
@@ -331,9 +348,12 @@ public class SCH : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Appointment Timing Quantity (SCH-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of Appointment Timing Quantity (SCH-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tq. </returns>
+
   public TQ[] GetAppointmentTimingQuantity() {
      TQ[] ret = null;
     try {
@@ -352,9 +372,10 @@ public class SCH : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Appointment Timing Quantity (SCH-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Appointment Timing Quantity (SCH-11). </summary>
+  ///
+  /// <value>   The appointment timing quantity repetitions used. </value>
+
   public int AppointmentTimingQuantityRepetitionsUsed
 {
 get{
@@ -370,9 +391,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Placer Contact Person(SCH-12).
-	///</summary>
+
+    /// <summary>   Returns Placer Contact Person(SCH-12). </summary>
+    ///
+    /// <value> The placer contact person. </value>
+
 	public XCN PlacerContactPerson
 	{
 		get{
@@ -393,9 +416,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Placer Contact Phone Number(SCH-13).
-	///</summary>
+    /// <summary>   Returns Placer Contact Phone Number(SCH-13). </summary>
+    ///
+    /// <value> The placer contact phone number. </value>
+
 	public XTN PlacerContactPhoneNumber
 	{
 		get{
@@ -416,9 +440,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Placer Contact Address(SCH-14).
-	///</summary>
+    /// <summary>   Returns Placer Contact Address(SCH-14). </summary>
+    ///
+    /// <value> The placer contact address. </value>
+
 	public XAD PlacerContactAddress
 	{
 		get{
@@ -439,9 +464,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Placer Contact Location(SCH-15).
-	///</summary>
+    /// <summary>   Returns Placer Contact Location(SCH-15). </summary>
+    ///
+    /// <value> The placer contact location. </value>
+
 	public PL PlacerContactLocation
 	{
 		get{
@@ -462,9 +488,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Contact Person(SCH-16).
-	///</summary>
+    /// <summary>   Returns Filler Contact Person(SCH-16). </summary>
+    ///
+    /// <value> The filler contact person. </value>
+
 	public XCN FillerContactPerson
 	{
 		get{
@@ -485,9 +512,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Contact Phone Number(SCH-17).
-	///</summary>
+    /// <summary>   Returns Filler Contact Phone Number(SCH-17). </summary>
+    ///
+    /// <value> The filler contact phone number. </value>
+
 	public XTN FillerContactPhoneNumber
 	{
 		get{
@@ -508,9 +536,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Contact Address(SCH-18).
-	///</summary>
+    /// <summary>   Returns Filler Contact Address(SCH-18). </summary>
+    ///
+    /// <value> The filler contact address. </value>
+
 	public XAD FillerContactAddress
 	{
 		get{
@@ -531,9 +560,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Contact Location(SCH-19).
-	///</summary>
+    /// <summary>   Returns Filler Contact Location(SCH-19). </summary>
+    ///
+    /// <value> The filler contact location. </value>
+
 	public PL FillerContactLocation
 	{
 		get{
@@ -554,9 +584,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Entered By Person(SCH-20).
-	///</summary>
+    /// <summary>   Returns Entered By Person(SCH-20). </summary>
+    ///
+    /// <value> The entered by person. </value>
+
 	public XCN EnteredByPerson
 	{
 		get{
@@ -577,11 +608,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Entered By Phone Number(SCH-21).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Entered By Phone Number(SCH-21). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The entered by phone number. </returns>
+
 	public XTN GetEnteredByPhoneNumber(int rep)
 	{
 			XTN ret = null;
@@ -596,9 +633,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Entered By Phone Number (SCH-21).
-   ///</summary>
+  /// <summary> Returns all repetitions of Entered By Phone Number (SCH-21). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetEnteredByPhoneNumber() {
      XTN[] ret = null;
     try {
@@ -617,9 +657,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Entered By Phone Number (SCH-21).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Entered By Phone Number (SCH-21). </summary>
+  ///
+  /// <value>   The entered by phone number repetitions used. </value>
+
   public int EnteredByPhoneNumberRepetitionsUsed
 {
 get{
@@ -635,9 +676,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Entered By Location(SCH-22).
-	///</summary>
+
+    /// <summary>   Returns Entered By Location(SCH-22). </summary>
+    ///
+    /// <value> The entered by location. </value>
+
 	public PL EnteredByLocation
 	{
 		get{
@@ -658,9 +701,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Parent Placer Appointment ID(SCH-23).
-	///</summary>
+    /// <summary>   Returns Parent Placer Appointment ID(SCH-23). </summary>
+    ///
+    /// <value> The identifier of the parent placer appointment. </value>
+
 	public EI ParentPlacerAppointmentID
 	{
 		get{
@@ -681,9 +725,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Parent Filler Appointment ID(SCH-24).
-	///</summary>
+    /// <summary>   Returns Parent Filler Appointment ID(SCH-24). </summary>
+    ///
+    /// <value> The identifier of the parent filler appointment. </value>
+
 	public EI ParentFillerAppointmentID
 	{
 		get{
@@ -704,9 +749,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Status Code(SCH-25).
-	///</summary>
+    /// <summary>   Returns Filler Status Code(SCH-25). </summary>
+    ///
+    /// <value> The filler status code. </value>
+
 	public CE FillerStatusCode
 	{
 		get{

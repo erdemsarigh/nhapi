@@ -7,70 +7,71 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 OBR message segment. 
-/// This segment has the following fields:<ol>
-///<li>OBR-1: Set ID - OBR (SI)</li>
-///<li>OBR-2: Placer Order Number (EI)</li>
-///<li>OBR-3: Filler Order Number (EI)</li>
-///<li>OBR-4: Universal Service Identifier (CE)</li>
-///<li>OBR-5: Priority (ID)</li>
-///<li>OBR-6: Requested Date/Time (TS)</li>
-///<li>OBR-7: Observation Date/Time # (TS)</li>
-///<li>OBR-8: Observation End Date/Time # (TS)</li>
-///<li>OBR-9: Collection Volume * (CQ)</li>
-///<li>OBR-10: Collector Identifier * (XCN)</li>
-///<li>OBR-11: Specimen Action Code * (ID)</li>
-///<li>OBR-12: Danger Code (CE)</li>
-///<li>OBR-13: Relevant Clinical Info. (ST)</li>
-///<li>OBR-14: Specimen Received Date/Time * (TS)</li>
-///<li>OBR-15: Specimen Source (SPS)</li>
-///<li>OBR-16: Ordering Provider (XCN)</li>
-///<li>OBR-17: Order Callback Phone Number (XTN)</li>
-///<li>OBR-18: Placer Field 1 (ST)</li>
-///<li>OBR-19: Placer Field 2 (ST)</li>
-///<li>OBR-20: Filler Field 1 + (ST)</li>
-///<li>OBR-21: Filler Field 2 + (ST)</li>
-///<li>OBR-22: Results Rpt/Status Chng - Date/Time + (TS)</li>
-///<li>OBR-23: Charge to Practice + (MOC)</li>
-///<li>OBR-24: Diagnostic Serv Sect ID (ID)</li>
-///<li>OBR-25: Result Status + (ID)</li>
-///<li>OBR-26: Parent Result + (PRL)</li>
-///<li>OBR-27: Quantity/Timing (TQ)</li>
-///<li>OBR-28: Result Copies To (XCN)</li>
-///<li>OBR-29: Parent (EIP)</li>
-///<li>OBR-30: Transportation Mode (ID)</li>
-///<li>OBR-31: Reason for Study (CE)</li>
-///<li>OBR-32: Principal Result Interpreter + (NDL)</li>
-///<li>OBR-33: Assistant Result Interpreter + (NDL)</li>
-///<li>OBR-34: Technician + (NDL)</li>
-///<li>OBR-35: Transcriptionist + (NDL)</li>
-///<li>OBR-36: Scheduled Date/Time + (TS)</li>
-///<li>OBR-37: Number of Sample Containers * (NM)</li>
-///<li>OBR-38: Transport Logistics of Collected Sample * (CE)</li>
-///<li>OBR-39: Collector's Comment * (CE)</li>
-///<li>OBR-40: Transport Arrangement Responsibility (CE)</li>
-///<li>OBR-41: Transport Arranged (ID)</li>
-///<li>OBR-42: Escort Required (ID)</li>
-///<li>OBR-43: Planned Patient Transport Comment (CE)</li>
-///<li>OBR-44: Procedure Code (CE)</li>
-///<li>OBR-45: Procedure Code Modifier (CE)</li>
-///<li>OBR-46: Placer Supplemental Service Information (CE)</li>
-///<li>OBR-47: Filler Supplemental Service Information (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 OBR message segment. This segment has the following fields:<ol>
+/// <li>OBR-1: Set ID - OBR (SI)</li>
+/// <li>OBR-2: Placer Order Number (EI)</li>
+/// <li>OBR-3: Filler Order Number (EI)</li>
+/// <li>OBR-4: Universal Service Identifier (CE)</li>
+/// <li>OBR-5: Priority (ID)</li>
+/// <li>OBR-6: Requested Date/Time (TS)</li>
+/// <li>OBR-7: Observation Date/Time # (TS)</li>
+/// <li>OBR-8: Observation End Date/Time # (TS)</li>
+/// <li>OBR-9: Collection Volume * (CQ)</li>
+/// <li>OBR-10: Collector Identifier * (XCN)</li>
+/// <li>OBR-11: Specimen Action Code * (ID)</li>
+/// <li>OBR-12: Danger Code (CE)</li>
+/// <li>OBR-13: Relevant Clinical Info. (ST)</li>
+/// <li>OBR-14: Specimen Received Date/Time * (TS)</li>
+/// <li>OBR-15: Specimen Source (SPS)</li>
+/// <li>OBR-16: Ordering Provider (XCN)</li>
+/// <li>OBR-17: Order Callback Phone Number (XTN)</li>
+/// <li>OBR-18: Placer Field 1 (ST)</li>
+/// <li>OBR-19: Placer Field 2 (ST)</li>
+/// <li>OBR-20: Filler Field 1 + (ST)</li>
+/// <li>OBR-21: Filler Field 2 + (ST)</li>
+/// <li>OBR-22: Results Rpt/Status Chng - Date/Time + (TS)</li>
+/// <li>OBR-23: Charge to Practice + (MOC)</li>
+/// <li>OBR-24: Diagnostic Serv Sect ID (ID)</li>
+/// <li>OBR-25: Result Status + (ID)</li>
+/// <li>OBR-26: Parent Result + (PRL)</li>
+/// <li>OBR-27: Quantity/Timing (TQ)</li>
+/// <li>OBR-28: Result Copies To (XCN)</li>
+/// <li>OBR-29: Parent (EIP)</li>
+/// <li>OBR-30: Transportation Mode (ID)</li>
+/// <li>OBR-31: Reason for Study (CE)</li>
+/// <li>OBR-32: Principal Result Interpreter + (NDL)</li>
+/// <li>OBR-33: Assistant Result Interpreter + (NDL)</li>
+/// <li>OBR-34: Technician + (NDL)</li>
+/// <li>OBR-35: Transcriptionist + (NDL)</li>
+/// <li>OBR-36: Scheduled Date/Time + (TS)</li>
+/// <li>OBR-37: Number of Sample Containers * (NM)</li>
+/// <li>OBR-38: Transport Logistics of Collected Sample * (CE)</li>
+/// <li>OBR-39: Collector's Comment * (CE)</li>
+/// <li>OBR-40: Transport Arrangement Responsibility (CE)</li>
+/// <li>OBR-41: Transport Arranged (ID)</li>
+/// <li>OBR-42: Escort Required (ID)</li>
+/// <li>OBR-43: Planned Patient Transport Comment (CE)</li>
+/// <li>OBR-44: Procedure Code (CE)</li>
+/// <li>OBR-45: Procedure Code Modifier (CE)</li>
+/// <li>OBR-46: Placer Supplemental Service Information (CE)</li>
+/// <li>OBR-47: Filler Supplemental Service Information (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class OBR : AbstractSegment  {
 
-  /**
-   * Creates a OBR (Observation Request) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the OBR class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OBR(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -126,9 +127,10 @@ public class OBR : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - OBR(OBR-1).
-	///</summary>
+    /// <summary>   Returns Set ID - OBR(OBR-1). </summary>
+    ///
+    /// <value> The set idobr. </value>
+
 	public SI SetIDOBR
 	{
 		get{
@@ -149,9 +151,10 @@ public class OBR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Placer Order Number(OBR-2).
-	///</summary>
+    /// <summary>   Returns Placer Order Number(OBR-2). </summary>
+    ///
+    /// <value> The placer order number. </value>
+
 	public EI PlacerOrderNumber
 	{
 		get{
@@ -172,9 +175,10 @@ public class OBR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Order Number(OBR-3).
-	///</summary>
+    /// <summary>   Returns Filler Order Number(OBR-3). </summary>
+    ///
+    /// <value> The filler order number. </value>
+
 	public EI FillerOrderNumber
 	{
 		get{
@@ -195,9 +199,10 @@ public class OBR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Universal Service Identifier(OBR-4).
-	///</summary>
+    /// <summary>   Returns Universal Service Identifier(OBR-4). </summary>
+    ///
+    /// <value> The identifier of the universal service. </value>
+
 	public CE UniversalServiceIdentifier
 	{
 		get{
@@ -218,9 +223,10 @@ public class OBR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Priority(OBR-5).
-	///</summary>
+    /// <summary>   Returns Priority(OBR-5). </summary>
+    ///
+    /// <value> The priority. </value>
+
 	public ID Priority
 	{
 		get{
@@ -241,9 +247,10 @@ public class OBR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Date/Time(OBR-6).
-	///</summary>
+    /// <summary>   Returns Requested Date/Time(OBR-6). </summary>
+    ///
+    /// <value> The requested date time. </value>
+
 	public TS RequestedDateTime
 	{
 		get{
@@ -264,9 +271,10 @@ public class OBR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Observation Date/Time #(OBR-7).
-	///</summary>
+    /// <summary>   Returns Observation Date/Time #(OBR-7). </summary>
+    ///
+    /// <value> The observation date time. </value>
+
 	public TS ObservationDateTime
 	{
 		get{
@@ -287,9 +295,10 @@ public class OBR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Observation End Date/Time #(OBR-8).
-	///</summary>
+    /// <summary>   Returns Observation End Date/Time #(OBR-8). </summary>
+    ///
+    /// <value> The observation end date time. </value>
+
 	public TS ObservationEndDateTime
 	{
 		get{
@@ -310,9 +319,10 @@ public class OBR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Collection Volume *(OBR-9).
-	///</summary>
+    /// <summary>   Returns Collection Volume *(OBR-9). </summary>
+    ///
+    /// <value> The collection volume. </value>
+
 	public CQ CollectionVolume
 	{
 		get{
@@ -333,11 +343,17 @@ public class OBR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Collector Identifier *(OBR-10).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Collector Identifier *(OBR-10). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The collector identifier. </returns>
+
 	public XCN GetCollectorIdentifier(int rep)
 	{
 			XCN ret = null;
@@ -352,9 +368,12 @@ public class OBR : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Collector Identifier * (OBR-10).
-   ///</summary>
+  /// <summary> Returns all repetitions of Collector Identifier * (OBR-10). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetCollectorIdentifier() {
      XCN[] ret = null;
     try {
@@ -373,9 +392,10 @@ public class OBR : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Collector Identifier * (OBR-10).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Collector Identifier * (OBR-10). </summary>
+  ///
+  /// <value>   The collector identifier repetitions used. </value>
+
   public int CollectorIdentifierRepetitionsUsed
 {
 get{
@@ -391,9 +411,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Specimen Action Code *(OBR-11).
-	///</summary>
+
+    /// <summary>   Returns Specimen Action Code *(OBR-11). </summary>
+    ///
+    /// <value> The specimen action code. </value>
+
 	public ID SpecimenActionCode
 	{
 		get{
@@ -414,9 +436,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Danger Code(OBR-12).
-	///</summary>
+    /// <summary>   Returns Danger Code(OBR-12). </summary>
+    ///
+    /// <value> The danger code. </value>
+
 	public CE DangerCode
 	{
 		get{
@@ -437,9 +460,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Relevant Clinical Info.(OBR-13).
-	///</summary>
+    /// <summary>   Returns Relevant Clinical Info.(OBR-13). </summary>
+    ///
+    /// <value> Information describing the relevant clinical. </value>
+
 	public ST RelevantClinicalInfo
 	{
 		get{
@@ -460,9 +484,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Specimen Received Date/Time *(OBR-14).
-	///</summary>
+    /// <summary>   Returns Specimen Received Date/Time *(OBR-14). </summary>
+    ///
+    /// <value> The specimen received date time. </value>
+
 	public TS SpecimenReceivedDateTime
 	{
 		get{
@@ -483,9 +508,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Specimen Source(OBR-15).
-	///</summary>
+    /// <summary>   Returns Specimen Source(OBR-15). </summary>
+    ///
+    /// <value> The specimen source. </value>
+
 	public SPS SpecimenSource
 	{
 		get{
@@ -506,11 +532,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Ordering Provider(OBR-16).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Ordering Provider(OBR-16). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ordering provider. </returns>
+
 	public XCN GetOrderingProvider(int rep)
 	{
 			XCN ret = null;
@@ -525,9 +557,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Ordering Provider (OBR-16).
-   ///</summary>
+  /// <summary> Returns all repetitions of Ordering Provider (OBR-16). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetOrderingProvider() {
      XCN[] ret = null;
     try {
@@ -546,9 +581,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Ordering Provider (OBR-16).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Ordering Provider (OBR-16). </summary>
+  ///
+  /// <value>   The ordering provider repetitions used. </value>
+
   public int OrderingProviderRepetitionsUsed
 {
 get{
@@ -564,11 +600,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Order Callback Phone Number(OBR-17).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Order Callback Phone Number(OBR-17). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The order callback phone number. </returns>
+
 	public XTN GetOrderCallbackPhoneNumber(int rep)
 	{
 			XTN ret = null;
@@ -583,9 +626,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Order Callback Phone Number (OBR-17).
-   ///</summary>
+  /// <summary> Returns all repetitions of Order Callback Phone Number (OBR-17). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetOrderCallbackPhoneNumber() {
      XTN[] ret = null;
     try {
@@ -604,9 +650,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Order Callback Phone Number (OBR-17).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Order Callback Phone Number (OBR-17). </summary>
+  ///
+  /// <value>   The order callback phone number repetitions used. </value>
+
   public int OrderCallbackPhoneNumberRepetitionsUsed
 {
 get{
@@ -622,9 +669,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Placer Field 1(OBR-18).
-	///</summary>
+
+    /// <summary>   Returns Placer Field 1(OBR-18). </summary>
+    ///
+    /// <value> The placer field 1. </value>
+
 	public ST PlacerField1
 	{
 		get{
@@ -645,9 +694,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Placer Field 2(OBR-19).
-	///</summary>
+    /// <summary>   Returns Placer Field 2(OBR-19). </summary>
+    ///
+    /// <value> The placer field 2. </value>
+
 	public ST PlacerField2
 	{
 		get{
@@ -668,9 +718,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Field 1 +(OBR-20).
-	///</summary>
+    /// <summary>   Returns Filler Field 1 +(OBR-20). </summary>
+    ///
+    /// <value> The filler field 1. </value>
+
 	public ST FillerField1
 	{
 		get{
@@ -691,9 +742,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Field 2 +(OBR-21).
-	///</summary>
+    /// <summary>   Returns Filler Field 2 +(OBR-21). </summary>
+    ///
+    /// <value> The filler field 2. </value>
+
 	public ST FillerField2
 	{
 		get{
@@ -714,9 +766,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Results Rpt/Status Chng - Date/Time +(OBR-22).
-	///</summary>
+    /// <summary>   Returns Results Rpt/Status Chng - Date/Time +(OBR-22). </summary>
+    ///
+    /// <value> The results repeat status chng date time. </value>
+
 	public TS ResultsRptStatusChngDateTime
 	{
 		get{
@@ -737,9 +790,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Charge to Practice +(OBR-23).
-	///</summary>
+    /// <summary>   Returns Charge to Practice +(OBR-23). </summary>
+    ///
+    /// <value> The charge to practice. </value>
+
 	public MOC ChargeToPractice
 	{
 		get{
@@ -760,9 +814,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Diagnostic Serv Sect ID(OBR-24).
-	///</summary>
+    /// <summary>   Returns Diagnostic Serv Sect ID(OBR-24). </summary>
+    ///
+    /// <value> The identifier of the diagnostic serv sect. </value>
+
 	public ID DiagnosticServSectID
 	{
 		get{
@@ -783,9 +838,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Result Status +(OBR-25).
-	///</summary>
+    /// <summary>   Returns Result Status +(OBR-25). </summary>
+    ///
+    /// <value> The result status. </value>
+
 	public ID ResultStatus
 	{
 		get{
@@ -806,9 +862,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Parent Result +(OBR-26).
-	///</summary>
+    /// <summary>   Returns Parent Result +(OBR-26). </summary>
+    ///
+    /// <value> The parent result. </value>
+
 	public PRL ParentResult
 	{
 		get{
@@ -829,11 +886,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Quantity/Timing(OBR-27).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Quantity/Timing(OBR-27). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The quantity timing. </returns>
+
 	public TQ GetQuantityTiming(int rep)
 	{
 			TQ ret = null;
@@ -848,9 +911,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Quantity/Timing (OBR-27).
-   ///</summary>
+  /// <summary> Returns all repetitions of Quantity/Timing (OBR-27). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tq. </returns>
+
   public TQ[] GetQuantityTiming() {
      TQ[] ret = null;
     try {
@@ -869,9 +935,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Quantity/Timing (OBR-27).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Quantity/Timing (OBR-27). </summary>
+  ///
+  /// <value>   The quantity timing repetitions used. </value>
+
   public int QuantityTimingRepetitionsUsed
 {
 get{
@@ -887,11 +954,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Result Copies To(OBR-28).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Result Copies To(OBR-28). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The result copies to. </returns>
+
 	public XCN GetResultCopiesTo(int rep)
 	{
 			XCN ret = null;
@@ -906,9 +980,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Result Copies To (OBR-28).
-   ///</summary>
+  /// <summary> Returns all repetitions of Result Copies To (OBR-28). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetResultCopiesTo() {
      XCN[] ret = null;
     try {
@@ -927,9 +1004,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Result Copies To (OBR-28).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Result Copies To (OBR-28). </summary>
+  ///
+  /// <value>   The result copies to repetitions used. </value>
+
   public int ResultCopiesToRepetitionsUsed
 {
 get{
@@ -945,9 +1023,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Parent(OBR-29).
-	///</summary>
+
+    /// <summary>   Returns Parent(OBR-29). </summary>
+    ///
+    /// <value> The parent. </value>
+
 	public EIP Parent
 	{
 		get{
@@ -968,9 +1048,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Transportation Mode(OBR-30).
-	///</summary>
+    /// <summary>   Returns Transportation Mode(OBR-30). </summary>
+    ///
+    /// <value> The transportation mode. </value>
+
 	public ID TransportationMode
 	{
 		get{
@@ -991,11 +1072,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Reason for Study(OBR-31).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Reason for Study(OBR-31). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The reason for study. </returns>
+
 	public CE GetReasonForStudy(int rep)
 	{
 			CE ret = null;
@@ -1010,9 +1097,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Reason for Study (OBR-31).
-   ///</summary>
+  /// <summary> Returns all repetitions of Reason for Study (OBR-31). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetReasonForStudy() {
      CE[] ret = null;
     try {
@@ -1031,9 +1121,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Reason for Study (OBR-31).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Reason for Study (OBR-31). </summary>
+  ///
+  /// <value>   The reason for study repetitions used. </value>
+
   public int ReasonForStudyRepetitionsUsed
 {
 get{
@@ -1049,9 +1140,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Principal Result Interpreter +(OBR-32).
-	///</summary>
+
+    /// <summary>   Returns Principal Result Interpreter +(OBR-32). </summary>
+    ///
+    /// <value> The principal result interpreter. </value>
+
 	public NDL PrincipalResultInterpreter
 	{
 		get{
@@ -1072,11 +1165,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Assistant Result Interpreter +(OBR-33).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Assistant Result Interpreter +(OBR-33). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The assistant result interpreter. </returns>
+
 	public NDL GetAssistantResultInterpreter(int rep)
 	{
 			NDL ret = null;
@@ -1091,9 +1190,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Assistant Result Interpreter + (OBR-33).
-   ///</summary>
+  /// <summary> Returns all repetitions of Assistant Result Interpreter + (OBR-33). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ndl. </returns>
+
   public NDL[] GetAssistantResultInterpreter() {
      NDL[] ret = null;
     try {
@@ -1112,9 +1214,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Assistant Result Interpreter + (OBR-33).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Assistant Result Interpreter + (OBR-33). </summary>
+  ///
+  /// <value>   The assistant result interpreter repetitions used. </value>
+
   public int AssistantResultInterpreterRepetitionsUsed
 {
 get{
@@ -1130,11 +1233,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Technician +(OBR-34).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Technician +(OBR-34). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The technician. </returns>
+
 	public NDL GetTechnician(int rep)
 	{
 			NDL ret = null;
@@ -1149,9 +1259,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Technician + (OBR-34).
-   ///</summary>
+  /// <summary> Returns all repetitions of Technician + (OBR-34). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ndl. </returns>
+
   public NDL[] GetTechnician() {
      NDL[] ret = null;
     try {
@@ -1170,9 +1283,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Technician + (OBR-34).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Technician + (OBR-34). </summary>
+  ///
+  /// <value>   The technician repetitions used. </value>
+
   public int TechnicianRepetitionsUsed
 {
 get{
@@ -1188,11 +1302,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Transcriptionist +(OBR-35).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Transcriptionist +(OBR-35). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The transcriptionist. </returns>
+
 	public NDL GetTranscriptionist(int rep)
 	{
 			NDL ret = null;
@@ -1207,9 +1328,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Transcriptionist + (OBR-35).
-   ///</summary>
+  /// <summary> Returns all repetitions of Transcriptionist + (OBR-35). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ndl. </returns>
+
   public NDL[] GetTranscriptionist() {
      NDL[] ret = null;
     try {
@@ -1228,9 +1352,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Transcriptionist + (OBR-35).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Transcriptionist + (OBR-35). </summary>
+  ///
+  /// <value>   The transcriptionist repetitions used. </value>
+
   public int TranscriptionistRepetitionsUsed
 {
 get{
@@ -1246,9 +1371,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Scheduled Date/Time +(OBR-36).
-	///</summary>
+
+    /// <summary>   Returns Scheduled Date/Time +(OBR-36). </summary>
+    ///
+    /// <value> The scheduled date time. </value>
+
 	public TS ScheduledDateTime
 	{
 		get{
@@ -1269,9 +1396,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Number of Sample Containers *(OBR-37).
-	///</summary>
+    /// <summary>   Returns Number of Sample Containers *(OBR-37). </summary>
+    ///
+    /// <value> The total number of sample containers. </value>
+
 	public NM NumberOfSampleContainers
 	{
 		get{
@@ -1292,11 +1420,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Transport Logistics of Collected Sample *(OBR-38).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Transport Logistics of Collected Sample *(OBR-38). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The transport logistics of collected sample. </returns>
+
 	public CE GetTransportLogisticsOfCollectedSample(int rep)
 	{
 			CE ret = null;
@@ -1311,9 +1445,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Transport Logistics of Collected Sample * (OBR-38).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetTransportLogisticsOfCollectedSample() {
      CE[] ret = null;
     try {
@@ -1332,9 +1471,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Transport Logistics of Collected Sample * (OBR-38).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The transport logistics of collected sample repetitions used. </value>
+
   public int TransportLogisticsOfCollectedSampleRepetitionsUsed
 {
 get{
@@ -1350,11 +1492,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Collector's Comment *(OBR-39).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Collector's Comment *(OBR-39). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The collector s comment. </returns>
+
 	public CE GetCollectorSComment(int rep)
 	{
 			CE ret = null;
@@ -1369,9 +1518,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Collector's Comment * (OBR-39).
-   ///</summary>
+  /// <summary> Returns all repetitions of Collector's Comment * (OBR-39). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetCollectorSComment() {
      CE[] ret = null;
     try {
@@ -1390,9 +1542,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Collector's Comment * (OBR-39).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Collector's Comment * (OBR-39). </summary>
+  ///
+  /// <value>   The collector s comment repetitions used. </value>
+
   public int CollectorSCommentRepetitionsUsed
 {
 get{
@@ -1408,9 +1561,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Transport Arrangement Responsibility(OBR-40).
-	///</summary>
+
+    /// <summary>   Returns Transport Arrangement Responsibility(OBR-40). </summary>
+    ///
+    /// <value> The transport arrangement responsibility. </value>
+
 	public CE TransportArrangementResponsibility
 	{
 		get{
@@ -1431,9 +1586,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Transport Arranged(OBR-41).
-	///</summary>
+    /// <summary>   Returns Transport Arranged(OBR-41). </summary>
+    ///
+    /// <value> The transport arranged. </value>
+
 	public ID TransportArranged
 	{
 		get{
@@ -1454,9 +1610,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Escort Required(OBR-42).
-	///</summary>
+    /// <summary>   Returns Escort Required(OBR-42). </summary>
+    ///
+    /// <value> The escort required. </value>
+
 	public ID EscortRequired
 	{
 		get{
@@ -1477,11 +1634,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Planned Patient Transport Comment(OBR-43).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Planned Patient Transport Comment(OBR-43). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The planned patient transport comment. </returns>
+
 	public CE GetPlannedPatientTransportComment(int rep)
 	{
 			CE ret = null;
@@ -1496,9 +1659,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Planned Patient Transport Comment (OBR-43).
-   ///</summary>
+  /// <summary> Returns all repetitions of Planned Patient Transport Comment (OBR-43). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetPlannedPatientTransportComment() {
      CE[] ret = null;
     try {
@@ -1517,9 +1683,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Planned Patient Transport Comment (OBR-43).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The planned patient transport comment repetitions used. </value>
+
   public int PlannedPatientTransportCommentRepetitionsUsed
 {
 get{
@@ -1535,9 +1704,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Procedure Code(OBR-44).
-	///</summary>
+
+    /// <summary>   Returns Procedure Code(OBR-44). </summary>
+    ///
+    /// <value> The procedure code. </value>
+
 	public CE ProcedureCode
 	{
 		get{
@@ -1558,11 +1729,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Procedure Code Modifier(OBR-45).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Procedure Code Modifier(OBR-45). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The procedure code modifier. </returns>
+
 	public CE GetProcedureCodeModifier(int rep)
 	{
 			CE ret = null;
@@ -1577,9 +1754,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Procedure Code Modifier (OBR-45).
-   ///</summary>
+  /// <summary> Returns all repetitions of Procedure Code Modifier (OBR-45). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetProcedureCodeModifier() {
      CE[] ret = null;
     try {
@@ -1598,9 +1778,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Procedure Code Modifier (OBR-45).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Procedure Code Modifier (OBR-45). </summary>
+  ///
+  /// <value>   The procedure code modifier repetitions used. </value>
+
   public int ProcedureCodeModifierRepetitionsUsed
 {
 get{
@@ -1616,11 +1797,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Placer Supplemental Service Information(OBR-46).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Placer Supplemental Service Information(OBR-46). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The placer supplemental service information. </returns>
+
 	public CE GetPlacerSupplementalServiceInformation(int rep)
 	{
 			CE ret = null;
@@ -1635,9 +1823,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Placer Supplemental Service Information (OBR-46).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetPlacerSupplementalServiceInformation() {
      CE[] ret = null;
     try {
@@ -1656,9 +1849,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Placer Supplemental Service Information (OBR-46).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The placer supplemental service information repetitions used. </value>
+
   public int PlacerSupplementalServiceInformationRepetitionsUsed
 {
 get{
@@ -1674,11 +1870,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Filler Supplemental Service Information(OBR-47).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Filler Supplemental Service Information(OBR-47). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The filler supplemental service information. </returns>
+
 	public CE GetFillerSupplementalServiceInformation(int rep)
 	{
 			CE ret = null;
@@ -1693,9 +1896,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Filler Supplemental Service Information (OBR-47).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetFillerSupplementalServiceInformation() {
      CE[] ret = null;
     try {
@@ -1714,9 +1922,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Filler Supplemental Service Information (OBR-47).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The filler supplemental service information repetitions used. </value>
+
   public int FillerSupplementalServiceInformationRepetitionsUsed
 {
 get{

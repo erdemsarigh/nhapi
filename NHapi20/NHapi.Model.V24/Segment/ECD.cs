@@ -7,28 +7,29 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 ECD message segment. 
-/// This segment has the following fields:<ol>
-///<li>ECD-1: Reference Command Number (NM)</li>
-///<li>ECD-2: Remote Control Command (CE)</li>
-///<li>ECD-3: Response Required (ID)</li>
-///<li>ECD-4: Requested Completion Time (TQ)</li>
-///<li>ECD-5: Parameters (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ECD message segment. This segment has the following fields:<ol>
+/// <li>ECD-1: Reference Command Number (NM)</li>
+/// <li>ECD-2: Remote Control Command (CE)</li>
+/// <li>ECD-3: Response Required (ID)</li>
+/// <li>ECD-4: Requested Completion Time (TQ)</li>
+/// <li>ECD-5: Parameters (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ECD : AbstractSegment  {
 
-  /**
-   * Creates a ECD (Equipment Command) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ECD class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ECD(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -42,9 +43,10 @@ public class ECD : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Reference Command Number(ECD-1).
-	///</summary>
+    /// <summary>   Returns Reference Command Number(ECD-1). </summary>
+    ///
+    /// <value> The reference command number. </value>
+
 	public NM ReferenceCommandNumber
 	{
 		get{
@@ -65,9 +67,10 @@ public class ECD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Remote Control Command(ECD-2).
-	///</summary>
+    /// <summary>   Returns Remote Control Command(ECD-2). </summary>
+    ///
+    /// <value> The remote control command. </value>
+
 	public CE RemoteControlCommand
 	{
 		get{
@@ -88,9 +91,10 @@ public class ECD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Response Required(ECD-3).
-	///</summary>
+    /// <summary>   Returns Response Required(ECD-3). </summary>
+    ///
+    /// <value> The response required. </value>
+
 	public ID ResponseRequired
 	{
 		get{
@@ -111,9 +115,10 @@ public class ECD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Completion Time(ECD-4).
-	///</summary>
+    /// <summary>   Returns Requested Completion Time(ECD-4). </summary>
+    ///
+    /// <value> The requested completion time. </value>
+
 	public TQ RequestedCompletionTime
 	{
 		get{
@@ -134,11 +139,17 @@ public class ECD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Parameters(ECD-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Parameters(ECD-5). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The parameters. </returns>
+
 	public ST GetParameters(int rep)
 	{
 			ST ret = null;
@@ -153,9 +164,12 @@ public class ECD : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Parameters (ECD-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Parameters (ECD-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetParameters() {
      ST[] ret = null;
     try {
@@ -174,9 +188,10 @@ public class ECD : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Parameters (ECD-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Parameters (ECD-5). </summary>
+  ///
+  /// <value>   The parameters repetitions used. </value>
+
   public int ParametersRepetitionsUsed
 {
 get{

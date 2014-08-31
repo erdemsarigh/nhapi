@@ -7,38 +7,39 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 NST message segment. 
-/// This segment has the following fields:<ol>
-///<li>NST-1: Statistics Available (ID)</li>
-///<li>NST-2: Source Identifier (ST)</li>
-///<li>NST-3: Source Type (ID)</li>
-///<li>NST-4: Statistics Start (TS)</li>
-///<li>NST-5: Statistics End (TS)</li>
-///<li>NST-6: Receive Character Count (NM)</li>
-///<li>NST-7: Send Character Count (NM)</li>
-///<li>NST-8: Messages Received (NM)</li>
-///<li>NST-9: Messages Sent (NM)</li>
-///<li>NST-10: Checksum Errors Received (NM)</li>
-///<li>NST-11: Length Errors Received (NM)</li>
-///<li>NST-12: Other Errors Received (NM)</li>
-///<li>NST-13: Connect Timeouts (NM)</li>
-///<li>NST-14: Receive Timeouts (NM)</li>
-///<li>NST-15: Network Errors (NM)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 NST message segment. This segment has the following fields:<ol>
+/// <li>NST-1: Statistics Available (ID)</li>
+/// <li>NST-2: Source Identifier (ST)</li>
+/// <li>NST-3: Source Type (ID)</li>
+/// <li>NST-4: Statistics Start (TS)</li>
+/// <li>NST-5: Statistics End (TS)</li>
+/// <li>NST-6: Receive Character Count (NM)</li>
+/// <li>NST-7: Send Character Count (NM)</li>
+/// <li>NST-8: Messages Received (NM)</li>
+/// <li>NST-9: Messages Sent (NM)</li>
+/// <li>NST-10: Checksum Errors Received (NM)</li>
+/// <li>NST-11: Length Errors Received (NM)</li>
+/// <li>NST-12: Other Errors Received (NM)</li>
+/// <li>NST-13: Connect Timeouts (NM)</li>
+/// <li>NST-14: Receive Timeouts (NM)</li>
+/// <li>NST-15: Network Errors (NM)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class NST : AbstractSegment  {
 
-  /**
-   * Creates a NST (Application control level statistics) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the NST class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public NST(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -62,9 +63,10 @@ public class NST : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Statistics Available(NST-1).
-	///</summary>
+    /// <summary>   Returns Statistics Available(NST-1). </summary>
+    ///
+    /// <value> The statistics available. </value>
+
 	public ID StatisticsAvailable
 	{
 		get{
@@ -85,9 +87,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Source Identifier(NST-2).
-	///</summary>
+    /// <summary>   Returns Source Identifier(NST-2). </summary>
+    ///
+    /// <value> The identifier of the source. </value>
+
 	public ST SourceIdentifier
 	{
 		get{
@@ -108,9 +111,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Source Type(NST-3).
-	///</summary>
+    /// <summary>   Returns Source Type(NST-3). </summary>
+    ///
+    /// <value> The type of the source. </value>
+
 	public ID SourceType
 	{
 		get{
@@ -131,9 +135,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Statistics Start(NST-4).
-	///</summary>
+    /// <summary>   Returns Statistics Start(NST-4). </summary>
+    ///
+    /// <value> The statistics start. </value>
+
 	public TS StatisticsStart
 	{
 		get{
@@ -154,9 +159,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Statistics End(NST-5).
-	///</summary>
+    /// <summary>   Returns Statistics End(NST-5). </summary>
+    ///
+    /// <value> The statistics end. </value>
+
 	public TS StatisticsEnd
 	{
 		get{
@@ -177,9 +183,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Receive Character Count(NST-6).
-	///</summary>
+    /// <summary>   Returns Receive Character Count(NST-6). </summary>
+    ///
+    /// <value> The number of receive characters. </value>
+
 	public NM ReceiveCharacterCount
 	{
 		get{
@@ -200,9 +207,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Send Character Count(NST-7).
-	///</summary>
+    /// <summary>   Returns Send Character Count(NST-7). </summary>
+    ///
+    /// <value> The number of send characters. </value>
+
 	public NM SendCharacterCount
 	{
 		get{
@@ -223,9 +231,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Messages Received(NST-8).
-	///</summary>
+    /// <summary>   Returns Messages Received(NST-8). </summary>
+    ///
+    /// <value> The messages received. </value>
+
 	public NM MessagesReceived
 	{
 		get{
@@ -246,9 +255,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Messages Sent(NST-9).
-	///</summary>
+    /// <summary>   Returns Messages Sent(NST-9). </summary>
+    ///
+    /// <value> The messages sent. </value>
+
 	public NM MessagesSent
 	{
 		get{
@@ -269,9 +279,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Checksum Errors Received(NST-10).
-	///</summary>
+    /// <summary>   Returns Checksum Errors Received(NST-10). </summary>
+    ///
+    /// <value> The checksum errors received. </value>
+
 	public NM ChecksumErrorsReceived
 	{
 		get{
@@ -292,9 +303,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Length Errors Received(NST-11).
-	///</summary>
+    /// <summary>   Returns Length Errors Received(NST-11). </summary>
+    ///
+    /// <value> The length errors received. </value>
+
 	public NM LengthErrorsReceived
 	{
 		get{
@@ -315,9 +327,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Other Errors Received(NST-12).
-	///</summary>
+    /// <summary>   Returns Other Errors Received(NST-12). </summary>
+    ///
+    /// <value> The other errors received. </value>
+
 	public NM OtherErrorsReceived
 	{
 		get{
@@ -338,9 +351,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Connect Timeouts(NST-13).
-	///</summary>
+    /// <summary>   Returns Connect Timeouts(NST-13). </summary>
+    ///
+    /// <value> The connect timeouts. </value>
+
 	public NM ConnectTimeouts
 	{
 		get{
@@ -361,9 +375,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Receive Timeouts(NST-14).
-	///</summary>
+    /// <summary>   Returns Receive Timeouts(NST-14). </summary>
+    ///
+    /// <value> The receive timeouts. </value>
+
 	public NM ReceiveTimeouts
 	{
 		get{
@@ -384,9 +399,10 @@ public class NST : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Network Errors(NST-15).
-	///</summary>
+    /// <summary>   Returns Network Errors(NST-15). </summary>
+    ///
+    /// <value> The network errors. </value>
+
 	public NM NetworkErrors
 	{
 		get{

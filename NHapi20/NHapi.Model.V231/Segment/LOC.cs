@@ -7,31 +7,32 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 LOC message segment. 
-/// This segment has the following fields:<ol>
-///<li>LOC-1: Primary Key Value - LOC (PL)</li>
-///<li>LOC-2: Location Description (ST)</li>
-///<li>LOC-3: Location Type - LOC (IS)</li>
-///<li>LOC-4: Organization Name - LOC (XON)</li>
-///<li>LOC-5: Location Address (XAD)</li>
-///<li>LOC-6: Location Phone (XTN)</li>
-///<li>LOC-7: License Number (CE)</li>
-///<li>LOC-8: Location Equipment (IS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 LOC message segment. This segment has the following fields:<ol>
+/// <li>LOC-1: Primary Key Value - LOC (PL)</li>
+/// <li>LOC-2: Location Description (ST)</li>
+/// <li>LOC-3: Location Type - LOC (IS)</li>
+/// <li>LOC-4: Organization Name - LOC (XON)</li>
+/// <li>LOC-5: Location Address (XAD)</li>
+/// <li>LOC-6: Location Phone (XTN)</li>
+/// <li>LOC-7: License Number (CE)</li>
+/// <li>LOC-8: Location Equipment (IS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class LOC : AbstractSegment  {
 
-  /**
-   * Creates a LOC (LOC - location identification segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the LOC class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public LOC(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -48,9 +49,10 @@ public class LOC : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Primary Key Value - LOC(LOC-1).
-	///</summary>
+    /// <summary>   Returns Primary Key Value - LOC(LOC-1). </summary>
+    ///
+    /// <value> The primary key value location. </value>
+
 	public PL PrimaryKeyValueLOC
 	{
 		get{
@@ -71,9 +73,10 @@ public class LOC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Location Description(LOC-2).
-	///</summary>
+    /// <summary>   Returns Location Description(LOC-2). </summary>
+    ///
+    /// <value> Information describing the location. </value>
+
 	public ST LocationDescription
 	{
 		get{
@@ -94,11 +97,17 @@ public class LOC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Location Type - LOC(LOC-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Location Type - LOC(LOC-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The location type location. </returns>
+
 	public IS GetLocationTypeLOC(int rep)
 	{
 			IS ret = null;
@@ -113,9 +122,12 @@ public class LOC : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Location Type - LOC (LOC-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Location Type - LOC (LOC-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetLocationTypeLOC() {
      IS[] ret = null;
     try {
@@ -134,9 +146,10 @@ public class LOC : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Location Type - LOC (LOC-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Location Type - LOC (LOC-3). </summary>
+  ///
+  /// <value>   The location type location repetitions used. </value>
+
   public int LocationTypeLOCRepetitionsUsed
 {
 get{
@@ -152,11 +165,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Organization Name - LOC(LOC-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Organization Name - LOC(LOC-4). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The organization name location. </returns>
+
 	public XON GetOrganizationNameLOC(int rep)
 	{
 			XON ret = null;
@@ -171,9 +191,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Organization Name - LOC (LOC-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Organization Name - LOC (LOC-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of XON. </returns>
+
   public XON[] GetOrganizationNameLOC() {
      XON[] ret = null;
     try {
@@ -192,9 +215,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Organization Name - LOC (LOC-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Organization Name - LOC (LOC-4). </summary>
+  ///
+  /// <value>   The organization name location repetitions used. </value>
+
   public int OrganizationNameLOCRepetitionsUsed
 {
 get{
@@ -210,11 +234,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Location Address(LOC-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Location Address(LOC-5). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The location address. </returns>
+
 	public XAD GetLocationAddress(int rep)
 	{
 			XAD ret = null;
@@ -229,9 +260,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Location Address (LOC-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Location Address (LOC-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetLocationAddress() {
      XAD[] ret = null;
     try {
@@ -250,9 +284,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Location Address (LOC-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Location Address (LOC-5). </summary>
+  ///
+  /// <value>   The location address repetitions used. </value>
+
   public int LocationAddressRepetitionsUsed
 {
 get{
@@ -268,11 +303,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Location Phone(LOC-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Location Phone(LOC-6). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The location phone. </returns>
+
 	public XTN GetLocationPhone(int rep)
 	{
 			XTN ret = null;
@@ -287,9 +329,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Location Phone (LOC-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of Location Phone (LOC-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetLocationPhone() {
      XTN[] ret = null;
     try {
@@ -308,9 +353,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Location Phone (LOC-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Location Phone (LOC-6). </summary>
+  ///
+  /// <value>   The location phone repetitions used. </value>
+
   public int LocationPhoneRepetitionsUsed
 {
 get{
@@ -326,11 +372,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of License Number(LOC-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of License Number(LOC-7). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The license number. </returns>
+
 	public CE GetLicenseNumber(int rep)
 	{
 			CE ret = null;
@@ -345,9 +398,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of License Number (LOC-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of License Number (LOC-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetLicenseNumber() {
      CE[] ret = null;
     try {
@@ -366,9 +422,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of License Number (LOC-7).
-   ///</summary>
+  /// <summary> Returns the total repetitions of License Number (LOC-7). </summary>
+  ///
+  /// <value>   The license number repetitions used. </value>
+
   public int LicenseNumberRepetitionsUsed
 {
 get{
@@ -384,11 +441,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Location Equipment(LOC-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Location Equipment(LOC-8). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The location equipment. </returns>
+
 	public IS GetLocationEquipment(int rep)
 	{
 			IS ret = null;
@@ -403,9 +467,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Location Equipment (LOC-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of Location Equipment (LOC-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetLocationEquipment() {
      IS[] ret = null;
     try {
@@ -424,9 +491,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Location Equipment (LOC-8).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Location Equipment (LOC-8). </summary>
+  ///
+  /// <value>   The location equipment repetitions used. </value>
+
   public int LocationEquipmentRepetitionsUsed
 {
 get{

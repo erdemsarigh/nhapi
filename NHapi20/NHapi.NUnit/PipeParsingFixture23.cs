@@ -12,9 +12,11 @@ using NUnit.Framework;
 namespace NHapi.NUnit
 {
 
+    /// <summary>   A pipe parsing fixture 23. </summary>
 	[TestFixture]
 	public class PipeParsingFixture23
 	{
+        /// <summary>   Parse qryr 02. </summary>
 		[Test]
 		public void ParseQRYR02()
 		{
@@ -31,6 +33,7 @@ QRD|20060228155525|R|I||||10^RD&Records&0126|38923^^^^^^^^&TCH|||";
 			Assert.AreEqual("38923", qryR02.QRD.GetWhoSubjectFilter(0).IDNumber.Value);
 		}
 
+        /// <summary>   Creates blank message. </summary>
         [Test]
         public void CreateBlankMessage()
         {
@@ -65,6 +68,7 @@ QRD|20060228155525|R|I||||10^RD&Records&0126|38923^^^^^^^^&TCH|||";
         }
 
 		
+        /// <summary>   Parse orfr 04. </summary>
 		[Test]
 		public void ParseORFR04()
 		{
@@ -87,6 +91,7 @@ OBX|1|NM|50026400^HEMOGLOBIN A1C^^50026400^HEMOGLOBIN A1C||12|^% TOTAL HGB|4.0 -
 		}
 
 
+        /// <summary>   Parse orfr 04 to XML. </summary>
 		[Test]
 		public void ParseORFR04ToXML()
 		{
@@ -114,6 +119,7 @@ OBX|1|NM|50026400^HEMOGLOBIN A1C^^50026400^HEMOGLOBIN A1C||12|^% TOTAL HGB|4.0 -
 			Assert.IsFalse(string.Empty.Equals(recoveredMessage));            
 		}
 
+        /// <summary>   Parse XML to hl 7. </summary>
 		[Test]
 		public void ParseXMLToHL7()
 		{
@@ -135,6 +141,7 @@ OBX|1|NM|50026400^HEMOGLOBIN A1C^^50026400^HEMOGLOBIN A1C||12|^% TOTAL HGB|4.0 -
 		}
 
 
+        /// <summary>   Parse orfr 04 to XML no OCR. </summary>
 		[Test]
 		public void ParseORFR04ToXmlNoOCR()
 		{
@@ -162,6 +169,7 @@ OBX|1|NM|50026400^HEMOGLOBIN A1C^^50026400^HEMOGLOBIN A1C||12|^% TOTAL HGB|4.0 -
 			Assert.IsFalse(recoveredMessage.IndexOf("ORC")>-1, "Returned message added ORC segment.");
 		}
 
+        /// <summary>   Tests obx data types. </summary>
         [Test]
         public void TestOBXDataTypes()
         {
@@ -200,6 +208,7 @@ QAK||OK||1|1|0
 
         }
 
+        /// <summary>   Parse orfr 04 to XML no nte. </summary>
 		[Test]
 		public void ParseORFR04ToXmlNoNTE()
 		{
@@ -226,6 +235,10 @@ OBX|1|NM|50026400^HEMOGLOBIN A1C^^50026400^HEMOGLOBIN A1C||12|^% TOTAL HGB|4.0 -
 			Assert.IsNotNull(recoveredMessage);
 			Assert.IsFalse(recoveredMessage.IndexOf("NTE")>-1, "Returned message added ORC segment.");
 		}
+
+        /// <summary>   Gets qryr 02 XML. </summary>
+        ///
+        /// <returns>   The qryr 02 XML. </returns>
 
 		private static string GetQRYR02XML() 
 		{

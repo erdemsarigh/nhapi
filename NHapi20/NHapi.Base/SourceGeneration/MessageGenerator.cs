@@ -30,30 +30,31 @@ namespace NHapi.Base.SourceGeneration
 
     using NHapi.Base.Log;
 
-    /// <summary> Creates source code for HL7 Message objects, using the normative DB.  HL7 Group
-    /// objects are also created as a byproduct.
-    /// 
+    /// <summary>
+    /// Creates source code for HL7 Message objects, using the normative DB.  HL7 Group objects are
+    /// also created as a byproduct.
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
-    /// <author>  Eric Poiseau
-    /// </author>
+
     public class MessageGenerator : System.Object
     {
         #region Static Fields
 
-        /// <summary> If the system property by this name is true, groups are generated to use a ModelClassFactory
-        /// for segment class lookup.  This makes segment creation more flexible, but may slow down parsing 
-        /// substantially.  
+        /// <summary>
+        /// If the system property by this name is true, groups are generated to use a ModelClassFactory
+        /// for segment class lookup.  This makes segment creation more flexible, but may slow down
+        /// parsing substantially.  
         /// </summary>
+
         public static System.String MODEL_CLASS_FACTORY_KEY = "NHapi.Base.Sourcegen.modelclassfactory";
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the MessageGenerator class. </summary>
         static MessageGenerator()
         {
             log = HapiLogFactory.GetHapiLog(typeof(MessageGenerator));
@@ -63,7 +64,10 @@ namespace NHapi.Base.SourceGeneration
 
         #region Public Methods and Operators
 
-        /// <summary> Test harness ...</summary>
+        /// <summary>   Test harness ... </summary>
+        ///
+        /// <param name="args"> Array of command-line argument strings. </param>
+
         [STAThread]
         public static void Main(System.String[] args)
         {
@@ -86,11 +90,17 @@ namespace NHapi.Base.SourceGeneration
             }
         }
 
-        /// <summary> Creates source code for a specific message structure and
-        /// writes it under the specified directory.
-        /// throws IllegalArgumentException if there is no message structure
-        /// for this message in the normative database
+        /// <summary>
+        /// Creates source code for a specific message structure and writes it under the specified
+        /// directory. throws IllegalArgumentException if there is no message structure for this message
+        /// in the normative database.
         /// </summary>
+        ///
+        /// <param name="message">          The message. </param>
+        /// <param name="baseDirectory">    Pathname of the base directory. </param>
+        /// <param name="chapter">          The chapter. </param>
+        /// <param name="version">          The version. </param>
+
         public static void make(
             System.String message,
             System.String baseDirectory,
@@ -141,7 +151,11 @@ namespace NHapi.Base.SourceGeneration
             }
         }
 
-        /// <summary> Creates and writes source code for all Messages and Groups.</summary>
+        /// <summary>   Creates and writes source code for all Messages and Groups. </summary>
+        ///
+        /// <param name="baseDirectory">    Pathname of the base directory. </param>
+        /// <param name="version">          The version. </param>
+
         public static void makeAll(System.String baseDirectory, System.String version)
         {
             //get list of messages ...
@@ -175,7 +189,14 @@ namespace NHapi.Base.SourceGeneration
             }
         }
 
-        /// <summary> Returns source code for the contructor for this Message class.</summary>
+        /// <summary>   Returns source code for the contructor for this Message class. </summary>
+        ///
+        /// <param name="structs">      The structs. </param>
+        /// <param name="messageName">  Name of the message. </param>
+        /// <param name="version">      The version. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String makeConstructor(
             IStructureDef[] structs,
             System.String messageName,
@@ -253,9 +274,18 @@ namespace NHapi.Base.SourceGeneration
             return source.ToString();
         }
 
-        /// <summary> Returns header material for the source code of a Message class (including
-        /// package, imports, JavaDoc, and class declaration).
+        /// <summary>
+        /// Returns header material for the source code of a Message class (including package, imports,
+        /// JavaDoc, and class declaration).
         /// </summary>
+        ///
+        /// <param name="contents"> The contents. </param>
+        /// <param name="message">  The message. </param>
+        /// <param name="chapter">  The chapter. </param>
+        /// <param name="version">  The version. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String makePreamble(
             IStructureDef[] contents,
             System.String message,
@@ -309,9 +339,14 @@ namespace NHapi.Base.SourceGeneration
 
         #region Methods
 
-        /// <summary> Returns an SQL query with which to get a list of messages from the normative
-        /// database.  
+        /// <summary>
+        /// Returns an SQL query with which to get a list of messages from the normative database.  
         /// </summary>
+        ///
+        /// <param name="version">  The version. </param>
+        ///
+        /// <returns>   The message list query. </returns>
+
         private static System.String getMessageListQuery(System.String version)
         {
             // UNION because the messages are defined in different tables for different versions.
@@ -326,11 +361,17 @@ namespace NHapi.Base.SourceGeneration
                    + "' and HL7MsgStructIDs.message_structure not like 'ACK_%'"; //note: allows "ACK" itself
         }
 
-        /// <summary> Returns an SQL query with which to get a list of the segments that
-        /// are part of the given message from the normative database.  The query
-        /// varies with different versions.  The fields returned are as follows:
-        /// segment_code, repetitional, optional, description
+        /// <summary>
+        /// Returns an SQL query with which to get a list of the segments that are part of the given
+        /// message from the normative database.  The query varies with different versions.  The fields
+        /// returned are as follows: segment_code, repetitional, optional, description.
         /// </summary>
+        ///
+        /// <param name="message">  The message. </param>
+        /// <param name="version">  The version. </param>
+        ///
+        /// <returns>   The segment list query. </returns>
+
         private static System.String getSegmentListQuery(System.String message, System.String version)
         {
             System.String sql = null;
@@ -349,13 +390,19 @@ namespace NHapi.Base.SourceGeneration
             return sql;
         }
 
-        /// <summary> Queries the normative database for a list of segments comprising
-        /// the message structure.  The returned list may also contain strings
-        /// that denote repetition and optionality.  Choice indicators (i.e. begin choice,
-        /// next choice, end choice) for alternative segments are ignored, so that the class
-        /// structure allows all choices.  The matter of enforcing that only a single choice is
-        /// populated can't be handled by the class structure, and should be handled elsewhere.
+        /// <summary>
+        /// Queries the normative database for a list of segments comprising the message structure.  The
+        /// returned list may also contain strings that denote repetition and optionality.  Choice
+        /// indicators (i.e. begin choice, next choice, end choice) for alternative segments are ignored,
+        /// so that the class structure allows all choices.  The matter of enforcing that only a single
+        /// choice is populated can't be handled by the class structure, and should be handled elsewhere.
         /// </summary>
+        ///
+        /// <param name="message">  The message. </param>
+        /// <param name="version">  The version. </param>
+        ///
+        /// <returns>   An array of segment definition. </returns>
+
         private static SegmentDef[] getSegments(System.String message, System.String version)
         {
             /*String sql = "select HL7Segments.seg_code, repetitional, optional, description " +

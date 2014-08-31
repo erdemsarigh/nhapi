@@ -25,29 +25,33 @@ namespace NHapi.Base.Parser
     using System;
     using System.Collections;
 
-    /// <summary> Handles "escaping" and "unescaping" of text according to the HL7 escape sequence rules
-    /// defined in section 2.10 of the standard (version 2.4).  Currently, escape sequences for 
-    /// multiple character sets are unsupported.  The highlighting, hexademical, and locally 
-    /// defined escape sequences are also unsupported.  
+    /// <summary>
+    /// Handles "escaping" and "unescaping" of text according to the HL7 escape sequence rules
+    /// defined in section 2.10 of the standard (version 2.4).  Currently, escape sequences for
+    /// multiple character sets are unsupported.  The highlighting, hexademical, and locally defined
+    /// escape sequences are also unsupported.  
     /// </summary>
-    /// <author>  Bryan Tripp
-    /// </author>
+
     public class Escape
     {
         //This items are are to not be escaped when building the message
 
         #region Static Fields
 
+        /// <summary>   The non escape characters. </summary>
         private static string[] NON_ESCAPE_CHARACTERS = { @"\.", @"\X", @"\Z", @"\C", @"\M", @"\H", @"\N", @"\S" };
 
+        /// <summary>   The non escape character mapping. </summary>
         private static Hashtable _nonEscapeCharacterMapping = new Hashtable();
 
+        /// <summary>   The various encode characters. </summary>
         private static System.Collections.Hashtable variousEncChars = new System.Collections.Hashtable(5);
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the Escape class. </summary>
         static Escape()
         {
             foreach (string element in NON_ESCAPE_CHARACTERS)
@@ -60,7 +64,10 @@ namespace NHapi.Base.Parser
 
         #region Public Methods and Operators
 
-        /// <summary> Test harness</summary>
+        /// <summary>   Test harness. </summary>
+        ///
+        /// <param name="args"> Array of command-line argument strings. </param>
+
         [STAThread]
         public static void Main(System.String[] args)
         {
@@ -113,12 +120,13 @@ namespace NHapi.Base.Parser
             System.Console.Out.WriteLine("Unescaped: " + unescape(escaped, ec));
         }
 
-        /// <summary>
-        /// Escape string
-        /// </summary>
-        /// <param name="text"></param>
-        /// <param name="encChars"></param>
-        /// <returns></returns>
+        /// <summary>   Escape string. </summary>
+        ///
+        /// <param name="text">     . </param>
+        /// <param name="encChars"> . </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String escape(System.String text, EncodingCharacters encChars)
         {
             //Note: Special character sequences are like \.br\.  Items like this should not
@@ -180,12 +188,13 @@ namespace NHapi.Base.Parser
             return "";
         }
 
-        /// <summary>
-        /// Unescape the string
-        /// </summary>
-        /// <param name="text"></param>
-        /// <param name="encChars"></param>
-        /// <returns></returns>
+        /// <summary>   Unescape the string. </summary>
+        ///
+        /// <param name="text">     . </param>
+        /// <param name="encChars"> . </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String unescape(System.String text, EncodingCharacters encChars)
         {
             System.Text.StringBuilder result = new System.Text.StringBuilder();
@@ -226,6 +235,12 @@ namespace NHapi.Base.Parser
 
         #region Methods
 
+        /// <summary>   Invert hash. </summary>
+        ///
+        /// <param name="htIn"> The height in. </param>
+        ///
+        /// <returns>   A Hashtable. </returns>
+
         private static Hashtable InvertHash(Hashtable htIn)
         {
             Hashtable ht = new Hashtable(htIn.Count);
@@ -237,9 +252,14 @@ namespace NHapi.Base.Parser
             return ht;
         }
 
-        /// <summary> Returns a HashTable with escape sequences as keys, and corresponding 
-        /// Strings as values.  
+        /// <summary>
+        /// Returns a HashTable with escape sequences as keys, and corresponding Strings as values.  
         /// </summary>
+        ///
+        /// <param name="encChars"> . </param>
+        ///
+        /// <returns>   The escape sequences. </returns>
+
         private static System.Collections.Hashtable getEscapeSequences(EncodingCharacters encChars)
         {
             //escape sequence strings must be assembled using the given escape character 
@@ -260,9 +280,15 @@ namespace NHapi.Base.Parser
             return escapeSequences;
         }
 
-        /// <summary> Constructs escape sequences using the given escape character - this should only 
-        /// be called by getEscapeCharacter(), which will cache the results for subsequent use.
+        /// <summary>
+        /// Constructs escape sequences using the given escape character - this should only be called by
+        /// getEscapeCharacter(), which will cache the results for subsequent use.
         /// </summary>
+        ///
+        /// <param name="ec">   The ec. </param>
+        ///
+        /// <returns>   A list of. </returns>
+
         private static System.Collections.Hashtable makeEscapeSequences(EncodingCharacters ec)
         {
             System.Collections.Hashtable seqs = new System.Collections.Hashtable();

@@ -26,52 +26,57 @@ namespace NHapi.Base
 
     using NHapi.Base.Log;
 
-    /// <summary> <p>Point of access to a copy of the HL7 normative database.  A typical way of 
-    /// obtaining and using a database connection would be ...</p>
-    /// <p><code>Connection c = NormativeDatabase.getInstance().getConnection();<br>
-    /// // ... use the database ... <br>
+    /// <summary>
+    /// <p>Point of access to a copy of the HL7 normative database.  A typical way of obtaining and
+    /// using a database connection would be ...</p>
+    /// <p><code>Connection c = NormativeDatabase.getInstance().getConnection();&lt;br&gt;
+    /// // ... use the database ... &lt;br&gt;
     /// NormativeDatabase.returnConnection(c);</code></p>
     /// <p>Since the database may be installed differently on different systems, certain system
     /// properties must be set with the required connection information, as follows: </p>
-    /// <p><code>ca.on.uhn.hl7.database.url</code> - the URL of the JDBC connection<br>
-    /// <code>ca.on.uhn.hl7.database.user</code> - the user ID needed to connect (if required)<br>
-    /// <code>ca.on.uhn.hl7.database.passsword</code> - the password associated with the above user 
+    /// <p><code>ca.on.uhn.hl7.database.url</code> - the URL of the JDBC connection&lt;br&gt;
+    /// <code>ca.on.uhn.hl7.database.user</code> - the user ID needed to connect (if required)&lt;br&gt;
+    /// <code>ca.on.uhn.hl7.database.passsword</code> - the password associated with the above user
     /// (if required)</p>
-    /// <p>The required JDBC driver must also be loaded (this can be done by ensuring that the 
-    /// required driver appears in the classpath and appending the class name to the 
+    /// &lt;p&gt;The required JDBC driver must also be loaded (this can be done by ensuring that the
+    /// required driver appears in the classpath and appending the class name to the
     /// "jdbc.drivers" system property.  
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+
     public class NormativeDatabase
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
+        /// <summary>   The database. </summary>
         private static NormativeDatabase db;
 
         #endregion
 
         #region Fields
 
-        /// <summary> Returns the singleton instance of NormativeDatabase.  </summary>
+        /// <summary>   Returns the singleton instance of NormativeDatabase. </summary>
         private System.Data.OleDb.OleDbConnection _conn;
 
+        /// <summary>   The connection string. </summary>
         private string _connectionString;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the NormativeDatabase class. </summary>
         static NormativeDatabase()
         {
             log = HapiLogFactory.GetHapiLog(typeof(NormativeDatabase));
         }
 
-        /// <summary> Private constructor ... checks system properties for connection 
-        /// information
+        /// <summary>
+        /// Private constructor ... checks system properties for connection information.
         /// </summary>
+
         private NormativeDatabase()
         {
             this._connectionString = ConfigurationSettings.ConnectionString;
@@ -82,6 +87,10 @@ namespace NHapi.Base
         #endregion
 
         #region Public Properties
+
+        /// <summary>   Gets the instance. </summary>
+        ///
+        /// <value> The instance. </value>
 
         public static NormativeDatabase Instance
         {
@@ -98,9 +107,13 @@ namespace NHapi.Base
             }
         }
 
-        /// <summary> Provides a Connection to the normative database. 
-        /// A new connection may be created if none are available.
+        /// <summary>
+        /// Provides a Connection to the normative database. A new connection may be created if none are
+        /// available.
         /// </summary>
+        ///
+        /// <value> The connection. </value>
+
         public virtual System.Data.OleDb.OleDbConnection Connection
         {
             get
@@ -129,6 +142,10 @@ namespace NHapi.Base
         //test
 
         #region Public Methods and Operators
+
+        /// <summary>   Main entry-point for this application. </summary>
+        ///
+        /// <param name="args"> Array of command-line argument strings. </param>
 
         [STAThread]
         public static void Main(System.String[] args)
@@ -159,6 +176,10 @@ namespace NHapi.Base
             }
         }
 
+        /// <summary>   Opens new connection. </summary>
+        ///
+        /// <param name="conn"> Returns the singleton instance of NormativeDatabase. </param>
+
         public void OpenNewConnection(string conn)
         {
             lock (this)
@@ -173,10 +194,13 @@ namespace NHapi.Base
             }
         }
 
-        /// <summary> Used to return an HL7 normative database connection to the connection pool.  If the
-        /// given connection is not in fact a connection to the normative database, it is
-        /// discarded. 
+        /// <summary>
+        /// Used to return an HL7 normative database connection to the connection pool.  If the given
+        /// connection is not in fact a connection to the normative database, it is discarded.
         /// </summary>
+        ///
+        /// <param name="conn"> Returns the singleton instance of NormativeDatabase. </param>
+
         public virtual void returnConnection(System.Data.OleDb.OleDbConnection conn)
         {
             //check if this is a normative DB connection 

@@ -11,13 +11,14 @@ using NUnit.Framework;
 
 namespace NHapi.NUnit
 {
-	/// <summary>
-	/// This test case was created from BUG 1812261 on the SourceForge project site
-	/// Chad Chenoweth
-	/// </summary>
+    /// <summary>
+    /// This test case was created from BUG 1812261 on the SourceForge project site Chad Chenoweth.
+    /// </summary>
+
 	[TestFixture]
 	public class TestMSH3
 	{
+        /// <summary>   Tests msh 3 set. </summary>
 		[Test]
 		public void TestMSH3Set()
 		{

@@ -7,32 +7,33 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 PV2 message segment. 
-/// This segment has the following fields:<ol>
-///<li>PV2-1: Prior Pending Location (CM_INTERNAL_LOCATION)</li>
-///<li>PV2-2: Accommodation Code (CE)</li>
-///<li>PV2-3: Admit Reason (CE)</li>
-///<li>PV2-4: Transfer Reason (CE)</li>
-///<li>PV2-5: Patient Valuables (ST)</li>
-///<li>PV2-6: Patient Valuables Location (ST)</li>
-///<li>PV2-7: Visit User Code (ID)</li>
-///<li>PV2-8: Expected Admit Date (DT)</li>
-///<li>PV2-9: Expected Discharge Date (DT)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PV2 message segment. This segment has the following fields:<ol>
+/// <li>PV2-1: Prior Pending Location (CM_INTERNAL_LOCATION)</li>
+/// <li>PV2-2: Accommodation Code (CE)</li>
+/// <li>PV2-3: Admit Reason (CE)</li>
+/// <li>PV2-4: Transfer Reason (CE)</li>
+/// <li>PV2-5: Patient Valuables (ST)</li>
+/// <li>PV2-6: Patient Valuables Location (ST)</li>
+/// <li>PV2-7: Visit User Code (ID)</li>
+/// <li>PV2-8: Expected Admit Date (DT)</li>
+/// <li>PV2-9: Expected Discharge Date (DT)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PV2 : AbstractSegment  {
 
-  /**
-   * Creates a PV2 (PATIENT VISIT - additional information) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PV2 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PV2(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -50,9 +51,10 @@ public class PV2 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Prior Pending Location(PV2-1).
-	///</summary>
+    /// <summary>   Returns Prior Pending Location(PV2-1). </summary>
+    ///
+    /// <value> The prior pending location. </value>
+
 	public CM_INTERNAL_LOCATION PriorPendingLocation
 	{
 		get{
@@ -73,9 +75,10 @@ public class PV2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Accommodation Code(PV2-2).
-	///</summary>
+    /// <summary>   Returns Accommodation Code(PV2-2). </summary>
+    ///
+    /// <value> The accommodation code. </value>
+
 	public CE AccommodationCode
 	{
 		get{
@@ -96,9 +99,10 @@ public class PV2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Admit Reason(PV2-3).
-	///</summary>
+    /// <summary>   Returns Admit Reason(PV2-3). </summary>
+    ///
+    /// <value> The admit reason. </value>
+
 	public CE AdmitReason
 	{
 		get{
@@ -119,9 +123,10 @@ public class PV2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transfer Reason(PV2-4).
-	///</summary>
+    /// <summary>   Returns Transfer Reason(PV2-4). </summary>
+    ///
+    /// <value> The transfer reason. </value>
+
 	public CE TransferReason
 	{
 		get{
@@ -142,11 +147,17 @@ public class PV2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Patient Valuables(PV2-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Patient Valuables(PV2-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The patient valuables. </returns>
+
 	public ST GetPatientValuables(int rep)
 	{
 			ST ret = null;
@@ -161,9 +172,12 @@ public class PV2 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Patient Valuables (PV2-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Patient Valuables (PV2-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetPatientValuables() {
      ST[] ret = null;
     try {
@@ -182,9 +196,10 @@ public class PV2 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Patient Valuables (PV2-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Patient Valuables (PV2-5). </summary>
+  ///
+  /// <value>   The patient valuables repetitions used. </value>
+
   public int PatientValuablesRepetitionsUsed
 {
 get{
@@ -200,9 +215,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Patient Valuables Location(PV2-6).
-	///</summary>
+
+    /// <summary>   Returns Patient Valuables Location(PV2-6). </summary>
+    ///
+    /// <value> The patient valuables location. </value>
+
 	public ST PatientValuablesLocation
 	{
 		get{
@@ -223,9 +240,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Visit User Code(PV2-7).
-	///</summary>
+    /// <summary>   Returns Visit User Code(PV2-7). </summary>
+    ///
+    /// <value> The visit user code. </value>
+
 	public ID VisitUserCode
 	{
 		get{
@@ -246,9 +264,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Expected Admit Date(PV2-8).
-	///</summary>
+    /// <summary>   Returns Expected Admit Date(PV2-8). </summary>
+    ///
+    /// <value> The expected admit date. </value>
+
 	public DT ExpectedAdmitDate
 	{
 		get{
@@ -269,9 +288,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Expected Discharge Date(PV2-9).
-	///</summary>
+    /// <summary>   Returns Expected Discharge Date(PV2-9). </summary>
+    ///
+    /// <value> The expected discharge date. </value>
+
 	public DT ExpectedDischargeDate
 	{
 		get{

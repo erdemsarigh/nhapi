@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V22.Group
 {
-///<summary>
-///Represents the ORU_R01_PATIENT_RESULT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORU_R01_PATIENT (a Group object) optional </li>
-///<li>1: ORU_R01_ORDER_OBSERVATION (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ORU_R01_PATIENT_RESULT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORU_R01_PATIENT (a Group object) optional </li>
+/// <li>1: ORU_R01_ORDER_OBSERVATION (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ORU_R01_PATIENT_RESULT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ORU_R01_PATIENT_RESULT Group.
-	///</summary>
+    /// <summary>   Creates a new ORU_R01_PATIENT_RESULT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORU_R01_PATIENT_RESULT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORU_R01_PATIENT), false, false);
@@ -32,9 +35,10 @@ public class ORU_R01_PATIENT_RESULT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORU_R01_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORU_R01_PATIENT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient. </value>
+
 	public ORU_R01_PATIENT PATIENT { 
 get{
 	   ORU_R01_PATIENT ret = null;
@@ -48,9 +52,15 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of ORU_R01_ORDER_OBSERVATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of ORU_R01_ORDER_OBSERVATION (a Group object) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order observation. </returns>
+
 	public ORU_R01_ORDER_OBSERVATION GetORDER_OBSERVATION() {
 	   ORU_R01_ORDER_OBSERVATION ret = null;
 	   try {
@@ -62,19 +72,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of ORU_R01_ORDER_OBSERVATION
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of ORU_R01_ORDER_OBSERVATION
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order observation. </returns>
+
 	public ORU_R01_ORDER_OBSERVATION GetORDER_OBSERVATION(int rep) { 
 	   return (ORU_R01_ORDER_OBSERVATION)this.GetStructure("ORDER_OBSERVATION", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of ORU_R01_ORDER_OBSERVATION 
-	 */ 
+    /// <summary>   Gets the order observation repetitions used. </summary>
+    ///
+    /// <value> The order observation repetitions used. </value>
+
 	public int ORDER_OBSERVATIONRepetitionsUsed { 
 get{
 	    int reps = -1; 

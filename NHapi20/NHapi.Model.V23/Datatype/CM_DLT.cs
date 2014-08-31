@@ -6,30 +6,31 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V23.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 CM_DLT (delta check) data type.  Consists of the following components: </p><ol>
 /// <li>Range (CM_RANGE)</li>
 /// <li>numeric threshold (NM)</li>
 /// <li>change (ST)</li>
 /// <li>length of time-days (NM)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CM_DLT : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CM_DLT.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CM_DLT. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CM_DLT(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CM_DLT.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CM_DLT. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CM_DLT(IMessage message, string description) : base(message, description){
 		data = new IType[4];
 		data[0] = new CM_RANGE(message,"Range");
@@ -38,9 +39,10 @@ public class CM_DLT : AbstractType, IComposite{
 		data[3] = new NM(message,"Length of time-days");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -48,12 +50,15 @@ public class CM_DLT : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -64,10 +69,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Range (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Range (component #0).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The range. </value>
+
 	public CM_RANGE Range {
 get{
 	   CM_RANGE ret = null;
@@ -81,10 +90,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns numeric threshold (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns numeric threshold (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The total number of eric threshold. </value>
+
 	public NM NumericThreshold {
 get{
 	   NM ret = null;
@@ -98,10 +111,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns change (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns change (component #2).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The change. </value>
+
 	public ST Change {
 get{
 	   ST ret = null;
@@ -115,10 +132,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns length of time-days (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns length of time-days (component #3).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The Length of the time days. </value>
+
 	public NM LengthOfTimeDays {
 get{
 	   NM ret = null;

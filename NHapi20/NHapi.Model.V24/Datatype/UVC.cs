@@ -6,37 +6,40 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V24.Datatype
 {
-
-///<summary>
-/// <p>The HL7 UVC (Value code and amount) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 UVC (Value code and amount) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>value code (IS)</li>
 /// <li>value amount (NM)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class UVC : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a UVC.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a UVC. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public UVC(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a UVC.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a UVC. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public UVC(IMessage message, string description) : base(message, description){
 		data = new IType[2];
 		data[0] = new IS(message, 0,"Value code");
 		data[1] = new NM(message,"Value amount");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -44,12 +47,15 @@ public class UVC : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -60,10 +66,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns value code (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns value code (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The value code. </value>
+
 	public IS ValueCode {
 get{
 	   IS ret = null;
@@ -77,10 +87,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns value amount (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns value amount (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The value amount. </value>
+
 	public NM ValueAmount {
 get{
 	   NM ret = null;

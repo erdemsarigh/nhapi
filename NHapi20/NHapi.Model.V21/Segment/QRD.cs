@@ -7,35 +7,36 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 QRD message segment. 
-/// This segment has the following fields:<ol>
-///<li>QRD-1: QUERY DATE/TIME (TS)</li>
-///<li>QRD-2: QUERY FORMAT CODE (ID)</li>
-///<li>QRD-3: QUERY PRIORITY (ID)</li>
-///<li>QRD-4: QUERY ID (ST)</li>
-///<li>QRD-5: DEFERRED RESPONSE TYPE (ID)</li>
-///<li>QRD-6: DEFERRED RESPONSE DATE/TIME (TS)</li>
-///<li>QRD-7: QUANTITY LIMITED REQUEST (CQ)</li>
-///<li>QRD-8: WHO SUBJECT FILTER (ST)</li>
-///<li>QRD-9: WHAT SUBJECT FILTER (ID)</li>
-///<li>QRD-10: WHAT DEPARTMENT DATA CODE (ST)</li>
-///<li>QRD-11: WHAT DATA CODE VALUE QUAL. (ST)</li>
-///<li>QRD-12: QUERY RESULTS LEVEL (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 QRD message segment. This segment has the following fields:<ol>
+/// <li>QRD-1: QUERY DATE/TIME (TS)</li>
+/// <li>QRD-2: QUERY FORMAT CODE (ID)</li>
+/// <li>QRD-3: QUERY PRIORITY (ID)</li>
+/// <li>QRD-4: QUERY ID (ST)</li>
+/// <li>QRD-5: DEFERRED RESPONSE TYPE (ID)</li>
+/// <li>QRD-6: DEFERRED RESPONSE DATE/TIME (TS)</li>
+/// <li>QRD-7: QUANTITY LIMITED REQUEST (CQ)</li>
+/// <li>QRD-8: WHO SUBJECT FILTER (ST)</li>
+/// <li>QRD-9: WHAT SUBJECT FILTER (ID)</li>
+/// <li>QRD-10: WHAT DEPARTMENT DATA CODE (ST)</li>
+/// <li>QRD-11: WHAT DATA CODE VALUE QUAL. (ST)</li>
+/// <li>QRD-12: QUERY RESULTS LEVEL (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class QRD : AbstractSegment  {
 
-  /**
-   * Creates a QRD (QUERY DEFINITION) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the QRD class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public QRD(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -56,9 +57,10 @@ public class QRD : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns QUERY DATE/TIME(QRD-1).
-	///</summary>
+    /// <summary>   Returns QUERY DATE/TIME(QRD-1). </summary>
+    ///
+    /// <value> The querydatetime. </value>
+
 	public TS QUERYDATETIME
 	{
 		get{
@@ -79,9 +81,10 @@ public class QRD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns QUERY FORMAT CODE(QRD-2).
-	///</summary>
+    /// <summary>   Returns QUERY FORMAT CODE(QRD-2). </summary>
+    ///
+    /// <value> The queryformatcode. </value>
+
 	public ID QUERYFORMATCODE
 	{
 		get{
@@ -102,9 +105,10 @@ public class QRD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns QUERY PRIORITY(QRD-3).
-	///</summary>
+    /// <summary>   Returns QUERY PRIORITY(QRD-3). </summary>
+    ///
+    /// <value> The querypriority. </value>
+
 	public ID QUERYPRIORITY
 	{
 		get{
@@ -125,9 +129,10 @@ public class QRD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns QUERY ID(QRD-4).
-	///</summary>
+    /// <summary>   Returns QUERY ID(QRD-4). </summary>
+    ///
+    /// <value> The queryid. </value>
+
 	public ST QUERYID
 	{
 		get{
@@ -148,9 +153,10 @@ public class QRD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DEFERRED RESPONSE TYPE(QRD-5).
-	///</summary>
+    /// <summary>   Returns DEFERRED RESPONSE TYPE(QRD-5). </summary>
+    ///
+    /// <value> The deferredresponsetype. </value>
+
 	public ID DEFERREDRESPONSETYPE
 	{
 		get{
@@ -171,9 +177,10 @@ public class QRD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DEFERRED RESPONSE DATE/TIME(QRD-6).
-	///</summary>
+    /// <summary>   Returns DEFERRED RESPONSE DATE/TIME(QRD-6). </summary>
+    ///
+    /// <value> The deferredresponsedatetime. </value>
+
 	public TS DEFERREDRESPONSEDATETIME
 	{
 		get{
@@ -194,9 +201,10 @@ public class QRD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns QUANTITY LIMITED REQUEST(QRD-7).
-	///</summary>
+    /// <summary>   Returns QUANTITY LIMITED REQUEST(QRD-7). </summary>
+    ///
+    /// <value> The quantitylimitedrequest. </value>
+
 	public CQ QUANTITYLIMITEDREQUEST
 	{
 		get{
@@ -217,11 +225,17 @@ public class QRD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of WHO SUBJECT FILTER(QRD-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of WHO SUBJECT FILTER(QRD-8). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The whosubjectfilter. </returns>
+
 	public ST GetWHOSUBJECTFILTER(int rep)
 	{
 			ST ret = null;
@@ -236,9 +250,12 @@ public class QRD : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of WHO SUBJECT FILTER (QRD-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of WHO SUBJECT FILTER (QRD-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetWHOSUBJECTFILTER() {
      ST[] ret = null;
     try {
@@ -257,9 +274,10 @@ public class QRD : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of WHO SUBJECT FILTER (QRD-8).
-   ///</summary>
+  /// <summary> Returns the total repetitions of WHO SUBJECT FILTER (QRD-8). </summary>
+  ///
+  /// <value>   The whosubjectfilter repetitions used. </value>
+
   public int WHOSUBJECTFILTERRepetitionsUsed
 {
 get{
@@ -275,11 +293,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of WHAT SUBJECT FILTER(QRD-9).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of WHAT SUBJECT FILTER(QRD-9). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The whatsubjectfilter. </returns>
+
 	public ID GetWHATSUBJECTFILTER(int rep)
 	{
 			ID ret = null;
@@ -294,9 +319,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of WHAT SUBJECT FILTER (QRD-9).
-   ///</summary>
+  /// <summary> Returns all repetitions of WHAT SUBJECT FILTER (QRD-9). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetWHATSUBJECTFILTER() {
      ID[] ret = null;
     try {
@@ -315,9 +343,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of WHAT SUBJECT FILTER (QRD-9).
-   ///</summary>
+  /// <summary> Returns the total repetitions of WHAT SUBJECT FILTER (QRD-9). </summary>
+  ///
+  /// <value>   The whatsubjectfilter repetitions used. </value>
+
   public int WHATSUBJECTFILTERRepetitionsUsed
 {
 get{
@@ -333,11 +362,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of WHAT DEPARTMENT DATA CODE(QRD-10).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of WHAT DEPARTMENT DATA CODE(QRD-10). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The whatdepartmentdatacode. </returns>
+
 	public ST GetWHATDEPARTMENTDATACODE(int rep)
 	{
 			ST ret = null;
@@ -352,9 +388,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of WHAT DEPARTMENT DATA CODE (QRD-10).
-   ///</summary>
+  /// <summary> Returns all repetitions of WHAT DEPARTMENT DATA CODE (QRD-10). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetWHATDEPARTMENTDATACODE() {
      ST[] ret = null;
     try {
@@ -373,9 +412,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of WHAT DEPARTMENT DATA CODE (QRD-10).
-   ///</summary>
+  /// <summary> Returns the total repetitions of WHAT DEPARTMENT DATA CODE (QRD-10). </summary>
+  ///
+  /// <value>   The whatdepartmentdatacode repetitions used. </value>
+
   public int WHATDEPARTMENTDATACODERepetitionsUsed
 {
 get{
@@ -391,11 +431,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of WHAT DATA CODE VALUE QUAL.(QRD-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of WHAT DATA CODE VALUE QUAL.(QRD-11). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The whatdatacodevaluequal. </returns>
+
 	public ST GetWHATDATACODEVALUEQUAL(int rep)
 	{
 			ST ret = null;
@@ -410,9 +457,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of WHAT DATA CODE VALUE QUAL. (QRD-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of WHAT DATA CODE VALUE QUAL. (QRD-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetWHATDATACODEVALUEQUAL() {
      ST[] ret = null;
     try {
@@ -431,9 +481,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of WHAT DATA CODE VALUE QUAL. (QRD-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of WHAT DATA CODE VALUE QUAL. (QRD-11). </summary>
+  ///
+  /// <value>   The whatdatacodevaluequal repetitions used. </value>
+
   public int WHATDATACODEVALUEQUALRepetitionsUsed
 {
 get{
@@ -449,9 +500,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns QUERY RESULTS LEVEL(QRD-12).
-	///</summary>
+
+    /// <summary>   Returns QUERY RESULTS LEVEL(QRD-12). </summary>
+    ///
+    /// <value> The queryresultslevel. </value>
+
 	public ID QUERYRESULTSLEVEL
 	{
 		get{

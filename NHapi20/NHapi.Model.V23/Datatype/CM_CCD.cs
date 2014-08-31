@@ -6,37 +6,39 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V23.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 CM_CCD (charge time) data type.  Consists of the following components: </p><ol>
 /// <li>when to charge code (ID)</li>
 /// <li>date/time (TS)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CM_CCD : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CM_CCD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CM_CCD. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CM_CCD(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CM_CCD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CM_CCD. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CM_CCD(IMessage message, string description) : base(message, description){
 		data = new IType[2];
 		data[0] = new ID(message, 0,"When to charge code");
 		data[1] = new TS(message,"Date/time");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -44,12 +46,15 @@ public class CM_CCD : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -60,10 +65,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns when to charge code (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns when to charge code (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The when to charge code. </value>
+
 	public ID WhenToChargeCode {
 get{
 	   ID ret = null;
@@ -77,10 +86,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns date/time (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns date/time (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The date time. </value>
+
 	public TS DateTime {
 get{
 	   TS ret = null;

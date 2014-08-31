@@ -9,43 +9,46 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V231.Message
 
 {
-///<summary>
-/// Represents a ADT_A03 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a ADT_A03 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (MSH - message header segment) </li>
-///<li>1: EVN (EVN - event type segment) </li>
-///<li>2: PID (PID - patient identification segment) </li>
-///<li>3: PD1 (PD1 - patient additional demographic segment) optional </li>
-///<li>4: PV1 (PV1 - patient visit segment-) </li>
-///<li>5: PV2 (PV2 - patient visit - additional information segment) optional </li>
-///<li>6: DB1 (DB1 - Disability segment) optional repeating</li>
-///<li>7: DG1 (DG1 - diagnosis segment) optional repeating</li>
-///<li>8: DRG (DRG - diagnosis related group segment) optional </li>
-///<li>9: ADT_A03_PROCEDURE (a Group object) optional repeating</li>
-///<li>10: OBX (OBX - observation/result segment) optional repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (MSH - message header segment) </li>
+/// <li>1: EVN (EVN - event type segment) </li>
+/// <li>2: PID (PID - patient identification segment) </li>
+/// <li>3: PD1 (PD1 - patient additional demographic segment) optional </li>
+/// <li>4: PV1 (PV1 - patient visit segment-) </li>
+/// <li>5: PV2 (PV2 - patient visit - additional information segment) optional </li>
+/// <li>6: DB1 (DB1 - Disability segment) optional repeating</li>
+/// <li>7: DG1 (DG1 - diagnosis segment) optional repeating</li>
+/// <li>8: DRG (DRG - diagnosis related group segment) optional </li>
+/// <li>9: ADT_A03_PROCEDURE (a Group object) optional repeating</li>
+/// <li>10: OBX (OBX - observation/result segment) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ADT_A03 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new ADT_A03 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new ADT_A03 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public ADT_A03(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new ADT_A03 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new ADT_A03 Group with DefaultModelClassFactory. </summary>
 	public ADT_A03() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for ADT_A03.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for ADT_A03.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -64,6 +67,13 @@ public class ADT_A03 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -71,9 +81,11 @@ public class ADT_A03 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MSH - message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MSH - message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -87,9 +99,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns EVN (EVN - event type segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns EVN (EVN - event type segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The evn. </value>
+
 	public EVN EVN { 
 get{
 	   EVN ret = null;
@@ -103,9 +116,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PID (PID - patient identification segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PID (PID - patient identification segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -119,9 +135,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (PD1 - patient additional demographic segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PD1 (PD1 - patient additional demographic segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;
@@ -135,9 +154,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV1 (PV1 - patient visit segment-) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PV1 (PV1 - patient visit segment-) - creates it if necessary. </summary>
+    ///
+    /// <value> The pv 1. </value>
+
 	public PV1 PV1 { 
 get{
 	   PV1 ret = null;
@@ -151,9 +171,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV2 (PV2 - patient visit - additional information segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PV2 (PV2 - patient visit - additional information segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The pv 2. </value>
+
 	public PV2 PV2 { 
 get{
 	   PV2 ret = null;
@@ -167,9 +190,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of DB1 (DB1 - Disability segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of DB1 (DB1 - Disability segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The database 1. </returns>
+
 	public DB1 GetDB1() {
 	   DB1 ret = null;
 	   try {
@@ -181,19 +209,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of DB1
-	/// * (DB1 - Disability segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of DB1
+    ///  * (DB1 - Disability segment) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The database 1. </returns>
+
 	public DB1 GetDB1(int rep) { 
 	   return (DB1)this.GetStructure("DB1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of DB1 
-	 */ 
+    /// <summary>   Gets the database 1 repetitions used. </summary>
+    ///
+    /// <value> The database 1 repetitions used. </value>
+
 	public int DB1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -208,9 +242,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of DG1 (DG1 - diagnosis segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of DG1 (DG1 - diagnosis segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The dg 1. </returns>
+
 	public DG1 GetDG1() {
 	   DG1 ret = null;
 	   try {
@@ -222,19 +261,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of DG1
-	/// * (DG1 - diagnosis segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of DG1
+    ///  * (DG1 - diagnosis segment) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The dg 1. </returns>
+
 	public DG1 GetDG1(int rep) { 
 	   return (DG1)this.GetStructure("DG1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of DG1 
-	 */ 
+    /// <summary>   Gets the dg 1 repetitions used. </summary>
+    ///
+    /// <value> The dg 1 repetitions used. </value>
+
 	public int DG1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -249,9 +294,12 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns DRG (DRG - diagnosis related group segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns DRG (DRG - diagnosis related group segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The drg. </value>
+
 	public DRG DRG { 
 get{
 	   DRG ret = null;
@@ -265,9 +313,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of ADT_A03_PROCEDURE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of ADT_A03_PROCEDURE (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The procedure. </returns>
+
 	public ADT_A03_PROCEDURE GetPROCEDURE() {
 	   ADT_A03_PROCEDURE ret = null;
 	   try {
@@ -279,19 +332,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of ADT_A03_PROCEDURE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of ADT_A03_PROCEDURE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The procedure. </returns>
+
 	public ADT_A03_PROCEDURE GetPROCEDURE(int rep) { 
 	   return (ADT_A03_PROCEDURE)this.GetStructure("PROCEDURE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of ADT_A03_PROCEDURE 
-	 */ 
+    /// <summary>   Gets the procedure repetitions used. </summary>
+    ///
+    /// <value> The procedure repetitions used. </value>
+
 	public int PROCEDURERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -306,9 +365,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of OBX (OBX - observation/result segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of OBX (OBX - observation/result segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The obx. </returns>
+
 	public OBX GetOBX() {
 	   OBX ret = null;
 	   try {
@@ -320,19 +384,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of OBX
-	/// * (OBX - observation/result segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of OBX
+    ///  * (OBX - observation/result segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The obx. </returns>
+
 	public OBX GetOBX(int rep) { 
 	   return (OBX)this.GetStructure("OBX", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of OBX 
-	 */ 
+    /// <summary>   Gets the obx repetitions used. </summary>
+    ///
+    /// <value> The obx repetitions used. </value>
+
 	public int OBXRepetitionsUsed { 
 get{
 	    int reps = -1; 

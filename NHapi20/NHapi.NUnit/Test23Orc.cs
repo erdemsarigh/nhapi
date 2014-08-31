@@ -9,9 +9,11 @@ using NUnit.Framework;
 
 namespace NHapi.NUnit
 {
+    /// <summary>   A test 23 orc. </summary>
     [TestFixture]
     public class Test23Orc
     {
+        /// <summary>   Tests this object. </summary>
         [Test]
         public void Test()
         {

@@ -7,53 +7,54 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 IN2 message segment. 
-/// This segment has the following fields:<ol>
-///<li>IN2-1: Insured's employee ID (ST)</li>
-///<li>IN2-2: Insured's social security number (ST)</li>
-///<li>IN2-3: Insured's employer name (CN_PERSON)</li>
-///<li>IN2-4: Employer information data (ID)</li>
-///<li>IN2-5: Mail claim party (ID)</li>
-///<li>IN2-6: Medicare health insurance card number (NM)</li>
-///<li>IN2-7: Medicaid case name (PN)</li>
-///<li>IN2-8: Medicaid case number (NM)</li>
-///<li>IN2-9: Champus sponsor name (PN)</li>
-///<li>IN2-10: Champus ID number (NM)</li>
-///<li>IN2-11: Dependent of champus recipient (ID)</li>
-///<li>IN2-12: Champus organization (ST)</li>
-///<li>IN2-13: Champus station (ST)</li>
-///<li>IN2-14: Champus service (ID)</li>
-///<li>IN2-15: Champus rank / grade (ID)</li>
-///<li>IN2-16: Champus status (ID)</li>
-///<li>IN2-17: Champus retire date (DT)</li>
-///<li>IN2-18: Champus non-availability certification on file (ID)</li>
-///<li>IN2-19: Baby coverage (ID)</li>
-///<li>IN2-20: Combine baby bill (ID)</li>
-///<li>IN2-21: Blood deductible (NM)</li>
-///<li>IN2-22: Special coverage approval name (PN)</li>
-///<li>IN2-23: Special coverage approval title (ST)</li>
-///<li>IN2-24: Non-covered insurance code (ID)</li>
-///<li>IN2-25: Payor ID (ST)</li>
-///<li>IN2-26: Payor subscriber ID (ST)</li>
-///<li>IN2-27: Eligibility source (ID)</li>
-///<li>IN2-28: Room coverage type / amount (CM_RMC)</li>
-///<li>IN2-29: Policy type / amount (CM_PTA)</li>
-///<li>IN2-30: Daily deductible (CM_DDI)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 IN2 message segment. This segment has the following fields:<ol>
+/// <li>IN2-1: Insured's employee ID (ST)</li>
+/// <li>IN2-2: Insured's social security number (ST)</li>
+/// <li>IN2-3: Insured's employer name (CN_PERSON)</li>
+/// <li>IN2-4: Employer information data (ID)</li>
+/// <li>IN2-5: Mail claim party (ID)</li>
+/// <li>IN2-6: Medicare health insurance card number (NM)</li>
+/// <li>IN2-7: Medicaid case name (PN)</li>
+/// <li>IN2-8: Medicaid case number (NM)</li>
+/// <li>IN2-9: Champus sponsor name (PN)</li>
+/// <li>IN2-10: Champus ID number (NM)</li>
+/// <li>IN2-11: Dependent of champus recipient (ID)</li>
+/// <li>IN2-12: Champus organization (ST)</li>
+/// <li>IN2-13: Champus station (ST)</li>
+/// <li>IN2-14: Champus service (ID)</li>
+/// <li>IN2-15: Champus rank / grade (ID)</li>
+/// <li>IN2-16: Champus status (ID)</li>
+/// <li>IN2-17: Champus retire date (DT)</li>
+/// <li>IN2-18: Champus non-availability certification on file (ID)</li>
+/// <li>IN2-19: Baby coverage (ID)</li>
+/// <li>IN2-20: Combine baby bill (ID)</li>
+/// <li>IN2-21: Blood deductible (NM)</li>
+/// <li>IN2-22: Special coverage approval name (PN)</li>
+/// <li>IN2-23: Special coverage approval title (ST)</li>
+/// <li>IN2-24: Non-covered insurance code (ID)</li>
+/// <li>IN2-25: Payor ID (ST)</li>
+/// <li>IN2-26: Payor subscriber ID (ST)</li>
+/// <li>IN2-27: Eligibility source (ID)</li>
+/// <li>IN2-28: Room coverage type / amount (CM_RMC)</li>
+/// <li>IN2-29: Policy type / amount (CM_PTA)</li>
+/// <li>IN2-30: Daily deductible (CM_DDI)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class IN2 : AbstractSegment  {
 
-  /**
-   * Creates a IN2 (INSURANCE ADDITIONAL INFO) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the IN2 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public IN2(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -92,9 +93,10 @@ public class IN2 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Insured's employee ID(IN2-1).
-	///</summary>
+    /// <summary>   Returns Insured's employee ID(IN2-1). </summary>
+    ///
+    /// <value> The identifier of the insured s employee. </value>
+
 	public ST InsuredSEmployeeID
 	{
 		get{
@@ -115,9 +117,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Insured's social security number(IN2-2).
-	///</summary>
+    /// <summary>   Returns Insured's social security number(IN2-2). </summary>
+    ///
+    /// <value> The insured s social security number. </value>
+
 	public ST InsuredSSocialSecurityNumber
 	{
 		get{
@@ -138,9 +141,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Insured's employer name(IN2-3).
-	///</summary>
+    /// <summary>   Returns Insured's employer name(IN2-3). </summary>
+    ///
+    /// <value> The name of the insured s employer. </value>
+
 	public CN_PERSON InsuredSEmployerName
 	{
 		get{
@@ -161,9 +165,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Employer information data(IN2-4).
-	///</summary>
+    /// <summary>   Returns Employer information data(IN2-4). </summary>
+    ///
+    /// <value> Information describing the employer information. </value>
+
 	public ID EmployerInformationData
 	{
 		get{
@@ -184,9 +189,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Mail claim party(IN2-5).
-	///</summary>
+    /// <summary>   Returns Mail claim party(IN2-5). </summary>
+    ///
+    /// <value> The mail claim party. </value>
+
 	public ID MailClaimParty
 	{
 		get{
@@ -207,9 +213,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Medicare health insurance card number(IN2-6).
-	///</summary>
+    /// <summary>   Returns Medicare health insurance card number(IN2-6). </summary>
+    ///
+    /// <value> The medicare health insurance card number. </value>
+
 	public NM MedicareHealthInsuranceCardNumber
 	{
 		get{
@@ -230,9 +237,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Medicaid case name(IN2-7).
-	///</summary>
+    /// <summary>   Returns Medicaid case name(IN2-7). </summary>
+    ///
+    /// <value> The name of the medicaid case. </value>
+
 	public PN MedicaidCaseName
 	{
 		get{
@@ -253,9 +261,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Medicaid case number(IN2-8).
-	///</summary>
+    /// <summary>   Returns Medicaid case number(IN2-8). </summary>
+    ///
+    /// <value> The medicaid case number. </value>
+
 	public NM MedicaidCaseNumber
 	{
 		get{
@@ -276,9 +285,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Champus sponsor name(IN2-9).
-	///</summary>
+    /// <summary>   Returns Champus sponsor name(IN2-9). </summary>
+    ///
+    /// <value> The name of the champus sponsor. </value>
+
 	public PN ChampusSponsorName
 	{
 		get{
@@ -299,9 +309,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Champus ID number(IN2-10).
-	///</summary>
+    /// <summary>   Returns Champus ID number(IN2-10). </summary>
+    ///
+    /// <value> The champus identifier number. </value>
+
 	public NM ChampusIDNumber
 	{
 		get{
@@ -322,9 +333,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Dependent of champus recipient(IN2-11).
-	///</summary>
+    /// <summary>   Returns Dependent of champus recipient(IN2-11). </summary>
+    ///
+    /// <value> The dependent of champus recipient. </value>
+
 	public ID DependentOfChampusRecipient
 	{
 		get{
@@ -345,9 +357,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Champus organization(IN2-12).
-	///</summary>
+    /// <summary>   Returns Champus organization(IN2-12). </summary>
+    ///
+    /// <value> The champus organization. </value>
+
 	public ST ChampusOrganization
 	{
 		get{
@@ -368,9 +381,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Champus station(IN2-13).
-	///</summary>
+    /// <summary>   Returns Champus station(IN2-13). </summary>
+    ///
+    /// <value> The champus station. </value>
+
 	public ST ChampusStation
 	{
 		get{
@@ -391,9 +405,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Champus service(IN2-14).
-	///</summary>
+    /// <summary>   Returns Champus service(IN2-14). </summary>
+    ///
+    /// <value> The champus service. </value>
+
 	public ID ChampusService
 	{
 		get{
@@ -414,9 +429,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Champus rank / grade(IN2-15).
-	///</summary>
+    /// <summary>   Returns Champus rank / grade(IN2-15). </summary>
+    ///
+    /// <value> The champus rank grade. </value>
+
 	public ID ChampusRankGrade
 	{
 		get{
@@ -437,9 +453,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Champus status(IN2-16).
-	///</summary>
+    /// <summary>   Returns Champus status(IN2-16). </summary>
+    ///
+    /// <value> The champus status. </value>
+
 	public ID ChampusStatus
 	{
 		get{
@@ -460,9 +477,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Champus retire date(IN2-17).
-	///</summary>
+    /// <summary>   Returns Champus retire date(IN2-17). </summary>
+    ///
+    /// <value> The champus retire date. </value>
+
 	public DT ChampusRetireDate
 	{
 		get{
@@ -483,9 +501,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Champus non-availability certification on file(IN2-18).
-	///</summary>
+    /// <summary>   Returns Champus non-availability certification on file(IN2-18). </summary>
+    ///
+    /// <value> The champus non availability certification on file. </value>
+
 	public ID ChampusNonAvailabilityCertificationOnFile
 	{
 		get{
@@ -506,9 +525,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Baby coverage(IN2-19).
-	///</summary>
+    /// <summary>   Returns Baby coverage(IN2-19). </summary>
+    ///
+    /// <value> The baby coverage. </value>
+
 	public ID BabyCoverage
 	{
 		get{
@@ -529,9 +549,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Combine baby bill(IN2-20).
-	///</summary>
+    /// <summary>   Returns Combine baby bill(IN2-20). </summary>
+    ///
+    /// <value> The combine baby bill. </value>
+
 	public ID CombineBabyBill
 	{
 		get{
@@ -552,9 +573,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Blood deductible(IN2-21).
-	///</summary>
+    /// <summary>   Returns Blood deductible(IN2-21). </summary>
+    ///
+    /// <value> The blood deductible. </value>
+
 	public NM BloodDeductible
 	{
 		get{
@@ -575,9 +597,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Special coverage approval name(IN2-22).
-	///</summary>
+    /// <summary>   Returns Special coverage approval name(IN2-22). </summary>
+    ///
+    /// <value> The name of the special coverage approval. </value>
+
 	public PN SpecialCoverageApprovalName
 	{
 		get{
@@ -598,9 +621,10 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Special coverage approval title(IN2-23).
-	///</summary>
+    /// <summary>   Returns Special coverage approval title(IN2-23). </summary>
+    ///
+    /// <value> The special coverage approval title. </value>
+
 	public ST SpecialCoverageApprovalTitle
 	{
 		get{
@@ -621,11 +645,17 @@ public class IN2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Non-covered insurance code(IN2-24).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Non-covered insurance code(IN2-24). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The non covered insurance code. </returns>
+
 	public ID GetNonCoveredInsuranceCode(int rep)
 	{
 			ID ret = null;
@@ -640,9 +670,12 @@ public class IN2 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Non-covered insurance code (IN2-24).
-   ///</summary>
+  /// <summary> Returns all repetitions of Non-covered insurance code (IN2-24). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetNonCoveredInsuranceCode() {
      ID[] ret = null;
     try {
@@ -661,9 +694,10 @@ public class IN2 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Non-covered insurance code (IN2-24).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Non-covered insurance code (IN2-24). </summary>
+  ///
+  /// <value>   The non covered insurance code repetitions used. </value>
+
   public int NonCoveredInsuranceCodeRepetitionsUsed
 {
 get{
@@ -679,9 +713,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Payor ID(IN2-25).
-	///</summary>
+
+    /// <summary>   Returns Payor ID(IN2-25). </summary>
+    ///
+    /// <value> The identifier of the payor. </value>
+
 	public ST PayorID
 	{
 		get{
@@ -702,9 +738,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Payor subscriber ID(IN2-26).
-	///</summary>
+    /// <summary>   Returns Payor subscriber ID(IN2-26). </summary>
+    ///
+    /// <value> The identifier of the payor subscriber. </value>
+
 	public ST PayorSubscriberID
 	{
 		get{
@@ -725,9 +762,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Eligibility source(IN2-27).
-	///</summary>
+    /// <summary>   Returns Eligibility source(IN2-27). </summary>
+    ///
+    /// <value> The eligibility source. </value>
+
 	public ID EligibilitySource
 	{
 		get{
@@ -748,11 +786,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Room coverage type / amount(IN2-28).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Room coverage type / amount(IN2-28). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The room coverage type amount. </returns>
+
 	public CM_RMC GetRoomCoverageTypeAmount(int rep)
 	{
 			CM_RMC ret = null;
@@ -767,9 +811,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Room coverage type / amount (IN2-28).
-   ///</summary>
+  /// <summary> Returns all repetitions of Room coverage type / amount (IN2-28). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of centimetres rmc. </returns>
+
   public CM_RMC[] GetRoomCoverageTypeAmount() {
      CM_RMC[] ret = null;
     try {
@@ -788,9 +835,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Room coverage type / amount (IN2-28).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Room coverage type / amount (IN2-28). </summary>
+  ///
+  /// <value>   The room coverage type amount repetitions used. </value>
+
   public int RoomCoverageTypeAmountRepetitionsUsed
 {
 get{
@@ -806,11 +854,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Policy type / amount(IN2-29).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Policy type / amount(IN2-29). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The policy type amount. </returns>
+
 	public CM_PTA GetPolicyTypeAmount(int rep)
 	{
 			CM_PTA ret = null;
@@ -825,9 +880,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Policy type / amount (IN2-29).
-   ///</summary>
+  /// <summary> Returns all repetitions of Policy type / amount (IN2-29). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of centimetres pta. </returns>
+
   public CM_PTA[] GetPolicyTypeAmount() {
      CM_PTA[] ret = null;
     try {
@@ -846,9 +904,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Policy type / amount (IN2-29).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Policy type / amount (IN2-29). </summary>
+  ///
+  /// <value>   The policy type amount repetitions used. </value>
+
   public int PolicyTypeAmountRepetitionsUsed
 {
 get{
@@ -864,9 +923,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Daily deductible(IN2-30).
-	///</summary>
+
+    /// <summary>   Returns Daily deductible(IN2-30). </summary>
+    ///
+    /// <value> The daily deductible. </value>
+
 	public CM_DDI DailyDeductible
 	{
 		get{

@@ -7,29 +7,30 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 VAR message segment. 
-/// This segment has the following fields:<ol>
-///<li>VAR-1: Variance Instance ID (EI)</li>
-///<li>VAR-2: Documented Date/Time (TS)</li>
-///<li>VAR-3: Stated Variance Date/Time (TS)</li>
-///<li>VAR-4: Variance Originator (XCN)</li>
-///<li>VAR-5: Variance Classification (CE)</li>
-///<li>VAR-6: Variance Description (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 VAR message segment. This segment has the following fields:<ol>
+/// <li>VAR-1: Variance Instance ID (EI)</li>
+/// <li>VAR-2: Documented Date/Time (TS)</li>
+/// <li>VAR-3: Stated Variance Date/Time (TS)</li>
+/// <li>VAR-4: Variance Originator (XCN)</li>
+/// <li>VAR-5: Variance Classification (CE)</li>
+/// <li>VAR-6: Variance Description (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class VAR : AbstractSegment  {
 
-  /**
-   * Creates a VAR (Variance) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the VAR class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public VAR(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -44,9 +45,10 @@ public class VAR : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Variance Instance ID(VAR-1).
-	///</summary>
+    /// <summary>   Returns Variance Instance ID(VAR-1). </summary>
+    ///
+    /// <value> The identifier of the variance instance. </value>
+
 	public EI VarianceInstanceID
 	{
 		get{
@@ -67,9 +69,10 @@ public class VAR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Documented Date/Time(VAR-2).
-	///</summary>
+    /// <summary>   Returns Documented Date/Time(VAR-2). </summary>
+    ///
+    /// <value> The documented date time. </value>
+
 	public TS DocumentedDateTime
 	{
 		get{
@@ -90,9 +93,10 @@ public class VAR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Stated Variance Date/Time(VAR-3).
-	///</summary>
+    /// <summary>   Returns Stated Variance Date/Time(VAR-3). </summary>
+    ///
+    /// <value> The stated variance date time. </value>
+
 	public TS StatedVarianceDateTime
 	{
 		get{
@@ -113,9 +117,10 @@ public class VAR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Variance Originator(VAR-4).
-	///</summary>
+    /// <summary>   Returns Variance Originator(VAR-4). </summary>
+    ///
+    /// <value> The variance originator. </value>
+
 	public XCN VarianceOriginator
 	{
 		get{
@@ -136,9 +141,10 @@ public class VAR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Variance Classification(VAR-5).
-	///</summary>
+    /// <summary>   Returns Variance Classification(VAR-5). </summary>
+    ///
+    /// <value> The variance classification. </value>
+
 	public CE VarianceClassification
 	{
 		get{
@@ -159,11 +165,17 @@ public class VAR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Variance Description(VAR-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Variance Description(VAR-6). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The variance description. </returns>
+
 	public ST GetVarianceDescription(int rep)
 	{
 			ST ret = null;
@@ -178,9 +190,12 @@ public class VAR : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Variance Description (VAR-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of Variance Description (VAR-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetVarianceDescription() {
      ST[] ret = null;
     try {
@@ -199,9 +214,10 @@ public class VAR : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Variance Description (VAR-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Variance Description (VAR-6). </summary>
+  ///
+  /// <value>   The variance description repetitions used. </value>
+
   public int VarianceDescriptionRepetitionsUsed
 {
 get{

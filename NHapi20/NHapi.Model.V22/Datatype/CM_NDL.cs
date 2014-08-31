@@ -6,30 +6,32 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V22.Datatype
 {
-
-///<summary>
-/// <p>The HL7 CM_NDL (observing practitioner) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 CM_NDL (observing practitioner) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>interpreter / technician (CN_PERSON)</li>
 /// <li>start date/time (TS)</li>
 /// <li>end date/time (TS)</li>
 /// <li>location (CM_INTERNAL_LOCATION)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CM_NDL : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CM_NDL.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CM_NDL. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CM_NDL(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CM_NDL.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CM_NDL. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CM_NDL(IMessage message, string description) : base(message, description){
 		data = new IType[4];
 		data[0] = new CN_PERSON(message,"Interpreter / technician");
@@ -38,9 +40,10 @@ public class CM_NDL : AbstractType, IComposite{
 		data[3] = new CM_INTERNAL_LOCATION(message,"Location");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -48,12 +51,15 @@ public class CM_NDL : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -64,10 +70,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns interpreter / technician (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns interpreter / technician (component #0).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The interpreter technician. </value>
+
 	public CN_PERSON InterpreterTechnician {
 get{
 	   CN_PERSON ret = null;
@@ -81,10 +91,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns start date/time (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns start date/time (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The start date time. </value>
+
 	public TS StartDateTime {
 get{
 	   TS ret = null;
@@ -98,10 +112,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns end date/time (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns end date/time (component #2).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The end date time. </value>
+
 	public TS EndDateTime {
 get{
 	   TS ret = null;
@@ -115,10 +133,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns location (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns location (component #3).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The location. </value>
+
 	public CM_INTERNAL_LOCATION Location {
 get{
 	   CM_INTERNAL_LOCATION ret = null;

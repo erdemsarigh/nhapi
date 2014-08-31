@@ -6,37 +6,39 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V231.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 FC (financial class) data type.  Consists of the following components: </p><ol>
 /// <li>Financial Class (IS)</li>
 /// <li>Effective Date (TS)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class FC : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a FC.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a FC. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public FC(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a FC.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a FC. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public FC(IMessage message, string description) : base(message, description){
 		data = new IType[2];
 		data[0] = new IS(message, 64,"Financial Class");
 		data[1] = new TS(message,"Effective Date");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -44,12 +46,15 @@ public class FC : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -60,10 +65,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Financial Class (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Financial Class (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The financial class. </value>
+
 	public IS FinancialClass {
 get{
 	   IS ret = null;
@@ -77,10 +86,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Effective Date (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Effective Date (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The effective date. </value>
+
 	public TS EffectiveDate {
 get{
 	   TS ret = null;

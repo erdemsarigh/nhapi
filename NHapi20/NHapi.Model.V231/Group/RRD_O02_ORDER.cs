@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the RRD_O02_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (ORC - common order segment) </li>
-///<li>1: RRD_O02_DISPENSE (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RRD_O02_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (ORC - common order segment) </li>
+/// <li>1: RRD_O02_DISPENSE (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RRD_O02_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RRD_O02_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new RRD_O02_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RRD_O02_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -32,9 +35,10 @@ public class RRD_O02_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (ORC - common order segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (ORC - common order segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RRD_O02_DISPENSE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RRD_O02_DISPENSE (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The dispense. </value>
+
 	public RRD_O02_DISPENSE DISPENSE { 
 get{
 	   RRD_O02_DISPENSE ret = null;

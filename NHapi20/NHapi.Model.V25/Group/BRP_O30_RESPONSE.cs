@@ -8,20 +8,23 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V25.Group
 {
-///<summary>
-///Represents the BRP_O30_RESPONSE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: BRP_O30_PATIENT (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the BRP_O30_RESPONSE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: BRP_O30_PATIENT (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class BRP_O30_RESPONSE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new BRP_O30_RESPONSE Group.
-	///</summary>
+    /// <summary>   Creates a new BRP_O30_RESPONSE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public BRP_O30_RESPONSE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(BRP_O30_PATIENT), false, false);
@@ -30,9 +33,10 @@ public class BRP_O30_RESPONSE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns BRP_O30_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns BRP_O30_PATIENT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient. </value>
+
 	public BRP_O30_PATIENT PATIENT { 
 get{
 	   BRP_O30_PATIENT ret = null;

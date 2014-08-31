@@ -6,30 +6,31 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 SN (Structured Numeric) data type.  Consists of the following components: </p><ol>
 /// <li>Comparator (ST)</li>
 /// <li>Num1 (NM)</li>
 /// <li>Separator/Suffix (ST)</li>
 /// <li>Num2 (NM)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class SN : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a SN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a SN. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public SN(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a SN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a SN. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public SN(IMessage message, string description) : base(message, description){
 		data = new IType[4];
 		data[0] = new ST(message,"Comparator");
@@ -38,9 +39,10 @@ public class SN : AbstractType, IComposite{
 		data[3] = new NM(message,"Num2");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -48,12 +50,15 @@ public class SN : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -64,10 +69,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Comparator (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Comparator (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The comparator. </value>
+
 	public ST Comparator {
 get{
 	   ST ret = null;
@@ -81,10 +90,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Num1 (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Num1 (component #1).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The total number of 1. </value>
+
 	public NM Num1 {
 get{
 	   NM ret = null;
@@ -98,10 +111,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Separator/Suffix (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Separator/Suffix (component #2).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The separator suffix. </value>
+
 	public ST SeparatorSuffix {
 get{
 	   ST ret = null;
@@ -115,10 +132,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Num2 (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Num2 (component #3).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The total number of 2. </value>
+
 	public NM Num2 {
 get{
 	   NM ret = null;

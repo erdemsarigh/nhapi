@@ -7,28 +7,29 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 LCH message segment. 
-/// This segment has the following fields:<ol>
-///<li>LCH-1: Primary Key Value - LCH (PL)</li>
-///<li>LCH-2: Segment Action Code (ID)</li>
-///<li>LCH-3: Segment Unique Key (EI)</li>
-///<li>LCH-4: Location Characteristic ID (CE)</li>
-///<li>LCH-5: Location Characteristic Value (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 LCH message segment. This segment has the following fields:<ol>
+/// <li>LCH-1: Primary Key Value - LCH (PL)</li>
+/// <li>LCH-2: Segment Action Code (ID)</li>
+/// <li>LCH-3: Segment Unique Key (EI)</li>
+/// <li>LCH-4: Location Characteristic ID (CE)</li>
+/// <li>LCH-5: Location Characteristic Value (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class LCH : AbstractSegment  {
 
-  /**
-   * Creates a LCH (LCH - location characteristic segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the LCH class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public LCH(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -42,9 +43,10 @@ public class LCH : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Primary Key Value - LCH(LCH-1).
-	///</summary>
+    /// <summary>   Returns Primary Key Value - LCH(LCH-1). </summary>
+    ///
+    /// <value> The primary key value lch. </value>
+
 	public PL PrimaryKeyValueLCH
 	{
 		get{
@@ -65,9 +67,10 @@ public class LCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Segment Action Code(LCH-2).
-	///</summary>
+    /// <summary>   Returns Segment Action Code(LCH-2). </summary>
+    ///
+    /// <value> The segment action code. </value>
+
 	public ID SegmentActionCode
 	{
 		get{
@@ -88,9 +91,10 @@ public class LCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Segment Unique Key(LCH-3).
-	///</summary>
+    /// <summary>   Returns Segment Unique Key(LCH-3). </summary>
+    ///
+    /// <value> The segment unique key. </value>
+
 	public EI SegmentUniqueKey
 	{
 		get{
@@ -111,9 +115,10 @@ public class LCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Location Characteristic ID(LCH-4).
-	///</summary>
+    /// <summary>   Returns Location Characteristic ID(LCH-4). </summary>
+    ///
+    /// <value> The identifier of the location characteristic. </value>
+
 	public CE LocationCharacteristicID
 	{
 		get{
@@ -134,9 +139,10 @@ public class LCH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Location Characteristic Value(LCH-5).
-	///</summary>
+    /// <summary>   Returns Location Characteristic Value(LCH-5). </summary>
+    ///
+    /// <value> The location characteristic value. </value>
+
 	public CE LocationCharacteristicValue
 	{
 		get{

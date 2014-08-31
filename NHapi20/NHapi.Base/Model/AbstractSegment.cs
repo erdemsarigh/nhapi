@@ -28,48 +28,51 @@ namespace NHapi.Base.Model
     using NHapi.Base.Log;
     using NHapi.Base.Parser;
 
-    /// <summary> Provides common functionality needed by implementers of the Segment interface.
-    /// Implementing classes should define all the fields for the segment they represent 
-    /// in their constructor.  The add() method is useful for this purpose.
-    /// For example the constructor for an MSA segment might contain the following code:
+    /// <summary>
+    /// Provides common functionality needed by implementers of the Segment interface. Implementing
+    /// classes should define all the fields for the segment they represent in their constructor.
+    /// The add() method is useful for this purpose. For example the constructor for an MSA segment
+    /// might contain the following code:
     /// <code>this.add(new ID(), true, 2, null);
     /// this.add(new ST(), true, 20, null);</code>
     /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
     /// </author>
     /// </summary>
+
     public abstract class AbstractSegment : ISegment
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Fields
 
+        /// <summary>   The items. </summary>
         private List<AbstractSegmentItem> _items;
 
+        /// <summary>   The parent structure. </summary>
         private IGroup _parentStructure;
 
         #endregion
 
         #region Constructors and Destructors
 
-        /// <summary> Sets the segment name.  This would normally be called by a Parser. </summary>
+        /// <summary>   Sets the segment name.  This would normally be called by a Parser. </summary>
         static AbstractSegment()
         {
             log = HapiLogFactory.GetHapiLog(typeof(AbstractSegment));
         }
 
-        /// <summary> Calls the abstract init() method to create the fields in this segment.
-        /// 
-        /// </summary>
-        /// <param name="parentStructure">parent group
-        /// </param>
-        /// <param name="factory">all implementors need a model class factory to find datatype classes, so we 
-        /// include it as an arg here to emphasize that fact ... AbstractSegment doesn't actually 
-        /// use it though
-        /// </param>
+        /// <summary>   Calls the abstract init() method to create the fields in this segment. </summary>
+        ///
+        /// <param name="parentStructure">  parent group. </param>
+        /// <param name="factory">          all implementors need a model class factory to find datatype
+        ///                                 classes, so we include it as an arg here to emphasize that
+        ///                                 fact ... AbstractSegment doesn't actually use it though. </param>
+
         public AbstractSegment(IGroup parentStructure, IModelClassFactory factory)
         {
             this._parentStructure = parentStructure;
@@ -81,7 +84,10 @@ namespace NHapi.Base.Model
 
         #region Public Properties
 
-        /// <summary> Returns the Message to which this segment belongs.  </summary>
+        /// <summary>   Returns the Message to which this segment belongs. </summary>
+        ///
+        /// <value> The message. </value>
+
         public virtual IMessage Message
         {
             get
@@ -95,9 +101,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        /// Immediate parent Group or message containing this segment
-        /// </summary>
+        /// <summary>   Immediate parent Group or message containing this segment. </summary>
+        ///
+        /// <value> The parent structure. </value>
+
         public virtual IGroup ParentStructure
         {
             get
@@ -110,9 +117,17 @@ namespace NHapi.Base.Model
 
         #region Public Methods and Operators
 
-        /// <summary> Returns an array of Field objects at the specified location in the segment.  In the case of
+        /// <summary>
+        /// Returns an array of Field objects at the specified location in the segment.  In the case of
         /// non-repeating fields the array will be of length one.  Fields are numbered from 1.
         /// </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="number">   the field number. </param>
+        ///
+        /// <returns>   An array of i type. </returns>
+
         public virtual IType[] GetField(int number)
         {
             this.ensureEnoughFields(number);
@@ -129,18 +144,21 @@ namespace NHapi.Base.Model
             //return (IType[])_items[number - 1].fields; //note: fields are numbered from 1 from the user's perspective
         }
 
-        /// <summary> Returns a specific repetition of field at the specified index.  If there exist 
-        /// fewer repetitions than are required, the number of repetitions can be increased 
-        /// by specifying the lowest repetition that does not yet exist.  For example 
-        /// if there are two repetitions but three are needed, the third can be created
-        /// and accessed using the following code:
+        /// <summary>
+        /// Returns a specific repetition of field at the specified index.  If there exist fewer
+        /// repetitions than are required, the number of repetitions can be increased by specifying the
+        /// lowest repetition that does not yet exist.  For example if there are two repetitions but
+        /// three are needed, the third can be created and accessed using the following code:
         /// <code>Type t = GetField(x, 3);</code>
-        /// <param name="number">the field number</param>
-        /// <param name="rep">the repetition number (starting at 0) </param>
-        /// <throws>  HL7Exception if field index is out of range, if the specified  </throws>
-        /// repetition is greater than the maximum allowed, or if the specified 
-        /// repetition is more than 1 greater than the existing # of repetitions.  
         /// </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="number">   the field number. </param>
+        /// <param name="rep">      the repetition number (starting at 0) </param>
+        ///
+        /// <returns>   The field. </returns>
+
         public virtual IType GetField(int number, int rep)
         {
             this.ensureEnoughFields(number);
@@ -180,8 +198,14 @@ namespace NHapi.Base.Model
             return this._items[number - 1].Fields[rep];
         }
 
-        /// <summary> Return the field description.  Fields are numbered from 1.
-        /// </summary>
+        /// <summary>   Return the field description.  Fields are numbered from 1. </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="number">   Field Number (Starts at 1) </param>
+        ///
+        /// <returns>   The field description. </returns>
+
         public virtual string GetFieldDescription(int number)
         {
             this.ensureEnoughFields(number);
@@ -195,10 +219,17 @@ namespace NHapi.Base.Model
             return this._items[number - 1].Description;
         }
 
-        /// <summary> Returns the maximum length of the field at the given index, in characters -   
-        /// fields are numbered from 1.  
+        /// <summary>
+        /// Returns the maximum length of the field at the given index, in characters - fields are
+        /// numbered from 1.  
         /// </summary>
-        /// <throws>  HL7Exception if field index is out of range.   </throws>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="number">   Field Number (Starts at 1) </param>
+        ///
+        /// <returns>   The length. </returns>
+
         public virtual int GetLength(int number)
         {
             if (number < 1 || number > this._items.Count)
@@ -224,8 +255,14 @@ namespace NHapi.Base.Model
             return ret;
         }
 
-        /// <summary> Returns the number of repetitions of this field that are allowed.  </summary>
-        /// <throws>  HL7Exception if field index is out of range. </throws>
+        /// <summary>   Returns the number of repetitions of this field that are allowed. </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="number">   Field Number (Starts at 1) </param>
+        ///
+        /// <returns>   The maximum cardinality. </returns>
+
         public virtual int GetMaxCardinality(int number)
         {
             if (number < 1 || number > this._items.Count)
@@ -251,7 +288,10 @@ namespace NHapi.Base.Model
             return reps;
         }
 
-        /// <summary> Returns the class name (excluding package). </summary>
+        /// <summary>   Returns the class name (excluding package). </summary>
+        ///
+        /// <returns>   The structure name. </returns>
+
         public virtual System.String GetStructureName()
         {
             System.String fullName = this.GetType().FullName;
@@ -263,17 +303,26 @@ namespace NHapi.Base.Model
         /// <summary>
         /// Returns the total number of items used for the field X.  Fields are numbered from 1.
         /// </summary>
-        /// <param name="number">Field Number (Starts at 1)</param>
-        /// <returns>0 if no fields users, otherwise, the number of fields used.</returns>
+        ///
+        /// <param name="number">   Field Number (Starts at 1) </param>
+        ///
+        /// <returns>   0 if no fields users, otherwise, the number of fields used. </returns>
+
         public virtual int GetTotalFieldRepetitionsUsed(int number)
         {
             return this._items[number - 1].Fields.Count;
         }
 
-        /// <summary> Returns true if the given field is required in this segment - fields are 
-        /// numbered from 1. 
+        /// <summary>
+        /// Returns true if the given field is required in this segment - fields are numbered from 1.
         /// </summary>
-        /// <throws>  HL7Exception if field index is out of range.   </throws>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="number">   Field Number (Starts at 1) </param>
+        ///
+        /// <returns>   true if required, false if not. </returns>
+
         public virtual bool IsRequired(int number)
         {
             if (number < 1 || number > this._items.Count)
@@ -299,9 +348,13 @@ namespace NHapi.Base.Model
             return ret;
         }
 
-        /// <summary> Returns the number of fields defined by this segment (repeating 
-        /// fields are not counted multiple times).  
+        /// <summary>
+        /// Returns the number of fields defined by this segment (repeating fields are not counted
+        /// multiple times).  
         /// </summary>
+        ///
+        /// <returns>   The total number of fields. </returns>
+
         public virtual int NumFields()
         {
             return this._items.Count;
@@ -311,26 +364,24 @@ namespace NHapi.Base.Model
 
         #region Methods
 
-        /// <summary> Adds a field to the segment.  The field is initially empty (zero repetitions).   
-        /// The field number is sequential depending on previous add() calls.  Implementing 
-        /// classes should use the add() method in their constructor in order to define fields 
-        /// in their segment.  
-        /// </summary>
-        /// <param name="c">the class of the data for this field - this should inherit from Type
-        /// </param>
-        /// <param name="required">whether a value for this field is required in order for the segment 
-        /// to be valid
-        /// </param>
-        /// <param name="maxReps">the maximum number of repetitions - 0 implies that there is no limit
-        /// </param>
-        /// <param name="length">the maximum length of each repetition of the field (in characters) 
-        /// </param>
-        /// <param name="constructorArgs">an array of objects that will be used as constructor arguments 
-        /// if new instances of this class are created (use null for zero-arg constructor)
-        /// </param>
-        /// <throws>  HL7Exception if the given class does not inherit from Type or if it can  </throws>
-        /// <summary>    not be instantiated.
-        /// </summary>
+        /// <summary>   Adds a field to the segment.  The field is initially empty (zero repetitions).
+        ///             The field number is sequential depending on previous add() calls.  Implementing
+        ///             classes should use the add() method in their constructor in order to define
+        ///             fields in their segment.  </summary>
+        /// <summary>   not be instantiated. </summary>
+        ///
+        /// <param name="c">                the class of the data for this field - this should inherit
+        ///                                 from Type. </param>
+        /// <param name="required">         whether a value for this field is required in order for the
+        ///                                 segment to be valid. </param>
+        /// <param name="maxReps">          the maximum number of repetitions - 0 implies that there is
+        ///                                 no limit. </param>
+        /// <param name="length">           the maximum length of each repetition of the field (in
+        ///                                 characters) </param>
+        /// <param name="constructorArgs">  an array of objects that will be used as constructor
+        ///                                 arguments if new instances of this class are created (use
+        ///                                 null for zero-arg constructor) </param>
+
         protected internal virtual void add(
             System.Type c,
             bool required,
@@ -341,15 +392,17 @@ namespace NHapi.Base.Model
             this.add(c, required, maxReps, length, constructorArgs, null);
         }
 
-        /// <summary>
-        /// Add a segment
-        /// </summary>
-        /// <param name="c">The type of segment</param>
-        /// <param name="required"></param>
-        /// <param name="maxReps"></param>
-        /// <param name="length"></param>
-        /// <param name="constructorArgs"></param>
-        /// <param name="description"></param>
+        /// <summary>   Add a segment. </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="c">                The type of segment. </param>
+        /// <param name="required">         . </param>
+        /// <param name="maxReps">          . </param>
+        /// <param name="length">           . </param>
+        /// <param name="constructorArgs">  . </param>
+        /// <param name="description">      . </param>
+
         protected internal virtual void add(
             System.Type c,
             bool required,
@@ -368,7 +421,16 @@ namespace NHapi.Base.Model
             this._items.Add(new AbstractSegmentItem(c, required, maxReps, length, constructorArgs, description));
         }
 
-        /// <summary> Creates a new instance of the Type at the given field number in this segment.  </summary>
+        /// <summary>
+        /// Creates a new instance of the Type at the given field number in this segment.
+        /// </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="field">    The field. </param>
+        ///
+        /// <returns>   The new new type. </returns>
+
         private IType createNewType(int field)
         {
             int number = field - 1;
@@ -419,10 +481,14 @@ namespace NHapi.Base.Model
             return newType;
         }
 
-        /// <summary> Called from GetField(...) methods.  If a field has been requested that 
-        /// doesn't exist (eg GetField(15) when only 10 fields in segment) adds Varies
-        /// fields to the end of the segment up to the required number.  
+        /// <summary>
+        /// Called from GetField(...) methods.  If a field has been requested that doesn't exist (eg
+        /// GetField(15) when only 10 fields in segment) adds Varies fields to the end of the segment up
+        /// to the required number.  
         /// </summary>
+        ///
+        /// <param name="fieldRequested">   The field requested. </param>
+
         private void ensureEnoughFields(int fieldRequested)
         {
             int fieldsToAdd = fieldRequested - this.NumFields();
@@ -443,6 +509,12 @@ namespace NHapi.Base.Model
                 log.Error("Can't create additional generic fields to handle request for field " + fieldRequested, e);
             }
         }
+
+        /// <summary>   Gets the arguments. </summary>
+        ///
+        /// <param name="fieldNum"> The field number. </param>
+        ///
+        /// <returns>   An array of object. </returns>
 
         private System.Object[] getArgs(int fieldNum)
         {

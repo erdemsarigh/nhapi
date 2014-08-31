@@ -9,37 +9,40 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V23.Message
 
 {
-///<summary>
-/// Represents a VXX_V02 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a VXX_V02 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message header segment) </li>
-///<li>1: MSA (Message acknowledgement segment) </li>
-///<li>2: QRD (Query definition segment) </li>
-///<li>3: QRF (Query filter segment) optional </li>
-///<li>4: VXX_V02_PATIENT (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message header segment) </li>
+/// <li>1: MSA (Message acknowledgement segment) </li>
+/// <li>2: QRD (Query definition segment) </li>
+/// <li>3: QRF (Query filter segment) optional </li>
+/// <li>4: VXX_V02_PATIENT (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class VXX_V02 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new VXX_V02 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new VXX_V02 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public VXX_V02(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new VXX_V02 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new VXX_V02 Group with DefaultModelClassFactory. </summary>
 	public VXX_V02() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for VXX_V02.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for VXX_V02.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -52,6 +55,13 @@ public class VXX_V02 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -59,9 +69,11 @@ public class VXX_V02 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -75,9 +87,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MSA (Message acknowledgement segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MSA (Message acknowledgement segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msa. </value>
+
 	public MSA MSA { 
 get{
 	   MSA ret = null;
@@ -91,9 +104,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QRD (Query definition segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QRD (Query definition segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The qrd. </value>
+
 	public QRD QRD { 
 get{
 	   QRD ret = null;
@@ -107,9 +121,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QRF (Query filter segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QRF (Query filter segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The qrf. </value>
+
 	public QRF QRF { 
 get{
 	   QRF ret = null;
@@ -123,9 +138,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of VXX_V02_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of VXX_V02_PATIENT (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The patient. </returns>
+
 	public VXX_V02_PATIENT GetPATIENT() {
 	   VXX_V02_PATIENT ret = null;
 	   try {
@@ -137,19 +157,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of VXX_V02_PATIENT
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of VXX_V02_PATIENT
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The patient. </returns>
+
 	public VXX_V02_PATIENT GetPATIENT(int rep) { 
 	   return (VXX_V02_PATIENT)this.GetStructure("PATIENT", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of VXX_V02_PATIENT 
-	 */ 
+    /// <summary>   Gets the patient repetitions used. </summary>
+    ///
+    /// <value> The patient repetitions used. </value>
+
 	public int PATIENTRepetitionsUsed { 
 get{
 	    int reps = -1; 

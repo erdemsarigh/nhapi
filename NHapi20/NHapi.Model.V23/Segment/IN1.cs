@@ -7,72 +7,73 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 IN1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>IN1-1: Set ID - Insurance (SI)</li>
-///<li>IN1-2: Insurance Plan ID (CE)</li>
-///<li>IN1-3: Insurance Company ID (CX)</li>
-///<li>IN1-4: Insurance Company Name (XON)</li>
-///<li>IN1-5: Insurance Company Address (XAD)</li>
-///<li>IN1-6: Insurance Co. Contact Ppers (XPN)</li>
-///<li>IN1-7: Insurance Co Phone Number (XTN)</li>
-///<li>IN1-8: Group Number (ST)</li>
-///<li>IN1-9: Group Name (XON)</li>
-///<li>IN1-10: Insured's group employer ID (CX)</li>
-///<li>IN1-11: Insured's Group Emp Name (XON)</li>
-///<li>IN1-12: Plan Effective Date (DT)</li>
-///<li>IN1-13: Plan Expiration Date (DT)</li>
-///<li>IN1-14: Authorization Information (CM_AUI)</li>
-///<li>IN1-15: Plan Type (IS)</li>
-///<li>IN1-16: Name of Insured (XPN)</li>
-///<li>IN1-17: Insured's Relationship to Patient (IS)</li>
-///<li>IN1-18: Insured's Date of Birth (TS)</li>
-///<li>IN1-19: Insured's Address (XAD)</li>
-///<li>IN1-20: Assignment of Benefits (IS)</li>
-///<li>IN1-21: Coordination of Benefits (IS)</li>
-///<li>IN1-22: Coord of Ben. Priority (ST)</li>
-///<li>IN1-23: Notice of Admission Code (ID)</li>
-///<li>IN1-24: Notice of Admission Date (DT)</li>
-///<li>IN1-25: Rpt of Eigibility Code (ID)</li>
-///<li>IN1-26: Rpt of Eligibility Date (DT)</li>
-///<li>IN1-27: Release Information Code (IS)</li>
-///<li>IN1-28: Pre-Admit Cert (PAC) (ST)</li>
-///<li>IN1-29: Verification Date/Time (TS)</li>
-///<li>IN1-30: Verification By (XPN)</li>
-///<li>IN1-31: Type of Agreement Code (IS)</li>
-///<li>IN1-32: Billing Status (IS)</li>
-///<li>IN1-33: Lifetime Reserve Days (NM)</li>
-///<li>IN1-34: Delay before lifetime reserve days (NM)</li>
-///<li>IN1-35: Company Plan Code (IS)</li>
-///<li>IN1-36: Policy Number (ST)</li>
-///<li>IN1-37: Policy Deductible (CP)</li>
-///<li>IN1-38: Policy Limit - Amount (CP)</li>
-///<li>IN1-39: Policy Limit - Days (NM)</li>
-///<li>IN1-40: Room Rate - Semi-Private (CP)</li>
-///<li>IN1-41: Room Rate - Private (CP)</li>
-///<li>IN1-42: Insured's Employment Status (CE)</li>
-///<li>IN1-43: Insured's Sex (IS)</li>
-///<li>IN1-44: Insured's Employer Address (XAD)</li>
-///<li>IN1-45: Verification Status (ST)</li>
-///<li>IN1-46: Prior Insurance Plan ID (IS)</li>
-///<li>IN1-47: Coverage Type (IS)</li>
-///<li>IN1-48: Handicap (IS)</li>
-///<li>IN1-49: Insured's ID Number (CX)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 IN1 message segment. This segment has the following fields:<ol>
+/// <li>IN1-1: Set ID - Insurance (SI)</li>
+/// <li>IN1-2: Insurance Plan ID (CE)</li>
+/// <li>IN1-3: Insurance Company ID (CX)</li>
+/// <li>IN1-4: Insurance Company Name (XON)</li>
+/// <li>IN1-5: Insurance Company Address (XAD)</li>
+/// <li>IN1-6: Insurance Co. Contact Ppers (XPN)</li>
+/// <li>IN1-7: Insurance Co Phone Number (XTN)</li>
+/// <li>IN1-8: Group Number (ST)</li>
+/// <li>IN1-9: Group Name (XON)</li>
+/// <li>IN1-10: Insured's group employer ID (CX)</li>
+/// <li>IN1-11: Insured's Group Emp Name (XON)</li>
+/// <li>IN1-12: Plan Effective Date (DT)</li>
+/// <li>IN1-13: Plan Expiration Date (DT)</li>
+/// <li>IN1-14: Authorization Information (CM_AUI)</li>
+/// <li>IN1-15: Plan Type (IS)</li>
+/// <li>IN1-16: Name of Insured (XPN)</li>
+/// <li>IN1-17: Insured's Relationship to Patient (IS)</li>
+/// <li>IN1-18: Insured's Date of Birth (TS)</li>
+/// <li>IN1-19: Insured's Address (XAD)</li>
+/// <li>IN1-20: Assignment of Benefits (IS)</li>
+/// <li>IN1-21: Coordination of Benefits (IS)</li>
+/// <li>IN1-22: Coord of Ben. Priority (ST)</li>
+/// <li>IN1-23: Notice of Admission Code (ID)</li>
+/// <li>IN1-24: Notice of Admission Date (DT)</li>
+/// <li>IN1-25: Rpt of Eigibility Code (ID)</li>
+/// <li>IN1-26: Rpt of Eligibility Date (DT)</li>
+/// <li>IN1-27: Release Information Code (IS)</li>
+/// <li>IN1-28: Pre-Admit Cert (PAC) (ST)</li>
+/// <li>IN1-29: Verification Date/Time (TS)</li>
+/// <li>IN1-30: Verification By (XPN)</li>
+/// <li>IN1-31: Type of Agreement Code (IS)</li>
+/// <li>IN1-32: Billing Status (IS)</li>
+/// <li>IN1-33: Lifetime Reserve Days (NM)</li>
+/// <li>IN1-34: Delay before lifetime reserve days (NM)</li>
+/// <li>IN1-35: Company Plan Code (IS)</li>
+/// <li>IN1-36: Policy Number (ST)</li>
+/// <li>IN1-37: Policy Deductible (CP)</li>
+/// <li>IN1-38: Policy Limit - Amount (CP)</li>
+/// <li>IN1-39: Policy Limit - Days (NM)</li>
+/// <li>IN1-40: Room Rate - Semi-Private (CP)</li>
+/// <li>IN1-41: Room Rate - Private (CP)</li>
+/// <li>IN1-42: Insured's Employment Status (CE)</li>
+/// <li>IN1-43: Insured's Sex (IS)</li>
+/// <li>IN1-44: Insured's Employer Address (XAD)</li>
+/// <li>IN1-45: Verification Status (ST)</li>
+/// <li>IN1-46: Prior Insurance Plan ID (IS)</li>
+/// <li>IN1-47: Coverage Type (IS)</li>
+/// <li>IN1-48: Handicap (IS)</li>
+/// <li>IN1-49: Insured's ID Number (CX)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class IN1 : AbstractSegment  {
 
-  /**
-   * Creates a IN1 (Insurance) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the IN1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public IN1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -130,9 +131,10 @@ public class IN1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - Insurance(IN1-1).
-	///</summary>
+    /// <summary>   Returns Set ID - Insurance(IN1-1). </summary>
+    ///
+    /// <value> The set identifier insurance. </value>
+
 	public SI SetIDInsurance
 	{
 		get{
@@ -153,9 +155,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Insurance Plan ID(IN1-2).
-	///</summary>
+    /// <summary>   Returns Insurance Plan ID(IN1-2). </summary>
+    ///
+    /// <value> The identifier of the insurance plan. </value>
+
 	public CE InsurancePlanID
 	{
 		get{
@@ -176,9 +179,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Insurance Company ID(IN1-3).
-	///</summary>
+    /// <summary>   Returns Insurance Company ID(IN1-3). </summary>
+    ///
+    /// <value> The identifier of the insurance company. </value>
+
 	public CX InsuranceCompanyID
 	{
 		get{
@@ -199,9 +203,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Insurance Company Name(IN1-4).
-	///</summary>
+    /// <summary>   Returns Insurance Company Name(IN1-4). </summary>
+    ///
+    /// <value> The name of the insurance company. </value>
+
 	public XON InsuranceCompanyName
 	{
 		get{
@@ -222,9 +227,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Insurance Company Address(IN1-5).
-	///</summary>
+    /// <summary>   Returns Insurance Company Address(IN1-5). </summary>
+    ///
+    /// <value> The insurance company address. </value>
+
 	public XAD InsuranceCompanyAddress
 	{
 		get{
@@ -245,9 +251,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Insurance Co. Contact Ppers(IN1-6).
-	///</summary>
+    /// <summary>   Returns Insurance Co. Contact Ppers(IN1-6). </summary>
+    ///
+    /// <value> The insurance co contact ppers. </value>
+
 	public XPN InsuranceCoContactPpers
 	{
 		get{
@@ -268,11 +275,17 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Insurance Co Phone Number(IN1-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Insurance Co Phone Number(IN1-7). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The insurance co phone number. </returns>
+
 	public XTN GetInsuranceCoPhoneNumber(int rep)
 	{
 			XTN ret = null;
@@ -287,9 +300,12 @@ public class IN1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Insurance Co Phone Number (IN1-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Insurance Co Phone Number (IN1-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetInsuranceCoPhoneNumber() {
      XTN[] ret = null;
     try {
@@ -308,9 +324,10 @@ public class IN1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Insurance Co Phone Number (IN1-7).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Insurance Co Phone Number (IN1-7). </summary>
+  ///
+  /// <value>   The insurance co phone number repetitions used. </value>
+
   public int InsuranceCoPhoneNumberRepetitionsUsed
 {
 get{
@@ -326,9 +343,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Group Number(IN1-8).
-	///</summary>
+
+    /// <summary>   Returns Group Number(IN1-8). </summary>
+    ///
+    /// <value> The group number. </value>
+
 	public ST GroupNumber
 	{
 		get{
@@ -349,9 +368,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Group Name(IN1-9).
-	///</summary>
+    /// <summary>   Returns Group Name(IN1-9). </summary>
+    ///
+    /// <value> The name of the group. </value>
+
 	public XON GroupName
 	{
 		get{
@@ -372,9 +392,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Insured's group employer ID(IN1-10).
-	///</summary>
+    /// <summary>   Returns Insured's group employer ID(IN1-10). </summary>
+    ///
+    /// <value> The identifier of the insured s group employer. </value>
+
 	public CX InsuredSGroupEmployerID
 	{
 		get{
@@ -395,9 +416,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Insured's Group Emp Name(IN1-11).
-	///</summary>
+    /// <summary>   Returns Insured's Group Emp Name(IN1-11). </summary>
+    ///
+    /// <value> The name of the insured s group emp. </value>
+
 	public XON InsuredSGroupEmpName
 	{
 		get{
@@ -418,9 +440,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Plan Effective Date(IN1-12).
-	///</summary>
+    /// <summary>   Returns Plan Effective Date(IN1-12). </summary>
+    ///
+    /// <value> The plan effective date. </value>
+
 	public DT PlanEffectiveDate
 	{
 		get{
@@ -441,9 +464,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Plan Expiration Date(IN1-13).
-	///</summary>
+    /// <summary>   Returns Plan Expiration Date(IN1-13). </summary>
+    ///
+    /// <value> The plan expiration date. </value>
+
 	public DT PlanExpirationDate
 	{
 		get{
@@ -464,9 +488,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Authorization Information(IN1-14).
-	///</summary>
+    /// <summary>   Returns Authorization Information(IN1-14). </summary>
+    ///
+    /// <value> Information describing the authorization. </value>
+
 	public CM_AUI AuthorizationInformation
 	{
 		get{
@@ -487,9 +512,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Plan Type(IN1-15).
-	///</summary>
+    /// <summary>   Returns Plan Type(IN1-15). </summary>
+    ///
+    /// <value> The type of the plan. </value>
+
 	public IS PlanType
 	{
 		get{
@@ -510,9 +536,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Name of Insured(IN1-16).
-	///</summary>
+    /// <summary>   Returns Name of Insured(IN1-16). </summary>
+    ///
+    /// <value> The Name of the insured. </value>
+
 	public XPN NameOfInsured
 	{
 		get{
@@ -533,9 +560,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Insured's Relationship to Patient(IN1-17).
-	///</summary>
+    /// <summary>   Returns Insured's Relationship to Patient(IN1-17). </summary>
+    ///
+    /// <value> The insured s relationship to patient. </value>
+
 	public IS InsuredSRelationshipToPatient
 	{
 		get{
@@ -556,9 +584,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Insured's Date of Birth(IN1-18).
-	///</summary>
+    /// <summary>   Returns Insured's Date of Birth(IN1-18). </summary>
+    ///
+    /// <value> The insured s date of birth. </value>
+
 	public TS InsuredSDateOfBirth
 	{
 		get{
@@ -579,9 +608,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Insured's Address(IN1-19).
-	///</summary>
+    /// <summary>   Returns Insured's Address(IN1-19). </summary>
+    ///
+    /// <value> The insured s address. </value>
+
 	public XAD InsuredSAddress
 	{
 		get{
@@ -602,9 +632,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Assignment of Benefits(IN1-20).
-	///</summary>
+    /// <summary>   Returns Assignment of Benefits(IN1-20). </summary>
+    ///
+    /// <value> The assignment of benefits. </value>
+
 	public IS AssignmentOfBenefits
 	{
 		get{
@@ -625,9 +656,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Coordination of Benefits(IN1-21).
-	///</summary>
+    /// <summary>   Returns Coordination of Benefits(IN1-21). </summary>
+    ///
+    /// <value> The coordination of benefits. </value>
+
 	public IS CoordinationOfBenefits
 	{
 		get{
@@ -648,9 +680,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Coord of Ben. Priority(IN1-22).
-	///</summary>
+    /// <summary>   Returns Coord of Ben. Priority(IN1-22). </summary>
+    ///
+    /// <value> The coordinate of ben priority. </value>
+
 	public ST CoordOfBenPriority
 	{
 		get{
@@ -671,9 +704,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Notice of Admission Code(IN1-23).
-	///</summary>
+    /// <summary>   Returns Notice of Admission Code(IN1-23). </summary>
+    ///
+    /// <value> The notice of admission code. </value>
+
 	public ID NoticeOfAdmissionCode
 	{
 		get{
@@ -694,9 +728,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Notice of Admission Date(IN1-24).
-	///</summary>
+    /// <summary>   Returns Notice of Admission Date(IN1-24). </summary>
+    ///
+    /// <value> The notice of admission date. </value>
+
 	public DT NoticeOfAdmissionDate
 	{
 		get{
@@ -717,9 +752,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Rpt of Eigibility Code(IN1-25).
-	///</summary>
+    /// <summary>   Returns Rpt of Eigibility Code(IN1-25). </summary>
+    ///
+    /// <value> The repeat of eigibility code. </value>
+
 	public ID RptOfEigibilityCode
 	{
 		get{
@@ -740,9 +776,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Rpt of Eligibility Date(IN1-26).
-	///</summary>
+    /// <summary>   Returns Rpt of Eligibility Date(IN1-26). </summary>
+    ///
+    /// <value> The repeat of eligibility date. </value>
+
 	public DT RptOfEligibilityDate
 	{
 		get{
@@ -763,9 +800,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Release Information Code(IN1-27).
-	///</summary>
+    /// <summary>   Returns Release Information Code(IN1-27). </summary>
+    ///
+    /// <value> The release information code. </value>
+
 	public IS ReleaseInformationCode
 	{
 		get{
@@ -786,9 +824,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Pre-Admit Cert (PAC)(IN1-28).
-	///</summary>
+    /// <summary>   Returns Pre-Admit Cert (PAC)(IN1-28). </summary>
+    ///
+    /// <value> The pre admit cert. </value>
+
 	public ST PreAdmitCert
 	{
 		get{
@@ -809,9 +848,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Verification Date/Time(IN1-29).
-	///</summary>
+    /// <summary>   Returns Verification Date/Time(IN1-29). </summary>
+    ///
+    /// <value> The verification date time. </value>
+
 	public TS VerificationDateTime
 	{
 		get{
@@ -832,9 +872,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Verification By(IN1-30).
-	///</summary>
+    /// <summary>   Returns Verification By(IN1-30). </summary>
+    ///
+    /// <value> Amount to verification by. </value>
+
 	public XPN VerificationBy
 	{
 		get{
@@ -855,9 +896,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Type of Agreement Code(IN1-31).
-	///</summary>
+    /// <summary>   Returns Type of Agreement Code(IN1-31). </summary>
+    ///
+    /// <value> The type of the agreement code. </value>
+
 	public IS TypeOfAgreementCode
 	{
 		get{
@@ -878,9 +920,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Billing Status(IN1-32).
-	///</summary>
+    /// <summary>   Returns Billing Status(IN1-32). </summary>
+    ///
+    /// <value> The billing status. </value>
+
 	public IS BillingStatus
 	{
 		get{
@@ -901,9 +944,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Lifetime Reserve Days(IN1-33).
-	///</summary>
+    /// <summary>   Returns Lifetime Reserve Days(IN1-33). </summary>
+    ///
+    /// <value> The lifetime reserve days. </value>
+
 	public NM LifetimeReserveDays
 	{
 		get{
@@ -924,9 +968,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Delay before lifetime reserve days(IN1-34).
-	///</summary>
+    /// <summary>   Returns Delay before lifetime reserve days(IN1-34). </summary>
+    ///
+    /// <value> The delay before lifetime reserve days. </value>
+
 	public NM DelayBeforeLifetimeReserveDays
 	{
 		get{
@@ -947,9 +992,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Company Plan Code(IN1-35).
-	///</summary>
+    /// <summary>   Returns Company Plan Code(IN1-35). </summary>
+    ///
+    /// <value> The company plan code. </value>
+
 	public IS CompanyPlanCode
 	{
 		get{
@@ -970,9 +1016,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Policy Number(IN1-36).
-	///</summary>
+    /// <summary>   Returns Policy Number(IN1-36). </summary>
+    ///
+    /// <value> The policy number. </value>
+
 	public ST PolicyNumber
 	{
 		get{
@@ -993,9 +1040,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Policy Deductible(IN1-37).
-	///</summary>
+    /// <summary>   Returns Policy Deductible(IN1-37). </summary>
+    ///
+    /// <value> The policy deductible. </value>
+
 	public CP PolicyDeductible
 	{
 		get{
@@ -1016,9 +1064,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Policy Limit - Amount(IN1-38).
-	///</summary>
+    /// <summary>   Returns Policy Limit - Amount(IN1-38). </summary>
+    ///
+    /// <value> The policy limit amount. </value>
+
 	public CP PolicyLimitAmount
 	{
 		get{
@@ -1039,9 +1088,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Policy Limit - Days(IN1-39).
-	///</summary>
+    /// <summary>   Returns Policy Limit - Days(IN1-39). </summary>
+    ///
+    /// <value> The policy limit days. </value>
+
 	public NM PolicyLimitDays
 	{
 		get{
@@ -1062,9 +1112,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Room Rate - Semi-Private(IN1-40).
-	///</summary>
+    /// <summary>   Returns Room Rate - Semi-Private(IN1-40). </summary>
+    ///
+    /// <value> The room rate semi private. </value>
+
 	public CP RoomRateSemiPrivate
 	{
 		get{
@@ -1085,9 +1136,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Room Rate - Private(IN1-41).
-	///</summary>
+    /// <summary>   Returns Room Rate - Private(IN1-41). </summary>
+    ///
+    /// <value> The room rate private. </value>
+
 	public CP RoomRatePrivate
 	{
 		get{
@@ -1108,9 +1160,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Insured's Employment Status(IN1-42).
-	///</summary>
+    /// <summary>   Returns Insured's Employment Status(IN1-42). </summary>
+    ///
+    /// <value> The insured s employment status. </value>
+
 	public CE InsuredSEmploymentStatus
 	{
 		get{
@@ -1131,9 +1184,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Insured's Sex(IN1-43).
-	///</summary>
+    /// <summary>   Returns Insured's Sex(IN1-43). </summary>
+    ///
+    /// <value> The insured s sex. </value>
+
 	public IS InsuredSSex
 	{
 		get{
@@ -1154,9 +1208,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Insured's Employer Address(IN1-44).
-	///</summary>
+    /// <summary>   Returns Insured's Employer Address(IN1-44). </summary>
+    ///
+    /// <value> The insured s employer address. </value>
+
 	public XAD InsuredSEmployerAddress
 	{
 		get{
@@ -1177,9 +1232,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Verification Status(IN1-45).
-	///</summary>
+    /// <summary>   Returns Verification Status(IN1-45). </summary>
+    ///
+    /// <value> The verification status. </value>
+
 	public ST VerificationStatus
 	{
 		get{
@@ -1200,9 +1256,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Prior Insurance Plan ID(IN1-46).
-	///</summary>
+    /// <summary>   Returns Prior Insurance Plan ID(IN1-46). </summary>
+    ///
+    /// <value> The identifier of the prior insurance plan. </value>
+
 	public IS PriorInsurancePlanID
 	{
 		get{
@@ -1223,9 +1280,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Coverage Type(IN1-47).
-	///</summary>
+    /// <summary>   Returns Coverage Type(IN1-47). </summary>
+    ///
+    /// <value> The type of the coverage. </value>
+
 	public IS CoverageType
 	{
 		get{
@@ -1246,9 +1304,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Handicap(IN1-48).
-	///</summary>
+    /// <summary>   Returns Handicap(IN1-48). </summary>
+    ///
+    /// <value> The handicap. </value>
+
 	public IS Handicap
 	{
 		get{
@@ -1269,9 +1328,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Insured's ID Number(IN1-49).
-	///</summary>
+    /// <summary>   Returns Insured's ID Number(IN1-49). </summary>
+    ///
+    /// <value> The insured SID number. </value>
+
 	public CX InsuredSIDNumber
 	{
 		get{

@@ -8,27 +8,30 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the OMP_O09_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common Order) </li>
-///<li>1: RXO (Pharmacy/Treatment Order) </li>
-///<li>2: NTE (Notes and Comments) optional repeating</li>
-///<li>3: RXR (Pharmacy/Treatment Route) repeating</li>
-///<li>4: OMP_O09_COMPONENT (a Group object) optional </li>
-///<li>5: OMP_O09_OBSERVATION (a Group object) optional repeating</li>
-///<li>6: FT1 (Financial Transaction) optional repeating</li>
-///<li>7: BLG (Billing) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the OMP_O09_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common Order) </li>
+/// <li>1: RXO (Pharmacy/Treatment Order) </li>
+/// <li>2: NTE (Notes and Comments) optional repeating</li>
+/// <li>3: RXR (Pharmacy/Treatment Route) repeating</li>
+/// <li>4: OMP_O09_COMPONENT (a Group object) optional </li>
+/// <li>5: OMP_O09_OBSERVATION (a Group object) optional repeating</li>
+/// <li>6: FT1 (Financial Transaction) optional repeating</li>
+/// <li>7: BLG (Billing) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class OMP_O09_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new OMP_O09_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new OMP_O09_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OMP_O09_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -44,9 +47,10 @@ public class OMP_O09_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common Order) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common Order) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -60,9 +64,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RXO (Pharmacy/Treatment Order) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RXO (Pharmacy/Treatment Order) - creates it if necessary. </summary>
+    ///
+    /// <value> The rxo. </value>
+
 	public RXO RXO { 
 get{
 	   RXO ret = null;
@@ -76,9 +81,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -90,19 +100,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and Comments) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and Comments) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -117,9 +133,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of RXR (Pharmacy/Treatment Route) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RXR (Pharmacy/Treatment Route) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The rxr. </returns>
+
 	public RXR GetRXR() {
 	   RXR ret = null;
 	   try {
@@ -131,19 +152,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RXR
-	/// * (Pharmacy/Treatment Route) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RXR
+    ///  * (Pharmacy/Treatment Route) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The rxr. </returns>
+
 	public RXR GetRXR(int rep) { 
 	   return (RXR)this.GetStructure("RXR", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RXR 
-	 */ 
+    /// <summary>   Gets the rxr repetitions used. </summary>
+    ///
+    /// <value> The rxr repetitions used. </value>
+
 	public int RXRRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -158,9 +185,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns OMP_O09_COMPONENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OMP_O09_COMPONENT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The component. </value>
+
 	public OMP_O09_COMPONENT COMPONENT { 
 get{
 	   OMP_O09_COMPONENT ret = null;
@@ -174,9 +202,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of OMP_O09_OBSERVATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of OMP_O09_OBSERVATION (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public OMP_O09_OBSERVATION GetOBSERVATION() {
 	   OMP_O09_OBSERVATION ret = null;
 	   try {
@@ -188,19 +221,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of OMP_O09_OBSERVATION
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of OMP_O09_OBSERVATION
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public OMP_O09_OBSERVATION GetOBSERVATION(int rep) { 
 	   return (OMP_O09_OBSERVATION)this.GetStructure("OBSERVATION", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of OMP_O09_OBSERVATION 
-	 */ 
+    /// <summary>   Gets the observation repetitions used. </summary>
+    ///
+    /// <value> The observation repetitions used. </value>
+
 	public int OBSERVATIONRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -215,9 +254,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of FT1 (Financial Transaction) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of FT1 (Financial Transaction) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The ft 1. </returns>
+
 	public FT1 GetFT1() {
 	   FT1 ret = null;
 	   try {
@@ -229,19 +273,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of FT1
-	/// * (Financial Transaction) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of FT1
+    ///  * (Financial Transaction) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The ft 1. </returns>
+
 	public FT1 GetFT1(int rep) { 
 	   return (FT1)this.GetStructure("FT1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of FT1 
-	 */ 
+    /// <summary>   Gets the ft 1 repetitions used. </summary>
+    ///
+    /// <value> The ft 1 repetitions used. </value>
+
 	public int FT1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -256,9 +306,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns BLG (Billing) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns BLG (Billing) - creates it if necessary. </summary>
+    ///
+    /// <value> The blg. </value>
+
 	public BLG BLG { 
 get{
 	   BLG ret = null;

@@ -21,18 +21,16 @@
 
 namespace NHapi.Base.validation.impl
 {
-    /// <summary> A <code>ValidationContext</code> with a default set of rules initially defined.
-    /// This can be used as-is for a reasonable level of primitive type validation.   
-    /// 
+    /// <summary>
+    /// A <code>ValidationContext</code> with a default set of rules initially defined. This can be
+    /// used as-is for a reasonable level of primitive type validation.
     /// </summary>
-    /// <author>  <a href="mailto:bryan.tripp@uhn.on.ca">Bryan Tripp</a>
-    /// </author>
-    /// <version>  $Revision: 1.1 $ updated on $Date: 2005/06/14 20:13:16 $ by $Author: bryan_tripp $
-    /// </version>
+
     public class DefaultValidation : ValidationContextImpl
     {
         #region Constructors and Destructors
 
+        /// <summary>   Initializes a new instance of the DefaultValidation class. </summary>
         public DefaultValidation()
         {
             IRule trim = new TrimLeadingWhitespace();

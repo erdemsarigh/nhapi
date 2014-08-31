@@ -7,39 +7,40 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 CSR message segment. 
-/// This segment has the following fields:<ol>
-///<li>CSR-1: Sponsor Study ID (EI)</li>
-///<li>CSR-2: Alternate Study ID (EI)</li>
-///<li>CSR-3: Institution Registering the Patient (CE)</li>
-///<li>CSR-4: Sponsor Patient ID (CX)</li>
-///<li>CSR-5: Alternate Patient ID - CSR (CX)</li>
-///<li>CSR-6: Date/Time Of Patient Study Registration (TS)</li>
-///<li>CSR-7: Person Performing Study Registration (XCN)</li>
-///<li>CSR-8: Study Authorizing Provider (XCN)</li>
-///<li>CSR-9: Date/time Patient Study Consent Signed (TS)</li>
-///<li>CSR-10: Patient Study Eligibility Status (CE)</li>
-///<li>CSR-11: Study Randomization Date/time (TS)</li>
-///<li>CSR-12: Randomized Study Arm (CE)</li>
-///<li>CSR-13: Stratum for Study Randomization (CE)</li>
-///<li>CSR-14: Patient Evaluability Status (CE)</li>
-///<li>CSR-15: Date/time Ended Study (TS)</li>
-///<li>CSR-16: Reason Ended Study (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 CSR message segment. This segment has the following fields:<ol>
+/// <li>CSR-1: Sponsor Study ID (EI)</li>
+/// <li>CSR-2: Alternate Study ID (EI)</li>
+/// <li>CSR-3: Institution Registering the Patient (CE)</li>
+/// <li>CSR-4: Sponsor Patient ID (CX)</li>
+/// <li>CSR-5: Alternate Patient ID - CSR (CX)</li>
+/// <li>CSR-6: Date/Time Of Patient Study Registration (TS)</li>
+/// <li>CSR-7: Person Performing Study Registration (XCN)</li>
+/// <li>CSR-8: Study Authorizing Provider (XCN)</li>
+/// <li>CSR-9: Date/time Patient Study Consent Signed (TS)</li>
+/// <li>CSR-10: Patient Study Eligibility Status (CE)</li>
+/// <li>CSR-11: Study Randomization Date/time (TS)</li>
+/// <li>CSR-12: Randomized Study Arm (CE)</li>
+/// <li>CSR-13: Stratum for Study Randomization (CE)</li>
+/// <li>CSR-14: Patient Evaluability Status (CE)</li>
+/// <li>CSR-15: Date/time Ended Study (TS)</li>
+/// <li>CSR-16: Reason Ended Study (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class CSR : AbstractSegment  {
 
-  /**
-   * Creates a CSR (Clinical Study Registration) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the CSR class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public CSR(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -64,9 +65,10 @@ public class CSR : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Sponsor Study ID(CSR-1).
-	///</summary>
+    /// <summary>   Returns Sponsor Study ID(CSR-1). </summary>
+    ///
+    /// <value> The identifier of the sponsor study. </value>
+
 	public EI SponsorStudyID
 	{
 		get{
@@ -87,9 +89,10 @@ public class CSR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Alternate Study ID(CSR-2).
-	///</summary>
+    /// <summary>   Returns Alternate Study ID(CSR-2). </summary>
+    ///
+    /// <value> The identifier of the alternate study. </value>
+
 	public EI AlternateStudyID
 	{
 		get{
@@ -110,9 +113,10 @@ public class CSR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Institution Registering the Patient(CSR-3).
-	///</summary>
+    /// <summary>   Returns Institution Registering the Patient(CSR-3). </summary>
+    ///
+    /// <value> The institution registering the patient. </value>
+
 	public CE InstitutionRegisteringThePatient
 	{
 		get{
@@ -133,9 +137,10 @@ public class CSR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Sponsor Patient ID(CSR-4).
-	///</summary>
+    /// <summary>   Returns Sponsor Patient ID(CSR-4). </summary>
+    ///
+    /// <value> The identifier of the sponsor patient. </value>
+
 	public CX SponsorPatientID
 	{
 		get{
@@ -156,9 +161,10 @@ public class CSR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Alternate Patient ID - CSR(CSR-5).
-	///</summary>
+    /// <summary>   Returns Alternate Patient ID - CSR(CSR-5). </summary>
+    ///
+    /// <value> The alternate patient idcsr. </value>
+
 	public CX AlternatePatientIDCSR
 	{
 		get{
@@ -179,9 +185,10 @@ public class CSR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date/Time Of Patient Study Registration(CSR-6).
-	///</summary>
+    /// <summary>   Returns Date/Time Of Patient Study Registration(CSR-6). </summary>
+    ///
+    /// <value> The date time of patient study registration. </value>
+
 	public TS DateTimeOfPatientStudyRegistration
 	{
 		get{
@@ -202,11 +209,17 @@ public class CSR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Person Performing Study Registration(CSR-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Person Performing Study Registration(CSR-7). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The person performing study registration. </returns>
+
 	public XCN GetPersonPerformingStudyRegistration(int rep)
 	{
 			XCN ret = null;
@@ -221,9 +234,12 @@ public class CSR : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Person Performing Study Registration (CSR-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Person Performing Study Registration (CSR-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetPersonPerformingStudyRegistration() {
      XCN[] ret = null;
     try {
@@ -242,9 +258,12 @@ public class CSR : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Person Performing Study Registration (CSR-7).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The person performing study registration repetitions used. </value>
+
   public int PersonPerformingStudyRegistrationRepetitionsUsed
 {
 get{
@@ -260,11 +279,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Study Authorizing Provider(CSR-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Study Authorizing Provider(CSR-8). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The study authorizing provider. </returns>
+
 	public XCN GetStudyAuthorizingProvider(int rep)
 	{
 			XCN ret = null;
@@ -279,9 +305,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Study Authorizing Provider (CSR-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of Study Authorizing Provider (CSR-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetStudyAuthorizingProvider() {
      XCN[] ret = null;
     try {
@@ -300,9 +329,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Study Authorizing Provider (CSR-8).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Study Authorizing Provider (CSR-8). </summary>
+  ///
+  /// <value>   The study authorizing provider repetitions used. </value>
+
   public int StudyAuthorizingProviderRepetitionsUsed
 {
 get{
@@ -318,9 +348,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Date/time Patient Study Consent Signed(CSR-9).
-	///</summary>
+
+    /// <summary>   Returns Date/time Patient Study Consent Signed(CSR-9). </summary>
+    ///
+    /// <value> The date time patient study consent signed. </value>
+
 	public TS DateTimePatientStudyConsentSigned
 	{
 		get{
@@ -341,9 +373,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Patient Study Eligibility Status(CSR-10).
-	///</summary>
+    /// <summary>   Returns Patient Study Eligibility Status(CSR-10). </summary>
+    ///
+    /// <value> The patient study eligibility status. </value>
+
 	public CE PatientStudyEligibilityStatus
 	{
 		get{
@@ -364,11 +397,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Study Randomization Date/time(CSR-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Study Randomization Date/time(CSR-11). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The study randomization date time. </returns>
+
 	public TS GetStudyRandomizationDateTime(int rep)
 	{
 			TS ret = null;
@@ -383,9 +422,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Study Randomization Date/time (CSR-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of Study Randomization Date/time (CSR-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ts. </returns>
+
   public TS[] GetStudyRandomizationDateTime() {
      TS[] ret = null;
     try {
@@ -404,9 +446,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Study Randomization Date/time (CSR-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Study Randomization Date/time (CSR-11). </summary>
+  ///
+  /// <value>   The study randomization date time repetitions used. </value>
+
   public int StudyRandomizationDateTimeRepetitionsUsed
 {
 get{
@@ -422,11 +465,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Randomized Study Arm(CSR-12).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Randomized Study Arm(CSR-12). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The randomized study arm. </returns>
+
 	public CE GetRandomizedStudyArm(int rep)
 	{
 			CE ret = null;
@@ -441,9 +491,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Randomized Study Arm (CSR-12).
-   ///</summary>
+  /// <summary> Returns all repetitions of Randomized Study Arm (CSR-12). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetRandomizedStudyArm() {
      CE[] ret = null;
     try {
@@ -462,9 +515,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Randomized Study Arm (CSR-12).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Randomized Study Arm (CSR-12). </summary>
+  ///
+  /// <value>   The randomized study arm repetitions used. </value>
+
   public int RandomizedStudyArmRepetitionsUsed
 {
 get{
@@ -480,11 +534,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Stratum for Study Randomization(CSR-13).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Stratum for Study Randomization(CSR-13). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The stratum for study randomization. </returns>
+
 	public CE GetStratumForStudyRandomization(int rep)
 	{
 			CE ret = null;
@@ -499,9 +560,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Stratum for Study Randomization (CSR-13).
-   ///</summary>
+  /// <summary> Returns all repetitions of Stratum for Study Randomization (CSR-13). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetStratumForStudyRandomization() {
      CE[] ret = null;
     try {
@@ -520,9 +584,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Stratum for Study Randomization (CSR-13).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Stratum for Study Randomization (CSR-13). </summary>
+  ///
+  /// <value>   The stratum for study randomization repetitions used. </value>
+
   public int StratumForStudyRandomizationRepetitionsUsed
 {
 get{
@@ -538,9 +603,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Patient Evaluability Status(CSR-14).
-	///</summary>
+
+    /// <summary>   Returns Patient Evaluability Status(CSR-14). </summary>
+    ///
+    /// <value> The patient evaluability status. </value>
+
 	public CE PatientEvaluabilityStatus
 	{
 		get{
@@ -561,9 +628,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date/time Ended Study(CSR-15).
-	///</summary>
+    /// <summary>   Returns Date/time Ended Study(CSR-15). </summary>
+    ///
+    /// <value> The date time ended study. </value>
+
 	public TS DateTimeEndedStudy
 	{
 		get{
@@ -584,9 +652,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Reason Ended Study(CSR-16).
-	///</summary>
+    /// <summary>   Returns Reason Ended Study(CSR-16). </summary>
+    ///
+    /// <value> The reason ended study. </value>
+
 	public CE ReasonEndedStudy
 	{
 		get{

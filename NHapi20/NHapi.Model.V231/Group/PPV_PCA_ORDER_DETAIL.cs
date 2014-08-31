@@ -8,24 +8,27 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the PPV_PCA_ORDER_DETAIL Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: OBR (OBR - observation request segment) </li>
-///<li>1: RXO (RXO - pharmacy/treatment order segment) </li>
-///<li>2: NTE (NTE - notes and comments segment) optional repeating</li>
-///<li>3: VAR (Variance) optional repeating</li>
-///<li>4: PPV_PCA_ORDER_OBSERVATION (a Group object) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the PPV_PCA_ORDER_DETAIL Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: OBR (OBR - observation request segment) </li>
+/// <li>1: RXO (RXO - pharmacy/treatment order segment) </li>
+/// <li>2: NTE (NTE - notes and comments segment) optional repeating</li>
+/// <li>3: VAR (Variance) optional repeating</li>
+/// <li>4: PPV_PCA_ORDER_OBSERVATION (a Group object) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class PPV_PCA_ORDER_DETAIL : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new PPV_PCA_ORDER_DETAIL Group.
-	///</summary>
+    /// <summary>   Creates a new PPV_PCA_ORDER_DETAIL Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PPV_PCA_ORDER_DETAIL(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(OBR), true, false);
@@ -38,9 +41,10 @@ public class PPV_PCA_ORDER_DETAIL : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns OBR (OBR - observation request segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OBR (OBR - observation request segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The obr. </value>
+
 	public OBR OBR { 
 get{
 	   OBR ret = null;
@@ -54,9 +58,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RXO (RXO - pharmacy/treatment order segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns RXO (RXO - pharmacy/treatment order segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The rxo. </value>
+
 	public RXO RXO { 
 get{
 	   RXO ret = null;
@@ -70,9 +77,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -84,19 +96,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (NTE - notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (NTE - notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -111,9 +129,12 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of VAR (Variance) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns  first repetition of VAR (Variance) - creates it if necessary. </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The variable. </returns>
+
 	public VAR GetVAR() {
 	   VAR ret = null;
 	   try {
@@ -125,19 +146,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of VAR
-	/// * (Variance) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of VAR
+    ///  * (Variance) - creates it if necessary throws HL7Exception if the repetition requested is
+    ///  more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The variable. </returns>
+
 	public VAR GetVAR(int rep) { 
 	   return (VAR)this.GetStructure("VAR", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of VAR 
-	 */ 
+    /// <summary>   Gets the variable repetitions used. </summary>
+    ///
+    /// <value> The variable repetitions used. </value>
+
 	public int VARRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -152,9 +179,15 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of PPV_PCA_ORDER_OBSERVATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of PPV_PCA_ORDER_OBSERVATION (a Group object) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order observation. </returns>
+
 	public PPV_PCA_ORDER_OBSERVATION GetORDER_OBSERVATION() {
 	   PPV_PCA_ORDER_OBSERVATION ret = null;
 	   try {
@@ -166,19 +199,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of PPV_PCA_ORDER_OBSERVATION
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of PPV_PCA_ORDER_OBSERVATION
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order observation. </returns>
+
 	public PPV_PCA_ORDER_OBSERVATION GetORDER_OBSERVATION(int rep) { 
 	   return (PPV_PCA_ORDER_OBSERVATION)this.GetStructure("ORDER_OBSERVATION", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of PPV_PCA_ORDER_OBSERVATION 
-	 */ 
+    /// <summary>   Gets the order observation repetitions used. </summary>
+    ///
+    /// <value> The order observation repetitions used. </value>
+
 	public int ORDER_OBSERVATIONRepetitionsUsed { 
 get{
 	    int reps = -1; 

@@ -6,31 +6,33 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V21.Datatype
 {
-
-///<summary>
-/// <p>The HL7 CN (composite ID number and name) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 CN (composite ID number and name) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>ID (ST)</li>
 /// <li>family name (ST)</li>
 /// <li>given name (ST)</li>
 /// <li>middle initial or name (ST)</li>
 /// <li>degree (ST)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CN : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CN. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CN(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CN. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CN(IMessage message, string description) : base(message, description){
 		data = new IType[5];
 		data[0] = new ST(message,"ID");
@@ -40,9 +42,10 @@ public class CN : AbstractType, IComposite{
 		data[4] = new ST(message,"Degree");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -50,12 +53,15 @@ public class CN : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -66,10 +72,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns ID (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns ID (component #0).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier. </value>
+
 	public ST ID {
 get{
 	   ST ret = null;
@@ -83,10 +93,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns family name (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns family name (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the family. </value>
+
 	public ST FamilyName {
 get{
 	   ST ret = null;
@@ -100,10 +114,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns given name (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns given name (component #2).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the given. </value>
+
 	public ST GivenName {
 get{
 	   ST ret = null;
@@ -117,10 +135,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns middle initial or name (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns middle initial or name (component #3).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the middle initial or. </value>
+
 	public ST MiddleInitialOrName {
 get{
 	   ST ret = null;
@@ -134,10 +156,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns degree (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns degree (component #4).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The degree. </value>
+
 	public ST Degree {
 get{
 	   ST ret = null;

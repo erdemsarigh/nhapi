@@ -7,28 +7,29 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 MFA message segment. 
-/// This segment has the following fields:<ol>
-///<li>MFA-1: Record-Level Event Code (ID)</li>
-///<li>MFA-2: MFN Control ID (ST)</li>
-///<li>MFA-3: Event Completion Date/Time (TS)</li>
-///<li>MFA-4: Error Return Code and/or Text (CE)</li>
-///<li>MFA-5: Primary Key Value (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 MFA message segment. This segment has the following fields:<ol>
+/// <li>MFA-1: Record-Level Event Code (ID)</li>
+/// <li>MFA-2: MFN Control ID (ST)</li>
+/// <li>MFA-3: Event Completion Date/Time (TS)</li>
+/// <li>MFA-4: Error Return Code and/or Text (CE)</li>
+/// <li>MFA-5: Primary Key Value (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class MFA : AbstractSegment  {
 
-  /**
-   * Creates a MFA (Master file acknowledgement segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the MFA class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFA(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -42,9 +43,10 @@ public class MFA : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Record-Level Event Code(MFA-1).
-	///</summary>
+    /// <summary>   Returns Record-Level Event Code(MFA-1). </summary>
+    ///
+    /// <value> The record level event code. </value>
+
 	public ID RecordLevelEventCode
 	{
 		get{
@@ -65,9 +67,10 @@ public class MFA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns MFN Control ID(MFA-2).
-	///</summary>
+    /// <summary>   Returns MFN Control ID(MFA-2). </summary>
+    ///
+    /// <value> The identifier of the mfn control. </value>
+
 	public ST MFNControlID
 	{
 		get{
@@ -88,9 +91,10 @@ public class MFA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Event Completion Date/Time(MFA-3).
-	///</summary>
+    /// <summary>   Returns Event Completion Date/Time(MFA-3). </summary>
+    ///
+    /// <value> The event completion date time. </value>
+
 	public TS EventCompletionDateTime
 	{
 		get{
@@ -111,9 +115,10 @@ public class MFA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Error Return Code and/or Text(MFA-4).
-	///</summary>
+    /// <summary>   Returns Error Return Code and/or Text(MFA-4). </summary>
+    ///
+    /// <value> The error return code and or text. </value>
+
 	public CE ErrorReturnCodeAndOrText
 	{
 		get{
@@ -134,11 +139,17 @@ public class MFA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Primary Key Value(MFA-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Primary Key Value(MFA-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The primary key value. </returns>
+
 	public CE GetPrimaryKeyValue(int rep)
 	{
 			CE ret = null;
@@ -153,9 +164,12 @@ public class MFA : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Primary Key Value (MFA-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Primary Key Value (MFA-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetPrimaryKeyValue() {
      CE[] ret = null;
     try {
@@ -174,9 +188,10 @@ public class MFA : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Primary Key Value (MFA-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Primary Key Value (MFA-5). </summary>
+  ///
+  /// <value>   The primary key value repetitions used. </value>
+
   public int PrimaryKeyValueRepetitionsUsed
 {
 get{

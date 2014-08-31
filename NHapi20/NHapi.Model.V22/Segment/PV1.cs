@@ -7,73 +7,74 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 PV1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>PV1-1: Set ID - Patient Visit (SI)</li>
-///<li>PV1-2: Patient Class (ID)</li>
-///<li>PV1-3: Assigned Patient Location (CM_INTERNAL_LOCATION)</li>
-///<li>PV1-4: Admission Type (ID)</li>
-///<li>PV1-5: Preadmit Number (ST)</li>
-///<li>PV1-6: Prior Patient Location (CM_INTERNAL_LOCATION)</li>
-///<li>PV1-7: Attending Doctor (CN_PHYSICIAN)</li>
-///<li>PV1-8: Referring Doctor (CN_PHYSICIAN)</li>
-///<li>PV1-9: Consulting Doctor (CN_PHYSICIAN)</li>
-///<li>PV1-10: Hospital Service (ID)</li>
-///<li>PV1-11: Temporary Location (CM_INTERNAL_LOCATION)</li>
-///<li>PV1-12: Preadmit Test Indicator (ID)</li>
-///<li>PV1-13: Readmission indicator (ID)</li>
-///<li>PV1-14: Admit Source (ID)</li>
-///<li>PV1-15: Ambulatory Status (ID)</li>
-///<li>PV1-16: VIP Indicator (ID)</li>
-///<li>PV1-17: Admitting Doctor (CN_PHYSICIAN)</li>
-///<li>PV1-18: Patient type (ID)</li>
-///<li>PV1-19: Visit Number (CM_PAT_ID)</li>
-///<li>PV1-20: Financial Class (CM_FINANCE)</li>
-///<li>PV1-21: Charge Price Indicator (ID)</li>
-///<li>PV1-22: Courtesy Code (ID)</li>
-///<li>PV1-23: Credit Rating (ID)</li>
-///<li>PV1-24: Contract Code (ID)</li>
-///<li>PV1-25: Contract Effective Date (DT)</li>
-///<li>PV1-26: Contract Amount (NM)</li>
-///<li>PV1-27: Contract Period (NM)</li>
-///<li>PV1-28: Interest Code (ID)</li>
-///<li>PV1-29: Transfer to bad debt - code (ID)</li>
-///<li>PV1-30: Transfer to bad debt - date (DT)</li>
-///<li>PV1-31: Bad Debt Agency Code (ID)</li>
-///<li>PV1-32: Bad Debt Transfer Amount (NM)</li>
-///<li>PV1-33: Bad Debt Recovery Amount (NM)</li>
-///<li>PV1-34: Delete Account Indicator (ID)</li>
-///<li>PV1-35: Delete Account Date (DT)</li>
-///<li>PV1-36: Discharge Disposition (ID)</li>
-///<li>PV1-37: Discharged to Location (CM_DLD)</li>
-///<li>PV1-38: Diet Type (ID)</li>
-///<li>PV1-39: Servicing Facility (ID)</li>
-///<li>PV1-40: Bed Status (ID)</li>
-///<li>PV1-41: Account Status (ID)</li>
-///<li>PV1-42: Pending Location (CM_INTERNAL_LOCATION)</li>
-///<li>PV1-43: Prior Temporary Location (CM_INTERNAL_LOCATION)</li>
-///<li>PV1-44: Admit date / time (TS)</li>
-///<li>PV1-45: Discharge date / time (TS)</li>
-///<li>PV1-46: Current Patient Balance (NM)</li>
-///<li>PV1-47: Total Charges (NM)</li>
-///<li>PV1-48: Total Adjustments (NM)</li>
-///<li>PV1-49: Total Payments (NM)</li>
-///<li>PV1-50: Alternate Visit ID (CM_PAT_ID_0192)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PV1 message segment. This segment has the following fields:<ol>
+/// <li>PV1-1: Set ID - Patient Visit (SI)</li>
+/// <li>PV1-2: Patient Class (ID)</li>
+/// <li>PV1-3: Assigned Patient Location (CM_INTERNAL_LOCATION)</li>
+/// <li>PV1-4: Admission Type (ID)</li>
+/// <li>PV1-5: Preadmit Number (ST)</li>
+/// <li>PV1-6: Prior Patient Location (CM_INTERNAL_LOCATION)</li>
+/// <li>PV1-7: Attending Doctor (CN_PHYSICIAN)</li>
+/// <li>PV1-8: Referring Doctor (CN_PHYSICIAN)</li>
+/// <li>PV1-9: Consulting Doctor (CN_PHYSICIAN)</li>
+/// <li>PV1-10: Hospital Service (ID)</li>
+/// <li>PV1-11: Temporary Location (CM_INTERNAL_LOCATION)</li>
+/// <li>PV1-12: Preadmit Test Indicator (ID)</li>
+/// <li>PV1-13: Readmission indicator (ID)</li>
+/// <li>PV1-14: Admit Source (ID)</li>
+/// <li>PV1-15: Ambulatory Status (ID)</li>
+/// <li>PV1-16: VIP Indicator (ID)</li>
+/// <li>PV1-17: Admitting Doctor (CN_PHYSICIAN)</li>
+/// <li>PV1-18: Patient type (ID)</li>
+/// <li>PV1-19: Visit Number (CM_PAT_ID)</li>
+/// <li>PV1-20: Financial Class (CM_FINANCE)</li>
+/// <li>PV1-21: Charge Price Indicator (ID)</li>
+/// <li>PV1-22: Courtesy Code (ID)</li>
+/// <li>PV1-23: Credit Rating (ID)</li>
+/// <li>PV1-24: Contract Code (ID)</li>
+/// <li>PV1-25: Contract Effective Date (DT)</li>
+/// <li>PV1-26: Contract Amount (NM)</li>
+/// <li>PV1-27: Contract Period (NM)</li>
+/// <li>PV1-28: Interest Code (ID)</li>
+/// <li>PV1-29: Transfer to bad debt - code (ID)</li>
+/// <li>PV1-30: Transfer to bad debt - date (DT)</li>
+/// <li>PV1-31: Bad Debt Agency Code (ID)</li>
+/// <li>PV1-32: Bad Debt Transfer Amount (NM)</li>
+/// <li>PV1-33: Bad Debt Recovery Amount (NM)</li>
+/// <li>PV1-34: Delete Account Indicator (ID)</li>
+/// <li>PV1-35: Delete Account Date (DT)</li>
+/// <li>PV1-36: Discharge Disposition (ID)</li>
+/// <li>PV1-37: Discharged to Location (CM_DLD)</li>
+/// <li>PV1-38: Diet Type (ID)</li>
+/// <li>PV1-39: Servicing Facility (ID)</li>
+/// <li>PV1-40: Bed Status (ID)</li>
+/// <li>PV1-41: Account Status (ID)</li>
+/// <li>PV1-42: Pending Location (CM_INTERNAL_LOCATION)</li>
+/// <li>PV1-43: Prior Temporary Location (CM_INTERNAL_LOCATION)</li>
+/// <li>PV1-44: Admit date / time (TS)</li>
+/// <li>PV1-45: Discharge date / time (TS)</li>
+/// <li>PV1-46: Current Patient Balance (NM)</li>
+/// <li>PV1-47: Total Charges (NM)</li>
+/// <li>PV1-48: Total Adjustments (NM)</li>
+/// <li>PV1-49: Total Payments (NM)</li>
+/// <li>PV1-50: Alternate Visit ID (CM_PAT_ID_0192)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PV1 : AbstractSegment  {
 
-  /**
-   * Creates a PV1 (PATIENT VISIT) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PV1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PV1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -132,9 +133,10 @@ public class PV1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - Patient Visit(PV1-1).
-	///</summary>
+    /// <summary>   Returns Set ID - Patient Visit(PV1-1). </summary>
+    ///
+    /// <value> The set identifier patient visit. </value>
+
 	public SI SetIDPatientVisit
 	{
 		get{
@@ -155,9 +157,10 @@ public class PV1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Patient Class(PV1-2).
-	///</summary>
+    /// <summary>   Returns Patient Class(PV1-2). </summary>
+    ///
+    /// <value> The patient class. </value>
+
 	public ID PatientClass
 	{
 		get{
@@ -178,9 +181,10 @@ public class PV1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Assigned Patient Location(PV1-3).
-	///</summary>
+    /// <summary>   Returns Assigned Patient Location(PV1-3). </summary>
+    ///
+    /// <value> The assigned patient location. </value>
+
 	public CM_INTERNAL_LOCATION AssignedPatientLocation
 	{
 		get{
@@ -201,9 +205,10 @@ public class PV1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Admission Type(PV1-4).
-	///</summary>
+    /// <summary>   Returns Admission Type(PV1-4). </summary>
+    ///
+    /// <value> The type of the admission. </value>
+
 	public ID AdmissionType
 	{
 		get{
@@ -224,9 +229,10 @@ public class PV1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Preadmit Number(PV1-5).
-	///</summary>
+    /// <summary>   Returns Preadmit Number(PV1-5). </summary>
+    ///
+    /// <value> The preadmit number. </value>
+
 	public ST PreadmitNumber
 	{
 		get{
@@ -247,9 +253,10 @@ public class PV1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Prior Patient Location(PV1-6).
-	///</summary>
+    /// <summary>   Returns Prior Patient Location(PV1-6). </summary>
+    ///
+    /// <value> The prior patient location. </value>
+
 	public CM_INTERNAL_LOCATION PriorPatientLocation
 	{
 		get{
@@ -270,9 +277,10 @@ public class PV1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Attending Doctor(PV1-7).
-	///</summary>
+    /// <summary>   Returns Attending Doctor(PV1-7). </summary>
+    ///
+    /// <value> The attending doctor. </value>
+
 	public CN_PHYSICIAN AttendingDoctor
 	{
 		get{
@@ -293,9 +301,10 @@ public class PV1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Referring Doctor(PV1-8).
-	///</summary>
+    /// <summary>   Returns Referring Doctor(PV1-8). </summary>
+    ///
+    /// <value> The referring doctor. </value>
+
 	public CN_PHYSICIAN ReferringDoctor
 	{
 		get{
@@ -316,11 +325,17 @@ public class PV1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Consulting Doctor(PV1-9).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Consulting Doctor(PV1-9). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The consulting doctor. </returns>
+
 	public CN_PHYSICIAN GetConsultingDoctor(int rep)
 	{
 			CN_PHYSICIAN ret = null;
@@ -335,9 +350,12 @@ public class PV1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Consulting Doctor (PV1-9).
-   ///</summary>
+  /// <summary> Returns all repetitions of Consulting Doctor (PV1-9). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of cn physician. </returns>
+
   public CN_PHYSICIAN[] GetConsultingDoctor() {
      CN_PHYSICIAN[] ret = null;
     try {
@@ -356,9 +374,10 @@ public class PV1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Consulting Doctor (PV1-9).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Consulting Doctor (PV1-9). </summary>
+  ///
+  /// <value>   The consulting doctor repetitions used. </value>
+
   public int ConsultingDoctorRepetitionsUsed
 {
 get{
@@ -374,9 +393,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Hospital Service(PV1-10).
-	///</summary>
+
+    /// <summary>   Returns Hospital Service(PV1-10). </summary>
+    ///
+    /// <value> The hospital service. </value>
+
 	public ID HospitalService
 	{
 		get{
@@ -397,9 +418,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Temporary Location(PV1-11).
-	///</summary>
+    /// <summary>   Returns Temporary Location(PV1-11). </summary>
+    ///
+    /// <value> The temporary location. </value>
+
 	public CM_INTERNAL_LOCATION TemporaryLocation
 	{
 		get{
@@ -420,9 +442,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Preadmit Test Indicator(PV1-12).
-	///</summary>
+    /// <summary>   Returns Preadmit Test Indicator(PV1-12). </summary>
+    ///
+    /// <value> The preadmit test indicator. </value>
+
 	public ID PreadmitTestIndicator
 	{
 		get{
@@ -443,9 +466,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Readmission indicator(PV1-13).
-	///</summary>
+    /// <summary>   Returns Readmission indicator(PV1-13). </summary>
+    ///
+    /// <value> The readmission indicator. </value>
+
 	public ID ReadmissionIndicator
 	{
 		get{
@@ -466,9 +490,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Admit Source(PV1-14).
-	///</summary>
+    /// <summary>   Returns Admit Source(PV1-14). </summary>
+    ///
+    /// <value> The admit source. </value>
+
 	public ID AdmitSource
 	{
 		get{
@@ -489,11 +514,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Ambulatory Status(PV1-15).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Ambulatory Status(PV1-15). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ambulatory status. </returns>
+
 	public ID GetAmbulatoryStatus(int rep)
 	{
 			ID ret = null;
@@ -508,9 +539,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Ambulatory Status (PV1-15).
-   ///</summary>
+  /// <summary> Returns all repetitions of Ambulatory Status (PV1-15). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetAmbulatoryStatus() {
      ID[] ret = null;
     try {
@@ -529,9 +563,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Ambulatory Status (PV1-15).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Ambulatory Status (PV1-15). </summary>
+  ///
+  /// <value>   The ambulatory status repetitions used. </value>
+
   public int AmbulatoryStatusRepetitionsUsed
 {
 get{
@@ -547,9 +582,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns VIP Indicator(PV1-16).
-	///</summary>
+
+    /// <summary>   Returns VIP Indicator(PV1-16). </summary>
+    ///
+    /// <value> The vip indicator. </value>
+
 	public ID VIPIndicator
 	{
 		get{
@@ -570,9 +607,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Admitting Doctor(PV1-17).
-	///</summary>
+    /// <summary>   Returns Admitting Doctor(PV1-17). </summary>
+    ///
+    /// <value> The admitting doctor. </value>
+
 	public CN_PHYSICIAN AdmittingDoctor
 	{
 		get{
@@ -593,9 +631,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Patient type(PV1-18).
-	///</summary>
+    /// <summary>   Returns Patient type(PV1-18). </summary>
+    ///
+    /// <value> The type of the patient. </value>
+
 	public ID PatientType
 	{
 		get{
@@ -616,9 +655,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Visit Number(PV1-19).
-	///</summary>
+    /// <summary>   Returns Visit Number(PV1-19). </summary>
+    ///
+    /// <value> The visit number. </value>
+
 	public NM VisitNumber
 	{
 		get{
@@ -639,11 +679,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Financial Class(PV1-20).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Financial Class(PV1-20). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The financial class. </returns>
+
 	public CM_FINANCE GetFinancialClass(int rep)
 	{
 			CM_FINANCE ret = null;
@@ -658,9 +704,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Financial Class (PV1-20).
-   ///</summary>
+  /// <summary> Returns all repetitions of Financial Class (PV1-20). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of centimetres finance. </returns>
+
   public CM_FINANCE[] GetFinancialClass() {
      CM_FINANCE[] ret = null;
     try {
@@ -679,9 +728,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Financial Class (PV1-20).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Financial Class (PV1-20). </summary>
+  ///
+  /// <value>   The financial class repetitions used. </value>
+
   public int FinancialClassRepetitionsUsed
 {
 get{
@@ -697,9 +747,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Charge Price Indicator(PV1-21).
-	///</summary>
+
+    /// <summary>   Returns Charge Price Indicator(PV1-21). </summary>
+    ///
+    /// <value> The charge price indicator. </value>
+
 	public ID ChargePriceIndicator
 	{
 		get{
@@ -720,9 +772,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Courtesy Code(PV1-22).
-	///</summary>
+    /// <summary>   Returns Courtesy Code(PV1-22). </summary>
+    ///
+    /// <value> The courtesy code. </value>
+
 	public ID CourtesyCode
 	{
 		get{
@@ -743,9 +796,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Credit Rating(PV1-23).
-	///</summary>
+    /// <summary>   Returns Credit Rating(PV1-23). </summary>
+    ///
+    /// <value> The credit rating. </value>
+
 	public ID CreditRating
 	{
 		get{
@@ -766,11 +820,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Contract Code(PV1-24).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Contract Code(PV1-24). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contract code. </returns>
+
 	public ID GetContractCode(int rep)
 	{
 			ID ret = null;
@@ -785,9 +845,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contract Code (PV1-24).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contract Code (PV1-24). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetContractCode() {
      ID[] ret = null;
     try {
@@ -806,9 +869,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Contract Code (PV1-24).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Contract Code (PV1-24). </summary>
+  ///
+  /// <value>   The contract code repetitions used. </value>
+
   public int ContractCodeRepetitionsUsed
 {
 get{
@@ -824,11 +888,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Contract Effective Date(PV1-25).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Contract Effective Date(PV1-25). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contract effective date. </returns>
+
 	public DT GetContractEffectiveDate(int rep)
 	{
 			DT ret = null;
@@ -843,9 +914,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contract Effective Date (PV1-25).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contract Effective Date (PV1-25). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of dt. </returns>
+
   public DT[] GetContractEffectiveDate() {
      DT[] ret = null;
     try {
@@ -864,9 +938,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Contract Effective Date (PV1-25).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Contract Effective Date (PV1-25). </summary>
+  ///
+  /// <value>   The contract effective date repetitions used. </value>
+
   public int ContractEffectiveDateRepetitionsUsed
 {
 get{
@@ -882,11 +957,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Contract Amount(PV1-26).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Contract Amount(PV1-26). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contract amount. </returns>
+
 	public NM GetContractAmount(int rep)
 	{
 			NM ret = null;
@@ -901,9 +983,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contract Amount (PV1-26).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contract Amount (PV1-26). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of nm. </returns>
+
   public NM[] GetContractAmount() {
      NM[] ret = null;
     try {
@@ -922,9 +1007,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Contract Amount (PV1-26).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Contract Amount (PV1-26). </summary>
+  ///
+  /// <value>   The contract amount repetitions used. </value>
+
   public int ContractAmountRepetitionsUsed
 {
 get{
@@ -940,11 +1026,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Contract Period(PV1-27).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Contract Period(PV1-27). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contract period. </returns>
+
 	public NM GetContractPeriod(int rep)
 	{
 			NM ret = null;
@@ -959,9 +1052,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contract Period (PV1-27).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contract Period (PV1-27). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of nm. </returns>
+
   public NM[] GetContractPeriod() {
      NM[] ret = null;
     try {
@@ -980,9 +1076,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Contract Period (PV1-27).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Contract Period (PV1-27). </summary>
+  ///
+  /// <value>   The contract period repetitions used. </value>
+
   public int ContractPeriodRepetitionsUsed
 {
 get{
@@ -998,9 +1095,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Interest Code(PV1-28).
-	///</summary>
+
+    /// <summary>   Returns Interest Code(PV1-28). </summary>
+    ///
+    /// <value> The interest code. </value>
+
 	public ID InterestCode
 	{
 		get{
@@ -1021,9 +1120,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Transfer to bad debt - code(PV1-29).
-	///</summary>
+    /// <summary>   Returns Transfer to bad debt - code(PV1-29). </summary>
+    ///
+    /// <value> The transfer to bad debt code. </value>
+
 	public ID TransferToBadDebtCode
 	{
 		get{
@@ -1044,9 +1144,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Transfer to bad debt - date(PV1-30).
-	///</summary>
+    /// <summary>   Returns Transfer to bad debt - date(PV1-30). </summary>
+    ///
+    /// <value> The transfer to bad debt date. </value>
+
 	public DT TransferToBadDebtDate
 	{
 		get{
@@ -1067,9 +1168,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Bad Debt Agency Code(PV1-31).
-	///</summary>
+    /// <summary>   Returns Bad Debt Agency Code(PV1-31). </summary>
+    ///
+    /// <value> The bad debt agency code. </value>
+
 	public ID BadDebtAgencyCode
 	{
 		get{
@@ -1090,9 +1192,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Bad Debt Transfer Amount(PV1-32).
-	///</summary>
+    /// <summary>   Returns Bad Debt Transfer Amount(PV1-32). </summary>
+    ///
+    /// <value> The bad debt transfer amount. </value>
+
 	public NM BadDebtTransferAmount
 	{
 		get{
@@ -1113,9 +1216,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Bad Debt Recovery Amount(PV1-33).
-	///</summary>
+    /// <summary>   Returns Bad Debt Recovery Amount(PV1-33). </summary>
+    ///
+    /// <value> The bad debt recovery amount. </value>
+
 	public NM BadDebtRecoveryAmount
 	{
 		get{
@@ -1136,9 +1240,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Delete Account Indicator(PV1-34).
-	///</summary>
+    /// <summary>   Returns Delete Account Indicator(PV1-34). </summary>
+    ///
+    /// <value> The delete account indicator. </value>
+
 	public ID DeleteAccountIndicator
 	{
 		get{
@@ -1159,9 +1264,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Delete Account Date(PV1-35).
-	///</summary>
+    /// <summary>   Returns Delete Account Date(PV1-35). </summary>
+    ///
+    /// <value> The delete account date. </value>
+
 	public DT DeleteAccountDate
 	{
 		get{
@@ -1182,9 +1288,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Discharge Disposition(PV1-36).
-	///</summary>
+    /// <summary>   Returns Discharge Disposition(PV1-36). </summary>
+    ///
+    /// <value> The discharge disposition. </value>
+
 	public ID DischargeDisposition
 	{
 		get{
@@ -1205,9 +1312,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Discharged to Location(PV1-37).
-	///</summary>
+    /// <summary>   Returns Discharged to Location(PV1-37). </summary>
+    ///
+    /// <value> The discharged to location. </value>
+
 	public CM_DLD DischargedToLocation
 	{
 		get{
@@ -1228,9 +1336,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Diet Type(PV1-38).
-	///</summary>
+    /// <summary>   Returns Diet Type(PV1-38). </summary>
+    ///
+    /// <value> The type of the diet. </value>
+
 	public ID DietType
 	{
 		get{
@@ -1251,9 +1360,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Servicing Facility(PV1-39).
-	///</summary>
+    /// <summary>   Returns Servicing Facility(PV1-39). </summary>
+    ///
+    /// <value> The servicing facility. </value>
+
 	public ID ServicingFacility
 	{
 		get{
@@ -1274,9 +1384,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Bed Status(PV1-40).
-	///</summary>
+    /// <summary>   Returns Bed Status(PV1-40). </summary>
+    ///
+    /// <value> The bed status. </value>
+
 	public ID BedStatus
 	{
 		get{
@@ -1297,9 +1408,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Account Status(PV1-41).
-	///</summary>
+    /// <summary>   Returns Account Status(PV1-41). </summary>
+    ///
+    /// <value> The account status. </value>
+
 	public ID AccountStatus
 	{
 		get{
@@ -1320,9 +1432,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Pending Location(PV1-42).
-	///</summary>
+    /// <summary>   Returns Pending Location(PV1-42). </summary>
+    ///
+    /// <value> The pending location. </value>
+
 	public CM_INTERNAL_LOCATION PendingLocation
 	{
 		get{
@@ -1343,9 +1456,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Prior Temporary Location(PV1-43).
-	///</summary>
+    /// <summary>   Returns Prior Temporary Location(PV1-43). </summary>
+    ///
+    /// <value> The prior temporary location. </value>
+
 	public CM_INTERNAL_LOCATION PriorTemporaryLocation
 	{
 		get{
@@ -1366,9 +1480,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Admit date / time(PV1-44).
-	///</summary>
+    /// <summary>   Returns Admit date / time(PV1-44). </summary>
+    ///
+    /// <value> The admit date time. </value>
+
 	public TS AdmitDateTime
 	{
 		get{
@@ -1389,9 +1504,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Discharge date / time(PV1-45).
-	///</summary>
+    /// <summary>   Returns Discharge date / time(PV1-45). </summary>
+    ///
+    /// <value> The discharge date time. </value>
+
 	public TS DischargeDateTime
 	{
 		get{
@@ -1412,9 +1528,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Current Patient Balance(PV1-46).
-	///</summary>
+    /// <summary>   Returns Current Patient Balance(PV1-46). </summary>
+    ///
+    /// <value> The current patient balance. </value>
+
 	public NM CurrentPatientBalance
 	{
 		get{
@@ -1435,9 +1552,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Total Charges(PV1-47).
-	///</summary>
+    /// <summary>   Returns Total Charges(PV1-47). </summary>
+    ///
+    /// <value> The total number of charges. </value>
+
 	public NM TotalCharges
 	{
 		get{
@@ -1458,9 +1576,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Total Adjustments(PV1-48).
-	///</summary>
+    /// <summary>   Returns Total Adjustments(PV1-48). </summary>
+    ///
+    /// <value> The total number of adjustments. </value>
+
 	public NM TotalAdjustments
 	{
 		get{
@@ -1481,9 +1600,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Total Payments(PV1-49).
-	///</summary>
+    /// <summary>   Returns Total Payments(PV1-49). </summary>
+    ///
+    /// <value> The total number of payments. </value>
+
 	public NM TotalPayments
 	{
 		get{
@@ -1504,9 +1624,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Alternate Visit ID(PV1-50).
-	///</summary>
+    /// <summary>   Returns Alternate Visit ID(PV1-50). </summary>
+    ///
+    /// <value> The identifier of the alternate visit. </value>
+
 	public CM_PAT_ID_0192 AlternateVisitID
 	{
 		get{

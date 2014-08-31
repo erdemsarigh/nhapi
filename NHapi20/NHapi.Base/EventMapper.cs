@@ -2,25 +2,33 @@ namespace NHapi.Base
 {
     using System.Collections.Generic;
 
+    /// <summary>   An event mapper. </summary>
     internal class EventMapper
     {
         #region Static Fields
 
+        /// <summary>   The instance. </summary>
         private static readonly EventMapper _instance = new EventMapper();
 
         #endregion
 
         #region Fields
 
+        /// <summary>   The map. </summary>
         private System.Collections.Hashtable _map = new System.Collections.Hashtable();
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the EventMapper class. </summary>
         static EventMapper()
         {
         }
+
+        /// <summary>
+        /// Prevents a default instance of the EventMapper class from being created.
+        /// </summary>
 
         private EventMapper()
         {
@@ -51,6 +59,10 @@ namespace NHapi.Base
 
         #region Public Properties
 
+        /// <summary>   Gets the instance. </summary>
+        ///
+        /// <value> The instance. </value>
+
         public static EventMapper Instance
         {
             get
@@ -58,6 +70,10 @@ namespace NHapi.Base
                 return _instance;
             }
         }
+
+        /// <summary>   Gets the maps. </summary>
+        ///
+        /// <value> The maps. </value>
 
         public System.Collections.Hashtable Maps
         {
@@ -70,6 +86,13 @@ namespace NHapi.Base
         #endregion
 
         #region Methods
+
+        /// <summary>   Gets assembly event mapping. </summary>
+        ///
+        /// <param name="assembly"> The assembly. </param>
+        /// <param name="package">  The package. </param>
+        ///
+        /// <returns>   The assembly event mapping. </returns>
 
         private System.Collections.Specialized.NameValueCollection GetAssemblyEventMapping(
             System.Reflection.Assembly assembly,

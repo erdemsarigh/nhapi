@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the PEX_P07_STUDY Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: CSR (Clinical Study Registration) </li>
-///<li>1: CSP (Clinical Study Phase) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the PEX_P07_STUDY Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: CSR (Clinical Study Registration) </li>
+/// <li>1: CSP (Clinical Study Phase) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class PEX_P07_STUDY : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new PEX_P07_STUDY Group.
-	///</summary>
+    /// <summary>   Creates a new PEX_P07_STUDY Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PEX_P07_STUDY(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(CSR), true, false);
@@ -32,9 +35,10 @@ public class PEX_P07_STUDY : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns CSR (Clinical Study Registration) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns CSR (Clinical Study Registration) - creates it if necessary. </summary>
+    ///
+    /// <value> The cursor. </value>
+
 	public CSR CSR { 
 get{
 	   CSR ret = null;
@@ -48,9 +52,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of CSP (Clinical Study Phase) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of CSP (Clinical Study Phase) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The csp. </returns>
+
 	public CSP GetCSP() {
 	   CSP ret = null;
 	   try {
@@ -62,19 +71,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of CSP
-	/// * (Clinical Study Phase) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of CSP
+    ///  * (Clinical Study Phase) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The csp. </returns>
+
 	public CSP GetCSP(int rep) { 
 	   return (CSP)this.GetStructure("CSP", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of CSP 
-	 */ 
+    /// <summary>   Gets the csp repetitions used. </summary>
+    ///
+    /// <value> The csp repetitions used. </value>
+
 	public int CSPRepetitionsUsed { 
 get{
 	    int reps = -1; 

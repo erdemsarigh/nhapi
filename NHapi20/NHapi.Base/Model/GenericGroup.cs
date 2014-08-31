@@ -2,24 +2,29 @@ namespace NHapi.Base.Model
 {
     using NHapi.Base.Parser;
 
-    /// <summary> An undefined segment group.  This is for storing undefined groups
-    /// that appear in XML-encoded messages.  Note that if an undefined group appears 
-    /// in an ER7-encoded message, the group structure won't be clear and we'll just assume 
-    /// it's a flat list of segments.    
+    /// <summary>
+    /// An undefined segment group.  This is for storing undefined groups that appear in XML-encoded
+    /// messages.  Note that if an undefined group appears in an ER7-encoded message, the group
+    /// structure won't be clear and we'll just assume it's a flat list of segments.
     /// </summary>
-    /// <author>  Bryan Tripp
-    /// </author>
+
     public class GenericGroup : AbstractGroup
     {
         #region Fields
 
+        /// <summary>   The name. </summary>
         private System.String name;
 
         #endregion
 
         #region Constructors and Destructors
 
-        /// <summary>Creates a new instance of GenericGroup </summary>
+        /// <summary>   Creates a new instance of GenericGroup. </summary>
+        ///
+        /// <param name="parent">   The parent. </param>
+        /// <param name="name">     The name. </param>
+        /// <param name="factory">  The factory. </param>
+
         public GenericGroup(IGroup parent, System.String name, IModelClassFactory factory)
             : base(parent, factory)
         {
@@ -38,9 +43,13 @@ namespace NHapi.Base.Model
         /*public Message getMessage() {
         return super.message;
         }*/
-        /// <summary> Returns the name specified at construction time. </summary>
-        /// <seealso cref="Structure.getName()">
-        /// </seealso>
+
+        /// <summary>   Returns the name specified at construction time. </summary>
+        ///
+        /// <returns>   The structure name. </returns>
+        ///
+        /// <seealso cref="Structure.getName()"/>
+
         public override System.String GetStructureName()
         {
             return this.name;

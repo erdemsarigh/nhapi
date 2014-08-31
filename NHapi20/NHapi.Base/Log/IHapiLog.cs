@@ -6,9 +6,10 @@
 
 namespace NHapi.Base.Log
 {
-    /// <summary> A logging interface that enhances the <code> Log </code>
-    /// interface with ancillary method to easy up the log messages generation
-    /// by adding MessageFormat like functionality.
+    /// <summary>
+    /// A logging interface that enhances the <code> Log </code>
+    /// interface with ancillary method to easy up the log messages generation by adding
+    /// MessageFormat like functionality.
     /// 
     /// Instantiate using {@link HapiLogFactory#getLog( Class clazz)}
     /// or {@link HapiLogFactory#getLog( String name)}
@@ -48,23 +49,18 @@ namespace NHapi.Base.Log
     /// 
     /// }
     /// </pre>
-    /// 
     /// </summary>
-    /// <author>  <a href="mailto:alexei.guevara@uhn.on.ca">Alexei Guevara</a>
-    /// </author>
-    /// <version>  $Revision: 1.4 $ updated on $Date: 2003/09/11 21:51:21 $ by $Author: bryan_tripp $
-    /// </version>
-    /// TODO: HapiLog inherited from base Log interface using Log = org.apache.commons.logging.Log;
+
     public interface IHapiLog : ILog
     {
         #region Public Methods and Operators
 
-        /// <summary>
-        /// debug method
-        /// </summary>
-        /// <param name="msgPattern"></param>
-        /// <param name="values"></param>
-        /// <param name="e"></param>
+        /// <summary>   debug method. </summary>
+        ///
+        /// <param name="msgPattern">   . </param>
+        /// <param name="values">       . </param>
+        /// <param name="e">            . </param>
+
         void Debug(System.String msgPattern, System.Object[] values, System.Exception e);
 
         #endregion

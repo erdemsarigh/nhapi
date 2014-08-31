@@ -3,13 +3,12 @@ using System;
 using NHapi.Base.Model;
 namespace NHapi.Model.V23.Datatype
 {
-/// <summary>/// Summary description for ST.
-/// </summary>
+/// <summary>   Summary description for ST. </summary>
 public class ST: AbstractPrimitive
 {
-/// <summary>Return the version
-/// <returns>2.3</returns>
-///</summary>
+            /// <summary>   Return the version. </summary>
+            ///
+            /// <value> 2.3. </value>
 
             virtual public System.String Version
             {
@@ -18,21 +17,19 @@ public class ST: AbstractPrimitive
 				    return "2.3";
 			    }
 		    }
-            
 
+                /// <summary>   Construct the type. </summary>
+                ///
+                /// <param name="theMessage">   message to which this Type belongs. </param>
 
-                ///<summary>Construct the type
-                ///<param name="theMessage">message to which this Type belongs</param>
-                ///</summary>
                 public ST(IMessage theMessage):base(theMessage)
                 {}
-                
 
+                /// <summary>   Construct the type. </summary>
+                ///
+                /// <param name="message">      message to which this Type belongs. </param>
+                /// <param name="description">  The description of this type. </param>
 
-                ///<summary>Construct the type
-                ///<param name="message">message to which this Type belongs</param>
-                ///<param name="description">The description of this type</param>
-                ///</summary>
 		        public ST(IMessage message, string description) : base(message,description)
     	        {}
                 }}

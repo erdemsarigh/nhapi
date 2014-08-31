@@ -7,39 +7,40 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 DG1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>DG1-1: Set ID - diagnosis (SI)</li>
-///<li>DG1-2: Diagnosis coding method (ID)</li>
-///<li>DG1-3: Diagnosis code (ID)</li>
-///<li>DG1-4: Diagnosis description (ST)</li>
-///<li>DG1-5: Diagnosis date / time (TS)</li>
-///<li>DG1-6: Diagnosis / DRG type (ID)</li>
-///<li>DG1-7: Major diagnostic category (CE)</li>
-///<li>DG1-8: Diagnostic related group (ID)</li>
-///<li>DG1-9: DRG approval indicator (ID)</li>
-///<li>DG1-10: DRG grouper review code (ID)</li>
-///<li>DG1-11: Outlier type (ID)</li>
-///<li>DG1-12: Outlier days (NM)</li>
-///<li>DG1-13: Outlier cost (NM)</li>
-///<li>DG1-14: Grouper version and type (ST)</li>
-///<li>DG1-15: Diagnosis / DRG priority (NM)</li>
-///<li>DG1-16: Diagnosing clinician (CN_PERSON)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 DG1 message segment. This segment has the following fields:<ol>
+/// <li>DG1-1: Set ID - diagnosis (SI)</li>
+/// <li>DG1-2: Diagnosis coding method (ID)</li>
+/// <li>DG1-3: Diagnosis code (ID)</li>
+/// <li>DG1-4: Diagnosis description (ST)</li>
+/// <li>DG1-5: Diagnosis date / time (TS)</li>
+/// <li>DG1-6: Diagnosis / DRG type (ID)</li>
+/// <li>DG1-7: Major diagnostic category (CE)</li>
+/// <li>DG1-8: Diagnostic related group (ID)</li>
+/// <li>DG1-9: DRG approval indicator (ID)</li>
+/// <li>DG1-10: DRG grouper review code (ID)</li>
+/// <li>DG1-11: Outlier type (ID)</li>
+/// <li>DG1-12: Outlier days (NM)</li>
+/// <li>DG1-13: Outlier cost (NM)</li>
+/// <li>DG1-14: Grouper version and type (ST)</li>
+/// <li>DG1-15: Diagnosis / DRG priority (NM)</li>
+/// <li>DG1-16: Diagnosing clinician (CN_PERSON)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class DG1 : AbstractSegment  {
 
-  /**
-   * Creates a DG1 (DIAGNOSIS) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the DG1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public DG1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -64,9 +65,10 @@ public class DG1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - diagnosis(DG1-1).
-	///</summary>
+    /// <summary>   Returns Set ID - diagnosis(DG1-1). </summary>
+    ///
+    /// <value> The set identifier diagnosis. </value>
+
 	public SI SetIDDiagnosis
 	{
 		get{
@@ -87,9 +89,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Diagnosis coding method(DG1-2).
-	///</summary>
+    /// <summary>   Returns Diagnosis coding method(DG1-2). </summary>
+    ///
+    /// <value> The diagnosis coding method. </value>
+
 	public ID DiagnosisCodingMethod
 	{
 		get{
@@ -110,9 +113,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Diagnosis code(DG1-3).
-	///</summary>
+    /// <summary>   Returns Diagnosis code(DG1-3). </summary>
+    ///
+    /// <value> The diagnosis code. </value>
+
 	public ID DiagnosisCode
 	{
 		get{
@@ -133,9 +137,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Diagnosis description(DG1-4).
-	///</summary>
+    /// <summary>   Returns Diagnosis description(DG1-4). </summary>
+    ///
+    /// <value> Information describing the diagnosis. </value>
+
 	public ST DiagnosisDescription
 	{
 		get{
@@ -156,9 +161,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Diagnosis date / time(DG1-5).
-	///</summary>
+    /// <summary>   Returns Diagnosis date / time(DG1-5). </summary>
+    ///
+    /// <value> The diagnosis date time. </value>
+
 	public TS DiagnosisDateTime
 	{
 		get{
@@ -179,9 +185,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Diagnosis / DRG type(DG1-6).
-	///</summary>
+    /// <summary>   Returns Diagnosis / DRG type(DG1-6). </summary>
+    ///
+    /// <value> The type of the diagnosis drg. </value>
+
 	public ID DiagnosisDRGType
 	{
 		get{
@@ -202,9 +209,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Major diagnostic category(DG1-7).
-	///</summary>
+    /// <summary>   Returns Major diagnostic category(DG1-7). </summary>
+    ///
+    /// <value> The major diagnostic category. </value>
+
 	public CE MajorDiagnosticCategory
 	{
 		get{
@@ -225,9 +233,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Diagnostic related group(DG1-8).
-	///</summary>
+    /// <summary>   Returns Diagnostic related group(DG1-8). </summary>
+    ///
+    /// <value> The diagnostic related group. </value>
+
 	public ID DiagnosticRelatedGroup
 	{
 		get{
@@ -248,9 +257,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DRG approval indicator(DG1-9).
-	///</summary>
+    /// <summary>   Returns DRG approval indicator(DG1-9). </summary>
+    ///
+    /// <value> The drg approval indicator. </value>
+
 	public ID DRGApprovalIndicator
 	{
 		get{
@@ -271,9 +281,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DRG grouper review code(DG1-10).
-	///</summary>
+    /// <summary>   Returns DRG grouper review code(DG1-10). </summary>
+    ///
+    /// <value> The drg grouper review code. </value>
+
 	public ID DRGGrouperReviewCode
 	{
 		get{
@@ -294,9 +305,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Outlier type(DG1-11).
-	///</summary>
+    /// <summary>   Returns Outlier type(DG1-11). </summary>
+    ///
+    /// <value> The type of the outlier. </value>
+
 	public ID OutlierType
 	{
 		get{
@@ -317,9 +329,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Outlier days(DG1-12).
-	///</summary>
+    /// <summary>   Returns Outlier days(DG1-12). </summary>
+    ///
+    /// <value> The outlier days. </value>
+
 	public NM OutlierDays
 	{
 		get{
@@ -340,9 +353,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Outlier cost(DG1-13).
-	///</summary>
+    /// <summary>   Returns Outlier cost(DG1-13). </summary>
+    ///
+    /// <value> The outlier cost. </value>
+
 	public NM OutlierCost
 	{
 		get{
@@ -363,9 +377,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Grouper version and type(DG1-14).
-	///</summary>
+    /// <summary>   Returns Grouper version and type(DG1-14). </summary>
+    ///
+    /// <value> The type of the grouper version and. </value>
+
 	public ST GrouperVersionAndType
 	{
 		get{
@@ -386,9 +401,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Diagnosis / DRG priority(DG1-15).
-	///</summary>
+    /// <summary>   Returns Diagnosis / DRG priority(DG1-15). </summary>
+    ///
+    /// <value> The diagnosis drg priority. </value>
+
 	public NM DiagnosisDRGPriority
 	{
 		get{
@@ -409,9 +425,10 @@ public class DG1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Diagnosing clinician(DG1-16).
-	///</summary>
+    /// <summary>   Returns Diagnosing clinician(DG1-16). </summary>
+    ///
+    /// <value> The diagnosing clinician. </value>
+
 	public CN_PERSON DiagnosingClinician
 	{
 		get{

@@ -7,30 +7,31 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 CTD message segment. 
-/// This segment has the following fields:<ol>
-///<li>CTD-1: Contact Role (CE)</li>
-///<li>CTD-2: Contact Name (XPN)</li>
-///<li>CTD-3: Contact Address (XAD)</li>
-///<li>CTD-4: Contact Location (PL)</li>
-///<li>CTD-5: Contact Communication Information (XTN)</li>
-///<li>CTD-6: Preferred Method Of Contact (CE)</li>
-///<li>CTD-7: Contact Identifiers (PI)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 CTD message segment. This segment has the following fields:<ol>
+/// <li>CTD-1: Contact Role (CE)</li>
+/// <li>CTD-2: Contact Name (XPN)</li>
+/// <li>CTD-3: Contact Address (XAD)</li>
+/// <li>CTD-4: Contact Location (PL)</li>
+/// <li>CTD-5: Contact Communication Information (XTN)</li>
+/// <li>CTD-6: Preferred Method Of Contact (CE)</li>
+/// <li>CTD-7: Contact Identifiers (PI)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class CTD : AbstractSegment  {
 
-  /**
-   * Creates a CTD (Contact Data) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the CTD class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public CTD(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -46,11 +47,17 @@ public class CTD : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns a single repetition of Contact Role(CTD-1).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Contact Role(CTD-1). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contact role. </returns>
+
 	public CE GetContactRole(int rep)
 	{
 			CE ret = null;
@@ -65,9 +72,12 @@ public class CTD : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contact Role (CTD-1).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contact Role (CTD-1). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetContactRole() {
      CE[] ret = null;
     try {
@@ -86,9 +96,10 @@ public class CTD : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Contact Role (CTD-1).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Contact Role (CTD-1). </summary>
+  ///
+  /// <value>   The contact role repetitions used. </value>
+
   public int ContactRoleRepetitionsUsed
 {
 get{
@@ -104,11 +115,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Contact Name(CTD-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Contact Name(CTD-2). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contact name. </returns>
+
 	public XPN GetContactName(int rep)
 	{
 			XPN ret = null;
@@ -123,9 +141,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contact Name (CTD-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contact Name (CTD-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetContactName() {
      XPN[] ret = null;
     try {
@@ -144,9 +165,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Contact Name (CTD-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Contact Name (CTD-2). </summary>
+  ///
+  /// <value>   The contact name repetitions used. </value>
+
   public int ContactNameRepetitionsUsed
 {
 get{
@@ -162,11 +184,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Contact Address(CTD-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Contact Address(CTD-3). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contact address. </returns>
+
 	public XAD GetContactAddress(int rep)
 	{
 			XAD ret = null;
@@ -181,9 +210,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contact Address (CTD-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contact Address (CTD-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetContactAddress() {
      XAD[] ret = null;
     try {
@@ -202,9 +234,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Contact Address (CTD-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Contact Address (CTD-3). </summary>
+  ///
+  /// <value>   The contact address repetitions used. </value>
+
   public int ContactAddressRepetitionsUsed
 {
 get{
@@ -220,9 +253,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Contact Location(CTD-4).
-	///</summary>
+
+    /// <summary>   Returns Contact Location(CTD-4). </summary>
+    ///
+    /// <value> The contact location. </value>
+
 	public PL ContactLocation
 	{
 		get{
@@ -243,11 +278,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Contact Communication Information(CTD-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Contact Communication Information(CTD-5). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contact communication information. </returns>
+
 	public XTN GetContactCommunicationInformation(int rep)
 	{
 			XTN ret = null;
@@ -262,9 +303,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contact Communication Information (CTD-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contact Communication Information (CTD-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetContactCommunicationInformation() {
      XTN[] ret = null;
     try {
@@ -283,9 +327,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Contact Communication Information (CTD-5).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The contact communication information repetitions used. </value>
+
   public int ContactCommunicationInformationRepetitionsUsed
 {
 get{
@@ -301,9 +348,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Preferred Method Of Contact(CTD-6).
-	///</summary>
+
+    /// <summary>   Returns Preferred Method Of Contact(CTD-6). </summary>
+    ///
+    /// <value> The preferred method of contact. </value>
+
 	public CE PreferredMethodOfContact
 	{
 		get{
@@ -324,11 +373,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Contact Identifiers(CTD-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Contact Identifiers(CTD-7). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contact identifiers. </returns>
+
 	public PI GetContactIdentifiers(int rep)
 	{
 			PI ret = null;
@@ -343,9 +398,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contact Identifiers (CTD-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contact Identifiers (CTD-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of pi. </returns>
+
   public PI[] GetContactIdentifiers() {
      PI[] ret = null;
     try {
@@ -364,9 +422,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Contact Identifiers (CTD-7).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Contact Identifiers (CTD-7). </summary>
+  ///
+  /// <value>   The contact identifiers repetitions used. </value>
+
   public int ContactIdentifiersRepetitionsUsed
 {
 get{

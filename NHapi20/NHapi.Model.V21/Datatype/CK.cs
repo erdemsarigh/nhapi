@@ -6,29 +6,31 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V21.Datatype
 {
-
-///<summary>
-/// <p>The HL7 CK (composite ID with check digit) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 CK (composite ID with check digit) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>ID Number (NM)</li>
 /// <li>Check Digit (NM)</li>
 /// <li>code identifying check digit scheme employed (ID)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CK : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CK.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CK. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CK(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CK.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CK. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CK(IMessage message, string description) : base(message, description){
 		data = new IType[3];
 		data[0] = new NM(message,"ID Number");
@@ -36,9 +38,10 @@ public class CK : AbstractType, IComposite{
 		data[2] = new ID(message, 0,"Code identifying check digit scheme employed");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -46,12 +49,15 @@ public class CK : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -62,10 +68,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns ID Number (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns ID Number (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier number. </value>
+
 	public NM IDNumber {
 get{
 	   NM ret = null;
@@ -79,10 +89,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Check Digit (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Check Digit (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The check digit. </value>
+
 	public NM CheckDigit {
 get{
 	   NM ret = null;
@@ -96,10 +110,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns code identifying check digit scheme employed (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns code identifying check digit scheme employed (component #2).  This is a convenience
+    /// method that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The code identifying check digit scheme employed. </value>
+
 	public ID CodeIdentifyingCheckDigitSchemeEmployed {
 get{
 	   ID ret = null;

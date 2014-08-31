@@ -9,38 +9,41 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V231.Message
 
 {
-///<summary>
-/// Represents a MDM_T06 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a MDM_T06 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (MSH - message header segment) </li>
-///<li>1: EVN (EVN - event type segment) </li>
-///<li>2: PID (PID - patient identification segment) </li>
-///<li>3: PV1 (PV1 - patient visit segment-) </li>
-///<li>4: TXA (Document notification segment) </li>
-///<li>5: OBX (OBX - observation/result segment) repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (MSH - message header segment) </li>
+/// <li>1: EVN (EVN - event type segment) </li>
+/// <li>2: PID (PID - patient identification segment) </li>
+/// <li>3: PV1 (PV1 - patient visit segment-) </li>
+/// <li>4: TXA (Document notification segment) </li>
+/// <li>5: OBX (OBX - observation/result segment) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MDM_T06 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new MDM_T06 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new MDM_T06 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public MDM_T06(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new MDM_T06 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new MDM_T06 Group with DefaultModelClassFactory. </summary>
 	public MDM_T06() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for MDM_T06.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for MDM_T06.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -54,6 +57,13 @@ public class MDM_T06 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -61,9 +71,11 @@ public class MDM_T06 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MSH - message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MSH - message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -77,9 +89,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns EVN (EVN - event type segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns EVN (EVN - event type segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The evn. </value>
+
 	public EVN EVN { 
 get{
 	   EVN ret = null;
@@ -93,9 +106,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PID (PID - patient identification segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PID (PID - patient identification segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -109,9 +125,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV1 (PV1 - patient visit segment-) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PV1 (PV1 - patient visit segment-) - creates it if necessary. </summary>
+    ///
+    /// <value> The pv 1. </value>
+
 	public PV1 PV1 { 
 get{
 	   PV1 ret = null;
@@ -125,9 +142,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns TXA (Document notification segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns TXA (Document notification segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The txa. </value>
+
 	public TXA TXA { 
 get{
 	   TXA ret = null;
@@ -141,9 +159,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of OBX (OBX - observation/result segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of OBX (OBX - observation/result segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The obx. </returns>
+
 	public OBX GetOBX() {
 	   OBX ret = null;
 	   try {
@@ -155,19 +178,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of OBX
-	/// * (OBX - observation/result segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of OBX
+    ///  * (OBX - observation/result segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The obx. </returns>
+
 	public OBX GetOBX(int rep) { 
 	   return (OBX)this.GetStructure("OBX", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of OBX 
-	 */ 
+    /// <summary>   Gets the obx repetitions used. </summary>
+    ///
+    /// <value> The obx repetitions used. </value>
+
 	public int OBXRepetitionsUsed { 
 get{
 	    int reps = -1; 

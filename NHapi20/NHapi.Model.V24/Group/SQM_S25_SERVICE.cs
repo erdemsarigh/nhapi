@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the SQM_S25_SERVICE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: AIS (Appointment Information - Service) </li>
-///<li>1: APR (Appointment Preferences) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the SQM_S25_SERVICE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: AIS (Appointment Information - Service) </li>
+/// <li>1: APR (Appointment Preferences) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class SQM_S25_SERVICE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new SQM_S25_SERVICE Group.
-	///</summary>
+    /// <summary>   Creates a new SQM_S25_SERVICE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SQM_S25_SERVICE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(AIS), true, false);
@@ -32,9 +35,10 @@ public class SQM_S25_SERVICE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns AIS (Appointment Information - Service) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns AIS (Appointment Information - Service) - creates it if necessary. </summary>
+    ///
+    /// <value> The ais. </value>
+
 	public AIS AIS { 
 get{
 	   AIS ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns APR (Appointment Preferences) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns APR (Appointment Preferences) - creates it if necessary. </summary>
+    ///
+    /// <value> The APR. </value>
+
 	public APR APR { 
 get{
 	   APR ret = null;

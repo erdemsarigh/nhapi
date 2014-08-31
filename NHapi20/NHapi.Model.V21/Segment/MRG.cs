@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 MRG message segment. 
-/// This segment has the following fields:<ol>
-///<li>MRG-1: PRIOR PATIENT ID - INTERNAL (CK)</li>
-///<li>MRG-2: PRIOR ALTERNATE PATIENT ID (CK)</li>
-///<li>MRG-3: PRIOR PATIENT ACCOUNT NUMBER (CK)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 MRG message segment. This segment has the following fields:<ol>
+/// <li>MRG-1: PRIOR PATIENT ID - INTERNAL (CK)</li>
+/// <li>MRG-2: PRIOR ALTERNATE PATIENT ID (CK)</li>
+/// <li>MRG-3: PRIOR PATIENT ACCOUNT NUMBER (CK)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class MRG : AbstractSegment  {
 
-  /**
-   * Creates a MRG (MERGE PATIENT INFORMATION) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the MRG class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MRG(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class MRG : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns PRIOR PATIENT ID - INTERNAL(MRG-1).
-	///</summary>
+    /// <summary>   Returns PRIOR PATIENT ID - INTERNAL(MRG-1). </summary>
+    ///
+    /// <value> The priorpatientidinternal. </value>
+
 	public CK PRIORPATIENTIDINTERNAL
 	{
 		get{
@@ -61,9 +63,10 @@ public class MRG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns PRIOR ALTERNATE PATIENT ID(MRG-2).
-	///</summary>
+    /// <summary>   Returns PRIOR ALTERNATE PATIENT ID(MRG-2). </summary>
+    ///
+    /// <value> The prioralternatepatientid. </value>
+
 	public CK PRIORALTERNATEPATIENTID
 	{
 		get{
@@ -84,9 +87,10 @@ public class MRG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns PRIOR PATIENT ACCOUNT NUMBER(MRG-3).
-	///</summary>
+    /// <summary>   Returns PRIOR PATIENT ACCOUNT NUMBER(MRG-3). </summary>
+    ///
+    /// <value> The priorpatientaccountnumber. </value>
+
 	public CK PRIORPATIENTACCOUNTNUMBER
 	{
 		get{

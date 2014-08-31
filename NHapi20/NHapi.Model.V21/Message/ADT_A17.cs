@@ -9,35 +9,38 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V21.Message
 
 {
-///<summary>
-/// Represents a ADT_A17 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a ADT_A17 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (MESSAGE HEADER) </li>
-///<li>1: EVN (EVENT TYPE) </li>
-///<li>2: ADT_A17_PATIENT (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (MESSAGE HEADER) </li>
+/// <li>1: EVN (EVENT TYPE) </li>
+/// <li>2: ADT_A17_PATIENT (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ADT_A17 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new ADT_A17 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new ADT_A17 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public ADT_A17(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new ADT_A17 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new ADT_A17 Group with DefaultModelClassFactory. </summary>
 	public ADT_A17() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for ADT_A17.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for ADT_A17.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -48,6 +51,13 @@ public class ADT_A17 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -55,9 +65,11 @@ public class ADT_A17 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MESSAGE HEADER) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MESSAGE HEADER) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -71,9 +83,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns EVN (EVENT TYPE) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns EVN (EVENT TYPE) - creates it if necessary. </summary>
+    ///
+    /// <value> The evn. </value>
+
 	public EVN EVN { 
 get{
 	   EVN ret = null;
@@ -87,9 +100,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of ADT_A17_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of ADT_A17_PATIENT (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The patient. </returns>
+
 	public ADT_A17_PATIENT GetPATIENT() {
 	   ADT_A17_PATIENT ret = null;
 	   try {
@@ -101,19 +119,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of ADT_A17_PATIENT
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of ADT_A17_PATIENT
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The patient. </returns>
+
 	public ADT_A17_PATIENT GetPATIENT(int rep) { 
 	   return (ADT_A17_PATIENT)this.GetStructure("PATIENT", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of ADT_A17_PATIENT 
-	 */ 
+    /// <summary>   Gets the patient repetitions used. </summary>
+    ///
+    /// <value> The patient repetitions used. </value>
+
 	public int PATIENTRepetitionsUsed { 
 get{
 	    int reps = -1; 

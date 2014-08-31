@@ -6,30 +6,31 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 RMC (Room Coverage) data type.  Consists of the following components: </p><ol>
 /// <li>Room Type (IS)</li>
 /// <li>Amount Type (IS)</li>
 /// <li>Coverage Amount (NM)</li>
 /// <li>Money or Percentage (MOP)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class RMC : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a RMC.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a RMC. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public RMC(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a RMC.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a RMC. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public RMC(IMessage message, string description) : base(message, description){
 		data = new IType[4];
 		data[0] = new IS(message, 145,"Room Type");
@@ -38,9 +39,10 @@ public class RMC : AbstractType, IComposite{
 		data[3] = new MOP(message,"Money or Percentage");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -48,12 +50,15 @@ public class RMC : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -64,10 +69,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Room Type (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Room Type (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the room. </value>
+
 	public IS RoomType {
 get{
 	   IS ret = null;
@@ -81,10 +90,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Amount Type (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Amount Type (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the amount. </value>
+
 	public IS AmountType {
 get{
 	   IS ret = null;
@@ -98,10 +111,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Coverage Amount (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Coverage Amount (component #2).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The coverage amount. </value>
+
 	public NM CoverageAmount {
 get{
 	   NM ret = null;
@@ -115,10 +132,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Money or Percentage (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Money or Percentage (component #3).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The money or percentage. </value>
+
 	public MOP MoneyOrPercentage {
 get{
 	   MOP ret = null;

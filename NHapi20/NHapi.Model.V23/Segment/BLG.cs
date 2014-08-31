@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 BLG message segment. 
-/// This segment has the following fields:<ol>
-///<li>BLG-1: When to Charge (CM_CCD)</li>
-///<li>BLG-2: Charge Type (ID)</li>
-///<li>BLG-3: Account ID (CK)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 BLG message segment. This segment has the following fields:<ol>
+/// <li>BLG-1: When to Charge (CM_CCD)</li>
+/// <li>BLG-2: Charge Type (ID)</li>
+/// <li>BLG-3: Account ID (CK)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class BLG : AbstractSegment  {
 
-  /**
-   * Creates a BLG (Billing Segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the BLG class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public BLG(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class BLG : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns When to Charge(BLG-1).
-	///</summary>
+    /// <summary>   Returns When to Charge(BLG-1). </summary>
+    ///
+    /// <value> The when to charge. </value>
+
 	public CM_CCD WhenToCharge
 	{
 		get{
@@ -61,9 +63,10 @@ public class BLG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Charge Type(BLG-2).
-	///</summary>
+    /// <summary>   Returns Charge Type(BLG-2). </summary>
+    ///
+    /// <value> The type of the charge. </value>
+
 	public ID ChargeType
 	{
 		get{
@@ -84,9 +87,10 @@ public class BLG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Account ID(BLG-3).
-	///</summary>
+    /// <summary>   Returns Account ID(BLG-3). </summary>
+    ///
+    /// <value> The identifier of the account. </value>
+
 	public CK AccountID
 	{
 		get{

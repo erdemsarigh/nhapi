@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the SUR_P09_FACILITY_DETAIL Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: FAC (Facility) </li>
-///<li>1: PDC (Product Detail Country) </li>
-///<li>2: NTE (Notes and Comments) </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the SUR_P09_FACILITY_DETAIL Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: FAC (Facility) </li>
+/// <li>1: PDC (Product Detail Country) </li>
+/// <li>2: NTE (Notes and Comments) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class SUR_P09_FACILITY_DETAIL : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new SUR_P09_FACILITY_DETAIL Group.
-	///</summary>
+    /// <summary>   Creates a new SUR_P09_FACILITY_DETAIL Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SUR_P09_FACILITY_DETAIL(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(FAC), true, false);
@@ -34,9 +37,10 @@ public class SUR_P09_FACILITY_DETAIL : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns FAC (Facility) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns FAC (Facility) - creates it if necessary. </summary>
+    ///
+    /// <value> The fac. </value>
+
 	public FAC FAC { 
 get{
 	   FAC ret = null;
@@ -50,9 +54,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PDC (Product Detail Country) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PDC (Product Detail Country) - creates it if necessary. </summary>
+    ///
+    /// <value> The pdc. </value>
+
 	public PDC PDC { 
 get{
 	   PDC ret = null;
@@ -66,9 +71,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns NTE (Notes and Comments) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns NTE (Notes and Comments) - creates it if necessary. </summary>
+    ///
+    /// <value> The nte. </value>
+
 	public NTE NTE { 
 get{
 	   NTE ret = null;

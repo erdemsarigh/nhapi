@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the SSU_U03_SPECIMEN_CONTAINER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: SAC (Specimen and container detail) </li>
-///<li>1: OBX (Observation/Result) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the SSU_U03_SPECIMEN_CONTAINER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: SAC (Specimen and container detail) </li>
+/// <li>1: OBX (Observation/Result) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class SSU_U03_SPECIMEN_CONTAINER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new SSU_U03_SPECIMEN_CONTAINER Group.
-	///</summary>
+    /// <summary>   Creates a new SSU_U03_SPECIMEN_CONTAINER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SSU_U03_SPECIMEN_CONTAINER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(SAC), true, false);
@@ -32,9 +35,10 @@ public class SSU_U03_SPECIMEN_CONTAINER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns SAC (Specimen and container detail) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns SAC (Specimen and container detail) - creates it if necessary. </summary>
+    ///
+    /// <value> The sac. </value>
+
 	public SAC SAC { 
 get{
 	   SAC ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns OBX (Observation/Result) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OBX (Observation/Result) - creates it if necessary. </summary>
+    ///
+    /// <value> The obx. </value>
+
 	public OBX OBX { 
 get{
 	   OBX ret = null;

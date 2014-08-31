@@ -8,21 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RRI_I12_AUTHORIZATION_CONTACT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: AUT (Authorization Information) </li>
-///<li>1: CTD (Contact Data) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RRI_I12_AUTHORIZATION_CONTACT Group.  A Group is an ordered collection of
+/// message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: AUT (Authorization Information) </li>
+/// <li>1: CTD (Contact Data) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RRI_I12_AUTHORIZATION_CONTACT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RRI_I12_AUTHORIZATION_CONTACT Group.
-	///</summary>
+    /// <summary>   Creates a new RRI_I12_AUTHORIZATION_CONTACT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RRI_I12_AUTHORIZATION_CONTACT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(AUT), true, false);
@@ -32,9 +36,10 @@ public class RRI_I12_AUTHORIZATION_CONTACT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns AUT (Authorization Information) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns AUT (Authorization Information) - creates it if necessary. </summary>
+    ///
+    /// <value> The aut. </value>
+
 	public AUT AUT { 
 get{
 	   AUT ret = null;
@@ -48,9 +53,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns CTD (Contact Data) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns CTD (Contact Data) - creates it if necessary. </summary>
+    ///
+    /// <value> The ctd. </value>
+
 	public CTD CTD { 
 get{
 	   CTD ret = null;

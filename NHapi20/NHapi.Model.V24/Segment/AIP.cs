@@ -7,35 +7,36 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 AIP message segment. 
-/// This segment has the following fields:<ol>
-///<li>AIP-1: Set ID - AIP (SI)</li>
-///<li>AIP-2: Segment Action Code (ID)</li>
-///<li>AIP-3: Personnel Resource ID (XCN)</li>
-///<li>AIP-4: Resource Role (CE)</li>
-///<li>AIP-5: Resource Group (CE)</li>
-///<li>AIP-6: Start Date/Time (TS)</li>
-///<li>AIP-7: Start Date/Time Offset (NM)</li>
-///<li>AIP-8: Start Date/Time Offset Units (CE)</li>
-///<li>AIP-9: Duration (NM)</li>
-///<li>AIP-10: Duration Units (CE)</li>
-///<li>AIP-11: Allow Substitution Code (IS)</li>
-///<li>AIP-12: Filler Status Code (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 AIP message segment. This segment has the following fields:<ol>
+/// <li>AIP-1: Set ID - AIP (SI)</li>
+/// <li>AIP-2: Segment Action Code (ID)</li>
+/// <li>AIP-3: Personnel Resource ID (XCN)</li>
+/// <li>AIP-4: Resource Role (CE)</li>
+/// <li>AIP-5: Resource Group (CE)</li>
+/// <li>AIP-6: Start Date/Time (TS)</li>
+/// <li>AIP-7: Start Date/Time Offset (NM)</li>
+/// <li>AIP-8: Start Date/Time Offset Units (CE)</li>
+/// <li>AIP-9: Duration (NM)</li>
+/// <li>AIP-10: Duration Units (CE)</li>
+/// <li>AIP-11: Allow Substitution Code (IS)</li>
+/// <li>AIP-12: Filler Status Code (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class AIP : AbstractSegment  {
 
-  /**
-   * Creates a AIP (Appointment Information - Personnel Resource) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the AIP class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public AIP(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -56,9 +57,10 @@ public class AIP : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - AIP(AIP-1).
-	///</summary>
+    /// <summary>   Returns Set ID - AIP(AIP-1). </summary>
+    ///
+    /// <value> The set idaip. </value>
+
 	public SI SetIDAIP
 	{
 		get{
@@ -79,9 +81,10 @@ public class AIP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Segment Action Code(AIP-2).
-	///</summary>
+    /// <summary>   Returns Segment Action Code(AIP-2). </summary>
+    ///
+    /// <value> The segment action code. </value>
+
 	public ID SegmentActionCode
 	{
 		get{
@@ -102,11 +105,17 @@ public class AIP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Personnel Resource ID(AIP-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Personnel Resource ID(AIP-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The personnel resource identifier. </returns>
+
 	public XCN GetPersonnelResourceID(int rep)
 	{
 			XCN ret = null;
@@ -121,9 +130,12 @@ public class AIP : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Personnel Resource ID (AIP-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Personnel Resource ID (AIP-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetPersonnelResourceID() {
      XCN[] ret = null;
     try {
@@ -142,9 +154,10 @@ public class AIP : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Personnel Resource ID (AIP-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Personnel Resource ID (AIP-3). </summary>
+  ///
+  /// <value>   The personnel resource identifier repetitions used. </value>
+
   public int PersonnelResourceIDRepetitionsUsed
 {
 get{
@@ -160,9 +173,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Resource Role(AIP-4).
-	///</summary>
+
+    /// <summary>   Returns Resource Role(AIP-4). </summary>
+    ///
+    /// <value> The resource role. </value>
+
 	public CE ResourceRole
 	{
 		get{
@@ -183,9 +198,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Resource Group(AIP-5).
-	///</summary>
+    /// <summary>   Returns Resource Group(AIP-5). </summary>
+    ///
+    /// <value> The resource group. </value>
+
 	public CE ResourceGroup
 	{
 		get{
@@ -206,9 +222,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date/Time(AIP-6).
-	///</summary>
+    /// <summary>   Returns Start Date/Time(AIP-6). </summary>
+    ///
+    /// <value> The start date time. </value>
+
 	public TS StartDateTime
 	{
 		get{
@@ -229,9 +246,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date/Time Offset(AIP-7).
-	///</summary>
+    /// <summary>   Returns Start Date/Time Offset(AIP-7). </summary>
+    ///
+    /// <value> The start date time offset. </value>
+
 	public NM StartDateTimeOffset
 	{
 		get{
@@ -252,9 +270,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date/Time Offset Units(AIP-8).
-	///</summary>
+    /// <summary>   Returns Start Date/Time Offset Units(AIP-8). </summary>
+    ///
+    /// <value> The start date time offset units. </value>
+
 	public CE StartDateTimeOffsetUnits
 	{
 		get{
@@ -275,9 +294,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Duration(AIP-9).
-	///</summary>
+    /// <summary>   Returns Duration(AIP-9). </summary>
+    ///
+    /// <value> The duration. </value>
+
 	public NM Duration
 	{
 		get{
@@ -298,9 +318,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Duration Units(AIP-10).
-	///</summary>
+    /// <summary>   Returns Duration Units(AIP-10). </summary>
+    ///
+    /// <value> The duration units. </value>
+
 	public CE DurationUnits
 	{
 		get{
@@ -321,9 +342,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Allow Substitution Code(AIP-11).
-	///</summary>
+    /// <summary>   Returns Allow Substitution Code(AIP-11). </summary>
+    ///
+    /// <value> The allow substitution code. </value>
+
 	public IS AllowSubstitutionCode
 	{
 		get{
@@ -344,9 +366,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Status Code(AIP-12).
-	///</summary>
+    /// <summary>   Returns Filler Status Code(AIP-12). </summary>
+    ///
+    /// <value> The filler status code. </value>
+
 	public CE FillerStatusCode
 	{
 		get{

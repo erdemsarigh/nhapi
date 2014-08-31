@@ -27,62 +27,68 @@
 
 namespace NHapi.Base.Model.Primitive
 {
-    /// <summary> This class contains functionality used by the IS class
-    /// in the version 2.3.0, 2.3.1, 2.4, and 2.5 packages
+    /// <summary>
+    /// This class contains functionality used by the IS class in the version 2.3.0, 2.3.1, 2.4, and
+    /// 2.5 packages
     /// 
-    /// Note: The class description below has been excerpted from the Hl7 2.4 documentation. Sectional
-    /// references made below also refer to the same documentation.
+    /// Note: The class description below has been excerpted from the Hl7 2.4 documentation.
+    /// Sectional references made below also refer to the same documentation.
     /// 
-    /// The value of such a field follows the formatting rules for a ST field except that it is
-    /// drawn from a site-defined (or user-defined) table of legal values. There shall be an HL7
-    /// table number associated with IS data types. An example of an IS field is the Event reason
-    /// code defined in Section 3.3.1.4, "Event reason code." This data type should be used only for
-    /// user-defined tables (see Section 2.7.6, "Table"). The reverse is not true, since in some
+    /// The value of such a field follows the formatting rules for a ST field except that it is drawn
+    /// from a site-defined (or user-defined) table of legal values. There shall be an HL7 table
+    /// number associated with IS data types. An example of an IS field is the Event reason code
+    /// defined in Section 3.3.1.4, "Event reason code." This data type should be used only for user-
+    /// defined tables (see Section 2.7.6, "Table"). The reverse is not true, since in some
     /// circumstances, it is more appropriate to use the CE data type for user-defined tables.
-    /// 
     /// </summary>
-    /// <author>  <a href="mailto:neal.acharya@uhn.on.ca">Neal Acharya</a>
-    /// </author>
-    /// <author>  <a href="mailto:bryan.tripp@uhn.on.ca">Bryan Tripp</a>
-    /// </author>
-    /// <version>  $Revision: 1.3 $ updated on $Date: 2005/06/08 00:28:25 $ by $Author: bryan_tripp $
-    /// </version>
+
     public abstract class IS : AbstractPrimitive
     {
         #region Fields
 
+        /// <summary>   my table. </summary>
         private int myTable;
 
         #endregion
 
         #region Constructors and Destructors
 
-        /// <param name="theMessage">message to which this Type belongs
-        /// </param>
+        /// <summary>   Initializes a new instance of the IS class. </summary>
+        ///
+        /// <param name="theMessage">   message to which this Type belongs. </param>
+
         public IS(IMessage theMessage)
             : base(theMessage)
         {
         }
+
+        /// <summary>   Initializes a new instance of the IS class. </summary>
+        ///
+        /// <param name="theMessage">   message to which this Type belongs. </param>
+        /// <param name="description">  The description. </param>
 
         public IS(IMessage theMessage, string description)
             : base(theMessage, description)
         {
         }
 
-        /// <param name="theMessage">message to which this Type belongs
-        /// </param>
-        /// <param name="theTable">HL7 table from which values are to be drawn 
-        /// </param>
+        /// <summary>   Initializes a new instance of the IS class. </summary>
+        ///
+        /// <param name="theMessage">   message to which this Type belongs. </param>
+        /// <param name="theTable">     HL7 table from which values are to be drawn. </param>
+
         public IS(IMessage theMessage, int theTable)
             : base(theMessage)
         {
             this.myTable = theTable;
         }
 
-        /// <param name="theMessage">message to which this Type belongs
-        /// </param>
-        /// <param name="theTable">HL7 table from which values are to be drawn 
-        /// </param>
+        /// <summary>   Initializes a new instance of the IS class. </summary>
+        ///
+        /// <param name="theMessage">   message to which this Type belongs. </param>
+        /// <param name="theTable">     HL7 table from which values are to be drawn. </param>
+        /// <param name="description">  The description. </param>
+
         public IS(IMessage theMessage, int theTable, string description)
             : base(theMessage, description)
         {
@@ -93,10 +99,12 @@ namespace NHapi.Base.Model.Primitive
 
         #region Public Properties
 
-        /// <returns> number of HL7 table from which values should be drawn (defaults to 0) 
-        /// </returns>
-        /// <param name="theTable">HL7 table from which values are to be drawn 
-        /// </param>
+        /// <summary>   Gets or sets the table. </summary>
+        ///
+        /// <value> number of HL7 table from which values should be drawn (defaults to 0) </value>
+        ///
+        /// ### <param name="theTable"> HL7 table from which values are to be drawn. </param>
+
         public virtual int Table
         {
             get

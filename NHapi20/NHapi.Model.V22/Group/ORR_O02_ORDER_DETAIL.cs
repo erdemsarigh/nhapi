@@ -8,25 +8,28 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V22.Group
 {
-///<summary>
-///Represents the ORR_O02_ORDER_DETAIL Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: OBR (OBSERVATION REQUEST) </li>
-///<li>1: RQD (REQUISITION DETAIL) </li>
-///<li>2: RQ1 (REQUISITION DETAIL-!) </li>
-///<li>3: RXO (PHARMACY PRESCRIPTION ORDER) </li>
-///<li>4: ODS (DIETARY ORDERS, SUPPLEMENTS, and PREFERENCES) </li>
-///<li>5: ODT (DIET TRAY INSTRUCTION) </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ORR_O02_ORDER_DETAIL Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: OBR (OBSERVATION REQUEST) </li>
+/// <li>1: RQD (REQUISITION DETAIL) </li>
+/// <li>2: RQ1 (REQUISITION DETAIL-!) </li>
+/// <li>3: RXO (PHARMACY PRESCRIPTION ORDER) </li>
+/// <li>4: ODS (DIETARY ORDERS, SUPPLEMENTS, and PREFERENCES) </li>
+/// <li>5: ODT (DIET TRAY INSTRUCTION) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ORR_O02_ORDER_DETAIL : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ORR_O02_ORDER_DETAIL Group.
-	///</summary>
+    /// <summary>   Creates a new ORR_O02_ORDER_DETAIL Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORR_O02_ORDER_DETAIL(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(OBR), true, false);
@@ -40,9 +43,10 @@ public class ORR_O02_ORDER_DETAIL : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns OBR (OBSERVATION REQUEST) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OBR (OBSERVATION REQUEST) - creates it if necessary. </summary>
+    ///
+    /// <value> The obr. </value>
+
 	public OBR OBR { 
 get{
 	   OBR ret = null;
@@ -56,9 +60,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RQD (REQUISITION DETAIL) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RQD (REQUISITION DETAIL) - creates it if necessary. </summary>
+    ///
+    /// <value> The rqd. </value>
+
 	public RQD RQD { 
 get{
 	   RQD ret = null;
@@ -72,9 +77,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RQ1 (REQUISITION DETAIL-!) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RQ1 (REQUISITION DETAIL-!) - creates it if necessary. </summary>
+    ///
+    /// <value> The request 1. </value>
+
 	public RQ1 RQ1 { 
 get{
 	   RQ1 ret = null;
@@ -88,9 +94,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RXO (PHARMACY PRESCRIPTION ORDER) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RXO (PHARMACY PRESCRIPTION ORDER) - creates it if necessary. </summary>
+    ///
+    /// <value> The rxo. </value>
+
 	public RXO RXO { 
 get{
 	   RXO ret = null;
@@ -104,9 +111,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ODS (DIETARY ORDERS, SUPPLEMENTS, and PREFERENCES) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns ODS (DIETARY ORDERS, SUPPLEMENTS, and PREFERENCES) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The ods. </value>
+
 	public ODS ODS { 
 get{
 	   ODS ret = null;
@@ -120,9 +130,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ODT (DIET TRAY INSTRUCTION) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ODT (DIET TRAY INSTRUCTION) - creates it if necessary. </summary>
+    ///
+    /// <value> The odt. </value>
+
 	public ODT ODT { 
 get{
 	   ODT ret = null;

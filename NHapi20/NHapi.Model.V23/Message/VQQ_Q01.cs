@@ -9,36 +9,39 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V23.Message
 
 {
-///<summary>
-/// Represents a VQQ_Q01 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a VQQ_Q01 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message header segment) </li>
-///<li>1: VTQ (Virtual Table Query Request) </li>
-///<li>2: RDF (Table Row Definition) optional </li>
-///<li>3: DSC (Continuation pointer segment) optional </li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message header segment) </li>
+/// <li>1: VTQ (Virtual Table Query Request) </li>
+/// <li>2: RDF (Table Row Definition) optional </li>
+/// <li>3: DSC (Continuation pointer segment) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class VQQ_Q01 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new VQQ_Q01 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new VQQ_Q01 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public VQQ_Q01(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new VQQ_Q01 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new VQQ_Q01 Group with DefaultModelClassFactory. </summary>
 	public VQQ_Q01() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for VQQ_Q01.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for VQQ_Q01.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -50,6 +53,13 @@ public class VQQ_Q01 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -57,9 +67,11 @@ public class VQQ_Q01 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -73,9 +85,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns VTQ (Virtual Table Query Request) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns VTQ (Virtual Table Query Request) - creates it if necessary. </summary>
+    ///
+    /// <value> The vtq. </value>
+
 	public VTQ VTQ { 
 get{
 	   VTQ ret = null;
@@ -89,9 +102,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RDF (Table Row Definition) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RDF (Table Row Definition) - creates it if necessary. </summary>
+    ///
+    /// <value> The rdf. </value>
+
 	public RDF RDF { 
 get{
 	   RDF ret = null;
@@ -105,9 +119,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns DSC (Continuation pointer segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns DSC (Continuation pointer segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The dsc. </value>
+
 	public DSC DSC { 
 get{
 	   DSC ret = null;

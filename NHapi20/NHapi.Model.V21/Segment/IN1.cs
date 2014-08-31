@@ -7,67 +7,68 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 IN1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>IN1-1: SET ID - INSURANCE (SI)</li>
-///<li>IN1-2: INSURANCE PLAN ID (ID)</li>
-///<li>IN1-3: INSURANCE COMPANY ID (ST)</li>
-///<li>IN1-4: INSURANCE COMPANY NAME (ST)</li>
-///<li>IN1-5: INSURANCE COMPANY ADDRESS (AD)</li>
-///<li>IN1-6: INSURANCE CO. CONTACT PERS (PN)</li>
-///<li>IN1-7: INSURANCE CO PHONE NUMBER (TN)</li>
-///<li>IN1-8: GROUP NUMBER (ST)</li>
-///<li>IN1-9: GROUP NAME (ST)</li>
-///<li>IN1-10: INSURED'S GROUP EMP. ID (ST)</li>
-///<li>IN1-11: INSURED'S GROUP EMP. NAME (ST)</li>
-///<li>IN1-12: PLAN EFFECTIVE DATE (DT)</li>
-///<li>IN1-13: PLAN EXPIRATION DATE (DT)</li>
-///<li>IN1-14: AUTHORIZATION INFORMATION (ST)</li>
-///<li>IN1-15: PLAN TYPE (ID)</li>
-///<li>IN1-16: NAME OF INSURED (PN)</li>
-///<li>IN1-17: INSURED'S RELATIONSHIP TO PATIENT (ID)</li>
-///<li>IN1-18: INSURED'S DATE OF BIRTH (DT)</li>
-///<li>IN1-19: INSURED'S ADDRESS (AD)</li>
-///<li>IN1-20: ASSIGNMENT OF BENEFITS (ID)</li>
-///<li>IN1-21: COORDINATION OF BENEFITS (ID)</li>
-///<li>IN1-22: COORD OF BEN. PRIORITY (ST)</li>
-///<li>IN1-23: NOTICE OF ADMISSION CODE (ID)</li>
-///<li>IN1-24: NOTICE OF ADMISSION DATE (DT)</li>
-///<li>IN1-25: RPT OF ELIGIBILITY CODE (ID)</li>
-///<li>IN1-26: RPT OF ELIGIBILITY DATE (DT)</li>
-///<li>IN1-27: RELEASE INFORMATION CODE (ID)</li>
-///<li>IN1-28: PRE-ADMIT CERT. (PAC) (ST)</li>
-///<li>IN1-29: VERIFICATION DATE (DT)</li>
-///<li>IN1-30: VERIFICATION BY (CM)</li>
-///<li>IN1-31: TYPE OF AGREEMENT CODE (ID)</li>
-///<li>IN1-32: BILLING STATUS (ID)</li>
-///<li>IN1-33: LIFETIME RESERVE DAYS (NM)</li>
-///<li>IN1-34: DELAY BEFORE L. R. DAY (NM)</li>
-///<li>IN1-35: COMPANY PLAN CODE (ST)</li>
-///<li>IN1-36: POLICY NUMBER (ST)</li>
-///<li>IN1-37: POLICY DEDUCTIBLE (NM)</li>
-///<li>IN1-38: POLICY LIMIT - AMOUNT (NM)</li>
-///<li>IN1-39: POLICY LIMIT - DAYS (NM)</li>
-///<li>IN1-40: ROOM RATE - SEMI-PRIVATE (NM)</li>
-///<li>IN1-41: ROOM RATE - PRIVATE (NM)</li>
-///<li>IN1-42: INSURED'S EMPLOYMENT STATUS (ID)</li>
-///<li>IN1-43: INSURED'S SEX (ID)</li>
-///<li>IN1-44: INSURED'S EMPLOYER ADDRESS (AD)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 IN1 message segment. This segment has the following fields:<ol>
+/// <li>IN1-1: SET ID - INSURANCE (SI)</li>
+/// <li>IN1-2: INSURANCE PLAN ID (ID)</li>
+/// <li>IN1-3: INSURANCE COMPANY ID (ST)</li>
+/// <li>IN1-4: INSURANCE COMPANY NAME (ST)</li>
+/// <li>IN1-5: INSURANCE COMPANY ADDRESS (AD)</li>
+/// <li>IN1-6: INSURANCE CO. CONTACT PERS (PN)</li>
+/// <li>IN1-7: INSURANCE CO PHONE NUMBER (TN)</li>
+/// <li>IN1-8: GROUP NUMBER (ST)</li>
+/// <li>IN1-9: GROUP NAME (ST)</li>
+/// <li>IN1-10: INSURED'S GROUP EMP. ID (ST)</li>
+/// <li>IN1-11: INSURED'S GROUP EMP. NAME (ST)</li>
+/// <li>IN1-12: PLAN EFFECTIVE DATE (DT)</li>
+/// <li>IN1-13: PLAN EXPIRATION DATE (DT)</li>
+/// <li>IN1-14: AUTHORIZATION INFORMATION (ST)</li>
+/// <li>IN1-15: PLAN TYPE (ID)</li>
+/// <li>IN1-16: NAME OF INSURED (PN)</li>
+/// <li>IN1-17: INSURED'S RELATIONSHIP TO PATIENT (ID)</li>
+/// <li>IN1-18: INSURED'S DATE OF BIRTH (DT)</li>
+/// <li>IN1-19: INSURED'S ADDRESS (AD)</li>
+/// <li>IN1-20: ASSIGNMENT OF BENEFITS (ID)</li>
+/// <li>IN1-21: COORDINATION OF BENEFITS (ID)</li>
+/// <li>IN1-22: COORD OF BEN. PRIORITY (ST)</li>
+/// <li>IN1-23: NOTICE OF ADMISSION CODE (ID)</li>
+/// <li>IN1-24: NOTICE OF ADMISSION DATE (DT)</li>
+/// <li>IN1-25: RPT OF ELIGIBILITY CODE (ID)</li>
+/// <li>IN1-26: RPT OF ELIGIBILITY DATE (DT)</li>
+/// <li>IN1-27: RELEASE INFORMATION CODE (ID)</li>
+/// <li>IN1-28: PRE-ADMIT CERT. (PAC) (ST)</li>
+/// <li>IN1-29: VERIFICATION DATE (DT)</li>
+/// <li>IN1-30: VERIFICATION BY (CM)</li>
+/// <li>IN1-31: TYPE OF AGREEMENT CODE (ID)</li>
+/// <li>IN1-32: BILLING STATUS (ID)</li>
+/// <li>IN1-33: LIFETIME RESERVE DAYS (NM)</li>
+/// <li>IN1-34: DELAY BEFORE L. R. DAY (NM)</li>
+/// <li>IN1-35: COMPANY PLAN CODE (ST)</li>
+/// <li>IN1-36: POLICY NUMBER (ST)</li>
+/// <li>IN1-37: POLICY DEDUCTIBLE (NM)</li>
+/// <li>IN1-38: POLICY LIMIT - AMOUNT (NM)</li>
+/// <li>IN1-39: POLICY LIMIT - DAYS (NM)</li>
+/// <li>IN1-40: ROOM RATE - SEMI-PRIVATE (NM)</li>
+/// <li>IN1-41: ROOM RATE - PRIVATE (NM)</li>
+/// <li>IN1-42: INSURED'S EMPLOYMENT STATUS (ID)</li>
+/// <li>IN1-43: INSURED'S SEX (ID)</li>
+/// <li>IN1-44: INSURED'S EMPLOYER ADDRESS (AD)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class IN1 : AbstractSegment  {
 
-  /**
-   * Creates a IN1 (INSURANCE) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the IN1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public IN1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -120,9 +121,10 @@ public class IN1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns SET ID - INSURANCE(IN1-1).
-	///</summary>
+    /// <summary>   Returns SET ID - INSURANCE(IN1-1). </summary>
+    ///
+    /// <value> The setidinsurance. </value>
+
 	public SI SETIDINSURANCE
 	{
 		get{
@@ -143,9 +145,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURANCE PLAN ID(IN1-2).
-	///</summary>
+    /// <summary>   Returns INSURANCE PLAN ID(IN1-2). </summary>
+    ///
+    /// <value> The insuranceplanid. </value>
+
 	public ID INSURANCEPLANID
 	{
 		get{
@@ -166,9 +169,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURANCE COMPANY ID(IN1-3).
-	///</summary>
+    /// <summary>   Returns INSURANCE COMPANY ID(IN1-3). </summary>
+    ///
+    /// <value> The insurancecompanyid. </value>
+
 	public ST INSURANCECOMPANYID
 	{
 		get{
@@ -189,9 +193,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURANCE COMPANY NAME(IN1-4).
-	///</summary>
+    /// <summary>   Returns INSURANCE COMPANY NAME(IN1-4). </summary>
+    ///
+    /// <value> The insurancecompanyname. </value>
+
 	public ST INSURANCECOMPANYNAME
 	{
 		get{
@@ -212,9 +217,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURANCE COMPANY ADDRESS(IN1-5).
-	///</summary>
+    /// <summary>   Returns INSURANCE COMPANY ADDRESS(IN1-5). </summary>
+    ///
+    /// <value> The insurancecompanyaddress. </value>
+
 	public AD INSURANCECOMPANYADDRESS
 	{
 		get{
@@ -235,9 +241,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURANCE CO. CONTACT PERS(IN1-6).
-	///</summary>
+    /// <summary>   Returns INSURANCE CO. CONTACT PERS(IN1-6). </summary>
+    ///
+    /// <value> The insurancecocontactpers. </value>
+
 	public PN INSURANCECOCONTACTPERS
 	{
 		get{
@@ -258,9 +265,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURANCE CO PHONE NUMBER(IN1-7).
-	///</summary>
+    /// <summary>   Returns INSURANCE CO PHONE NUMBER(IN1-7). </summary>
+    ///
+    /// <value> The insurancecophonenumber. </value>
+
 	public TN INSURANCECOPHONENUMBER
 	{
 		get{
@@ -281,9 +289,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GROUP NUMBER(IN1-8).
-	///</summary>
+    /// <summary>   Returns GROUP NUMBER(IN1-8). </summary>
+    ///
+    /// <value> The groupnumber. </value>
+
 	public ST GROUPNUMBER
 	{
 		get{
@@ -304,9 +313,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GROUP NAME(IN1-9).
-	///</summary>
+    /// <summary>   Returns GROUP NAME(IN1-9). </summary>
+    ///
+    /// <value> The groupname. </value>
+
 	public ST GROUPNAME
 	{
 		get{
@@ -327,9 +337,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURED'S GROUP EMP. ID(IN1-10).
-	///</summary>
+    /// <summary>   Returns INSURED'S GROUP EMP. ID(IN1-10). </summary>
+    ///
+    /// <value> The insuredsgroupempid. </value>
+
 	public ST INSUREDSGROUPEMPID
 	{
 		get{
@@ -350,9 +361,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURED'S GROUP EMP. NAME(IN1-11).
-	///</summary>
+    /// <summary>   Returns INSURED'S GROUP EMP. NAME(IN1-11). </summary>
+    ///
+    /// <value> The insuredsgroupempname. </value>
+
 	public ST INSUREDSGROUPEMPNAME
 	{
 		get{
@@ -373,9 +385,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns PLAN EFFECTIVE DATE(IN1-12).
-	///</summary>
+    /// <summary>   Returns PLAN EFFECTIVE DATE(IN1-12). </summary>
+    ///
+    /// <value> The planeffectivedate. </value>
+
 	public DT PLANEFFECTIVEDATE
 	{
 		get{
@@ -396,9 +409,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns PLAN EXPIRATION DATE(IN1-13).
-	///</summary>
+    /// <summary>   Returns PLAN EXPIRATION DATE(IN1-13). </summary>
+    ///
+    /// <value> The planexpirationdate. </value>
+
 	public DT PLANEXPIRATIONDATE
 	{
 		get{
@@ -419,9 +433,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns AUTHORIZATION INFORMATION(IN1-14).
-	///</summary>
+    /// <summary>   Returns AUTHORIZATION INFORMATION(IN1-14). </summary>
+    ///
+    /// <value> The authorizationinformation. </value>
+
 	public ST AUTHORIZATIONINFORMATION
 	{
 		get{
@@ -442,9 +457,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns PLAN TYPE(IN1-15).
-	///</summary>
+    /// <summary>   Returns PLAN TYPE(IN1-15). </summary>
+    ///
+    /// <value> The plantype. </value>
+
 	public ID PLANTYPE
 	{
 		get{
@@ -465,9 +481,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns NAME OF INSURED(IN1-16).
-	///</summary>
+    /// <summary>   Returns NAME OF INSURED(IN1-16). </summary>
+    ///
+    /// <value> The nameofinsured. </value>
+
 	public PN NAMEOFINSURED
 	{
 		get{
@@ -488,9 +505,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURED'S RELATIONSHIP TO PATIENT(IN1-17).
-	///</summary>
+    /// <summary>   Returns INSURED'S RELATIONSHIP TO PATIENT(IN1-17). </summary>
+    ///
+    /// <value> The insuredsrelationshiptopatient. </value>
+
 	public ID INSUREDSRELATIONSHIPTOPATIENT
 	{
 		get{
@@ -511,9 +529,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURED'S DATE OF BIRTH(IN1-18).
-	///</summary>
+    /// <summary>   Returns INSURED'S DATE OF BIRTH(IN1-18). </summary>
+    ///
+    /// <value> The insuredsdateofbirth. </value>
+
 	public DT INSUREDSDATEOFBIRTH
 	{
 		get{
@@ -534,9 +553,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURED'S ADDRESS(IN1-19).
-	///</summary>
+    /// <summary>   Returns INSURED'S ADDRESS(IN1-19). </summary>
+    ///
+    /// <value> The insuredsaddress. </value>
+
 	public AD INSUREDSADDRESS
 	{
 		get{
@@ -557,9 +577,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns ASSIGNMENT OF BENEFITS(IN1-20).
-	///</summary>
+    /// <summary>   Returns ASSIGNMENT OF BENEFITS(IN1-20). </summary>
+    ///
+    /// <value> The assignmentofbenefits. </value>
+
 	public ID ASSIGNMENTOFBENEFITS
 	{
 		get{
@@ -580,9 +601,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns COORDINATION OF BENEFITS(IN1-21).
-	///</summary>
+    /// <summary>   Returns COORDINATION OF BENEFITS(IN1-21). </summary>
+    ///
+    /// <value> The coordinationofbenefits. </value>
+
 	public ID COORDINATIONOFBENEFITS
 	{
 		get{
@@ -603,9 +625,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns COORD OF BEN. PRIORITY(IN1-22).
-	///</summary>
+    /// <summary>   Returns COORD OF BEN. PRIORITY(IN1-22). </summary>
+    ///
+    /// <value> The coordofbenpriority. </value>
+
 	public ST COORDOFBENPRIORITY
 	{
 		get{
@@ -626,9 +649,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns NOTICE OF ADMISSION CODE(IN1-23).
-	///</summary>
+    /// <summary>   Returns NOTICE OF ADMISSION CODE(IN1-23). </summary>
+    ///
+    /// <value> The noticeofadmissioncode. </value>
+
 	public ID NOTICEOFADMISSIONCODE
 	{
 		get{
@@ -649,9 +673,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns NOTICE OF ADMISSION DATE(IN1-24).
-	///</summary>
+    /// <summary>   Returns NOTICE OF ADMISSION DATE(IN1-24). </summary>
+    ///
+    /// <value> The noticeofadmissiondate. </value>
+
 	public DT NOTICEOFADMISSIONDATE
 	{
 		get{
@@ -672,9 +697,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns RPT OF ELIGIBILITY CODE(IN1-25).
-	///</summary>
+    /// <summary>   Returns RPT OF ELIGIBILITY CODE(IN1-25). </summary>
+    ///
+    /// <value> The rptofeligibilitycode. </value>
+
 	public ID RPTOFELIGIBILITYCODE
 	{
 		get{
@@ -695,9 +721,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns RPT OF ELIGIBILITY DATE(IN1-26).
-	///</summary>
+    /// <summary>   Returns RPT OF ELIGIBILITY DATE(IN1-26). </summary>
+    ///
+    /// <value> The rptofeligibilitydate. </value>
+
 	public DT RPTOFELIGIBILITYDATE
 	{
 		get{
@@ -718,9 +745,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns RELEASE INFORMATION CODE(IN1-27).
-	///</summary>
+    /// <summary>   Returns RELEASE INFORMATION CODE(IN1-27). </summary>
+    ///
+    /// <value> The releaseinformationcode. </value>
+
 	public ID RELEASEINFORMATIONCODE
 	{
 		get{
@@ -741,9 +769,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns PRE-ADMIT CERT. (PAC)(IN1-28).
-	///</summary>
+    /// <summary>   Returns PRE-ADMIT CERT. (PAC)(IN1-28). </summary>
+    ///
+    /// <value> The preadmitcert. </value>
+
 	public ST PREADMITCERT
 	{
 		get{
@@ -764,9 +793,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns VERIFICATION DATE(IN1-29).
-	///</summary>
+    /// <summary>   Returns VERIFICATION DATE(IN1-29). </summary>
+    ///
+    /// <value> The verificationdate. </value>
+
 	public DT VERIFICATIONDATE
 	{
 		get{
@@ -787,9 +817,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns VERIFICATION BY(IN1-30).
-	///</summary>
+    /// <summary>   Returns VERIFICATION BY(IN1-30). </summary>
+    ///
+    /// <value> The verificationby. </value>
+
 	public CM VERIFICATIONBY
 	{
 		get{
@@ -810,9 +841,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns TYPE OF AGREEMENT CODE(IN1-31).
-	///</summary>
+    /// <summary>   Returns TYPE OF AGREEMENT CODE(IN1-31). </summary>
+    ///
+    /// <value> The typeofagreementcode. </value>
+
 	public ID TYPEOFAGREEMENTCODE
 	{
 		get{
@@ -833,9 +865,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns BILLING STATUS(IN1-32).
-	///</summary>
+    /// <summary>   Returns BILLING STATUS(IN1-32). </summary>
+    ///
+    /// <value> The billingstatus. </value>
+
 	public ID BILLINGSTATUS
 	{
 		get{
@@ -856,9 +889,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns LIFETIME RESERVE DAYS(IN1-33).
-	///</summary>
+    /// <summary>   Returns LIFETIME RESERVE DAYS(IN1-33). </summary>
+    ///
+    /// <value> The lifetimereservedays. </value>
+
 	public NM LIFETIMERESERVEDAYS
 	{
 		get{
@@ -879,9 +913,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DELAY BEFORE L. R. DAY(IN1-34).
-	///</summary>
+    /// <summary>   Returns DELAY BEFORE L. R. DAY(IN1-34). </summary>
+    ///
+    /// <value> The delaybeforelrday. </value>
+
 	public NM DELAYBEFORELRDAY
 	{
 		get{
@@ -902,9 +937,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns COMPANY PLAN CODE(IN1-35).
-	///</summary>
+    /// <summary>   Returns COMPANY PLAN CODE(IN1-35). </summary>
+    ///
+    /// <value> The companyplancode. </value>
+
 	public ST COMPANYPLANCODE
 	{
 		get{
@@ -925,9 +961,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns POLICY NUMBER(IN1-36).
-	///</summary>
+    /// <summary>   Returns POLICY NUMBER(IN1-36). </summary>
+    ///
+    /// <value> The policynumber. </value>
+
 	public ST POLICYNUMBER
 	{
 		get{
@@ -948,9 +985,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns POLICY DEDUCTIBLE(IN1-37).
-	///</summary>
+    /// <summary>   Returns POLICY DEDUCTIBLE(IN1-37). </summary>
+    ///
+    /// <value> The policydeductible. </value>
+
 	public NM POLICYDEDUCTIBLE
 	{
 		get{
@@ -971,9 +1009,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns POLICY LIMIT - AMOUNT(IN1-38).
-	///</summary>
+    /// <summary>   Returns POLICY LIMIT - AMOUNT(IN1-38). </summary>
+    ///
+    /// <value> The policylimitamount. </value>
+
 	public NM POLICYLIMITAMOUNT
 	{
 		get{
@@ -994,9 +1033,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns POLICY LIMIT - DAYS(IN1-39).
-	///</summary>
+    /// <summary>   Returns POLICY LIMIT - DAYS(IN1-39). </summary>
+    ///
+    /// <value> The policylimitdays. </value>
+
 	public NM POLICYLIMITDAYS
 	{
 		get{
@@ -1017,9 +1057,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns ROOM RATE - SEMI-PRIVATE(IN1-40).
-	///</summary>
+    /// <summary>   Returns ROOM RATE - SEMI-PRIVATE(IN1-40). </summary>
+    ///
+    /// <value> The roomratesemiprivate. </value>
+
 	public NM ROOMRATESEMIPRIVATE
 	{
 		get{
@@ -1040,9 +1081,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns ROOM RATE - PRIVATE(IN1-41).
-	///</summary>
+    /// <summary>   Returns ROOM RATE - PRIVATE(IN1-41). </summary>
+    ///
+    /// <value> The roomrateprivate. </value>
+
 	public NM ROOMRATEPRIVATE
 	{
 		get{
@@ -1063,9 +1105,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURED'S EMPLOYMENT STATUS(IN1-42).
-	///</summary>
+    /// <summary>   Returns INSURED'S EMPLOYMENT STATUS(IN1-42). </summary>
+    ///
+    /// <value> The insuredsemploymentstatus. </value>
+
 	public ID INSUREDSEMPLOYMENTSTATUS
 	{
 		get{
@@ -1086,9 +1129,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURED'S SEX(IN1-43).
-	///</summary>
+    /// <summary>   Returns INSURED'S SEX(IN1-43). </summary>
+    ///
+    /// <value> The insuredssex. </value>
+
 	public ID INSUREDSSEX
 	{
 		get{
@@ -1109,9 +1153,10 @@ public class IN1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns INSURED'S EMPLOYER ADDRESS(IN1-44).
-	///</summary>
+    /// <summary>   Returns INSURED'S EMPLOYER ADDRESS(IN1-44). </summary>
+    ///
+    /// <value> The insuredsemployeraddress. </value>
+
 	public AD INSUREDSEMPLOYERADDRESS
 	{
 		get{

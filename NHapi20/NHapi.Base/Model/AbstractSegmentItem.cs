@@ -2,39 +2,50 @@ namespace NHapi.Base.Model
 {
     using System.Collections.Generic;
 
+    /// <summary>   An abstract segment item. </summary>
     internal class AbstractSegmentItem
     {
         #region Fields
 
+        /// <summary>   The arguments. </summary>
         private List<object> _args = new List<object>();
 
+        /// <summary>   The description. </summary>
         private string _description;
 
+        /// <summary>   The fields. </summary>
         private List<IType> _fields = new List<IType>();
 
+        /// <summary>   The length. </summary>
         private int _length = 0;
 
+        /// <summary>   The maximum reps. </summary>
         private int _maxReps = -1;
 
+        /// <summary>   true if required. </summary>
         private bool _required;
 
+        /// <summary>   The type. </summary>
         private System.Type _type;
 
         #endregion
 
         #region Constructors and Destructors
 
-        ///<summary>
-        /// Constructor
-        /// <param name="t">the class of the data for this field - this should inherit from IType</param>
-        /// <param name="required">whether a value for this field is required in order for the segment 
-        /// to be valid</param>
-        /// <param name="maxReps">the maximum number of repetitions - 0 implies that there is no limit</param>
-        /// <param name="length">the maximum length of each repetition of the field (in characters) </param>
-        /// <param name="constructorArgs">an array of objects that will be used as constructor arguments 
-        /// if new instances of this class are created (use null for zero-arg constructor)</param>
-        /// <throws>  HL7Exception if the given class does not inherit from IType or if it cannot be instantiated. </throws>
-        /// </summary>
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <param name="t">                the class of the data for this field - this should inherit
+        ///                                 from IType. </param>
+        /// <param name="required">         whether a value for this field is required in order for the
+        ///                                 segment to be valid. </param>
+        /// <param name="maxReps">          the maximum number of repetitions - 0 implies that there is
+        ///                                 no limit. </param>
+        /// <param name="length">           the maximum length of each repetition of the field (in
+        ///                                 characters) </param>
+        /// <param name="constructorArgs">  an array of objects that will be used as constructor
+        ///                                 arguments if new instances of this class are created (use
+        ///                                 null for zero-arg constructor) </param>
+
         public AbstractSegmentItem(
             System.Type t,
             bool required,
@@ -45,18 +56,23 @@ namespace NHapi.Base.Model
         {
         }
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="t">the class of the data for this field - this should inherit from IType</param>
-        /// <param name="required">whether a value for this field is required in order for the segment 
-        /// to be valid</param>
-        /// <param name="maxReps">the maximum number of repetitions - 0 implies that there is no limit</param>
-        /// <param name="length">the maximum length of each repetition of the field (in characters) </param>
-        /// <param name="constructorArgs">an array of objects that will be used as constructor arguments 
-        /// if new instances of this class are created (use null for zero-arg constructor)</param>
-        /// <param name="description">Description of the segment</param>
-        /// <throws>  HL7Exception if the given class does not inherit from IType or if it cannot be instantiated. </throws>
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="t">                the class of the data for this field - this should inherit
+        ///                                 from IType. </param>
+        /// <param name="required">         whether a value for this field is required in order for the
+        ///                                 segment to be valid. </param>
+        /// <param name="maxReps">          the maximum number of repetitions - 0 implies that there is
+        ///                                 no limit. </param>
+        /// <param name="length">           the maximum length of each repetition of the field (in
+        ///                                 characters) </param>
+        /// <param name="constructorArgs">  an array of objects that will be used as constructor
+        ///                                 arguments if new instances of this class are created (use
+        ///                                 null for zero-arg constructor) </param>
+        /// <param name="description">      Description of the segment. </param>
+
         public AbstractSegmentItem(
             System.Type t,
             bool required,
@@ -86,9 +102,10 @@ namespace NHapi.Base.Model
 
         #region Public Properties
 
-        /// <summary>
-        /// Arguments to pass to a constructor for this field
-        /// </summary>
+        /// <summary>   Arguments to pass to a constructor for this field. </summary>
+        ///
+        /// <value> The arguments. </value>
+
         public object[] Args
         {
             get
@@ -97,9 +114,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        /// What is this field
-        /// </summary>
+        /// <summary>   What is this field. </summary>
+        ///
+        /// <value> The description. </value>
+
         public string Description
         {
             get
@@ -112,9 +130,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        ///     The IType of this field in the segment
-        /// </summary>
+        /// <summary>   The IType of this field in the segment. </summary>
+        ///
+        /// <value> The type of the field. </value>
+
         public System.Type FieldType
         {
             get
@@ -123,9 +142,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary>   Gets the fields. </summary>
+        ///
+        /// <value> The fields. </value>
+
         public IList<IType> Fields
         {
             get
@@ -134,9 +154,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        /// Is this a required field
-        /// </summary>
+        /// <summary>   Is this a required field. </summary>
+        ///
+        /// <value> true if this object is required, false if not. </value>
+
         public bool IsRequired
         {
             get
@@ -145,9 +166,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        /// What is the length in characters of the field
-        /// </summary>
+        /// <summary>   What is the length in characters of the field. </summary>
+        ///
+        /// <value> The length. </value>
+
         public int Length
         {
             get
@@ -156,9 +178,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        /// Maximum number of repetitions of this field
-        /// </summary>
+        /// <summary>   Maximum number of repetitions of this field. </summary>
+        ///
+        /// <value> The maximum repetitions. </value>
+
         public int MaxRepetitions
         {
             get
@@ -179,11 +202,12 @@ namespace NHapi.Base.Model
 
         #region Public Indexers
 
-        /// <summary>
-        /// Return a specific repetition of this field
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
+        /// <summary>   Return a specific repetition of this field. </summary>
+        ///
+        /// <param name="index">    . </param>
+        ///
+        /// <returns>   The indexed item. </returns>
+
         public IType this[int index]
         {
             get
@@ -195,6 +219,10 @@ namespace NHapi.Base.Model
         #endregion
 
         #region Public Methods and Operators
+
+        /// <summary>   Gets all fields as i type array. </summary>
+        ///
+        /// <returns>   An array of i type. </returns>
 
         public IType[] GetAllFieldsAsITypeArray()
         {

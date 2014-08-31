@@ -7,37 +7,38 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 OM4 message segment. 
-/// This segment has the following fields:<ol>
-///<li>OM4-1: Sequence Number - Test/ Observation Master File (NM)</li>
-///<li>OM4-2: Derived Specimen (ID)</li>
-///<li>OM4-3: Container Description (TX)</li>
-///<li>OM4-4: Container Volume (NM)</li>
-///<li>OM4-5: Container Units (CE)</li>
-///<li>OM4-6: Specimen (CE)</li>
-///<li>OM4-7: Additive (CE)</li>
-///<li>OM4-8: Preparation (TX)</li>
-///<li>OM4-9: Special Handling Requirements (TX)</li>
-///<li>OM4-10: Normal Collection Volume (CQ)</li>
-///<li>OM4-11: Minimum Collection Volume (CQ)</li>
-///<li>OM4-12: Specimen Requirements (TX)</li>
-///<li>OM4-13: Specimen Priorities (ID)</li>
-///<li>OM4-14: Specimen Retention Time (CQ)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 OM4 message segment. This segment has the following fields:<ol>
+/// <li>OM4-1: Sequence Number - Test/ Observation Master File (NM)</li>
+/// <li>OM4-2: Derived Specimen (ID)</li>
+/// <li>OM4-3: Container Description (TX)</li>
+/// <li>OM4-4: Container Volume (NM)</li>
+/// <li>OM4-5: Container Units (CE)</li>
+/// <li>OM4-6: Specimen (CE)</li>
+/// <li>OM4-7: Additive (CE)</li>
+/// <li>OM4-8: Preparation (TX)</li>
+/// <li>OM4-9: Special Handling Requirements (TX)</li>
+/// <li>OM4-10: Normal Collection Volume (CQ)</li>
+/// <li>OM4-11: Minimum Collection Volume (CQ)</li>
+/// <li>OM4-12: Specimen Requirements (TX)</li>
+/// <li>OM4-13: Specimen Priorities (ID)</li>
+/// <li>OM4-14: Specimen Retention Time (CQ)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class OM4 : AbstractSegment  {
 
-  /**
-   * Creates a OM4 (Observations that require specimens) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the OM4 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OM4(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -60,9 +61,10 @@ public class OM4 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Sequence Number - Test/ Observation Master File(OM4-1).
-	///</summary>
+    /// <summary>   Returns Sequence Number - Test/ Observation Master File(OM4-1). </summary>
+    ///
+    /// <value> The sequence number test observation master file. </value>
+
 	public NM SequenceNumberTestObservationMasterFile
 	{
 		get{
@@ -83,9 +85,10 @@ public class OM4 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Derived Specimen(OM4-2).
-	///</summary>
+    /// <summary>   Returns Derived Specimen(OM4-2). </summary>
+    ///
+    /// <value> The derived specimen. </value>
+
 	public ID DerivedSpecimen
 	{
 		get{
@@ -106,9 +109,10 @@ public class OM4 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Container Description(OM4-3).
-	///</summary>
+    /// <summary>   Returns Container Description(OM4-3). </summary>
+    ///
+    /// <value> Information describing the container. </value>
+
 	public TX ContainerDescription
 	{
 		get{
@@ -129,9 +133,10 @@ public class OM4 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Container Volume(OM4-4).
-	///</summary>
+    /// <summary>   Returns Container Volume(OM4-4). </summary>
+    ///
+    /// <value> The container volume. </value>
+
 	public NM ContainerVolume
 	{
 		get{
@@ -152,9 +157,10 @@ public class OM4 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Container Units(OM4-5).
-	///</summary>
+    /// <summary>   Returns Container Units(OM4-5). </summary>
+    ///
+    /// <value> The container units. </value>
+
 	public CE ContainerUnits
 	{
 		get{
@@ -175,9 +181,10 @@ public class OM4 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Specimen(OM4-6).
-	///</summary>
+    /// <summary>   Returns Specimen(OM4-6). </summary>
+    ///
+    /// <value> The specimen. </value>
+
 	public CE Specimen
 	{
 		get{
@@ -198,9 +205,10 @@ public class OM4 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Additive(OM4-7).
-	///</summary>
+    /// <summary>   Returns Additive(OM4-7). </summary>
+    ///
+    /// <value> The additive. </value>
+
 	public CE Additive
 	{
 		get{
@@ -221,9 +229,10 @@ public class OM4 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Preparation(OM4-8).
-	///</summary>
+    /// <summary>   Returns Preparation(OM4-8). </summary>
+    ///
+    /// <value> The preparation. </value>
+
 	public TX Preparation
 	{
 		get{
@@ -244,9 +253,10 @@ public class OM4 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Special Handling Requirements(OM4-9).
-	///</summary>
+    /// <summary>   Returns Special Handling Requirements(OM4-9). </summary>
+    ///
+    /// <value> The special handling requirements. </value>
+
 	public TX SpecialHandlingRequirements
 	{
 		get{
@@ -267,9 +277,10 @@ public class OM4 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Normal Collection Volume(OM4-10).
-	///</summary>
+    /// <summary>   Returns Normal Collection Volume(OM4-10). </summary>
+    ///
+    /// <value> The normal collection volume. </value>
+
 	public CQ NormalCollectionVolume
 	{
 		get{
@@ -290,9 +301,10 @@ public class OM4 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Minimum Collection Volume(OM4-11).
-	///</summary>
+    /// <summary>   Returns Minimum Collection Volume(OM4-11). </summary>
+    ///
+    /// <value> The minimum collection volume. </value>
+
 	public CQ MinimumCollectionVolume
 	{
 		get{
@@ -313,9 +325,10 @@ public class OM4 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Specimen Requirements(OM4-12).
-	///</summary>
+    /// <summary>   Returns Specimen Requirements(OM4-12). </summary>
+    ///
+    /// <value> The specimen requirements. </value>
+
 	public TX SpecimenRequirements
 	{
 		get{
@@ -336,9 +349,10 @@ public class OM4 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Specimen Priorities(OM4-13).
-	///</summary>
+    /// <summary>   Returns Specimen Priorities(OM4-13). </summary>
+    ///
+    /// <value> The specimen priorities. </value>
+
 	public ID SpecimenPriorities
 	{
 		get{
@@ -359,9 +373,10 @@ public class OM4 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Specimen Retention Time(OM4-14).
-	///</summary>
+    /// <summary>   Returns Specimen Retention Time(OM4-14). </summary>
+    ///
+    /// <value> The specimen retention time. </value>
+
 	public CQ SpecimenRetentionTime
 	{
 		get{

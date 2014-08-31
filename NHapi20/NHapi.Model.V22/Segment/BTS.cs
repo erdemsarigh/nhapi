@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 BTS message segment. 
-/// This segment has the following fields:<ol>
-///<li>BTS-1: Batch Message Count (ST)</li>
-///<li>BTS-2: Batch Comment (ST)</li>
-///<li>BTS-3: Batch Totals (CM_BATCH_TOTAL)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 BTS message segment. This segment has the following fields:<ol>
+/// <li>BTS-1: Batch Message Count (ST)</li>
+/// <li>BTS-2: Batch Comment (ST)</li>
+/// <li>BTS-3: Batch Totals (CM_BATCH_TOTAL)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class BTS : AbstractSegment  {
 
-  /**
-   * Creates a BTS (BATCH TRAILER) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the BTS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public BTS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class BTS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Batch Message Count(BTS-1).
-	///</summary>
+    /// <summary>   Returns Batch Message Count(BTS-1). </summary>
+    ///
+    /// <value> The number of batch messages. </value>
+
 	public ST BatchMessageCount
 	{
 		get{
@@ -61,9 +63,10 @@ public class BTS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Batch Comment(BTS-2).
-	///</summary>
+    /// <summary>   Returns Batch Comment(BTS-2). </summary>
+    ///
+    /// <value> The batch comment. </value>
+
 	public ST BatchComment
 	{
 		get{
@@ -84,11 +87,17 @@ public class BTS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Batch Totals(BTS-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Batch Totals(BTS-3). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The batch totals. </returns>
+
 	public CM_BATCH_TOTAL GetBatchTotals(int rep)
 	{
 			CM_BATCH_TOTAL ret = null;
@@ -103,9 +112,12 @@ public class BTS : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Batch Totals (BTS-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Batch Totals (BTS-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of centimetres batch total. </returns>
+
   public CM_BATCH_TOTAL[] GetBatchTotals() {
      CM_BATCH_TOTAL[] ret = null;
     try {
@@ -124,9 +136,10 @@ public class BTS : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Batch Totals (BTS-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Batch Totals (BTS-3). </summary>
+  ///
+  /// <value>   The batch totals repetitions used. </value>
+
   public int BatchTotalsRepetitionsUsed
 {
 get{

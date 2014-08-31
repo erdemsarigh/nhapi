@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RSP_Z88_ALLERGY Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: AL1 (Patient allergy information) repeating</li>
-///<li>1: RSP_Z88_VISIT (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RSP_Z88_ALLERGY Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: AL1 (Patient allergy information) repeating</li>
+/// <li>1: RSP_Z88_VISIT (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RSP_Z88_ALLERGY : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RSP_Z88_ALLERGY Group.
-	///</summary>
+    /// <summary>   Creates a new RSP_Z88_ALLERGY Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RSP_Z88_ALLERGY(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(AL1), true, true);
@@ -32,9 +35,14 @@ public class RSP_Z88_ALLERGY : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns  first repetition of AL1 (Patient allergy information) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of AL1 (Patient allergy information) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   a l 1. </returns>
+
 	public AL1 GetAL1() {
 	   AL1 ret = null;
 	   try {
@@ -46,19 +54,25 @@ public class RSP_Z88_ALLERGY : AbstractGroup {
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of AL1
-	/// * (Patient allergy information) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of AL1
+    ///  * (Patient allergy information) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   a l 1. </returns>
+
 	public AL1 GetAL1(int rep) { 
 	   return (AL1)this.GetStructure("AL1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of AL1 
-	 */ 
+    /// <summary>   Gets the al 1 repetitions used. </summary>
+    ///
+    /// <value> The al 1 repetitions used. </value>
+
 	public int AL1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -73,9 +87,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns RSP_Z88_VISIT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RSP_Z88_VISIT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The visit. </value>
+
 	public RSP_Z88_VISIT VISIT { 
 get{
 	   RSP_Z88_VISIT ret = null;

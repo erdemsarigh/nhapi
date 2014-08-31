@@ -7,37 +7,38 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 ABS message segment. 
-/// This segment has the following fields:<ol>
-///<li>ABS-1: Discharge Care Provider (XCN)</li>
-///<li>ABS-2: Transfer Medical Service Code (CE)</li>
-///<li>ABS-3: Severity of Illness Code (CE)</li>
-///<li>ABS-4: Date/Time of Attestation (TS)</li>
-///<li>ABS-5: Attested By (XCN)</li>
-///<li>ABS-6: Triage Code (CE)</li>
-///<li>ABS-7: Abstract Completion Date/Time (TS)</li>
-///<li>ABS-8: Abstracted By (XCN)</li>
-///<li>ABS-9: Case Category Code (CE)</li>
-///<li>ABS-10: Caesarian Section Indicator (ID)</li>
-///<li>ABS-11: Gestation Category Code (CE)</li>
-///<li>ABS-12: Gestation Period - Weeks (NM)</li>
-///<li>ABS-13: Newborn Code (CE)</li>
-///<li>ABS-14: Stillborn Indicator (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ABS message segment. This segment has the following fields:<ol>
+/// <li>ABS-1: Discharge Care Provider (XCN)</li>
+/// <li>ABS-2: Transfer Medical Service Code (CE)</li>
+/// <li>ABS-3: Severity of Illness Code (CE)</li>
+/// <li>ABS-4: Date/Time of Attestation (TS)</li>
+/// <li>ABS-5: Attested By (XCN)</li>
+/// <li>ABS-6: Triage Code (CE)</li>
+/// <li>ABS-7: Abstract Completion Date/Time (TS)</li>
+/// <li>ABS-8: Abstracted By (XCN)</li>
+/// <li>ABS-9: Case Category Code (CE)</li>
+/// <li>ABS-10: Caesarian Section Indicator (ID)</li>
+/// <li>ABS-11: Gestation Category Code (CE)</li>
+/// <li>ABS-12: Gestation Period - Weeks (NM)</li>
+/// <li>ABS-13: Newborn Code (CE)</li>
+/// <li>ABS-14: Stillborn Indicator (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ABS : AbstractSegment  {
 
-  /**
-   * Creates a ABS (Abstract) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ABS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ABS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -60,9 +61,10 @@ public class ABS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Discharge Care Provider(ABS-1).
-	///</summary>
+    /// <summary>   Returns Discharge Care Provider(ABS-1). </summary>
+    ///
+    /// <value> The discharge care provider. </value>
+
 	public XCN DischargeCareProvider
 	{
 		get{
@@ -83,9 +85,10 @@ public class ABS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transfer Medical Service Code(ABS-2).
-	///</summary>
+    /// <summary>   Returns Transfer Medical Service Code(ABS-2). </summary>
+    ///
+    /// <value> The transfer medical service code. </value>
+
 	public CE TransferMedicalServiceCode
 	{
 		get{
@@ -106,9 +109,10 @@ public class ABS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Severity of Illness Code(ABS-3).
-	///</summary>
+    /// <summary>   Returns Severity of Illness Code(ABS-3). </summary>
+    ///
+    /// <value> The severity of illness code. </value>
+
 	public CE SeverityOfIllnessCode
 	{
 		get{
@@ -129,9 +133,10 @@ public class ABS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date/Time of Attestation(ABS-4).
-	///</summary>
+    /// <summary>   Returns Date/Time of Attestation(ABS-4). </summary>
+    ///
+    /// <value> The date time of attestation. </value>
+
 	public TS DateTimeOfAttestation
 	{
 		get{
@@ -152,9 +157,10 @@ public class ABS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Attested By(ABS-5).
-	///</summary>
+    /// <summary>   Returns Attested By(ABS-5). </summary>
+    ///
+    /// <value> Amount to attested by. </value>
+
 	public XCN AttestedBy
 	{
 		get{
@@ -175,9 +181,10 @@ public class ABS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Triage Code(ABS-6).
-	///</summary>
+    /// <summary>   Returns Triage Code(ABS-6). </summary>
+    ///
+    /// <value> The triage code. </value>
+
 	public CE TriageCode
 	{
 		get{
@@ -198,9 +205,10 @@ public class ABS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Abstract Completion Date/Time(ABS-7).
-	///</summary>
+    /// <summary>   Returns Abstract Completion Date/Time(ABS-7). </summary>
+    ///
+    /// <value> The abstract completion date time. </value>
+
 	public TS AbstractCompletionDateTime
 	{
 		get{
@@ -221,9 +229,10 @@ public class ABS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Abstracted By(ABS-8).
-	///</summary>
+    /// <summary>   Returns Abstracted By(ABS-8). </summary>
+    ///
+    /// <value> Amount to abstracted by. </value>
+
 	public XCN AbstractedBy
 	{
 		get{
@@ -244,9 +253,10 @@ public class ABS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Case Category Code(ABS-9).
-	///</summary>
+    /// <summary>   Returns Case Category Code(ABS-9). </summary>
+    ///
+    /// <value> The case category code. </value>
+
 	public CE CaseCategoryCode
 	{
 		get{
@@ -267,9 +277,10 @@ public class ABS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Caesarian Section Indicator(ABS-10).
-	///</summary>
+    /// <summary>   Returns Caesarian Section Indicator(ABS-10). </summary>
+    ///
+    /// <value> The caesarian section indicator. </value>
+
 	public ID CaesarianSectionIndicator
 	{
 		get{
@@ -290,9 +301,10 @@ public class ABS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Gestation Category Code(ABS-11).
-	///</summary>
+    /// <summary>   Returns Gestation Category Code(ABS-11). </summary>
+    ///
+    /// <value> The gestation category code. </value>
+
 	public CE GestationCategoryCode
 	{
 		get{
@@ -313,9 +325,10 @@ public class ABS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Gestation Period - Weeks(ABS-12).
-	///</summary>
+    /// <summary>   Returns Gestation Period - Weeks(ABS-12). </summary>
+    ///
+    /// <value> The gestation period weeks. </value>
+
 	public NM GestationPeriodWeeks
 	{
 		get{
@@ -336,9 +349,10 @@ public class ABS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Newborn Code(ABS-13).
-	///</summary>
+    /// <summary>   Returns Newborn Code(ABS-13). </summary>
+    ///
+    /// <value> The newborn code. </value>
+
 	public CE NewbornCode
 	{
 		get{
@@ -359,9 +373,10 @@ public class ABS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Stillborn Indicator(ABS-14).
-	///</summary>
+    /// <summary>   Returns Stillborn Indicator(ABS-14). </summary>
+    ///
+    /// <value> The stillborn indicator. </value>
+
 	public ID StillbornIndicator
 	{
 		get{

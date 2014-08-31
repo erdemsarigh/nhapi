@@ -8,25 +8,28 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the CSU_C10_PATIENT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PID (Patient Identification) </li>
-///<li>1: PD1 (Patient Demographic) optional </li>
-///<li>2: NTE (Notes and comments segment) optional repeating</li>
-///<li>3: CSU_C10_VISIT (a Group object) optional </li>
-///<li>4: CSR (Clinical Study Registration) </li>
-///<li>5: CSU_C10_STUDY_PHASE (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the CSU_C10_PATIENT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PID (Patient Identification) </li>
+/// <li>1: PD1 (Patient Demographic) optional </li>
+/// <li>2: NTE (Notes and comments segment) optional repeating</li>
+/// <li>3: CSU_C10_VISIT (a Group object) optional </li>
+/// <li>4: CSR (Clinical Study Registration) </li>
+/// <li>5: CSU_C10_STUDY_PHASE (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class CSU_C10_PATIENT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new CSU_C10_PATIENT Group.
-	///</summary>
+    /// <summary>   Creates a new CSU_C10_PATIENT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public CSU_C10_PATIENT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PID), true, false);
@@ -40,9 +43,10 @@ public class CSU_C10_PATIENT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PID (Patient Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -56,9 +60,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (Patient Demographic) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PD1 (Patient Demographic) - creates it if necessary. </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;
@@ -72,9 +77,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -86,19 +96,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -113,9 +129,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns CSU_C10_VISIT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns CSU_C10_VISIT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The visit. </value>
+
 	public CSU_C10_VISIT VISIT { 
 get{
 	   CSU_C10_VISIT ret = null;
@@ -129,9 +146,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns CSR (Clinical Study Registration) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns CSR (Clinical Study Registration) - creates it if necessary. </summary>
+    ///
+    /// <value> The cursor. </value>
+
 	public CSR CSR { 
 get{
 	   CSR ret = null;
@@ -145,9 +163,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of CSU_C10_STUDY_PHASE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of CSU_C10_STUDY_PHASE (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The study phase. </returns>
+
 	public CSU_C10_STUDY_PHASE GetSTUDY_PHASE() {
 	   CSU_C10_STUDY_PHASE ret = null;
 	   try {
@@ -159,19 +182,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of CSU_C10_STUDY_PHASE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of CSU_C10_STUDY_PHASE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The study phase. </returns>
+
 	public CSU_C10_STUDY_PHASE GetSTUDY_PHASE(int rep) { 
 	   return (CSU_C10_STUDY_PHASE)this.GetStructure("STUDY_PHASE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of CSU_C10_STUDY_PHASE 
-	 */ 
+    /// <summary>   Gets the study phase repetitions used. </summary>
+    ///
+    /// <value> The study phase repetitions used. </value>
+
 	public int STUDY_PHASERepetitionsUsed { 
 get{
 	    int reps = -1; 

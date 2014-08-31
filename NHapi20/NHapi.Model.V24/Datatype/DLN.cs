@@ -6,29 +6,31 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V24.Datatype
 {
-
-///<summary>
-/// <p>The HL7 DLN (driver's license number) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 DLN (driver's license number) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>Driver´s License Number (ST)</li>
 /// <li>Issuing State, province, country (IS)</li>
 /// <li>expiration date (DT)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class DLN : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a DLN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a DLN. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public DLN(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a DLN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a DLN. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public DLN(IMessage message, string description) : base(message, description){
 		data = new IType[3];
 		data[0] = new ST(message,"Driver´s License Number");
@@ -36,9 +38,10 @@ public class DLN : AbstractType, IComposite{
 		data[2] = new DT(message,"Expiration date");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -46,12 +49,15 @@ public class DLN : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -62,10 +68,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Driver´s License Number (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Driver´s License Number (component #0).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The driver s license number. </value>
+
 	public ST DriverSLicenseNumber {
 get{
 	   ST ret = null;
@@ -79,10 +89,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Issuing State, province, country (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Issuing State, province, country (component #1).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The issuing state province country. </value>
+
 	public IS IssuingStateProvinceCountry {
 get{
 	   IS ret = null;
@@ -96,10 +110,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns expiration date (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns expiration date (component #2).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The expiration date. </value>
+
 	public DT ExpirationDate {
 get{
 	   DT ret = null;

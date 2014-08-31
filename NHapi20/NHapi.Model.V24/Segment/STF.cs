@@ -7,52 +7,53 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 STF message segment. 
-/// This segment has the following fields:<ol>
-///<li>STF-1: Primary Key Value - STF (CE)</li>
-///<li>STF-2: Staff ID Code (CX)</li>
-///<li>STF-3: Staff Name (XPN)</li>
-///<li>STF-4: Staff Type (IS)</li>
-///<li>STF-5: Administrative Sex (IS)</li>
-///<li>STF-6: Date/Time Of Birth (TS)</li>
-///<li>STF-7: Active/Inactive Flag (ID)</li>
-///<li>STF-8: Department (CE)</li>
-///<li>STF-9: Hospital Service (CE)</li>
-///<li>STF-10: Phone (XTN)</li>
-///<li>STF-11: Office/Home Address (XAD)</li>
-///<li>STF-12: Institution Activation Date (DIN)</li>
-///<li>STF-13: Institution Inactivation Date (DIN)</li>
-///<li>STF-14: Backup Person ID (CE)</li>
-///<li>STF-15: E-Mail Address (ST)</li>
-///<li>STF-16: Preferred Method of Contact (CE)</li>
-///<li>STF-17: Marital Status (CE)</li>
-///<li>STF-18: Job Title (ST)</li>
-///<li>STF-19: Job Code/Class (JCC)</li>
-///<li>STF-20: Employment Status Code (CE)</li>
-///<li>STF-21: Additional Insured on  Auto (ID)</li>
-///<li>STF-22: Driver's License Number - Staff (DLN)</li>
-///<li>STF-23: Copy  Auto Ins (ID)</li>
-///<li>STF-24: Auto Ins. Expires (DT)</li>
-///<li>STF-25: Date Last DMV Review (DT)</li>
-///<li>STF-26: Date Next DMV Review (DT)</li>
-///<li>STF-27: Race (CE)</li>
-///<li>STF-28: Ethnic Group (CE)</li>
-///<li>STF-29: Re-activation Approval Indicator (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 STF message segment. This segment has the following fields:<ol>
+/// <li>STF-1: Primary Key Value - STF (CE)</li>
+/// <li>STF-2: Staff ID Code (CX)</li>
+/// <li>STF-3: Staff Name (XPN)</li>
+/// <li>STF-4: Staff Type (IS)</li>
+/// <li>STF-5: Administrative Sex (IS)</li>
+/// <li>STF-6: Date/Time Of Birth (TS)</li>
+/// <li>STF-7: Active/Inactive Flag (ID)</li>
+/// <li>STF-8: Department (CE)</li>
+/// <li>STF-9: Hospital Service (CE)</li>
+/// <li>STF-10: Phone (XTN)</li>
+/// <li>STF-11: Office/Home Address (XAD)</li>
+/// <li>STF-12: Institution Activation Date (DIN)</li>
+/// <li>STF-13: Institution Inactivation Date (DIN)</li>
+/// <li>STF-14: Backup Person ID (CE)</li>
+/// <li>STF-15: E-Mail Address (ST)</li>
+/// <li>STF-16: Preferred Method of Contact (CE)</li>
+/// <li>STF-17: Marital Status (CE)</li>
+/// <li>STF-18: Job Title (ST)</li>
+/// <li>STF-19: Job Code/Class (JCC)</li>
+/// <li>STF-20: Employment Status Code (CE)</li>
+/// <li>STF-21: Additional Insured on  Auto (ID)</li>
+/// <li>STF-22: Driver's License Number - Staff (DLN)</li>
+/// <li>STF-23: Copy  Auto Ins (ID)</li>
+/// <li>STF-24: Auto Ins. Expires (DT)</li>
+/// <li>STF-25: Date Last DMV Review (DT)</li>
+/// <li>STF-26: Date Next DMV Review (DT)</li>
+/// <li>STF-27: Race (CE)</li>
+/// <li>STF-28: Ethnic Group (CE)</li>
+/// <li>STF-29: Re-activation Approval Indicator (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class STF : AbstractSegment  {
 
-  /**
-   * Creates a STF (Staff Identification) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the STF class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public STF(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -90,9 +91,10 @@ public class STF : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Primary Key Value - STF(STF-1).
-	///</summary>
+    /// <summary>   Returns Primary Key Value - STF(STF-1). </summary>
+    ///
+    /// <value> The primary key value stf. </value>
+
 	public CE PrimaryKeyValueSTF
 	{
 		get{
@@ -113,11 +115,17 @@ public class STF : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Staff ID Code(STF-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Staff ID Code(STF-2). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The staff identifier code. </returns>
+
 	public CX GetStaffIDCode(int rep)
 	{
 			CX ret = null;
@@ -132,9 +140,12 @@ public class STF : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Staff ID Code (STF-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Staff ID Code (STF-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of cx. </returns>
+
   public CX[] GetStaffIDCode() {
      CX[] ret = null;
     try {
@@ -153,9 +164,10 @@ public class STF : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Staff ID Code (STF-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Staff ID Code (STF-2). </summary>
+  ///
+  /// <value>   The staff identifier code repetitions used. </value>
+
   public int StaffIDCodeRepetitionsUsed
 {
 get{
@@ -171,11 +183,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Staff Name(STF-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Staff Name(STF-3). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The staff name. </returns>
+
 	public XPN GetStaffName(int rep)
 	{
 			XPN ret = null;
@@ -190,9 +209,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Staff Name (STF-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Staff Name (STF-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetStaffName() {
      XPN[] ret = null;
     try {
@@ -211,9 +233,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Staff Name (STF-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Staff Name (STF-3). </summary>
+  ///
+  /// <value>   The staff name repetitions used. </value>
+
   public int StaffNameRepetitionsUsed
 {
 get{
@@ -229,11 +252,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Staff Type(STF-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Staff Type(STF-4). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The staff type. </returns>
+
 	public IS GetStaffType(int rep)
 	{
 			IS ret = null;
@@ -248,9 +278,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Staff Type (STF-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Staff Type (STF-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetStaffType() {
      IS[] ret = null;
     try {
@@ -269,9 +302,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Staff Type (STF-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Staff Type (STF-4). </summary>
+  ///
+  /// <value>   The staff type repetitions used. </value>
+
   public int StaffTypeRepetitionsUsed
 {
 get{
@@ -287,9 +321,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Administrative Sex(STF-5).
-	///</summary>
+
+    /// <summary>   Returns Administrative Sex(STF-5). </summary>
+    ///
+    /// <value> The administrative sex. </value>
+
 	public IS AdministrativeSex
 	{
 		get{
@@ -310,9 +346,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date/Time Of Birth(STF-6).
-	///</summary>
+    /// <summary>   Returns Date/Time Of Birth(STF-6). </summary>
+    ///
+    /// <value> The date time of birth. </value>
+
 	public TS DateTimeOfBirth
 	{
 		get{
@@ -333,9 +370,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Active/Inactive Flag(STF-7).
-	///</summary>
+    /// <summary>   Returns Active/Inactive Flag(STF-7). </summary>
+    ///
+    /// <value> The active inactive flag. </value>
+
 	public ID ActiveInactiveFlag
 	{
 		get{
@@ -356,11 +394,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Department(STF-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Department(STF-8). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The department. </returns>
+
 	public CE GetDepartment(int rep)
 	{
 			CE ret = null;
@@ -375,9 +419,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Department (STF-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of Department (STF-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetDepartment() {
      CE[] ret = null;
     try {
@@ -396,9 +443,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Department (STF-8).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Department (STF-8). </summary>
+  ///
+  /// <value>   The department repetitions used. </value>
+
   public int DepartmentRepetitionsUsed
 {
 get{
@@ -414,11 +462,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Hospital Service(STF-9).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Hospital Service(STF-9). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The hospital service. </returns>
+
 	public CE GetHospitalService(int rep)
 	{
 			CE ret = null;
@@ -433,9 +488,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Hospital Service (STF-9).
-   ///</summary>
+  /// <summary> Returns all repetitions of Hospital Service (STF-9). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetHospitalService() {
      CE[] ret = null;
     try {
@@ -454,9 +512,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Hospital Service (STF-9).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Hospital Service (STF-9). </summary>
+  ///
+  /// <value>   The hospital service repetitions used. </value>
+
   public int HospitalServiceRepetitionsUsed
 {
 get{
@@ -472,11 +531,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Phone(STF-10).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Phone(STF-10). throws HL7Exception if the repetition number is
+    /// invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The phone. </returns>
+
 	public XTN GetPhone(int rep)
 	{
 			XTN ret = null;
@@ -491,9 +557,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Phone (STF-10).
-   ///</summary>
+  /// <summary> Returns all repetitions of Phone (STF-10). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetPhone() {
      XTN[] ret = null;
     try {
@@ -512,9 +581,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Phone (STF-10).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Phone (STF-10). </summary>
+  ///
+  /// <value>   The phone repetitions used. </value>
+
   public int PhoneRepetitionsUsed
 {
 get{
@@ -530,11 +600,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Office/Home Address(STF-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Office/Home Address(STF-11). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The office home address. </returns>
+
 	public XAD GetOfficeHomeAddress(int rep)
 	{
 			XAD ret = null;
@@ -549,9 +626,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Office/Home Address (STF-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of Office/Home Address (STF-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetOfficeHomeAddress() {
      XAD[] ret = null;
     try {
@@ -570,9 +650,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Office/Home Address (STF-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Office/Home Address (STF-11). </summary>
+  ///
+  /// <value>   The office home address repetitions used. </value>
+
   public int OfficeHomeAddressRepetitionsUsed
 {
 get{
@@ -588,11 +669,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Institution Activation Date(STF-12).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Institution Activation Date(STF-12). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The institution activation date. </returns>
+
 	public DIN GetInstitutionActivationDate(int rep)
 	{
 			DIN ret = null;
@@ -607,9 +695,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Institution Activation Date (STF-12).
-   ///</summary>
+  /// <summary> Returns all repetitions of Institution Activation Date (STF-12). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of din. </returns>
+
   public DIN[] GetInstitutionActivationDate() {
      DIN[] ret = null;
     try {
@@ -628,9 +719,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Institution Activation Date (STF-12).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Institution Activation Date (STF-12). </summary>
+  ///
+  /// <value>   The institution activation date repetitions used. </value>
+
   public int InstitutionActivationDateRepetitionsUsed
 {
 get{
@@ -646,11 +738,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Institution Inactivation Date(STF-13).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Institution Inactivation Date(STF-13). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The institution inactivation date. </returns>
+
 	public DIN GetInstitutionInactivationDate(int rep)
 	{
 			DIN ret = null;
@@ -665,9 +764,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Institution Inactivation Date (STF-13).
-   ///</summary>
+  /// <summary> Returns all repetitions of Institution Inactivation Date (STF-13). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of din. </returns>
+
   public DIN[] GetInstitutionInactivationDate() {
      DIN[] ret = null;
     try {
@@ -686,9 +788,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Institution Inactivation Date (STF-13).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Institution Inactivation Date (STF-13). </summary>
+  ///
+  /// <value>   The institution inactivation date repetitions used. </value>
+
   public int InstitutionInactivationDateRepetitionsUsed
 {
 get{
@@ -704,11 +807,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Backup Person ID(STF-14).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Backup Person ID(STF-14). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The backup person identifier. </returns>
+
 	public CE GetBackupPersonID(int rep)
 	{
 			CE ret = null;
@@ -723,9 +833,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Backup Person ID (STF-14).
-   ///</summary>
+  /// <summary> Returns all repetitions of Backup Person ID (STF-14). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetBackupPersonID() {
      CE[] ret = null;
     try {
@@ -744,9 +857,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Backup Person ID (STF-14).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Backup Person ID (STF-14). </summary>
+  ///
+  /// <value>   The backup person identifier repetitions used. </value>
+
   public int BackupPersonIDRepetitionsUsed
 {
 get{
@@ -762,11 +876,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of E-Mail Address(STF-15).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of E-Mail Address(STF-15). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The e mail address. </returns>
+
 	public ST GetEMailAddress(int rep)
 	{
 			ST ret = null;
@@ -781,9 +902,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of E-Mail Address (STF-15).
-   ///</summary>
+  /// <summary> Returns all repetitions of E-Mail Address (STF-15). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetEMailAddress() {
      ST[] ret = null;
     try {
@@ -802,9 +926,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of E-Mail Address (STF-15).
-   ///</summary>
+  /// <summary> Returns the total repetitions of E-Mail Address (STF-15). </summary>
+  ///
+  /// <value>   The e mail address repetitions used. </value>
+
   public int EMailAddressRepetitionsUsed
 {
 get{
@@ -820,9 +945,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Preferred Method of Contact(STF-16).
-	///</summary>
+
+    /// <summary>   Returns Preferred Method of Contact(STF-16). </summary>
+    ///
+    /// <value> The preferred method of contact. </value>
+
 	public CE PreferredMethodOfContact
 	{
 		get{
@@ -843,9 +970,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Marital Status(STF-17).
-	///</summary>
+    /// <summary>   Returns Marital Status(STF-17). </summary>
+    ///
+    /// <value> The marital status. </value>
+
 	public CE MaritalStatus
 	{
 		get{
@@ -866,9 +994,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Job Title(STF-18).
-	///</summary>
+    /// <summary>   Returns Job Title(STF-18). </summary>
+    ///
+    /// <value> The job title. </value>
+
 	public ST JobTitle
 	{
 		get{
@@ -889,9 +1018,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Job Code/Class(STF-19).
-	///</summary>
+    /// <summary>   Returns Job Code/Class(STF-19). </summary>
+    ///
+    /// <value> The job code class. </value>
+
 	public JCC JobCodeClass
 	{
 		get{
@@ -912,9 +1042,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Employment Status Code(STF-20).
-	///</summary>
+    /// <summary>   Returns Employment Status Code(STF-20). </summary>
+    ///
+    /// <value> The employment status code. </value>
+
 	public CE EmploymentStatusCode
 	{
 		get{
@@ -935,9 +1066,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Additional Insured on  Auto(STF-21).
-	///</summary>
+    /// <summary>   Returns Additional Insured on  Auto(STF-21). </summary>
+    ///
+    /// <value> The additional insured on automatic. </value>
+
 	public ID AdditionalInsuredOnAuto
 	{
 		get{
@@ -958,9 +1090,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Driver's License Number - Staff(STF-22).
-	///</summary>
+    /// <summary>   Returns Driver's License Number - Staff(STF-22). </summary>
+    ///
+    /// <value> The driver s license number staff. </value>
+
 	public DLN DriverSLicenseNumberStaff
 	{
 		get{
@@ -981,9 +1114,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Copy  Auto Ins(STF-23).
-	///</summary>
+    /// <summary>   Returns Copy  Auto Ins(STF-23). </summary>
+    ///
+    /// <value> The copy automatic insert. </value>
+
 	public ID CopyAutoIns
 	{
 		get{
@@ -1004,9 +1138,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Auto Ins. Expires(STF-24).
-	///</summary>
+    /// <summary>   Returns Auto Ins. Expires(STF-24). </summary>
+    ///
+    /// <value> The automatic insert expires. </value>
+
 	public DT AutoInsExpires
 	{
 		get{
@@ -1027,9 +1162,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date Last DMV Review(STF-25).
-	///</summary>
+    /// <summary>   Returns Date Last DMV Review(STF-25). </summary>
+    ///
+    /// <value> The date last dmv review. </value>
+
 	public DT DateLastDMVReview
 	{
 		get{
@@ -1050,9 +1186,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date Next DMV Review(STF-26).
-	///</summary>
+    /// <summary>   Returns Date Next DMV Review(STF-26). </summary>
+    ///
+    /// <value> The date next dmv review. </value>
+
 	public DT DateNextDMVReview
 	{
 		get{
@@ -1073,9 +1210,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Race(STF-27).
-	///</summary>
+    /// <summary>   Returns Race(STF-27). </summary>
+    ///
+    /// <value> The race. </value>
+
 	public CE Race
 	{
 		get{
@@ -1096,9 +1234,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Ethnic Group(STF-28).
-	///</summary>
+    /// <summary>   Returns Ethnic Group(STF-28). </summary>
+    ///
+    /// <value> The ethnic group. </value>
+
 	public CE EthnicGroup
 	{
 		get{
@@ -1119,9 +1258,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Re-activation Approval Indicator(STF-29).
-	///</summary>
+    /// <summary>   Returns Re-activation Approval Indicator(STF-29). </summary>
+    ///
+    /// <value> The re activation approval indicator. </value>
+
 	public ID ReActivationApprovalIndicator
 	{
 		get{

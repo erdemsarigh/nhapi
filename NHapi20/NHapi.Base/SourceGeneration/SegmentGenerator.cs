@@ -30,24 +30,23 @@ namespace NHapi.Base.SourceGeneration
 
     using NHapi.Base.Log;
 
-    /// <summary> This class is responsible for generating source code for HL7 segment objects.
-    /// Each automatically generated segment inherits from AbstractSegment.
-    /// 
+    /// <summary>
+    /// This class is responsible for generating source code for HL7 segment objects. Each
+    /// automatically generated segment inherits from AbstractSegment.
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
-    /// <author>  Eric Poiseau
-    /// </author>
+
     public class SegmentGenerator : System.Object
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the SegmentGenerator class. </summary>
         static SegmentGenerator()
         {
             log = HapiLogFactory.GetHapiLog(typeof(SegmentGenerator));
@@ -57,10 +56,10 @@ namespace NHapi.Base.SourceGeneration
 
         #region Public Methods and Operators
 
-        /// <summary>
-        /// Main class
-        /// </summary>
-        /// <param name="args"></param>
+        /// <summary>   Main class. </summary>
+        ///
+        /// <param name="args"> . </param>
+
         [STAThread]
         public static void Main(System.String[] args)
         {
@@ -100,11 +99,17 @@ namespace NHapi.Base.SourceGeneration
             }
         }
 
-        /// <summary> <p>Returns an alternate segment name to replace the given segment name.  Substitutions
-        /// made include:  </p>
+        /// <summary>
+        /// <p>Returns an alternate segment name to replace the given segment name.  Substitutions made
+        /// include:  </p>
         /// <ul><li>Replacing Z.. with Z</li>
         /// <li>Replacing ??? with ???</li></ul>
         /// </summary>
+        ///
+        /// <param name="segmentName">  Name of the segment. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String altSegName(System.String segmentName)
         {
             System.String ret = segmentName;
@@ -115,9 +120,14 @@ namespace NHapi.Base.SourceGeneration
             return ret;
         }
 
-        /// <summary> <p>Creates skeletal source code (without correct data structure but no business
-        /// logic) for all segments found in the normative database.  </p>
+        /// <summary>
+        /// <p>Creates skeletal source code (without correct data structure but no business logic) for
+        /// all segments found in the normative database.  </p>
         /// </summary>
+        ///
+        /// <param name="baseDirectory">    Pathname of the base directory. </param>
+        /// <param name="version">          The version. </param>
+
         public static void makeAll(System.String baseDirectory, System.String version)
         {
             //make base directory
@@ -177,7 +187,17 @@ namespace NHapi.Base.SourceGeneration
             }
         }
 
-        /// <summary> Returns the Java source code for a class that represents the specified segment.</summary>
+        /// <summary>
+        /// Returns the Java source code for a class that represents the specified segment.
+        /// </summary>
+        ///
+        /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+        ///
+        /// <param name="name">     The name. </param>
+        /// <param name="version">  The version. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String makeSegment(System.String name, System.String version)
         {
             Console.WriteLine("Making segment " + name);
@@ -572,8 +592,11 @@ namespace NHapi.Base.SourceGeneration
         /// <summary>
         /// There are certain filenames that are reserved in windows.  CON is one of them.
         /// </summary>
-        /// <param name="seg"></param>
-        /// <returns></returns>
+        ///
+        /// <param name="seg">  . </param>
+        ///
+        /// <returns>   The special filename. </returns>
+
         private static string GetSpecialFilename(string seg)
         {
             if (seg.Equals("CON"))

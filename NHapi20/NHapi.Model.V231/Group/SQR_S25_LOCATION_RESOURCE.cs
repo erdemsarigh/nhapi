@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the SQR_S25_LOCATION_RESOURCE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: AIL (AIL - appointment information - location resource segment) </li>
-///<li>1: NTE (NTE - notes and comments segment) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the SQR_S25_LOCATION_RESOURCE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: AIL (AIL - appointment information - location resource segment) </li>
+/// <li>1: NTE (NTE - notes and comments segment) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class SQR_S25_LOCATION_RESOURCE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new SQR_S25_LOCATION_RESOURCE Group.
-	///</summary>
+    /// <summary>   Creates a new SQR_S25_LOCATION_RESOURCE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SQR_S25_LOCATION_RESOURCE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(AIL), true, false);
@@ -32,9 +35,13 @@ public class SQR_S25_LOCATION_RESOURCE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns AIL (AIL - appointment information - location resource segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns AIL (AIL - appointment information - location resource segment) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <value> The ail. </value>
+
 	public AIL AIL { 
 get{
 	   AIL ret = null;
@@ -48,9 +55,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -62,19 +74,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (NTE - notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (NTE - notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 

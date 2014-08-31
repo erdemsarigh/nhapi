@@ -6,37 +6,40 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V22.Datatype
 {
-
-///<summary>
-/// <p>The HL7 CQ_QUANTITY (CQ für Mengenangaben) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 CQ_QUANTITY (CQ für Mengenangaben) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>quantity (ST)</li>
 /// <li>units (ST)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CQ_QUANTITY : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CQ_QUANTITY.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CQ_QUANTITY. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CQ_QUANTITY(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CQ_QUANTITY.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CQ_QUANTITY. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CQ_QUANTITY(IMessage message, string description) : base(message, description){
 		data = new IType[2];
 		data[0] = new ST(message,"Quantity");
 		data[1] = new ST(message,"Units");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -44,12 +47,15 @@ public class CQ_QUANTITY : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -60,10 +66,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns quantity (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns quantity (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The quantity. </value>
+
 	public ST Quantity {
 get{
 	   ST ret = null;
@@ -77,10 +87,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns units (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns units (component #1).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The units. </value>
+
 	public ST Units {
 get{
 	   ST ret = null;

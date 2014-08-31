@@ -7,70 +7,71 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 PV2 message segment. 
-/// This segment has the following fields:<ol>
-///<li>PV2-1: Prior Pending Location (PL)</li>
-///<li>PV2-2: Accommodation Code (CE)</li>
-///<li>PV2-3: Admit Reason (CE)</li>
-///<li>PV2-4: Transfer Reason (CE)</li>
-///<li>PV2-5: Patient Valuables (ST)</li>
-///<li>PV2-6: Patient Valuables Location (ST)</li>
-///<li>PV2-7: Visit User Code (IS)</li>
-///<li>PV2-8: Expected Admit Date/Time (TS)</li>
-///<li>PV2-9: Expected Discharge Date/Time (TS)</li>
-///<li>PV2-10: Estimated Length of Inpatient Stay (NM)</li>
-///<li>PV2-11: Actual Length of Inpatient Stay (NM)</li>
-///<li>PV2-12: Visit Description (ST)</li>
-///<li>PV2-13: Referral Source Code (XCN)</li>
-///<li>PV2-14: Previous Service Date (DT)</li>
-///<li>PV2-15: Employment Illness Related Indicator (ID)</li>
-///<li>PV2-16: Purge Status Code (IS)</li>
-///<li>PV2-17: Purge Status Date (DT)</li>
-///<li>PV2-18: Special Program Code (IS)</li>
-///<li>PV2-19: Retention Indicator (ID)</li>
-///<li>PV2-20: Expected Number of Insurance Plans (NM)</li>
-///<li>PV2-21: Visit Publicity Code (IS)</li>
-///<li>PV2-22: Visit Protection Indicator (ID)</li>
-///<li>PV2-23: Clinic Organization Name (XON)</li>
-///<li>PV2-24: Patient Status Code (IS)</li>
-///<li>PV2-25: Visit Priority Code (IS)</li>
-///<li>PV2-26: Previous Treatment Date (DT)</li>
-///<li>PV2-27: Expected Discharge Disposition (IS)</li>
-///<li>PV2-28: Signature on File Date (DT)</li>
-///<li>PV2-29: First Similar Illness Date (DT)</li>
-///<li>PV2-30: Patient Charge Adjustment Code (CE)</li>
-///<li>PV2-31: Recurring Service Code (IS)</li>
-///<li>PV2-32: Billing Media Code (ID)</li>
-///<li>PV2-33: Expected Surgery Date and Time (TS)</li>
-///<li>PV2-34: Military Partnership Code (ID)</li>
-///<li>PV2-35: Military Non-Availability Code (ID)</li>
-///<li>PV2-36: Newborn Baby Indicator (ID)</li>
-///<li>PV2-37: Baby Detained Indicator (ID)</li>
-///<li>PV2-38: Mode of Arrival Code (CE)</li>
-///<li>PV2-39: Recreational Drug Use Code (CE)</li>
-///<li>PV2-40: Admission Level of Care Code (CE)</li>
-///<li>PV2-41: Precaution Code (CE)</li>
-///<li>PV2-42: Patient Condition Code (CE)</li>
-///<li>PV2-43: Living Will Code (IS)</li>
-///<li>PV2-44: Organ Donor Code (IS)</li>
-///<li>PV2-45: Advance Directive Code (CE)</li>
-///<li>PV2-46: Patient Status Effective Date (DT)</li>
-///<li>PV2-47: Expected LOA Return Date/Time (TS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PV2 message segment. This segment has the following fields:<ol>
+/// <li>PV2-1: Prior Pending Location (PL)</li>
+/// <li>PV2-2: Accommodation Code (CE)</li>
+/// <li>PV2-3: Admit Reason (CE)</li>
+/// <li>PV2-4: Transfer Reason (CE)</li>
+/// <li>PV2-5: Patient Valuables (ST)</li>
+/// <li>PV2-6: Patient Valuables Location (ST)</li>
+/// <li>PV2-7: Visit User Code (IS)</li>
+/// <li>PV2-8: Expected Admit Date/Time (TS)</li>
+/// <li>PV2-9: Expected Discharge Date/Time (TS)</li>
+/// <li>PV2-10: Estimated Length of Inpatient Stay (NM)</li>
+/// <li>PV2-11: Actual Length of Inpatient Stay (NM)</li>
+/// <li>PV2-12: Visit Description (ST)</li>
+/// <li>PV2-13: Referral Source Code (XCN)</li>
+/// <li>PV2-14: Previous Service Date (DT)</li>
+/// <li>PV2-15: Employment Illness Related Indicator (ID)</li>
+/// <li>PV2-16: Purge Status Code (IS)</li>
+/// <li>PV2-17: Purge Status Date (DT)</li>
+/// <li>PV2-18: Special Program Code (IS)</li>
+/// <li>PV2-19: Retention Indicator (ID)</li>
+/// <li>PV2-20: Expected Number of Insurance Plans (NM)</li>
+/// <li>PV2-21: Visit Publicity Code (IS)</li>
+/// <li>PV2-22: Visit Protection Indicator (ID)</li>
+/// <li>PV2-23: Clinic Organization Name (XON)</li>
+/// <li>PV2-24: Patient Status Code (IS)</li>
+/// <li>PV2-25: Visit Priority Code (IS)</li>
+/// <li>PV2-26: Previous Treatment Date (DT)</li>
+/// <li>PV2-27: Expected Discharge Disposition (IS)</li>
+/// <li>PV2-28: Signature on File Date (DT)</li>
+/// <li>PV2-29: First Similar Illness Date (DT)</li>
+/// <li>PV2-30: Patient Charge Adjustment Code (CE)</li>
+/// <li>PV2-31: Recurring Service Code (IS)</li>
+/// <li>PV2-32: Billing Media Code (ID)</li>
+/// <li>PV2-33: Expected Surgery Date and Time (TS)</li>
+/// <li>PV2-34: Military Partnership Code (ID)</li>
+/// <li>PV2-35: Military Non-Availability Code (ID)</li>
+/// <li>PV2-36: Newborn Baby Indicator (ID)</li>
+/// <li>PV2-37: Baby Detained Indicator (ID)</li>
+/// <li>PV2-38: Mode of Arrival Code (CE)</li>
+/// <li>PV2-39: Recreational Drug Use Code (CE)</li>
+/// <li>PV2-40: Admission Level of Care Code (CE)</li>
+/// <li>PV2-41: Precaution Code (CE)</li>
+/// <li>PV2-42: Patient Condition Code (CE)</li>
+/// <li>PV2-43: Living Will Code (IS)</li>
+/// <li>PV2-44: Organ Donor Code (IS)</li>
+/// <li>PV2-45: Advance Directive Code (CE)</li>
+/// <li>PV2-46: Patient Status Effective Date (DT)</li>
+/// <li>PV2-47: Expected LOA Return Date/Time (TS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PV2 : AbstractSegment  {
 
-  /**
-   * Creates a PV2 (Patient visit - additional information) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PV2 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PV2(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -126,9 +127,10 @@ public class PV2 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Prior Pending Location(PV2-1).
-	///</summary>
+    /// <summary>   Returns Prior Pending Location(PV2-1). </summary>
+    ///
+    /// <value> The prior pending location. </value>
+
 	public PL PriorPendingLocation
 	{
 		get{
@@ -149,9 +151,10 @@ public class PV2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Accommodation Code(PV2-2).
-	///</summary>
+    /// <summary>   Returns Accommodation Code(PV2-2). </summary>
+    ///
+    /// <value> The accommodation code. </value>
+
 	public CE AccommodationCode
 	{
 		get{
@@ -172,9 +175,10 @@ public class PV2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Admit Reason(PV2-3).
-	///</summary>
+    /// <summary>   Returns Admit Reason(PV2-3). </summary>
+    ///
+    /// <value> The admit reason. </value>
+
 	public CE AdmitReason
 	{
 		get{
@@ -195,9 +199,10 @@ public class PV2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transfer Reason(PV2-4).
-	///</summary>
+    /// <summary>   Returns Transfer Reason(PV2-4). </summary>
+    ///
+    /// <value> The transfer reason. </value>
+
 	public CE TransferReason
 	{
 		get{
@@ -218,11 +223,17 @@ public class PV2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Patient Valuables(PV2-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Patient Valuables(PV2-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The patient valuables. </returns>
+
 	public ST GetPatientValuables(int rep)
 	{
 			ST ret = null;
@@ -237,9 +248,12 @@ public class PV2 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Patient Valuables (PV2-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Patient Valuables (PV2-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetPatientValuables() {
      ST[] ret = null;
     try {
@@ -258,9 +272,10 @@ public class PV2 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Patient Valuables (PV2-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Patient Valuables (PV2-5). </summary>
+  ///
+  /// <value>   The patient valuables repetitions used. </value>
+
   public int PatientValuablesRepetitionsUsed
 {
 get{
@@ -276,9 +291,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Patient Valuables Location(PV2-6).
-	///</summary>
+
+    /// <summary>   Returns Patient Valuables Location(PV2-6). </summary>
+    ///
+    /// <value> The patient valuables location. </value>
+
 	public ST PatientValuablesLocation
 	{
 		get{
@@ -299,11 +316,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Visit User Code(PV2-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Visit User Code(PV2-7). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The visit user code. </returns>
+
 	public IS GetVisitUserCode(int rep)
 	{
 			IS ret = null;
@@ -318,9 +341,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Visit User Code (PV2-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Visit User Code (PV2-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetVisitUserCode() {
      IS[] ret = null;
     try {
@@ -339,9 +365,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Visit User Code (PV2-7).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Visit User Code (PV2-7). </summary>
+  ///
+  /// <value>   The visit user code repetitions used. </value>
+
   public int VisitUserCodeRepetitionsUsed
 {
 get{
@@ -357,9 +384,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Expected Admit Date/Time(PV2-8).
-	///</summary>
+
+    /// <summary>   Returns Expected Admit Date/Time(PV2-8). </summary>
+    ///
+    /// <value> The expected admit date time. </value>
+
 	public TS ExpectedAdmitDateTime
 	{
 		get{
@@ -380,9 +409,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Expected Discharge Date/Time(PV2-9).
-	///</summary>
+    /// <summary>   Returns Expected Discharge Date/Time(PV2-9). </summary>
+    ///
+    /// <value> The expected discharge date time. </value>
+
 	public TS ExpectedDischargeDateTime
 	{
 		get{
@@ -403,9 +433,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Estimated Length of Inpatient Stay(PV2-10).
-	///</summary>
+    /// <summary>   Returns Estimated Length of Inpatient Stay(PV2-10). </summary>
+    ///
+    /// <value> The estimated length of inpatient stay. </value>
+
 	public NM EstimatedLengthOfInpatientStay
 	{
 		get{
@@ -426,9 +457,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Actual Length of Inpatient Stay(PV2-11).
-	///</summary>
+    /// <summary>   Returns Actual Length of Inpatient Stay(PV2-11). </summary>
+    ///
+    /// <value> The actual length of inpatient stay. </value>
+
 	public NM ActualLengthOfInpatientStay
 	{
 		get{
@@ -449,9 +481,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Visit Description(PV2-12).
-	///</summary>
+    /// <summary>   Returns Visit Description(PV2-12). </summary>
+    ///
+    /// <value> Information describing the visit. </value>
+
 	public ST VisitDescription
 	{
 		get{
@@ -472,11 +505,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Referral Source Code(PV2-13).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Referral Source Code(PV2-13). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The referral source code. </returns>
+
 	public XCN GetReferralSourceCode(int rep)
 	{
 			XCN ret = null;
@@ -491,9 +530,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Referral Source Code (PV2-13).
-   ///</summary>
+  /// <summary> Returns all repetitions of Referral Source Code (PV2-13). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetReferralSourceCode() {
      XCN[] ret = null;
     try {
@@ -512,9 +554,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Referral Source Code (PV2-13).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Referral Source Code (PV2-13). </summary>
+  ///
+  /// <value>   The referral source code repetitions used. </value>
+
   public int ReferralSourceCodeRepetitionsUsed
 {
 get{
@@ -530,9 +573,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Previous Service Date(PV2-14).
-	///</summary>
+
+    /// <summary>   Returns Previous Service Date(PV2-14). </summary>
+    ///
+    /// <value> The previous service date. </value>
+
 	public DT PreviousServiceDate
 	{
 		get{
@@ -553,9 +598,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Employment Illness Related Indicator(PV2-15).
-	///</summary>
+    /// <summary>   Returns Employment Illness Related Indicator(PV2-15). </summary>
+    ///
+    /// <value> The employment illness related indicator. </value>
+
 	public ID EmploymentIllnessRelatedIndicator
 	{
 		get{
@@ -576,9 +622,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Purge Status Code(PV2-16).
-	///</summary>
+    /// <summary>   Returns Purge Status Code(PV2-16). </summary>
+    ///
+    /// <value> The purge status code. </value>
+
 	public IS PurgeStatusCode
 	{
 		get{
@@ -599,9 +646,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Purge Status Date(PV2-17).
-	///</summary>
+    /// <summary>   Returns Purge Status Date(PV2-17). </summary>
+    ///
+    /// <value> The purge status date. </value>
+
 	public DT PurgeStatusDate
 	{
 		get{
@@ -622,9 +670,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Special Program Code(PV2-18).
-	///</summary>
+    /// <summary>   Returns Special Program Code(PV2-18). </summary>
+    ///
+    /// <value> The special program code. </value>
+
 	public IS SpecialProgramCode
 	{
 		get{
@@ -645,9 +694,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Retention Indicator(PV2-19).
-	///</summary>
+    /// <summary>   Returns Retention Indicator(PV2-19). </summary>
+    ///
+    /// <value> The retention indicator. </value>
+
 	public ID RetentionIndicator
 	{
 		get{
@@ -668,9 +718,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Expected Number of Insurance Plans(PV2-20).
-	///</summary>
+    /// <summary>   Returns Expected Number of Insurance Plans(PV2-20). </summary>
+    ///
+    /// <value> The expected number of insurance plans. </value>
+
 	public NM ExpectedNumberOfInsurancePlans
 	{
 		get{
@@ -691,9 +742,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Visit Publicity Code(PV2-21).
-	///</summary>
+    /// <summary>   Returns Visit Publicity Code(PV2-21). </summary>
+    ///
+    /// <value> The visit publicity code. </value>
+
 	public IS VisitPublicityCode
 	{
 		get{
@@ -714,9 +766,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Visit Protection Indicator(PV2-22).
-	///</summary>
+    /// <summary>   Returns Visit Protection Indicator(PV2-22). </summary>
+    ///
+    /// <value> The visit protection indicator. </value>
+
 	public ID VisitProtectionIndicator
 	{
 		get{
@@ -737,11 +790,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Clinic Organization Name(PV2-23).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Clinic Organization Name(PV2-23). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The clinic organization name. </returns>
+
 	public XON GetClinicOrganizationName(int rep)
 	{
 			XON ret = null;
@@ -756,9 +815,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Clinic Organization Name (PV2-23).
-   ///</summary>
+  /// <summary> Returns all repetitions of Clinic Organization Name (PV2-23). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of XON. </returns>
+
   public XON[] GetClinicOrganizationName() {
      XON[] ret = null;
     try {
@@ -777,9 +839,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Clinic Organization Name (PV2-23).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Clinic Organization Name (PV2-23). </summary>
+  ///
+  /// <value>   The clinic organization name repetitions used. </value>
+
   public int ClinicOrganizationNameRepetitionsUsed
 {
 get{
@@ -795,9 +858,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Patient Status Code(PV2-24).
-	///</summary>
+
+    /// <summary>   Returns Patient Status Code(PV2-24). </summary>
+    ///
+    /// <value> The patient status code. </value>
+
 	public IS PatientStatusCode
 	{
 		get{
@@ -818,9 +883,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Visit Priority Code(PV2-25).
-	///</summary>
+    /// <summary>   Returns Visit Priority Code(PV2-25). </summary>
+    ///
+    /// <value> The visit priority code. </value>
+
 	public IS VisitPriorityCode
 	{
 		get{
@@ -841,9 +907,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Previous Treatment Date(PV2-26).
-	///</summary>
+    /// <summary>   Returns Previous Treatment Date(PV2-26). </summary>
+    ///
+    /// <value> The previous treatment date. </value>
+
 	public DT PreviousTreatmentDate
 	{
 		get{
@@ -864,9 +931,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Expected Discharge Disposition(PV2-27).
-	///</summary>
+    /// <summary>   Returns Expected Discharge Disposition(PV2-27). </summary>
+    ///
+    /// <value> The expected discharge disposition. </value>
+
 	public IS ExpectedDischargeDisposition
 	{
 		get{
@@ -887,9 +955,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Signature on File Date(PV2-28).
-	///</summary>
+    /// <summary>   Returns Signature on File Date(PV2-28). </summary>
+    ///
+    /// <value> The signature on file date. </value>
+
 	public DT SignatureOnFileDate
 	{
 		get{
@@ -910,9 +979,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns First Similar Illness Date(PV2-29).
-	///</summary>
+    /// <summary>   Returns First Similar Illness Date(PV2-29). </summary>
+    ///
+    /// <value> The first similar illness date. </value>
+
 	public DT FirstSimilarIllnessDate
 	{
 		get{
@@ -933,9 +1003,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Patient Charge Adjustment Code(PV2-30).
-	///</summary>
+    /// <summary>   Returns Patient Charge Adjustment Code(PV2-30). </summary>
+    ///
+    /// <value> The patient charge adjustment code. </value>
+
 	public CE PatientChargeAdjustmentCode
 	{
 		get{
@@ -956,9 +1027,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Recurring Service Code(PV2-31).
-	///</summary>
+    /// <summary>   Returns Recurring Service Code(PV2-31). </summary>
+    ///
+    /// <value> The recurring service code. </value>
+
 	public IS RecurringServiceCode
 	{
 		get{
@@ -979,9 +1051,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Billing Media Code(PV2-32).
-	///</summary>
+    /// <summary>   Returns Billing Media Code(PV2-32). </summary>
+    ///
+    /// <value> The billing media code. </value>
+
 	public ID BillingMediaCode
 	{
 		get{
@@ -1002,9 +1075,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Expected Surgery Date and Time(PV2-33).
-	///</summary>
+    /// <summary>   Returns Expected Surgery Date and Time(PV2-33). </summary>
+    ///
+    /// <value> The expected surgery date and time. </value>
+
 	public TS ExpectedSurgeryDateAndTime
 	{
 		get{
@@ -1025,9 +1099,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Military Partnership Code(PV2-34).
-	///</summary>
+    /// <summary>   Returns Military Partnership Code(PV2-34). </summary>
+    ///
+    /// <value> The military partnership code. </value>
+
 	public ID MilitaryPartnershipCode
 	{
 		get{
@@ -1048,9 +1123,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Military Non-Availability Code(PV2-35).
-	///</summary>
+    /// <summary>   Returns Military Non-Availability Code(PV2-35). </summary>
+    ///
+    /// <value> The military non availability code. </value>
+
 	public ID MilitaryNonAvailabilityCode
 	{
 		get{
@@ -1071,9 +1147,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Newborn Baby Indicator(PV2-36).
-	///</summary>
+    /// <summary>   Returns Newborn Baby Indicator(PV2-36). </summary>
+    ///
+    /// <value> The newborn baby indicator. </value>
+
 	public ID NewbornBabyIndicator
 	{
 		get{
@@ -1094,9 +1171,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Baby Detained Indicator(PV2-37).
-	///</summary>
+    /// <summary>   Returns Baby Detained Indicator(PV2-37). </summary>
+    ///
+    /// <value> The baby detained indicator. </value>
+
 	public ID BabyDetainedIndicator
 	{
 		get{
@@ -1117,9 +1195,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Mode of Arrival Code(PV2-38).
-	///</summary>
+    /// <summary>   Returns Mode of Arrival Code(PV2-38). </summary>
+    ///
+    /// <value> The mode of arrival code. </value>
+
 	public CE ModeOfArrivalCode
 	{
 		get{
@@ -1140,11 +1219,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Recreational Drug Use Code(PV2-39).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Recreational Drug Use Code(PV2-39). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The recreational drug use code. </returns>
+
 	public CE GetRecreationalDrugUseCode(int rep)
 	{
 			CE ret = null;
@@ -1159,9 +1244,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Recreational Drug Use Code (PV2-39).
-   ///</summary>
+  /// <summary> Returns all repetitions of Recreational Drug Use Code (PV2-39). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetRecreationalDrugUseCode() {
      CE[] ret = null;
     try {
@@ -1180,9 +1268,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Recreational Drug Use Code (PV2-39).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Recreational Drug Use Code (PV2-39). </summary>
+  ///
+  /// <value>   The recreational drug use code repetitions used. </value>
+
   public int RecreationalDrugUseCodeRepetitionsUsed
 {
 get{
@@ -1198,9 +1287,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Admission Level of Care Code(PV2-40).
-	///</summary>
+
+    /// <summary>   Returns Admission Level of Care Code(PV2-40). </summary>
+    ///
+    /// <value> The admission level of care code. </value>
+
 	public CE AdmissionLevelOfCareCode
 	{
 		get{
@@ -1221,11 +1312,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Precaution Code(PV2-41).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Precaution Code(PV2-41). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The precaution code. </returns>
+
 	public CE GetPrecautionCode(int rep)
 	{
 			CE ret = null;
@@ -1240,9 +1337,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Precaution Code (PV2-41).
-   ///</summary>
+  /// <summary> Returns all repetitions of Precaution Code (PV2-41). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetPrecautionCode() {
      CE[] ret = null;
     try {
@@ -1261,9 +1361,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Precaution Code (PV2-41).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Precaution Code (PV2-41). </summary>
+  ///
+  /// <value>   The precaution code repetitions used. </value>
+
   public int PrecautionCodeRepetitionsUsed
 {
 get{
@@ -1279,9 +1380,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Patient Condition Code(PV2-42).
-	///</summary>
+
+    /// <summary>   Returns Patient Condition Code(PV2-42). </summary>
+    ///
+    /// <value> The patient condition code. </value>
+
 	public CE PatientConditionCode
 	{
 		get{
@@ -1302,9 +1405,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Living Will Code(PV2-43).
-	///</summary>
+    /// <summary>   Returns Living Will Code(PV2-43). </summary>
+    ///
+    /// <value> The living will code. </value>
+
 	public IS LivingWillCode
 	{
 		get{
@@ -1325,9 +1429,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Organ Donor Code(PV2-44).
-	///</summary>
+    /// <summary>   Returns Organ Donor Code(PV2-44). </summary>
+    ///
+    /// <value> The organ donor code. </value>
+
 	public IS OrganDonorCode
 	{
 		get{
@@ -1348,11 +1453,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Advance Directive Code(PV2-45).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Advance Directive Code(PV2-45). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The advance directive code. </returns>
+
 	public CE GetAdvanceDirectiveCode(int rep)
 	{
 			CE ret = null;
@@ -1367,9 +1478,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Advance Directive Code (PV2-45).
-   ///</summary>
+  /// <summary> Returns all repetitions of Advance Directive Code (PV2-45). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetAdvanceDirectiveCode() {
      CE[] ret = null;
     try {
@@ -1388,9 +1502,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Advance Directive Code (PV2-45).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Advance Directive Code (PV2-45). </summary>
+  ///
+  /// <value>   The advance directive code repetitions used. </value>
+
   public int AdvanceDirectiveCodeRepetitionsUsed
 {
 get{
@@ -1406,9 +1521,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Patient Status Effective Date(PV2-46).
-	///</summary>
+
+    /// <summary>   Returns Patient Status Effective Date(PV2-46). </summary>
+    ///
+    /// <value> The patient status effective date. </value>
+
 	public DT PatientStatusEffectiveDate
 	{
 		get{
@@ -1429,9 +1546,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Expected LOA Return Date/Time(PV2-47).
-	///</summary>
+    /// <summary>   Returns Expected LOA Return Date/Time(PV2-47). </summary>
+    ///
+    /// <value> The expected loa return date time. </value>
+
 	public TS ExpectedLOAReturnDateTime
 	{
 		get{

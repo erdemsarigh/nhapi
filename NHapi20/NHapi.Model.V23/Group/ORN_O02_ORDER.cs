@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the ORN_O02_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common order segment) </li>
-///<li>1: RQD (Requisition detail) </li>
-///<li>2: RQ1 (Requisition detail-1 segment) optional </li>
-///<li>3: NTE (Notes and comments segment) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ORN_O02_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common order segment) </li>
+/// <li>1: RQD (Requisition detail) </li>
+/// <li>2: RQ1 (Requisition detail-1 segment) optional </li>
+/// <li>3: NTE (Notes and comments segment) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ORN_O02_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ORN_O02_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new ORN_O02_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORN_O02_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -36,9 +39,10 @@ public class ORN_O02_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common order segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common order segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -52,9 +56,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RQD (Requisition detail) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RQD (Requisition detail) - creates it if necessary. </summary>
+    ///
+    /// <value> The rqd. </value>
+
 	public RQD RQD { 
 get{
 	   RQD ret = null;
@@ -68,9 +73,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RQ1 (Requisition detail-1 segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RQ1 (Requisition detail-1 segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The request 1. </value>
+
 	public RQ1 RQ1 { 
 get{
 	   RQ1 ret = null;
@@ -84,9 +90,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -98,19 +109,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 

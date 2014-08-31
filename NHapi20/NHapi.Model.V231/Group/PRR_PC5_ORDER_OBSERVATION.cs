@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the PRR_PC5_ORDER_OBSERVATION Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: OBX (OBX - observation/result segment) </li>
-///<li>1: NTE (NTE - notes and comments segment) optional repeating</li>
-///<li>2: VAR (Variance) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the PRR_PC5_ORDER_OBSERVATION Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: OBX (OBX - observation/result segment) </li>
+/// <li>1: NTE (NTE - notes and comments segment) optional repeating</li>
+/// <li>2: VAR (Variance) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class PRR_PC5_ORDER_OBSERVATION : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new PRR_PC5_ORDER_OBSERVATION Group.
-	///</summary>
+    /// <summary>   Creates a new PRR_PC5_ORDER_OBSERVATION Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PRR_PC5_ORDER_OBSERVATION(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(OBX), true, false);
@@ -34,9 +37,10 @@ public class PRR_PC5_ORDER_OBSERVATION : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns OBX (OBX - observation/result segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OBX (OBX - observation/result segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The obx. </value>
+
 	public OBX OBX { 
 get{
 	   OBX ret = null;
@@ -50,9 +54,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -64,19 +73,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (NTE - notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (NTE - notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -91,9 +106,12 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of VAR (Variance) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns  first repetition of VAR (Variance) - creates it if necessary. </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The variable. </returns>
+
 	public VAR GetVAR() {
 	   VAR ret = null;
 	   try {
@@ -105,19 +123,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of VAR
-	/// * (Variance) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of VAR
+    ///  * (Variance) - creates it if necessary throws HL7Exception if the repetition requested is
+    ///  more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The variable. </returns>
+
 	public VAR GetVAR(int rep) { 
 	   return (VAR)this.GetStructure("VAR", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of VAR 
-	 */ 
+    /// <summary>   Gets the variable repetitions used. </summary>
+    ///
+    /// <value> The variable repetitions used. </value>
+
 	public int VARRepetitionsUsed { 
 get{
 	    int reps = -1; 

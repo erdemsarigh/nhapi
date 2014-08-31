@@ -6,29 +6,31 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 ICD (Insurance Certification Definition) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 ICD (Insurance Certification Definition) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>Certification Patient Type (IS)</li>
 /// <li>Certification Required (ID)</li>
 /// <li>Date/Time Certification Required (TS)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class ICD : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a ICD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a ICD. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public ICD(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a ICD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a ICD. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public ICD(IMessage message, string description) : base(message, description){
 		data = new IType[3];
 		data[0] = new IS(message, 150,"Certification Patient Type");
@@ -36,9 +38,10 @@ public class ICD : AbstractType, IComposite{
 		data[2] = new TS(message,"Date/Time Certification Required");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -46,12 +49,15 @@ public class ICD : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -62,10 +68,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Certification Patient Type (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Certification Patient Type (component #0).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the certification patient. </value>
+
 	public IS CertificationPatientType {
 get{
 	   IS ret = null;
@@ -79,10 +89,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Certification Required (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Certification Required (component #1).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The certification required. </value>
+
 	public ID CertificationRequired {
 get{
 	   ID ret = null;
@@ -96,10 +110,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Date/Time Certification Required (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Date/Time Certification Required (component #2).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The date time certification required. </value>
+
 	public TS DateTimeCertificationRequired {
 get{
 	   TS ret = null;

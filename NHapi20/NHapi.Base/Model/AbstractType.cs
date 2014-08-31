@@ -27,37 +27,38 @@
 
 namespace NHapi.Base.Model
 {
-    /// <summary> An abstract Type that provides a default implementation of getName(). 
-    /// 
-    /// </summary>
-    /// <author>  Bryan Tripp
-    /// </author>
+    /// <summary>   An abstract Type that provides a default implementation of getName(). </summary>
     public class AbstractType : IType
     {
         #region Fields
 
+        /// <summary>   The description. </summary>
         private string description;
 
+        /// <summary>   The extra. </summary>
         private ExtraComponents extra;
 
+        /// <summary>   The message. </summary>
         private IMessage message;
 
         #endregion
 
         #region Constructors and Destructors
 
-        /// <summary> Creates a new instance of AbstractType</summary>
-        /// <param name="message">message to which this type belongs 
-        /// </param>
+        /// <summary>   Creates a new instance of AbstractType. </summary>
+        ///
+        /// <param name="message">  message to which this type belongs. </param>
+
         public AbstractType(IMessage message)
             : this(message, null)
         {
         }
 
-        /// <summary> Creates a new instance of AbstractType</summary>
-        /// <param name="message">message to which this type belongs 
-        /// <param name="description">The type description</param>
-        /// </param>
+        /// <summary>   Creates a new instance of AbstractType. </summary>
+        ///
+        /// <param name="message">      message to which this type belongs. </param>
+        /// <param name="description">  The type description. </param>
+
         public AbstractType(IMessage message, string description)
         {
             this.extra = new ExtraComponents(message);
@@ -69,9 +70,10 @@ namespace NHapi.Base.Model
 
         #region Public Properties
 
-        /// <summary>
-        /// Return the description of the type
-        /// </summary>
+        /// <summary>   Return the description of the type. </summary>
+        ///
+        /// <value> The description. </value>
+
         public virtual string Description
         {
             get
@@ -80,9 +82,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        /// Extra components
-        /// </summary>
+        /// <summary>   Extra components. </summary>
+        ///
+        /// <value> The extra components. </value>
+
         public virtual ExtraComponents ExtraComponents
         {
             get
@@ -91,8 +94,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <returns> the message to which this Type belongs
-        /// </returns>
+        /// <summary>   Gets the message. </summary>
+        ///
+        /// <value> the message to which this Type belongs. </value>
+
         public virtual IMessage Message
         {
             get
@@ -101,9 +106,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        /// Returns the name of the type (used in XML encoding and profile checking)  
-        /// </summary>
+        /// <summary>   Returns the name of the type (used in XML encoding and profile checking)   </summary>
+        ///
+        /// <value> The name of the type. </value>
+
         public virtual System.String TypeName
         {
             get

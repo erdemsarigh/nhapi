@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the OMG_O19_PATIENT_PRIOR Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PID (Patient identification) </li>
-///<li>1: PD1 (patient additional demographic) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the OMG_O19_PATIENT_PRIOR Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PID (Patient identification) </li>
+/// <li>1: PD1 (patient additional demographic) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class OMG_O19_PATIENT_PRIOR : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new OMG_O19_PATIENT_PRIOR Group.
-	///</summary>
+    /// <summary>   Creates a new OMG_O19_PATIENT_PRIOR Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OMG_O19_PATIENT_PRIOR(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PID), true, false);
@@ -32,9 +35,10 @@ public class OMG_O19_PATIENT_PRIOR : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PID (Patient identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (patient additional demographic) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PD1 (patient additional demographic) - creates it if necessary. </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;

@@ -7,45 +7,46 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 RXA message segment. 
-/// This segment has the following fields:<ol>
-///<li>RXA-1: Give Sub-ID Counter (ID)</li>
-///<li>RXA-2: Administration Sub-ID Counter (NM)</li>
-///<li>RXA-3: Date/Time Start of Administration (TS)</li>
-///<li>RXA-4: Date/Time End of Administration (TS)</li>
-///<li>RXA-5: Administered Code (CE)</li>
-///<li>RXA-6: Administered Amount (NM)</li>
-///<li>RXA-7: Administered Units (CE)</li>
-///<li>RXA-8: Administered Dosage Form (CE)</li>
-///<li>RXA-9: Administration Notes (CE)</li>
-///<li>RXA-10: Administering Provider (XCN)</li>
-///<li>RXA-11: Administered-at Location (CM_LA1)</li>
-///<li>RXA-12: Administered Per (Time Unit) (ST)</li>
-///<li>RXA-13: Administered Strength (NM)</li>
-///<li>RXA-14: Administered Strength Units (CE)</li>
-///<li>RXA-15: Substance Lot Number (ST)</li>
-///<li>RXA-16: Substance Expiration Date (TS)</li>
-///<li>RXA-17: Substance Manufacturer Name (CE)</li>
-///<li>RXA-18: Substance Refusal Reason (CE)</li>
-///<li>RXA-19: Indication (CE)</li>
-///<li>RXA-20: Completion Status (ID)</li>
-///<li>RXA-21: Action Code-RXA (ID)</li>
-///<li>RXA-22: System Entry Date/Time (TS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 RXA message segment. This segment has the following fields:<ol>
+/// <li>RXA-1: Give Sub-ID Counter (ID)</li>
+/// <li>RXA-2: Administration Sub-ID Counter (NM)</li>
+/// <li>RXA-3: Date/Time Start of Administration (TS)</li>
+/// <li>RXA-4: Date/Time End of Administration (TS)</li>
+/// <li>RXA-5: Administered Code (CE)</li>
+/// <li>RXA-6: Administered Amount (NM)</li>
+/// <li>RXA-7: Administered Units (CE)</li>
+/// <li>RXA-8: Administered Dosage Form (CE)</li>
+/// <li>RXA-9: Administration Notes (CE)</li>
+/// <li>RXA-10: Administering Provider (XCN)</li>
+/// <li>RXA-11: Administered-at Location (CM_LA1)</li>
+/// <li>RXA-12: Administered Per (Time Unit) (ST)</li>
+/// <li>RXA-13: Administered Strength (NM)</li>
+/// <li>RXA-14: Administered Strength Units (CE)</li>
+/// <li>RXA-15: Substance Lot Number (ST)</li>
+/// <li>RXA-16: Substance Expiration Date (TS)</li>
+/// <li>RXA-17: Substance Manufacturer Name (CE)</li>
+/// <li>RXA-18: Substance Refusal Reason (CE)</li>
+/// <li>RXA-19: Indication (CE)</li>
+/// <li>RXA-20: Completion Status (ID)</li>
+/// <li>RXA-21: Action Code-RXA (ID)</li>
+/// <li>RXA-22: System Entry Date/Time (TS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class RXA : AbstractSegment  {
 
-  /**
-   * Creates a RXA (Pharmacy administration segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the RXA class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RXA(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -76,9 +77,10 @@ public class RXA : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Give Sub-ID Counter(RXA-1).
-	///</summary>
+    /// <summary>   Returns Give Sub-ID Counter(RXA-1). </summary>
+    ///
+    /// <value> The give sub identifier counter. </value>
+
 	public ID GiveSubIDCounter
 	{
 		get{
@@ -99,9 +101,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administration Sub-ID Counter(RXA-2).
-	///</summary>
+    /// <summary>   Returns Administration Sub-ID Counter(RXA-2). </summary>
+    ///
+    /// <value> The administration sub identifier counter. </value>
+
 	public NM AdministrationSubIDCounter
 	{
 		get{
@@ -122,9 +125,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date/Time Start of Administration(RXA-3).
-	///</summary>
+    /// <summary>   Returns Date/Time Start of Administration(RXA-3). </summary>
+    ///
+    /// <value> The date time start of administration. </value>
+
 	public TS DateTimeStartOfAdministration
 	{
 		get{
@@ -145,9 +149,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date/Time End of Administration(RXA-4).
-	///</summary>
+    /// <summary>   Returns Date/Time End of Administration(RXA-4). </summary>
+    ///
+    /// <value> The date time end of administration. </value>
+
 	public TS DateTimeEndOfAdministration
 	{
 		get{
@@ -168,9 +173,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administered Code(RXA-5).
-	///</summary>
+    /// <summary>   Returns Administered Code(RXA-5). </summary>
+    ///
+    /// <value> The administered code. </value>
+
 	public CE AdministeredCode
 	{
 		get{
@@ -191,9 +197,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administered Amount(RXA-6).
-	///</summary>
+    /// <summary>   Returns Administered Amount(RXA-6). </summary>
+    ///
+    /// <value> The administered amount. </value>
+
 	public NM AdministeredAmount
 	{
 		get{
@@ -214,9 +221,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administered Units(RXA-7).
-	///</summary>
+    /// <summary>   Returns Administered Units(RXA-7). </summary>
+    ///
+    /// <value> The administered units. </value>
+
 	public CE AdministeredUnits
 	{
 		get{
@@ -237,9 +245,10 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Administered Dosage Form(RXA-8).
-	///</summary>
+    /// <summary>   Returns Administered Dosage Form(RXA-8). </summary>
+    ///
+    /// <value> The administered dosage form. </value>
+
 	public CE AdministeredDosageForm
 	{
 		get{
@@ -260,11 +269,17 @@ public class RXA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Administration Notes(RXA-9).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Administration Notes(RXA-9). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The administration notes. </returns>
+
 	public CE GetAdministrationNotes(int rep)
 	{
 			CE ret = null;
@@ -279,9 +294,12 @@ public class RXA : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Administration Notes (RXA-9).
-   ///</summary>
+  /// <summary> Returns all repetitions of Administration Notes (RXA-9). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetAdministrationNotes() {
      CE[] ret = null;
     try {
@@ -300,9 +318,10 @@ public class RXA : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Administration Notes (RXA-9).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Administration Notes (RXA-9). </summary>
+  ///
+  /// <value>   The administration notes repetitions used. </value>
+
   public int AdministrationNotesRepetitionsUsed
 {
 get{
@@ -318,9 +337,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Administering Provider(RXA-10).
-	///</summary>
+
+    /// <summary>   Returns Administering Provider(RXA-10). </summary>
+    ///
+    /// <value> The administering provider. </value>
+
 	public XCN AdministeringProvider
 	{
 		get{
@@ -341,9 +362,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Administered-at Location(RXA-11).
-	///</summary>
+    /// <summary>   Returns Administered-at Location(RXA-11). </summary>
+    ///
+    /// <value> The administered at location. </value>
+
 	public CM_LA1 AdministeredAtLocation
 	{
 		get{
@@ -364,9 +386,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Administered Per (Time Unit)(RXA-12).
-	///</summary>
+    /// <summary>   Returns Administered Per (Time Unit)(RXA-12). </summary>
+    ///
+    /// <value> The administered per time unit. </value>
+
 	public ST AdministeredPerTimeUnit
 	{
 		get{
@@ -387,9 +410,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Administered Strength(RXA-13).
-	///</summary>
+    /// <summary>   Returns Administered Strength(RXA-13). </summary>
+    ///
+    /// <value> The administered strength. </value>
+
 	public NM AdministeredStrength
 	{
 		get{
@@ -410,9 +434,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Administered Strength Units(RXA-14).
-	///</summary>
+    /// <summary>   Returns Administered Strength Units(RXA-14). </summary>
+    ///
+    /// <value> The administered strength units. </value>
+
 	public CE AdministeredStrengthUnits
 	{
 		get{
@@ -433,11 +458,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Substance Lot Number(RXA-15).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Substance Lot Number(RXA-15). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The substance lot number. </returns>
+
 	public ST GetSubstanceLotNumber(int rep)
 	{
 			ST ret = null;
@@ -452,9 +483,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Substance Lot Number (RXA-15).
-   ///</summary>
+  /// <summary> Returns all repetitions of Substance Lot Number (RXA-15). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetSubstanceLotNumber() {
      ST[] ret = null;
     try {
@@ -473,9 +507,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Substance Lot Number (RXA-15).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Substance Lot Number (RXA-15). </summary>
+  ///
+  /// <value>   The substance lot number repetitions used. </value>
+
   public int SubstanceLotNumberRepetitionsUsed
 {
 get{
@@ -491,11 +526,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Substance Expiration Date(RXA-16).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Substance Expiration Date(RXA-16). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The substance expiration date. </returns>
+
 	public TS GetSubstanceExpirationDate(int rep)
 	{
 			TS ret = null;
@@ -510,9 +552,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Substance Expiration Date (RXA-16).
-   ///</summary>
+  /// <summary> Returns all repetitions of Substance Expiration Date (RXA-16). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ts. </returns>
+
   public TS[] GetSubstanceExpirationDate() {
      TS[] ret = null;
     try {
@@ -531,9 +576,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Substance Expiration Date (RXA-16).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Substance Expiration Date (RXA-16). </summary>
+  ///
+  /// <value>   The substance expiration date repetitions used. </value>
+
   public int SubstanceExpirationDateRepetitionsUsed
 {
 get{
@@ -549,11 +595,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Substance Manufacturer Name(RXA-17).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Substance Manufacturer Name(RXA-17). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The substance manufacturer name. </returns>
+
 	public CE GetSubstanceManufacturerName(int rep)
 	{
 			CE ret = null;
@@ -568,9 +621,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Substance Manufacturer Name (RXA-17).
-   ///</summary>
+  /// <summary> Returns all repetitions of Substance Manufacturer Name (RXA-17). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetSubstanceManufacturerName() {
      CE[] ret = null;
     try {
@@ -589,9 +645,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Substance Manufacturer Name (RXA-17).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Substance Manufacturer Name (RXA-17). </summary>
+  ///
+  /// <value>   The substance manufacturer name repetitions used. </value>
+
   public int SubstanceManufacturerNameRepetitionsUsed
 {
 get{
@@ -607,11 +664,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Substance Refusal Reason(RXA-18).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Substance Refusal Reason(RXA-18). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The substance refusal reason. </returns>
+
 	public CE GetSubstanceRefusalReason(int rep)
 	{
 			CE ret = null;
@@ -626,9 +690,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Substance Refusal Reason (RXA-18).
-   ///</summary>
+  /// <summary> Returns all repetitions of Substance Refusal Reason (RXA-18). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetSubstanceRefusalReason() {
      CE[] ret = null;
     try {
@@ -647,9 +714,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Substance Refusal Reason (RXA-18).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Substance Refusal Reason (RXA-18). </summary>
+  ///
+  /// <value>   The substance refusal reason repetitions used. </value>
+
   public int SubstanceRefusalReasonRepetitionsUsed
 {
 get{
@@ -665,11 +733,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Indication(RXA-19).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Indication(RXA-19). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The indication. </returns>
+
 	public CE GetIndication(int rep)
 	{
 			CE ret = null;
@@ -684,9 +759,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Indication (RXA-19).
-   ///</summary>
+  /// <summary> Returns all repetitions of Indication (RXA-19). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetIndication() {
      CE[] ret = null;
     try {
@@ -705,9 +783,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Indication (RXA-19).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Indication (RXA-19). </summary>
+  ///
+  /// <value>   The indication repetitions used. </value>
+
   public int IndicationRepetitionsUsed
 {
 get{
@@ -723,9 +802,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Completion Status(RXA-20).
-	///</summary>
+
+    /// <summary>   Returns Completion Status(RXA-20). </summary>
+    ///
+    /// <value> The completion status. </value>
+
 	public ID CompletionStatus
 	{
 		get{
@@ -746,9 +827,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Action Code-RXA(RXA-21).
-	///</summary>
+    /// <summary>   Returns Action Code-RXA(RXA-21). </summary>
+    ///
+    /// <value> The action code rxa. </value>
+
 	public ID ActionCodeRXA
 	{
 		get{
@@ -769,9 +851,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns System Entry Date/Time(RXA-22).
-	///</summary>
+    /// <summary>   Returns System Entry Date/Time(RXA-22). </summary>
+    ///
+    /// <value> The system entry date time. </value>
+
 	public TS SystemEntryDateTime
 	{
 		get{

@@ -11,35 +11,39 @@ namespace NHapi.Base.Parser
     using NHapi.Base.Log;
     using NHapi.Base.Model;
 
-    /// <summary> Default implementation of ModelClassFactory.  See PackageList() for configuration instructions. 
-    /// 
+    /// <summary>
+    /// Default implementation of ModelClassFactory.  See PackageList() for configuration
+    /// instructions.
     /// </summary>
-    /// <author>  <a href="mailto:bryan.tripp@uhn.on.ca">Bryan Tripp</a>
-    /// </author>
-    /// <version>  $Revision: 1.2 $ updated on $Date: 2005/05/24 18:15:39 $ by $Author: bryan_tripp $
-    /// </version>
+
     public class DefaultModelClassFactory : IModelClassFactory
     {
         #region Constants
 
+        /// <summary>   The custom packages resource name template. </summary>
         private const System.String CUSTOM_PACKAGES_RESOURCE_NAME_TEMPLATE = "custom_packages/{0}";
 
         #endregion
 
         #region Static Fields
 
+        /// <summary>   The lock object. </summary>
         private static readonly object _lockObject = new object();
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
+        /// <summary>   true if this object is loading packages. </summary>
         private static bool _isLoadingPackages;
 
+        /// <summary>   The packages. </summary>
         private static System.Collections.Hashtable packages;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the DefaultModelClassFactory class. </summary>
         static DefaultModelClassFactory()
         {
             log = HapiLogFactory.GetHapiLog(typeof(DefaultModelClassFactory));
@@ -49,41 +53,50 @@ namespace NHapi.Base.Parser
 
         #region Public Methods and Operators
 
-        /// <summary> <p>Lists all the packages (user-definable) where classes for standard and custom 
-        /// messages may be found.  Each package has subpackages called "message", 
-        /// "group", "segment", and "datatype" in which classes for these message elements 
-        /// can be found. </p> 
-        /// <p>At a minimum, this method returns the standard package for the 
+        /// <summary>
+        /// <p>Lists all the packages (user-definable) where classes for standard and custom messages may
+        /// be found.  Each package has subpackages called "message", "group", "segment", and "datatype"
+        /// in which classes for these message elements can be found. </p>
+        /// <p>At a minimum, this method returns the standard package for the
         /// given version.  For example, for version 2.4, the package list contains <code>
-        /// NHapi.Base.Model.v24</code>.  In addition, user-defined packages may be specified
-        /// for custom messages.</p>
-        /// <p>If you define custom message classes, and want Parsers to be able to 
-        /// find them, you must register them as follows (otherwise you will get an exception when 
-        /// the corresponding messages are parsed).  For each HL7 version you want to support, you must 
-        /// put a text file on your classpath, under the folder /custom_packages, named after the version.  For example, 
-        /// for version 2.4, you might put the file "custom_packages/2.4" in your application JAR.  Each line in the  
-        /// file should name a package to search for message classes of that version.  For example, if you 
-        /// work at foo.org, you might create a v2.4 message structure called "ZFO" and define it in the class
-        /// <code>org.foo.hl7.custom.message.ZFO<code>.  
-        /// In order for parsers to find this message
-        /// class, you would need to enter the following line in custom_packages/2.4:
+        /// NHapi.Base.Model.v24</code>.  In addition, user-defined packages may be specified for custom
+        /// messages.</p>
+        /// &lt;p&gt;If you define custom message classes, and want Parsers to be able to find them, you
+        /// must register them as follows (otherwise you will get an exception when the corresponding
+        /// messages are parsed).  For each HL7 version you want to support, you must put a text file on
+        /// your classpath, under the folder /custom_packages, named after the version.  For example, for
+        /// version 2.4, you might put the file "custom_packages/2.4" in your application JAR.  Each line
+        /// in the  
+        /// file should name a package to search for message classes of that version.  For example, if
+        /// you work at foo.org, you might create a v2.4 message structure called "ZFO" and define it in
+        /// the class &lt;code&gt;org.foo.hl7.custom.message.ZFO&lt;code&gt;.  
+        /// In order for parsers to find this message class, you would need to enter the following line
+        /// in custom_packages/2.4:
         /// <p>org.foo.hl7.custom</p>
         /// <p>Packages are searched in the order specified.  The standard package for a given version
-        /// is searched last, allowing you to override the default implementation.  Please note that 
-        /// if you create custom classes for messages, segments, etc., their names must correspond exactly 
-        /// to their names in the message text.  For example, if you subclass the QBP segment in order to 
-        /// add your own fields, your subclass must also be called QBP. although it will obviously be in 
-        /// a different package.  To make sure your class is used instead of the default implementation, 
-        /// put your package in the package list.  User-defined packages are searched first, so yours 
+        /// is searched last, allowing you to override the default implementation.  Please note that if
+        /// you create custom classes for messages, segments, etc., their names must correspond exactly
+        /// to their names in the message text.  For example, if you subclass the QBP segment in order to
+        /// add your own fields, your subclass must also be called QBP. although it will obviously be in
+        /// a different package.  To make sure your class is used instead of the default implementation,
+        /// put your package in the package list.  User-defined packages are searched first, so yours
         /// will be found first and used.  </p>
-        /// <p>It is important to note that there can only be one implementation of a particular message 
-        /// structure (i.e. one class with the message structure name, regardless of its package) among 
-        /// the packages defined as per the <code>PackageList()</code> method.  If there are duplicates 
-        /// (e.g. two ADT_A01 classes) the first one in the search order will always be used.  However, 
-        /// this restriction only applies to message classes, not segment classes, etc.  This is because 
-        /// classes representing parts of a message are referenced explicitly in the code for the message 
-        /// class, rather than being looked up (using findMessageClass() ) based on the String value of MSH-9.<p>  
+        /// &lt;p&gt;It is important to note that there can only be one implementation of a particular
+        /// message structure (i.e. one class with the message structure name, regardless of its package)
+        /// among the packages defined as per the <code>PackageList()</code> method.  If there are
+        /// duplicates (e.g. two ADT_A01 classes) the first one in the search order will always be used.
+        /// However, this restriction only applies to message classes, not segment classes, etc.  This is
+        /// because classes representing parts of a message are referenced explicitly in the code for the
+        /// message class, rather than being looked up (using findMessageClass() ) based on the String
+        /// value of MSH-9.&lt;p&gt;  
         /// </summary>
+        ///
+        /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+        ///
+        /// <param name="version">  the HL7 version. </param>
+        ///
+        /// <returns>   A List&lt;string&gt; </returns>
+
         public static List<string> PackageList(System.String version)
         {
             //load package lists if necessary ... 
@@ -119,45 +132,45 @@ namespace NHapi.Base.Parser
             return (List<string>)packages[version];
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="theName"></param>
-        /// <param name="theVersion"></param>
-        /// <returns></returns>
+        /// <summary>   Gets group class. </summary>
+        ///
+        /// <param name="theName">      . </param>
+        /// <param name="theVersion">   . </param>
+        ///
+        /// <returns>   The group class. </returns>
+
         public virtual System.Type GetGroupClass(System.String theName, System.String theVersion)
         {
             return findClass(theName, theVersion, ClassType.Group);
         }
 
-        /// <summary> <p>Attempts to return the message class corresponding to the given name, by 
-        /// searching through default and user-defined (as per PackageList()) packages. 
-        /// Returns GenericMessage if the class is not found.</p>
-        /// <p>It is important to note that there can only be one implementation of a particular message 
-        /// structure (i.e. one class with the message structure name, regardless of its package) among 
-        /// the packages defined as per the <code>PackageList()</code> method.  If there are duplicates 
-        /// (e.g. two ADT_A01 classes) the first one in the search order will always be used.  However, 
-        /// this restriction only applies to message classes, not (normally) segment classes, etc.  This is because 
-        /// classes representing parts of a message are referenced explicitly in the code for the message 
-        /// class, rather than being looked up (using findMessageClass() ) based on the String value of MSH-9. 
-        /// The exception is that Segments may have to be looked up by name when they appear 
-        /// in unexpected locations (e.g. by local extension) -- see findSegmentClass().</p>  
-        /// <p>Note: the current implementation will be slow if there are multiple user-
-        /// defined packages, because the JVM will try to load a number of non-existent 
-        /// classes every parse.  This should be changed so that specific classes, rather 
-        /// than packages, are registered by name.</p>
-        /// 
+        /// <summary>
+        /// <p>Attempts to return the message class corresponding to the given name, by searching through
+        /// default and user-defined (as per PackageList()) packages. Returns GenericMessage if the class
+        /// is not found.</p>
+        /// <p>It is important to note that there can only be one implementation of a particular message
+        /// structure (i.e. one class with the message structure name, regardless of its package) among
+        /// the packages defined as per the <code>PackageList()</code> method.  If there are duplicates
+        /// (e.g. two ADT_A01 classes) the first one in the search order will always be used.  However,
+        /// this restriction only applies to message classes, not (normally) segment classes, etc.  This
+        /// is because classes representing parts of a message are referenced explicitly in the code for
+        /// the message class, rather than being looked up (using findMessageClass() ) based on the
+        /// String value of MSH-9. The exception is that Segments may have to be looked up by name when
+        /// they appear in unexpected locations (e.g. by local extension) -- see findSegmentClass().</p>  
+        /// <p>Note: the current implementation will be slow if there are multiple user- defined packages,
+        /// because the JVM will try to load a number of non-existent classes every parse.  This should
+        /// be changed so that specific classes, rather than packages, are registered by name.</p>
         /// </summary>
-        /// <param name="theName">name of the desired structure in the form XXX_YYY
-        /// </param>
-        /// <param name="theVersion">HL7 version (e.g. "2.3")  
-        /// </param>
-        /// <param name="isExplicit">true if the structure was specified explicitly in MSH-9-3, false if it 
-        /// was inferred from MSH-9-1 and MSH-9-2.  If false, a lookup may be performed to find 
-        /// an alternate structure corresponding to that message type and event.   
-        /// </param>
-        /// <returns> corresponding message subclass if found; GenericMessage otherwise
-        /// </returns>
+        ///
+        /// <param name="theName">      name of the desired structure in the form XXX_YYY. </param>
+        /// <param name="theVersion">   HL7 version (e.g. "2.3")  </param>
+        /// <param name="isExplicit">   true if the structure was specified explicitly in MSH-9-3, false
+        ///                             if it was inferred from MSH-9-1 and MSH-9-2.  If false, a lookup
+        ///                             may be performed to find an alternate structure corresponding to
+        ///                             that message type and event. </param>
+        ///
+        /// <returns>   corresponding message subclass if found; GenericMessage otherwise. </returns>
+
         public virtual System.Type GetMessageClass(System.String theName, System.String theVersion, bool isExplicit)
         {
             System.Type mc = null;
@@ -173,23 +186,25 @@ namespace NHapi.Base.Parser
             return mc;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="theName"></param>
-        /// <param name="theVersion"></param>
-        /// <returns></returns>
+        /// <summary>   Gets segment class. </summary>
+        ///
+        /// <param name="theName">      . </param>
+        /// <param name="theVersion">   . </param>
+        ///
+        /// <returns>   The segment class. </returns>
+
         public virtual System.Type GetSegmentClass(System.String theName, System.String theVersion)
         {
             return findClass(theName, theVersion, ClassType.Segment);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="theName"></param>
-        /// <param name="theVersion"></param>
-        /// <returns></returns>
+        /// <summary>   Gets type class. </summary>
+        ///
+        /// <param name="theName">      . </param>
+        /// <param name="theVersion">   . </param>
+        ///
+        /// <returns>   The type class. </returns>
+
         public virtual System.Type GetTypeClass(System.String theName, System.String theVersion)
         {
             return findClass(theName, theVersion, ClassType.Datatype);
@@ -199,12 +214,13 @@ namespace NHapi.Base.Parser
 
         #region Methods
 
-        /// <summary>
-        /// Add the assembly name to the class name.
-        /// </summary>
-        /// <param name="p"></param>
-        /// <param name="classNameToTry"></param>
-        /// <returns>Assembly name qualified name</returns>
+        /// <summary>   Add the assembly name to the class name. </summary>
+        ///
+        /// <param name="p">                . </param>
+        /// <param name="classNameToTry">   . </param>
+        ///
+        /// <returns>   Assembly name qualified name. </returns>
+
         private static System.String AddAssemblyName(System.String p, System.String classNameToTry)
         {
             // TODO: pull this information out of the config file
@@ -214,6 +230,11 @@ namespace NHapi.Base.Parser
             string assemblyName = classNameToTry += ", " + p.Substring(0, p.Length - 1);
             return classNameToTry;
         }
+
+        /// <summary>   Adds a package to 'package'. </summary>
+        ///
+        /// <param name="packages"> The packages. </param>
+        /// <param name="package">  The package. </param>
 
         private static void AddPackage(Hashtable packages, Hl7Package package)
         {
@@ -225,13 +246,16 @@ namespace NHapi.Base.Parser
             versions.Add(package.PackageName);
         }
 
-        /// <summary> Finds a message or segment class by name and version.</summary>
-        /// <param name="name">the segment or message structure name 
-        /// </param>
-        /// <param name="version">the HL7 version
-        /// </param>
-        /// <param name="type">'message', 'group', 'segment', or 'datatype'  
-        /// </param>
+        /// <summary>   Finds a message or segment class by name and version. </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="name">     the segment or message structure name. </param>
+        /// <param name="version">  the HL7 version. </param>
+        /// <param name="type">     'message', 'group', 'segment', or 'datatype'.  </param>
+        ///
+        /// <returns>   The found class. </returns>
+
         private static System.Type findClass(System.String name, System.String version, ClassType type)
         {
             if (ParserBase.ValidVersion(version) == false)

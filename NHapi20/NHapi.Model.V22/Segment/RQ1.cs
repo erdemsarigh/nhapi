@@ -7,30 +7,31 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 RQ1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>RQ1-1: Anticipated Price (SI)</li>
-///<li>RQ1-2: Manufacturer ID (CE)</li>
-///<li>RQ1-3: Manufacturer's Catalog (ST)</li>
-///<li>RQ1-4: Vendor ID (CE)</li>
-///<li>RQ1-5: Vendor Catalog (ST)</li>
-///<li>RQ1-6: Taxable (ID)</li>
-///<li>RQ1-7: Substitute Allowed (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 RQ1 message segment. This segment has the following fields:<ol>
+/// <li>RQ1-1: Anticipated Price (SI)</li>
+/// <li>RQ1-2: Manufacturer ID (CE)</li>
+/// <li>RQ1-3: Manufacturer's Catalog (ST)</li>
+/// <li>RQ1-4: Vendor ID (CE)</li>
+/// <li>RQ1-5: Vendor Catalog (ST)</li>
+/// <li>RQ1-6: Taxable (ID)</li>
+/// <li>RQ1-7: Substitute Allowed (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class RQ1 : AbstractSegment  {
 
-  /**
-   * Creates a RQ1 (REQUISITION DETAIL-!) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the RQ1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RQ1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -46,9 +47,10 @@ public class RQ1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Anticipated Price(RQ1-1).
-	///</summary>
+    /// <summary>   Returns Anticipated Price(RQ1-1). </summary>
+    ///
+    /// <value> The anticipated price. </value>
+
 	public SI AnticipatedPrice
 	{
 		get{
@@ -69,9 +71,10 @@ public class RQ1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Manufacturer ID(RQ1-2).
-	///</summary>
+    /// <summary>   Returns Manufacturer ID(RQ1-2). </summary>
+    ///
+    /// <value> The identifier of the manufacturer. </value>
+
 	public CE ManufacturerID
 	{
 		get{
@@ -92,9 +95,10 @@ public class RQ1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Manufacturer's Catalog(RQ1-3).
-	///</summary>
+    /// <summary>   Returns Manufacturer's Catalog(RQ1-3). </summary>
+    ///
+    /// <value> The manufacturer s catalog. </value>
+
 	public ST ManufacturerSCatalog
 	{
 		get{
@@ -115,9 +119,10 @@ public class RQ1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Vendor ID(RQ1-4).
-	///</summary>
+    /// <summary>   Returns Vendor ID(RQ1-4). </summary>
+    ///
+    /// <value> The identifier of the vendor. </value>
+
 	public CE VendorID
 	{
 		get{
@@ -138,9 +143,10 @@ public class RQ1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Vendor Catalog(RQ1-5).
-	///</summary>
+    /// <summary>   Returns Vendor Catalog(RQ1-5). </summary>
+    ///
+    /// <value> The vendor catalog. </value>
+
 	public ST VendorCatalog
 	{
 		get{
@@ -161,9 +167,10 @@ public class RQ1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Taxable(RQ1-6).
-	///</summary>
+    /// <summary>   Returns Taxable(RQ1-6). </summary>
+    ///
+    /// <value> The taxable. </value>
+
 	public ID Taxable
 	{
 		get{
@@ -184,9 +191,10 @@ public class RQ1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Substitute Allowed(RQ1-7).
-	///</summary>
+    /// <summary>   Returns Substitute Allowed(RQ1-7). </summary>
+    ///
+    /// <value> The substitute allowed. </value>
+
 	public ID SubstituteAllowed
 	{
 		get{

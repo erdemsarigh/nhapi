@@ -6,37 +6,40 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V22.Datatype
 {
-
-///<summary>
-/// <p>The HL7 CM_LA1 (Location with address information) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 CM_LA1 (Location with address information) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>Dispense / Deliver to Location (CM_INTERNAL_LOCATION)</li>
 /// <li>location (AD)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CM_LA1 : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CM_LA1.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CM_LA1. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CM_LA1(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CM_LA1.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CM_LA1. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CM_LA1(IMessage message, string description) : base(message, description){
 		data = new IType[2];
 		data[0] = new CM_INTERNAL_LOCATION(message,"Dispense / Deliver to Location");
 		data[1] = new AD(message,"Location");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -44,12 +47,15 @@ public class CM_LA1 : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -60,10 +66,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Dispense / Deliver to Location (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Dispense / Deliver to Location (component #0).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The dispense deliver to location. </value>
+
 	public CM_INTERNAL_LOCATION DispenseDeliverToLocation {
 get{
 	   CM_INTERNAL_LOCATION ret = null;
@@ -77,10 +87,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns location (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns location (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The location. </value>
+
 	public AD Location {
 get{
 	   AD ret = null;

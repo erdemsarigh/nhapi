@@ -7,31 +7,32 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 EDU message segment. 
-/// This segment has the following fields:<ol>
-///<li>EDU-1: Set ID - EDU (SI)</li>
-///<li>EDU-2: Academic Degree (IS)</li>
-///<li>EDU-3: Academic Degree Program Date Range (DR)</li>
-///<li>EDU-4: Academic Degree Program Participation Date Range (DR)</li>
-///<li>EDU-5: Academic Degree Granted Date (DT)</li>
-///<li>EDU-6: School (XON)</li>
-///<li>EDU-7: School Type Code (CE)</li>
-///<li>EDU-8: School Address (XAD)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 EDU message segment. This segment has the following fields:<ol>
+/// <li>EDU-1: Set ID - EDU (SI)</li>
+/// <li>EDU-2: Academic Degree (IS)</li>
+/// <li>EDU-3: Academic Degree Program Date Range (DR)</li>
+/// <li>EDU-4: Academic Degree Program Participation Date Range (DR)</li>
+/// <li>EDU-5: Academic Degree Granted Date (DT)</li>
+/// <li>EDU-6: School (XON)</li>
+/// <li>EDU-7: School Type Code (CE)</li>
+/// <li>EDU-8: School Address (XAD)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class EDU : AbstractSegment  {
 
-  /**
-   * Creates a EDU (Educational Detail) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the EDU class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public EDU(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -48,9 +49,10 @@ public class EDU : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - EDU(EDU-1).
-	///</summary>
+    /// <summary>   Returns Set ID - EDU(EDU-1). </summary>
+    ///
+    /// <value> The set idedu. </value>
+
 	public SI SetIDEDU
 	{
 		get{
@@ -71,9 +73,10 @@ public class EDU : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Academic Degree(EDU-2).
-	///</summary>
+    /// <summary>   Returns Academic Degree(EDU-2). </summary>
+    ///
+    /// <value> The academic degree. </value>
+
 	public IS AcademicDegree
 	{
 		get{
@@ -94,9 +97,10 @@ public class EDU : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Academic Degree Program Date Range(EDU-3).
-	///</summary>
+    /// <summary>   Returns Academic Degree Program Date Range(EDU-3). </summary>
+    ///
+    /// <value> The academic degree program date range. </value>
+
 	public DR AcademicDegreeProgramDateRange
 	{
 		get{
@@ -117,9 +121,10 @@ public class EDU : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Academic Degree Program Participation Date Range(EDU-4).
-	///</summary>
+    /// <summary>   Returns Academic Degree Program Participation Date Range(EDU-4). </summary>
+    ///
+    /// <value> The academic degree program participation date range. </value>
+
 	public DR AcademicDegreeProgramParticipationDateRange
 	{
 		get{
@@ -140,9 +145,10 @@ public class EDU : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Academic Degree Granted Date(EDU-5).
-	///</summary>
+    /// <summary>   Returns Academic Degree Granted Date(EDU-5). </summary>
+    ///
+    /// <value> The academic degree granted date. </value>
+
 	public DT AcademicDegreeGrantedDate
 	{
 		get{
@@ -163,9 +169,10 @@ public class EDU : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns School(EDU-6).
-	///</summary>
+    /// <summary>   Returns School(EDU-6). </summary>
+    ///
+    /// <value> The school. </value>
+
 	public XON School
 	{
 		get{
@@ -186,9 +193,10 @@ public class EDU : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns School Type Code(EDU-7).
-	///</summary>
+    /// <summary>   Returns School Type Code(EDU-7). </summary>
+    ///
+    /// <value> The school type code. </value>
+
 	public CE SchoolTypeCode
 	{
 		get{
@@ -209,9 +217,10 @@ public class EDU : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns School Address(EDU-8).
-	///</summary>
+    /// <summary>   Returns School Address(EDU-8). </summary>
+    ///
+    /// <value> The school address. </value>
+
 	public XAD SchoolAddress
 	{
 		get{

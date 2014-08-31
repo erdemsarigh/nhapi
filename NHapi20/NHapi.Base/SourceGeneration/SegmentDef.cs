@@ -22,32 +22,44 @@
 
 namespace NHapi.Base.SourceGeneration
 {
-    /// <summary> Information about a message segment used in the creation of 
-    /// source code for a Group class.  SegmentDef is a slight misnomer because this 
-    /// also includes group start/end indicators, with group names.  
-    /// 
+    /// <summary>
+    /// Information about a message segment used in the creation of source code for a Group class.
+    /// SegmentDef is a slight misnomer because this also includes group start/end indicators, with
+    /// group names.  
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+
     public class SegmentDef : IStructureDef
     {
         #region Fields
 
+        /// <summary>   The description. </summary>
         private System.String description;
 
+        /// <summary>   Name of the group. </summary>
         private System.String groupName;
 
+        /// <summary>   The name. </summary>
         private System.String name;
 
+        /// <summary>   true to repeating. </summary>
         private bool repeating;
 
+        /// <summary>   true if required. </summary>
         private bool required;
 
         #endregion
 
         #region Constructors and Destructors
 
-        /// <summary>Creates new SegmentDef </summary>
+        /// <summary>   Creates new SegmentDef. </summary>
+        ///
+        /// <param name="name">         name of segment. </param>
+        /// <param name="groupName">    name of group, if this is not really a segment but a group start
+        ///                             indicator. </param>
+        /// <param name="required">     true if required, false if not. </param>
+        /// <param name="repeating">    true if repeating, false if not. </param>
+        /// <param name="description">  The description. </param>
+
         public SegmentDef(
             System.String name,
             System.String groupName,
@@ -66,12 +78,15 @@ namespace NHapi.Base.SourceGeneration
 
         #region Public Properties
 
-        /// <summary> Returns a list of the names of the segments that are children of this Structure.
-        /// If the structure is a Segment, a 1-element array is returned containing the segment
-        /// name.  If a Group, an array of all the segments in the Group, including those nested
-        /// in subgroups (depth first).  This method is used to support the XML SIG's convention
-        /// for deriving group names.
+        /// <summary>
+        /// Returns a list of the names of the segments that are children of this Structure. If the
+        /// structure is a Segment, a 1-element array is returned containing the segment name.  If a
+        /// Group, an array of all the segments in the Group, including those nested in subgroups (depth
+        /// first).  This method is used to support the XML SIG's convention for deriving group names.
         /// </summary>
+        ///
+        /// <value> The child segments. </value>
+
         public virtual System.String[] ChildSegments
         {
             get
@@ -81,7 +96,10 @@ namespace NHapi.Base.SourceGeneration
             }
         }
 
-        /// <summary> Returns a text description of the structure.</summary>
+        /// <summary>   Returns a text description of the structure. </summary>
+        ///
+        /// <value> The description. </value>
+
         public virtual System.String Description
         {
             get
@@ -90,8 +108,10 @@ namespace NHapi.Base.SourceGeneration
             }
         }
 
-        /// <returns> name of group, if this is not really a segment but a group start indicator 
-        /// </returns>
+        /// <summary>   Gets the name of the group. </summary>
+        ///
+        /// <value> name of group, if this is not really a segment but a group start indicator. </value>
+
         public virtual System.String GroupName
         {
             get
@@ -100,8 +120,10 @@ namespace NHapi.Base.SourceGeneration
             }
         }
 
-        /// <returns> name of segment 
-        /// </returns>
+        /// <summary>   Gets the name. </summary>
+        ///
+        /// <value> name of segment. </value>
+
         public virtual System.String Name
         {
             get
@@ -115,7 +137,10 @@ namespace NHapi.Base.SourceGeneration
             }
         }
 
-        /// <summary> Returns true if this structure can repeat in the Group.  </summary>
+        /// <summary>   Returns true if this structure can repeat in the Group. </summary>
+        ///
+        /// <value> true if repeating, false if not. </value>
+
         public virtual bool Repeating
         {
             get
@@ -124,7 +149,10 @@ namespace NHapi.Base.SourceGeneration
             }
         }
 
-        /// <summary> Returns true if this structure is required in the Group.  </summary>
+        /// <summary>   Returns true if this structure is required in the Group. </summary>
+        ///
+        /// <value> true if required, false if not. </value>
+
         public virtual bool Required
         {
             get

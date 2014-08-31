@@ -6,37 +6,39 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V23.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 TS (time stamp) data type.  Consists of the following components: </p><ol>
 /// <li>time of an event (TSComponentOne)</li>
 /// <li>degree of precision (ST)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class TS : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a TS.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a TS. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public TS(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a TS.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a TS. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public TS(IMessage message, string description) : base(message, description){
 		data = new IType[2];
 		data[0] = new TSComponentOne(message,"Time of an event");
 		data[1] = new ST(message,"Degree of precision");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -44,12 +46,15 @@ public class TS : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -60,10 +65,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns time of an event (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns time of an event (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The time of an event. </value>
+
 	public TSComponentOne TimeOfAnEvent {
 get{
 	   TSComponentOne ret = null;
@@ -77,10 +86,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns degree of precision (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns degree of precision (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The degree of precision. </value>
+
 	public ST DegreeOfPrecision {
 get{
 	   ST ret = null;

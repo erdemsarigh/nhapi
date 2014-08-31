@@ -6,8 +6,7 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V21.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 AD (address) data type.  Consists of the following components: </p><ol>
 /// <li>Street address (ST)</li>
 /// <li>Other designation (ST)</li>
@@ -15,22 +14,24 @@ namespace NHapi.Model.V21.Datatype
 /// <li>state or province (ST)</li>
 /// <li>zip (ST)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class AD : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a AD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a AD. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public AD(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a AD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a AD. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public AD(IMessage message, string description) : base(message, description){
 		data = new IType[5];
 		data[0] = new ST(message,"Street address");
@@ -40,9 +41,10 @@ public class AD : AbstractType, IComposite{
 		data[4] = new ST(message,"Zip");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -50,12 +52,15 @@ public class AD : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -66,10 +71,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Street address (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Street address (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The street address. </value>
+
 	public ST StreetAddress {
 get{
 	   ST ret = null;
@@ -83,10 +92,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Other designation (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Other designation (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The other designation. </value>
+
 	public ST OtherDesignation {
 get{
 	   ST ret = null;
@@ -100,10 +113,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns city (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns city (component #2).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The city. </value>
+
 	public ST City {
 get{
 	   ST ret = null;
@@ -117,10 +134,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns state or province (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns state or province (component #3).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The state or province. </value>
+
 	public ST StateOrProvince {
 get{
 	   ST ret = null;
@@ -134,10 +155,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns zip (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns zip (component #4).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The zip. </value>
+
 	public ST Zip {
 get{
 	   ST ret = null;

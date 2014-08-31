@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the ADT_A45_MERGE_INFO Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: MRG (Merge patient information) </li>
-///<li>1: PV1 (Patient visit) </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ADT_A45_MERGE_INFO Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: MRG (Merge patient information) </li>
+/// <li>1: PV1 (Patient visit) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ADT_A45_MERGE_INFO : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ADT_A45_MERGE_INFO Group.
-	///</summary>
+    /// <summary>   Creates a new ADT_A45_MERGE_INFO Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ADT_A45_MERGE_INFO(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(MRG), true, false);
@@ -32,9 +35,10 @@ public class ADT_A45_MERGE_INFO : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns MRG (Merge patient information) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MRG (Merge patient information) - creates it if necessary. </summary>
+    ///
+    /// <value> The mrg. </value>
+
 	public MRG MRG { 
 get{
 	   MRG ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV1 (Patient visit) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PV1 (Patient visit) - creates it if necessary. </summary>
+    ///
+    /// <value> The pv 1. </value>
+
 	public PV1 PV1 { 
 get{
 	   PV1 ret = null;

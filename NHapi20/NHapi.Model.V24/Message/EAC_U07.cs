@@ -9,38 +9,41 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V24.Message
 
 {
-///<summary>
-/// Represents a EAC_U07 message structure (see chapter 13). This structure contains the 
+/// <summary>
+/// Represents a EAC_U07 message structure (see chapter 13). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message Header) </li>
-///<li>1: EQU (Equipment Detail) </li>
-///<li>2: ECD (Equipment Command) repeating</li>
-///<li>3: SAC (Specimen and container detail) optional </li>
-///<li>4: CNS (Clear Notification) optional </li>
-///<li>5: ROL (Role) optional </li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message Header) </li>
+/// <li>1: EQU (Equipment Detail) </li>
+/// <li>2: ECD (Equipment Command) repeating</li>
+/// <li>3: SAC (Specimen and container detail) optional </li>
+/// <li>4: CNS (Clear Notification) optional </li>
+/// <li>5: ROL (Role) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class EAC_U07 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new EAC_U07 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new EAC_U07 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public EAC_U07(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new EAC_U07 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new EAC_U07 Group with DefaultModelClassFactory. </summary>
 	public EAC_U07() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for EAC_U07.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for EAC_U07.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -54,6 +57,13 @@ public class EAC_U07 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -61,9 +71,11 @@ public class EAC_U07 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message Header) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message Header) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -77,9 +89,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns EQU (Equipment Detail) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns EQU (Equipment Detail) - creates it if necessary. </summary>
+    ///
+    /// <value> The equ. </value>
+
 	public EQU EQU { 
 get{
 	   EQU ret = null;
@@ -93,9 +106,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of ECD (Equipment Command) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of ECD (Equipment Command) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The ecd. </returns>
+
 	public ECD GetECD() {
 	   ECD ret = null;
 	   try {
@@ -107,19 +125,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of ECD
-	/// * (Equipment Command) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of ECD
+    ///  * (Equipment Command) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The ecd. </returns>
+
 	public ECD GetECD(int rep) { 
 	   return (ECD)this.GetStructure("ECD", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of ECD 
-	 */ 
+    /// <summary>   Gets the ecd repetitions used. </summary>
+    ///
+    /// <value> The ecd repetitions used. </value>
+
 	public int ECDRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -134,9 +158,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns SAC (Specimen and container detail) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns SAC (Specimen and container detail) - creates it if necessary. </summary>
+    ///
+    /// <value> The sac. </value>
+
 	public SAC SAC { 
 get{
 	   SAC ret = null;
@@ -150,9 +175,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns CNS (Clear Notification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns CNS (Clear Notification) - creates it if necessary. </summary>
+    ///
+    /// <value> The cns. </value>
+
 	public CNS CNS { 
 get{
 	   CNS ret = null;
@@ -166,9 +192,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ROL (Role) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ROL (Role) - creates it if necessary. </summary>
+    ///
+    /// <value> The rol. </value>
+
 	public ROL ROL { 
 get{
 	   ROL ret = null;

@@ -7,36 +7,37 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 PES message segment. 
-/// This segment has the following fields:<ol>
-///<li>PES-1: Sender Organization Name (XON)</li>
-///<li>PES-2: Sender Individual Name (XCN)</li>
-///<li>PES-3: Sender Address (XAD)</li>
-///<li>PES-4: Sender Telephone (XTN)</li>
-///<li>PES-5: Sender Event Identifier (EI)</li>
-///<li>PES-6: Sender Sequence Number (NM)</li>
-///<li>PES-7: Sender Event Description (FT)</li>
-///<li>PES-8: Sender Comment (FT)</li>
-///<li>PES-9: Sender Aware Date/Time (TS)</li>
-///<li>PES-10: Event Report Date (TS)</li>
-///<li>PES-11: Event Report Timing/Type (ID)</li>
-///<li>PES-12: Event Report Source (ID)</li>
-///<li>PES-13: Event Reported To (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PES message segment. This segment has the following fields:<ol>
+/// <li>PES-1: Sender Organization Name (XON)</li>
+/// <li>PES-2: Sender Individual Name (XCN)</li>
+/// <li>PES-3: Sender Address (XAD)</li>
+/// <li>PES-4: Sender Telephone (XTN)</li>
+/// <li>PES-5: Sender Event Identifier (EI)</li>
+/// <li>PES-6: Sender Sequence Number (NM)</li>
+/// <li>PES-7: Sender Event Description (FT)</li>
+/// <li>PES-8: Sender Comment (FT)</li>
+/// <li>PES-9: Sender Aware Date/Time (TS)</li>
+/// <li>PES-10: Event Report Date (TS)</li>
+/// <li>PES-11: Event Report Timing/Type (ID)</li>
+/// <li>PES-12: Event Report Source (ID)</li>
+/// <li>PES-13: Event Reported To (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PES : AbstractSegment  {
 
-  /**
-   * Creates a PES (PES - product experience sender segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PES class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PES(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -58,11 +59,17 @@ public class PES : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns a single repetition of Sender Organization Name(PES-1).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Sender Organization Name(PES-1). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The sender organization name. </returns>
+
 	public XON GetSenderOrganizationName(int rep)
 	{
 			XON ret = null;
@@ -77,9 +84,12 @@ public class PES : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Sender Organization Name (PES-1).
-   ///</summary>
+  /// <summary> Returns all repetitions of Sender Organization Name (PES-1). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of XON. </returns>
+
   public XON[] GetSenderOrganizationName() {
      XON[] ret = null;
     try {
@@ -98,9 +108,10 @@ public class PES : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Sender Organization Name (PES-1).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Sender Organization Name (PES-1). </summary>
+  ///
+  /// <value>   The sender organization name repetitions used. </value>
+
   public int SenderOrganizationNameRepetitionsUsed
 {
 get{
@@ -116,11 +127,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Sender Individual Name(PES-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Sender Individual Name(PES-2). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The sender individual name. </returns>
+
 	public XCN GetSenderIndividualName(int rep)
 	{
 			XCN ret = null;
@@ -135,9 +153,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Sender Individual Name (PES-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Sender Individual Name (PES-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetSenderIndividualName() {
      XCN[] ret = null;
     try {
@@ -156,9 +177,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Sender Individual Name (PES-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Sender Individual Name (PES-2). </summary>
+  ///
+  /// <value>   The sender individual name repetitions used. </value>
+
   public int SenderIndividualNameRepetitionsUsed
 {
 get{
@@ -174,11 +196,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Sender Address(PES-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Sender Address(PES-3). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The sender address. </returns>
+
 	public XAD GetSenderAddress(int rep)
 	{
 			XAD ret = null;
@@ -193,9 +222,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Sender Address (PES-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Sender Address (PES-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetSenderAddress() {
      XAD[] ret = null;
     try {
@@ -214,9 +246,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Sender Address (PES-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Sender Address (PES-3). </summary>
+  ///
+  /// <value>   The sender address repetitions used. </value>
+
   public int SenderAddressRepetitionsUsed
 {
 get{
@@ -232,11 +265,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Sender Telephone(PES-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Sender Telephone(PES-4). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The sender telephone. </returns>
+
 	public XTN GetSenderTelephone(int rep)
 	{
 			XTN ret = null;
@@ -251,9 +291,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Sender Telephone (PES-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Sender Telephone (PES-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetSenderTelephone() {
      XTN[] ret = null;
     try {
@@ -272,9 +315,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Sender Telephone (PES-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Sender Telephone (PES-4). </summary>
+  ///
+  /// <value>   The sender telephone repetitions used. </value>
+
   public int SenderTelephoneRepetitionsUsed
 {
 get{
@@ -290,9 +334,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Sender Event Identifier(PES-5).
-	///</summary>
+
+    /// <summary>   Returns Sender Event Identifier(PES-5). </summary>
+    ///
+    /// <value> The identifier of the sender event. </value>
+
 	public EI SenderEventIdentifier
 	{
 		get{
@@ -313,9 +359,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Sender Sequence Number(PES-6).
-	///</summary>
+    /// <summary>   Returns Sender Sequence Number(PES-6). </summary>
+    ///
+    /// <value> The sender sequence number. </value>
+
 	public NM SenderSequenceNumber
 	{
 		get{
@@ -336,11 +383,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Sender Event Description(PES-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Sender Event Description(PES-7). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The sender event description. </returns>
+
 	public FT GetSenderEventDescription(int rep)
 	{
 			FT ret = null;
@@ -355,9 +408,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Sender Event Description (PES-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Sender Event Description (PES-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ft. </returns>
+
   public FT[] GetSenderEventDescription() {
      FT[] ret = null;
     try {
@@ -376,9 +432,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Sender Event Description (PES-7).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Sender Event Description (PES-7). </summary>
+  ///
+  /// <value>   The sender event description repetitions used. </value>
+
   public int SenderEventDescriptionRepetitionsUsed
 {
 get{
@@ -394,9 +451,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Sender Comment(PES-8).
-	///</summary>
+
+    /// <summary>   Returns Sender Comment(PES-8). </summary>
+    ///
+    /// <value> The sender comment. </value>
+
 	public FT SenderComment
 	{
 		get{
@@ -417,9 +476,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Sender Aware Date/Time(PES-9).
-	///</summary>
+    /// <summary>   Returns Sender Aware Date/Time(PES-9). </summary>
+    ///
+    /// <value> The sender aware date time. </value>
+
 	public TS SenderAwareDateTime
 	{
 		get{
@@ -440,9 +500,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Event Report Date(PES-10).
-	///</summary>
+    /// <summary>   Returns Event Report Date(PES-10). </summary>
+    ///
+    /// <value> The event report date. </value>
+
 	public TS EventReportDate
 	{
 		get{
@@ -463,11 +524,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Event Report Timing/Type(PES-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Event Report Timing/Type(PES-11). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The event report timing type. </returns>
+
 	public ID GetEventReportTimingType(int rep)
 	{
 			ID ret = null;
@@ -482,9 +549,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Event Report Timing/Type (PES-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of Event Report Timing/Type (PES-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetEventReportTimingType() {
      ID[] ret = null;
     try {
@@ -503,9 +573,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Event Report Timing/Type (PES-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Event Report Timing/Type (PES-11). </summary>
+  ///
+  /// <value>   The event report timing type repetitions used. </value>
+
   public int EventReportTimingTypeRepetitionsUsed
 {
 get{
@@ -521,9 +592,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Event Report Source(PES-12).
-	///</summary>
+
+    /// <summary>   Returns Event Report Source(PES-12). </summary>
+    ///
+    /// <value> The event report source. </value>
+
 	public ID EventReportSource
 	{
 		get{
@@ -544,11 +617,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Event Reported To(PES-13).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Event Reported To(PES-13). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The event reported to. </returns>
+
 	public ID GetEventReportedTo(int rep)
 	{
 			ID ret = null;
@@ -563,9 +642,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Event Reported To (PES-13).
-   ///</summary>
+  /// <summary> Returns all repetitions of Event Reported To (PES-13). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetEventReportedTo() {
      ID[] ret = null;
     try {
@@ -584,9 +666,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Event Reported To (PES-13).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Event Reported To (PES-13). </summary>
+  ///
+  /// <value>   The event reported to repetitions used. </value>
+
   public int EventReportedToRepetitionsUsed
 {
 get{

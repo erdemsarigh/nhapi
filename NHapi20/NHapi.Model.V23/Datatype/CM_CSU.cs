@@ -6,9 +6,9 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V23.Datatype
 {
-
-///<summary>
-/// <p>The HL7 CM_CSU (channel sensitivity/units) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 CM_CSU (channel sensitivity/units) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>Sensitivity (NM)</li>
 /// <li>Units identifier (ID)</li>
 /// <li>Units text (ST)</li>
@@ -17,22 +17,24 @@ namespace NHapi.Model.V23.Datatype
 /// <li>Units alternate text (ST)</li>
 /// <li>Units name of alternate coding system (ST)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CM_CSU : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CM_CSU.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CM_CSU. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CM_CSU(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CM_CSU.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CM_CSU. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CM_CSU(IMessage message, string description) : base(message, description){
 		data = new IType[7];
 		data[0] = new NM(message,"Sensitivity");
@@ -44,9 +46,10 @@ public class CM_CSU : AbstractType, IComposite{
 		data[6] = new ST(message,"Units name of alternate coding system");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -54,12 +57,15 @@ public class CM_CSU : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -70,10 +76,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Sensitivity (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Sensitivity (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The sensitivity. </value>
+
 	public NM Sensitivity {
 get{
 	   NM ret = null;
@@ -87,10 +97,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Units identifier (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Units identifier (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the units. </value>
+
 	public ID UnitsIdentifier {
 get{
 	   ID ret = null;
@@ -104,10 +118,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Units text (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Units text (component #2).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The units text. </value>
+
 	public ST UnitsText {
 get{
 	   ST ret = null;
@@ -121,10 +139,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Units name of coding system (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Units name of coding system (component #3).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The units name of coding system. </value>
+
 	public ST UnitsNameOfCodingSystem {
 get{
 	   ST ret = null;
@@ -138,10 +160,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Units alternate identifer (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Units alternate identifer (component #4).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The units alternate identifer. </value>
+
 	public ID UnitsAlternateIdentifer {
 get{
 	   ID ret = null;
@@ -155,10 +181,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Units alternate text (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Units alternate text (component #5).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The units alternate text. </value>
+
 	public ST UnitsAlternateText {
 get{
 	   ST ret = null;
@@ -172,10 +202,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Units name of alternate coding system (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Units name of alternate coding system (component #6).  This is a convenience method
+    /// that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The units name of alternate coding system. </value>
+
 	public ST UnitsNameOfAlternateCodingSystem {
 get{
 	   ST ret = null;

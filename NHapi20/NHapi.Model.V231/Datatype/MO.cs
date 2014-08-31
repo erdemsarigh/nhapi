@@ -6,37 +6,39 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V231.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 MO (money) data type.  Consists of the following components: </p><ol>
 /// <li>quantity (NM)</li>
 /// <li>denomination (ID)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class MO : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a MO.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a MO. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public MO(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a MO.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a MO. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public MO(IMessage message, string description) : base(message, description){
 		data = new IType[2];
 		data[0] = new NM(message,"Quantity");
 		data[1] = new ID(message, 0,"Denomination");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -44,12 +46,15 @@ public class MO : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -60,10 +65,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns quantity (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns quantity (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The quantity. </value>
+
 	public NM Quantity {
 get{
 	   NM ret = null;
@@ -77,10 +86,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns denomination (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns denomination (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The denomination. </value>
+
 	public ID Denomination {
 get{
 	   ID ret = null;

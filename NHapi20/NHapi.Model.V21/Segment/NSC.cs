@@ -7,32 +7,33 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 NSC message segment. 
-/// This segment has the following fields:<ol>
-///<li>NSC-1: NETWORK CHANGE TYPE (ID)</li>
-///<li>NSC-2: CURRENT CPU (ST)</li>
-///<li>NSC-3: CURRENT FILESERVER (ST)</li>
-///<li>NSC-4: CURRENT APPLICATION (ST)</li>
-///<li>NSC-5: CURRENT FACILITY (ST)</li>
-///<li>NSC-6: NEW CPU (ST)</li>
-///<li>NSC-7: NEW FILESERVER (ST)</li>
-///<li>NSC-8: NEW APPLICATION (ST)</li>
-///<li>NSC-9: NEW FACILITY (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 NSC message segment. This segment has the following fields:<ol>
+/// <li>NSC-1: NETWORK CHANGE TYPE (ID)</li>
+/// <li>NSC-2: CURRENT CPU (ST)</li>
+/// <li>NSC-3: CURRENT FILESERVER (ST)</li>
+/// <li>NSC-4: CURRENT APPLICATION (ST)</li>
+/// <li>NSC-5: CURRENT FACILITY (ST)</li>
+/// <li>NSC-6: NEW CPU (ST)</li>
+/// <li>NSC-7: NEW FILESERVER (ST)</li>
+/// <li>NSC-8: NEW APPLICATION (ST)</li>
+/// <li>NSC-9: NEW FACILITY (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class NSC : AbstractSegment  {
 
-  /**
-   * Creates a NSC (STATUS CHANGE) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the NSC class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public NSC(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -50,9 +51,10 @@ public class NSC : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns NETWORK CHANGE TYPE(NSC-1).
-	///</summary>
+    /// <summary>   Returns NETWORK CHANGE TYPE(NSC-1). </summary>
+    ///
+    /// <value> The networkchangetype. </value>
+
 	public ID NETWORKCHANGETYPE
 	{
 		get{
@@ -73,9 +75,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns CURRENT CPU(NSC-2).
-	///</summary>
+    /// <summary>   Returns CURRENT CPU(NSC-2). </summary>
+    ///
+    /// <value> The currentcpu. </value>
+
 	public ST CURRENTCPU
 	{
 		get{
@@ -96,9 +99,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns CURRENT FILESERVER(NSC-3).
-	///</summary>
+    /// <summary>   Returns CURRENT FILESERVER(NSC-3). </summary>
+    ///
+    /// <value> The currentfileserver. </value>
+
 	public ST CURRENTFILESERVER
 	{
 		get{
@@ -119,9 +123,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns CURRENT APPLICATION(NSC-4).
-	///</summary>
+    /// <summary>   Returns CURRENT APPLICATION(NSC-4). </summary>
+    ///
+    /// <value> The currentapplication. </value>
+
 	public ST CURRENTAPPLICATION
 	{
 		get{
@@ -142,9 +147,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns CURRENT FACILITY(NSC-5).
-	///</summary>
+    /// <summary>   Returns CURRENT FACILITY(NSC-5). </summary>
+    ///
+    /// <value> The currentfacility. </value>
+
 	public ST CURRENTFACILITY
 	{
 		get{
@@ -165,9 +171,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns NEW CPU(NSC-6).
-	///</summary>
+    /// <summary>   Returns NEW CPU(NSC-6). </summary>
+    ///
+    /// <value> The newcpu. </value>
+
 	public ST NEWCPU
 	{
 		get{
@@ -188,9 +195,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns NEW FILESERVER(NSC-7).
-	///</summary>
+    /// <summary>   Returns NEW FILESERVER(NSC-7). </summary>
+    ///
+    /// <value> The newfileserver. </value>
+
 	public ST NEWFILESERVER
 	{
 		get{
@@ -211,9 +219,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns NEW APPLICATION(NSC-8).
-	///</summary>
+    /// <summary>   Returns NEW APPLICATION(NSC-8). </summary>
+    ///
+    /// <value> The newapplication. </value>
+
 	public ST NEWAPPLICATION
 	{
 		get{
@@ -234,9 +243,10 @@ public class NSC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns NEW FACILITY(NSC-9).
-	///</summary>
+    /// <summary>   Returns NEW FACILITY(NSC-9). </summary>
+    ///
+    /// <value> The newfacility. </value>
+
 	public ST NEWFACILITY
 	{
 		get{

@@ -6,8 +6,7 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 MA (Multiplexed Array) data type.  Consists of the following components: </p><ol>
 /// <li>Sample 1 From Channel 1 (NM)</li>
 /// <li>Sample 1 From Channel 2 (NM)</li>
@@ -16,22 +15,24 @@ namespace NHapi.Model.V25.Datatype
 /// <li>Sample 2 From Channel N (NM)</li>
 /// <li>Sample N From Channel N (NM)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class MA : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a MA.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a MA. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public MA(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a MA.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a MA. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public MA(IMessage message, string description) : base(message, description){
 		data = new IType[6];
 		data[0] = new NM(message,"Sample 1 From Channel 1");
@@ -42,9 +43,10 @@ public class MA : AbstractType, IComposite{
 		data[5] = new NM(message,"Sample N From Channel N");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -52,12 +54,15 @@ public class MA : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -68,10 +73,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Sample 1 From Channel 1 (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Sample 1 From Channel 1 (component #0).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The sample 1 from channel 1. </value>
+
 	public NM Sample1FromChannel1 {
 get{
 	   NM ret = null;
@@ -85,10 +94,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Sample 1 From Channel 2 (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Sample 1 From Channel 2 (component #1).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The sample 1 from channel 2. </value>
+
 	public NM Sample1FromChannel2 {
 get{
 	   NM ret = null;
@@ -102,10 +115,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Sample 1 From Channel N (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Sample 1 From Channel N (component #2).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The sample 1 from channel n. </value>
+
 	public NM Sample1FromChannelN {
 get{
 	   NM ret = null;
@@ -119,10 +136,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Sample 2 From Channel 1 (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Sample 2 From Channel 1 (component #3).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The sample 2 from channel 1. </value>
+
 	public NM Sample2FromChannel1 {
 get{
 	   NM ret = null;
@@ -136,10 +157,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Sample 2 From Channel N (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Sample 2 From Channel N (component #4).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The sample 2 from channel n. </value>
+
 	public NM Sample2FromChannelN {
 get{
 	   NM ret = null;
@@ -153,10 +178,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Sample N From Channel N (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Sample N From Channel N (component #5).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The sample n from channel n. </value>
+
 	public NM SampleNFromChannelN {
 get{
 	   NM ret = null;

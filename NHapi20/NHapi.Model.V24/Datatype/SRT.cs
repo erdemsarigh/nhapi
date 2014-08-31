@@ -6,37 +6,39 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V24.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 SRT (sort order) data type.  Consists of the following components: </p><ol>
 /// <li>sort-by field (ST)</li>
 /// <li>sequencing (ID)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class SRT : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a SRT.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a SRT. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public SRT(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a SRT.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a SRT. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public SRT(IMessage message, string description) : base(message, description){
 		data = new IType[2];
 		data[0] = new ST(message,"Sort-by field");
 		data[1] = new ID(message, 0,"Sequencing");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -44,12 +46,15 @@ public class SRT : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -60,10 +65,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns sort-by field (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns sort-by field (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The sort by field. </value>
+
 	public ST SortByField {
 get{
 	   ST ret = null;
@@ -77,10 +86,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns sequencing (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns sequencing (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The sequencing. </value>
+
 	public ID Sequencing {
 get{
 	   ID ret = null;

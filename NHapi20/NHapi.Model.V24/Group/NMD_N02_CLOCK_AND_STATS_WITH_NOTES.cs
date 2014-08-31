@@ -8,22 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the NMD_N02_CLOCK_AND_STATS_WITH_NOTES Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: NMD_N02_CLOCK (a Group object) optional </li>
-///<li>1: NMD_N02_APP_STATS (a Group object) optional </li>
-///<li>2: NMD_N02_APP_STATUS (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the NMD_N02_CLOCK_AND_STATS_WITH_NOTES Group.  A Group is an ordered collection of
+/// message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: NMD_N02_CLOCK (a Group object) optional </li>
+/// <li>1: NMD_N02_APP_STATS (a Group object) optional </li>
+/// <li>2: NMD_N02_APP_STATUS (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class NMD_N02_CLOCK_AND_STATS_WITH_NOTES : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new NMD_N02_CLOCK_AND_STATS_WITH_NOTES Group.
-	///</summary>
+    /// <summary>   Creates a new NMD_N02_CLOCK_AND_STATS_WITH_NOTES Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public NMD_N02_CLOCK_AND_STATS_WITH_NOTES(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(NMD_N02_CLOCK), false, false);
@@ -34,9 +38,10 @@ public class NMD_N02_CLOCK_AND_STATS_WITH_NOTES : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns NMD_N02_CLOCK (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns NMD_N02_CLOCK (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The clock. </value>
+
 	public NMD_N02_CLOCK CLOCK { 
 get{
 	   NMD_N02_CLOCK ret = null;
@@ -50,9 +55,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns NMD_N02_APP_STATS (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns NMD_N02_APP_STATS (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The application stats. </value>
+
 	public NMD_N02_APP_STATS APP_STATS { 
 get{
 	   NMD_N02_APP_STATS ret = null;
@@ -66,9 +72,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns NMD_N02_APP_STATUS (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns NMD_N02_APP_STATUS (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The application status. </value>
+
 	public NMD_N02_APP_STATUS APP_STATUS { 
 get{
 	   NMD_N02_APP_STATUS ret = null;

@@ -21,32 +21,42 @@
 
 namespace NHapi.Base.SourceGeneration
 {
-    /// <summary> A structure for storing a single data element of a segment ... </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+    /// <summary>   A structure for storing a single data element of a segment ... </summary>
     internal class SegmentElement
     {
         #region Fields
 
+        /// <summary>   The description. </summary>
         public System.String desc;
 
+        /// <summary>   The field. </summary>
         public int field;
 
+        /// <summary>   The length. </summary>
         public int length;
 
+        /// <summary>   The option. </summary>
         public System.String opt;
 
+        /// <summary>   The rep. </summary>
         public System.String rep;
 
+        /// <summary>   The repetitions. </summary>
         public int repetitions;
 
+        /// <summary>   The table. </summary>
         public int table;
 
+        /// <summary>   The type. </summary>
         public System.String type;
 
         #endregion
 
         #region Public Methods and Operators
+
+        /// <summary>   Gets description without special characters. </summary>
+        ///
+        /// <returns>   The description without special characters. </returns>
 
         public virtual string GetDescriptionWithoutSpecialCharacters()
         {

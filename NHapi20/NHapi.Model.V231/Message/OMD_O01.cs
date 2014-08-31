@@ -9,37 +9,40 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V231.Message
 
 {
-///<summary>
-/// Represents a OMD_O01 message structure (see chapter 4.6). This structure contains the 
+/// <summary>
+/// Represents a OMD_O01 message structure (see chapter 4.6). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (MSH - message header segment) </li>
-///<li>1: NTE (NTE - notes and comments segment) optional repeating</li>
-///<li>2: OMD_O01_PATIENT (a Group object) optional </li>
-///<li>3: OMD_O01_ORDER_DIET (a Group object) repeating</li>
-///<li>4: OMD_O01_ORDER_TRAY (a Group object) optional repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (MSH - message header segment) </li>
+/// <li>1: NTE (NTE - notes and comments segment) optional repeating</li>
+/// <li>2: OMD_O01_PATIENT (a Group object) optional </li>
+/// <li>3: OMD_O01_ORDER_DIET (a Group object) repeating</li>
+/// <li>4: OMD_O01_ORDER_TRAY (a Group object) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class OMD_O01 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new OMD_O01 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new OMD_O01 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public OMD_O01(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new OMD_O01 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new OMD_O01 Group with DefaultModelClassFactory. </summary>
 	public OMD_O01() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for OMD_O01.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for OMD_O01.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -52,6 +55,13 @@ public class OMD_O01 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -59,9 +69,11 @@ public class OMD_O01 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MSH - message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MSH - message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -75,9 +87,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -89,19 +106,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (NTE - notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (NTE - notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -116,9 +139,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns OMD_O01_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OMD_O01_PATIENT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient. </value>
+
 	public OMD_O01_PATIENT PATIENT { 
 get{
 	   OMD_O01_PATIENT ret = null;
@@ -132,9 +156,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of OMD_O01_ORDER_DIET (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of OMD_O01_ORDER_DIET (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order diet. </returns>
+
 	public OMD_O01_ORDER_DIET GetORDER_DIET() {
 	   OMD_O01_ORDER_DIET ret = null;
 	   try {
@@ -146,19 +175,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of OMD_O01_ORDER_DIET
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of OMD_O01_ORDER_DIET
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order diet. </returns>
+
 	public OMD_O01_ORDER_DIET GetORDER_DIET(int rep) { 
 	   return (OMD_O01_ORDER_DIET)this.GetStructure("ORDER_DIET", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of OMD_O01_ORDER_DIET 
-	 */ 
+    /// <summary>   Gets the order diet repetitions used. </summary>
+    ///
+    /// <value> The order diet repetitions used. </value>
+
 	public int ORDER_DIETRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -173,9 +208,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of OMD_O01_ORDER_TRAY (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of OMD_O01_ORDER_TRAY (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order tray. </returns>
+
 	public OMD_O01_ORDER_TRAY GetORDER_TRAY() {
 	   OMD_O01_ORDER_TRAY ret = null;
 	   try {
@@ -187,19 +227,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of OMD_O01_ORDER_TRAY
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of OMD_O01_ORDER_TRAY
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order tray. </returns>
+
 	public OMD_O01_ORDER_TRAY GetORDER_TRAY(int rep) { 
 	   return (OMD_O01_ORDER_TRAY)this.GetStructure("ORDER_TRAY", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of OMD_O01_ORDER_TRAY 
-	 */ 
+    /// <summary>   Gets the order tray repetitions used. </summary>
+    ///
+    /// <value> The order tray repetitions used. </value>
+
 	public int ORDER_TRAYRepetitionsUsed { 
 get{
 	    int reps = -1; 

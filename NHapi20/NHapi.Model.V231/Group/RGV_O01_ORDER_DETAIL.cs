@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the RGV_O01_ORDER_DETAIL Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: RXO (RXO - pharmacy/treatment order segment) </li>
-///<li>1: RGV_O01_ORDER_DETAIL_SUPPLEMENT (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RGV_O01_ORDER_DETAIL Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: RXO (RXO - pharmacy/treatment order segment) </li>
+/// <li>1: RGV_O01_ORDER_DETAIL_SUPPLEMENT (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RGV_O01_ORDER_DETAIL : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RGV_O01_ORDER_DETAIL Group.
-	///</summary>
+    /// <summary>   Creates a new RGV_O01_ORDER_DETAIL Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RGV_O01_ORDER_DETAIL(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(RXO), true, false);
@@ -32,9 +35,12 @@ public class RGV_O01_ORDER_DETAIL : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns RXO (RXO - pharmacy/treatment order segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns RXO (RXO - pharmacy/treatment order segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The rxo. </value>
+
 	public RXO RXO { 
 get{
 	   RXO ret = null;
@@ -48,9 +54,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RGV_O01_ORDER_DETAIL_SUPPLEMENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns RGV_O01_ORDER_DETAIL_SUPPLEMENT (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The order detail supplement. </value>
+
 	public RGV_O01_ORDER_DETAIL_SUPPLEMENT ORDER_DETAIL_SUPPLEMENT { 
 get{
 	   RGV_O01_ORDER_DETAIL_SUPPLEMENT ret = null;

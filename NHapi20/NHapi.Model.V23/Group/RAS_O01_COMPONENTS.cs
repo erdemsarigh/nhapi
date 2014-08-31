@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the RAS_O01_COMPONENTS Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: RXC (Pharmacy component order segment) repeating</li>
-///<li>1: NTE (Notes and comments segment) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RAS_O01_COMPONENTS Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: RXC (Pharmacy component order segment) repeating</li>
+/// <li>1: NTE (Notes and comments segment) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RAS_O01_COMPONENTS : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RAS_O01_COMPONENTS Group.
-	///</summary>
+    /// <summary>   Creates a new RAS_O01_COMPONENTS Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RAS_O01_COMPONENTS(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(RXC), true, true);
@@ -32,9 +35,14 @@ public class RAS_O01_COMPONENTS : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns  first repetition of RXC (Pharmacy component order segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RXC (Pharmacy component order segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The rxc. </returns>
+
 	public RXC GetRXC() {
 	   RXC ret = null;
 	   try {
@@ -46,19 +54,25 @@ public class RAS_O01_COMPONENTS : AbstractGroup {
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RXC
-	/// * (Pharmacy component order segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RXC
+    ///  * (Pharmacy component order segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The rxc. </returns>
+
 	public RXC GetRXC(int rep) { 
 	   return (RXC)this.GetStructure("RXC", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RXC 
-	 */ 
+    /// <summary>   Gets the rxc repetitions used. </summary>
+    ///
+    /// <value> The rxc repetitions used. </value>
+
 	public int RXCRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -73,9 +87,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -87,19 +106,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 

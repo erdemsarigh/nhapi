@@ -9,42 +9,45 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V23.Message
 
 {
-///<summary>
-/// Represents a VXR_V03 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a VXR_V03 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message header segment) </li>
-///<li>1: MSA (Message acknowledgement segment) </li>
-///<li>2: QRD (Query definition segment) </li>
-///<li>3: QRF (Query filter segment) optional </li>
-///<li>4: PID (Patient Identification) </li>
-///<li>5: PD1 (Patient Demographic) optional </li>
-///<li>6: NK1 (Next of kin) optional repeating</li>
-///<li>7: VXR_V03_PATIENT_VISIT (a Group object) optional </li>
-///<li>8: VXR_V03_INSURANCE (a Group object) optional repeating</li>
-///<li>9: VXR_V03_ORDER (a Group object) optional repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message header segment) </li>
+/// <li>1: MSA (Message acknowledgement segment) </li>
+/// <li>2: QRD (Query definition segment) </li>
+/// <li>3: QRF (Query filter segment) optional </li>
+/// <li>4: PID (Patient Identification) </li>
+/// <li>5: PD1 (Patient Demographic) optional </li>
+/// <li>6: NK1 (Next of kin) optional repeating</li>
+/// <li>7: VXR_V03_PATIENT_VISIT (a Group object) optional </li>
+/// <li>8: VXR_V03_INSURANCE (a Group object) optional repeating</li>
+/// <li>9: VXR_V03_ORDER (a Group object) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class VXR_V03 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new VXR_V03 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new VXR_V03 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public VXR_V03(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new VXR_V03 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new VXR_V03 Group with DefaultModelClassFactory. </summary>
 	public VXR_V03() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for VXR_V03.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for VXR_V03.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -62,6 +65,13 @@ public class VXR_V03 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -69,9 +79,11 @@ public class VXR_V03 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -85,9 +97,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MSA (Message acknowledgement segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MSA (Message acknowledgement segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msa. </value>
+
 	public MSA MSA { 
 get{
 	   MSA ret = null;
@@ -101,9 +114,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QRD (Query definition segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QRD (Query definition segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The qrd. </value>
+
 	public QRD QRD { 
 get{
 	   QRD ret = null;
@@ -117,9 +131,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QRF (Query filter segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QRF (Query filter segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The qrf. </value>
+
 	public QRF QRF { 
 get{
 	   QRF ret = null;
@@ -133,9 +148,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PID (Patient Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -149,9 +165,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (Patient Demographic) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PD1 (Patient Demographic) - creates it if necessary. </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;
@@ -165,9 +182,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NK1 (Next of kin) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns  first repetition of NK1 (Next of kin) - creates it if necessary. </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nk 1. </returns>
+
 	public NK1 GetNK1() {
 	   NK1 ret = null;
 	   try {
@@ -179,19 +199,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NK1
-	/// * (Next of kin) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NK1
+    ///  * (Next of kin) - creates it if necessary throws HL7Exception if the repetition requested is
+    ///  more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nk 1. </returns>
+
 	public NK1 GetNK1(int rep) { 
 	   return (NK1)this.GetStructure("NK1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NK1 
-	 */ 
+    /// <summary>   Gets the nk 1 repetitions used. </summary>
+    ///
+    /// <value> The nk 1 repetitions used. </value>
+
 	public int NK1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -206,9 +232,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns VXR_V03_PATIENT_VISIT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns VXR_V03_PATIENT_VISIT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient visit. </value>
+
 	public VXR_V03_PATIENT_VISIT PATIENT_VISIT { 
 get{
 	   VXR_V03_PATIENT_VISIT ret = null;
@@ -222,9 +249,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of VXR_V03_INSURANCE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of VXR_V03_INSURANCE (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The insurance. </returns>
+
 	public VXR_V03_INSURANCE GetINSURANCE() {
 	   VXR_V03_INSURANCE ret = null;
 	   try {
@@ -236,19 +268,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of VXR_V03_INSURANCE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of VXR_V03_INSURANCE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The insurance. </returns>
+
 	public VXR_V03_INSURANCE GetINSURANCE(int rep) { 
 	   return (VXR_V03_INSURANCE)this.GetStructure("INSURANCE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of VXR_V03_INSURANCE 
-	 */ 
+    /// <summary>   Gets the insurance repetitions used. </summary>
+    ///
+    /// <value> The insurance repetitions used. </value>
+
 	public int INSURANCERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -263,9 +301,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of VXR_V03_ORDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of VXR_V03_ORDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order. </returns>
+
 	public VXR_V03_ORDER GetORDER() {
 	   VXR_V03_ORDER ret = null;
 	   try {
@@ -277,19 +320,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of VXR_V03_ORDER
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of VXR_V03_ORDER
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order. </returns>
+
 	public VXR_V03_ORDER GetORDER(int rep) { 
 	   return (VXR_V03_ORDER)this.GetStructure("ORDER", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of VXR_V03_ORDER 
-	 */ 
+    /// <summary>   Gets the order repetitions used. </summary>
+    ///
+    /// <value> The order repetitions used. </value>
+
 	public int ORDERRepetitionsUsed { 
 get{
 	    int reps = -1; 

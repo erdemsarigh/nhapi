@@ -7,28 +7,29 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 VTQ message segment. 
-/// This segment has the following fields:<ol>
-///<li>VTQ-1: Query Tag (ST)</li>
-///<li>VTQ-2: Query/ Response Format Code (ID)</li>
-///<li>VTQ-3: VT Query Name (CE)</li>
-///<li>VTQ-4: Virtual Table Name (CE)</li>
-///<li>VTQ-5: Selection Criteria (QSC)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 VTQ message segment. This segment has the following fields:<ol>
+/// <li>VTQ-1: Query Tag (ST)</li>
+/// <li>VTQ-2: Query/ Response Format Code (ID)</li>
+/// <li>VTQ-3: VT Query Name (CE)</li>
+/// <li>VTQ-4: Virtual Table Name (CE)</li>
+/// <li>VTQ-5: Selection Criteria (QSC)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class VTQ : AbstractSegment  {
 
-  /**
-   * Creates a VTQ (VTQ - virtual table query request segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the VTQ class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public VTQ(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -42,9 +43,10 @@ public class VTQ : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Query Tag(VTQ-1).
-	///</summary>
+    /// <summary>   Returns Query Tag(VTQ-1). </summary>
+    ///
+    /// <value> The query tag. </value>
+
 	public ST QueryTag
 	{
 		get{
@@ -65,9 +67,10 @@ public class VTQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Query/ Response Format Code(VTQ-2).
-	///</summary>
+    /// <summary>   Returns Query/ Response Format Code(VTQ-2). </summary>
+    ///
+    /// <value> The query response format code. </value>
+
 	public ID QueryResponseFormatCode
 	{
 		get{
@@ -88,9 +91,10 @@ public class VTQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns VT Query Name(VTQ-3).
-	///</summary>
+    /// <summary>   Returns VT Query Name(VTQ-3). </summary>
+    ///
+    /// <value> The name of the vt query. </value>
+
 	public CE VTQueryName
 	{
 		get{
@@ -111,9 +115,10 @@ public class VTQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Virtual Table Name(VTQ-4).
-	///</summary>
+    /// <summary>   Returns Virtual Table Name(VTQ-4). </summary>
+    ///
+    /// <value> The name of the virtual table. </value>
+
 	public CE VirtualTableName
 	{
 		get{
@@ -134,11 +139,17 @@ public class VTQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Selection Criteria(VTQ-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Selection Criteria(VTQ-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The selection criteria. </returns>
+
 	public QSC GetSelectionCriteria(int rep)
 	{
 			QSC ret = null;
@@ -153,9 +164,12 @@ public class VTQ : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Selection Criteria (VTQ-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Selection Criteria (VTQ-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of qsc. </returns>
+
   public QSC[] GetSelectionCriteria() {
      QSC[] ret = null;
     try {
@@ -174,9 +188,10 @@ public class VTQ : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Selection Criteria (VTQ-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Selection Criteria (VTQ-5). </summary>
+  ///
+  /// <value>   The selection criteria repetitions used. </value>
+
   public int SelectionCriteriaRepetitionsUsed
 {
 get{

@@ -3,20 +3,21 @@ namespace NHapi.Base.Model
     using NHapi.Base.Log;
     using NHapi.Base.Parser;
 
-    /// <summary> A generic HL7 message, meant for parsing message with unrecognized structures
-    /// into a flat list of segments.
+    /// <summary>
+    /// A generic HL7 message, meant for parsing message with unrecognized structures into a flat
+    /// list of segments.
     /// </summary>
-    /// <author>  Bryan Tripp
-    /// </author>
+
     public abstract class GenericMessage : AbstractMessage
     {
         #region Constructors and Destructors
 
-        /// <summary> Creates a new instance of GenericMessage. 
-        /// 
-        /// </summary>
-        /// <param name="factory">class factory for contained structures 
-        /// </param>
+        /// <summary>   Creates a new instance of GenericMessage. </summary>
+        ///
+        /// <exception cref="ApplicationException"> Thrown when an Application error condition occurs. </exception>
+        ///
+        /// <param name="factory">  class factory for contained structures. </param>
+
         public GenericMessage(IModelClassFactory factory)
             : base(factory)
         {
@@ -36,10 +37,18 @@ namespace NHapi.Base.Model
 
         #region Public Methods and Operators
 
-        /// <summary> Returns a subclass of GenericMessage corresponding to a certain version.  
-        /// This is needed so that version-specific segments can be added as the message
-        /// is parsed.  
+        /// <summary>
+        /// Returns a subclass of GenericMessage corresponding to a certain version.  
+        /// This is needed so that version-specific segments can be added as the message is parsed.  
         /// </summary>
+        ///
+        /// <exception cref="ArgumentException">    Thrown when one or more arguments have unsupported or
+        ///                                         illegal values. </exception>
+        ///
+        /// <param name="version">  The version. </param>
+        ///
+        /// <returns>   The generic message class. </returns>
+
         public static System.Type getGenericMessageClass(System.String version)
         {
             if (!ParserBase.ValidVersion(version))
@@ -77,17 +86,15 @@ namespace NHapi.Base.Model
 
         #endregion
 
-        /// <summary>
-        /// Version 2.1 generic message
-        /// </summary>
+        /// <summary>   Version 2.1 generic message. </summary>
         public class V21 : GenericMessage
         {
             #region Constructors and Destructors
 
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            /// <param name="factory"></param>
+            /// <summary>   Constructor. </summary>
+            ///
+            /// <param name="factory">  . </param>
+
             public V21(IModelClassFactory factory)
                 : base(factory)
             {
@@ -97,9 +104,10 @@ namespace NHapi.Base.Model
 
             #region Public Properties
 
-            /// <summary>
-            /// Version of message
-            /// </summary>
+            /// <summary>   Version of message. </summary>
+            ///
+            /// <value> The version. </value>
+
             public override System.String Version
             {
                 get
@@ -111,17 +119,15 @@ namespace NHapi.Base.Model
             #endregion
         }
 
-        /// <summary>
-        /// Version 2.2 generic message
-        /// </summary>
+        /// <summary>   Version 2.2 generic message. </summary>
         public class V22 : GenericMessage
         {
             #region Constructors and Destructors
 
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            /// <param name="factory"></param>
+            /// <summary>   Constructor. </summary>
+            ///
+            /// <param name="factory">  . </param>
+
             public V22(IModelClassFactory factory)
                 : base(factory)
             {
@@ -131,9 +137,10 @@ namespace NHapi.Base.Model
 
             #region Public Properties
 
-            /// <summary>
-            /// Version of message
-            /// </summary>
+            /// <summary>   Version of message. </summary>
+            ///
+            /// <value> The version. </value>
+
             public override System.String Version
             {
                 get
@@ -145,17 +152,15 @@ namespace NHapi.Base.Model
             #endregion
         }
 
-        /// <summary>
-        /// Version 2.3 generic message
-        /// </summary>
+        /// <summary>   Version 2.3 generic message. </summary>
         public class V23 : GenericMessage
         {
             #region Constructors and Destructors
 
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            /// <param name="factory"></param>
+            /// <summary>   Constructor. </summary>
+            ///
+            /// <param name="factory">  . </param>
+
             public V23(IModelClassFactory factory)
                 : base(factory)
             {
@@ -165,9 +170,10 @@ namespace NHapi.Base.Model
 
             #region Public Properties
 
-            /// <summary>
-            /// Version of message
-            /// </summary>
+            /// <summary>   Version of message. </summary>
+            ///
+            /// <value> The version. </value>
+
             public override System.String Version
             {
                 get
@@ -179,17 +185,15 @@ namespace NHapi.Base.Model
             #endregion
         }
 
-        /// <summary>
-        /// Version 2.3.1 generic message
-        /// </summary>
+        /// <summary>   Version 2.3.1 generic message. </summary>
         public class V231 : GenericMessage
         {
             #region Constructors and Destructors
 
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            /// <param name="factory"></param>
+            /// <summary>   Constructor. </summary>
+            ///
+            /// <param name="factory">  . </param>
+
             public V231(IModelClassFactory factory)
                 : base(factory)
             {
@@ -199,9 +203,10 @@ namespace NHapi.Base.Model
 
             #region Public Properties
 
-            /// <summary>
-            /// Version of message
-            /// </summary>
+            /// <summary>   Version of message. </summary>
+            ///
+            /// <value> The version. </value>
+
             public override System.String Version
             {
                 get
@@ -213,17 +218,15 @@ namespace NHapi.Base.Model
             #endregion
         }
 
-        /// <summary>
-        /// Version 2.4 generic message
-        /// </summary>
+        /// <summary>   Version 2.4 generic message. </summary>
         public class V24 : GenericMessage
         {
             #region Constructors and Destructors
 
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            /// <param name="factory"></param>
+            /// <summary>   Constructor. </summary>
+            ///
+            /// <param name="factory">  . </param>
+
             public V24(IModelClassFactory factory)
                 : base(factory)
             {
@@ -233,9 +236,10 @@ namespace NHapi.Base.Model
 
             #region Public Properties
 
-            /// <summary>
-            /// Version of message
-            /// </summary>
+            /// <summary>   Version of message. </summary>
+            ///
+            /// <value> The version. </value>
+
             public override System.String Version
             {
                 get
@@ -247,17 +251,15 @@ namespace NHapi.Base.Model
             #endregion
         }
 
-        /// <summary>
-        /// Version 2.5 generic message
-        /// </summary>
+        /// <summary>   Version 2.5 generic message. </summary>
         public class V25 : GenericMessage
         {
             #region Constructors and Destructors
 
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            /// <param name="factory"></param>
+            /// <summary>   Constructor. </summary>
+            ///
+            /// <param name="factory">  . </param>
+
             public V25(IModelClassFactory factory)
                 : base(factory)
             {
@@ -267,9 +269,10 @@ namespace NHapi.Base.Model
 
             #region Public Properties
 
-            /// <summary>
-            /// Version of message
-            /// </summary>
+            /// <summary>   Version of message. </summary>
+            ///
+            /// <value> The version. </value>
+
             public override System.String Version
             {
                 get

@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RDS_O13_PATIENT_VISIT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PV1 (Patient visit) </li>
-///<li>1: PV2 (Patient visit - additional information) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RDS_O13_PATIENT_VISIT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PV1 (Patient visit) </li>
+/// <li>1: PV2 (Patient visit - additional information) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RDS_O13_PATIENT_VISIT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RDS_O13_PATIENT_VISIT Group.
-	///</summary>
+    /// <summary>   Creates a new RDS_O13_PATIENT_VISIT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RDS_O13_PATIENT_VISIT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PV1), true, false);
@@ -32,9 +35,10 @@ public class RDS_O13_PATIENT_VISIT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PV1 (Patient visit) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PV1 (Patient visit) - creates it if necessary. </summary>
+    ///
+    /// <value> The pv 1. </value>
+
 	public PV1 PV1 { 
 get{
 	   PV1 ret = null;
@@ -48,9 +52,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV2 (Patient visit - additional information) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PV2 (Patient visit - additional information) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The pv 2. </value>
+
 	public PV2 PV2 { 
 get{
 	   PV2 ret = null;

@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the PGL_PC8_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common order segment) </li>
-///<li>1: PGL_PC8_ORDER_DETAIL (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the PGL_PC8_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common order segment) </li>
+/// <li>1: PGL_PC8_ORDER_DETAIL (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class PGL_PC8_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new PGL_PC8_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new PGL_PC8_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PGL_PC8_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -32,9 +35,10 @@ public class PGL_PC8_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common order segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common order segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PGL_PC8_ORDER_DETAIL (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PGL_PC8_ORDER_DETAIL (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The order detail. </value>
+
 	public PGL_PC8_ORDER_DETAIL ORDER_DETAIL { 
 get{
 	   PGL_PC8_ORDER_DETAIL ret = null;

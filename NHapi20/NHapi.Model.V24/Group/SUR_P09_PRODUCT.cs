@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the SUR_P09_PRODUCT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PSH (Product Summary Header) </li>
-///<li>1: PDC (Product Detail Country) </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the SUR_P09_PRODUCT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PSH (Product Summary Header) </li>
+/// <li>1: PDC (Product Detail Country) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class SUR_P09_PRODUCT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new SUR_P09_PRODUCT Group.
-	///</summary>
+    /// <summary>   Creates a new SUR_P09_PRODUCT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SUR_P09_PRODUCT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PSH), true, false);
@@ -32,9 +35,10 @@ public class SUR_P09_PRODUCT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PSH (Product Summary Header) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PSH (Product Summary Header) - creates it if necessary. </summary>
+    ///
+    /// <value> The psh. </value>
+
 	public PSH PSH { 
 get{
 	   PSH ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PDC (Product Detail Country) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PDC (Product Detail Country) - creates it if necessary. </summary>
+    ///
+    /// <value> The pdc. </value>
+
 	public PDC PDC { 
 get{
 	   PDC ret = null;

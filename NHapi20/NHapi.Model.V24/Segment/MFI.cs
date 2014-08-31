@@ -7,29 +7,30 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 MFI message segment. 
-/// This segment has the following fields:<ol>
-///<li>MFI-1: Master File Identifier (CE)</li>
-///<li>MFI-2: Master File Application Identifier (HD)</li>
-///<li>MFI-3: File-Level Event Code (ID)</li>
-///<li>MFI-4: Entered Date/Time (TS)</li>
-///<li>MFI-5: Effective Date/Time (TS)</li>
-///<li>MFI-6: Response Level Code (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 MFI message segment. This segment has the following fields:<ol>
+/// <li>MFI-1: Master File Identifier (CE)</li>
+/// <li>MFI-2: Master File Application Identifier (HD)</li>
+/// <li>MFI-3: File-Level Event Code (ID)</li>
+/// <li>MFI-4: Entered Date/Time (TS)</li>
+/// <li>MFI-5: Effective Date/Time (TS)</li>
+/// <li>MFI-6: Response Level Code (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class MFI : AbstractSegment  {
 
-  /**
-   * Creates a MFI (Master File Identification) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the MFI class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFI(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -44,9 +45,10 @@ public class MFI : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Master File Identifier(MFI-1).
-	///</summary>
+    /// <summary>   Returns Master File Identifier(MFI-1). </summary>
+    ///
+    /// <value> The identifier of the master file. </value>
+
 	public CE MasterFileIdentifier
 	{
 		get{
@@ -67,9 +69,10 @@ public class MFI : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Master File Application Identifier(MFI-2).
-	///</summary>
+    /// <summary>   Returns Master File Application Identifier(MFI-2). </summary>
+    ///
+    /// <value> The identifier of the master file application. </value>
+
 	public HD MasterFileApplicationIdentifier
 	{
 		get{
@@ -90,9 +93,10 @@ public class MFI : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns File-Level Event Code(MFI-3).
-	///</summary>
+    /// <summary>   Returns File-Level Event Code(MFI-3). </summary>
+    ///
+    /// <value> The file level event code. </value>
+
 	public ID FileLevelEventCode
 	{
 		get{
@@ -113,9 +117,10 @@ public class MFI : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Entered Date/Time(MFI-4).
-	///</summary>
+    /// <summary>   Returns Entered Date/Time(MFI-4). </summary>
+    ///
+    /// <value> The entered date time. </value>
+
 	public TS EnteredDateTime
 	{
 		get{
@@ -136,9 +141,10 @@ public class MFI : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Effective Date/Time(MFI-5).
-	///</summary>
+    /// <summary>   Returns Effective Date/Time(MFI-5). </summary>
+    ///
+    /// <value> The effective date time. </value>
+
 	public TS EffectiveDateTime
 	{
 		get{
@@ -159,9 +165,10 @@ public class MFI : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Response Level Code(MFI-6).
-	///</summary>
+    /// <summary>   Returns Response Level Code(MFI-6). </summary>
+    ///
+    /// <value> The response level code. </value>
+
 	public ID ResponseLevelCode
 	{
 		get{

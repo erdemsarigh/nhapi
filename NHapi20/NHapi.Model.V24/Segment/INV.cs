@@ -7,41 +7,42 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 INV message segment. 
-/// This segment has the following fields:<ol>
-///<li>INV-1: Substance Identifier (CE)</li>
-///<li>INV-2: Substance Status (CE)</li>
-///<li>INV-3: Substance Type (CE)</li>
-///<li>INV-4: Inventory Container Identifier (CE)</li>
-///<li>INV-5: Container Carrier Identifier (CE)</li>
-///<li>INV-6: Position on Carrier (CE)</li>
-///<li>INV-7: Initial Quantity (NM)</li>
-///<li>INV-8: Current Quantity (NM)</li>
-///<li>INV-9: Available Quantity (NM)</li>
-///<li>INV-10: Consumption Quantity (NM)</li>
-///<li>INV-11: Quantity Units (CE)</li>
-///<li>INV-12: Expiration Date/Time (TS)</li>
-///<li>INV-13: First Used Date/Time (TS)</li>
-///<li>INV-14: On Board Stability Duration (TQ)</li>
-///<li>INV-15: Test/Fluid Identifier(s) (CE)</li>
-///<li>INV-16: Manufacturer Lot Number (ST)</li>
-///<li>INV-17: Manufacturer Identifier (CE)</li>
-///<li>INV-18: Supplier Identifier (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 INV message segment. This segment has the following fields:<ol>
+/// <li>INV-1: Substance Identifier (CE)</li>
+/// <li>INV-2: Substance Status (CE)</li>
+/// <li>INV-3: Substance Type (CE)</li>
+/// <li>INV-4: Inventory Container Identifier (CE)</li>
+/// <li>INV-5: Container Carrier Identifier (CE)</li>
+/// <li>INV-6: Position on Carrier (CE)</li>
+/// <li>INV-7: Initial Quantity (NM)</li>
+/// <li>INV-8: Current Quantity (NM)</li>
+/// <li>INV-9: Available Quantity (NM)</li>
+/// <li>INV-10: Consumption Quantity (NM)</li>
+/// <li>INV-11: Quantity Units (CE)</li>
+/// <li>INV-12: Expiration Date/Time (TS)</li>
+/// <li>INV-13: First Used Date/Time (TS)</li>
+/// <li>INV-14: On Board Stability Duration (TQ)</li>
+/// <li>INV-15: Test/Fluid Identifier(s) (CE)</li>
+/// <li>INV-16: Manufacturer Lot Number (ST)</li>
+/// <li>INV-17: Manufacturer Identifier (CE)</li>
+/// <li>INV-18: Supplier Identifier (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class INV : AbstractSegment  {
 
-  /**
-   * Creates a INV (Inventory Detail) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the INV class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public INV(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -68,9 +69,10 @@ public class INV : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Substance Identifier(INV-1).
-	///</summary>
+    /// <summary>   Returns Substance Identifier(INV-1). </summary>
+    ///
+    /// <value> The identifier of the substance. </value>
+
 	public CE SubstanceIdentifier
 	{
 		get{
@@ -91,11 +93,17 @@ public class INV : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Substance Status(INV-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Substance Status(INV-2). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The substance status. </returns>
+
 	public CE GetSubstanceStatus(int rep)
 	{
 			CE ret = null;
@@ -110,9 +118,12 @@ public class INV : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Substance Status (INV-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Substance Status (INV-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetSubstanceStatus() {
      CE[] ret = null;
     try {
@@ -131,9 +142,10 @@ public class INV : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Substance Status (INV-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Substance Status (INV-2). </summary>
+  ///
+  /// <value>   The substance status repetitions used. </value>
+
   public int SubstanceStatusRepetitionsUsed
 {
 get{
@@ -149,9 +161,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Substance Type(INV-3).
-	///</summary>
+
+    /// <summary>   Returns Substance Type(INV-3). </summary>
+    ///
+    /// <value> The type of the substance. </value>
+
 	public CE SubstanceType
 	{
 		get{
@@ -172,9 +186,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Inventory Container Identifier(INV-4).
-	///</summary>
+    /// <summary>   Returns Inventory Container Identifier(INV-4). </summary>
+    ///
+    /// <value> The identifier of the inventory container. </value>
+
 	public CE InventoryContainerIdentifier
 	{
 		get{
@@ -195,9 +210,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Container Carrier Identifier(INV-5).
-	///</summary>
+    /// <summary>   Returns Container Carrier Identifier(INV-5). </summary>
+    ///
+    /// <value> The identifier of the container carrier. </value>
+
 	public CE ContainerCarrierIdentifier
 	{
 		get{
@@ -218,9 +234,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Position on Carrier(INV-6).
-	///</summary>
+    /// <summary>   Returns Position on Carrier(INV-6). </summary>
+    ///
+    /// <value> The position on carrier. </value>
+
 	public CE PositionOnCarrier
 	{
 		get{
@@ -241,9 +258,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Initial Quantity(INV-7).
-	///</summary>
+    /// <summary>   Returns Initial Quantity(INV-7). </summary>
+    ///
+    /// <value> The initial quantity. </value>
+
 	public NM InitialQuantity
 	{
 		get{
@@ -264,9 +282,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Current Quantity(INV-8).
-	///</summary>
+    /// <summary>   Returns Current Quantity(INV-8). </summary>
+    ///
+    /// <value> The current quantity. </value>
+
 	public NM CurrentQuantity
 	{
 		get{
@@ -287,9 +306,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Available Quantity(INV-9).
-	///</summary>
+    /// <summary>   Returns Available Quantity(INV-9). </summary>
+    ///
+    /// <value> The available quantity. </value>
+
 	public NM AvailableQuantity
 	{
 		get{
@@ -310,9 +330,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Consumption Quantity(INV-10).
-	///</summary>
+    /// <summary>   Returns Consumption Quantity(INV-10). </summary>
+    ///
+    /// <value> The consumption quantity. </value>
+
 	public NM ConsumptionQuantity
 	{
 		get{
@@ -333,9 +354,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Quantity Units(INV-11).
-	///</summary>
+    /// <summary>   Returns Quantity Units(INV-11). </summary>
+    ///
+    /// <value> The quantity units. </value>
+
 	public CE QuantityUnits
 	{
 		get{
@@ -356,9 +378,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Expiration Date/Time(INV-12).
-	///</summary>
+    /// <summary>   Returns Expiration Date/Time(INV-12). </summary>
+    ///
+    /// <value> The expiration date time. </value>
+
 	public TS ExpirationDateTime
 	{
 		get{
@@ -379,9 +402,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns First Used Date/Time(INV-13).
-	///</summary>
+    /// <summary>   Returns First Used Date/Time(INV-13). </summary>
+    ///
+    /// <value> The first used date time. </value>
+
 	public TS FirstUsedDateTime
 	{
 		get{
@@ -402,9 +426,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns On Board Stability Duration(INV-14).
-	///</summary>
+    /// <summary>   Returns On Board Stability Duration(INV-14). </summary>
+    ///
+    /// <value> The on board stability duration. </value>
+
 	public TQ OnBoardStabilityDuration
 	{
 		get{
@@ -425,11 +450,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Test/Fluid Identifier(s)(INV-15).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Test/Fluid Identifier(s)(INV-15). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The test fluid identifier s. </returns>
+
 	public CE GetTestFluidIdentifierS(int rep)
 	{
 			CE ret = null;
@@ -444,9 +475,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Test/Fluid Identifier(s) (INV-15).
-   ///</summary>
+  /// <summary> Returns all repetitions of Test/Fluid Identifier(s) (INV-15). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetTestFluidIdentifierS() {
      CE[] ret = null;
     try {
@@ -465,9 +499,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Test/Fluid Identifier(s) (INV-15).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Test/Fluid Identifier(s) (INV-15). </summary>
+  ///
+  /// <value>   The test fluid identifier s repetitions used. </value>
+
   public int TestFluidIdentifierSRepetitionsUsed
 {
 get{
@@ -483,9 +518,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Manufacturer Lot Number(INV-16).
-	///</summary>
+
+    /// <summary>   Returns Manufacturer Lot Number(INV-16). </summary>
+    ///
+    /// <value> The manufacturer lot number. </value>
+
 	public ST ManufacturerLotNumber
 	{
 		get{
@@ -506,9 +543,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Manufacturer Identifier(INV-17).
-	///</summary>
+    /// <summary>   Returns Manufacturer Identifier(INV-17). </summary>
+    ///
+    /// <value> The identifier of the manufacturer. </value>
+
 	public CE ManufacturerIdentifier
 	{
 		get{
@@ -529,9 +567,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Supplier Identifier(INV-18).
-	///</summary>
+    /// <summary>   Returns Supplier Identifier(INV-18). </summary>
+    ///
+    /// <value> The identifier of the supplier. </value>
+
 	public CE SupplierIdentifier
 	{
 		get{

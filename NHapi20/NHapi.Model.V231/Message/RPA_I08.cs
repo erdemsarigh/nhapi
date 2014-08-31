@@ -9,49 +9,52 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V231.Message
 
 {
-///<summary>
-/// Represents a RPA_I08 message structure (see chapter ). This structure contains the 
-/// following elements:
-///<ol>
-///<li>0: MSH (MSH - message header segment) </li>
-///<li>1: MSA (MSA - message acknowledgment segment) </li>
-///<li>2: RF1 (Referral Infomation) optional </li>
-///<li>3: RPA_I08_AUTHORIZATION (a Group object) optional </li>
-///<li>4: RPA_I08_PROVIDER (a Group object) repeating</li>
-///<li>5: PID (PID - patient identification segment) </li>
-///<li>6: NK1 (NK1 - next of kin / associated parties segment-) optional repeating</li>
-///<li>7: GT1 (GT1 - guarantor segment) optional repeating</li>
-///<li>8: RPA_I08_INSURANCE (a Group object) optional repeating</li>
-///<li>9: ACC (ACC - accident segment) optional </li>
-///<li>10: DG1 (DG1 - diagnosis segment) optional repeating</li>
-///<li>11: DRG (DRG - diagnosis related group segment) optional repeating</li>
-///<li>12: AL1 (AL1 - patient allergy information segment) optional repeating</li>
-///<li>13: RPA_I08_PROCEDURE (a Group object) repeating</li>
-///<li>14: RPA_I08_OBSERVATION (a Group object) optional repeating</li>
-///<li>15: RPA_I08_VISIT (a Group object) optional </li>
-///<li>16: NTE (NTE - notes and comments segment) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents a RPA_I08 message structure (see chapter ). This structure contains the following
+/// elements:
+/// <ol>
+/// <li>0: MSH (MSH - message header segment) </li>
+/// <li>1: MSA (MSA - message acknowledgment segment) </li>
+/// <li>2: RF1 (Referral Infomation) optional </li>
+/// <li>3: RPA_I08_AUTHORIZATION (a Group object) optional </li>
+/// <li>4: RPA_I08_PROVIDER (a Group object) repeating</li>
+/// <li>5: PID (PID - patient identification segment) </li>
+/// <li>6: NK1 (NK1 - next of kin / associated parties segment-) optional repeating</li>
+/// <li>7: GT1 (GT1 - guarantor segment) optional repeating</li>
+/// <li>8: RPA_I08_INSURANCE (a Group object) optional repeating</li>
+/// <li>9: ACC (ACC - accident segment) optional </li>
+/// <li>10: DG1 (DG1 - diagnosis segment) optional repeating</li>
+/// <li>11: DRG (DRG - diagnosis related group segment) optional repeating</li>
+/// <li>12: AL1 (AL1 - patient allergy information segment) optional repeating</li>
+/// <li>13: RPA_I08_PROCEDURE (a Group object) repeating</li>
+/// <li>14: RPA_I08_OBSERVATION (a Group object) optional repeating</li>
+/// <li>15: RPA_I08_VISIT (a Group object) optional </li>
+/// <li>16: NTE (NTE - notes and comments segment) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RPA_I08 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new RPA_I08 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new RPA_I08 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public RPA_I08(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new RPA_I08 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new RPA_I08 Group with DefaultModelClassFactory. </summary>
 	public RPA_I08() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for RPA_I08.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for RPA_I08.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -76,6 +79,13 @@ public class RPA_I08 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -83,9 +93,11 @@ public class RPA_I08 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MSH - message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MSH - message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -99,9 +111,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MSA (MSA - message acknowledgment segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns MSA (MSA - message acknowledgment segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The msa. </value>
+
 	public MSA MSA { 
 get{
 	   MSA ret = null;
@@ -115,9 +130,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RF1 (Referral Infomation) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RF1 (Referral Infomation) - creates it if necessary. </summary>
+    ///
+    /// <value> The rf 1. </value>
+
 	public RF1 RF1 { 
 get{
 	   RF1 ret = null;
@@ -131,9 +147,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RPA_I08_AUTHORIZATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RPA_I08_AUTHORIZATION (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The authorization. </value>
+
 	public RPA_I08_AUTHORIZATION AUTHORIZATION { 
 get{
 	   RPA_I08_AUTHORIZATION ret = null;
@@ -147,9 +164,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RPA_I08_PROVIDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RPA_I08_PROVIDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The provider. </returns>
+
 	public RPA_I08_PROVIDER GetPROVIDER() {
 	   RPA_I08_PROVIDER ret = null;
 	   try {
@@ -161,19 +183,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RPA_I08_PROVIDER
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RPA_I08_PROVIDER
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The provider. </returns>
+
 	public RPA_I08_PROVIDER GetPROVIDER(int rep) { 
 	   return (RPA_I08_PROVIDER)this.GetStructure("PROVIDER", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RPA_I08_PROVIDER 
-	 */ 
+    /// <summary>   Gets the provider repetitions used. </summary>
+    ///
+    /// <value> The provider repetitions used. </value>
+
 	public int PROVIDERRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -188,9 +216,12 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns PID (PID - patient identification segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PID (PID - patient identification segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -204,9 +235,15 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NK1 (NK1 - next of kin / associated parties segment-) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NK1 (NK1 - next of kin / associated parties segment-) - creates
+    /// it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nk 1. </returns>
+
 	public NK1 GetNK1() {
 	   NK1 ret = null;
 	   try {
@@ -218,19 +255,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NK1
-	/// * (NK1 - next of kin / associated parties segment-) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NK1
+    ///  * (NK1 - next of kin / associated parties segment-) - creates it if necessary throws
+    ///  HL7Exception if the repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nk 1. </returns>
+
 	public NK1 GetNK1(int rep) { 
 	   return (NK1)this.GetStructure("NK1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NK1 
-	 */ 
+    /// <summary>   Gets the nk 1 repetitions used. </summary>
+    ///
+    /// <value> The nk 1 repetitions used. </value>
+
 	public int NK1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -245,9 +288,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of GT1 (GT1 - guarantor segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of GT1 (GT1 - guarantor segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The gt 1. </returns>
+
 	public GT1 GetGT1() {
 	   GT1 ret = null;
 	   try {
@@ -259,19 +307,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of GT1
-	/// * (GT1 - guarantor segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of GT1
+    ///  * (GT1 - guarantor segment) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The gt 1. </returns>
+
 	public GT1 GetGT1(int rep) { 
 	   return (GT1)this.GetStructure("GT1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of GT1 
-	 */ 
+    /// <summary>   Gets the gt 1 repetitions used. </summary>
+    ///
+    /// <value> The gt 1 repetitions used. </value>
+
 	public int GT1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -286,9 +340,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of RPA_I08_INSURANCE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RPA_I08_INSURANCE (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The insurance. </returns>
+
 	public RPA_I08_INSURANCE GetINSURANCE() {
 	   RPA_I08_INSURANCE ret = null;
 	   try {
@@ -300,19 +359,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RPA_I08_INSURANCE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RPA_I08_INSURANCE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The insurance. </returns>
+
 	public RPA_I08_INSURANCE GetINSURANCE(int rep) { 
 	   return (RPA_I08_INSURANCE)this.GetStructure("INSURANCE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RPA_I08_INSURANCE 
-	 */ 
+    /// <summary>   Gets the insurance repetitions used. </summary>
+    ///
+    /// <value> The insurance repetitions used. </value>
+
 	public int INSURANCERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -327,9 +392,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns ACC (ACC - accident segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ACC (ACC - accident segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The accumulate. </value>
+
 	public ACC ACC { 
 get{
 	   ACC ret = null;
@@ -343,9 +409,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of DG1 (DG1 - diagnosis segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of DG1 (DG1 - diagnosis segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The dg 1. </returns>
+
 	public DG1 GetDG1() {
 	   DG1 ret = null;
 	   try {
@@ -357,19 +428,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of DG1
-	/// * (DG1 - diagnosis segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of DG1
+    ///  * (DG1 - diagnosis segment) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The dg 1. </returns>
+
 	public DG1 GetDG1(int rep) { 
 	   return (DG1)this.GetStructure("DG1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of DG1 
-	 */ 
+    /// <summary>   Gets the dg 1 repetitions used. </summary>
+    ///
+    /// <value> The dg 1 repetitions used. </value>
+
 	public int DG1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -384,9 +461,15 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of DRG (DRG - diagnosis related group segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of DRG (DRG - diagnosis related group segment) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The drg. </returns>
+
 	public DRG GetDRG() {
 	   DRG ret = null;
 	   try {
@@ -398,19 +481,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of DRG
-	/// * (DRG - diagnosis related group segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of DRG
+    ///  * (DRG - diagnosis related group segment) - creates it if necessary throws HL7Exception if
+    ///  the repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The drg. </returns>
+
 	public DRG GetDRG(int rep) { 
 	   return (DRG)this.GetStructure("DRG", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of DRG 
-	 */ 
+    /// <summary>   Gets the drg repetitions used. </summary>
+    ///
+    /// <value> The drg repetitions used. </value>
+
 	public int DRGRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -425,9 +514,15 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of AL1 (AL1 - patient allergy information segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of AL1 (AL1 - patient allergy information segment) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   a l 1. </returns>
+
 	public AL1 GetAL1() {
 	   AL1 ret = null;
 	   try {
@@ -439,19 +534,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of AL1
-	/// * (AL1 - patient allergy information segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of AL1
+    ///  * (AL1 - patient allergy information segment) - creates it if necessary throws HL7Exception
+    ///  if the repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   a l 1. </returns>
+
 	public AL1 GetAL1(int rep) { 
 	   return (AL1)this.GetStructure("AL1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of AL1 
-	 */ 
+    /// <summary>   Gets the al 1 repetitions used. </summary>
+    ///
+    /// <value> The al 1 repetitions used. </value>
+
 	public int AL1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -466,9 +567,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of RPA_I08_PROCEDURE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RPA_I08_PROCEDURE (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The procedure. </returns>
+
 	public RPA_I08_PROCEDURE GetPROCEDURE() {
 	   RPA_I08_PROCEDURE ret = null;
 	   try {
@@ -480,19 +586,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RPA_I08_PROCEDURE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RPA_I08_PROCEDURE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The procedure. </returns>
+
 	public RPA_I08_PROCEDURE GetPROCEDURE(int rep) { 
 	   return (RPA_I08_PROCEDURE)this.GetStructure("PROCEDURE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RPA_I08_PROCEDURE 
-	 */ 
+    /// <summary>   Gets the procedure repetitions used. </summary>
+    ///
+    /// <value> The procedure repetitions used. </value>
+
 	public int PROCEDURERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -507,9 +619,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of RPA_I08_OBSERVATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RPA_I08_OBSERVATION (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public RPA_I08_OBSERVATION GetOBSERVATION() {
 	   RPA_I08_OBSERVATION ret = null;
 	   try {
@@ -521,19 +638,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RPA_I08_OBSERVATION
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RPA_I08_OBSERVATION
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public RPA_I08_OBSERVATION GetOBSERVATION(int rep) { 
 	   return (RPA_I08_OBSERVATION)this.GetStructure("OBSERVATION", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RPA_I08_OBSERVATION 
-	 */ 
+    /// <summary>   Gets the observation repetitions used. </summary>
+    ///
+    /// <value> The observation repetitions used. </value>
+
 	public int OBSERVATIONRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -548,9 +671,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns RPA_I08_VISIT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RPA_I08_VISIT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The visit. </value>
+
 	public RPA_I08_VISIT VISIT { 
 get{
 	   RPA_I08_VISIT ret = null;
@@ -564,9 +688,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -578,19 +707,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (NTE - notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (NTE - notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 

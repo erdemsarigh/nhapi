@@ -6,29 +6,30 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 PRL (Parent Result Link) data type.  Consists of the following components: </p><ol>
 /// <li>Parent Observation Identifier (CE)</li>
 /// <li>Parent Observation Sub-identifier (ST)</li>
 /// <li>Parent Observation Value Descriptor (TX)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class PRL : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a PRL.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a PRL. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public PRL(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a PRL.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a PRL. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public PRL(IMessage message, string description) : base(message, description){
 		data = new IType[3];
 		data[0] = new CE(message,"Parent Observation Identifier");
@@ -36,9 +37,10 @@ public class PRL : AbstractType, IComposite{
 		data[2] = new TX(message,"Parent Observation Value Descriptor");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -46,12 +48,15 @@ public class PRL : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -62,10 +67,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Parent Observation Identifier (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Parent Observation Identifier (component #0).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the parent observation. </value>
+
 	public CE ParentObservationIdentifier {
 get{
 	   CE ret = null;
@@ -79,10 +88,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Parent Observation Sub-identifier (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Parent Observation Sub-identifier (component #1).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the parent observation sub. </value>
+
 	public ST ParentObservationSubIdentifier {
 get{
 	   ST ret = null;
@@ -96,10 +109,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Parent Observation Value Descriptor (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Parent Observation Value Descriptor (component #2).  This is a convenience method
+    /// that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The parent observation value descriptor. </value>
+
 	public TX ParentObservationValueDescriptor {
 get{
 	   TX ret = null;

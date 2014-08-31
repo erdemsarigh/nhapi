@@ -26,14 +26,21 @@
 
 namespace NHapi.Base.Model
 {
-    /// <summary> This class is used to provide utility functions for other datatype classes and methods.</summary>
+    /// <summary>
+    /// This class is used to provide utility functions for other datatype classes and methods.
+    /// </summary>
+
     public class DataTypeUtil
     {
         #region Public Properties
 
-        /// <summary> This method will return a signed four digit integer indicating the local
-        /// GMT offset. This is the HL7 Offset format in integer representation.
+        /// <summary>
+        /// This method will return a signed four digit integer indicating the local GMT offset. This is
+        /// the HL7 Offset format in integer representation.
         /// </summary>
+        ///
+        /// <value> The local GMT offset. </value>
+
         public static int LocalGMTOffset
         {
             get
@@ -69,9 +76,16 @@ namespace NHapi.Base.Model
 
         #region Public Methods and Operators
 
-        /// <summary> This method will preappend the zeros to the beginning of num such that the total length
+        /// <summary>
+        /// This method will preappend the zeros to the beginning of num such that the total length
         /// equals totalDigitLength. It will also return the string representation of the new number.
         /// </summary>
+        ///
+        /// <param name="num">              Number of. </param>
+        /// <param name="totalDigitLength"> Length of the total digit. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String preAppendZeroes(int num, int totalDigitLength)
         {
             /* preappend the zeros to the beginning of num such that the total length

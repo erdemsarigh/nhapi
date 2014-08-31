@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the SQR_S25_PATIENT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PID (PID - patient identification segment) </li>
-///<li>1: PV1 (PV1 - patient visit segment-) optional </li>
-///<li>2: PV2 (PV2 - patient visit - additional information segment) optional </li>
-///<li>3: DG1 (DG1 - diagnosis segment) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the SQR_S25_PATIENT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PID (PID - patient identification segment) </li>
+/// <li>1: PV1 (PV1 - patient visit segment-) optional </li>
+/// <li>2: PV2 (PV2 - patient visit - additional information segment) optional </li>
+/// <li>3: DG1 (DG1 - diagnosis segment) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class SQR_S25_PATIENT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new SQR_S25_PATIENT Group.
-	///</summary>
+    /// <summary>   Creates a new SQR_S25_PATIENT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SQR_S25_PATIENT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PID), true, false);
@@ -36,9 +39,12 @@ public class SQR_S25_PATIENT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PID (PID - patient identification segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PID (PID - patient identification segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -52,9 +58,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV1 (PV1 - patient visit segment-) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PV1 (PV1 - patient visit segment-) - creates it if necessary. </summary>
+    ///
+    /// <value> The pv 1. </value>
+
 	public PV1 PV1 { 
 get{
 	   PV1 ret = null;
@@ -68,9 +75,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV2 (PV2 - patient visit - additional information segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PV2 (PV2 - patient visit - additional information segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The pv 2. </value>
+
 	public PV2 PV2 { 
 get{
 	   PV2 ret = null;
@@ -84,9 +94,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns DG1 (DG1 - diagnosis segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns DG1 (DG1 - diagnosis segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The dg 1. </value>
+
 	public DG1 DG1 { 
 get{
 	   DG1 ret = null;

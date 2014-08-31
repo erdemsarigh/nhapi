@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V21.Group
 {
-///<summary>
-///Represents the ORM_O01_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (COMMON ORDER) </li>
-///<li>1: ORM_O01_ORDER_DETAIL (a Group object) optional </li>
-///<li>2: BLG (BILLING) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ORM_O01_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (COMMON ORDER) </li>
+/// <li>1: ORM_O01_ORDER_DETAIL (a Group object) optional </li>
+/// <li>2: BLG (BILLING) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ORM_O01_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ORM_O01_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new ORM_O01_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORM_O01_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -34,9 +37,10 @@ public class ORM_O01_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (COMMON ORDER) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (COMMON ORDER) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -50,9 +54,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ORM_O01_ORDER_DETAIL (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORM_O01_ORDER_DETAIL (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The order detail. </value>
+
 	public ORM_O01_ORDER_DETAIL ORDER_DETAIL { 
 get{
 	   ORM_O01_ORDER_DETAIL ret = null;
@@ -66,9 +71,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns BLG (BILLING) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns BLG (BILLING) - creates it if necessary. </summary>
+    ///
+    /// <value> The blg. </value>
+
 	public BLG BLG { 
 get{
 	   BLG ret = null;

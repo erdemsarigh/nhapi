@@ -6,9 +6,9 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V22.Datatype
 {
-
-///<summary>
-/// <p>The HL7 CN_PERSON (CN für Personen) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 CN_PERSON (CN für Personen) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>ID number (ID)</li>
 /// <li>family name (ST)</li>
 /// <li>given name (ST)</li>
@@ -18,22 +18,24 @@ namespace NHapi.Model.V22.Datatype
 /// <li>degree (e.g. MD) (ST)</li>
 /// <li>source table id (ID)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CN_PERSON : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CN_PERSON.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CN_PERSON. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CN_PERSON(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CN_PERSON.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CN_PERSON. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CN_PERSON(IMessage message, string description) : base(message, description){
 		data = new IType[8];
 		data[0] = new ID(message, 0,"ID number");
@@ -46,9 +48,10 @@ public class CN_PERSON : AbstractType, IComposite{
 		data[7] = new ID(message, 0,"Source table id");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -56,12 +59,15 @@ public class CN_PERSON : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -72,10 +78,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns ID number (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns ID number (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier number. </value>
+
 	public ID IDNumber {
 get{
 	   ID ret = null;
@@ -89,10 +99,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns family name (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns family name (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the family. </value>
+
 	public ST FamilyName {
 get{
 	   ST ret = null;
@@ -106,10 +120,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns given name (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns given name (component #2).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the given. </value>
+
 	public ST GivenName {
 get{
 	   ST ret = null;
@@ -123,10 +141,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns middle initial or name (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns middle initial or name (component #3).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the middle initial or. </value>
+
 	public ST MiddleInitialOrName {
 get{
 	   ST ret = null;
@@ -140,10 +162,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns suffix (e.g. JR or III) (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns suffix (e.g. JR or III) (component #4).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The suffix eg j ror iii. </value>
+
 	public ST SuffixEgJRorIII {
 get{
 	   ST ret = null;
@@ -157,10 +183,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns prefix (e.g. DR) (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns prefix (e.g. DR) (component #5).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The prefix eg dr. </value>
+
 	public ST PrefixEgDR {
 get{
 	   ST ret = null;
@@ -174,10 +204,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns degree (e.g. MD) (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns degree (e.g. MD) (component #6).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The degree eg md. </value>
+
 	public ST DegreeEgMD {
 get{
 	   ST ret = null;
@@ -191,10 +225,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns source table id (component #7).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns source table id (component #7).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the source table. </value>
+
 	public ID SourceTableId {
 get{
 	   ID ret = null;

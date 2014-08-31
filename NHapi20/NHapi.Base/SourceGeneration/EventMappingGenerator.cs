@@ -2,9 +2,15 @@
 {
     using System.IO;
 
+    /// <summary>   An event mapping generator. </summary>
     public class EventMappingGenerator
     {
         #region Public Methods and Operators
+
+        /// <summary>   Makes all. </summary>
+        ///
+        /// <param name="baseDirectory">    Pathname of the base directory. </param>
+        /// <param name="version">          The version. </param>
 
         public static void makeAll(System.String baseDirectory, System.String version)
         {

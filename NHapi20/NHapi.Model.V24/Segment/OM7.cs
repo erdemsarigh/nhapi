@@ -7,47 +7,48 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 OM7 message segment. 
-/// This segment has the following fields:<ol>
-///<li>OM7-1: Sequence Number - Test/ Observation Master File (NM)</li>
-///<li>OM7-2: Universal Service Identifier (CE)</li>
-///<li>OM7-3: Category Identifier (CE)</li>
-///<li>OM7-4: Category Description (TX)</li>
-///<li>OM7-5: Category Synonym (ST)</li>
-///<li>OM7-6: Effective Test/Service Start Date/Time (TS)</li>
-///<li>OM7-7: Effective Test/Service End Date/Time (TS)</li>
-///<li>OM7-8: Test/Service Default Duration Quantity (NM)</li>
-///<li>OM7-9: Test/Service Default Duration Units (CE)</li>
-///<li>OM7-10: Test/Service Default Frequency (IS)</li>
-///<li>OM7-11: Consent Indicator (ID)</li>
-///<li>OM7-12: Consent Identifier (CE)</li>
-///<li>OM7-13: Consent Effective Start Date/Time (TS)</li>
-///<li>OM7-14: Consent Effective End Date/Time (TS)</li>
-///<li>OM7-15: Consent Interval Quantity (NM)</li>
-///<li>OM7-16: Consent Interval Units (CE)</li>
-///<li>OM7-17: Consent Waiting Period Quantity (NM)</li>
-///<li>OM7-18: Consent Waiting Period Units (CE)</li>
-///<li>OM7-19: Effective Date/Time of Change (TS)</li>
-///<li>OM7-20: Entered By (XCN)</li>
-///<li>OM7-21: Orderable-at Location (PL)</li>
-///<li>OM7-22: Formulary Status (IS)</li>
-///<li>OM7-23: Special Order Indicator (ID)</li>
-///<li>OM7-24: Primary Key Value - CDM (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 OM7 message segment. This segment has the following fields:<ol>
+/// <li>OM7-1: Sequence Number - Test/ Observation Master File (NM)</li>
+/// <li>OM7-2: Universal Service Identifier (CE)</li>
+/// <li>OM7-3: Category Identifier (CE)</li>
+/// <li>OM7-4: Category Description (TX)</li>
+/// <li>OM7-5: Category Synonym (ST)</li>
+/// <li>OM7-6: Effective Test/Service Start Date/Time (TS)</li>
+/// <li>OM7-7: Effective Test/Service End Date/Time (TS)</li>
+/// <li>OM7-8: Test/Service Default Duration Quantity (NM)</li>
+/// <li>OM7-9: Test/Service Default Duration Units (CE)</li>
+/// <li>OM7-10: Test/Service Default Frequency (IS)</li>
+/// <li>OM7-11: Consent Indicator (ID)</li>
+/// <li>OM7-12: Consent Identifier (CE)</li>
+/// <li>OM7-13: Consent Effective Start Date/Time (TS)</li>
+/// <li>OM7-14: Consent Effective End Date/Time (TS)</li>
+/// <li>OM7-15: Consent Interval Quantity (NM)</li>
+/// <li>OM7-16: Consent Interval Units (CE)</li>
+/// <li>OM7-17: Consent Waiting Period Quantity (NM)</li>
+/// <li>OM7-18: Consent Waiting Period Units (CE)</li>
+/// <li>OM7-19: Effective Date/Time of Change (TS)</li>
+/// <li>OM7-20: Entered By (XCN)</li>
+/// <li>OM7-21: Orderable-at Location (PL)</li>
+/// <li>OM7-22: Formulary Status (IS)</li>
+/// <li>OM7-23: Special Order Indicator (ID)</li>
+/// <li>OM7-24: Primary Key Value - CDM (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class OM7 : AbstractSegment  {
 
-  /**
-   * Creates a OM7 (Additional Basic Attributes) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the OM7 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OM7(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -80,9 +81,10 @@ public class OM7 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Sequence Number - Test/ Observation Master File(OM7-1).
-	///</summary>
+    /// <summary>   Returns Sequence Number - Test/ Observation Master File(OM7-1). </summary>
+    ///
+    /// <value> The sequence number test observation master file. </value>
+
 	public NM SequenceNumberTestObservationMasterFile
 	{
 		get{
@@ -103,9 +105,10 @@ public class OM7 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Universal Service Identifier(OM7-2).
-	///</summary>
+    /// <summary>   Returns Universal Service Identifier(OM7-2). </summary>
+    ///
+    /// <value> The identifier of the universal service. </value>
+
 	public CE UniversalServiceIdentifier
 	{
 		get{
@@ -126,11 +129,17 @@ public class OM7 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Category Identifier(OM7-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Category Identifier(OM7-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The category identifier. </returns>
+
 	public CE GetCategoryIdentifier(int rep)
 	{
 			CE ret = null;
@@ -145,9 +154,12 @@ public class OM7 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Category Identifier (OM7-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Category Identifier (OM7-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetCategoryIdentifier() {
      CE[] ret = null;
     try {
@@ -166,9 +178,10 @@ public class OM7 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Category Identifier (OM7-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Category Identifier (OM7-3). </summary>
+  ///
+  /// <value>   The category identifier repetitions used. </value>
+
   public int CategoryIdentifierRepetitionsUsed
 {
 get{
@@ -184,9 +197,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Category Description(OM7-4).
-	///</summary>
+
+    /// <summary>   Returns Category Description(OM7-4). </summary>
+    ///
+    /// <value> Information describing the category. </value>
+
 	public TX CategoryDescription
 	{
 		get{
@@ -207,11 +222,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Category Synonym(OM7-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Category Synonym(OM7-5). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The category synonym. </returns>
+
 	public ST GetCategorySynonym(int rep)
 	{
 			ST ret = null;
@@ -226,9 +247,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Category Synonym (OM7-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Category Synonym (OM7-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetCategorySynonym() {
      ST[] ret = null;
     try {
@@ -247,9 +271,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Category Synonym (OM7-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Category Synonym (OM7-5). </summary>
+  ///
+  /// <value>   The category synonym repetitions used. </value>
+
   public int CategorySynonymRepetitionsUsed
 {
 get{
@@ -265,9 +290,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Effective Test/Service Start Date/Time(OM7-6).
-	///</summary>
+
+    /// <summary>   Returns Effective Test/Service Start Date/Time(OM7-6). </summary>
+    ///
+    /// <value> The effective test service start date time. </value>
+
 	public TS EffectiveTestServiceStartDateTime
 	{
 		get{
@@ -288,9 +315,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Effective Test/Service End Date/Time(OM7-7).
-	///</summary>
+    /// <summary>   Returns Effective Test/Service End Date/Time(OM7-7). </summary>
+    ///
+    /// <value> The effective test service end date time. </value>
+
 	public TS EffectiveTestServiceEndDateTime
 	{
 		get{
@@ -311,9 +339,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Test/Service Default Duration Quantity(OM7-8).
-	///</summary>
+    /// <summary>   Returns Test/Service Default Duration Quantity(OM7-8). </summary>
+    ///
+    /// <value> The test service default duration quantity. </value>
+
 	public NM TestServiceDefaultDurationQuantity
 	{
 		get{
@@ -334,9 +363,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Test/Service Default Duration Units(OM7-9).
-	///</summary>
+    /// <summary>   Returns Test/Service Default Duration Units(OM7-9). </summary>
+    ///
+    /// <value> The test service default duration units. </value>
+
 	public CE TestServiceDefaultDurationUnits
 	{
 		get{
@@ -357,9 +387,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Test/Service Default Frequency(OM7-10).
-	///</summary>
+    /// <summary>   Returns Test/Service Default Frequency(OM7-10). </summary>
+    ///
+    /// <value> The test service default frequency. </value>
+
 	public IS TestServiceDefaultFrequency
 	{
 		get{
@@ -380,9 +411,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Consent Indicator(OM7-11).
-	///</summary>
+    /// <summary>   Returns Consent Indicator(OM7-11). </summary>
+    ///
+    /// <value> The consent indicator. </value>
+
 	public ID ConsentIndicator
 	{
 		get{
@@ -403,9 +435,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Consent Identifier(OM7-12).
-	///</summary>
+    /// <summary>   Returns Consent Identifier(OM7-12). </summary>
+    ///
+    /// <value> The identifier of the consent. </value>
+
 	public CE ConsentIdentifier
 	{
 		get{
@@ -426,9 +459,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Consent Effective Start Date/Time(OM7-13).
-	///</summary>
+    /// <summary>   Returns Consent Effective Start Date/Time(OM7-13). </summary>
+    ///
+    /// <value> The consent effective start date time. </value>
+
 	public TS ConsentEffectiveStartDateTime
 	{
 		get{
@@ -449,9 +483,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Consent Effective End Date/Time(OM7-14).
-	///</summary>
+    /// <summary>   Returns Consent Effective End Date/Time(OM7-14). </summary>
+    ///
+    /// <value> The consent effective end date time. </value>
+
 	public TS ConsentEffectiveEndDateTime
 	{
 		get{
@@ -472,9 +507,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Consent Interval Quantity(OM7-15).
-	///</summary>
+    /// <summary>   Returns Consent Interval Quantity(OM7-15). </summary>
+    ///
+    /// <value> The consent interval quantity. </value>
+
 	public NM ConsentIntervalQuantity
 	{
 		get{
@@ -495,9 +531,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Consent Interval Units(OM7-16).
-	///</summary>
+    /// <summary>   Returns Consent Interval Units(OM7-16). </summary>
+    ///
+    /// <value> The consent interval units. </value>
+
 	public CE ConsentIntervalUnits
 	{
 		get{
@@ -518,9 +555,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Consent Waiting Period Quantity(OM7-17).
-	///</summary>
+    /// <summary>   Returns Consent Waiting Period Quantity(OM7-17). </summary>
+    ///
+    /// <value> The consent waiting period quantity. </value>
+
 	public NM ConsentWaitingPeriodQuantity
 	{
 		get{
@@ -541,9 +579,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Consent Waiting Period Units(OM7-18).
-	///</summary>
+    /// <summary>   Returns Consent Waiting Period Units(OM7-18). </summary>
+    ///
+    /// <value> The consent waiting period units. </value>
+
 	public CE ConsentWaitingPeriodUnits
 	{
 		get{
@@ -564,9 +603,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Effective Date/Time of Change(OM7-19).
-	///</summary>
+    /// <summary>   Returns Effective Date/Time of Change(OM7-19). </summary>
+    ///
+    /// <value> The effective date time of change. </value>
+
 	public TS EffectiveDateTimeOfChange
 	{
 		get{
@@ -587,9 +627,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Entered By(OM7-20).
-	///</summary>
+    /// <summary>   Returns Entered By(OM7-20). </summary>
+    ///
+    /// <value> Amount to entered by. </value>
+
 	public XCN EnteredBy
 	{
 		get{
@@ -610,11 +651,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Orderable-at Location(OM7-21).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Orderable-at Location(OM7-21). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The orderable at location. </returns>
+
 	public PL GetOrderableAtLocation(int rep)
 	{
 			PL ret = null;
@@ -629,9 +676,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Orderable-at Location (OM7-21).
-   ///</summary>
+  /// <summary> Returns all repetitions of Orderable-at Location (OM7-21). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of pl. </returns>
+
   public PL[] GetOrderableAtLocation() {
      PL[] ret = null;
     try {
@@ -650,9 +700,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Orderable-at Location (OM7-21).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Orderable-at Location (OM7-21). </summary>
+  ///
+  /// <value>   The orderable at location repetitions used. </value>
+
   public int OrderableAtLocationRepetitionsUsed
 {
 get{
@@ -668,9 +719,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Formulary Status(OM7-22).
-	///</summary>
+
+    /// <summary>   Returns Formulary Status(OM7-22). </summary>
+    ///
+    /// <value> The formulary status. </value>
+
 	public IS FormularyStatus
 	{
 		get{
@@ -691,9 +744,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Special Order Indicator(OM7-23).
-	///</summary>
+    /// <summary>   Returns Special Order Indicator(OM7-23). </summary>
+    ///
+    /// <value> The special order indicator. </value>
+
 	public ID SpecialOrderIndicator
 	{
 		get{
@@ -714,11 +768,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Primary Key Value - CDM(OM7-24).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Primary Key Value - CDM(OM7-24). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The primary key value cdm. </returns>
+
 	public CE GetPrimaryKeyValueCDM(int rep)
 	{
 			CE ret = null;
@@ -733,9 +793,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Primary Key Value - CDM (OM7-24).
-   ///</summary>
+  /// <summary> Returns all repetitions of Primary Key Value - CDM (OM7-24). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetPrimaryKeyValueCDM() {
      CE[] ret = null;
     try {
@@ -754,9 +817,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Primary Key Value - CDM (OM7-24).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Primary Key Value - CDM (OM7-24). </summary>
+  ///
+  /// <value>   The primary key value cdm repetitions used. </value>
+
   public int PrimaryKeyValueCDMRepetitionsUsed
 {
 get{

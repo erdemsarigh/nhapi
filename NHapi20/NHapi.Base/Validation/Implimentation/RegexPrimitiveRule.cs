@@ -23,31 +23,30 @@ namespace NHapi.Base.validation.impl
 {
     using System.Text.RegularExpressions;
 
-    /// <summary> A <code>PrimitiveTypeRule</code> that validates primitive values 
-    /// using a regular expression.  
-    /// 
+    /// <summary>
+    /// A <code>PrimitiveTypeRule</code> that validates primitive values using a regular expression.  
     /// </summary>
-    /// <author>  <a href="mailto:bryan.tripp@uhn.on.ca">Bryan Tripp</a>
-    /// </author>
-    /// <version>  $Revision: 1.3 $ updated on $Date: 2005/06/14 20:15:12 $ by $Author: bryan_tripp $
-    /// </version>
+
     public class RegexPrimitiveRule : IPrimitiveTypeRule
     {
         #region Fields
 
+        /// <summary>   A pattern specifying my. </summary>
         private System.Text.RegularExpressions.Regex myPattern;
 
+        /// <summary>   my section reference. </summary>
         private System.String mySectionReference;
 
         #endregion
 
         #region Constructors and Destructors
 
-        /// <param name="theRegex">a regular expression against which to validate primitive
-        /// values 
-        /// </param>
-        /// <param name="theSectionReference">to be returned by <code>getSectionReference()</code>
-        /// </param>
+        /// <summary>   Initializes a new instance of the RegexPrimitiveRule class. </summary>
+        ///
+        /// <param name="theRegex">             a regular expression against which to validate primitive
+        ///                                     values. </param>
+        /// <param name="theSectionReference">  to be returned by <code>getSectionReference()</code> </param>
+
         public RegexPrimitiveRule(System.String theRegex, System.String theSectionReference)
         {
             this.myPattern = new Regex(theRegex);
@@ -58,9 +57,10 @@ namespace NHapi.Base.validation.impl
 
         #region Public Properties
 
-        /// <summary>
-        /// The description
-        /// </summary>
+        /// <summary>   The description. </summary>
+        ///
+        /// <value> The description. </value>
+
         public virtual System.String Description
         {
             get
@@ -69,9 +69,10 @@ namespace NHapi.Base.validation.impl
             }
         }
 
-        /// <summary>
-        /// The section reference
-        /// </summary>
+        /// <summary>   The section reference. </summary>
+        ///
+        /// <value> The section reference. </value>
+
         public virtual System.String SectionReference
         {
             get
@@ -84,19 +85,25 @@ namespace NHapi.Base.validation.impl
 
         #region Public Methods and Operators
 
-        /// <summary>
-        /// Is this rule correct
-        /// </summary>
-        /// <param name="value_Renamed"></param>
-        /// <returns></returns>
+        /// <summary>   Is this rule correct. </summary>
+        ///
+        /// <param name="value_Renamed">    . </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public virtual System.String correct(System.String value_Renamed)
         {
             return value_Renamed;
         }
 
-        /// <summary> Empty string, null, and the HL7 explicit null (two double-quotes) are passed.  
-        /// 
+        /// <summary>
+        /// Empty string, null, and the HL7 explicit null (two double-quotes) are passed.  
         /// </summary>
+        ///
+        /// <param name="value_Renamed">    . </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         public virtual bool test(System.String value_Renamed)
         {
             if (value_Renamed == null || value_Renamed.Equals("\"\"") || value_Renamed.Equals(""))

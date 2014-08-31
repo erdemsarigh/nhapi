@@ -8,20 +8,23 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the ORL_O22_RESPONSE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORL_O22_PATIENT (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ORL_O22_RESPONSE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORL_O22_PATIENT (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ORL_O22_RESPONSE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ORL_O22_RESPONSE Group.
-	///</summary>
+    /// <summary>   Creates a new ORL_O22_RESPONSE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORL_O22_RESPONSE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORL_O22_PATIENT), false, false);
@@ -30,9 +33,10 @@ public class ORL_O22_RESPONSE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORL_O22_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORL_O22_PATIENT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient. </value>
+
 	public ORL_O22_PATIENT PATIENT { 
 get{
 	   ORL_O22_PATIENT ret = null;

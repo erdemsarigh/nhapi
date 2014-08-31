@@ -7,48 +7,49 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 IN3 message segment. 
-/// This segment has the following fields:<ol>
-///<li>IN3-1: Set ID - insurance certification (SI)</li>
-///<li>IN3-2: Certification number (ST)</li>
-///<li>IN3-3: Certified by (CN_PERSON)</li>
-///<li>IN3-4: Certification required (ID)</li>
-///<li>IN3-5: Penalty (CM_PEN)</li>
-///<li>IN3-6: Certification date / time (TS)</li>
-///<li>IN3-7: Certification modify date / time (TS)</li>
-///<li>IN3-8: Operator (CN_PERSON)</li>
-///<li>IN3-9: Certification begin date (DT)</li>
-///<li>IN3-10: Certification end date (DT)</li>
-///<li>IN3-11: Days (CM_DTN)</li>
-///<li>IN3-12: Non-concur code / description (CE)</li>
-///<li>IN3-13: Non-concur effective date / time (TS)</li>
-///<li>IN3-14: Physician reviewer (CN_PERSON)</li>
-///<li>IN3-15: Certification contact (ST)</li>
-///<li>IN3-16: Certification contact phone number (TN)</li>
-///<li>IN3-17: Appeal reason (CE)</li>
-///<li>IN3-18: Certification agency (CE)</li>
-///<li>IN3-19: Certification agency phone number (TN)</li>
-///<li>IN3-20: Pre-certification required / window (CM_PCF)</li>
-///<li>IN3-21: Case manager (ST)</li>
-///<li>IN3-22: Second opinion date (DT)</li>
-///<li>IN3-23: Second opinion status (ID)</li>
-///<li>IN3-24: Second opinion documentation received (ID)</li>
-///<li>IN3-25: Second opinion practitioner (CN_PERSON)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 IN3 message segment. This segment has the following fields:<ol>
+/// <li>IN3-1: Set ID - insurance certification (SI)</li>
+/// <li>IN3-2: Certification number (ST)</li>
+/// <li>IN3-3: Certified by (CN_PERSON)</li>
+/// <li>IN3-4: Certification required (ID)</li>
+/// <li>IN3-5: Penalty (CM_PEN)</li>
+/// <li>IN3-6: Certification date / time (TS)</li>
+/// <li>IN3-7: Certification modify date / time (TS)</li>
+/// <li>IN3-8: Operator (CN_PERSON)</li>
+/// <li>IN3-9: Certification begin date (DT)</li>
+/// <li>IN3-10: Certification end date (DT)</li>
+/// <li>IN3-11: Days (CM_DTN)</li>
+/// <li>IN3-12: Non-concur code / description (CE)</li>
+/// <li>IN3-13: Non-concur effective date / time (TS)</li>
+/// <li>IN3-14: Physician reviewer (CN_PERSON)</li>
+/// <li>IN3-15: Certification contact (ST)</li>
+/// <li>IN3-16: Certification contact phone number (TN)</li>
+/// <li>IN3-17: Appeal reason (CE)</li>
+/// <li>IN3-18: Certification agency (CE)</li>
+/// <li>IN3-19: Certification agency phone number (TN)</li>
+/// <li>IN3-20: Pre-certification required / window (CM_PCF)</li>
+/// <li>IN3-21: Case manager (ST)</li>
+/// <li>IN3-22: Second opinion date (DT)</li>
+/// <li>IN3-23: Second opinion status (ID)</li>
+/// <li>IN3-24: Second opinion documentation received (ID)</li>
+/// <li>IN3-25: Second opinion practitioner (CN_PERSON)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class IN3 : AbstractSegment  {
 
-  /**
-   * Creates a IN3 (INSURANCE ADDITIONAL INFO-CERTIFICATION) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the IN3 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public IN3(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -82,9 +83,10 @@ public class IN3 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - insurance certification(IN3-1).
-	///</summary>
+    /// <summary>   Returns Set ID - insurance certification(IN3-1). </summary>
+    ///
+    /// <value> The set identifier insurance certification. </value>
+
 	public SI SetIDInsuranceCertification
 	{
 		get{
@@ -105,9 +107,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Certification number(IN3-2).
-	///</summary>
+    /// <summary>   Returns Certification number(IN3-2). </summary>
+    ///
+    /// <value> The certification number. </value>
+
 	public ST CertificationNumber
 	{
 		get{
@@ -128,9 +131,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Certified by(IN3-3).
-	///</summary>
+    /// <summary>   Returns Certified by(IN3-3). </summary>
+    ///
+    /// <value> Amount to certified by. </value>
+
 	public CN_PERSON CertifiedBy
 	{
 		get{
@@ -151,9 +155,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Certification required(IN3-4).
-	///</summary>
+    /// <summary>   Returns Certification required(IN3-4). </summary>
+    ///
+    /// <value> The certification required. </value>
+
 	public ID CertificationRequired
 	{
 		get{
@@ -174,9 +179,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Penalty(IN3-5).
-	///</summary>
+    /// <summary>   Returns Penalty(IN3-5). </summary>
+    ///
+    /// <value> The penalty. </value>
+
 	public CM_PEN Penalty
 	{
 		get{
@@ -197,9 +203,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Certification date / time(IN3-6).
-	///</summary>
+    /// <summary>   Returns Certification date / time(IN3-6). </summary>
+    ///
+    /// <value> The certification date time. </value>
+
 	public TS CertificationDateTime
 	{
 		get{
@@ -220,9 +227,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Certification modify date / time(IN3-7).
-	///</summary>
+    /// <summary>   Returns Certification modify date / time(IN3-7). </summary>
+    ///
+    /// <value> The certification modify date time. </value>
+
 	public TS CertificationModifyDateTime
 	{
 		get{
@@ -243,9 +251,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Operator(IN3-8).
-	///</summary>
+    /// <summary>   Returns Operator(IN3-8). </summary>
+    ///
+    /// <value> The operator. </value>
+
 	public CN_PERSON Operator
 	{
 		get{
@@ -266,9 +275,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Certification begin date(IN3-9).
-	///</summary>
+    /// <summary>   Returns Certification begin date(IN3-9). </summary>
+    ///
+    /// <value> The certification begin date. </value>
+
 	public DT CertificationBeginDate
 	{
 		get{
@@ -289,9 +299,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Certification end date(IN3-10).
-	///</summary>
+    /// <summary>   Returns Certification end date(IN3-10). </summary>
+    ///
+    /// <value> The certification end date. </value>
+
 	public DT CertificationEndDate
 	{
 		get{
@@ -312,9 +323,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Days(IN3-11).
-	///</summary>
+    /// <summary>   Returns Days(IN3-11). </summary>
+    ///
+    /// <value> The days. </value>
+
 	public CM_DTN Days
 	{
 		get{
@@ -335,9 +347,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Non-concur code / description(IN3-12).
-	///</summary>
+    /// <summary>   Returns Non-concur code / description(IN3-12). </summary>
+    ///
+    /// <value> Information describing the non concur code. </value>
+
 	public CE NonConcurCodeDescription
 	{
 		get{
@@ -358,9 +371,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Non-concur effective date / time(IN3-13).
-	///</summary>
+    /// <summary>   Returns Non-concur effective date / time(IN3-13). </summary>
+    ///
+    /// <value> The non concur effective date time. </value>
+
 	public TS NonConcurEffectiveDateTime
 	{
 		get{
@@ -381,9 +395,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Physician reviewer(IN3-14).
-	///</summary>
+    /// <summary>   Returns Physician reviewer(IN3-14). </summary>
+    ///
+    /// <value> The physician reviewer. </value>
+
 	public CN_PERSON PhysicianReviewer
 	{
 		get{
@@ -404,9 +419,10 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Certification contact(IN3-15).
-	///</summary>
+    /// <summary>   Returns Certification contact(IN3-15). </summary>
+    ///
+    /// <value> The certification contact. </value>
+
 	public ST CertificationContact
 	{
 		get{
@@ -427,11 +443,17 @@ public class IN3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Certification contact phone number(IN3-16).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Certification contact phone number(IN3-16). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The certification contact phone number. </returns>
+
 	public TN GetCertificationContactPhoneNumber(int rep)
 	{
 			TN ret = null;
@@ -446,9 +468,12 @@ public class IN3 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Certification contact phone number (IN3-16).
-   ///</summary>
+  /// <summary> Returns all repetitions of Certification contact phone number (IN3-16). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tn. </returns>
+
   public TN[] GetCertificationContactPhoneNumber() {
      TN[] ret = null;
     try {
@@ -467,9 +492,12 @@ public class IN3 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Certification contact phone number (IN3-16).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The certification contact phone number repetitions used. </value>
+
   public int CertificationContactPhoneNumberRepetitionsUsed
 {
 get{
@@ -485,9 +513,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Appeal reason(IN3-17).
-	///</summary>
+
+    /// <summary>   Returns Appeal reason(IN3-17). </summary>
+    ///
+    /// <value> The appeal reason. </value>
+
 	public CE AppealReason
 	{
 		get{
@@ -508,9 +538,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Certification agency(IN3-18).
-	///</summary>
+    /// <summary>   Returns Certification agency(IN3-18). </summary>
+    ///
+    /// <value> The certification agency. </value>
+
 	public CE CertificationAgency
 	{
 		get{
@@ -531,11 +562,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Certification agency phone number(IN3-19).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Certification agency phone number(IN3-19). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The certification agency phone number. </returns>
+
 	public TN GetCertificationAgencyPhoneNumber(int rep)
 	{
 			TN ret = null;
@@ -550,9 +587,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Certification agency phone number (IN3-19).
-   ///</summary>
+  /// <summary> Returns all repetitions of Certification agency phone number (IN3-19). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tn. </returns>
+
   public TN[] GetCertificationAgencyPhoneNumber() {
      TN[] ret = null;
     try {
@@ -571,9 +611,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Certification agency phone number (IN3-19).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The certification agency phone number repetitions used. </value>
+
   public int CertificationAgencyPhoneNumberRepetitionsUsed
 {
 get{
@@ -589,11 +632,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Pre-certification required / window(IN3-20).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Pre-certification required / window(IN3-20). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The pre certification required window. </returns>
+
 	public CM_PCF GetPreCertificationRequiredWindow(int rep)
 	{
 			CM_PCF ret = null;
@@ -608,9 +658,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Pre-certification required / window (IN3-20).
-   ///</summary>
+  /// <summary> Returns all repetitions of Pre-certification required / window (IN3-20). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of centimetres pcf. </returns>
+
   public CM_PCF[] GetPreCertificationRequiredWindow() {
      CM_PCF[] ret = null;
     try {
@@ -629,9 +682,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Pre-certification required / window (IN3-20).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The pre certification required window repetitions used. </value>
+
   public int PreCertificationRequiredWindowRepetitionsUsed
 {
 get{
@@ -647,9 +703,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Case manager(IN3-21).
-	///</summary>
+
+    /// <summary>   Returns Case manager(IN3-21). </summary>
+    ///
+    /// <value> The case manager. </value>
+
 	public ST CaseManager
 	{
 		get{
@@ -670,9 +728,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Second opinion date(IN3-22).
-	///</summary>
+    /// <summary>   Returns Second opinion date(IN3-22). </summary>
+    ///
+    /// <value> The second opinion date. </value>
+
 	public DT SecondOpinionDate
 	{
 		get{
@@ -693,9 +752,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Second opinion status(IN3-23).
-	///</summary>
+    /// <summary>   Returns Second opinion status(IN3-23). </summary>
+    ///
+    /// <value> The second opinion status. </value>
+
 	public ID SecondOpinionStatus
 	{
 		get{
@@ -716,9 +776,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Second opinion documentation received(IN3-24).
-	///</summary>
+    /// <summary>   Returns Second opinion documentation received(IN3-24). </summary>
+    ///
+    /// <value> The second opinion documentation received. </value>
+
 	public ID SecondOpinionDocumentationReceived
 	{
 		get{
@@ -739,9 +800,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Second opinion practitioner(IN3-25).
-	///</summary>
+    /// <summary>   Returns Second opinion practitioner(IN3-25). </summary>
+    ///
+    /// <value> The second opinion practitioner. </value>
+
 	public CN_PERSON SecondOpinionPractitioner
 	{
 		get{

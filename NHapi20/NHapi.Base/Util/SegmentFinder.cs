@@ -30,16 +30,15 @@ namespace NHapi.Base.Util
 
     using NHapi.Base.Model;
 
-    /// <summary> A tool for getting segments by name within a message or part of a message.</summary>
-    /// <author>  Bryan Tripp
-    /// </author>
+    /// <summary>   A tool for getting segments by name within a message or part of a message. </summary>
     public class SegmentFinder : MessageNavigator
     {
         #region Constructors and Destructors
 
-        /// <summary> Creates a new instance of SegmentFinder.</summary>
-        /// <param name="root">the scope of searches -- may be a whole message or only a branch
-        /// </param>
+        /// <summary>   Creates a new instance of SegmentFinder. </summary>
+        ///
+        /// <param name="root"> the scope of searches -- may be a whole message or only a branch. </param>
+
         public SegmentFinder(IGroup root)
             : base(root)
         {
@@ -49,7 +48,13 @@ namespace NHapi.Base.Util
 
         #region Public Methods and Operators
 
-        /// <summary> As findSegment(), but will only return a group.</summary>
+        /// <summary>   As findSegment(), but will only return a group. </summary>
+        ///
+        /// <param name="namePattern">  A pattern specifying the name. </param>
+        /// <param name="rep">          the repetition of the segment to return. </param>
+        ///
+        /// <returns>   The found group. </returns>
+
         public virtual IGroup findGroup(System.String namePattern, int rep)
         {
             IStructure s = null;
@@ -61,16 +66,24 @@ namespace NHapi.Base.Util
             return (IGroup)s;
         }
 
-        /// <summary> Returns the first segment with a name that matches the given pattern, in a depth-first search.  
-        /// Repeated searches are initiated from the location just AFTER where the last segment was found.
-        /// Call reset() is this is not desired.  Note: this means that the current location will not be found.
+        /// <summary>
+        /// Returns the first segment with a name that matches the given pattern, in a depth-first
+        /// search.  
+        /// Repeated searches are initiated from the location just AFTER where the last segment was
+        /// found. Call reset() is this is not desired.  Note: this means that the current location will
+        /// not be found.
         /// </summary>
-        /// <param name="segmentName">the name of the segment to find.  The wildcad * means any number 
-        /// of arbitrary characters; the wildard ? one arbitrary character
-        /// (eg "P*" or "*ID" or "???" or "P??" would match on PID).
-        /// </param>
-        /// <param name="rep">the repetition of the segment to return
-        /// </param>
+        ///
+        /// <param name="namePattern">  A pattern specifying the name. </param>
+        /// <param name="rep">          the repetition of the segment to return. </param>
+        ///
+        /// <returns>   The found segment. </returns>
+        ///
+        /// ### <param name="segmentName">  the name of the segment to find.  The wildcad * means any
+        ///                                 number of arbitrary characters; the wildard ? one arbitrary
+        ///                                 character (eg "P*" or "*ID" or "???" or "P??" would match on
+        ///                                 PID). </param>
+
         public virtual ISegment findSegment(System.String namePattern, int rep)
         {
             IStructure s = null;
@@ -82,7 +95,15 @@ namespace NHapi.Base.Util
             return (ISegment)s;
         }
 
-        /// <summary> As getSegment() but will only return a group.</summary>
+        /// <summary>   As getSegment() but will only return a group. </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="namePattern">  A pattern specifying the name. </param>
+        /// <param name="rep">          the repetition of the segment to return. </param>
+        ///
+        /// <returns>   The group. </returns>
+
         public virtual IGroup getGroup(System.String namePattern, int rep)
         {
             IStructure s = this.GetStructure(namePattern, rep);
@@ -95,18 +116,25 @@ namespace NHapi.Base.Util
             return (IGroup)s;
         }
 
-        /// <summary> Returns the first segment with a name matching the given pattern that is a sibling of
-        /// the structure at the current location.  Other parts of the message are
-        /// not searched (in contrast to findSegment).
-        /// As a special case, if the pointer is at the root, the children of the root
+        /// <summary>
+        /// Returns the first segment with a name matching the given pattern that is a sibling of the
+        /// structure at the current location.  Other parts of the message are not searched (in contrast
+        /// to findSegment). As a special case, if the pointer is at the root, the children of the root
         /// are searched.
         /// </summary>
-        /// <param name="segmentName">the name of the segment to get.  The wildcad * means any number 
-        /// of arbitrary characters; the wildard ? one arbitrary character
-        /// (eg "P*" or "*ID" or "???" or "P??" would match on PID).
-        /// </param>
-        /// <param name="rep">the repetition of the segment to return
-        /// </param>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="namePattern">  A pattern specifying the name. </param>
+        /// <param name="rep">          the repetition of the segment to return. </param>
+        ///
+        /// <returns>   The segment. </returns>
+        ///
+        /// ### <param name="segmentName">  the name of the segment to get.  The wildcad * means any
+        ///                                 number of arbitrary characters; the wildard ? one arbitrary
+        ///                                 character (eg "P*" or "*ID" or "???" or "P??" would match on
+        ///                                 PID). </param>
+
         public virtual ISegment getSegment(System.String namePattern, int rep)
         {
             IStructure s = this.GetStructure(namePattern, rep);
@@ -122,6 +150,15 @@ namespace NHapi.Base.Util
         #endregion
 
         #region Methods
+
+        /// <summary>   Gets a structure. </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="namePattern">  A pattern specifying the name. </param>
+        /// <param name="rep">          the repetition of the segment to return. </param>
+        ///
+        /// <returns>   The structure. </returns>
 
         private IStructure GetStructure(System.String namePattern, int rep)
         {
@@ -152,7 +189,13 @@ namespace NHapi.Base.Util
             return s;
         }
 
-        /// <summary> Returns the first matching structure AFTER the current position</summary>
+        /// <summary>   Returns the first matching structure AFTER the current position. </summary>
+        ///
+        /// <param name="namePattern">  A pattern specifying the name. </param>
+        /// <param name="rep">          the repetition of the segment to return. </param>
+        ///
+        /// <returns>   The found structure. </returns>
+
         private IStructure findStructure(System.String namePattern, int rep)
         {
             IStructure s = null;
@@ -185,7 +228,17 @@ namespace NHapi.Base.Util
         }
         return matches;
         }*/
-        /// <summary> Tests whether the given name matches the given pattern.</summary>
+
+        /// <summary>   Tests whether the given name matches the given pattern. </summary>
+        ///
+        /// <exception cref="ArgumentException">    Thrown when one or more arguments have unsupported or
+        ///                                         illegal values. </exception>
+        ///
+        /// <param name="pattern">      Specifies the pattern. </param>
+        /// <param name="candidate">    The candidate. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         private bool matches(System.String pattern, System.String candidate)
         {
             //shortcut ...

@@ -6,29 +6,31 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 DDI (Daily Deductible Information) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 DDI (Daily Deductible Information) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>Delay Days (NM)</li>
 /// <li>Monetary Amount (MO)</li>
 /// <li>Number of Days (NM)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class DDI : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a DDI.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a DDI. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public DDI(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a DDI.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a DDI. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public DDI(IMessage message, string description) : base(message, description){
 		data = new IType[3];
 		data[0] = new NM(message,"Delay Days");
@@ -36,9 +38,10 @@ public class DDI : AbstractType, IComposite{
 		data[2] = new NM(message,"Number of Days");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -46,12 +49,15 @@ public class DDI : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -62,10 +68,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Delay Days (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Delay Days (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The delay days. </value>
+
 	public NM DelayDays {
 get{
 	   NM ret = null;
@@ -79,10 +89,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Monetary Amount (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Monetary Amount (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The monetary amount. </value>
+
 	public MO MonetaryAmount {
 get{
 	   MO ret = null;
@@ -96,10 +110,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Number of Days (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Number of Days (component #2).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The total number of days. </value>
+
 	public NM NumberOfDays {
 get{
 	   NM ret = null;

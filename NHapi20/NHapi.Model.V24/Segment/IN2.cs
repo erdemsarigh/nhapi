@@ -7,95 +7,96 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 IN2 message segment. 
-/// This segment has the following fields:<ol>
-///<li>IN2-1: Insured's Employee ID (CX)</li>
-///<li>IN2-2: Insured's Social Security Number (ST)</li>
-///<li>IN2-3: Insured's Employer's Name and ID (XCN)</li>
-///<li>IN2-4: Employer Information Data (IS)</li>
-///<li>IN2-5: Mail Claim Party (IS)</li>
-///<li>IN2-6: Medicare Health Ins Card Number (ST)</li>
-///<li>IN2-7: Medicaid Case Name (XPN)</li>
-///<li>IN2-8: Medicaid Case Number (ST)</li>
-///<li>IN2-9: Military Sponsor Name (XPN)</li>
-///<li>IN2-10: Military ID Number (ST)</li>
-///<li>IN2-11: Dependent Of Military Recipient (CE)</li>
-///<li>IN2-12: Military Organization (ST)</li>
-///<li>IN2-13: Military Station (ST)</li>
-///<li>IN2-14: Military Service (IS)</li>
-///<li>IN2-15: Military Rank/Grade (IS)</li>
-///<li>IN2-16: Military Status (IS)</li>
-///<li>IN2-17: Military Retire Date (DT)</li>
-///<li>IN2-18: Military Non-Avail Cert On File (ID)</li>
-///<li>IN2-19: Baby Coverage (ID)</li>
-///<li>IN2-20: Combine Baby Bill (ID)</li>
-///<li>IN2-21: Blood Deductible (ST)</li>
-///<li>IN2-22: Special Coverage Approval Name (XPN)</li>
-///<li>IN2-23: Special Coverage Approval Title (ST)</li>
-///<li>IN2-24: Non-Covered Insurance Code (IS)</li>
-///<li>IN2-25: Payor ID (CX)</li>
-///<li>IN2-26: Payor Subscriber ID (CX)</li>
-///<li>IN2-27: Eligibility Source (IS)</li>
-///<li>IN2-28: Room Coverage Type/Amount (RMC)</li>
-///<li>IN2-29: Policy Type/Amount (PTA)</li>
-///<li>IN2-30: Daily Deductible (DDI)</li>
-///<li>IN2-31: Living Dependency (IS)</li>
-///<li>IN2-32: Ambulatory Status (IS)</li>
-///<li>IN2-33: Citizenship (CE)</li>
-///<li>IN2-34: Primary Language (CE)</li>
-///<li>IN2-35: Living Arrangement (IS)</li>
-///<li>IN2-36: Publicity Code (CE)</li>
-///<li>IN2-37: Protection Indicator (ID)</li>
-///<li>IN2-38: Student Indicator (IS)</li>
-///<li>IN2-39: Religion (CE)</li>
-///<li>IN2-40: Mother's Maiden Name (XPN)</li>
-///<li>IN2-41: Nationality (CE)</li>
-///<li>IN2-42: Ethnic Group (CE)</li>
-///<li>IN2-43: Marital Status (CE)</li>
-///<li>IN2-44: Insured's Employment Start Date (DT)</li>
-///<li>IN2-45: Employment Stop Date (DT)</li>
-///<li>IN2-46: Job Title (ST)</li>
-///<li>IN2-47: Job Code/Class (JCC)</li>
-///<li>IN2-48: Job Status (IS)</li>
-///<li>IN2-49: Employer Contact Person Name (XPN)</li>
-///<li>IN2-50: Employer Contact Person Phone Number (XTN)</li>
-///<li>IN2-51: Employer Contact Reason (IS)</li>
-///<li>IN2-52: Insured's Contact Person's Name (XPN)</li>
-///<li>IN2-53: Insured's Contact Person Phone Number (XTN)</li>
-///<li>IN2-54: Insured's Contact Person Reason (IS)</li>
-///<li>IN2-55: Relationship To The Patient Start Date (DT)</li>
-///<li>IN2-56: Relationship To The Patient Stop Date (DT)</li>
-///<li>IN2-57: Insurance Co. Contact Reason (IS)</li>
-///<li>IN2-58: Insurance Co Contact Phone Number (XTN)</li>
-///<li>IN2-59: Policy Scope (IS)</li>
-///<li>IN2-60: Policy Source (IS)</li>
-///<li>IN2-61: Patient Member Number (CX)</li>
-///<li>IN2-62: Guarantor's Relationship To Insured (CE)</li>
-///<li>IN2-63: Insured's Phone Number - Home (XTN)</li>
-///<li>IN2-64: Insured's Employer Phone Number (XTN)</li>
-///<li>IN2-65: Military Handicapped Program (CE)</li>
-///<li>IN2-66: Suspend Flag (ID)</li>
-///<li>IN2-67: Copay Limit Flag (ID)</li>
-///<li>IN2-68: Stoploss Limit Flag (ID)</li>
-///<li>IN2-69: Insured Organization Name And ID (XON)</li>
-///<li>IN2-70: Insured Employer Organization Name And ID (XON)</li>
-///<li>IN2-71: Race (CE)</li>
-///<li>IN2-72: HCFA Patient's Relationship to Insured (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 IN2 message segment. This segment has the following fields:<ol>
+/// <li>IN2-1: Insured's Employee ID (CX)</li>
+/// <li>IN2-2: Insured's Social Security Number (ST)</li>
+/// <li>IN2-3: Insured's Employer's Name and ID (XCN)</li>
+/// <li>IN2-4: Employer Information Data (IS)</li>
+/// <li>IN2-5: Mail Claim Party (IS)</li>
+/// <li>IN2-6: Medicare Health Ins Card Number (ST)</li>
+/// <li>IN2-7: Medicaid Case Name (XPN)</li>
+/// <li>IN2-8: Medicaid Case Number (ST)</li>
+/// <li>IN2-9: Military Sponsor Name (XPN)</li>
+/// <li>IN2-10: Military ID Number (ST)</li>
+/// <li>IN2-11: Dependent Of Military Recipient (CE)</li>
+/// <li>IN2-12: Military Organization (ST)</li>
+/// <li>IN2-13: Military Station (ST)</li>
+/// <li>IN2-14: Military Service (IS)</li>
+/// <li>IN2-15: Military Rank/Grade (IS)</li>
+/// <li>IN2-16: Military Status (IS)</li>
+/// <li>IN2-17: Military Retire Date (DT)</li>
+/// <li>IN2-18: Military Non-Avail Cert On File (ID)</li>
+/// <li>IN2-19: Baby Coverage (ID)</li>
+/// <li>IN2-20: Combine Baby Bill (ID)</li>
+/// <li>IN2-21: Blood Deductible (ST)</li>
+/// <li>IN2-22: Special Coverage Approval Name (XPN)</li>
+/// <li>IN2-23: Special Coverage Approval Title (ST)</li>
+/// <li>IN2-24: Non-Covered Insurance Code (IS)</li>
+/// <li>IN2-25: Payor ID (CX)</li>
+/// <li>IN2-26: Payor Subscriber ID (CX)</li>
+/// <li>IN2-27: Eligibility Source (IS)</li>
+/// <li>IN2-28: Room Coverage Type/Amount (RMC)</li>
+/// <li>IN2-29: Policy Type/Amount (PTA)</li>
+/// <li>IN2-30: Daily Deductible (DDI)</li>
+/// <li>IN2-31: Living Dependency (IS)</li>
+/// <li>IN2-32: Ambulatory Status (IS)</li>
+/// <li>IN2-33: Citizenship (CE)</li>
+/// <li>IN2-34: Primary Language (CE)</li>
+/// <li>IN2-35: Living Arrangement (IS)</li>
+/// <li>IN2-36: Publicity Code (CE)</li>
+/// <li>IN2-37: Protection Indicator (ID)</li>
+/// <li>IN2-38: Student Indicator (IS)</li>
+/// <li>IN2-39: Religion (CE)</li>
+/// <li>IN2-40: Mother's Maiden Name (XPN)</li>
+/// <li>IN2-41: Nationality (CE)</li>
+/// <li>IN2-42: Ethnic Group (CE)</li>
+/// <li>IN2-43: Marital Status (CE)</li>
+/// <li>IN2-44: Insured's Employment Start Date (DT)</li>
+/// <li>IN2-45: Employment Stop Date (DT)</li>
+/// <li>IN2-46: Job Title (ST)</li>
+/// <li>IN2-47: Job Code/Class (JCC)</li>
+/// <li>IN2-48: Job Status (IS)</li>
+/// <li>IN2-49: Employer Contact Person Name (XPN)</li>
+/// <li>IN2-50: Employer Contact Person Phone Number (XTN)</li>
+/// <li>IN2-51: Employer Contact Reason (IS)</li>
+/// <li>IN2-52: Insured's Contact Person's Name (XPN)</li>
+/// <li>IN2-53: Insured's Contact Person Phone Number (XTN)</li>
+/// <li>IN2-54: Insured's Contact Person Reason (IS)</li>
+/// <li>IN2-55: Relationship To The Patient Start Date (DT)</li>
+/// <li>IN2-56: Relationship To The Patient Stop Date (DT)</li>
+/// <li>IN2-57: Insurance Co. Contact Reason (IS)</li>
+/// <li>IN2-58: Insurance Co Contact Phone Number (XTN)</li>
+/// <li>IN2-59: Policy Scope (IS)</li>
+/// <li>IN2-60: Policy Source (IS)</li>
+/// <li>IN2-61: Patient Member Number (CX)</li>
+/// <li>IN2-62: Guarantor's Relationship To Insured (CE)</li>
+/// <li>IN2-63: Insured's Phone Number - Home (XTN)</li>
+/// <li>IN2-64: Insured's Employer Phone Number (XTN)</li>
+/// <li>IN2-65: Military Handicapped Program (CE)</li>
+/// <li>IN2-66: Suspend Flag (ID)</li>
+/// <li>IN2-67: Copay Limit Flag (ID)</li>
+/// <li>IN2-68: Stoploss Limit Flag (ID)</li>
+/// <li>IN2-69: Insured Organization Name And ID (XON)</li>
+/// <li>IN2-70: Insured Employer Organization Name And ID (XON)</li>
+/// <li>IN2-71: Race (CE)</li>
+/// <li>IN2-72: HCFA Patient's Relationship to Insured (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class IN2 : AbstractSegment  {
 
-  /**
-   * Creates a IN2 (Insurance Additional Information) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the IN2 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public IN2(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -176,11 +177,17 @@ public class IN2 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns a single repetition of Insured's Employee ID(IN2-1).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Insured's Employee ID(IN2-1). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The insured s employee identifier. </returns>
+
 	public CX GetInsuredSEmployeeID(int rep)
 	{
 			CX ret = null;
@@ -195,9 +202,12 @@ public class IN2 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Insured's Employee ID (IN2-1).
-   ///</summary>
+  /// <summary> Returns all repetitions of Insured's Employee ID (IN2-1). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of cx. </returns>
+
   public CX[] GetInsuredSEmployeeID() {
      CX[] ret = null;
     try {
@@ -216,9 +226,10 @@ public class IN2 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Insured's Employee ID (IN2-1).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Insured's Employee ID (IN2-1). </summary>
+  ///
+  /// <value>   The insured s employee identifier repetitions used. </value>
+
   public int InsuredSEmployeeIDRepetitionsUsed
 {
 get{
@@ -234,9 +245,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Insured's Social Security Number(IN2-2).
-	///</summary>
+
+    /// <summary>   Returns Insured's Social Security Number(IN2-2). </summary>
+    ///
+    /// <value> The insured s social security number. </value>
+
 	public ST InsuredSSocialSecurityNumber
 	{
 		get{
@@ -257,11 +270,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Insured's Employer's Name and ID(IN2-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Insured's Employer's Name and ID(IN2-3). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The insured s employer s name and identifier. </returns>
+
 	public XCN GetInsuredSEmployerSNameAndID(int rep)
 	{
 			XCN ret = null;
@@ -276,9 +295,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Insured's Employer's Name and ID (IN2-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Insured's Employer's Name and ID (IN2-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetInsuredSEmployerSNameAndID() {
      XCN[] ret = null;
     try {
@@ -297,9 +319,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Insured's Employer's Name and ID (IN2-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Insured's Employer's Name and ID (IN2-3). </summary>
+  ///
+  /// <value>   The insured s employer s name and identifier repetitions used. </value>
+
   public int InsuredSEmployerSNameAndIDRepetitionsUsed
 {
 get{
@@ -315,9 +338,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Employer Information Data(IN2-4).
-	///</summary>
+
+    /// <summary>   Returns Employer Information Data(IN2-4). </summary>
+    ///
+    /// <value> Information describing the employer information. </value>
+
 	public IS EmployerInformationData
 	{
 		get{
@@ -338,11 +363,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Mail Claim Party(IN2-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Mail Claim Party(IN2-5). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The mail claim party. </returns>
+
 	public IS GetMailClaimParty(int rep)
 	{
 			IS ret = null;
@@ -357,9 +388,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Mail Claim Party (IN2-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Mail Claim Party (IN2-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetMailClaimParty() {
      IS[] ret = null;
     try {
@@ -378,9 +412,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Mail Claim Party (IN2-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Mail Claim Party (IN2-5). </summary>
+  ///
+  /// <value>   The mail claim party repetitions used. </value>
+
   public int MailClaimPartyRepetitionsUsed
 {
 get{
@@ -396,9 +431,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Medicare Health Ins Card Number(IN2-6).
-	///</summary>
+
+    /// <summary>   Returns Medicare Health Ins Card Number(IN2-6). </summary>
+    ///
+    /// <value> The medicare health insert card number. </value>
+
 	public ST MedicareHealthInsCardNumber
 	{
 		get{
@@ -419,11 +456,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Medicaid Case Name(IN2-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Medicaid Case Name(IN2-7). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The medicaid case name. </returns>
+
 	public XPN GetMedicaidCaseName(int rep)
 	{
 			XPN ret = null;
@@ -438,9 +481,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Medicaid Case Name (IN2-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Medicaid Case Name (IN2-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetMedicaidCaseName() {
      XPN[] ret = null;
     try {
@@ -459,9 +505,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Medicaid Case Name (IN2-7).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Medicaid Case Name (IN2-7). </summary>
+  ///
+  /// <value>   The medicaid case name repetitions used. </value>
+
   public int MedicaidCaseNameRepetitionsUsed
 {
 get{
@@ -477,9 +524,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Medicaid Case Number(IN2-8).
-	///</summary>
+
+    /// <summary>   Returns Medicaid Case Number(IN2-8). </summary>
+    ///
+    /// <value> The medicaid case number. </value>
+
 	public ST MedicaidCaseNumber
 	{
 		get{
@@ -500,11 +549,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Military Sponsor Name(IN2-9).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Military Sponsor Name(IN2-9). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The military sponsor name. </returns>
+
 	public XPN GetMilitarySponsorName(int rep)
 	{
 			XPN ret = null;
@@ -519,9 +574,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Military Sponsor Name (IN2-9).
-   ///</summary>
+  /// <summary> Returns all repetitions of Military Sponsor Name (IN2-9). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetMilitarySponsorName() {
      XPN[] ret = null;
     try {
@@ -540,9 +598,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Military Sponsor Name (IN2-9).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Military Sponsor Name (IN2-9). </summary>
+  ///
+  /// <value>   The military sponsor name repetitions used. </value>
+
   public int MilitarySponsorNameRepetitionsUsed
 {
 get{
@@ -558,9 +617,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Military ID Number(IN2-10).
-	///</summary>
+
+    /// <summary>   Returns Military ID Number(IN2-10). </summary>
+    ///
+    /// <value> The military identifier number. </value>
+
 	public ST MilitaryIDNumber
 	{
 		get{
@@ -581,9 +642,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Dependent Of Military Recipient(IN2-11).
-	///</summary>
+    /// <summary>   Returns Dependent Of Military Recipient(IN2-11). </summary>
+    ///
+    /// <value> The dependent of military recipient. </value>
+
 	public CE DependentOfMilitaryRecipient
 	{
 		get{
@@ -604,9 +666,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Military Organization(IN2-12).
-	///</summary>
+    /// <summary>   Returns Military Organization(IN2-12). </summary>
+    ///
+    /// <value> The military organization. </value>
+
 	public ST MilitaryOrganization
 	{
 		get{
@@ -627,9 +690,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Military Station(IN2-13).
-	///</summary>
+    /// <summary>   Returns Military Station(IN2-13). </summary>
+    ///
+    /// <value> The military station. </value>
+
 	public ST MilitaryStation
 	{
 		get{
@@ -650,9 +714,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Military Service(IN2-14).
-	///</summary>
+    /// <summary>   Returns Military Service(IN2-14). </summary>
+    ///
+    /// <value> The military service. </value>
+
 	public IS MilitaryService
 	{
 		get{
@@ -673,9 +738,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Military Rank/Grade(IN2-15).
-	///</summary>
+    /// <summary>   Returns Military Rank/Grade(IN2-15). </summary>
+    ///
+    /// <value> The military rank grade. </value>
+
 	public IS MilitaryRankGrade
 	{
 		get{
@@ -696,9 +762,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Military Status(IN2-16).
-	///</summary>
+    /// <summary>   Returns Military Status(IN2-16). </summary>
+    ///
+    /// <value> The military status. </value>
+
 	public IS MilitaryStatus
 	{
 		get{
@@ -719,9 +786,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Military Retire Date(IN2-17).
-	///</summary>
+    /// <summary>   Returns Military Retire Date(IN2-17). </summary>
+    ///
+    /// <value> The military retire date. </value>
+
 	public DT MilitaryRetireDate
 	{
 		get{
@@ -742,9 +810,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Military Non-Avail Cert On File(IN2-18).
-	///</summary>
+    /// <summary>   Returns Military Non-Avail Cert On File(IN2-18). </summary>
+    ///
+    /// <value> The military non avail cert on file. </value>
+
 	public ID MilitaryNonAvailCertOnFile
 	{
 		get{
@@ -765,9 +834,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Baby Coverage(IN2-19).
-	///</summary>
+    /// <summary>   Returns Baby Coverage(IN2-19). </summary>
+    ///
+    /// <value> The baby coverage. </value>
+
 	public ID BabyCoverage
 	{
 		get{
@@ -788,9 +858,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Combine Baby Bill(IN2-20).
-	///</summary>
+    /// <summary>   Returns Combine Baby Bill(IN2-20). </summary>
+    ///
+    /// <value> The combine baby bill. </value>
+
 	public ID CombineBabyBill
 	{
 		get{
@@ -811,9 +882,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Blood Deductible(IN2-21).
-	///</summary>
+    /// <summary>   Returns Blood Deductible(IN2-21). </summary>
+    ///
+    /// <value> The blood deductible. </value>
+
 	public ST BloodDeductible
 	{
 		get{
@@ -834,11 +906,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Special Coverage Approval Name(IN2-22).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Special Coverage Approval Name(IN2-22). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The special coverage approval name. </returns>
+
 	public XPN GetSpecialCoverageApprovalName(int rep)
 	{
 			XPN ret = null;
@@ -853,9 +931,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Special Coverage Approval Name (IN2-22).
-   ///</summary>
+  /// <summary> Returns all repetitions of Special Coverage Approval Name (IN2-22). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetSpecialCoverageApprovalName() {
      XPN[] ret = null;
     try {
@@ -874,9 +955,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Special Coverage Approval Name (IN2-22).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Special Coverage Approval Name (IN2-22). </summary>
+  ///
+  /// <value>   The special coverage approval name repetitions used. </value>
+
   public int SpecialCoverageApprovalNameRepetitionsUsed
 {
 get{
@@ -892,9 +974,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Special Coverage Approval Title(IN2-23).
-	///</summary>
+
+    /// <summary>   Returns Special Coverage Approval Title(IN2-23). </summary>
+    ///
+    /// <value> The special coverage approval title. </value>
+
 	public ST SpecialCoverageApprovalTitle
 	{
 		get{
@@ -915,11 +999,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Non-Covered Insurance Code(IN2-24).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Non-Covered Insurance Code(IN2-24). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The non covered insurance code. </returns>
+
 	public IS GetNonCoveredInsuranceCode(int rep)
 	{
 			IS ret = null;
@@ -934,9 +1024,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Non-Covered Insurance Code (IN2-24).
-   ///</summary>
+  /// <summary> Returns all repetitions of Non-Covered Insurance Code (IN2-24). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetNonCoveredInsuranceCode() {
      IS[] ret = null;
     try {
@@ -955,9 +1048,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Non-Covered Insurance Code (IN2-24).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Non-Covered Insurance Code (IN2-24). </summary>
+  ///
+  /// <value>   The non covered insurance code repetitions used. </value>
+
   public int NonCoveredInsuranceCodeRepetitionsUsed
 {
 get{
@@ -973,11 +1067,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Payor ID(IN2-25).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Payor ID(IN2-25). throws HL7Exception if the repetition number
+    /// is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The payor identifier. </returns>
+
 	public CX GetPayorID(int rep)
 	{
 			CX ret = null;
@@ -992,9 +1093,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Payor ID (IN2-25).
-   ///</summary>
+  /// <summary> Returns all repetitions of Payor ID (IN2-25). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of cx. </returns>
+
   public CX[] GetPayorID() {
      CX[] ret = null;
     try {
@@ -1013,9 +1117,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Payor ID (IN2-25).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Payor ID (IN2-25). </summary>
+  ///
+  /// <value>   The payor identifier repetitions used. </value>
+
   public int PayorIDRepetitionsUsed
 {
 get{
@@ -1031,11 +1136,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Payor Subscriber ID(IN2-26).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Payor Subscriber ID(IN2-26). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The payor subscriber identifier. </returns>
+
 	public CX GetPayorSubscriberID(int rep)
 	{
 			CX ret = null;
@@ -1050,9 +1162,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Payor Subscriber ID (IN2-26).
-   ///</summary>
+  /// <summary> Returns all repetitions of Payor Subscriber ID (IN2-26). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of cx. </returns>
+
   public CX[] GetPayorSubscriberID() {
      CX[] ret = null;
     try {
@@ -1071,9 +1186,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Payor Subscriber ID (IN2-26).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Payor Subscriber ID (IN2-26). </summary>
+  ///
+  /// <value>   The payor subscriber identifier repetitions used. </value>
+
   public int PayorSubscriberIDRepetitionsUsed
 {
 get{
@@ -1089,9 +1205,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Eligibility Source(IN2-27).
-	///</summary>
+
+    /// <summary>   Returns Eligibility Source(IN2-27). </summary>
+    ///
+    /// <value> The eligibility source. </value>
+
 	public IS EligibilitySource
 	{
 		get{
@@ -1112,11 +1230,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Room Coverage Type/Amount(IN2-28).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Room Coverage Type/Amount(IN2-28). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The room coverage type amount. </returns>
+
 	public RMC GetRoomCoverageTypeAmount(int rep)
 	{
 			RMC ret = null;
@@ -1131,9 +1255,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Room Coverage Type/Amount (IN2-28).
-   ///</summary>
+  /// <summary> Returns all repetitions of Room Coverage Type/Amount (IN2-28). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of rmc. </returns>
+
   public RMC[] GetRoomCoverageTypeAmount() {
      RMC[] ret = null;
     try {
@@ -1152,9 +1279,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Room Coverage Type/Amount (IN2-28).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Room Coverage Type/Amount (IN2-28). </summary>
+  ///
+  /// <value>   The room coverage type amount repetitions used. </value>
+
   public int RoomCoverageTypeAmountRepetitionsUsed
 {
 get{
@@ -1170,11 +1298,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Policy Type/Amount(IN2-29).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Policy Type/Amount(IN2-29). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The policy type amount. </returns>
+
 	public PTA GetPolicyTypeAmount(int rep)
 	{
 			PTA ret = null;
@@ -1189,9 +1324,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Policy Type/Amount (IN2-29).
-   ///</summary>
+  /// <summary> Returns all repetitions of Policy Type/Amount (IN2-29). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of pta. </returns>
+
   public PTA[] GetPolicyTypeAmount() {
      PTA[] ret = null;
     try {
@@ -1210,9 +1348,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Policy Type/Amount (IN2-29).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Policy Type/Amount (IN2-29). </summary>
+  ///
+  /// <value>   The policy type amount repetitions used. </value>
+
   public int PolicyTypeAmountRepetitionsUsed
 {
 get{
@@ -1228,9 +1367,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Daily Deductible(IN2-30).
-	///</summary>
+
+    /// <summary>   Returns Daily Deductible(IN2-30). </summary>
+    ///
+    /// <value> The daily deductible. </value>
+
 	public DDI DailyDeductible
 	{
 		get{
@@ -1251,9 +1392,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Living Dependency(IN2-31).
-	///</summary>
+    /// <summary>   Returns Living Dependency(IN2-31). </summary>
+    ///
+    /// <value> The living dependency. </value>
+
 	public IS LivingDependency
 	{
 		get{
@@ -1274,11 +1416,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Ambulatory Status(IN2-32).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Ambulatory Status(IN2-32). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ambulatory status. </returns>
+
 	public IS GetAmbulatoryStatus(int rep)
 	{
 			IS ret = null;
@@ -1293,9 +1441,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Ambulatory Status (IN2-32).
-   ///</summary>
+  /// <summary> Returns all repetitions of Ambulatory Status (IN2-32). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetAmbulatoryStatus() {
      IS[] ret = null;
     try {
@@ -1314,9 +1465,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Ambulatory Status (IN2-32).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Ambulatory Status (IN2-32). </summary>
+  ///
+  /// <value>   The ambulatory status repetitions used. </value>
+
   public int AmbulatoryStatusRepetitionsUsed
 {
 get{
@@ -1332,11 +1484,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Citizenship(IN2-33).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Citizenship(IN2-33). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The citizenship. </returns>
+
 	public CE GetCitizenship(int rep)
 	{
 			CE ret = null;
@@ -1351,9 +1510,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Citizenship (IN2-33).
-   ///</summary>
+  /// <summary> Returns all repetitions of Citizenship (IN2-33). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetCitizenship() {
      CE[] ret = null;
     try {
@@ -1372,9 +1534,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Citizenship (IN2-33).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Citizenship (IN2-33). </summary>
+  ///
+  /// <value>   The citizenship repetitions used. </value>
+
   public int CitizenshipRepetitionsUsed
 {
 get{
@@ -1390,9 +1553,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Primary Language(IN2-34).
-	///</summary>
+
+    /// <summary>   Returns Primary Language(IN2-34). </summary>
+    ///
+    /// <value> The primary language. </value>
+
 	public CE PrimaryLanguage
 	{
 		get{
@@ -1413,9 +1578,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Living Arrangement(IN2-35).
-	///</summary>
+    /// <summary>   Returns Living Arrangement(IN2-35). </summary>
+    ///
+    /// <value> The living arrangement. </value>
+
 	public IS LivingArrangement
 	{
 		get{
@@ -1436,9 +1602,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Publicity Code(IN2-36).
-	///</summary>
+    /// <summary>   Returns Publicity Code(IN2-36). </summary>
+    ///
+    /// <value> The publicity code. </value>
+
 	public CE PublicityCode
 	{
 		get{
@@ -1459,9 +1626,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Protection Indicator(IN2-37).
-	///</summary>
+    /// <summary>   Returns Protection Indicator(IN2-37). </summary>
+    ///
+    /// <value> The protection indicator. </value>
+
 	public ID ProtectionIndicator
 	{
 		get{
@@ -1482,9 +1650,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Student Indicator(IN2-38).
-	///</summary>
+    /// <summary>   Returns Student Indicator(IN2-38). </summary>
+    ///
+    /// <value> The student indicator. </value>
+
 	public IS StudentIndicator
 	{
 		get{
@@ -1505,9 +1674,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Religion(IN2-39).
-	///</summary>
+    /// <summary>   Returns Religion(IN2-39). </summary>
+    ///
+    /// <value> The religion. </value>
+
 	public CE Religion
 	{
 		get{
@@ -1528,11 +1698,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Mother's Maiden Name(IN2-40).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Mother's Maiden Name(IN2-40). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The mother s maiden name. </returns>
+
 	public XPN GetMotherSMaidenName(int rep)
 	{
 			XPN ret = null;
@@ -1547,9 +1723,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Mother's Maiden Name (IN2-40).
-   ///</summary>
+  /// <summary> Returns all repetitions of Mother's Maiden Name (IN2-40). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetMotherSMaidenName() {
      XPN[] ret = null;
     try {
@@ -1568,9 +1747,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Mother's Maiden Name (IN2-40).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Mother's Maiden Name (IN2-40). </summary>
+  ///
+  /// <value>   The mother s maiden name repetitions used. </value>
+
   public int MotherSMaidenNameRepetitionsUsed
 {
 get{
@@ -1586,9 +1766,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Nationality(IN2-41).
-	///</summary>
+
+    /// <summary>   Returns Nationality(IN2-41). </summary>
+    ///
+    /// <value> The nationality. </value>
+
 	public CE Nationality
 	{
 		get{
@@ -1609,11 +1791,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Ethnic Group(IN2-42).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Ethnic Group(IN2-42). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ethnic group. </returns>
+
 	public CE GetEthnicGroup(int rep)
 	{
 			CE ret = null;
@@ -1628,9 +1816,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Ethnic Group (IN2-42).
-   ///</summary>
+  /// <summary> Returns all repetitions of Ethnic Group (IN2-42). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetEthnicGroup() {
      CE[] ret = null;
     try {
@@ -1649,9 +1840,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Ethnic Group (IN2-42).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Ethnic Group (IN2-42). </summary>
+  ///
+  /// <value>   The ethnic group repetitions used. </value>
+
   public int EthnicGroupRepetitionsUsed
 {
 get{
@@ -1667,11 +1859,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Marital Status(IN2-43).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Marital Status(IN2-43). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The marital status. </returns>
+
 	public CE GetMaritalStatus(int rep)
 	{
 			CE ret = null;
@@ -1686,9 +1885,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Marital Status (IN2-43).
-   ///</summary>
+  /// <summary> Returns all repetitions of Marital Status (IN2-43). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetMaritalStatus() {
      CE[] ret = null;
     try {
@@ -1707,9 +1909,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Marital Status (IN2-43).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Marital Status (IN2-43). </summary>
+  ///
+  /// <value>   The marital status repetitions used. </value>
+
   public int MaritalStatusRepetitionsUsed
 {
 get{
@@ -1725,9 +1928,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Insured's Employment Start Date(IN2-44).
-	///</summary>
+
+    /// <summary>   Returns Insured's Employment Start Date(IN2-44). </summary>
+    ///
+    /// <value> The insured s employment start date. </value>
+
 	public DT InsuredSEmploymentStartDate
 	{
 		get{
@@ -1748,9 +1953,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Employment Stop Date(IN2-45).
-	///</summary>
+    /// <summary>   Returns Employment Stop Date(IN2-45). </summary>
+    ///
+    /// <value> The employment stop date. </value>
+
 	public DT EmploymentStopDate
 	{
 		get{
@@ -1771,9 +1977,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Job Title(IN2-46).
-	///</summary>
+    /// <summary>   Returns Job Title(IN2-46). </summary>
+    ///
+    /// <value> The job title. </value>
+
 	public ST JobTitle
 	{
 		get{
@@ -1794,9 +2001,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Job Code/Class(IN2-47).
-	///</summary>
+    /// <summary>   Returns Job Code/Class(IN2-47). </summary>
+    ///
+    /// <value> The job code class. </value>
+
 	public JCC JobCodeClass
 	{
 		get{
@@ -1817,9 +2025,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Job Status(IN2-48).
-	///</summary>
+    /// <summary>   Returns Job Status(IN2-48). </summary>
+    ///
+    /// <value> The job status. </value>
+
 	public IS JobStatus
 	{
 		get{
@@ -1840,11 +2049,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Employer Contact Person Name(IN2-49).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Employer Contact Person Name(IN2-49). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The employer contact person name. </returns>
+
 	public XPN GetEmployerContactPersonName(int rep)
 	{
 			XPN ret = null;
@@ -1859,9 +2074,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Employer Contact Person Name (IN2-49).
-   ///</summary>
+  /// <summary> Returns all repetitions of Employer Contact Person Name (IN2-49). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetEmployerContactPersonName() {
      XPN[] ret = null;
     try {
@@ -1880,9 +2098,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Employer Contact Person Name (IN2-49).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Employer Contact Person Name (IN2-49). </summary>
+  ///
+  /// <value>   The employer contact person name repetitions used. </value>
+
   public int EmployerContactPersonNameRepetitionsUsed
 {
 get{
@@ -1898,11 +2117,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Employer Contact Person Phone Number(IN2-50).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Employer Contact Person Phone Number(IN2-50). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The employer contact person phone number. </returns>
+
 	public XTN GetEmployerContactPersonPhoneNumber(int rep)
 	{
 			XTN ret = null;
@@ -1917,9 +2143,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Employer Contact Person Phone Number (IN2-50).
-   ///</summary>
+  /// <summary> Returns all repetitions of Employer Contact Person Phone Number (IN2-50). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetEmployerContactPersonPhoneNumber() {
      XTN[] ret = null;
     try {
@@ -1938,9 +2167,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Employer Contact Person Phone Number (IN2-50).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The employer contact person phone number repetitions used. </value>
+
   public int EmployerContactPersonPhoneNumberRepetitionsUsed
 {
 get{
@@ -1956,9 +2188,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Employer Contact Reason(IN2-51).
-	///</summary>
+
+    /// <summary>   Returns Employer Contact Reason(IN2-51). </summary>
+    ///
+    /// <value> The employer contact reason. </value>
+
 	public IS EmployerContactReason
 	{
 		get{
@@ -1979,11 +2213,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Insured's Contact Person's Name(IN2-52).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Insured's Contact Person's Name(IN2-52). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The insured s contact person s name. </returns>
+
 	public XPN GetInsuredSContactPersonSName(int rep)
 	{
 			XPN ret = null;
@@ -1998,9 +2238,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Insured's Contact Person's Name (IN2-52).
-   ///</summary>
+  /// <summary> Returns all repetitions of Insured's Contact Person's Name (IN2-52). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetInsuredSContactPersonSName() {
      XPN[] ret = null;
     try {
@@ -2019,9 +2262,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Insured's Contact Person's Name (IN2-52).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Insured's Contact Person's Name (IN2-52). </summary>
+  ///
+  /// <value>   The insured s contact person s name repetitions used. </value>
+
   public int InsuredSContactPersonSNameRepetitionsUsed
 {
 get{
@@ -2037,11 +2281,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Insured's Contact Person Phone Number(IN2-53).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Insured's Contact Person Phone Number(IN2-53). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The insured s contact person phone number. </returns>
+
 	public XTN GetInsuredSContactPersonPhoneNumber(int rep)
 	{
 			XTN ret = null;
@@ -2056,9 +2307,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Insured's Contact Person Phone Number (IN2-53).
-   ///</summary>
+  /// <summary> Returns all repetitions of Insured's Contact Person Phone Number (IN2-53). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetInsuredSContactPersonPhoneNumber() {
      XTN[] ret = null;
     try {
@@ -2077,9 +2331,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Insured's Contact Person Phone Number (IN2-53).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The insured s contact person phone number repetitions used. </value>
+
   public int InsuredSContactPersonPhoneNumberRepetitionsUsed
 {
 get{
@@ -2095,11 +2352,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Insured's Contact Person Reason(IN2-54).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Insured's Contact Person Reason(IN2-54). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The insured s contact person reason. </returns>
+
 	public IS GetInsuredSContactPersonReason(int rep)
 	{
 			IS ret = null;
@@ -2114,9 +2378,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Insured's Contact Person Reason (IN2-54).
-   ///</summary>
+  /// <summary> Returns all repetitions of Insured's Contact Person Reason (IN2-54). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetInsuredSContactPersonReason() {
      IS[] ret = null;
     try {
@@ -2135,9 +2402,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Insured's Contact Person Reason (IN2-54).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Insured's Contact Person Reason (IN2-54). </summary>
+  ///
+  /// <value>   The insured s contact person reason repetitions used. </value>
+
   public int InsuredSContactPersonReasonRepetitionsUsed
 {
 get{
@@ -2153,9 +2421,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Relationship To The Patient Start Date(IN2-55).
-	///</summary>
+
+    /// <summary>   Returns Relationship To The Patient Start Date(IN2-55). </summary>
+    ///
+    /// <value> The relationship to the patient start date. </value>
+
 	public DT RelationshipToThePatientStartDate
 	{
 		get{
@@ -2176,11 +2446,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Relationship To The Patient Stop Date(IN2-56).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Relationship To The Patient Stop Date(IN2-56). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The relationship to the patient stop date. </returns>
+
 	public DT GetRelationshipToThePatientStopDate(int rep)
 	{
 			DT ret = null;
@@ -2195,9 +2471,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Relationship To The Patient Stop Date (IN2-56).
-   ///</summary>
+  /// <summary> Returns all repetitions of Relationship To The Patient Stop Date (IN2-56). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of dt. </returns>
+
   public DT[] GetRelationshipToThePatientStopDate() {
      DT[] ret = null;
     try {
@@ -2216,9 +2495,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Relationship To The Patient Stop Date (IN2-56).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The relationship to the patient stop date repetitions used. </value>
+
   public int RelationshipToThePatientStopDateRepetitionsUsed
 {
 get{
@@ -2234,9 +2516,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Insurance Co. Contact Reason(IN2-57).
-	///</summary>
+
+    /// <summary>   Returns Insurance Co. Contact Reason(IN2-57). </summary>
+    ///
+    /// <value> The insurance co contact reason. </value>
+
 	public IS InsuranceCoContactReason
 	{
 		get{
@@ -2257,9 +2541,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Insurance Co Contact Phone Number(IN2-58).
-	///</summary>
+    /// <summary>   Returns Insurance Co Contact Phone Number(IN2-58). </summary>
+    ///
+    /// <value> The insurance co contact phone number. </value>
+
 	public XTN InsuranceCoContactPhoneNumber
 	{
 		get{
@@ -2280,9 +2565,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Policy Scope(IN2-59).
-	///</summary>
+    /// <summary>   Returns Policy Scope(IN2-59). </summary>
+    ///
+    /// <value> The policy scope. </value>
+
 	public IS PolicyScope
 	{
 		get{
@@ -2303,9 +2589,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Policy Source(IN2-60).
-	///</summary>
+    /// <summary>   Returns Policy Source(IN2-60). </summary>
+    ///
+    /// <value> The policy source. </value>
+
 	public IS PolicySource
 	{
 		get{
@@ -2326,9 +2613,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Patient Member Number(IN2-61).
-	///</summary>
+    /// <summary>   Returns Patient Member Number(IN2-61). </summary>
+    ///
+    /// <value> The patient member number. </value>
+
 	public CX PatientMemberNumber
 	{
 		get{
@@ -2349,9 +2637,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor's Relationship To Insured(IN2-62).
-	///</summary>
+    /// <summary>   Returns Guarantor's Relationship To Insured(IN2-62). </summary>
+    ///
+    /// <value> The guarantor s relationship to insured. </value>
+
 	public CE GuarantorSRelationshipToInsured
 	{
 		get{
@@ -2372,11 +2661,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Insured's Phone Number - Home(IN2-63).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Insured's Phone Number - Home(IN2-63). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The insured s phone number home. </returns>
+
 	public XTN GetInsuredSPhoneNumberHome(int rep)
 	{
 			XTN ret = null;
@@ -2391,9 +2686,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Insured's Phone Number - Home (IN2-63).
-   ///</summary>
+  /// <summary> Returns all repetitions of Insured's Phone Number - Home (IN2-63). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetInsuredSPhoneNumberHome() {
      XTN[] ret = null;
     try {
@@ -2412,9 +2710,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Insured's Phone Number - Home (IN2-63).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Insured's Phone Number - Home (IN2-63). </summary>
+  ///
+  /// <value>   The insured s phone number home repetitions used. </value>
+
   public int InsuredSPhoneNumberHomeRepetitionsUsed
 {
 get{
@@ -2430,11 +2729,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Insured's Employer Phone Number(IN2-64).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Insured's Employer Phone Number(IN2-64). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The insured s employer phone number. </returns>
+
 	public XTN GetInsuredSEmployerPhoneNumber(int rep)
 	{
 			XTN ret = null;
@@ -2449,9 +2755,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Insured's Employer Phone Number (IN2-64).
-   ///</summary>
+  /// <summary> Returns all repetitions of Insured's Employer Phone Number (IN2-64). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetInsuredSEmployerPhoneNumber() {
      XTN[] ret = null;
     try {
@@ -2470,9 +2779,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Insured's Employer Phone Number (IN2-64).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Insured's Employer Phone Number (IN2-64). </summary>
+  ///
+  /// <value>   The insured s employer phone number repetitions used. </value>
+
   public int InsuredSEmployerPhoneNumberRepetitionsUsed
 {
 get{
@@ -2488,9 +2798,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Military Handicapped Program(IN2-65).
-	///</summary>
+
+    /// <summary>   Returns Military Handicapped Program(IN2-65). </summary>
+    ///
+    /// <value> The military handicapped program. </value>
+
 	public CE MilitaryHandicappedProgram
 	{
 		get{
@@ -2511,9 +2823,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Suspend Flag(IN2-66).
-	///</summary>
+    /// <summary>   Returns Suspend Flag(IN2-66). </summary>
+    ///
+    /// <value> The suspend flag. </value>
+
 	public ID SuspendFlag
 	{
 		get{
@@ -2534,9 +2847,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Copay Limit Flag(IN2-67).
-	///</summary>
+    /// <summary>   Returns Copay Limit Flag(IN2-67). </summary>
+    ///
+    /// <value> The copay limit flag. </value>
+
 	public ID CopayLimitFlag
 	{
 		get{
@@ -2557,9 +2871,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Stoploss Limit Flag(IN2-68).
-	///</summary>
+    /// <summary>   Returns Stoploss Limit Flag(IN2-68). </summary>
+    ///
+    /// <value> The stoploss limit flag. </value>
+
 	public ID StoplossLimitFlag
 	{
 		get{
@@ -2580,11 +2895,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Insured Organization Name And ID(IN2-69).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Insured Organization Name And ID(IN2-69). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The insured organization name and identifier. </returns>
+
 	public XON GetInsuredOrganizationNameAndID(int rep)
 	{
 			XON ret = null;
@@ -2599,9 +2920,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Insured Organization Name And ID (IN2-69).
-   ///</summary>
+  /// <summary> Returns all repetitions of Insured Organization Name And ID (IN2-69). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of XON. </returns>
+
   public XON[] GetInsuredOrganizationNameAndID() {
      XON[] ret = null;
     try {
@@ -2620,9 +2944,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Insured Organization Name And ID (IN2-69).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The insured organization name and identifier repetitions used. </value>
+
   public int InsuredOrganizationNameAndIDRepetitionsUsed
 {
 get{
@@ -2638,11 +2965,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Insured Employer Organization Name And ID(IN2-70).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Insured Employer Organization Name And ID(IN2-70). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The insured employer organization name and identifier. </returns>
+
 	public XON GetInsuredEmployerOrganizationNameAndID(int rep)
 	{
 			XON ret = null;
@@ -2657,9 +2991,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Insured Employer Organization Name And ID (IN2-70).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of XON. </returns>
+
   public XON[] GetInsuredEmployerOrganizationNameAndID() {
      XON[] ret = null;
     try {
@@ -2678,9 +3017,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Insured Employer Organization Name And ID (IN2-70).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The insured employer organization name and identifier repetitions used. </value>
+
   public int InsuredEmployerOrganizationNameAndIDRepetitionsUsed
 {
 get{
@@ -2696,11 +3038,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Race(IN2-71).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Race(IN2-71). throws HL7Exception if the repetition number is
+    /// invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The race. </returns>
+
 	public CE GetRace(int rep)
 	{
 			CE ret = null;
@@ -2715,9 +3064,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Race (IN2-71).
-   ///</summary>
+  /// <summary> Returns all repetitions of Race (IN2-71). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetRace() {
      CE[] ret = null;
     try {
@@ -2736,9 +3088,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Race (IN2-71).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Race (IN2-71). </summary>
+  ///
+  /// <value>   The race repetitions used. </value>
+
   public int RaceRepetitionsUsed
 {
 get{
@@ -2754,9 +3107,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns HCFA Patient's Relationship to Insured(IN2-72).
-	///</summary>
+
+    /// <summary>   Returns HCFA Patient's Relationship to Insured(IN2-72). </summary>
+    ///
+    /// <value> The hcfa patient s relationship to insured. </value>
+
 	public CE HCFAPatientSRelationshipToInsured
 	{
 		get{

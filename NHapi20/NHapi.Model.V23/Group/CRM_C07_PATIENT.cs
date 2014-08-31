@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the CRM_C07_PATIENT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PID (Patient Identification) </li>
-///<li>1: PV1 (Patient visit) optional </li>
-///<li>2: CSR (Clinical Study Registration) </li>
-///<li>3: CSP (Clinical Study Phase) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the CRM_C07_PATIENT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PID (Patient Identification) </li>
+/// <li>1: PV1 (Patient visit) optional </li>
+/// <li>2: CSR (Clinical Study Registration) </li>
+/// <li>3: CSP (Clinical Study Phase) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class CRM_C07_PATIENT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new CRM_C07_PATIENT Group.
-	///</summary>
+    /// <summary>   Creates a new CRM_C07_PATIENT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public CRM_C07_PATIENT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PID), true, false);
@@ -36,9 +39,10 @@ public class CRM_C07_PATIENT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PID (Patient Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -52,9 +56,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV1 (Patient visit) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PV1 (Patient visit) - creates it if necessary. </summary>
+    ///
+    /// <value> The pv 1. </value>
+
 	public PV1 PV1 { 
 get{
 	   PV1 ret = null;
@@ -68,9 +73,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns CSR (Clinical Study Registration) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns CSR (Clinical Study Registration) - creates it if necessary. </summary>
+    ///
+    /// <value> The cursor. </value>
+
 	public CSR CSR { 
 get{
 	   CSR ret = null;
@@ -84,9 +90,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of CSP (Clinical Study Phase) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of CSP (Clinical Study Phase) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The csp. </returns>
+
 	public CSP GetCSP() {
 	   CSP ret = null;
 	   try {
@@ -98,19 +109,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of CSP
-	/// * (Clinical Study Phase) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of CSP
+    ///  * (Clinical Study Phase) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The csp. </returns>
+
 	public CSP GetCSP(int rep) { 
 	   return (CSP)this.GetStructure("CSP", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of CSP 
-	 */ 
+    /// <summary>   Gets the csp repetitions used. </summary>
+    ///
+    /// <value> The csp repetitions used. </value>
+
 	public int CSPRepetitionsUsed { 
 get{
 	    int reps = -1; 

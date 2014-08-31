@@ -7,43 +7,44 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 IAM message segment. 
-/// This segment has the following fields:<ol>
-///<li>IAM-1: Set ID - IAM (SI)</li>
-///<li>IAM-2: Allergen Type Code (CE)</li>
-///<li>IAM-3: Allergen Code/Mnemonic/Description (CE)</li>
-///<li>IAM-4: Allergy Severity Code (CE)</li>
-///<li>IAM-5: Allergy Reaction Code (ST)</li>
-///<li>IAM-6: Allergy Action Code (CNE)</li>
-///<li>IAM-7: Allergy Unique Identifier (EI)</li>
-///<li>IAM-8: Action Reason (ST)</li>
-///<li>IAM-9: Sensitivity to Causative Agent Code (CE)</li>
-///<li>IAM-10: Allergen Group Code/Mnemonic/Description (CE)</li>
-///<li>IAM-11: Onset Date (DT)</li>
-///<li>IAM-12: Onset Date Text (ST)</li>
-///<li>IAM-13: Reported Date/Time (TS)</li>
-///<li>IAM-14: Reported By (XPN)</li>
-///<li>IAM-15: Relationship to Patient Code (CE)</li>
-///<li>IAM-16: Alert Device Code (CE)</li>
-///<li>IAM-17: Allergy Clinical Status Code (CE)</li>
-///<li>IAM-18: Statused by Person (XCN)</li>
-///<li>IAM-19: Statused by Organization (XON)</li>
-///<li>IAM-20: Statused at Date/Time (TS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 IAM message segment. This segment has the following fields:<ol>
+/// <li>IAM-1: Set ID - IAM (SI)</li>
+/// <li>IAM-2: Allergen Type Code (CE)</li>
+/// <li>IAM-3: Allergen Code/Mnemonic/Description (CE)</li>
+/// <li>IAM-4: Allergy Severity Code (CE)</li>
+/// <li>IAM-5: Allergy Reaction Code (ST)</li>
+/// <li>IAM-6: Allergy Action Code (CNE)</li>
+/// <li>IAM-7: Allergy Unique Identifier (EI)</li>
+/// <li>IAM-8: Action Reason (ST)</li>
+/// <li>IAM-9: Sensitivity to Causative Agent Code (CE)</li>
+/// <li>IAM-10: Allergen Group Code/Mnemonic/Description (CE)</li>
+/// <li>IAM-11: Onset Date (DT)</li>
+/// <li>IAM-12: Onset Date Text (ST)</li>
+/// <li>IAM-13: Reported Date/Time (TS)</li>
+/// <li>IAM-14: Reported By (XPN)</li>
+/// <li>IAM-15: Relationship to Patient Code (CE)</li>
+/// <li>IAM-16: Alert Device Code (CE)</li>
+/// <li>IAM-17: Allergy Clinical Status Code (CE)</li>
+/// <li>IAM-18: Statused by Person (XCN)</li>
+/// <li>IAM-19: Statused by Organization (XON)</li>
+/// <li>IAM-20: Statused at Date/Time (TS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class IAM : AbstractSegment  {
 
-  /**
-   * Creates a IAM (Patient adverse reaction information - unique iden) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the IAM class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public IAM(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -72,9 +73,10 @@ public class IAM : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - IAM(IAM-1).
-	///</summary>
+    /// <summary>   Returns Set ID - IAM(IAM-1). </summary>
+    ///
+    /// <value> The set idiam. </value>
+
 	public SI SetIDIAM
 	{
 		get{
@@ -95,9 +97,10 @@ public class IAM : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Allergen Type Code(IAM-2).
-	///</summary>
+    /// <summary>   Returns Allergen Type Code(IAM-2). </summary>
+    ///
+    /// <value> The allergen type code. </value>
+
 	public CE AllergenTypeCode
 	{
 		get{
@@ -118,9 +121,10 @@ public class IAM : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Allergen Code/Mnemonic/Description(IAM-3).
-	///</summary>
+    /// <summary>   Returns Allergen Code/Mnemonic/Description(IAM-3). </summary>
+    ///
+    /// <value> Information describing the allergen code mnemonic. </value>
+
 	public CE AllergenCodeMnemonicDescription
 	{
 		get{
@@ -141,9 +145,10 @@ public class IAM : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Allergy Severity Code(IAM-4).
-	///</summary>
+    /// <summary>   Returns Allergy Severity Code(IAM-4). </summary>
+    ///
+    /// <value> The allergy severity code. </value>
+
 	public CE AllergySeverityCode
 	{
 		get{
@@ -164,11 +169,17 @@ public class IAM : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Allergy Reaction Code(IAM-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Allergy Reaction Code(IAM-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The allergy reaction code. </returns>
+
 	public ST GetAllergyReactionCode(int rep)
 	{
 			ST ret = null;
@@ -183,9 +194,12 @@ public class IAM : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Allergy Reaction Code (IAM-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Allergy Reaction Code (IAM-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetAllergyReactionCode() {
      ST[] ret = null;
     try {
@@ -204,9 +218,10 @@ public class IAM : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Allergy Reaction Code (IAM-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Allergy Reaction Code (IAM-5). </summary>
+  ///
+  /// <value>   The allergy reaction code repetitions used. </value>
+
   public int AllergyReactionCodeRepetitionsUsed
 {
 get{
@@ -222,9 +237,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Allergy Action Code(IAM-6).
-	///</summary>
+
+    /// <summary>   Returns Allergy Action Code(IAM-6). </summary>
+    ///
+    /// <value> The allergy action code. </value>
+
 	public CNE AllergyActionCode
 	{
 		get{
@@ -245,9 +262,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Allergy Unique Identifier(IAM-7).
-	///</summary>
+    /// <summary>   Returns Allergy Unique Identifier(IAM-7). </summary>
+    ///
+    /// <value> Unique identifier of the allergy. </value>
+
 	public EI AllergyUniqueIdentifier
 	{
 		get{
@@ -268,9 +286,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Action Reason(IAM-8).
-	///</summary>
+    /// <summary>   Returns Action Reason(IAM-8). </summary>
+    ///
+    /// <value> The action reason. </value>
+
 	public ST ActionReason
 	{
 		get{
@@ -291,9 +310,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Sensitivity to Causative Agent Code(IAM-9).
-	///</summary>
+    /// <summary>   Returns Sensitivity to Causative Agent Code(IAM-9). </summary>
+    ///
+    /// <value> The sensitivity to causative agent code. </value>
+
 	public CE SensitivityToCausativeAgentCode
 	{
 		get{
@@ -314,9 +334,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Allergen Group Code/Mnemonic/Description(IAM-10).
-	///</summary>
+    /// <summary>   Returns Allergen Group Code/Mnemonic/Description(IAM-10). </summary>
+    ///
+    /// <value> Information describing the allergen group code mnemonic. </value>
+
 	public CE AllergenGroupCodeMnemonicDescription
 	{
 		get{
@@ -337,9 +358,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Onset Date(IAM-11).
-	///</summary>
+    /// <summary>   Returns Onset Date(IAM-11). </summary>
+    ///
+    /// <value> The onset date. </value>
+
 	public DT OnsetDate
 	{
 		get{
@@ -360,9 +382,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Onset Date Text(IAM-12).
-	///</summary>
+    /// <summary>   Returns Onset Date Text(IAM-12). </summary>
+    ///
+    /// <value> The onset date text. </value>
+
 	public ST OnsetDateText
 	{
 		get{
@@ -383,9 +406,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Reported Date/Time(IAM-13).
-	///</summary>
+    /// <summary>   Returns Reported Date/Time(IAM-13). </summary>
+    ///
+    /// <value> The reported date time. </value>
+
 	public TS ReportedDateTime
 	{
 		get{
@@ -406,9 +430,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Reported By(IAM-14).
-	///</summary>
+    /// <summary>   Returns Reported By(IAM-14). </summary>
+    ///
+    /// <value> Amount to reported by. </value>
+
 	public XPN ReportedBy
 	{
 		get{
@@ -429,9 +454,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Relationship to Patient Code(IAM-15).
-	///</summary>
+    /// <summary>   Returns Relationship to Patient Code(IAM-15). </summary>
+    ///
+    /// <value> The relationship to patient code. </value>
+
 	public CE RelationshipToPatientCode
 	{
 		get{
@@ -452,9 +478,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Alert Device Code(IAM-16).
-	///</summary>
+    /// <summary>   Returns Alert Device Code(IAM-16). </summary>
+    ///
+    /// <value> The alert device code. </value>
+
 	public CE AlertDeviceCode
 	{
 		get{
@@ -475,9 +502,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Allergy Clinical Status Code(IAM-17).
-	///</summary>
+    /// <summary>   Returns Allergy Clinical Status Code(IAM-17). </summary>
+    ///
+    /// <value> The allergy clinical status code. </value>
+
 	public CE AllergyClinicalStatusCode
 	{
 		get{
@@ -498,9 +526,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Statused by Person(IAM-18).
-	///</summary>
+    /// <summary>   Returns Statused by Person(IAM-18). </summary>
+    ///
+    /// <value> The statused by person. </value>
+
 	public XCN StatusedByPerson
 	{
 		get{
@@ -521,9 +550,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Statused by Organization(IAM-19).
-	///</summary>
+    /// <summary>   Returns Statused by Organization(IAM-19). </summary>
+    ///
+    /// <value> The statused by organization. </value>
+
 	public XON StatusedByOrganization
 	{
 		get{
@@ -544,9 +574,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Statused at Date/Time(IAM-20).
-	///</summary>
+    /// <summary>   Returns Statused at Date/Time(IAM-20). </summary>
+    ///
+    /// <value> The statused at date time. </value>
+
 	public TS StatusedAtDateTime
 	{
 		get{

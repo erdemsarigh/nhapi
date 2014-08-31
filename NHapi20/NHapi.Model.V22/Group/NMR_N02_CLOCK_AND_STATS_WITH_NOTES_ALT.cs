@@ -8,25 +8,29 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V22.Group
 {
-///<summary>
-///Represents the NMR_N02_CLOCK_AND_STATS_WITH_NOTES_ALT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: NCK (System Clock) optional </li>
-///<li>1: NTE (NOTES AND COMMENTS) optional repeating</li>
-///<li>2: NST (Statistics) optional </li>
-///<li>3: NTE (NOTES AND COMMENTS) optional repeating</li>
-///<li>4: NSC (STATUS CHANGE) optional </li>
-///<li>5: NTE (NOTES AND COMMENTS) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the NMR_N02_CLOCK_AND_STATS_WITH_NOTES_ALT Group.  A Group is an ordered
+/// collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: NCK (System Clock) optional </li>
+/// <li>1: NTE (NOTES AND COMMENTS) optional repeating</li>
+/// <li>2: NST (Statistics) optional </li>
+/// <li>3: NTE (NOTES AND COMMENTS) optional repeating</li>
+/// <li>4: NSC (STATUS CHANGE) optional </li>
+/// <li>5: NTE (NOTES AND COMMENTS) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class NMR_N02_CLOCK_AND_STATS_WITH_NOTES_ALT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new NMR_N02_CLOCK_AND_STATS_WITH_NOTES_ALT Group.
-	///</summary>
+    /// <summary>   Creates a new NMR_N02_CLOCK_AND_STATS_WITH_NOTES_ALT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public NMR_N02_CLOCK_AND_STATS_WITH_NOTES_ALT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(NCK), false, false);
@@ -40,9 +44,10 @@ public class NMR_N02_CLOCK_AND_STATS_WITH_NOTES_ALT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns NCK (System Clock) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns NCK (System Clock) - creates it if necessary. </summary>
+    ///
+    /// <value> The nck. </value>
+
 	public NCK NCK { 
 get{
 	   NCK ret = null;
@@ -56,9 +61,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (NOTES AND COMMENTS) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (NOTES AND COMMENTS) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -70,19 +80,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (NOTES AND COMMENTS) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (NOTES AND COMMENTS) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -97,9 +113,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns NST (Statistics) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns NST (Statistics) - creates it if necessary. </summary>
+    ///
+    /// <value> The nst. </value>
+
 	public NST NST { 
 get{
 	   NST ret = null;
@@ -113,9 +130,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE2 (NOTES AND COMMENTS) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE2 (NOTES AND COMMENTS) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte 2. </returns>
+
 	public NTE GetNTE2() {
 	   NTE ret = null;
 	   try {
@@ -127,19 +149,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE2
-	/// * (NOTES AND COMMENTS) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE2
+    ///  * (NOTES AND COMMENTS) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte 2. </returns>
+
 	public NTE GetNTE2(int rep) { 
 	   return (NTE)this.GetStructure("NTE2", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE2 
-	 */ 
+    /// <summary>   Gets the nte 2 repetitions used. </summary>
+    ///
+    /// <value> The nte 2 repetitions used. </value>
+
 	public int NTE2RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -154,9 +182,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns NSC (STATUS CHANGE) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns NSC (STATUS CHANGE) - creates it if necessary. </summary>
+    ///
+    /// <value> The nsc. </value>
+
 	public NSC NSC { 
 get{
 	   NSC ret = null;
@@ -170,9 +199,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE3 (NOTES AND COMMENTS) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE3 (NOTES AND COMMENTS) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte 3. </returns>
+
 	public NTE GetNTE3() {
 	   NTE ret = null;
 	   try {
@@ -184,19 +218,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE3
-	/// * (NOTES AND COMMENTS) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE3
+    ///  * (NOTES AND COMMENTS) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte 3. </returns>
+
 	public NTE GetNTE3(int rep) { 
 	   return (NTE)this.GetStructure("NTE3", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE3 
-	 */ 
+    /// <summary>   Gets the nte 3 repetitions used. </summary>
+    ///
+    /// <value> The nte 3 repetitions used. </value>
+
 	public int NTE3RepetitionsUsed { 
 get{
 	    int reps = -1; 

@@ -9,40 +9,43 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V24.Message
 
 {
-///<summary>
-/// Represents a PMU_B01 message structure (see chapter 15). This structure contains the 
+/// <summary>
+/// Represents a PMU_B01 message structure (see chapter 15). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message Header) </li>
-///<li>1: EVN (Event Type) </li>
-///<li>2: STF (Staff Identification) </li>
-///<li>3: PRA (Practitioner Detail) optional repeating</li>
-///<li>4: ORG (Practitioner Organization Unit) optional repeating</li>
-///<li>5: AFF (Professional Affiliation) optional repeating</li>
-///<li>6: LAN (Language Detail) optional repeating</li>
-///<li>7: EDU (Educational Detail) optional repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message Header) </li>
+/// <li>1: EVN (Event Type) </li>
+/// <li>2: STF (Staff Identification) </li>
+/// <li>3: PRA (Practitioner Detail) optional repeating</li>
+/// <li>4: ORG (Practitioner Organization Unit) optional repeating</li>
+/// <li>5: AFF (Professional Affiliation) optional repeating</li>
+/// <li>6: LAN (Language Detail) optional repeating</li>
+/// <li>7: EDU (Educational Detail) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class PMU_B01 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new PMU_B01 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new PMU_B01 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public PMU_B01(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new PMU_B01 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new PMU_B01 Group with DefaultModelClassFactory. </summary>
 	public PMU_B01() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for PMU_B01.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for PMU_B01.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -58,6 +61,13 @@ public class PMU_B01 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -65,9 +75,11 @@ public class PMU_B01 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message Header) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message Header) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -81,9 +93,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns EVN (Event Type) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns EVN (Event Type) - creates it if necessary. </summary>
+    ///
+    /// <value> The evn. </value>
+
 	public EVN EVN { 
 get{
 	   EVN ret = null;
@@ -97,9 +110,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns STF (Staff Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns STF (Staff Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The stf. </value>
+
 	public STF STF { 
 get{
 	   STF ret = null;
@@ -113,9 +127,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of PRA (Practitioner Detail) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of PRA (Practitioner Detail) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The pra. </returns>
+
 	public PRA GetPRA() {
 	   PRA ret = null;
 	   try {
@@ -127,19 +146,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of PRA
-	/// * (Practitioner Detail) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of PRA
+    ///  * (Practitioner Detail) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The pra. </returns>
+
 	public PRA GetPRA(int rep) { 
 	   return (PRA)this.GetStructure("PRA", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of PRA 
-	 */ 
+    /// <summary>   Gets the pra repetitions used. </summary>
+    ///
+    /// <value> The pra repetitions used. </value>
+
 	public int PRARepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -154,9 +179,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of ORG (Practitioner Organization Unit) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of ORG (Practitioner Organization Unit) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The organisation. </returns>
+
 	public ORG GetORG() {
 	   ORG ret = null;
 	   try {
@@ -168,19 +198,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of ORG
-	/// * (Practitioner Organization Unit) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of ORG
+    ///  * (Practitioner Organization Unit) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The organisation. </returns>
+
 	public ORG GetORG(int rep) { 
 	   return (ORG)this.GetStructure("ORG", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of ORG 
-	 */ 
+    /// <summary>   Gets the organisation repetitions used. </summary>
+    ///
+    /// <value> The organisation repetitions used. </value>
+
 	public int ORGRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -195,9 +231,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of AFF (Professional Affiliation) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of AFF (Professional Affiliation) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   a ff. </returns>
+
 	public AFF GetAFF() {
 	   AFF ret = null;
 	   try {
@@ -209,19 +250,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of AFF
-	/// * (Professional Affiliation) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of AFF
+    ///  * (Professional Affiliation) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   a ff. </returns>
+
 	public AFF GetAFF(int rep) { 
 	   return (AFF)this.GetStructure("AFF", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of AFF 
-	 */ 
+    /// <summary>   Gets the aff repetitions used. </summary>
+    ///
+    /// <value> The aff repetitions used. </value>
+
 	public int AFFRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -236,9 +283,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of LAN (Language Detail) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of LAN (Language Detail) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The LAN. </returns>
+
 	public LAN GetLAN() {
 	   LAN ret = null;
 	   try {
@@ -250,19 +302,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of LAN
-	/// * (Language Detail) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of LAN
+    ///  * (Language Detail) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The LAN. </returns>
+
 	public LAN GetLAN(int rep) { 
 	   return (LAN)this.GetStructure("LAN", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of LAN 
-	 */ 
+    /// <summary>   Gets the LAN repetitions used. </summary>
+    ///
+    /// <value> The LAN repetitions used. </value>
+
 	public int LANRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -277,9 +335,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of EDU (Educational Detail) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of EDU (Educational Detail) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The edu. </returns>
+
 	public EDU GetEDU() {
 	   EDU ret = null;
 	   try {
@@ -291,19 +354,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of EDU
-	/// * (Educational Detail) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of EDU
+    ///  * (Educational Detail) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The edu. </returns>
+
 	public EDU GetEDU(int rep) { 
 	   return (EDU)this.GetStructure("EDU", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of EDU 
-	 */ 
+    /// <summary>   Gets the edu repetitions used. </summary>
+    ///
+    /// <value> The edu repetitions used. </value>
+
 	public int EDURepetitionsUsed { 
 get{
 	    int reps = -1; 

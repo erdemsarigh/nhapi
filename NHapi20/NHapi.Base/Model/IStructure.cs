@@ -21,33 +21,44 @@
 
 namespace NHapi.Base.Model
 {
-    /// <summary> Part of an HL7 message: either a segment or group.  There are certain methods (e.g. Group.get())
+    /// <summary>
+    /// Part of an HL7 message: either a segment or group.  There are certain methods (e.g.
+    /// Group.get())
     /// that will always return either a segment or a group.  This interface allows methods like this
     /// to declare a return type of Structure instead of Object.  
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+
     public interface IStructure
     {
         #region Public Properties
 
-        /// <summary> Returns the Message object to which this structure belongs.  This should normally be set at
-        /// construction time.  A Structure can only belong to a single Message.  This is primarily 
-        /// to avoid a situation where intended changes in one message cause unintended changes 
-        /// in another that shares one of the same Structure objects.  
+        /// <summary>
+        /// Returns the Message object to which this structure belongs.  This should normally be set at
+        /// construction time.  A Structure can only belong to a single Message.  This is primarily to
+        /// avoid a situation where intended changes in one message cause unintended changes in another
+        /// that shares one of the same Structure objects.  
         /// </summary>
+        ///
+        /// <value> The message. </value>
+
         IMessage Message { get; }
 
-        /// <summary> Returns the parent group within which this structure exists (may be root 
-        /// message group).  
+        /// <summary>
+        /// Returns the parent group within which this structure exists (may be root message group).  
         /// </summary>
+        ///
+        /// <value> The parent structure. </value>
+
         IGroup ParentStructure { get; }
 
         #endregion
 
         #region Public Methods and Operators
 
-        /// <summary> Returns the structure's name. </summary>
+        /// <summary>   Returns the structure's name. </summary>
+        ///
+        /// <returns>   The structure name. </returns>
+
         System.String GetStructureName();
 
         #endregion

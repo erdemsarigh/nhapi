@@ -7,43 +7,44 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 GT1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>GT1-1: SET ID - GUARANTOR (SI)</li>
-///<li>GT1-2: GUARANTOR NUMBER (ID)</li>
-///<li>GT1-3: GUARANTOR NAME (PN)</li>
-///<li>GT1-4: GUARANTOR SPOUSE NAME (PN)</li>
-///<li>GT1-5: GUARANTOR ADDRESS (AD)</li>
-///<li>GT1-6: GUARANTOR PH. NUM.- HOME (TN)</li>
-///<li>GT1-7: GUARANTOR PH. NUM-BUSINESS (TN)</li>
-///<li>GT1-8: GUARANTOR DATE OF BIRTH (DT)</li>
-///<li>GT1-9: GUARANTOR SEX (ID)</li>
-///<li>GT1-10: GUARANTOR TYPE (ID)</li>
-///<li>GT1-11: GUARANTOR RELATIONSHIP (ID)</li>
-///<li>GT1-12: GUARANTOR SSN (ST)</li>
-///<li>GT1-13: GUARANTOR DATE - BEGIN (DT)</li>
-///<li>GT1-14: GUARANTOR DATE - END (DT)</li>
-///<li>GT1-15: GUARANTOR PRIORITY (NM)</li>
-///<li>GT1-16: GUARANTOR EMPLOYER NAME (ST)</li>
-///<li>GT1-17: GUARANTOR EMPLOYER ADDRESS (AD)</li>
-///<li>GT1-18: GUARANTOR EMPLOY PHONE # (TN)</li>
-///<li>GT1-19: GUARANTOR EMPLOYEE ID NUM (ST)</li>
-///<li>GT1-20: GUARANTOR EMPLOYMENT STATUS (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 GT1 message segment. This segment has the following fields:<ol>
+/// <li>GT1-1: SET ID - GUARANTOR (SI)</li>
+/// <li>GT1-2: GUARANTOR NUMBER (ID)</li>
+/// <li>GT1-3: GUARANTOR NAME (PN)</li>
+/// <li>GT1-4: GUARANTOR SPOUSE NAME (PN)</li>
+/// <li>GT1-5: GUARANTOR ADDRESS (AD)</li>
+/// <li>GT1-6: GUARANTOR PH. NUM.- HOME (TN)</li>
+/// <li>GT1-7: GUARANTOR PH. NUM-BUSINESS (TN)</li>
+/// <li>GT1-8: GUARANTOR DATE OF BIRTH (DT)</li>
+/// <li>GT1-9: GUARANTOR SEX (ID)</li>
+/// <li>GT1-10: GUARANTOR TYPE (ID)</li>
+/// <li>GT1-11: GUARANTOR RELATIONSHIP (ID)</li>
+/// <li>GT1-12: GUARANTOR SSN (ST)</li>
+/// <li>GT1-13: GUARANTOR DATE - BEGIN (DT)</li>
+/// <li>GT1-14: GUARANTOR DATE - END (DT)</li>
+/// <li>GT1-15: GUARANTOR PRIORITY (NM)</li>
+/// <li>GT1-16: GUARANTOR EMPLOYER NAME (ST)</li>
+/// <li>GT1-17: GUARANTOR EMPLOYER ADDRESS (AD)</li>
+/// <li>GT1-18: GUARANTOR EMPLOY PHONE # (TN)</li>
+/// <li>GT1-19: GUARANTOR EMPLOYEE ID NUM (ST)</li>
+/// <li>GT1-20: GUARANTOR EMPLOYMENT STATUS (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class GT1 : AbstractSegment  {
 
-  /**
-   * Creates a GT1 (GUARANTOR) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the GT1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public GT1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -72,9 +73,10 @@ public class GT1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns SET ID - GUARANTOR(GT1-1).
-	///</summary>
+    /// <summary>   Returns SET ID - GUARANTOR(GT1-1). </summary>
+    ///
+    /// <value> The setidguarantor. </value>
+
 	public SI SETIDGUARANTOR
 	{
 		get{
@@ -95,9 +97,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR NUMBER(GT1-2).
-	///</summary>
+    /// <summary>   Returns GUARANTOR NUMBER(GT1-2). </summary>
+    ///
+    /// <value> The guarantornumber. </value>
+
 	public ID GUARANTORNUMBER
 	{
 		get{
@@ -118,9 +121,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR NAME(GT1-3).
-	///</summary>
+    /// <summary>   Returns GUARANTOR NAME(GT1-3). </summary>
+    ///
+    /// <value> The guarantorname. </value>
+
 	public PN GUARANTORNAME
 	{
 		get{
@@ -141,9 +145,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR SPOUSE NAME(GT1-4).
-	///</summary>
+    /// <summary>   Returns GUARANTOR SPOUSE NAME(GT1-4). </summary>
+    ///
+    /// <value> The guarantorspousename. </value>
+
 	public PN GUARANTORSPOUSENAME
 	{
 		get{
@@ -164,9 +169,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR ADDRESS(GT1-5).
-	///</summary>
+    /// <summary>   Returns GUARANTOR ADDRESS(GT1-5). </summary>
+    ///
+    /// <value> The guarantoraddress. </value>
+
 	public AD GUARANTORADDRESS
 	{
 		get{
@@ -187,9 +193,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR PH. NUM.- HOME(GT1-6).
-	///</summary>
+    /// <summary>   Returns GUARANTOR PH. NUM.- HOME(GT1-6). </summary>
+    ///
+    /// <value> The guarantorphnumhome. </value>
+
 	public TN GUARANTORPHNUMHOME
 	{
 		get{
@@ -210,9 +217,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR PH. NUM-BUSINESS(GT1-7).
-	///</summary>
+    /// <summary>   Returns GUARANTOR PH. NUM-BUSINESS(GT1-7). </summary>
+    ///
+    /// <value> The guarantorphnumbusiness. </value>
+
 	public TN GUARANTORPHNUMBUSINESS
 	{
 		get{
@@ -233,9 +241,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR DATE OF BIRTH(GT1-8).
-	///</summary>
+    /// <summary>   Returns GUARANTOR DATE OF BIRTH(GT1-8). </summary>
+    ///
+    /// <value> The guarantordateofbirth. </value>
+
 	public DT GUARANTORDATEOFBIRTH
 	{
 		get{
@@ -256,9 +265,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR SEX(GT1-9).
-	///</summary>
+    /// <summary>   Returns GUARANTOR SEX(GT1-9). </summary>
+    ///
+    /// <value> The guarantorsex. </value>
+
 	public ID GUARANTORSEX
 	{
 		get{
@@ -279,9 +289,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR TYPE(GT1-10).
-	///</summary>
+    /// <summary>   Returns GUARANTOR TYPE(GT1-10). </summary>
+    ///
+    /// <value> The guarantortype. </value>
+
 	public ID GUARANTORTYPE
 	{
 		get{
@@ -302,9 +313,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR RELATIONSHIP(GT1-11).
-	///</summary>
+    /// <summary>   Returns GUARANTOR RELATIONSHIP(GT1-11). </summary>
+    ///
+    /// <value> The guarantorrelationship. </value>
+
 	public ID GUARANTORRELATIONSHIP
 	{
 		get{
@@ -325,9 +337,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR SSN(GT1-12).
-	///</summary>
+    /// <summary>   Returns GUARANTOR SSN(GT1-12). </summary>
+    ///
+    /// <value> The guarantorssn. </value>
+
 	public ST GUARANTORSSN
 	{
 		get{
@@ -348,9 +361,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR DATE - BEGIN(GT1-13).
-	///</summary>
+    /// <summary>   Returns GUARANTOR DATE - BEGIN(GT1-13). </summary>
+    ///
+    /// <value> The guarantordatebegin. </value>
+
 	public DT GUARANTORDATEBEGIN
 	{
 		get{
@@ -371,9 +385,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR DATE - END(GT1-14).
-	///</summary>
+    /// <summary>   Returns GUARANTOR DATE - END(GT1-14). </summary>
+    ///
+    /// <value> The guarantordateend. </value>
+
 	public DT GUARANTORDATEEND
 	{
 		get{
@@ -394,9 +409,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR PRIORITY(GT1-15).
-	///</summary>
+    /// <summary>   Returns GUARANTOR PRIORITY(GT1-15). </summary>
+    ///
+    /// <value> The guarantorpriority. </value>
+
 	public NM GUARANTORPRIORITY
 	{
 		get{
@@ -417,9 +433,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR EMPLOYER NAME(GT1-16).
-	///</summary>
+    /// <summary>   Returns GUARANTOR EMPLOYER NAME(GT1-16). </summary>
+    ///
+    /// <value> The guarantoremployername. </value>
+
 	public ST GUARANTOREMPLOYERNAME
 	{
 		get{
@@ -440,9 +457,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR EMPLOYER ADDRESS(GT1-17).
-	///</summary>
+    /// <summary>   Returns GUARANTOR EMPLOYER ADDRESS(GT1-17). </summary>
+    ///
+    /// <value> The guarantoremployeraddress. </value>
+
 	public AD GUARANTOREMPLOYERADDRESS
 	{
 		get{
@@ -463,9 +481,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR EMPLOY PHONE #(GT1-18).
-	///</summary>
+    /// <summary>   Returns GUARANTOR EMPLOY PHONE #(GT1-18). </summary>
+    ///
+    /// <value> The guarantoremployphone. </value>
+
 	public TN GUARANTOREMPLOYPHONE
 	{
 		get{
@@ -486,9 +505,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR EMPLOYEE ID NUM(GT1-19).
-	///</summary>
+    /// <summary>   Returns GUARANTOR EMPLOYEE ID NUM(GT1-19). </summary>
+    ///
+    /// <value> The guarantoremployeeidnum. </value>
+
 	public ST GUARANTOREMPLOYEEIDNUM
 	{
 		get{
@@ -509,9 +529,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns GUARANTOR EMPLOYMENT STATUS(GT1-20).
-	///</summary>
+    /// <summary>   Returns GUARANTOR EMPLOYMENT STATUS(GT1-20). </summary>
+    ///
+    /// <value> The guarantoremploymentstatus. </value>
+
 	public ID GUARANTOREMPLOYMENTSTATUS
 	{
 		get{

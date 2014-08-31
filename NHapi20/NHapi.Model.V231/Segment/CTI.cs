@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 CTI message segment. 
-/// This segment has the following fields:<ol>
-///<li>CTI-1: Sponsor Study ID (EI)</li>
-///<li>CTI-2: Study Phase Identifier (CE)</li>
-///<li>CTI-3: Study Scheduled Time Point (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 CTI message segment. This segment has the following fields:<ol>
+/// <li>CTI-1: Sponsor Study ID (EI)</li>
+/// <li>CTI-2: Study Phase Identifier (CE)</li>
+/// <li>CTI-3: Study Scheduled Time Point (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class CTI : AbstractSegment  {
 
-  /**
-   * Creates a CTI (CTI - clinical trial identification segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the CTI class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public CTI(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class CTI : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Sponsor Study ID(CTI-1).
-	///</summary>
+    /// <summary>   Returns Sponsor Study ID(CTI-1). </summary>
+    ///
+    /// <value> The identifier of the sponsor study. </value>
+
 	public EI SponsorStudyID
 	{
 		get{
@@ -61,9 +63,10 @@ public class CTI : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Study Phase Identifier(CTI-2).
-	///</summary>
+    /// <summary>   Returns Study Phase Identifier(CTI-2). </summary>
+    ///
+    /// <value> The identifier of the study phase. </value>
+
 	public CE StudyPhaseIdentifier
 	{
 		get{
@@ -84,9 +87,10 @@ public class CTI : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Study Scheduled Time Point(CTI-3).
-	///</summary>
+    /// <summary>   Returns Study Scheduled Time Point(CTI-3). </summary>
+    ///
+    /// <value> The study scheduled time point. </value>
+
 	public CE StudyScheduledTimePoint
 	{
 		get{

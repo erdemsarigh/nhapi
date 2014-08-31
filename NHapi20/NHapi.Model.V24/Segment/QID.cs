@@ -7,25 +7,26 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 QID message segment. 
-/// This segment has the following fields:<ol>
-///<li>QID-1: Query Tag (ST)</li>
-///<li>QID-2: Message Query Name (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 QID message segment. This segment has the following fields:<ol>
+/// <li>QID-1: Query Tag (ST)</li>
+/// <li>QID-2: Message Query Name (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class QID : AbstractSegment  {
 
-  /**
-   * Creates a QID (Query Identification) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the QID class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public QID(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -36,9 +37,10 @@ public class QID : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Query Tag(QID-1).
-	///</summary>
+    /// <summary>   Returns Query Tag(QID-1). </summary>
+    ///
+    /// <value> The query tag. </value>
+
 	public ST QueryTag
 	{
 		get{
@@ -59,9 +61,10 @@ public class QID : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Message Query Name(QID-2).
-	///</summary>
+    /// <summary>   Returns Message Query Name(QID-2). </summary>
+    ///
+    /// <value> The name of the message query. </value>
+
 	public CE MessageQueryName
 	{
 		get{

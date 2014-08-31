@@ -6,9 +6,9 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 XTN (Extended Telecommunication Number) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 XTN (Extended Telecommunication Number) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>Telephone Number (ST)</li>
 /// <li>Telecommunication Use Code (ID)</li>
 /// <li>Telecommunication Equipment Type (ID)</li>
@@ -22,22 +22,24 @@ namespace NHapi.Model.V25.Datatype
 /// <li>Speed Dial Code (ST)</li>
 /// <li>Unformatted Telephone number (ST)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class XTN : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a XTN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a XTN. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public XTN(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a XTN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a XTN. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public XTN(IMessage message, string description) : base(message, description){
 		data = new IType[12];
 		data[0] = new ST(message,"Telephone Number");
@@ -54,9 +56,10 @@ public class XTN : AbstractType, IComposite{
 		data[11] = new ST(message,"Unformatted Telephone number");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -64,12 +67,15 @@ public class XTN : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -80,10 +86,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Telephone Number (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Telephone Number (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The telephone number. </value>
+
 	public ST TelephoneNumber {
 get{
 	   ST ret = null;
@@ -97,10 +107,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Telecommunication Use Code (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Telecommunication Use Code (component #1).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The telecommunication use code. </value>
+
 	public ID TelecommunicationUseCode {
 get{
 	   ID ret = null;
@@ -114,10 +128,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Telecommunication Equipment Type (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Telecommunication Equipment Type (component #2).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the telecommunication equipment. </value>
+
 	public ID TelecommunicationEquipmentType {
 get{
 	   ID ret = null;
@@ -131,10 +149,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Email Address (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Email Address (component #3).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The email address. </value>
+
 	public ST EmailAddress {
 get{
 	   ST ret = null;
@@ -148,10 +170,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Country Code (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Country Code (component #4).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The total number of ry code. </value>
+
 	public NM CountryCode {
 get{
 	   NM ret = null;
@@ -165,10 +191,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Area/City Code (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Area/City Code (component #5).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The area city code. </value>
+
 	public NM AreaCityCode {
 get{
 	   NM ret = null;
@@ -182,10 +212,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Local Number (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Local Number (component #6).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The local number. </value>
+
 	public NM LocalNumber {
 get{
 	   NM ret = null;
@@ -199,10 +233,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Extension (component #7).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Extension (component #7).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The extension. </value>
+
 	public NM Extension {
 get{
 	   NM ret = null;
@@ -216,10 +254,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Any Text (component #8).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Any Text (component #8).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> any text. </value>
+
 	public ST AnyText {
 get{
 	   ST ret = null;
@@ -233,10 +275,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Extension Prefix (component #9).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Extension Prefix (component #9).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The extension prefix. </value>
+
 	public ST ExtensionPrefix {
 get{
 	   ST ret = null;
@@ -250,10 +296,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Speed Dial Code (component #10).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Speed Dial Code (component #10).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The speed dial code. </value>
+
 	public ST SpeedDialCode {
 get{
 	   ST ret = null;
@@ -267,10 +317,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Unformatted Telephone number (component #11).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Unformatted Telephone number (component #11).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The unformatted telephone number. </value>
+
 	public ST UnformattedTelephoneNumber {
 get{
 	   ST ret = null;

@@ -7,33 +7,34 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 ACC message segment. 
-/// This segment has the following fields:<ol>
-///<li>ACC-1: Accident Date/Time (TS)</li>
-///<li>ACC-2: Accident Code (CE)</li>
-///<li>ACC-3: Accident Location (ST)</li>
-///<li>ACC-4: Auto Accident State (CE)</li>
-///<li>ACC-5: Accident Job Related Indicator (ID)</li>
-///<li>ACC-6: Accident Death Indicator (ID)</li>
-///<li>ACC-7: Entered By (XCN)</li>
-///<li>ACC-8: Accident Description (ST)</li>
-///<li>ACC-9: Brought In By (ST)</li>
-///<li>ACC-10: Police Notified Indicator (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ACC message segment. This segment has the following fields:<ol>
+/// <li>ACC-1: Accident Date/Time (TS)</li>
+/// <li>ACC-2: Accident Code (CE)</li>
+/// <li>ACC-3: Accident Location (ST)</li>
+/// <li>ACC-4: Auto Accident State (CE)</li>
+/// <li>ACC-5: Accident Job Related Indicator (ID)</li>
+/// <li>ACC-6: Accident Death Indicator (ID)</li>
+/// <li>ACC-7: Entered By (XCN)</li>
+/// <li>ACC-8: Accident Description (ST)</li>
+/// <li>ACC-9: Brought In By (ST)</li>
+/// <li>ACC-10: Police Notified Indicator (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ACC : AbstractSegment  {
 
-  /**
-   * Creates a ACC (Accident) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ACC class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ACC(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -52,9 +53,10 @@ public class ACC : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Accident Date/Time(ACC-1).
-	///</summary>
+    /// <summary>   Returns Accident Date/Time(ACC-1). </summary>
+    ///
+    /// <value> The accident date time. </value>
+
 	public TS AccidentDateTime
 	{
 		get{
@@ -75,9 +77,10 @@ public class ACC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Accident Code(ACC-2).
-	///</summary>
+    /// <summary>   Returns Accident Code(ACC-2). </summary>
+    ///
+    /// <value> The accident code. </value>
+
 	public CE AccidentCode
 	{
 		get{
@@ -98,9 +101,10 @@ public class ACC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Accident Location(ACC-3).
-	///</summary>
+    /// <summary>   Returns Accident Location(ACC-3). </summary>
+    ///
+    /// <value> The accident location. </value>
+
 	public ST AccidentLocation
 	{
 		get{
@@ -121,9 +125,10 @@ public class ACC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Auto Accident State(ACC-4).
-	///</summary>
+    /// <summary>   Returns Auto Accident State(ACC-4). </summary>
+    ///
+    /// <value> The automatic accident state. </value>
+
 	public CE AutoAccidentState
 	{
 		get{
@@ -144,9 +149,10 @@ public class ACC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Accident Job Related Indicator(ACC-5).
-	///</summary>
+    /// <summary>   Returns Accident Job Related Indicator(ACC-5). </summary>
+    ///
+    /// <value> The accident job related indicator. </value>
+
 	public ID AccidentJobRelatedIndicator
 	{
 		get{
@@ -167,9 +173,10 @@ public class ACC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Accident Death Indicator(ACC-6).
-	///</summary>
+    /// <summary>   Returns Accident Death Indicator(ACC-6). </summary>
+    ///
+    /// <value> The accident death indicator. </value>
+
 	public ID AccidentDeathIndicator
 	{
 		get{
@@ -190,9 +197,10 @@ public class ACC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Entered By(ACC-7).
-	///</summary>
+    /// <summary>   Returns Entered By(ACC-7). </summary>
+    ///
+    /// <value> Amount to entered by. </value>
+
 	public XCN EnteredBy
 	{
 		get{
@@ -213,9 +221,10 @@ public class ACC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Accident Description(ACC-8).
-	///</summary>
+    /// <summary>   Returns Accident Description(ACC-8). </summary>
+    ///
+    /// <value> Information describing the accident. </value>
+
 	public ST AccidentDescription
 	{
 		get{
@@ -236,9 +245,10 @@ public class ACC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Brought In By(ACC-9).
-	///</summary>
+    /// <summary>   Returns Brought In By(ACC-9). </summary>
+    ///
+    /// <value> Amount to brought in by. </value>
+
 	public ST BroughtInBy
 	{
 		get{
@@ -259,9 +269,10 @@ public class ACC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Police Notified Indicator(ACC-10).
-	///</summary>
+    /// <summary>   Returns Police Notified Indicator(ACC-10). </summary>
+    ///
+    /// <value> The police notified indicator. </value>
+
 	public ID PoliceNotifiedIndicator
 	{
 		get{

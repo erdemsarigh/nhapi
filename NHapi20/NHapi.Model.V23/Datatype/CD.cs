@@ -6,9 +6,9 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V23.Datatype
 {
-
-///<summary>
-/// <p>The HL7 CD (Channel Definition (2.8.2)) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 CD (Channel Definition (2.8.2)) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>channel identifier (CM_WVI)</li>
 /// <li>electrode names (CM_CD_ELECTRODE)</li>
 /// <li>channel sensitivity/units (CM_CSU)</li>
@@ -16,22 +16,24 @@ namespace NHapi.Model.V23.Datatype
 /// <li>sampling frequency (NM)</li>
 /// <li>minimum/maximum data values (CM_MDV)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CD : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CD. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CD(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CD. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CD(IMessage message, string description) : base(message, description){
 		data = new IType[6];
 		data[0] = new CM_WVI(message,"Channel identifier");
@@ -42,9 +44,10 @@ public class CD : AbstractType, IComposite{
 		data[5] = new CM_MDV(message,"Minimum/maximum data values");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -52,12 +55,15 @@ public class CD : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -68,10 +74,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns channel identifier (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns channel identifier (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the channel. </value>
+
 	public CM_WVI ChannelIdentifier {
 get{
 	   CM_WVI ret = null;
@@ -85,10 +95,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns electrode names (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns electrode names (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> A list of names of the electrodes. </value>
+
 	public CM_CD_ELECTRODE ElectrodeNames {
 get{
 	   CM_CD_ELECTRODE ret = null;
@@ -102,10 +116,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns channel sensitivity/units (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns channel sensitivity/units (component #2).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The channel sensitivity units. </value>
+
 	public CM_CSU ChannelSensitivityUnits {
 get{
 	   CM_CSU ret = null;
@@ -119,10 +137,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns calibration parameters (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns calibration parameters (component #3).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> Options that control the calibration. </value>
+
 	public CM_CCP CalibrationParameters {
 get{
 	   CM_CCP ret = null;
@@ -136,10 +158,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns sampling frequency (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns sampling frequency (component #4).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The sampling frequency. </value>
+
 	public NM SamplingFrequency {
 get{
 	   NM ret = null;
@@ -153,10 +179,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns minimum/maximum data values (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns minimum/maximum data values (component #5).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The minimum maximum data values. </value>
+
 	public CM_MDV MinimumMaximumDataValues {
 get{
 	   CM_MDV ret = null;

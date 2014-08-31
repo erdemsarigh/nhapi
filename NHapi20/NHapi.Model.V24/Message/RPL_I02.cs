@@ -9,38 +9,41 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V24.Message
 
 {
-///<summary>
-/// Represents a RPL_I02 message structure (see chapter 11). This structure contains the 
+/// <summary>
+/// Represents a RPL_I02 message structure (see chapter 11). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message Header) </li>
-///<li>1: MSA (Message Acknowledgment) </li>
-///<li>2: RPL_I02_PROVIDER (a Group object) repeating</li>
-///<li>3: NTE (Notes and Comments) optional repeating</li>
-///<li>4: DSP (Display Data) optional repeating</li>
-///<li>5: DSC (Continuation Pointer) optional </li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message Header) </li>
+/// <li>1: MSA (Message Acknowledgment) </li>
+/// <li>2: RPL_I02_PROVIDER (a Group object) repeating</li>
+/// <li>3: NTE (Notes and Comments) optional repeating</li>
+/// <li>4: DSP (Display Data) optional repeating</li>
+/// <li>5: DSC (Continuation Pointer) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RPL_I02 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new RPL_I02 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new RPL_I02 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public RPL_I02(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new RPL_I02 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new RPL_I02 Group with DefaultModelClassFactory. </summary>
 	public RPL_I02() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for RPL_I02.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for RPL_I02.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -54,6 +57,13 @@ public class RPL_I02 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -61,9 +71,11 @@ public class RPL_I02 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message Header) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message Header) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -77,9 +89,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MSA (Message Acknowledgment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MSA (Message Acknowledgment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msa. </value>
+
 	public MSA MSA { 
 get{
 	   MSA ret = null;
@@ -93,9 +106,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RPL_I02_PROVIDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RPL_I02_PROVIDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The provider. </returns>
+
 	public RPL_I02_PROVIDER GetPROVIDER() {
 	   RPL_I02_PROVIDER ret = null;
 	   try {
@@ -107,19 +125,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RPL_I02_PROVIDER
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RPL_I02_PROVIDER
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The provider. </returns>
+
 	public RPL_I02_PROVIDER GetPROVIDER(int rep) { 
 	   return (RPL_I02_PROVIDER)this.GetStructure("PROVIDER", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RPL_I02_PROVIDER 
-	 */ 
+    /// <summary>   Gets the provider repetitions used. </summary>
+    ///
+    /// <value> The provider repetitions used. </value>
+
 	public int PROVIDERRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -134,9 +158,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -148,19 +177,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and Comments) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and Comments) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -175,9 +210,12 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of DSP (Display Data) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns  first repetition of DSP (Display Data) - creates it if necessary. </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The DSP. </returns>
+
 	public DSP GetDSP() {
 	   DSP ret = null;
 	   try {
@@ -189,19 +227,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of DSP
-	/// * (Display Data) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of DSP
+    ///  * (Display Data) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The DSP. </returns>
+
 	public DSP GetDSP(int rep) { 
 	   return (DSP)this.GetStructure("DSP", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of DSP 
-	 */ 
+    /// <summary>   Gets the DSP repetitions used. </summary>
+    ///
+    /// <value> The DSP repetitions used. </value>
+
 	public int DSPRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -216,9 +260,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns DSC (Continuation Pointer) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns DSC (Continuation Pointer) - creates it if necessary. </summary>
+    ///
+    /// <value> The dsc. </value>
+
 	public DSC DSC { 
 get{
 	   DSC ret = null;

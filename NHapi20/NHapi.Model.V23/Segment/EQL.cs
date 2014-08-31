@@ -7,27 +7,28 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 EQL message segment. 
-/// This segment has the following fields:<ol>
-///<li>EQL-1: Query tag (ST)</li>
-///<li>EQL-2: Query/ Response Format Code (ID)</li>
-///<li>EQL-3: EQL Query Name (CE)</li>
-///<li>EQL-4: EQL Query Statement (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 EQL message segment. This segment has the following fields:<ol>
+/// <li>EQL-1: Query tag (ST)</li>
+/// <li>EQL-2: Query/ Response Format Code (ID)</li>
+/// <li>EQL-3: EQL Query Name (CE)</li>
+/// <li>EQL-4: EQL Query Statement (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class EQL : AbstractSegment  {
 
-  /**
-   * Creates a EQL (Embedded Query Language) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the EQL class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public EQL(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -40,9 +41,10 @@ public class EQL : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Query tag(EQL-1).
-	///</summary>
+    /// <summary>   Returns Query tag(EQL-1). </summary>
+    ///
+    /// <value> The query tag. </value>
+
 	public ST QueryTag
 	{
 		get{
@@ -63,9 +65,10 @@ public class EQL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Query/ Response Format Code(EQL-2).
-	///</summary>
+    /// <summary>   Returns Query/ Response Format Code(EQL-2). </summary>
+    ///
+    /// <value> The query response format code. </value>
+
 	public ID QueryResponseFormatCode
 	{
 		get{
@@ -86,9 +89,10 @@ public class EQL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns EQL Query Name(EQL-3).
-	///</summary>
+    /// <summary>   Returns EQL Query Name(EQL-3). </summary>
+    ///
+    /// <value> The name of the eql query. </value>
+
 	public CE EQLQueryName
 	{
 		get{
@@ -109,9 +113,10 @@ public class EQL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns EQL Query Statement(EQL-4).
-	///</summary>
+    /// <summary>   Returns EQL Query Statement(EQL-4). </summary>
+    ///
+    /// <value> The eql query statement. </value>
+
 	public ST EQLQueryStatement
 	{
 		get{

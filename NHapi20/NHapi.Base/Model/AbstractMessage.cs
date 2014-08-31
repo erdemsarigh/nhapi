@@ -26,21 +26,22 @@ namespace NHapi.Base.Model
     using NHapi.Base.Parser;
     using NHapi.Base.validation;
 
-    /// <summary> A default implementation of Message. </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+    /// <summary>   A default implementation of Message. </summary>
     public abstract class AbstractMessage : AbstractGroup, IMessage
     {
         #region Fields
 
+        /// <summary>   Context for my. </summary>
         private IValidationContext myContext;
 
         #endregion
 
         #region Constructors and Destructors
 
-        /// <param name="theFactory">factory for model classes (e.g. group, segment) for this message 
-        /// </param>
+        /// <summary>   Initializes a new instance of the AbstractMessage class. </summary>
+        ///
+        /// <param name="theFactory">   factory for model classes (e.g. group, segment) for this message. </param>
+
         public AbstractMessage(IModelClassFactory theFactory)
             : base(theFactory)
         {
@@ -50,9 +51,13 @@ namespace NHapi.Base.Model
 
         #region Public Properties
 
-        /// <summary> Returns this Message object - this is an implementation of the 
-        /// abstract method in AbstractGroup.  
+        /// <summary>
+        /// Returns this Message object - this is an implementation of the abstract method in
+        /// AbstractGroup.  
         /// </summary>
+        ///
+        /// <value> The message. </value>
+
         public override IMessage Message
         {
             get
@@ -61,9 +66,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>
-        /// The validation contect 
-        /// </summary>
+        /// <summary>   The validation contect. </summary>
+        ///
+        /// <value> The validation context. </value>
+
         public virtual IValidationContext ValidationContext
         {
             get
@@ -77,12 +83,14 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary> Returns the version number.  This default implementation inspects 
-        /// this.GetClass().getName().  This should be overridden if you are putting
-        /// a custom message definition in your own package, or it will default.  
+        /// <summary>
+        /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+        /// This should be overridden if you are putting a custom message definition in your own package,
+        /// or it will default.  
         /// </summary>
-        /// <returns>s 2.4 if not obvious from package name
-        /// </returns>
+        ///
+        /// <value> s 2.4 if not obvious from package name. </value>
+
         public virtual System.String Version
         {
             get

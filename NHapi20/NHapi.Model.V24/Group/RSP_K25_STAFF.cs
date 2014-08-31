@@ -8,25 +8,28 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RSP_K25_STAFF Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: STF (Staff Identification) </li>
-///<li>1: PRA (Practitioner Detail) optional </li>
-///<li>2: ORG (Practitioner Organization Unit) optional repeating</li>
-///<li>3: AFF (Professional Affiliation) optional repeating</li>
-///<li>4: LAN (Language Detail) optional repeating</li>
-///<li>5: EDU (Educational Detail) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RSP_K25_STAFF Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: STF (Staff Identification) </li>
+/// <li>1: PRA (Practitioner Detail) optional </li>
+/// <li>2: ORG (Practitioner Organization Unit) optional repeating</li>
+/// <li>3: AFF (Professional Affiliation) optional repeating</li>
+/// <li>4: LAN (Language Detail) optional repeating</li>
+/// <li>5: EDU (Educational Detail) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RSP_K25_STAFF : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RSP_K25_STAFF Group.
-	///</summary>
+    /// <summary>   Creates a new RSP_K25_STAFF Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RSP_K25_STAFF(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(STF), true, false);
@@ -40,9 +43,10 @@ public class RSP_K25_STAFF : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns STF (Staff Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns STF (Staff Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The stf. </value>
+
 	public STF STF { 
 get{
 	   STF ret = null;
@@ -56,9 +60,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PRA (Practitioner Detail) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PRA (Practitioner Detail) - creates it if necessary. </summary>
+    ///
+    /// <value> The pra. </value>
+
 	public PRA PRA { 
 get{
 	   PRA ret = null;
@@ -72,9 +77,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of ORG (Practitioner Organization Unit) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of ORG (Practitioner Organization Unit) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The organisation. </returns>
+
 	public ORG GetORG() {
 	   ORG ret = null;
 	   try {
@@ -86,19 +96,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of ORG
-	/// * (Practitioner Organization Unit) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of ORG
+    ///  * (Practitioner Organization Unit) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The organisation. </returns>
+
 	public ORG GetORG(int rep) { 
 	   return (ORG)this.GetStructure("ORG", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of ORG 
-	 */ 
+    /// <summary>   Gets the organisation repetitions used. </summary>
+    ///
+    /// <value> The organisation repetitions used. </value>
+
 	public int ORGRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -113,9 +129,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of AFF (Professional Affiliation) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of AFF (Professional Affiliation) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   a ff. </returns>
+
 	public AFF GetAFF() {
 	   AFF ret = null;
 	   try {
@@ -127,19 +148,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of AFF
-	/// * (Professional Affiliation) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of AFF
+    ///  * (Professional Affiliation) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   a ff. </returns>
+
 	public AFF GetAFF(int rep) { 
 	   return (AFF)this.GetStructure("AFF", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of AFF 
-	 */ 
+    /// <summary>   Gets the aff repetitions used. </summary>
+    ///
+    /// <value> The aff repetitions used. </value>
+
 	public int AFFRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -154,9 +181,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of LAN (Language Detail) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of LAN (Language Detail) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The LAN. </returns>
+
 	public LAN GetLAN() {
 	   LAN ret = null;
 	   try {
@@ -168,19 +200,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of LAN
-	/// * (Language Detail) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of LAN
+    ///  * (Language Detail) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The LAN. </returns>
+
 	public LAN GetLAN(int rep) { 
 	   return (LAN)this.GetStructure("LAN", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of LAN 
-	 */ 
+    /// <summary>   Gets the LAN repetitions used. </summary>
+    ///
+    /// <value> The LAN repetitions used. </value>
+
 	public int LANRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -195,9 +233,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of EDU (Educational Detail) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of EDU (Educational Detail) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The edu. </returns>
+
 	public EDU GetEDU() {
 	   EDU ret = null;
 	   try {
@@ -209,19 +252,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of EDU
-	/// * (Educational Detail) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of EDU
+    ///  * (Educational Detail) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The edu. </returns>
+
 	public EDU GetEDU(int rep) { 
 	   return (EDU)this.GetStructure("EDU", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of EDU 
-	 */ 
+    /// <summary>   Gets the edu repetitions used. </summary>
+    ///
+    /// <value> The edu repetitions used. </value>
+
 	public int EDURepetitionsUsed { 
 get{
 	    int reps = -1; 

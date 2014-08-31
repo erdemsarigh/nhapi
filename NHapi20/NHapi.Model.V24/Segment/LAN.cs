@@ -7,27 +7,28 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 LAN message segment. 
-/// This segment has the following fields:<ol>
-///<li>LAN-1: Set ID - LAN (SI)</li>
-///<li>LAN-2: Language Code (CE)</li>
-///<li>LAN-3: Language Ability Code (CE)</li>
-///<li>LAN-4: Language Proficiency Code (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 LAN message segment. This segment has the following fields:<ol>
+/// <li>LAN-1: Set ID - LAN (SI)</li>
+/// <li>LAN-2: Language Code (CE)</li>
+/// <li>LAN-3: Language Ability Code (CE)</li>
+/// <li>LAN-4: Language Proficiency Code (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class LAN : AbstractSegment  {
 
-  /**
-   * Creates a LAN (Language Detail) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the LAN class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public LAN(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -40,9 +41,10 @@ public class LAN : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - LAN(LAN-1).
-	///</summary>
+    /// <summary>   Returns Set ID - LAN(LAN-1). </summary>
+    ///
+    /// <value> The set idlan. </value>
+
 	public SI SetIDLAN
 	{
 		get{
@@ -63,9 +65,10 @@ public class LAN : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Language Code(LAN-2).
-	///</summary>
+    /// <summary>   Returns Language Code(LAN-2). </summary>
+    ///
+    /// <value> The language code. </value>
+
 	public CE LanguageCode
 	{
 		get{
@@ -86,11 +89,17 @@ public class LAN : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Language Ability Code(LAN-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Language Ability Code(LAN-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The language ability code. </returns>
+
 	public CE GetLanguageAbilityCode(int rep)
 	{
 			CE ret = null;
@@ -105,9 +114,12 @@ public class LAN : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Language Ability Code (LAN-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Language Ability Code (LAN-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetLanguageAbilityCode() {
      CE[] ret = null;
     try {
@@ -126,9 +138,10 @@ public class LAN : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Language Ability Code (LAN-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Language Ability Code (LAN-3). </summary>
+  ///
+  /// <value>   The language ability code repetitions used. </value>
+
   public int LanguageAbilityCodeRepetitionsUsed
 {
 get{
@@ -144,9 +157,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Language Proficiency Code(LAN-4).
-	///</summary>
+
+    /// <summary>   Returns Language Proficiency Code(LAN-4). </summary>
+    ///
+    /// <value> The language proficiency code. </value>
+
 	public CE LanguageProficiencyCode
 	{
 		get{

@@ -6,29 +6,31 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 MOP (Money or Percentage) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 MOP (Money or Percentage) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>Money or Percentage Indicator (ID)</li>
 /// <li>Money or Percentage Quantity (NM)</li>
 /// <li>Currency Denomination (ID)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class MOP : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a MOP.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a MOP. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public MOP(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a MOP.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a MOP. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public MOP(IMessage message, string description) : base(message, description){
 		data = new IType[3];
 		data[0] = new ID(message, 148,"Money or Percentage Indicator");
@@ -36,9 +38,10 @@ public class MOP : AbstractType, IComposite{
 		data[2] = new ID(message, 0,"Currency Denomination");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -46,12 +49,15 @@ public class MOP : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -62,10 +68,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Money or Percentage Indicator (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Money or Percentage Indicator (component #0).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The money or percentage indicator. </value>
+
 	public ID MoneyOrPercentageIndicator {
 get{
 	   ID ret = null;
@@ -79,10 +89,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Money or Percentage Quantity (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Money or Percentage Quantity (component #1).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The money or percentage quantity. </value>
+
 	public NM MoneyOrPercentageQuantity {
 get{
 	   NM ret = null;
@@ -96,10 +110,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Currency Denomination (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Currency Denomination (component #2).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The currency denomination. </value>
+
 	public ID CurrencyDenomination {
 get{
 	   ID ret = null;

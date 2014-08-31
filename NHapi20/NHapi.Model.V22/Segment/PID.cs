@@ -7,50 +7,51 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 PID message segment. 
-/// This segment has the following fields:<ol>
-///<li>PID-1: Set ID - Patient ID (SI)</li>
-///<li>PID-2: Patient ID (External ID) (CK_PAT_ID)</li>
-///<li>PID-3: Patient ID (Internal ID) (CM_PAT_ID)</li>
-///<li>PID-4: Alternate Patient ID (ST)</li>
-///<li>PID-5: Patient Name (PN)</li>
-///<li>PID-6: Mother's Maiden Name (ST)</li>
-///<li>PID-7: Date of Birth (TS)</li>
-///<li>PID-8: Sex (ID)</li>
-///<li>PID-9: Patient Alias (PN)</li>
-///<li>PID-10: Race (ID)</li>
-///<li>PID-11: Patient Address (AD)</li>
-///<li>PID-12: County code (ID)</li>
-///<li>PID-13: Phone Number - Home (TN)</li>
-///<li>PID-14: Phone Number - Business (TN)</li>
-///<li>PID-15: Language - Patient (ST)</li>
-///<li>PID-16: Marital Status (ID)</li>
-///<li>PID-17: Religion (ID)</li>
-///<li>PID-18: Patient Account Number (CK_PAT_ID)</li>
-///<li>PID-19: Social security number - patient (ST)</li>
-///<li>PID-20: Driver's license number - patient (CM_LICENSE_NO)</li>
-///<li>PID-21: Mother's Identifier (CK_PAT_ID)</li>
-///<li>PID-22: Ethnic Group (ID)</li>
-///<li>PID-23: Birth Place (ST)</li>
-///<li>PID-24: Multiple Birth Indicator (ID)</li>
-///<li>PID-25: Birth Order (NM)</li>
-///<li>PID-26: Citizenship (ID)</li>
-///<li>PID-27: Veterans Military Status (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PID message segment. This segment has the following fields:<ol>
+/// <li>PID-1: Set ID - Patient ID (SI)</li>
+/// <li>PID-2: Patient ID (External ID) (CK_PAT_ID)</li>
+/// <li>PID-3: Patient ID (Internal ID) (CM_PAT_ID)</li>
+/// <li>PID-4: Alternate Patient ID (ST)</li>
+/// <li>PID-5: Patient Name (PN)</li>
+/// <li>PID-6: Mother's Maiden Name (ST)</li>
+/// <li>PID-7: Date of Birth (TS)</li>
+/// <li>PID-8: Sex (ID)</li>
+/// <li>PID-9: Patient Alias (PN)</li>
+/// <li>PID-10: Race (ID)</li>
+/// <li>PID-11: Patient Address (AD)</li>
+/// <li>PID-12: County code (ID)</li>
+/// <li>PID-13: Phone Number - Home (TN)</li>
+/// <li>PID-14: Phone Number - Business (TN)</li>
+/// <li>PID-15: Language - Patient (ST)</li>
+/// <li>PID-16: Marital Status (ID)</li>
+/// <li>PID-17: Religion (ID)</li>
+/// <li>PID-18: Patient Account Number (CK_PAT_ID)</li>
+/// <li>PID-19: Social security number - patient (ST)</li>
+/// <li>PID-20: Driver's license number - patient (CM_LICENSE_NO)</li>
+/// <li>PID-21: Mother's Identifier (CK_PAT_ID)</li>
+/// <li>PID-22: Ethnic Group (ID)</li>
+/// <li>PID-23: Birth Place (ST)</li>
+/// <li>PID-24: Multiple Birth Indicator (ID)</li>
+/// <li>PID-25: Birth Order (NM)</li>
+/// <li>PID-26: Citizenship (ID)</li>
+/// <li>PID-27: Veterans Military Status (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PID : AbstractSegment  {
 
-  /**
-   * Creates a PID (PATIENT IDENTIFICATION) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PID class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PID(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -86,9 +87,10 @@ public class PID : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - Patient ID(PID-1).
-	///</summary>
+    /// <summary>   Returns Set ID - Patient ID(PID-1). </summary>
+    ///
+    /// <value> The identifier of the set identifier patient. </value>
+
 	public SI SetIDPatientID
 	{
 		get{
@@ -109,9 +111,10 @@ public class PID : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Patient ID (External ID)(PID-2).
-	///</summary>
+    /// <summary>   Returns Patient ID (External ID)(PID-2). </summary>
+    ///
+    /// <value> The identifier of the patient identifier external. </value>
+
 	public CK_PAT_ID PatientIDExternalID
 	{
 		get{
@@ -132,11 +135,17 @@ public class PID : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Patient ID (Internal ID)(PID-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Patient ID (Internal ID)(PID-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The patient identifier internal identifier. </returns>
+
 	public CM_PAT_ID GetPatientIDInternalID(int rep)
 	{
 			CM_PAT_ID ret = null;
@@ -151,9 +160,12 @@ public class PID : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Patient ID (Internal ID) (PID-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Patient ID (Internal ID) (PID-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of centimetres pattern identifier. </returns>
+
   public CM_PAT_ID[] GetPatientIDInternalID() {
      CM_PAT_ID[] ret = null;
     try {
@@ -172,9 +184,10 @@ public class PID : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Patient ID (Internal ID) (PID-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Patient ID (Internal ID) (PID-3). </summary>
+  ///
+  /// <value>   The patient identifier internal identifier repetitions used. </value>
+
   public int PatientIDInternalIDRepetitionsUsed
 {
 get{
@@ -190,9 +203,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Alternate Patient ID(PID-4).
-	///</summary>
+
+    /// <summary>   Returns Alternate Patient ID(PID-4). </summary>
+    ///
+    /// <value> The identifier of the alternate patient. </value>
+
 	public ST AlternatePatientID
 	{
 		get{
@@ -213,9 +228,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Patient Name(PID-5).
-	///</summary>
+    /// <summary>   Returns Patient Name(PID-5). </summary>
+    ///
+    /// <value> The name of the patient. </value>
+
 	public PN PatientName
 	{
 		get{
@@ -236,9 +252,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Mother's Maiden Name(PID-6).
-	///</summary>
+    /// <summary>   Returns Mother's Maiden Name(PID-6). </summary>
+    ///
+    /// <value> The name of the mother s maiden. </value>
+
 	public ST MotherSMaidenName
 	{
 		get{
@@ -259,9 +276,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date of Birth(PID-7).
-	///</summary>
+    /// <summary>   Returns Date of Birth(PID-7). </summary>
+    ///
+    /// <value> The date of birth. </value>
+
 	public TS DateOfBirth
 	{
 		get{
@@ -282,9 +300,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Sex(PID-8).
-	///</summary>
+    /// <summary>   Returns Sex(PID-8). </summary>
+    ///
+    /// <value> The sex. </value>
+
 	public ID Sex
 	{
 		get{
@@ -305,11 +324,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Patient Alias(PID-9).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Patient Alias(PID-9). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The patient alias. </returns>
+
 	public PN GetPatientAlias(int rep)
 	{
 			PN ret = null;
@@ -324,9 +349,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Patient Alias (PID-9).
-   ///</summary>
+  /// <summary> Returns all repetitions of Patient Alias (PID-9). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of pn. </returns>
+
   public PN[] GetPatientAlias() {
      PN[] ret = null;
     try {
@@ -345,9 +373,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Patient Alias (PID-9).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Patient Alias (PID-9). </summary>
+  ///
+  /// <value>   The patient alias repetitions used. </value>
+
   public int PatientAliasRepetitionsUsed
 {
 get{
@@ -363,9 +392,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Race(PID-10).
-	///</summary>
+
+    /// <summary>   Returns Race(PID-10). </summary>
+    ///
+    /// <value> The race. </value>
+
 	public ID Race
 	{
 		get{
@@ -386,11 +417,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Patient Address(PID-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Patient Address(PID-11). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The patient address. </returns>
+
 	public AD GetPatientAddress(int rep)
 	{
 			AD ret = null;
@@ -405,9 +442,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Patient Address (PID-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of Patient Address (PID-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ad. </returns>
+
   public AD[] GetPatientAddress() {
      AD[] ret = null;
     try {
@@ -426,9 +466,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Patient Address (PID-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Patient Address (PID-11). </summary>
+  ///
+  /// <value>   The patient address repetitions used. </value>
+
   public int PatientAddressRepetitionsUsed
 {
 get{
@@ -444,9 +485,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns County code(PID-12).
-	///</summary>
+
+    /// <summary>   Returns County code(PID-12). </summary>
+    ///
+    /// <value> The total number of y coordinate code. </value>
+
 	public ID CountyCode
 	{
 		get{
@@ -467,11 +510,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Phone Number - Home(PID-13).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Phone Number - Home(PID-13). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The phone number home. </returns>
+
 	public TN GetPhoneNumberHome(int rep)
 	{
 			TN ret = null;
@@ -486,9 +535,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Phone Number - Home (PID-13).
-   ///</summary>
+  /// <summary> Returns all repetitions of Phone Number - Home (PID-13). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tn. </returns>
+
   public TN[] GetPhoneNumberHome() {
      TN[] ret = null;
     try {
@@ -507,9 +559,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Phone Number - Home (PID-13).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Phone Number - Home (PID-13). </summary>
+  ///
+  /// <value>   The phone number home repetitions used. </value>
+
   public int PhoneNumberHomeRepetitionsUsed
 {
 get{
@@ -525,11 +578,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Phone Number - Business(PID-14).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Phone Number - Business(PID-14). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The phone number business. </returns>
+
 	public TN GetPhoneNumberBusiness(int rep)
 	{
 			TN ret = null;
@@ -544,9 +604,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Phone Number - Business (PID-14).
-   ///</summary>
+  /// <summary> Returns all repetitions of Phone Number - Business (PID-14). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tn. </returns>
+
   public TN[] GetPhoneNumberBusiness() {
      TN[] ret = null;
     try {
@@ -565,9 +628,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Phone Number - Business (PID-14).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Phone Number - Business (PID-14). </summary>
+  ///
+  /// <value>   The phone number business repetitions used. </value>
+
   public int PhoneNumberBusinessRepetitionsUsed
 {
 get{
@@ -583,9 +647,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Language - Patient(PID-15).
-	///</summary>
+
+    /// <summary>   Returns Language - Patient(PID-15). </summary>
+    ///
+    /// <value> The language patient. </value>
+
 	public ST LanguagePatient
 	{
 		get{
@@ -606,9 +672,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Marital Status(PID-16).
-	///</summary>
+    /// <summary>   Returns Marital Status(PID-16). </summary>
+    ///
+    /// <value> The marital status. </value>
+
 	public ID MaritalStatus
 	{
 		get{
@@ -629,9 +696,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Religion(PID-17).
-	///</summary>
+    /// <summary>   Returns Religion(PID-17). </summary>
+    ///
+    /// <value> The religion. </value>
+
 	public ID Religion
 	{
 		get{
@@ -652,9 +720,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Patient Account Number(PID-18).
-	///</summary>
+    /// <summary>   Returns Patient Account Number(PID-18). </summary>
+    ///
+    /// <value> The patient account number. </value>
+
 	public CK_PAT_ID PatientAccountNumber
 	{
 		get{
@@ -675,9 +744,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Social security number - patient(PID-19).
-	///</summary>
+    /// <summary>   Returns Social security number - patient(PID-19). </summary>
+    ///
+    /// <value> The social security number patient. </value>
+
 	public ST SocialSecurityNumberPatient
 	{
 		get{
@@ -698,9 +768,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Driver's license number - patient(PID-20).
-	///</summary>
+    /// <summary>   Returns Driver's license number - patient(PID-20). </summary>
+    ///
+    /// <value> The driver s license number patient. </value>
+
 	public CM_LICENSE_NO DriverSLicenseNumberPatient
 	{
 		get{
@@ -721,9 +792,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Mother's Identifier(PID-21).
-	///</summary>
+    /// <summary>   Returns Mother's Identifier(PID-21). </summary>
+    ///
+    /// <value> The identifier of the mother s. </value>
+
 	public CK_PAT_ID MotherSIdentifier
 	{
 		get{
@@ -744,9 +816,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Ethnic Group(PID-22).
-	///</summary>
+    /// <summary>   Returns Ethnic Group(PID-22). </summary>
+    ///
+    /// <value> The ethnic group. </value>
+
 	public ID EthnicGroup
 	{
 		get{
@@ -767,9 +840,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Birth Place(PID-23).
-	///</summary>
+    /// <summary>   Returns Birth Place(PID-23). </summary>
+    ///
+    /// <value> The birth place. </value>
+
 	public ST BirthPlace
 	{
 		get{
@@ -790,9 +864,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Multiple Birth Indicator(PID-24).
-	///</summary>
+    /// <summary>   Returns Multiple Birth Indicator(PID-24). </summary>
+    ///
+    /// <value> The multiple birth indicator. </value>
+
 	public ID MultipleBirthIndicator
 	{
 		get{
@@ -813,9 +888,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Birth Order(PID-25).
-	///</summary>
+    /// <summary>   Returns Birth Order(PID-25). </summary>
+    ///
+    /// <value> The birth order. </value>
+
 	public NM BirthOrder
 	{
 		get{
@@ -836,11 +912,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Citizenship(PID-26).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Citizenship(PID-26). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The citizenship. </returns>
+
 	public ID GetCitizenship(int rep)
 	{
 			ID ret = null;
@@ -855,9 +937,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Citizenship (PID-26).
-   ///</summary>
+  /// <summary> Returns all repetitions of Citizenship (PID-26). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetCitizenship() {
      ID[] ret = null;
     try {
@@ -876,9 +961,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Citizenship (PID-26).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Citizenship (PID-26). </summary>
+  ///
+  /// <value>   The citizenship repetitions used. </value>
+
   public int CitizenshipRepetitionsUsed
 {
 get{
@@ -894,9 +980,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Veterans Military Status(PID-27).
-	///</summary>
+
+    /// <summary>   Returns Veterans Military Status(PID-27). </summary>
+    ///
+    /// <value> The veterans military status. </value>
+
 	public ST VeteransMilitaryStatus
 	{
 		get{

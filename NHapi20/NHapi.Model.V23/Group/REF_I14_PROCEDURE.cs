@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the REF_I14_PROCEDURE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PR1 (Procedures) </li>
-///<li>1: REF_I14_AUTHORIZATION (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the REF_I14_PROCEDURE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PR1 (Procedures) </li>
+/// <li>1: REF_I14_AUTHORIZATION (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class REF_I14_PROCEDURE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new REF_I14_PROCEDURE Group.
-	///</summary>
+    /// <summary>   Creates a new REF_I14_PROCEDURE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public REF_I14_PROCEDURE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PR1), true, false);
@@ -32,9 +35,10 @@ public class REF_I14_PROCEDURE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PR1 (Procedures) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PR1 (Procedures) - creates it if necessary. </summary>
+    ///
+    /// <value> The pr 1. </value>
+
 	public PR1 PR1 { 
 get{
 	   PR1 ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns REF_I14_AUTHORIZATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns REF_I14_AUTHORIZATION (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The authorization. </value>
+
 	public REF_I14_AUTHORIZATION AUTHORIZATION { 
 get{
 	   REF_I14_AUTHORIZATION ret = null;

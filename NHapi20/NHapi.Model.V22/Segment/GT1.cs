@@ -7,44 +7,45 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 GT1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>GT1-1: Set ID - guarantor (SI)</li>
-///<li>GT1-2: Guarantor number (CK)</li>
-///<li>GT1-3: Guarantor name (PN)</li>
-///<li>GT1-4: Guarantor spouse name (PN)</li>
-///<li>GT1-5: Guarantor address (AD)</li>
-///<li>GT1-6: Guarantor phone number - home (TN)</li>
-///<li>GT1-7: Guarantor phone number - business (TN)</li>
-///<li>GT1-8: Guarantor date of birth (DT)</li>
-///<li>GT1-9: Guarantor sex (ID)</li>
-///<li>GT1-10: Guarantor type (ID)</li>
-///<li>GT1-11: Guarantor relationship (ID)</li>
-///<li>GT1-12: Guarantor social security number (ST)</li>
-///<li>GT1-13: Guarantor date - begin (DT)</li>
-///<li>GT1-14: Guarantor date - end (DT)</li>
-///<li>GT1-15: Guarantor priority (NM)</li>
-///<li>GT1-16: Guarantor employer name (ST)</li>
-///<li>GT1-17: Guarantor employer address (AD)</li>
-///<li>GT1-18: Guarantor employ phone number (TN)</li>
-///<li>GT1-19: Guarantor employee ID number (ST)</li>
-///<li>GT1-20: Guarantor employment status (ID)</li>
-///<li>GT1-21: Guarantor organization (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 GT1 message segment. This segment has the following fields:<ol>
+/// <li>GT1-1: Set ID - guarantor (SI)</li>
+/// <li>GT1-2: Guarantor number (CK)</li>
+/// <li>GT1-3: Guarantor name (PN)</li>
+/// <li>GT1-4: Guarantor spouse name (PN)</li>
+/// <li>GT1-5: Guarantor address (AD)</li>
+/// <li>GT1-6: Guarantor phone number - home (TN)</li>
+/// <li>GT1-7: Guarantor phone number - business (TN)</li>
+/// <li>GT1-8: Guarantor date of birth (DT)</li>
+/// <li>GT1-9: Guarantor sex (ID)</li>
+/// <li>GT1-10: Guarantor type (ID)</li>
+/// <li>GT1-11: Guarantor relationship (ID)</li>
+/// <li>GT1-12: Guarantor social security number (ST)</li>
+/// <li>GT1-13: Guarantor date - begin (DT)</li>
+/// <li>GT1-14: Guarantor date - end (DT)</li>
+/// <li>GT1-15: Guarantor priority (NM)</li>
+/// <li>GT1-16: Guarantor employer name (ST)</li>
+/// <li>GT1-17: Guarantor employer address (AD)</li>
+/// <li>GT1-18: Guarantor employ phone number (TN)</li>
+/// <li>GT1-19: Guarantor employee ID number (ST)</li>
+/// <li>GT1-20: Guarantor employment status (ID)</li>
+/// <li>GT1-21: Guarantor organization (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class GT1 : AbstractSegment  {
 
-  /**
-   * Creates a GT1 (GUARANTOR) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the GT1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public GT1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -74,9 +75,10 @@ public class GT1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - guarantor(GT1-1).
-	///</summary>
+    /// <summary>   Returns Set ID - guarantor(GT1-1). </summary>
+    ///
+    /// <value> The set identifier guarantor. </value>
+
 	public SI SetIDGuarantor
 	{
 		get{
@@ -97,9 +99,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor number(GT1-2).
-	///</summary>
+    /// <summary>   Returns Guarantor number(GT1-2). </summary>
+    ///
+    /// <value> The guarantor number. </value>
+
 	public CK GuarantorNumber
 	{
 		get{
@@ -120,9 +123,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor name(GT1-3).
-	///</summary>
+    /// <summary>   Returns Guarantor name(GT1-3). </summary>
+    ///
+    /// <value> The name of the guarantor. </value>
+
 	public PN GuarantorName
 	{
 		get{
@@ -143,9 +147,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor spouse name(GT1-4).
-	///</summary>
+    /// <summary>   Returns Guarantor spouse name(GT1-4). </summary>
+    ///
+    /// <value> The name of the guarantor spouse. </value>
+
 	public PN GuarantorSpouseName
 	{
 		get{
@@ -166,9 +171,10 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor address(GT1-5).
-	///</summary>
+    /// <summary>   Returns Guarantor address(GT1-5). </summary>
+    ///
+    /// <value> The guarantor address. </value>
+
 	public AD GuarantorAddress
 	{
 		get{
@@ -189,11 +195,17 @@ public class GT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Guarantor phone number - home(GT1-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Guarantor phone number - home(GT1-6). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The guarantor phone number home. </returns>
+
 	public TN GetGuarantorPhoneNumberHome(int rep)
 	{
 			TN ret = null;
@@ -208,9 +220,12 @@ public class GT1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Guarantor phone number - home (GT1-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of Guarantor phone number - home (GT1-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tn. </returns>
+
   public TN[] GetGuarantorPhoneNumberHome() {
      TN[] ret = null;
     try {
@@ -229,9 +244,10 @@ public class GT1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Guarantor phone number - home (GT1-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Guarantor phone number - home (GT1-6). </summary>
+  ///
+  /// <value>   The guarantor phone number home repetitions used. </value>
+
   public int GuarantorPhoneNumberHomeRepetitionsUsed
 {
 get{
@@ -247,11 +263,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Guarantor phone number - business(GT1-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Guarantor phone number - business(GT1-7). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The guarantor phone number business. </returns>
+
 	public TN GetGuarantorPhoneNumberBusiness(int rep)
 	{
 			TN ret = null;
@@ -266,9 +289,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Guarantor phone number - business (GT1-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Guarantor phone number - business (GT1-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tn. </returns>
+
   public TN[] GetGuarantorPhoneNumberBusiness() {
      TN[] ret = null;
     try {
@@ -287,9 +313,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Guarantor phone number - business (GT1-7).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The guarantor phone number business repetitions used. </value>
+
   public int GuarantorPhoneNumberBusinessRepetitionsUsed
 {
 get{
@@ -305,9 +334,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Guarantor date of birth(GT1-8).
-	///</summary>
+
+    /// <summary>   Returns Guarantor date of birth(GT1-8). </summary>
+    ///
+    /// <value> The guarantor date of birth. </value>
+
 	public DT GuarantorDateOfBirth
 	{
 		get{
@@ -328,9 +359,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor sex(GT1-9).
-	///</summary>
+    /// <summary>   Returns Guarantor sex(GT1-9). </summary>
+    ///
+    /// <value> The guarantor sex. </value>
+
 	public ID GuarantorSex
 	{
 		get{
@@ -351,9 +383,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor type(GT1-10).
-	///</summary>
+    /// <summary>   Returns Guarantor type(GT1-10). </summary>
+    ///
+    /// <value> The type of the guarantor. </value>
+
 	public ID GuarantorType
 	{
 		get{
@@ -374,9 +407,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor relationship(GT1-11).
-	///</summary>
+    /// <summary>   Returns Guarantor relationship(GT1-11). </summary>
+    ///
+    /// <value> The guarantor relationship. </value>
+
 	public ID GuarantorRelationship
 	{
 		get{
@@ -397,9 +431,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor social security number(GT1-12).
-	///</summary>
+    /// <summary>   Returns Guarantor social security number(GT1-12). </summary>
+    ///
+    /// <value> The guarantor social security number. </value>
+
 	public ST GuarantorSocialSecurityNumber
 	{
 		get{
@@ -420,9 +455,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor date - begin(GT1-13).
-	///</summary>
+    /// <summary>   Returns Guarantor date - begin(GT1-13). </summary>
+    ///
+    /// <value> The guarantor date begin. </value>
+
 	public DT GuarantorDateBegin
 	{
 		get{
@@ -443,9 +479,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor date - end(GT1-14).
-	///</summary>
+    /// <summary>   Returns Guarantor date - end(GT1-14). </summary>
+    ///
+    /// <value> The guarantor date end. </value>
+
 	public DT GuarantorDateEnd
 	{
 		get{
@@ -466,9 +503,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor priority(GT1-15).
-	///</summary>
+    /// <summary>   Returns Guarantor priority(GT1-15). </summary>
+    ///
+    /// <value> The guarantor priority. </value>
+
 	public NM GuarantorPriority
 	{
 		get{
@@ -489,9 +527,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor employer name(GT1-16).
-	///</summary>
+    /// <summary>   Returns Guarantor employer name(GT1-16). </summary>
+    ///
+    /// <value> The name of the guarantor employer. </value>
+
 	public ST GuarantorEmployerName
 	{
 		get{
@@ -512,9 +551,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor employer address(GT1-17).
-	///</summary>
+    /// <summary>   Returns Guarantor employer address(GT1-17). </summary>
+    ///
+    /// <value> The guarantor employer address. </value>
+
 	public AD GuarantorEmployerAddress
 	{
 		get{
@@ -535,11 +575,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Guarantor employ phone number(GT1-18).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Guarantor employ phone number(GT1-18). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The guarantor employ phone number. </returns>
+
 	public TN GetGuarantorEmployPhoneNumber(int rep)
 	{
 			TN ret = null;
@@ -554,9 +600,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Guarantor employ phone number (GT1-18).
-   ///</summary>
+  /// <summary> Returns all repetitions of Guarantor employ phone number (GT1-18). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tn. </returns>
+
   public TN[] GetGuarantorEmployPhoneNumber() {
      TN[] ret = null;
     try {
@@ -575,9 +624,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Guarantor employ phone number (GT1-18).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Guarantor employ phone number (GT1-18). </summary>
+  ///
+  /// <value>   The guarantor employ phone number repetitions used. </value>
+
   public int GuarantorEmployPhoneNumberRepetitionsUsed
 {
 get{
@@ -593,9 +643,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Guarantor employee ID number(GT1-19).
-	///</summary>
+
+    /// <summary>   Returns Guarantor employee ID number(GT1-19). </summary>
+    ///
+    /// <value> The guarantor employee identifier number. </value>
+
 	public ST GuarantorEmployeeIDNumber
 	{
 		get{
@@ -616,9 +668,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor employment status(GT1-20).
-	///</summary>
+    /// <summary>   Returns Guarantor employment status(GT1-20). </summary>
+    ///
+    /// <value> The guarantor employment status. </value>
+
 	public ID GuarantorEmploymentStatus
 	{
 		get{
@@ -639,9 +692,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Guarantor organization(GT1-21).
-	///</summary>
+    /// <summary>   Returns Guarantor organization(GT1-21). </summary>
+    ///
+    /// <value> The guarantor organization. </value>
+
 	public ST GuarantorOrganization
 	{
 		get{

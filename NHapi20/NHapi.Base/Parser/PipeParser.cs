@@ -32,39 +32,45 @@ namespace NHapi.Base.Parser
     using NHapi.Base.Model;
     using NHapi.Base.Util;
 
-    /// <summary> An implementation of Parser that supports traditionally encoded (ie delimited with characters
-    /// like |, ^, and ~) HL7 messages.  Unexpected segments and fields are parsed into generic elements
-    /// that are added to the message.  
+    /// <summary>
+    /// An implementation of Parser that supports traditionally encoded (ie delimited with characters
+    /// like |, ^, and ~) HL7 messages.  Unexpected segments and fields are parsed into generic
+    /// elements that are added to the message.  
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+
     public class PipeParser : ParserBase
     {
         #region Constants
 
-        private const System.String segDelim = "\r"; //see section 2.8 of spec
+        /// <summary>   see section 2.8 of spec. </summary>
+        private const System.String segDelim = "\r";
 
         #endregion
 
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the PipeParser class. </summary>
         static PipeParser()
         {
             log = HapiLogFactory.GetHapiLog(typeof(PipeParser));
         }
 
-        /// <summary>Creates a new PipeParser </summary>
+        /// <summary>   Creates a new PipeParser. </summary>
         public PipeParser()
         {
         }
 
-        /// <summary>Creates a new PipeParser </summary>
+        /// <summary>   Creates a new PipeParser. </summary>
+        ///
+        /// <param name="factory">  The factory. </param>
+
         public PipeParser(IModelClassFactory factory)
             : base(factory)
         {
@@ -74,8 +80,10 @@ namespace NHapi.Base.Parser
 
         #region Public Properties
 
-        /// <returns> the preferred encoding of this Parser
-        /// </returns>
+        /// <summary>   Gets the default encoding. </summary>
+        ///
+        /// <value> the preferred encoding of this Parser. </value>
+
         public override System.String DefaultEncoding
         {
             get
@@ -88,9 +96,17 @@ namespace NHapi.Base.Parser
 
         #region Public Methods and Operators
 
-        /// <summary> Encodes the given Type, using the given encoding characters. 
-        /// It is assumed that the Type represents a complete field rather than a component.
+        /// <summary>
+        /// Encodes the given Type, using the given encoding characters. It is assumed that the Type
+        /// represents a complete field rather than a component.
         /// </summary>
+        ///
+        /// <param name="source">           a Message object from which to construct an encoded message
+        ///                                 string. </param>
+        /// <param name="encodingChars">    The encoding characters. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String Encode(IType source, EncodingCharacters encodingChars)
         {
             System.Text.StringBuilder field = new System.Text.StringBuilder();
@@ -110,9 +126,17 @@ namespace NHapi.Base.Parser
             //return encode(source, encodingChars, false);
         }
 
-        /// <summary> Returns given group serialized as a pipe-encoded string - this method is called
-        /// by encode(Message source, String encoding).
+        /// <summary>
+        /// Returns given group serialized as a pipe-encoded string - this method is called by
+        /// encode(Message source, String encoding).
         /// </summary>
+        ///
+        /// <param name="source">           a Message object from which to construct an encoded message
+        ///                                 string. </param>
+        /// <param name="encodingChars">    The encoding characters. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String Encode(IGroup source, EncodingCharacters encodingChars)
         {
             System.Text.StringBuilder result = new System.Text.StringBuilder();
@@ -140,6 +164,17 @@ namespace NHapi.Base.Parser
             }
             return result.ToString();
         }
+
+        /// <summary>
+        /// Encodes the given Type, using the given encoding characters. It is assumed that the Type
+        /// represents a complete field rather than a component.
+        /// </summary>
+        ///
+        /// <param name="source">           a Message object from which to construct an encoded message
+        ///                                 string. </param>
+        /// <param name="encodingChars">    The encoding characters. </param>
+        ///
+        /// <returns>   A System.String. </returns>
 
         public static System.String Encode(ISegment source, EncodingCharacters encodingChars)
         {
@@ -187,9 +222,15 @@ namespace NHapi.Base.Parser
             return StripExtraDelimiters(result.ToString(), encodingChars.FieldSeparator);
         }
 
-        /// <summary> Splits the given composite string into an array of components using the given
-        /// delimiter.
+        /// <summary>
+        /// Splits the given composite string into an array of components using the given delimiter.
         /// </summary>
+        ///
+        /// <param name="composite">    The composite. </param>
+        /// <param name="delim">        The delimiter. </param>
+        ///
+        /// <returns>   A System.String[]. </returns>
+
         public static System.String[] Split(System.String composite, System.String delim)
         {
             System.Collections.ArrayList components = new System.Collections.ArrayList();
@@ -233,11 +274,18 @@ namespace NHapi.Base.Parser
             return ret;
         }
 
-        /// <summary> Removes leading whitespace from the given string.  This method was created to deal with frequent
-        /// problems parsing messages that have been hand-written in windows.  The intuitive way to delimit
-        /// segments is to hit <ENTER> at the end of each segment, but this creates both a carriage return
-        /// and a line feed, so to the parser, the first character of the next segment is the line feed.
+        /// <summary>
+        /// Removes leading whitespace from the given string.  This method was created to deal with
+        /// frequent problems parsing messages that have been hand-written in windows.  The intuitive way
+        /// to delimit segments is to hit &lt;ENTER&gt; at the end of each segment, but this creates both
+        /// a carriage return and a line feed, so to the parser, the first character of the next segment
+        /// is the line feed.
         /// </summary>
+        ///
+        /// <param name="in_Renamed">   The in renamed. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String StripLeadingWhitespace(System.String in_Renamed)
         {
             System.Text.StringBuilder out_Renamed = new System.Text.StringBuilder();
@@ -258,14 +306,19 @@ namespace NHapi.Base.Parser
             return out_Renamed.ToString();
         }
 
-        /// <summary> For response messages, returns the value of MSA-2 (the message ID of the message
-        /// sent by the sending system).  This value may be needed prior to main message parsing,
-        /// so that (particularly in a multi-threaded scenario) the message can be routed to
-        /// the thread that sent the request.  We need this information first so that any
-        /// parse exceptions are thrown to the correct thread.
-        /// Returns null if MSA-2 can not be found (e.g. if the message is not a
-        /// response message).
+        /// <summary>
+        /// For response messages, returns the value of MSA-2 (the message ID of the message sent by the
+        /// sending system).  This value may be needed prior to main message parsing, so that
+        /// (particularly in a multi-threaded scenario) the message can be routed to the thread that sent
+        /// the request.  We need this information first so that any parse exceptions are thrown to the
+        /// correct thread. Returns null if MSA-2 can not be found (e.g. if the message is not a response
+        /// message).
         /// </summary>
+        ///
+        /// <param name="message">  a String that contains an HL7 message. </param>
+        ///
+        /// <returns>   The acknowledge identifier. </returns>
+
         public override System.String GetAckID(System.String message)
         {
             System.String ackID = null;
@@ -303,20 +356,26 @@ namespace NHapi.Base.Parser
             return ackID;
         }
 
-        /// <summary> <p>Returns a minimal amount of data from a message string, including only the
-        /// data needed to send a response to the remote system.  This includes the
-        /// following fields:
+        /// <summary>
+        /// <p>Returns a minimal amount of data from a message string, including only the data needed to
+        /// send a response to the remote system.  This includes the following fields:
         /// <ul><li>field separator</li>
         /// <li>encoding characters</li>
         /// <li>processing ID</li>
         /// <li>message control ID</li></ul>
-        /// This method is intended for use when there is an error parsing a message,
-        /// (so the Message object is unavailable) but an error message must be sent
-        /// back to the remote system including some of the information in the inbound
-        /// message.  This method parses only that required information, hopefully
-        /// avoiding the condition that caused the original error.  The other
+        /// This method is intended for use when there is an error parsing a message, (so the Message
+        /// object is unavailable) but an error message must be sent back to the remote system including
+        /// some of the information in the inbound message.  This method parses only that required
+        /// information, hopefully avoiding the condition that caused the original error.  The other
         /// fields in the returned MSH segment are empty.</p>
         /// </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="message">  a String that contains an HL7 message. </param>
+        ///
+        /// <returns>   The critical response data. </returns>
+
         public override ISegment GetCriticalResponseData(System.String message)
         {
             //try to get MSH segment
@@ -378,14 +437,19 @@ namespace NHapi.Base.Parser
             return msh;
         }
 
-        /// <summary> Returns a String representing the encoding of the given message, if
-        /// the encoding is recognized.  For example if the given message appears
-        /// to be encoded using HL7 2.x XML rules then "XML" would be returned.
-        /// If the encoding is not recognized then null is returned.  That this
-        /// method returns a specific encoding does not guarantee that the
-        /// message is correctly encoded (e.g. well formed XML) - just that
-        /// it is not encoded using any other encoding than the one returned.
+        /// <summary>
+        /// Returns a String representing the encoding of the given message, if the encoding is
+        /// recognized.  For example if the given message appears to be encoded using HL7 2.x XML rules
+        /// then "XML" would be returned. If the encoding is not recognized then null is returned.  That
+        /// this method returns a specific encoding does not guarantee that the message is correctly
+        /// encoded (e.g. well formed XML) - just that it is not encoded using any other encoding than
+        /// the one returned.
         /// </summary>
+        ///
+        /// <param name="message">  a String that contains an HL7 message. </param>
+        ///
+        /// <returns>   The encoding. </returns>
+
         public override System.String GetEncoding(System.String message)
         {
             System.String encoding = null;
@@ -443,24 +507,29 @@ namespace NHapi.Base.Parser
             return encoding;
         }
 
-        /// <deprecated> this method should not be public 
-        /// </deprecated>
-        /// <param name="message">
-        /// </param>
-        /// <returns>
-        /// </returns>
-        /// <throws>  HL7Exception </throws>
-        /// <throws>  EncodingNotSupportedException </throws>
+        /// <summary>   Gets message structure. </summary>
+        ///
+        /// <param name="message">  . </param>
+        ///
+        /// <returns>   The message structure. </returns>
+
         public virtual System.String GetMessageStructure(System.String message)
         {
             return this.GetStructure(message).messageStructure;
         }
 
-        /// <summary> Returns the version ID (MSH-12) from the given message, without fully parsing the message.
-        /// The version is needed prior to parsing in order to determine the message class
-        /// into which the text of the message should be parsed.
+        /// <summary>
+        /// Returns the version ID (MSH-12) from the given message, without fully parsing the message.
+        /// The version is needed prior to parsing in order to determine the message class into which the
+        /// text of the message should be parsed.
         /// </summary>
-        /// <throws>  HL7Exception if the version field can not be found. </throws>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="message">  a String that contains an HL7 message. </param>
+        ///
+        /// <returns>   The version. </returns>
+
         public override System.String GetVersion(System.String message)
         {
             int startMSH = message.IndexOf("MSH");
@@ -508,13 +577,16 @@ namespace NHapi.Base.Parser
             return version;
         }
 
-        /// <summary> Parses a segment string and populates the given Segment object.  Unexpected fields are
-        /// added as Varies' at the end of the segment.  
-        /// 
-        /// </summary>
-        /// <throws>  HL7Exception if the given string does not contain the </throws>
-        /// <summary>      given segment or if the string is not encoded properly
-        /// </summary>
+        /// <summary>   Parses a segment string and populates the given Segment object.  Unexpected
+        ///             fields are added as Varies' at the end of the segment.  </summary>
+        /// <summary>   given segment or if the string is not encoded properly. </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="destination">      Destination for the. </param>
+        /// <param name="segment">          The segment. </param>
+        /// <param name="encodingChars">    The encoding characters. </param>
+
         public virtual void Parse(ISegment destination, System.String segment, EncodingCharacters encodingChars)
         {
             int fieldOffset = 0;
@@ -582,9 +654,16 @@ namespace NHapi.Base.Parser
             }
         }
 
-        /// <summary> Returns true if and only if the given encoding is supported
-        /// by this Parser.
+        /// <summary>
+        /// Returns true if and only if the given encoding is supported by this Parser.
         /// </summary>
+        ///
+        /// <param name="encoding"> the name of the HL7 encoding to use (eg "XML"; most implementations
+        ///                         support only  
+        ///                         one encoding) </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         public override bool SupportsEncoding(System.String encoding)
         {
             bool supports = false;
@@ -599,15 +678,19 @@ namespace NHapi.Base.Parser
 
         #region Methods
 
-        /// <summary> Formats a Message object into an HL7 message string using the given
-        /// encoding.
-        /// </summary>
-        /// <throws>  HL7Exception if the data fields in the message do not permit encoding </throws>
-        /// <summary>      (e.g. required fields are null)
-        /// </summary>
-        /// <throws>  EncodingNotSupportedException if the requested encoding is not </throws>
-        /// <summary>      supported by this parser.
-        /// </summary>
+        /// <summary>   Formats a Message object into an HL7 message string using the given encoding. </summary>
+        /// <summary>   (e.g. required fields are null) </summary>
+        /// <summary>   supported by this parser. </summary>
+        ///
+        /// <exception cref="EncodingNotSupportedException">    Thrown when an Encoding Not Supported
+        ///                                                     error condition occurs. </exception>
+        ///
+        /// <param name="source">   a Message object from which to construct an encoded message string. </param>
+        /// <param name="encoding"> the name of the HL7 encoding to use (eg "XML"; most implementations
+        ///                         support only one encoding) </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         protected internal override System.String DoEncode(IMessage source, System.String encoding)
         {
             if (!this.SupportsEncoding(encoding))
@@ -618,12 +701,16 @@ namespace NHapi.Base.Parser
             return this.Encode(source);
         }
 
-        /// <summary> Formats a Message object into an HL7 message string using this parser's
-        /// default encoding ("VB").
-        /// </summary>
-        /// <throws>  HL7Exception if the data fields in the message do not permit encoding </throws>
-        /// <summary>      (e.g. required fields are null)
-        /// </summary>
+        /// <summary>   Formats a Message object into an HL7 message string using this parser's default
+        ///             encoding ("VB"). </summary>
+        /// <summary>   (e.g. required fields are null) </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="source">   a Message object from which to construct an encoded message string. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         protected internal override System.String DoEncode(IMessage source)
         {
             //get encoding characters ...
@@ -691,14 +778,15 @@ namespace NHapi.Base.Parser
             return Encode(source, en);
         }
 
-        /// <summary> Parses a message string and returns the corresponding Message
-        /// object.  Unexpected segments added at the end of their group.  
-        /// 
-        /// </summary>
-        /// <throws>  HL7Exception if the message is not correctly formatted. </throws>
-        /// <throws>  EncodingNotSupportedException if the message encoded </throws>
-        /// <summary>      is not supported by this parser.
-        /// </summary>
+        /// <summary>   Parses a message string and returns the corresponding Message object.  Unexpected
+        ///             segments added at the end of their group.  </summary>
+        /// <summary>   is not supported by this parser. </summary>
+        ///
+        /// <param name="message">  a String that contains an HL7 message. </param>
+        /// <param name="version">  the name of the HL7 version to which the message belongs (eg "2.5") </param>
+        ///
+        /// <returns>   An IMessage. </returns>
+
         protected internal override IMessage DoParse(System.String message, System.String version)
         {
             //try to instantiate a message object of the right class
@@ -738,6 +826,13 @@ namespace NHapi.Base.Parser
             return m;
         }
 
+        /// <summary>   Encode primitive. </summary>
+        ///
+        /// <param name="p">                The IPrimitive to process. </param>
+        /// <param name="encodingChars">    The encoding characters. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         private static System.String EncodePrimitive(IPrimitive p, EncodingCharacters encodingChars)
         {
             System.String val = p.Value;
@@ -752,15 +847,28 @@ namespace NHapi.Base.Parser
             return val;
         }
 
-        /// <summary> Returns object that contains the field separator and encoding characters
-        /// for this message.
+        /// <summary>
+        /// Returns object that contains the field separator and encoding characters for this message.
         /// </summary>
+        ///
+        /// <param name="message">  . </param>
+        ///
+        /// <returns>   The encoding characters. </returns>
+
         private static EncodingCharacters GetEncodingChars(System.String message)
         {
             return new EncodingCharacters(message[3], message.Substring(4, (8) - (4)));
         }
 
-        /// <summary>Returns the component or subcomponent separator from the given encoding characters. </summary>
+        /// <summary>
+        /// Returns the component or subcomponent separator from the given encoding characters.
+        /// </summary>
+        ///
+        /// <param name="subComponents">    true to sub components. </param>
+        /// <param name="encodingChars">    The encoding characters. </param>
+        ///
+        /// <returns>   The separator. </returns>
+
         private static char GetSeparator(bool subComponents, EncodingCharacters encodingChars)
         {
             char separator;
@@ -775,11 +883,15 @@ namespace NHapi.Base.Parser
             return separator;
         }
 
-        /// <returns> true if the segment is MSH, FHS, or BHS.  These need special treatment 
-        /// because they define delimiters.
+        /// <summary>   Query if 'theSegmentName' is delimiter definition segment. </summary>
+        ///
+        /// <param name="theSegmentName">   . </param>
+        ///
+        /// <returns>
+        /// true if the segment is MSH, FHS, or BHS.  These need special treatment because they define
+        /// delimiters.
         /// </returns>
-        /// <param name="theSegmentName">
-        /// </param>
+
         private static bool IsDelimDefSegment(System.String theSegmentName)
         {
             bool is_Renamed = false;
@@ -790,13 +902,13 @@ namespace NHapi.Base.Parser
             return is_Renamed;
         }
 
-        /// <summary> Fills a field with values from an unparsed string representing the field.  </summary>
-        /// <param name="destinationField">the field Type
-        /// </param>
-        /// <param name="data">the field string (including all components and subcomponents; not including field delimiters)
-        /// </param>
-        /// <param name="encodingCharacters">the encoding characters used in the message
-        /// </param>
+        /// <summary>   Fills a field with values from an unparsed string representing the field. </summary>
+        ///
+        /// <param name="destinationField">     the field Type. </param>
+        /// <param name="data">                 the field string (including all components and
+        ///                                     subcomponents; not including field delimiters) </param>
+        /// <param name="encodingCharacters">   the encoding characters used in the message. </param>
+
         private static void Parse(IType destinationField, System.String data, EncodingCharacters encodingCharacters)
         {
             System.String[] components = Split(data, System.Convert.ToString(encodingCharacters.ComponentSeparator));
@@ -817,10 +929,16 @@ namespace NHapi.Base.Parser
             }
         }
 
-        /// <summary> Removes unecessary delimiters from the end of a field or segment.
-        /// This seems to be more convenient than checking to see if they are needed
-        /// while we are building the encoded string.
+        /// <summary>
+        /// Removes unecessary delimiters from the end of a field or segment. This seems to be more
+        /// convenient than checking to see if they are needed while we are building the encoded string.
         /// </summary>
+        ///
+        /// <param name="in_Renamed">   The in renamed. </param>
+        /// <param name="delim">        The delimiter. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         private static System.String StripExtraDelimiters(System.String in_Renamed, char delim)
         {
             char[] chars = in_Renamed.ToCharArray();
@@ -844,8 +962,14 @@ namespace NHapi.Base.Parser
             return ret;
         }
 
-        /// <returns>s the message structure from MSH-9-3
-        /// </returns>
+        /// <summary>   Gets a structure. </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="message">  . </param>
+        ///
+        /// <returns>   s the message structure from MSH-9-3. </returns>
+
         private MessageStructure GetStructure(System.String message)
         {
             EncodingCharacters ec = GetEncodingChars(message);
@@ -904,15 +1028,21 @@ namespace NHapi.Base.Parser
 
         #endregion
 
+        /// <summary>   The anonymous class predicate. </summary>
         private class AnonymousClassPredicate : FilterIterator.IPredicate
         {
             #region Fields
 
+            /// <summary>   The enclosing instance. </summary>
             private PipeParser enclosingInstance;
 
             #endregion
 
             #region Constructors and Destructors
+
+            /// <summary>   Initializes a new instance of the AnonymousClassPredicate class. </summary>
+            ///
+            /// <param name="enclosingInstance">    The enclosing instance. </param>
 
             public AnonymousClassPredicate(PipeParser enclosingInstance)
             {
@@ -922,6 +1052,10 @@ namespace NHapi.Base.Parser
             #endregion
 
             #region Public Properties
+
+            /// <summary>   Gets the enclosing instance. </summary>
+            ///
+            /// <value> The enclosing instance. </value>
 
             public PipeParser Enclosing_Instance
             {
@@ -934,6 +1068,12 @@ namespace NHapi.Base.Parser
             #endregion
 
             #region Public Methods and Operators
+
+            /// <summary>   Evaluate the object. </summary>
+            ///
+            /// <param name="obj">  The object. </param>
+            ///
+            /// <returns>   true if it succeeds, false if it fails. </returns>
 
             public virtual bool evaluate(System.Object obj)
             {
@@ -948,6 +1088,10 @@ namespace NHapi.Base.Parser
 
             #region Methods
 
+            /// <summary>   Initialises the block. </summary>
+            ///
+            /// <param name="enclosingInstance">    The enclosing instance. </param>
+
             private void InitBlock(PipeParser enclosingInstance)
             {
                 this.enclosingInstance = enclosingInstance;
@@ -956,17 +1100,25 @@ namespace NHapi.Base.Parser
             #endregion
         }
 
+        /// <summary>   The anonymous class predicate 1. </summary>
         private class AnonymousClassPredicate1 : FilterIterator.IPredicate
         {
             #region Fields
 
+            /// <summary>   The enclosing instance. </summary>
             private PipeParser enclosingInstance;
 
+            /// <summary>   The name. </summary>
             private System.String name;
 
             #endregion
 
             #region Constructors and Destructors
+
+            /// <summary>   Initializes a new instance of the AnonymousClassPredicate1 class. </summary>
+            ///
+            /// <param name="name">                 The name. </param>
+            /// <param name="enclosingInstance">    The enclosing instance. </param>
 
             public AnonymousClassPredicate1(System.String name, PipeParser enclosingInstance)
             {
@@ -976,6 +1128,10 @@ namespace NHapi.Base.Parser
             #endregion
 
             #region Public Properties
+
+            /// <summary>   Gets the enclosing instance. </summary>
+            ///
+            /// <value> The enclosing instance. </value>
 
             public PipeParser Enclosing_Instance
             {
@@ -988,6 +1144,12 @@ namespace NHapi.Base.Parser
             #endregion
 
             #region Public Methods and Operators
+
+            /// <summary>   Evaluate the object. </summary>
+            ///
+            /// <param name="obj">  The object. </param>
+            ///
+            /// <returns>   true if it succeeds, false if it fails. </returns>
 
             public virtual bool evaluate(System.Object obj)
             {
@@ -1005,6 +1167,11 @@ namespace NHapi.Base.Parser
 
             #region Methods
 
+            /// <summary>   Initialises the block. </summary>
+            ///
+            /// <param name="name">                 The name. </param>
+            /// <param name="enclosingInstance">    The enclosing instance. </param>
+
             private void InitBlock(System.String name, PipeParser enclosingInstance)
             {
                 this.name = name;
@@ -1014,20 +1181,29 @@ namespace NHapi.Base.Parser
             #endregion
         }
 
-        /// <summary> A struct for holding a message class string and a boolean indicating whether it 
-        /// was defined explicitly.  
+        /// <summary>
+        /// A struct for holding a message class string and a boolean indicating whether it was defined
+        /// explicitly.  
         /// </summary>
+
         private class MessageStructure
         {
             #region Fields
 
+            /// <summary>   true if explicitly defined. </summary>
             public bool explicitlyDefined;
 
+            /// <summary>   The message structure. </summary>
             public System.String messageStructure;
 
             #endregion
 
             #region Constructors and Destructors
+
+            /// <summary>   Initializes a new instance of the MessageStructure class. </summary>
+            ///
+            /// <param name="theMessageStructure">  the message structure. </param>
+            /// <param name="isExplicitlyDefined">  true if this object is explicitly defined. </param>
 
             public MessageStructure(System.String theMessageStructure, bool isExplicitlyDefined)
             {

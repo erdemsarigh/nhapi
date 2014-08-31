@@ -7,28 +7,29 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 EQP message segment. 
-/// This segment has the following fields:<ol>
-///<li>EQP-1: Event type (CE)</li>
-///<li>EQP-2: File Name (ST)</li>
-///<li>EQP-3: Start Date/Time (TS)</li>
-///<li>EQP-4: End Date/Time (TS)</li>
-///<li>EQP-5: Transaction Data (FT)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 EQP message segment. This segment has the following fields:<ol>
+/// <li>EQP-1: Event type (CE)</li>
+/// <li>EQP-2: File Name (ST)</li>
+/// <li>EQP-3: Start Date/Time (TS)</li>
+/// <li>EQP-4: End Date/Time (TS)</li>
+/// <li>EQP-5: Transaction Data (FT)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class EQP : AbstractSegment  {
 
-  /**
-   * Creates a EQP (Equipment/log Service) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the EQP class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public EQP(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -42,9 +43,10 @@ public class EQP : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Event type(EQP-1).
-	///</summary>
+    /// <summary>   Returns Event type(EQP-1). </summary>
+    ///
+    /// <value> The type of the event. </value>
+
 	public CE EventType
 	{
 		get{
@@ -65,9 +67,10 @@ public class EQP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns File Name(EQP-2).
-	///</summary>
+    /// <summary>   Returns File Name(EQP-2). </summary>
+    ///
+    /// <value> The name of the file. </value>
+
 	public ST FileName
 	{
 		get{
@@ -88,9 +91,10 @@ public class EQP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date/Time(EQP-3).
-	///</summary>
+    /// <summary>   Returns Start Date/Time(EQP-3). </summary>
+    ///
+    /// <value> The start date time. </value>
+
 	public TS StartDateTime
 	{
 		get{
@@ -111,9 +115,10 @@ public class EQP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns End Date/Time(EQP-4).
-	///</summary>
+    /// <summary>   Returns End Date/Time(EQP-4). </summary>
+    ///
+    /// <value> The end date time. </value>
+
 	public TS EndDateTime
 	{
 		get{
@@ -134,9 +139,10 @@ public class EQP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transaction Data(EQP-5).
-	///</summary>
+    /// <summary>   Returns Transaction Data(EQP-5). </summary>
+    ///
+    /// <value> Information describing the transaction. </value>
+
 	public FT TransactionData
 	{
 		get{

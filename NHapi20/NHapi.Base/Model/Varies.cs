@@ -28,47 +28,50 @@ namespace NHapi.Base.Model
     using NHapi.Base.Parser;
     using NHapi.Base.Util;
 
-    /// <summary> <p>Varies is a Type used as a placeholder for another Type in cases where 
-    /// the appropriate Type is not known until run-time (e.g. OBX-5).  
-    /// Parsers and validators may have logic that enforces restrictions on the 
-    /// Type based on other features of a segment.</p>  
-    /// <p>If you want to set both the type and the values of a Varies object, you should
-    /// set the type first by calling setData(Type t), keeping a reference to your Type, 
-    /// and then set values by calling methods on the Type.  Here is an example:</p>
-    /// <p><code>CN cn = new CN();<br>
-    /// variesObject.setData(cn);<br>
+    /// <summary>
+    /// <p>Varies is a Type used as a placeholder for another Type in cases where the appropriate
+    /// Type is not known until run-time (e.g. OBX-5).  
+    /// Parsers and validators may have logic that enforces restrictions on the Type based on other
+    /// features of a segment.</p>  
+    /// <p>If you want to set both the type and the values of a Varies object, you should set the
+    /// type first by calling setData(Type t), keeping a reference to your Type, and then set values
+    /// by calling methods on the Type.  Here is an example:</p>
+    /// <p><code>CN cn = new CN();&lt;br&gt;
+    /// variesObject.setData(cn);&lt;br&gt;
     /// cn.getIDNumber().setValue("foo");</code></p>
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@users.sourceforge.net) 
-    /// </author>
+
     public class Varies : IType
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Fields
 
+        /// <summary>   The data. </summary>
         private IType data;
 
+        /// <summary>   The message. </summary>
         private IMessage message;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the Varies class. </summary>
         static Varies()
         {
             log = HapiLogFactory.GetHapiLog(typeof(Varies));
         }
 
-        /// <summary> Creates new Varies. 
-        /// 
-        /// </summary>
-        /// <param name="message">message to which this type belongs
-        /// </param>
+        /// <summary>   Creates new Varies. </summary>
+        ///
+        /// <param name="message">  message to which this type belongs. </param>
+
         public Varies(IMessage message)
         {
             this.data = new GenericPrimitive(message);
@@ -79,15 +82,17 @@ namespace NHapi.Base.Model
 
         #region Public Properties
 
-        /// <summary> Returns the data contained by this instance of Varies.  Returns a GenericPrimitive unless 
-        /// setData() has been called. 
-        /// </summary>
-        /// <summary> Sets the data contained by this instance of Varies.  If a data object already exists, 
-        /// then its values are copied to the incoming data object before the old one is replaced.  
-        /// For example, if getData() returns an ST with the value "19901012" and you call 
-        /// setData(new DT()), then subsequent calls to getData() will return the same DT, with the value 
-        /// set to "19901012".   
-        /// </summary>
+        /// <summary>   Returns the data contained by this instance of Varies.  Returns a
+        ///             GenericPrimitive unless setData() has been called. </summary>
+        /// <summary>   Sets the data contained by this instance of Varies.  If a data object already
+        ///             exists, then its values are copied to the incoming data object before the old one
+        ///             is replaced.  
+        ///             For example, if getData() returns an ST with the value "19901012" and you call
+        ///             setData(new DT()), then subsequent calls to getData() will return the same DT,
+        ///             with the value set to "19901012". </summary>
+        ///
+        /// <value> The data. </value>
+
         public virtual IType Data
         {
             get
@@ -108,7 +113,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <summary>Returns extra components from the underlying Type </summary>
+        /// <summary>   Returns extra components from the underlying Type. </summary>
+        ///
+        /// <value> The extra components. </value>
+
         public virtual ExtraComponents ExtraComponents
         {
             get
@@ -117,8 +125,10 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <returns> the message to which this Type belongs
-        /// </returns>
+        /// <summary>   Gets the message. </summary>
+        ///
+        /// <value> the message to which this Type belongs. </value>
+
         public virtual IMessage Message
         {
             get
@@ -127,8 +137,12 @@ namespace NHapi.Base.Model
             }
         }
 
-        /// <seealso cref="Type.getName">
-        /// </seealso>
+        /// <summary>   Gets the name of the type. </summary>
+        ///
+        /// <value> The name of the type. </value>
+        ///
+        /// <seealso cref="Type.getName"/>
+
         public virtual System.String TypeName
         {
             get
@@ -146,9 +160,16 @@ namespace NHapi.Base.Model
 
         #region Public Methods and Operators
 
-        /// <summary> Sets the data type of field 5 in the given OBX segment to the value of OBX-2.  The argument 
+        /// <summary>
+        /// Sets the data type of field 5 in the given OBX segment to the value of OBX-2.  The argument
         /// is a Segment as opposed to a particular OBX because it is meant to work with any version.  
         /// </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="segment">  The segment. </param>
+        /// <param name="factory">  The factory. </param>
+
         public static void fixOBX5(ISegment segment, IModelClassFactory factory)
         {
             try

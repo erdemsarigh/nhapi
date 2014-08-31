@@ -7,37 +7,38 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 AIG message segment. 
-/// This segment has the following fields:<ol>
-///<li>AIG-1: Set ID - AIG (SI)</li>
-///<li>AIG-2: Segment Action Code (ID)</li>
-///<li>AIG-3: Resource ID (CE)</li>
-///<li>AIG-4: Resource Type (CE)</li>
-///<li>AIG-5: Resource Group (CE)</li>
-///<li>AIG-6: Resource Quantity (NM)</li>
-///<li>AIG-7: Resource Quantity Units (CE)</li>
-///<li>AIG-8: Start Date/Time (TS)</li>
-///<li>AIG-9: Start Date/Time Offset (NM)</li>
-///<li>AIG-10: Start Date/Time Offset Units (CE)</li>
-///<li>AIG-11: Duration (NM)</li>
-///<li>AIG-12: Duration Units (CE)</li>
-///<li>AIG-13: Allow Substitution Code (IS)</li>
-///<li>AIG-14: Filler Status Code (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 AIG message segment. This segment has the following fields:<ol>
+/// <li>AIG-1: Set ID - AIG (SI)</li>
+/// <li>AIG-2: Segment Action Code (ID)</li>
+/// <li>AIG-3: Resource ID (CE)</li>
+/// <li>AIG-4: Resource Type (CE)</li>
+/// <li>AIG-5: Resource Group (CE)</li>
+/// <li>AIG-6: Resource Quantity (NM)</li>
+/// <li>AIG-7: Resource Quantity Units (CE)</li>
+/// <li>AIG-8: Start Date/Time (TS)</li>
+/// <li>AIG-9: Start Date/Time Offset (NM)</li>
+/// <li>AIG-10: Start Date/Time Offset Units (CE)</li>
+/// <li>AIG-11: Duration (NM)</li>
+/// <li>AIG-12: Duration Units (CE)</li>
+/// <li>AIG-13: Allow Substitution Code (IS)</li>
+/// <li>AIG-14: Filler Status Code (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class AIG : AbstractSegment  {
 
-  /**
-   * Creates a AIG (Appointment Information - General Resource) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the AIG class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public AIG(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -60,9 +61,10 @@ public class AIG : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - AIG(AIG-1).
-	///</summary>
+    /// <summary>   Returns Set ID - AIG(AIG-1). </summary>
+    ///
+    /// <value> The set idaig. </value>
+
 	public SI SetIDAIG
 	{
 		get{
@@ -83,9 +85,10 @@ public class AIG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Segment Action Code(AIG-2).
-	///</summary>
+    /// <summary>   Returns Segment Action Code(AIG-2). </summary>
+    ///
+    /// <value> The segment action code. </value>
+
 	public ID SegmentActionCode
 	{
 		get{
@@ -106,9 +109,10 @@ public class AIG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Resource ID(AIG-3).
-	///</summary>
+    /// <summary>   Returns Resource ID(AIG-3). </summary>
+    ///
+    /// <value> The identifier of the resource. </value>
+
 	public CE ResourceID
 	{
 		get{
@@ -129,9 +133,10 @@ public class AIG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Resource Type(AIG-4).
-	///</summary>
+    /// <summary>   Returns Resource Type(AIG-4). </summary>
+    ///
+    /// <value> The type of the resource. </value>
+
 	public CE ResourceType
 	{
 		get{
@@ -152,11 +157,17 @@ public class AIG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Resource Group(AIG-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Resource Group(AIG-5). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The resource group. </returns>
+
 	public CE GetResourceGroup(int rep)
 	{
 			CE ret = null;
@@ -171,9 +182,12 @@ public class AIG : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Resource Group (AIG-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Resource Group (AIG-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetResourceGroup() {
      CE[] ret = null;
     try {
@@ -192,9 +206,10 @@ public class AIG : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Resource Group (AIG-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Resource Group (AIG-5). </summary>
+  ///
+  /// <value>   The resource group repetitions used. </value>
+
   public int ResourceGroupRepetitionsUsed
 {
 get{
@@ -210,9 +225,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Resource Quantity(AIG-6).
-	///</summary>
+
+    /// <summary>   Returns Resource Quantity(AIG-6). </summary>
+    ///
+    /// <value> The resource quantity. </value>
+
 	public NM ResourceQuantity
 	{
 		get{
@@ -233,9 +250,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Resource Quantity Units(AIG-7).
-	///</summary>
+    /// <summary>   Returns Resource Quantity Units(AIG-7). </summary>
+    ///
+    /// <value> The resource quantity units. </value>
+
 	public CE ResourceQuantityUnits
 	{
 		get{
@@ -256,9 +274,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date/Time(AIG-8).
-	///</summary>
+    /// <summary>   Returns Start Date/Time(AIG-8). </summary>
+    ///
+    /// <value> The start date time. </value>
+
 	public TS StartDateTime
 	{
 		get{
@@ -279,9 +298,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date/Time Offset(AIG-9).
-	///</summary>
+    /// <summary>   Returns Start Date/Time Offset(AIG-9). </summary>
+    ///
+    /// <value> The start date time offset. </value>
+
 	public NM StartDateTimeOffset
 	{
 		get{
@@ -302,9 +322,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date/Time Offset Units(AIG-10).
-	///</summary>
+    /// <summary>   Returns Start Date/Time Offset Units(AIG-10). </summary>
+    ///
+    /// <value> The start date time offset units. </value>
+
 	public CE StartDateTimeOffsetUnits
 	{
 		get{
@@ -325,9 +346,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Duration(AIG-11).
-	///</summary>
+    /// <summary>   Returns Duration(AIG-11). </summary>
+    ///
+    /// <value> The duration. </value>
+
 	public NM Duration
 	{
 		get{
@@ -348,9 +370,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Duration Units(AIG-12).
-	///</summary>
+    /// <summary>   Returns Duration Units(AIG-12). </summary>
+    ///
+    /// <value> The duration units. </value>
+
 	public CE DurationUnits
 	{
 		get{
@@ -371,9 +394,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Allow Substitution Code(AIG-13).
-	///</summary>
+    /// <summary>   Returns Allow Substitution Code(AIG-13). </summary>
+    ///
+    /// <value> The allow substitution code. </value>
+
 	public IS AllowSubstitutionCode
 	{
 		get{
@@ -394,9 +418,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Status Code(AIG-14).
-	///</summary>
+    /// <summary>   Returns Filler Status Code(AIG-14). </summary>
+    ///
+    /// <value> The filler status code. </value>
+
 	public CE FillerStatusCode
 	{
 		get{

@@ -7,31 +7,32 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 OM3 message segment. 
-/// This segment has the following fields:<ol>
-///<li>OM3-1: Segment Type ID (ST)</li>
-///<li>OM3-2: Sequence Number - Test/ Observation Master File (NM)</li>
-///<li>OM3-3: Preferred Coding System (ID)</li>
-///<li>OM3-4: Valid coded answers (CE)</li>
-///<li>OM3-5: Normal test codes for categorical observations (CE)</li>
-///<li>OM3-6: Abnormal test codes for categorical observations (CE)</li>
-///<li>OM3-7: Critical test codes for categorical observations (CE)</li>
-///<li>OM3-8: Data Type (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 OM3 message segment. This segment has the following fields:<ol>
+/// <li>OM3-1: Segment Type ID (ST)</li>
+/// <li>OM3-2: Sequence Number - Test/ Observation Master File (NM)</li>
+/// <li>OM3-3: Preferred Coding System (ID)</li>
+/// <li>OM3-4: Valid coded answers (CE)</li>
+/// <li>OM3-5: Normal test codes for categorical observations (CE)</li>
+/// <li>OM3-6: Abnormal test codes for categorical observations (CE)</li>
+/// <li>OM3-7: Critical test codes for categorical observations (CE)</li>
+/// <li>OM3-8: Data Type (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class OM3 : AbstractSegment  {
 
-  /**
-   * Creates a OM3 (CATEGORICAL TEST/OBSERVATION) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the OM3 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OM3(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -48,9 +49,10 @@ public class OM3 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Segment Type ID(OM3-1).
-	///</summary>
+    /// <summary>   Returns Segment Type ID(OM3-1). </summary>
+    ///
+    /// <value> The identifier of the segment type. </value>
+
 	public ST SegmentTypeID
 	{
 		get{
@@ -71,9 +73,10 @@ public class OM3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Sequence Number - Test/ Observation Master File(OM3-2).
-	///</summary>
+    /// <summary>   Returns Sequence Number - Test/ Observation Master File(OM3-2). </summary>
+    ///
+    /// <value> The sequence number test observation master file. </value>
+
 	public NM SequenceNumberTestObservationMasterFile
 	{
 		get{
@@ -94,9 +97,10 @@ public class OM3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Preferred Coding System(OM3-3).
-	///</summary>
+    /// <summary>   Returns Preferred Coding System(OM3-3). </summary>
+    ///
+    /// <value> The preferred coding system. </value>
+
 	public ID PreferredCodingSystem
 	{
 		get{
@@ -117,11 +121,17 @@ public class OM3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Valid coded answers(OM3-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Valid coded answers(OM3-4). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The valid coded answers. </returns>
+
 	public CE GetValidCodedAnswers(int rep)
 	{
 			CE ret = null;
@@ -136,9 +146,12 @@ public class OM3 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Valid coded answers (OM3-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Valid coded answers (OM3-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetValidCodedAnswers() {
      CE[] ret = null;
     try {
@@ -157,9 +170,10 @@ public class OM3 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Valid coded answers (OM3-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Valid coded answers (OM3-4). </summary>
+  ///
+  /// <value>   The valid coded answers repetitions used. </value>
+
   public int ValidCodedAnswersRepetitionsUsed
 {
 get{
@@ -175,11 +189,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Normal test codes for categorical observations(OM3-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Normal test codes for categorical observations(OM3-5). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The normal test codes for categorical observations. </returns>
+
 	public CE GetNormalTestCodesForCategoricalObservations(int rep)
 	{
 			CE ret = null;
@@ -194,9 +215,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Normal test codes for categorical observations (OM3-5).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetNormalTestCodesForCategoricalObservations() {
      CE[] ret = null;
     try {
@@ -215,9 +241,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Normal test codes for categorical observations (OM3-5).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The normal test codes for categorical observations repetitions used. </value>
+
   public int NormalTestCodesForCategoricalObservationsRepetitionsUsed
 {
 get{
@@ -233,9 +262,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Abnormal test codes for categorical observations(OM3-6).
-	///</summary>
+
+    /// <summary>   Returns Abnormal test codes for categorical observations(OM3-6). </summary>
+    ///
+    /// <value> The abnormal test codes for categorical observations. </value>
+
 	public CE AbnormalTestCodesForCategoricalObservations
 	{
 		get{
@@ -256,9 +287,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Critical test codes for categorical observations(OM3-7).
-	///</summary>
+    /// <summary>   Returns Critical test codes for categorical observations(OM3-7). </summary>
+    ///
+    /// <value> The critical test codes for categorical observations. </value>
+
 	public CE CriticalTestCodesForCategoricalObservations
 	{
 		get{
@@ -279,9 +311,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Data Type(OM3-8).
-	///</summary>
+    /// <summary>   Returns Data Type(OM3-8). </summary>
+    ///
+    /// <value> The type of the data. </value>
+
 	public ID DataType
 	{
 		get{

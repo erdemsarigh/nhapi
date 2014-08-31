@@ -7,28 +7,29 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 DSP message segment. 
-/// This segment has the following fields:<ol>
-///<li>DSP-1: SET ID - DISPLAY DATA (SI)</li>
-///<li>DSP-2: DISPLAY LEVEL (SI)</li>
-///<li>DSP-3: DATA LINE (TX)</li>
-///<li>DSP-4: LOGICAL BREAK POINT (ST)</li>
-///<li>DSP-5: RESULT ID (TX)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 DSP message segment. This segment has the following fields:<ol>
+/// <li>DSP-1: SET ID - DISPLAY DATA (SI)</li>
+/// <li>DSP-2: DISPLAY LEVEL (SI)</li>
+/// <li>DSP-3: DATA LINE (TX)</li>
+/// <li>DSP-4: LOGICAL BREAK POINT (ST)</li>
+/// <li>DSP-5: RESULT ID (TX)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class DSP : AbstractSegment  {
 
-  /**
-   * Creates a DSP (DISPLAY DATA) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the DSP class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public DSP(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -42,9 +43,10 @@ public class DSP : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns SET ID - DISPLAY DATA(DSP-1).
-	///</summary>
+    /// <summary>   Returns SET ID - DISPLAY DATA(DSP-1). </summary>
+    ///
+    /// <value> The setiddisplaydata. </value>
+
 	public SI SETIDDISPLAYDATA
 	{
 		get{
@@ -65,9 +67,10 @@ public class DSP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DISPLAY LEVEL(DSP-2).
-	///</summary>
+    /// <summary>   Returns DISPLAY LEVEL(DSP-2). </summary>
+    ///
+    /// <value> The displaylevel. </value>
+
 	public SI DISPLAYLEVEL
 	{
 		get{
@@ -88,9 +91,10 @@ public class DSP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DATA LINE(DSP-3).
-	///</summary>
+    /// <summary>   Returns DATA LINE(DSP-3). </summary>
+    ///
+    /// <value> The dataline. </value>
+
 	public TX DATALINE
 	{
 		get{
@@ -111,9 +115,10 @@ public class DSP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns LOGICAL BREAK POINT(DSP-4).
-	///</summary>
+    /// <summary>   Returns LOGICAL BREAK POINT(DSP-4). </summary>
+    ///
+    /// <value> The logicalbreakpoint. </value>
+
 	public ST LOGICALBREAKPOINT
 	{
 		get{
@@ -134,9 +139,10 @@ public class DSP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns RESULT ID(DSP-5).
-	///</summary>
+    /// <summary>   Returns RESULT ID(DSP-5). </summary>
+    ///
+    /// <value> The resultid. </value>
+
 	public TX RESULTID
 	{
 		get{

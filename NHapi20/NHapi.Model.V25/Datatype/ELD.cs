@@ -6,30 +6,32 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 ELD (Error Location and Description) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 ELD (Error Location and Description) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>Segment ID (ST)</li>
 /// <li>Segment Sequence (NM)</li>
 /// <li>Field Position (NM)</li>
 /// <li>Code Identifying Error (CE)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class ELD : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a ELD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a ELD. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public ELD(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a ELD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a ELD. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public ELD(IMessage message, string description) : base(message, description){
 		data = new IType[4];
 		data[0] = new ST(message,"Segment ID");
@@ -38,9 +40,10 @@ public class ELD : AbstractType, IComposite{
 		data[3] = new CE(message,"Code Identifying Error");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -48,12 +51,15 @@ public class ELD : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -64,10 +70,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Segment ID (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Segment ID (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the segment. </value>
+
 	public ST SegmentID {
 get{
 	   ST ret = null;
@@ -81,10 +91,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Segment Sequence (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Segment Sequence (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The segment sequence. </value>
+
 	public NM SegmentSequence {
 get{
 	   NM ret = null;
@@ -98,10 +112,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Field Position (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Field Position (component #2).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The field position. </value>
+
 	public NM FieldPosition {
 get{
 	   NM ret = null;
@@ -115,10 +133,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Code Identifying Error (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Code Identifying Error (component #3).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The code identifying error. </value>
+
 	public CE CodeIdentifyingError {
 get{
 	   CE ret = null;

@@ -7,37 +7,38 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 PSH message segment. 
-/// This segment has the following fields:<ol>
-///<li>PSH-1: Report Type (ST)</li>
-///<li>PSH-2: Report Form Identifier (ST)</li>
-///<li>PSH-3: Report Date (TS)</li>
-///<li>PSH-4: Report Interval Start Date (TS)</li>
-///<li>PSH-5: Report Interval End Date (TS)</li>
-///<li>PSH-6: Quantity Manufactured (CQ)</li>
-///<li>PSH-7: Quantity Distributed (CQ)</li>
-///<li>PSH-8: Quantity Distributed Method (ID)</li>
-///<li>PSH-9: Quantity Distributed Comment (FT)</li>
-///<li>PSH-10: Quantity in Use (CQ)</li>
-///<li>PSH-11: Quantity in Use Method (ID)</li>
-///<li>PSH-12: Quantity in Use Comment (FT)</li>
-///<li>PSH-13: Number of Product Experience Reports Filed by Facility (NM)</li>
-///<li>PSH-14: Number of Product Experience Reports Filed by Distributor (NM)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PSH message segment. This segment has the following fields:<ol>
+/// <li>PSH-1: Report Type (ST)</li>
+/// <li>PSH-2: Report Form Identifier (ST)</li>
+/// <li>PSH-3: Report Date (TS)</li>
+/// <li>PSH-4: Report Interval Start Date (TS)</li>
+/// <li>PSH-5: Report Interval End Date (TS)</li>
+/// <li>PSH-6: Quantity Manufactured (CQ)</li>
+/// <li>PSH-7: Quantity Distributed (CQ)</li>
+/// <li>PSH-8: Quantity Distributed Method (ID)</li>
+/// <li>PSH-9: Quantity Distributed Comment (FT)</li>
+/// <li>PSH-10: Quantity in Use (CQ)</li>
+/// <li>PSH-11: Quantity in Use Method (ID)</li>
+/// <li>PSH-12: Quantity in Use Comment (FT)</li>
+/// <li>PSH-13: Number of Product Experience Reports Filed by Facility (NM)</li>
+/// <li>PSH-14: Number of Product Experience Reports Filed by Distributor (NM)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PSH : AbstractSegment  {
 
-  /**
-   * Creates a PSH (PSH - product summary header segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PSH class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PSH(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -60,9 +61,10 @@ public class PSH : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Report Type(PSH-1).
-	///</summary>
+    /// <summary>   Returns Report Type(PSH-1). </summary>
+    ///
+    /// <value> The type of the report. </value>
+
 	public ST ReportType
 	{
 		get{
@@ -83,9 +85,10 @@ public class PSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Report Form Identifier(PSH-2).
-	///</summary>
+    /// <summary>   Returns Report Form Identifier(PSH-2). </summary>
+    ///
+    /// <value> The identifier of the report form. </value>
+
 	public ST ReportFormIdentifier
 	{
 		get{
@@ -106,9 +109,10 @@ public class PSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Report Date(PSH-3).
-	///</summary>
+    /// <summary>   Returns Report Date(PSH-3). </summary>
+    ///
+    /// <value> The report date. </value>
+
 	public TS ReportDate
 	{
 		get{
@@ -129,9 +133,10 @@ public class PSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Report Interval Start Date(PSH-4).
-	///</summary>
+    /// <summary>   Returns Report Interval Start Date(PSH-4). </summary>
+    ///
+    /// <value> The report interval start date. </value>
+
 	public TS ReportIntervalStartDate
 	{
 		get{
@@ -152,9 +157,10 @@ public class PSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Report Interval End Date(PSH-5).
-	///</summary>
+    /// <summary>   Returns Report Interval End Date(PSH-5). </summary>
+    ///
+    /// <value> The report interval end date. </value>
+
 	public TS ReportIntervalEndDate
 	{
 		get{
@@ -175,9 +181,10 @@ public class PSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Quantity Manufactured(PSH-6).
-	///</summary>
+    /// <summary>   Returns Quantity Manufactured(PSH-6). </summary>
+    ///
+    /// <value> The quantity manufactured. </value>
+
 	public CQ QuantityManufactured
 	{
 		get{
@@ -198,9 +205,10 @@ public class PSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Quantity Distributed(PSH-7).
-	///</summary>
+    /// <summary>   Returns Quantity Distributed(PSH-7). </summary>
+    ///
+    /// <value> The quantity distributed. </value>
+
 	public CQ QuantityDistributed
 	{
 		get{
@@ -221,9 +229,10 @@ public class PSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Quantity Distributed Method(PSH-8).
-	///</summary>
+    /// <summary>   Returns Quantity Distributed Method(PSH-8). </summary>
+    ///
+    /// <value> The quantity distributed method. </value>
+
 	public ID QuantityDistributedMethod
 	{
 		get{
@@ -244,9 +253,10 @@ public class PSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Quantity Distributed Comment(PSH-9).
-	///</summary>
+    /// <summary>   Returns Quantity Distributed Comment(PSH-9). </summary>
+    ///
+    /// <value> The quantity distributed comment. </value>
+
 	public FT QuantityDistributedComment
 	{
 		get{
@@ -267,9 +277,10 @@ public class PSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Quantity in Use(PSH-10).
-	///</summary>
+    /// <summary>   Returns Quantity in Use(PSH-10). </summary>
+    ///
+    /// <value> The quantity in use. </value>
+
 	public CQ QuantityInUse
 	{
 		get{
@@ -290,9 +301,10 @@ public class PSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Quantity in Use Method(PSH-11).
-	///</summary>
+    /// <summary>   Returns Quantity in Use Method(PSH-11). </summary>
+    ///
+    /// <value> The quantity in use method. </value>
+
 	public ID QuantityInUseMethod
 	{
 		get{
@@ -313,9 +325,10 @@ public class PSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Quantity in Use Comment(PSH-12).
-	///</summary>
+    /// <summary>   Returns Quantity in Use Comment(PSH-12). </summary>
+    ///
+    /// <value> The quantity in use comment. </value>
+
 	public FT QuantityInUseComment
 	{
 		get{
@@ -336,11 +349,17 @@ public class PSH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Number of Product Experience Reports Filed by Facility(PSH-13).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Number of Product Experience Reports Filed by Facility(PSH-
+    /// 13). throws HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The number of product experience reports filed by facility. </returns>
+
 	public NM GetNumberOfProductExperienceReportsFiledByFacility(int rep)
 	{
 			NM ret = null;
@@ -355,9 +374,14 @@ public class PSH : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Number of Product Experience Reports Filed by Facility (PSH-13).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of nm. </returns>
+
   public NM[] GetNumberOfProductExperienceReportsFiledByFacility() {
      NM[] ret = null;
     try {
@@ -376,9 +400,15 @@ public class PSH : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Number of Product Experience Reports Filed by Facility (PSH-13).
-   ///</summary>
+  /// <summary>
+  /// Returns the total repetitions of Number of Product Experience Reports Filed by Facility (PSH-
+  /// 13).
+  /// </summary>
+  ///
+  /// <value>
+  /// The total number of product experience reports filed by facility repetitions used.
+  /// </value>
+
   public int NumberOfProductExperienceReportsFiledByFacilityRepetitionsUsed
 {
 get{
@@ -394,11 +424,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Number of Product Experience Reports Filed by Distributor(PSH-14).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Number of Product Experience Reports Filed by Distributor(PSH-
+    /// 14). throws HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The number of product experience reports filed by distributor. </returns>
+
 	public NM GetNumberOfProductExperienceReportsFiledByDistributor(int rep)
 	{
 			NM ret = null;
@@ -413,9 +450,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Number of Product Experience Reports Filed by Distributor (PSH-14).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of nm. </returns>
+
   public NM[] GetNumberOfProductExperienceReportsFiledByDistributor() {
      NM[] ret = null;
     try {
@@ -434,9 +476,15 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Number of Product Experience Reports Filed by Distributor (PSH-14).
-   ///</summary>
+  /// <summary>
+  /// Returns the total repetitions of Number of Product Experience Reports Filed by Distributor (PSH-
+  /// 14).
+  /// </summary>
+  ///
+  /// <value>
+  /// The total number of product experience reports filed by distributor repetitions used.
+  /// </value>
+
   public int NumberOfProductExperienceReportsFiledByDistributorRepetitionsUsed
 {
 get{

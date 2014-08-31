@@ -26,23 +26,22 @@ namespace NHapi.Base.SourceGeneration
 
     using NHapi.Base.Log;
 
-    /// <summary> Generates skeletal source code for Datatype classes based on the 
-    /// HL7 database.  
+    /// <summary>
+    /// Generates skeletal source code for Datatype classes based on the HL7 database.  
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
-    /// <author>  Eric Poiseau
-    /// </author>
+
     public class DataTypeGenerator : System.Object
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the DataTypeGenerator class. </summary>
         static DataTypeGenerator()
         {
             log = HapiLogFactory.GetHapiLog(typeof(DataTypeGenerator));
@@ -51,6 +50,10 @@ namespace NHapi.Base.SourceGeneration
         #endregion
 
         #region Public Methods and Operators
+
+        /// <summary>   Main entry-point for this application. </summary>
+        ///
+        /// <param name="args"> Array of command-line argument strings. </param>
 
         [STAThread]
         public static void Main(System.String[] args)
@@ -70,15 +73,16 @@ namespace NHapi.Base.SourceGeneration
             }
         }
 
-        /// <summary> Creates source code for a single data type in the HL7 normative
-        /// database. 
-        /// </summary>
-        /// <param name="targetDirectory">the directory into which the file will be written
-        /// </param>
-        /// <param name="datatype">the name (e.g. ST, ID, etc.) of the data type to be created
-        /// </param>
-        /// <param name="version">the HL7 version of the intended data type
-        /// </param>
+        /// <summary>   Creates source code for a single data type in the HL7 normative database. </summary>
+        ///
+        /// <exception cref="IOException">  Thrown when an IO failure occurred. </exception>
+        ///
+        /// <param name="targetDirectory">  the directory into which the file will be written. </param>
+        /// <param name="dataType">         Type of the data. </param>
+        /// <param name="version">          the HL7 version of the intended data type. </param>
+        ///
+        /// ### <param name="datatype"> the name (e.g. ST, ID, etc.) of the data type to be created. </param>
+
         public static void make(System.IO.FileInfo targetDirectory, System.String dataType, System.String version)
         {
             Console.WriteLine(" Writing " + targetDirectory.FullName + dataType);
@@ -207,10 +211,15 @@ namespace NHapi.Base.SourceGeneration
             }
         }
 
-        /// <summary> Creates skeletal source code (without correct data structure but no business
-        /// logic) for all data types found in the normative database.  For versions > 2.2, Primitive data types
-        /// are not generated, because they are coded manually (as of HAPI 0.3).  
+        /// <summary>
+        /// Creates skeletal source code (without correct data structure but no business logic) for all
+        /// data types found in the normative database.  For versions > 2.2, Primitive data types are not
+        /// generated, because they are coded manually (as of HAPI 0.3).  
         /// </summary>
+        ///
+        /// <param name="baseDirectory">    Pathname of the base directory. </param>
+        /// <param name="version">          the HL7 version of the intended data type. </param>
+
         public static void makeAll(System.String baseDirectory, System.String version)
         {
             //make base directory
@@ -276,6 +285,12 @@ namespace NHapi.Base.SourceGeneration
 
         #region Methods
 
+        /// <summary>   Gets a description. </summary>
+        ///
+        /// <param name="description">  The description. </param>
+        ///
+        /// <returns>   The description. </returns>
+
         private static string GetDescription(string description)
         {
             string ret = description;
@@ -283,10 +298,24 @@ namespace NHapi.Base.SourceGeneration
             return ret;
         }
 
-        /// <summary> Returns a String containing source code for a Composite data type. The 
-        /// dataTypes array contains the data type names (e.g. ST) of each component. 
-        /// The descriptions array contains the corresponding descriptions (e.g. string).
+        /// <summary>
+        /// Returns a String containing source code for a Composite data type. The dataTypes array
+        /// contains the data type names (e.g. ST) of each component. The descriptions array contains the
+        /// corresponding descriptions (e.g. string).
         /// </summary>
+        ///
+        /// <exception cref="DataTypeException">    Thrown when a Data Type error condition occurs. </exception>
+        /// <exception cref="Exception">            Thrown when an exception error condition occurs. </exception>
+        ///
+        /// <param name="dataType">     Type of the data. </param>
+        /// <param name="description">  The description. </param>
+        /// <param name="dataTypes">    List of types of the data. </param>
+        /// <param name="descriptions"> The descriptions. </param>
+        /// <param name="tables">       The tables. </param>
+        /// <param name="version">      the HL7 version of the intended data type. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         private static System.String makeComposite(
             System.String dataType,
             System.String description,
@@ -448,9 +477,17 @@ namespace NHapi.Base.SourceGeneration
             return source.ToString();
         }
 
-        /// <summary> Returns a String containing the complete source code for a Primitive HL7 data
-        /// type.  Note: this method is no longer used, as all Primitives are now coded manually.  
+        /// <summary>
+        /// Returns a String containing the complete source code for a Primitive HL7 data type.  Note:
+        /// this method is no longer used, as all Primitives are now coded manually.  
         /// </summary>
+        ///
+        /// <param name="datatype">     The datatype. </param>
+        /// <param name="description">  The description. </param>
+        /// <param name="version">      the HL7 version of the intended data type. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         private static System.String makePrimitive(
             System.String datatype,
             System.String description,

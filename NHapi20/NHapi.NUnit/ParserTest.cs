@@ -7,9 +7,14 @@ using NUnit.Framework;
 
 namespace NHapi.NUnit
 {
+    /// <summary>   A parser test. </summary>
 	[TestFixture]
 	public	class ParserTest
 	{
+        /// <summary>   Gets the message. </summary>
+        ///
+        /// <returns>   The message. </returns>
+
 		public string GetMessage()
 		{
 			return @"MSH|^~\&|XPress Arrival||||200610120839||ORU^R01|EBzH1711114101206|P|2.3.1|||AL|||ASCII
@@ -19,6 +24,7 @@ OBR|1|||ehipack^eHippa Acknowlegment|||200610120839|||||||||00002^eProvider^Elec
 OBX|1|FT|||This\.br\is\.br\A Test||||||F
 ";
 		}
+        /// <summary>   Tests special character encoding. </summary>
 		[Test]
 		public void TestSpecialCharacterEncoding()
 		{
@@ -33,6 +39,7 @@ OBX|1|FT|||This\.br\is\.br\A Test||||||F
 		
 
 
+        /// <summary>   Tests special character entry. </summary>
 		[Test]
 		public void TestSpecialCharacterEntry()
 		{
@@ -61,6 +68,7 @@ OBX|1|FT|||This\.br\is\.br\A Test||||||F
 			
 		}
 
+        /// <summary>   Tests special character entry ending slash. </summary>
 		[Test]
 		public void TestSpecialCharacterEntryEndingSlash()
 		{
@@ -85,6 +93,7 @@ OBX|1|FT|||This\.br\is\.br\A Test||||||F
 			Assert.AreEqual(@"This\.br\is\.br\A Test~", data.Value);
 		}
 
+        /// <summary>   Tests special character entry with all special characters. </summary>
 		[Test]
 		public void TestSpecialCharacterEntryWithAllSpecialCharacters()
 		{
@@ -110,6 +119,7 @@ OBX|1|FT|||This\.br\is\.br\A Test||||||F
 			Assert.AreEqual(@"Th&is\.br\is\.br\A T|e\H\st\", data.Value);
 		}
 
+        /// <summary>   Tests valid hl 7 data. </summary>
 		[Test]
 		public void TestValidHl7Data()
 		{

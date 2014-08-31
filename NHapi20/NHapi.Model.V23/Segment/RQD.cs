@@ -7,33 +7,34 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 RQD message segment. 
-/// This segment has the following fields:<ol>
-///<li>RQD-1: Requisition Line Number (SI)</li>
-///<li>RQD-2: Item Code - Internal (CE)</li>
-///<li>RQD-3: Item Code - External (CE)</li>
-///<li>RQD-4: Hospital Item Code (CE)</li>
-///<li>RQD-5: Requisition Quantity (NM)</li>
-///<li>RQD-6: Requisition Unit of Measure (CE)</li>
-///<li>RQD-7: Department Cost Center (ID)</li>
-///<li>RQD-8: Item Natural Account Code (ID)</li>
-///<li>RQD-9: Deliver To ID (CE)</li>
-///<li>RQD-10: Date Needed (DT)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 RQD message segment. This segment has the following fields:<ol>
+/// <li>RQD-1: Requisition Line Number (SI)</li>
+/// <li>RQD-2: Item Code - Internal (CE)</li>
+/// <li>RQD-3: Item Code - External (CE)</li>
+/// <li>RQD-4: Hospital Item Code (CE)</li>
+/// <li>RQD-5: Requisition Quantity (NM)</li>
+/// <li>RQD-6: Requisition Unit of Measure (CE)</li>
+/// <li>RQD-7: Department Cost Center (ID)</li>
+/// <li>RQD-8: Item Natural Account Code (ID)</li>
+/// <li>RQD-9: Deliver To ID (CE)</li>
+/// <li>RQD-10: Date Needed (DT)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class RQD : AbstractSegment  {
 
-  /**
-   * Creates a RQD (Requisition detail) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the RQD class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RQD(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -52,9 +53,10 @@ public class RQD : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Requisition Line Number(RQD-1).
-	///</summary>
+    /// <summary>   Returns Requisition Line Number(RQD-1). </summary>
+    ///
+    /// <value> The requisition line number. </value>
+
 	public SI RequisitionLineNumber
 	{
 		get{
@@ -75,9 +77,10 @@ public class RQD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Item Code - Internal(RQD-2).
-	///</summary>
+    /// <summary>   Returns Item Code - Internal(RQD-2). </summary>
+    ///
+    /// <value> The item code internal. </value>
+
 	public CE ItemCodeInternal
 	{
 		get{
@@ -98,9 +101,10 @@ public class RQD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Item Code - External(RQD-3).
-	///</summary>
+    /// <summary>   Returns Item Code - External(RQD-3). </summary>
+    ///
+    /// <value> The item code external. </value>
+
 	public CE ItemCodeExternal
 	{
 		get{
@@ -121,9 +125,10 @@ public class RQD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Hospital Item Code(RQD-4).
-	///</summary>
+    /// <summary>   Returns Hospital Item Code(RQD-4). </summary>
+    ///
+    /// <value> The hospital item code. </value>
+
 	public CE HospitalItemCode
 	{
 		get{
@@ -144,9 +149,10 @@ public class RQD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Requisition Quantity(RQD-5).
-	///</summary>
+    /// <summary>   Returns Requisition Quantity(RQD-5). </summary>
+    ///
+    /// <value> The requisition quantity. </value>
+
 	public NM RequisitionQuantity
 	{
 		get{
@@ -167,9 +173,10 @@ public class RQD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Requisition Unit of Measure(RQD-6).
-	///</summary>
+    /// <summary>   Returns Requisition Unit of Measure(RQD-6). </summary>
+    ///
+    /// <value> The requisition unit of measure. </value>
+
 	public CE RequisitionUnitOfMeasure
 	{
 		get{
@@ -190,9 +197,10 @@ public class RQD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Department Cost Center(RQD-7).
-	///</summary>
+    /// <summary>   Returns Department Cost Center(RQD-7). </summary>
+    ///
+    /// <value> The department cost center. </value>
+
 	public ID DepartmentCostCenter
 	{
 		get{
@@ -213,9 +221,10 @@ public class RQD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Item Natural Account Code(RQD-8).
-	///</summary>
+    /// <summary>   Returns Item Natural Account Code(RQD-8). </summary>
+    ///
+    /// <value> The item natural account code. </value>
+
 	public ID ItemNaturalAccountCode
 	{
 		get{
@@ -236,9 +245,10 @@ public class RQD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Deliver To ID(RQD-9).
-	///</summary>
+    /// <summary>   Returns Deliver To ID(RQD-9). </summary>
+    ///
+    /// <value> The identifier of the deliver to. </value>
+
 	public CE DeliverToID
 	{
 		get{
@@ -259,9 +269,10 @@ public class RQD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date Needed(RQD-10).
-	///</summary>
+    /// <summary>   Returns Date Needed(RQD-10). </summary>
+    ///
+    /// <value> The date needed. </value>
+
 	public DT DateNeeded
 	{
 		get{

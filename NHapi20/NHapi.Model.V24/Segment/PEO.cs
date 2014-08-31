@@ -7,48 +7,49 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 PEO message segment. 
-/// This segment has the following fields:<ol>
-///<li>PEO-1: Event Identifiers Used (CE)</li>
-///<li>PEO-2: Event Symptom/Diagnosis Code (CE)</li>
-///<li>PEO-3: Event Onset Date/Time (TS)</li>
-///<li>PEO-4: Event Exacerbation Date/Time (TS)</li>
-///<li>PEO-5: Event Improved Date/Time (TS)</li>
-///<li>PEO-6: Event Ended Data/Time (TS)</li>
-///<li>PEO-7: Event Location Occurred Address (XAD)</li>
-///<li>PEO-8: Event Qualification (ID)</li>
-///<li>PEO-9: Event Serious (ID)</li>
-///<li>PEO-10: Event Expected (ID)</li>
-///<li>PEO-11: Event Outcome (ID)</li>
-///<li>PEO-12: Patient Outcome (ID)</li>
-///<li>PEO-13: Event Description From Others (FT)</li>
-///<li>PEO-14: Event From Original Reporter (FT)</li>
-///<li>PEO-15: Event Description From Patient (FT)</li>
-///<li>PEO-16: Event Description From Practitioner (FT)</li>
-///<li>PEO-17: Event Description From Autopsy (FT)</li>
-///<li>PEO-18: Cause Of Death (CE)</li>
-///<li>PEO-19: Primary Observer Name (XPN)</li>
-///<li>PEO-20: Primary Observer Address (XAD)</li>
-///<li>PEO-21: Primary Observer Telephone (XTN)</li>
-///<li>PEO-22: Primary Observer's Qualification (ID)</li>
-///<li>PEO-23: Confirmation Provided By (ID)</li>
-///<li>PEO-24: Primary Observer Aware Date/Time (TS)</li>
-///<li>PEO-25: Primary Observer's identity May Be Divulged (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PEO message segment. This segment has the following fields:<ol>
+/// <li>PEO-1: Event Identifiers Used (CE)</li>
+/// <li>PEO-2: Event Symptom/Diagnosis Code (CE)</li>
+/// <li>PEO-3: Event Onset Date/Time (TS)</li>
+/// <li>PEO-4: Event Exacerbation Date/Time (TS)</li>
+/// <li>PEO-5: Event Improved Date/Time (TS)</li>
+/// <li>PEO-6: Event Ended Data/Time (TS)</li>
+/// <li>PEO-7: Event Location Occurred Address (XAD)</li>
+/// <li>PEO-8: Event Qualification (ID)</li>
+/// <li>PEO-9: Event Serious (ID)</li>
+/// <li>PEO-10: Event Expected (ID)</li>
+/// <li>PEO-11: Event Outcome (ID)</li>
+/// <li>PEO-12: Patient Outcome (ID)</li>
+/// <li>PEO-13: Event Description From Others (FT)</li>
+/// <li>PEO-14: Event From Original Reporter (FT)</li>
+/// <li>PEO-15: Event Description From Patient (FT)</li>
+/// <li>PEO-16: Event Description From Practitioner (FT)</li>
+/// <li>PEO-17: Event Description From Autopsy (FT)</li>
+/// <li>PEO-18: Cause Of Death (CE)</li>
+/// <li>PEO-19: Primary Observer Name (XPN)</li>
+/// <li>PEO-20: Primary Observer Address (XAD)</li>
+/// <li>PEO-21: Primary Observer Telephone (XTN)</li>
+/// <li>PEO-22: Primary Observer's Qualification (ID)</li>
+/// <li>PEO-23: Confirmation Provided By (ID)</li>
+/// <li>PEO-24: Primary Observer Aware Date/Time (TS)</li>
+/// <li>PEO-25: Primary Observer's identity May Be Divulged (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PEO : AbstractSegment  {
 
-  /**
-   * Creates a PEO (Product Experience Observation) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PEO class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PEO(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -82,11 +83,17 @@ public class PEO : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns a single repetition of Event Identifiers Used(PEO-1).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Event Identifiers Used(PEO-1). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The event identifiers used. </returns>
+
 	public CE GetEventIdentifiersUsed(int rep)
 	{
 			CE ret = null;
@@ -101,9 +108,12 @@ public class PEO : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Event Identifiers Used (PEO-1).
-   ///</summary>
+  /// <summary> Returns all repetitions of Event Identifiers Used (PEO-1). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetEventIdentifiersUsed() {
      CE[] ret = null;
     try {
@@ -122,9 +132,10 @@ public class PEO : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Event Identifiers Used (PEO-1).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Event Identifiers Used (PEO-1). </summary>
+  ///
+  /// <value>   The event identifiers used repetitions used. </value>
+
   public int EventIdentifiersUsedRepetitionsUsed
 {
 get{
@@ -140,11 +151,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Event Symptom/Diagnosis Code(PEO-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Event Symptom/Diagnosis Code(PEO-2). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The event symptom diagnosis code. </returns>
+
 	public CE GetEventSymptomDiagnosisCode(int rep)
 	{
 			CE ret = null;
@@ -159,9 +177,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Event Symptom/Diagnosis Code (PEO-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Event Symptom/Diagnosis Code (PEO-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetEventSymptomDiagnosisCode() {
      CE[] ret = null;
     try {
@@ -180,9 +201,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Event Symptom/Diagnosis Code (PEO-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Event Symptom/Diagnosis Code (PEO-2). </summary>
+  ///
+  /// <value>   The event symptom diagnosis code repetitions used. </value>
+
   public int EventSymptomDiagnosisCodeRepetitionsUsed
 {
 get{
@@ -198,9 +220,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Event Onset Date/Time(PEO-3).
-	///</summary>
+
+    /// <summary>   Returns Event Onset Date/Time(PEO-3). </summary>
+    ///
+    /// <value> The event onset date time. </value>
+
 	public TS EventOnsetDateTime
 	{
 		get{
@@ -221,9 +245,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Event Exacerbation Date/Time(PEO-4).
-	///</summary>
+    /// <summary>   Returns Event Exacerbation Date/Time(PEO-4). </summary>
+    ///
+    /// <value> The event exacerbation date time. </value>
+
 	public TS EventExacerbationDateTime
 	{
 		get{
@@ -244,9 +269,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Event Improved Date/Time(PEO-5).
-	///</summary>
+    /// <summary>   Returns Event Improved Date/Time(PEO-5). </summary>
+    ///
+    /// <value> The event improved date time. </value>
+
 	public TS EventImprovedDateTime
 	{
 		get{
@@ -267,9 +293,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Event Ended Data/Time(PEO-6).
-	///</summary>
+    /// <summary>   Returns Event Ended Data/Time(PEO-6). </summary>
+    ///
+    /// <value> The event ended data time. </value>
+
 	public TS EventEndedDataTime
 	{
 		get{
@@ -290,11 +317,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Event Location Occurred Address(PEO-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Event Location Occurred Address(PEO-7). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The event location occurred address. </returns>
+
 	public XAD GetEventLocationOccurredAddress(int rep)
 	{
 			XAD ret = null;
@@ -309,9 +342,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Event Location Occurred Address (PEO-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Event Location Occurred Address (PEO-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetEventLocationOccurredAddress() {
      XAD[] ret = null;
     try {
@@ -330,9 +366,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Event Location Occurred Address (PEO-7).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Event Location Occurred Address (PEO-7). </summary>
+  ///
+  /// <value>   The event location occurred address repetitions used. </value>
+
   public int EventLocationOccurredAddressRepetitionsUsed
 {
 get{
@@ -348,11 +385,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Event Qualification(PEO-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Event Qualification(PEO-8). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The event qualification. </returns>
+
 	public ID GetEventQualification(int rep)
 	{
 			ID ret = null;
@@ -367,9 +411,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Event Qualification (PEO-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of Event Qualification (PEO-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetEventQualification() {
      ID[] ret = null;
     try {
@@ -388,9 +435,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Event Qualification (PEO-8).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Event Qualification (PEO-8). </summary>
+  ///
+  /// <value>   The event qualification repetitions used. </value>
+
   public int EventQualificationRepetitionsUsed
 {
 get{
@@ -406,9 +454,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Event Serious(PEO-9).
-	///</summary>
+
+    /// <summary>   Returns Event Serious(PEO-9). </summary>
+    ///
+    /// <value> The event serious. </value>
+
 	public ID EventSerious
 	{
 		get{
@@ -429,9 +479,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Event Expected(PEO-10).
-	///</summary>
+    /// <summary>   Returns Event Expected(PEO-10). </summary>
+    ///
+    /// <value> The event expected. </value>
+
 	public ID EventExpected
 	{
 		get{
@@ -452,11 +503,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Event Outcome(PEO-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Event Outcome(PEO-11). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The event outcome. </returns>
+
 	public ID GetEventOutcome(int rep)
 	{
 			ID ret = null;
@@ -471,9 +528,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Event Outcome (PEO-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of Event Outcome (PEO-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetEventOutcome() {
      ID[] ret = null;
     try {
@@ -492,9 +552,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Event Outcome (PEO-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Event Outcome (PEO-11). </summary>
+  ///
+  /// <value>   The event outcome repetitions used. </value>
+
   public int EventOutcomeRepetitionsUsed
 {
 get{
@@ -510,9 +571,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Patient Outcome(PEO-12).
-	///</summary>
+
+    /// <summary>   Returns Patient Outcome(PEO-12). </summary>
+    ///
+    /// <value> The patient outcome. </value>
+
 	public ID PatientOutcome
 	{
 		get{
@@ -533,11 +596,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Event Description From Others(PEO-13).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Event Description From Others(PEO-13). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The event description from others. </returns>
+
 	public FT GetEventDescriptionFromOthers(int rep)
 	{
 			FT ret = null;
@@ -552,9 +621,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Event Description From Others (PEO-13).
-   ///</summary>
+  /// <summary> Returns all repetitions of Event Description From Others (PEO-13). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ft. </returns>
+
   public FT[] GetEventDescriptionFromOthers() {
      FT[] ret = null;
     try {
@@ -573,9 +645,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Event Description From Others (PEO-13).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Event Description From Others (PEO-13). </summary>
+  ///
+  /// <value>   The event description from others repetitions used. </value>
+
   public int EventDescriptionFromOthersRepetitionsUsed
 {
 get{
@@ -591,11 +664,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Event From Original Reporter(PEO-14).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Event From Original Reporter(PEO-14). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The event from original reporter. </returns>
+
 	public FT GetEventFromOriginalReporter(int rep)
 	{
 			FT ret = null;
@@ -610,9 +690,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Event From Original Reporter (PEO-14).
-   ///</summary>
+  /// <summary> Returns all repetitions of Event From Original Reporter (PEO-14). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ft. </returns>
+
   public FT[] GetEventFromOriginalReporter() {
      FT[] ret = null;
     try {
@@ -631,9 +714,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Event From Original Reporter (PEO-14).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Event From Original Reporter (PEO-14). </summary>
+  ///
+  /// <value>   The event from original reporter repetitions used. </value>
+
   public int EventFromOriginalReporterRepetitionsUsed
 {
 get{
@@ -649,11 +733,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Event Description From Patient(PEO-15).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Event Description From Patient(PEO-15). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The event description from patient. </returns>
+
 	public FT GetEventDescriptionFromPatient(int rep)
 	{
 			FT ret = null;
@@ -668,9 +759,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Event Description From Patient (PEO-15).
-   ///</summary>
+  /// <summary> Returns all repetitions of Event Description From Patient (PEO-15). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ft. </returns>
+
   public FT[] GetEventDescriptionFromPatient() {
      FT[] ret = null;
     try {
@@ -689,9 +783,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Event Description From Patient (PEO-15).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Event Description From Patient (PEO-15). </summary>
+  ///
+  /// <value>   The event description from patient repetitions used. </value>
+
   public int EventDescriptionFromPatientRepetitionsUsed
 {
 get{
@@ -707,11 +802,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Event Description From Practitioner(PEO-16).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Event Description From Practitioner(PEO-16). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The event description from practitioner. </returns>
+
 	public FT GetEventDescriptionFromPractitioner(int rep)
 	{
 			FT ret = null;
@@ -726,9 +828,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Event Description From Practitioner (PEO-16).
-   ///</summary>
+  /// <summary> Returns all repetitions of Event Description From Practitioner (PEO-16). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ft. </returns>
+
   public FT[] GetEventDescriptionFromPractitioner() {
      FT[] ret = null;
     try {
@@ -747,9 +852,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Event Description From Practitioner (PEO-16).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The event description from practitioner repetitions used. </value>
+
   public int EventDescriptionFromPractitionerRepetitionsUsed
 {
 get{
@@ -765,11 +873,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Event Description From Autopsy(PEO-17).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Event Description From Autopsy(PEO-17). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The event description from autopsy. </returns>
+
 	public FT GetEventDescriptionFromAutopsy(int rep)
 	{
 			FT ret = null;
@@ -784,9 +899,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Event Description From Autopsy (PEO-17).
-   ///</summary>
+  /// <summary> Returns all repetitions of Event Description From Autopsy (PEO-17). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ft. </returns>
+
   public FT[] GetEventDescriptionFromAutopsy() {
      FT[] ret = null;
     try {
@@ -805,9 +923,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Event Description From Autopsy (PEO-17).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Event Description From Autopsy (PEO-17). </summary>
+  ///
+  /// <value>   The event description from autopsy repetitions used. </value>
+
   public int EventDescriptionFromAutopsyRepetitionsUsed
 {
 get{
@@ -823,11 +942,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Cause Of Death(PEO-18).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Cause Of Death(PEO-18). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The cause of death. </returns>
+
 	public CE GetCauseOfDeath(int rep)
 	{
 			CE ret = null;
@@ -842,9 +968,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Cause Of Death (PEO-18).
-   ///</summary>
+  /// <summary> Returns all repetitions of Cause Of Death (PEO-18). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetCauseOfDeath() {
      CE[] ret = null;
     try {
@@ -863,9 +992,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Cause Of Death (PEO-18).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Cause Of Death (PEO-18). </summary>
+  ///
+  /// <value>   The cause of death repetitions used. </value>
+
   public int CauseOfDeathRepetitionsUsed
 {
 get{
@@ -881,11 +1011,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Primary Observer Name(PEO-19).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Primary Observer Name(PEO-19). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The primary observer name. </returns>
+
 	public XPN GetPrimaryObserverName(int rep)
 	{
 			XPN ret = null;
@@ -900,9 +1037,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Primary Observer Name (PEO-19).
-   ///</summary>
+  /// <summary> Returns all repetitions of Primary Observer Name (PEO-19). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetPrimaryObserverName() {
      XPN[] ret = null;
     try {
@@ -921,9 +1061,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Primary Observer Name (PEO-19).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Primary Observer Name (PEO-19). </summary>
+  ///
+  /// <value>   The primary observer name repetitions used. </value>
+
   public int PrimaryObserverNameRepetitionsUsed
 {
 get{
@@ -939,11 +1080,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Primary Observer Address(PEO-20).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Primary Observer Address(PEO-20). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The primary observer address. </returns>
+
 	public XAD GetPrimaryObserverAddress(int rep)
 	{
 			XAD ret = null;
@@ -958,9 +1106,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Primary Observer Address (PEO-20).
-   ///</summary>
+  /// <summary> Returns all repetitions of Primary Observer Address (PEO-20). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetPrimaryObserverAddress() {
      XAD[] ret = null;
     try {
@@ -979,9 +1130,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Primary Observer Address (PEO-20).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Primary Observer Address (PEO-20). </summary>
+  ///
+  /// <value>   The primary observer address repetitions used. </value>
+
   public int PrimaryObserverAddressRepetitionsUsed
 {
 get{
@@ -997,11 +1149,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Primary Observer Telephone(PEO-21).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Primary Observer Telephone(PEO-21). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The primary observer telephone. </returns>
+
 	public XTN GetPrimaryObserverTelephone(int rep)
 	{
 			XTN ret = null;
@@ -1016,9 +1175,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Primary Observer Telephone (PEO-21).
-   ///</summary>
+  /// <summary> Returns all repetitions of Primary Observer Telephone (PEO-21). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetPrimaryObserverTelephone() {
      XTN[] ret = null;
     try {
@@ -1037,9 +1199,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Primary Observer Telephone (PEO-21).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Primary Observer Telephone (PEO-21). </summary>
+  ///
+  /// <value>   The primary observer telephone repetitions used. </value>
+
   public int PrimaryObserverTelephoneRepetitionsUsed
 {
 get{
@@ -1055,9 +1218,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Primary Observer's Qualification(PEO-22).
-	///</summary>
+
+    /// <summary>   Returns Primary Observer's Qualification(PEO-22). </summary>
+    ///
+    /// <value> The primary observer s qualification. </value>
+
 	public ID PrimaryObserverSQualification
 	{
 		get{
@@ -1078,9 +1243,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Confirmation Provided By(PEO-23).
-	///</summary>
+    /// <summary>   Returns Confirmation Provided By(PEO-23). </summary>
+    ///
+    /// <value> Amount to confirmation provided by. </value>
+
 	public ID ConfirmationProvidedBy
 	{
 		get{
@@ -1101,9 +1267,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Primary Observer Aware Date/Time(PEO-24).
-	///</summary>
+    /// <summary>   Returns Primary Observer Aware Date/Time(PEO-24). </summary>
+    ///
+    /// <value> The primary observer aware date time. </value>
+
 	public TS PrimaryObserverAwareDateTime
 	{
 		get{
@@ -1124,9 +1291,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Primary Observer's identity May Be Divulged(PEO-25).
-	///</summary>
+    /// <summary>   Returns Primary Observer's identity May Be Divulged(PEO-25). </summary>
+    ///
+    /// <value> The primary observer s identity may be divulged. </value>
+
 	public ID PrimaryObserverSIdentityMayBeDivulged
 	{
 		get{

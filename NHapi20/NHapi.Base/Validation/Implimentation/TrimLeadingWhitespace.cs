@@ -21,20 +21,18 @@
 
 namespace NHapi.Base.validation.impl
 {
-    /// <summary> Performs no validation but removes leading whitespace in the correct() method.
-    /// 
+    /// <summary>
+    /// Performs no validation but removes leading whitespace in the correct() method.
     /// </summary>
-    /// <author>  <a href="mailto:bryan.tripp@uhn.on.ca">Bryan Tripp</a>
-    /// </author>
-    /// <version>  $Revision: 1.2 $ updated on $Date: 2005/06/14 20:16:01 $ by $Author: bryan_tripp $
-    /// </version>
+
     public class TrimLeadingWhitespace : IPrimitiveTypeRule
     {
         #region Public Properties
 
-        /// <summary>
-        /// Description of the rule
-        /// </summary>
+        /// <summary>   Description of the rule. </summary>
+        ///
+        /// <value> The description. </value>
+
         public virtual System.String Description
         {
             get
@@ -43,9 +41,10 @@ namespace NHapi.Base.validation.impl
             }
         }
 
-        /// <summary>
-        /// Section reference
-        /// </summary>
+        /// <summary>   Section reference. </summary>
+        ///
+        /// <value> The section reference. </value>
+
         public virtual System.String SectionReference
         {
             get
@@ -58,7 +57,12 @@ namespace NHapi.Base.validation.impl
 
         #region Public Methods and Operators
 
-        /// <summary> Removes leading whitespace.</summary>
+        /// <summary>   Removes leading whitespace. </summary>
+        ///
+        /// <param name="value_Renamed">    The value renamed. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public virtual System.String correct(System.String value_Renamed)
         {
             System.String trmValue = null;
@@ -76,7 +80,12 @@ namespace NHapi.Base.validation.impl
             return trmValue;
         }
 
-        /// <summary> Returns true. </summary>
+        /// <summary>   Returns true. </summary>
+        ///
+        /// <param name="value_Renamed">    The value renamed. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         public virtual bool test(System.String value_Renamed)
         {
             return true;

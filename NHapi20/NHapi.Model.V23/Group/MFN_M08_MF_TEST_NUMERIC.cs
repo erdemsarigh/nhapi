@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the MFN_M08_MF_TEST_NUMERIC Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: MFE (Master file entry segment) </li>
-///<li>1: OM1 (General - fields that apply to most observations) </li>
-///<li>2: MFN_M08_xx (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the MFN_M08_MF_TEST_NUMERIC Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: MFE (Master file entry segment) </li>
+/// <li>1: OM1 (General - fields that apply to most observations) </li>
+/// <li>2: MFN_M08_xx (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFN_M08_MF_TEST_NUMERIC : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new MFN_M08_MF_TEST_NUMERIC Group.
-	///</summary>
+    /// <summary>   Creates a new MFN_M08_MF_TEST_NUMERIC Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFN_M08_MF_TEST_NUMERIC(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(MFE), true, false);
@@ -34,9 +37,10 @@ public class MFN_M08_MF_TEST_NUMERIC : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns MFE (Master file entry segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MFE (Master file entry segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The mfe. </value>
+
 	public MFE MFE { 
 get{
 	   MFE ret = null;
@@ -50,9 +54,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns OM1 (General - fields that apply to most observations) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns OM1 (General - fields that apply to most observations) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The om 1. </value>
+
 	public OM1 OM1 { 
 get{
 	   OM1 ret = null;
@@ -66,9 +73,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MFN_M08_xx (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MFN_M08_xx (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The xx. </value>
+
 	public MFN_M08_xx xx { 
 get{
 	   MFN_M08_xx ret = null;

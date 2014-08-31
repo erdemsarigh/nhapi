@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 CSS message segment. 
-/// This segment has the following fields:<ol>
-///<li>CSS-1: Study Scheduled Time Point (CE)</li>
-///<li>CSS-2: Study Scheduled Patient Time Point (TS)</li>
-///<li>CSS-3: Study Quality Control Codes (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 CSS message segment. This segment has the following fields:<ol>
+/// <li>CSS-1: Study Scheduled Time Point (CE)</li>
+/// <li>CSS-2: Study Scheduled Patient Time Point (TS)</li>
+/// <li>CSS-3: Study Quality Control Codes (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class CSS : AbstractSegment  {
 
-  /**
-   * Creates a CSS (Clinical Study Data Schedule) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the CSS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public CSS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class CSS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Study Scheduled Time Point(CSS-1).
-	///</summary>
+    /// <summary>   Returns Study Scheduled Time Point(CSS-1). </summary>
+    ///
+    /// <value> The study scheduled time point. </value>
+
 	public CE StudyScheduledTimePoint
 	{
 		get{
@@ -61,9 +63,10 @@ public class CSS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Study Scheduled Patient Time Point(CSS-2).
-	///</summary>
+    /// <summary>   Returns Study Scheduled Patient Time Point(CSS-2). </summary>
+    ///
+    /// <value> The study scheduled patient time point. </value>
+
 	public TS StudyScheduledPatientTimePoint
 	{
 		get{
@@ -84,11 +87,17 @@ public class CSS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Study Quality Control Codes(CSS-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Study Quality Control Codes(CSS-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The study quality control codes. </returns>
+
 	public CE GetStudyQualityControlCodes(int rep)
 	{
 			CE ret = null;
@@ -103,9 +112,12 @@ public class CSS : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Study Quality Control Codes (CSS-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Study Quality Control Codes (CSS-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetStudyQualityControlCodes() {
      CE[] ret = null;
     try {
@@ -124,9 +136,10 @@ public class CSS : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Study Quality Control Codes (CSS-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Study Quality Control Codes (CSS-3). </summary>
+  ///
+  /// <value>   The study quality control codes repetitions used. </value>
+
   public int StudyQualityControlCodesRepetitionsUsed
 {
 get{

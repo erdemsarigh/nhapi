@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 ECR message segment. 
-/// This segment has the following fields:<ol>
-///<li>ECR-1: Command Response (CE)</li>
-///<li>ECR-2: Date/Time Completed (TS)</li>
-///<li>ECR-3: Command Response Parameters (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ECR message segment. This segment has the following fields:<ol>
+/// <li>ECR-1: Command Response (CE)</li>
+/// <li>ECR-2: Date/Time Completed (TS)</li>
+/// <li>ECR-3: Command Response Parameters (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ECR : AbstractSegment  {
 
-  /**
-   * Creates a ECR (Equipment Command Response) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ECR class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ECR(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class ECR : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Command Response(ECR-1).
-	///</summary>
+    /// <summary>   Returns Command Response(ECR-1). </summary>
+    ///
+    /// <value> The command response. </value>
+
 	public CE CommandResponse
 	{
 		get{
@@ -61,9 +63,10 @@ public class ECR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date/Time Completed(ECR-2).
-	///</summary>
+    /// <summary>   Returns Date/Time Completed(ECR-2). </summary>
+    ///
+    /// <value> The date time completed. </value>
+
 	public TS DateTimeCompleted
 	{
 		get{
@@ -84,11 +87,17 @@ public class ECR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Command Response Parameters(ECR-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Command Response Parameters(ECR-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The command response parameters. </returns>
+
 	public ST GetCommandResponseParameters(int rep)
 	{
 			ST ret = null;
@@ -103,9 +112,12 @@ public class ECR : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Command Response Parameters (ECR-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Command Response Parameters (ECR-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetCommandResponseParameters() {
      ST[] ret = null;
     try {
@@ -124,9 +136,10 @@ public class ECR : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Command Response Parameters (ECR-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Command Response Parameters (ECR-3). </summary>
+  ///
+  /// <value>   The command response parameters repetitions used. </value>
+
   public int CommandResponseParametersRepetitionsUsed
 {
 get{

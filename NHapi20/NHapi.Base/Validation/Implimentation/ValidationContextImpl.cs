@@ -23,27 +23,25 @@ namespace NHapi.Base.validation.impl
 {
     using NHapi.Base.Model;
 
-    /// <summary> A default implementation of <code>ValidationContext</code>. 
-    /// 
-    /// </summary>
-    /// <author>  <a href="mailto:bryan.tripp@uhn.on.ca">Bryan Tripp</a>
-    /// </author>
-    /// <version>  $Revision: 1.5 $ updated on $Date: 2005/06/27 22:42:18 $ by $Author: bryan_tripp $
-    /// </version>
+    /// <summary>   A default implementation of <code>ValidationContext</code>. </summary>
     public class ValidationContextImpl : IValidationContext
     {
         #region Fields
 
+        /// <summary>   my encoding rule bindings. </summary>
         private System.Collections.IList myEncodingRuleBindings;
 
+        /// <summary>   my message rule bindings. </summary>
         private System.Collections.IList myMessageRuleBindings;
 
+        /// <summary>   my primitive rule bindings. </summary>
         private System.Collections.IList myPrimitiveRuleBindings;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes a new instance of the ValidationContextImpl class. </summary>
         public ValidationContextImpl()
         {
             this.myPrimitiveRuleBindings = new System.Collections.ArrayList(30);
@@ -55,8 +53,10 @@ namespace NHapi.Base.validation.impl
 
         #region Public Properties
 
-        /// <returns> a List of <code>RuleBinding</code>s for <code>EncodingRule</code>s.    
-        /// </returns>
+        /// <summary>   Gets the encoding rule bindings. </summary>
+        ///
+        /// <value> a List of <code>RuleBinding</code>s for <code>EncodingRule</code>s. </value>
+
         public virtual System.Collections.IList EncodingRuleBindings
         {
             get
@@ -79,8 +79,10 @@ namespace NHapi.Base.validation.impl
             //    }
         }
 
-        /// <returns> a List of <code>RuleBinding</code>s for <code>MessageRule</code>s.    
-        /// </returns>
+        /// <summary>   Gets the message rule bindings. </summary>
+        ///
+        /// <value> a List of <code>RuleBinding</code>s for <code>MessageRule</code>s. </value>
+
         public virtual System.Collections.IList MessageRuleBindings
         {
             get
@@ -89,8 +91,10 @@ namespace NHapi.Base.validation.impl
             }
         }
 
-        /// <returns> a List of <code>RuleBinding</code>s for <code>PrimitiveTypeRule</code>s.    
-        /// </returns>
+        /// <summary>   Gets the primitive rule bindings. </summary>
+        ///
+        /// <value> a List of <code>RuleBinding</code>s for <code>PrimitiveTypeRule</code>s. </value>
+
         public virtual System.Collections.IList PrimitiveRuleBindings
         {
             get
@@ -102,6 +106,16 @@ namespace NHapi.Base.validation.impl
         #endregion
 
         #region Public Methods and Operators
+
+        /// <summary>   Gets encoding rules. </summary>
+        ///
+        /// <exception cref="InvalidCastException"> Thrown when an object cannot be cast to a required
+        ///                                         type. </exception>
+        ///
+        /// <param name="theVersion">   the version. </param>
+        /// <param name="theEncoding">  the encoding. </param>
+        ///
+        /// <returns>   the active encoding rules that apply to the given version and encoding. </returns>
 
         public virtual IEncodingRule[] getEncodingRules(System.String theVersion, System.String theEncoding)
         {
@@ -122,6 +136,19 @@ namespace NHapi.Base.validation.impl
             }
             return (IEncodingRule[])SupportClass.ICollectionSupport.ToArray(active, new IEncodingRule[0]);
         }
+
+        /// <summary>   Gets message rules. </summary>
+        ///
+        /// <exception cref="InvalidCastException"> Thrown when an object cannot be cast to a required
+        ///                                         type. </exception>
+        ///
+        /// <param name="theVersion">       the version. </param>
+        /// <param name="theMessageType">   Type of the message. </param>
+        /// <param name="theTriggerEvent">  the trigger event. </param>
+        ///
+        /// <returns>
+        /// the active rules that apply to message of the given version, message type, and trigger event.
+        /// </returns>
 
         public virtual IMessageRule[] getMessageRules(
             System.String theVersion,
@@ -146,6 +173,17 @@ namespace NHapi.Base.validation.impl
             }
             return (IMessageRule[])SupportClass.ICollectionSupport.ToArray(active, new IMessageRule[0]);
         }
+
+        /// <summary>   Gets primitive rules. </summary>
+        ///
+        /// <exception cref="InvalidCastException"> Thrown when an object cannot be cast to a required
+        ///                                         type. </exception>
+        ///
+        /// <param name="theVersion">   the version. </param>
+        /// <param name="theTypeName">  Name of the type. </param>
+        /// <param name="theType">      Type of the. </param>
+        ///
+        /// <returns>   active rules for checking the given type in the given version. </returns>
 
         public virtual IPrimitiveTypeRule[] getPrimitiveRules(
             System.String theVersion,

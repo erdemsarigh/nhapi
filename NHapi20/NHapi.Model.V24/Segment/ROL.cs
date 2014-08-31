@@ -7,35 +7,36 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 ROL message segment. 
-/// This segment has the following fields:<ol>
-///<li>ROL-1: Role Instance ID (EI)</li>
-///<li>ROL-2: Action Code (ID)</li>
-///<li>ROL-3: Role-ROL (CE)</li>
-///<li>ROL-4: Role Person (XCN)</li>
-///<li>ROL-5: Role Begin Date/Time (TS)</li>
-///<li>ROL-6: Role End Date/Time (TS)</li>
-///<li>ROL-7: Role Duration (CE)</li>
-///<li>ROL-8: Role Action Reason (CE)</li>
-///<li>ROL-9: Provider Type (CE)</li>
-///<li>ROL-10: Organization Unit Type - ROL (CE)</li>
-///<li>ROL-11: Office/Home Address (XAD)</li>
-///<li>ROL-12: Phone (XTN)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ROL message segment. This segment has the following fields:<ol>
+/// <li>ROL-1: Role Instance ID (EI)</li>
+/// <li>ROL-2: Action Code (ID)</li>
+/// <li>ROL-3: Role-ROL (CE)</li>
+/// <li>ROL-4: Role Person (XCN)</li>
+/// <li>ROL-5: Role Begin Date/Time (TS)</li>
+/// <li>ROL-6: Role End Date/Time (TS)</li>
+/// <li>ROL-7: Role Duration (CE)</li>
+/// <li>ROL-8: Role Action Reason (CE)</li>
+/// <li>ROL-9: Provider Type (CE)</li>
+/// <li>ROL-10: Organization Unit Type - ROL (CE)</li>
+/// <li>ROL-11: Office/Home Address (XAD)</li>
+/// <li>ROL-12: Phone (XTN)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ROL : AbstractSegment  {
 
-  /**
-   * Creates a ROL (Role) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ROL class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ROL(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -56,9 +57,10 @@ public class ROL : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Role Instance ID(ROL-1).
-	///</summary>
+    /// <summary>   Returns Role Instance ID(ROL-1). </summary>
+    ///
+    /// <value> The identifier of the role instance. </value>
+
 	public EI RoleInstanceID
 	{
 		get{
@@ -79,9 +81,10 @@ public class ROL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Action Code(ROL-2).
-	///</summary>
+    /// <summary>   Returns Action Code(ROL-2). </summary>
+    ///
+    /// <value> The action code. </value>
+
 	public ID ActionCode
 	{
 		get{
@@ -102,9 +105,10 @@ public class ROL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Role-ROL(ROL-3).
-	///</summary>
+    /// <summary>   Returns Role-ROL(ROL-3). </summary>
+    ///
+    /// <value> The role rol. </value>
+
 	public CE RoleROL
 	{
 		get{
@@ -125,11 +129,17 @@ public class ROL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Role Person(ROL-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Role Person(ROL-4). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The role person. </returns>
+
 	public XCN GetRolePerson(int rep)
 	{
 			XCN ret = null;
@@ -144,9 +154,12 @@ public class ROL : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Role Person (ROL-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Role Person (ROL-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetRolePerson() {
      XCN[] ret = null;
     try {
@@ -165,9 +178,10 @@ public class ROL : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Role Person (ROL-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Role Person (ROL-4). </summary>
+  ///
+  /// <value>   The role person repetitions used. </value>
+
   public int RolePersonRepetitionsUsed
 {
 get{
@@ -183,9 +197,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Role Begin Date/Time(ROL-5).
-	///</summary>
+
+    /// <summary>   Returns Role Begin Date/Time(ROL-5). </summary>
+    ///
+    /// <value> The role begin date time. </value>
+
 	public TS RoleBeginDateTime
 	{
 		get{
@@ -206,9 +222,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Role End Date/Time(ROL-6).
-	///</summary>
+    /// <summary>   Returns Role End Date/Time(ROL-6). </summary>
+    ///
+    /// <value> The role end date time. </value>
+
 	public TS RoleEndDateTime
 	{
 		get{
@@ -229,9 +246,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Role Duration(ROL-7).
-	///</summary>
+    /// <summary>   Returns Role Duration(ROL-7). </summary>
+    ///
+    /// <value> The role duration. </value>
+
 	public CE RoleDuration
 	{
 		get{
@@ -252,9 +270,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Role Action Reason(ROL-8).
-	///</summary>
+    /// <summary>   Returns Role Action Reason(ROL-8). </summary>
+    ///
+    /// <value> The role action reason. </value>
+
 	public CE RoleActionReason
 	{
 		get{
@@ -275,11 +294,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Provider Type(ROL-9).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Provider Type(ROL-9). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The provider type. </returns>
+
 	public CE GetProviderType(int rep)
 	{
 			CE ret = null;
@@ -294,9 +319,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Provider Type (ROL-9).
-   ///</summary>
+  /// <summary> Returns all repetitions of Provider Type (ROL-9). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetProviderType() {
      CE[] ret = null;
     try {
@@ -315,9 +343,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Provider Type (ROL-9).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Provider Type (ROL-9). </summary>
+  ///
+  /// <value>   The provider type repetitions used. </value>
+
   public int ProviderTypeRepetitionsUsed
 {
 get{
@@ -333,9 +362,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Organization Unit Type - ROL(ROL-10).
-	///</summary>
+
+    /// <summary>   Returns Organization Unit Type - ROL(ROL-10). </summary>
+    ///
+    /// <value> The organization unit type rol. </value>
+
 	public CE OrganizationUnitTypeROL
 	{
 		get{
@@ -356,11 +387,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Office/Home Address(ROL-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Office/Home Address(ROL-11). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The office home address. </returns>
+
 	public XAD GetOfficeHomeAddress(int rep)
 	{
 			XAD ret = null;
@@ -375,9 +412,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Office/Home Address (ROL-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of Office/Home Address (ROL-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetOfficeHomeAddress() {
      XAD[] ret = null;
     try {
@@ -396,9 +436,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Office/Home Address (ROL-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Office/Home Address (ROL-11). </summary>
+  ///
+  /// <value>   The office home address repetitions used. </value>
+
   public int OfficeHomeAddressRepetitionsUsed
 {
 get{
@@ -414,11 +455,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Phone(ROL-12).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Phone(ROL-12). throws HL7Exception if the repetition number is
+    /// invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The phone. </returns>
+
 	public XTN GetPhone(int rep)
 	{
 			XTN ret = null;
@@ -433,9 +481,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Phone (ROL-12).
-   ///</summary>
+  /// <summary> Returns all repetitions of Phone (ROL-12). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetPhone() {
      XTN[] ret = null;
     try {
@@ -454,9 +505,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Phone (ROL-12).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Phone (ROL-12). </summary>
+  ///
+  /// <value>   The phone repetitions used. </value>
+
   public int PhoneRepetitionsUsed
 {
 get{

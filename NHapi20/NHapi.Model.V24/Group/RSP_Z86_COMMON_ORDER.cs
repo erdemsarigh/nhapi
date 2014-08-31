@@ -8,26 +8,29 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RSP_Z86_COMMON_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common Order) </li>
-///<li>1: RSP_Z86_ORDER_DETAIL (a Group object) optional </li>
-///<li>2: RSP_Z86_ENCODED_ORDER (a Group object) optional </li>
-///<li>3: RSP_Z86_DISPENSE (a Group object) optional </li>
-///<li>4: RSP_Z86_GIVE (a Group object) optional </li>
-///<li>5: RSP_Z86_ADMINISTRATION (a Group object) optional </li>
-///<li>6: RSP_Z86_OBSERVATION (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RSP_Z86_COMMON_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common Order) </li>
+/// <li>1: RSP_Z86_ORDER_DETAIL (a Group object) optional </li>
+/// <li>2: RSP_Z86_ENCODED_ORDER (a Group object) optional </li>
+/// <li>3: RSP_Z86_DISPENSE (a Group object) optional </li>
+/// <li>4: RSP_Z86_GIVE (a Group object) optional </li>
+/// <li>5: RSP_Z86_ADMINISTRATION (a Group object) optional </li>
+/// <li>6: RSP_Z86_OBSERVATION (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RSP_Z86_COMMON_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RSP_Z86_COMMON_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new RSP_Z86_COMMON_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RSP_Z86_COMMON_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -42,9 +45,10 @@ public class RSP_Z86_COMMON_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common Order) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common Order) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -58,9 +62,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RSP_Z86_ORDER_DETAIL (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RSP_Z86_ORDER_DETAIL (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The order detail. </value>
+
 	public RSP_Z86_ORDER_DETAIL ORDER_DETAIL { 
 get{
 	   RSP_Z86_ORDER_DETAIL ret = null;
@@ -74,9 +79,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RSP_Z86_ENCODED_ORDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RSP_Z86_ENCODED_ORDER (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The encoded order. </value>
+
 	public RSP_Z86_ENCODED_ORDER ENCODED_ORDER { 
 get{
 	   RSP_Z86_ENCODED_ORDER ret = null;
@@ -90,9 +96,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RSP_Z86_DISPENSE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RSP_Z86_DISPENSE (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The dispense. </value>
+
 	public RSP_Z86_DISPENSE DISPENSE { 
 get{
 	   RSP_Z86_DISPENSE ret = null;
@@ -106,9 +113,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RSP_Z86_GIVE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RSP_Z86_GIVE (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The give. </value>
+
 	public RSP_Z86_GIVE GIVE { 
 get{
 	   RSP_Z86_GIVE ret = null;
@@ -122,9 +130,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RSP_Z86_ADMINISTRATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RSP_Z86_ADMINISTRATION (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The administration. </value>
+
 	public RSP_Z86_ADMINISTRATION ADMINISTRATION { 
 get{
 	   RSP_Z86_ADMINISTRATION ret = null;
@@ -138,9 +147,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RSP_Z86_OBSERVATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RSP_Z86_OBSERVATION (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public RSP_Z86_OBSERVATION GetOBSERVATION() {
 	   RSP_Z86_OBSERVATION ret = null;
 	   try {
@@ -152,19 +166,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RSP_Z86_OBSERVATION
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RSP_Z86_OBSERVATION
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public RSP_Z86_OBSERVATION GetOBSERVATION(int rep) { 
 	   return (RSP_Z86_OBSERVATION)this.GetStructure("OBSERVATION", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RSP_Z86_OBSERVATION 
-	 */ 
+    /// <summary>   Gets the observation repetitions used. </summary>
+    ///
+    /// <value> The observation repetitions used. </value>
+
 	public int OBSERVATIONRepetitionsUsed { 
 get{
 	    int reps = -1; 

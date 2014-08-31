@@ -7,27 +7,28 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 SPR message segment. 
-/// This segment has the following fields:<ol>
-///<li>SPR-1: Query Tag (ST)</li>
-///<li>SPR-2: Query/Response Format Code (ID)</li>
-///<li>SPR-3: Stored Procedure Name (CE)</li>
-///<li>SPR-4: Input Parameter List (QIP)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 SPR message segment. This segment has the following fields:<ol>
+/// <li>SPR-1: Query Tag (ST)</li>
+/// <li>SPR-2: Query/Response Format Code (ID)</li>
+/// <li>SPR-3: Stored Procedure Name (CE)</li>
+/// <li>SPR-4: Input Parameter List (QIP)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class SPR : AbstractSegment  {
 
-  /**
-   * Creates a SPR (Stored Procedure Request Definition) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the SPR class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SPR(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -40,9 +41,10 @@ public class SPR : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Query Tag(SPR-1).
-	///</summary>
+    /// <summary>   Returns Query Tag(SPR-1). </summary>
+    ///
+    /// <value> The query tag. </value>
+
 	public ST QueryTag
 	{
 		get{
@@ -63,9 +65,10 @@ public class SPR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Query/Response Format Code(SPR-2).
-	///</summary>
+    /// <summary>   Returns Query/Response Format Code(SPR-2). </summary>
+    ///
+    /// <value> The query response format code. </value>
+
 	public ID QueryResponseFormatCode
 	{
 		get{
@@ -86,9 +89,10 @@ public class SPR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Stored Procedure Name(SPR-3).
-	///</summary>
+    /// <summary>   Returns Stored Procedure Name(SPR-3). </summary>
+    ///
+    /// <value> The name of the stored procedure. </value>
+
 	public CE StoredProcedureName
 	{
 		get{
@@ -109,11 +113,17 @@ public class SPR : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Input Parameter List(SPR-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Input Parameter List(SPR-4). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The input parameter list. </returns>
+
 	public QIP GetInputParameterList(int rep)
 	{
 			QIP ret = null;
@@ -128,9 +138,12 @@ public class SPR : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Input Parameter List (SPR-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Input Parameter List (SPR-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of qip. </returns>
+
   public QIP[] GetInputParameterList() {
      QIP[] ret = null;
     try {
@@ -149,9 +162,10 @@ public class SPR : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Input Parameter List (SPR-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Input Parameter List (SPR-4). </summary>
+  ///
+  /// <value>   The input parameter list repetitions used. </value>
+
   public int InputParameterListRepetitionsUsed
 {
 get{

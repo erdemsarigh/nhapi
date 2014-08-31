@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the SUR_P09_FACILITY Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: FAC (Facility) </li>
-///<li>1: SUR_P09_PRODUCT (a Group object) repeating</li>
-///<li>2: PSH (Product Summary Header) </li>
-///<li>3: SUR_P09_FACILITY_DETAIL (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the SUR_P09_FACILITY Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: FAC (Facility) </li>
+/// <li>1: SUR_P09_PRODUCT (a Group object) repeating</li>
+/// <li>2: PSH (Product Summary Header) </li>
+/// <li>3: SUR_P09_FACILITY_DETAIL (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class SUR_P09_FACILITY : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new SUR_P09_FACILITY Group.
-	///</summary>
+    /// <summary>   Creates a new SUR_P09_FACILITY Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SUR_P09_FACILITY(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(FAC), true, false);
@@ -36,9 +39,10 @@ public class SUR_P09_FACILITY : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns FAC (Facility) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns FAC (Facility) - creates it if necessary. </summary>
+    ///
+    /// <value> The fac. </value>
+
 	public FAC FAC { 
 get{
 	   FAC ret = null;
@@ -52,9 +56,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of SUR_P09_PRODUCT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of SUR_P09_PRODUCT (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The product. </returns>
+
 	public SUR_P09_PRODUCT GetPRODUCT() {
 	   SUR_P09_PRODUCT ret = null;
 	   try {
@@ -66,19 +75,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of SUR_P09_PRODUCT
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of SUR_P09_PRODUCT
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The product. </returns>
+
 	public SUR_P09_PRODUCT GetPRODUCT(int rep) { 
 	   return (SUR_P09_PRODUCT)this.GetStructure("PRODUCT", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of SUR_P09_PRODUCT 
-	 */ 
+    /// <summary>   Gets the product repetitions used. </summary>
+    ///
+    /// <value> The product repetitions used. </value>
+
 	public int PRODUCTRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -93,9 +108,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns PSH (Product Summary Header) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PSH (Product Summary Header) - creates it if necessary. </summary>
+    ///
+    /// <value> The psh. </value>
+
 	public PSH PSH { 
 get{
 	   PSH ret = null;
@@ -109,9 +125,15 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of SUR_P09_FACILITY_DETAIL (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of SUR_P09_FACILITY_DETAIL (a Group object) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The facility detail. </returns>
+
 	public SUR_P09_FACILITY_DETAIL GetFACILITY_DETAIL() {
 	   SUR_P09_FACILITY_DETAIL ret = null;
 	   try {
@@ -123,19 +145,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of SUR_P09_FACILITY_DETAIL
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of SUR_P09_FACILITY_DETAIL
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The facility detail. </returns>
+
 	public SUR_P09_FACILITY_DETAIL GetFACILITY_DETAIL(int rep) { 
 	   return (SUR_P09_FACILITY_DETAIL)this.GetStructure("FACILITY_DETAIL", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of SUR_P09_FACILITY_DETAIL 
-	 */ 
+    /// <summary>   Gets the facility detail repetitions used. </summary>
+    ///
+    /// <value> The facility detail repetitions used. </value>
+
 	public int FACILITY_DETAILRepetitionsUsed { 
 get{
 	    int reps = -1; 

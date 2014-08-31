@@ -8,28 +8,31 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V22.Group
 {
-///<summary>
-///Represents the ORM_O01_ORDER_DETAIL Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: OBR (OBSERVATION REQUEST) </li>
-///<li>1: RQD (REQUISITION DETAIL) </li>
-///<li>2: RQ1 (REQUISITION DETAIL-!) </li>
-///<li>3: RXO (PHARMACY PRESCRIPTION ORDER) </li>
-///<li>4: ODS (DIETARY ORDERS, SUPPLEMENTS, and PREFERENCES) </li>
-///<li>5: ODT (DIET TRAY INSTRUCTION) </li>
-///<li>6: NTE (NOTES AND COMMENTS) optional repeating</li>
-///<li>7: OBX (OBSERVATION RESULT) optional repeating</li>
-///<li>8: NTE (NOTES AND COMMENTS) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ORM_O01_ORDER_DETAIL Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: OBR (OBSERVATION REQUEST) </li>
+/// <li>1: RQD (REQUISITION DETAIL) </li>
+/// <li>2: RQ1 (REQUISITION DETAIL-!) </li>
+/// <li>3: RXO (PHARMACY PRESCRIPTION ORDER) </li>
+/// <li>4: ODS (DIETARY ORDERS, SUPPLEMENTS, and PREFERENCES) </li>
+/// <li>5: ODT (DIET TRAY INSTRUCTION) </li>
+/// <li>6: NTE (NOTES AND COMMENTS) optional repeating</li>
+/// <li>7: OBX (OBSERVATION RESULT) optional repeating</li>
+/// <li>8: NTE (NOTES AND COMMENTS) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ORM_O01_ORDER_DETAIL : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ORM_O01_ORDER_DETAIL Group.
-	///</summary>
+    /// <summary>   Creates a new ORM_O01_ORDER_DETAIL Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORM_O01_ORDER_DETAIL(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(OBR), true, false);
@@ -46,9 +49,10 @@ public class ORM_O01_ORDER_DETAIL : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns OBR (OBSERVATION REQUEST) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OBR (OBSERVATION REQUEST) - creates it if necessary. </summary>
+    ///
+    /// <value> The obr. </value>
+
 	public OBR OBR { 
 get{
 	   OBR ret = null;
@@ -62,9 +66,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RQD (REQUISITION DETAIL) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RQD (REQUISITION DETAIL) - creates it if necessary. </summary>
+    ///
+    /// <value> The rqd. </value>
+
 	public RQD RQD { 
 get{
 	   RQD ret = null;
@@ -78,9 +83,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RQ1 (REQUISITION DETAIL-!) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RQ1 (REQUISITION DETAIL-!) - creates it if necessary. </summary>
+    ///
+    /// <value> The request 1. </value>
+
 	public RQ1 RQ1 { 
 get{
 	   RQ1 ret = null;
@@ -94,9 +100,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RXO (PHARMACY PRESCRIPTION ORDER) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RXO (PHARMACY PRESCRIPTION ORDER) - creates it if necessary. </summary>
+    ///
+    /// <value> The rxo. </value>
+
 	public RXO RXO { 
 get{
 	   RXO ret = null;
@@ -110,9 +117,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ODS (DIETARY ORDERS, SUPPLEMENTS, and PREFERENCES) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns ODS (DIETARY ORDERS, SUPPLEMENTS, and PREFERENCES) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The ods. </value>
+
 	public ODS ODS { 
 get{
 	   ODS ret = null;
@@ -126,9 +136,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ODT (DIET TRAY INSTRUCTION) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ODT (DIET TRAY INSTRUCTION) - creates it if necessary. </summary>
+    ///
+    /// <value> The odt. </value>
+
 	public ODT ODT { 
 get{
 	   ODT ret = null;
@@ -142,9 +153,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (NOTES AND COMMENTS) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (NOTES AND COMMENTS) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -156,19 +172,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (NOTES AND COMMENTS) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (NOTES AND COMMENTS) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -183,9 +205,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of OBX (OBSERVATION RESULT) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of OBX (OBSERVATION RESULT) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The obx. </returns>
+
 	public OBX GetOBX() {
 	   OBX ret = null;
 	   try {
@@ -197,19 +224,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of OBX
-	/// * (OBSERVATION RESULT) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of OBX
+    ///  * (OBSERVATION RESULT) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The obx. </returns>
+
 	public OBX GetOBX(int rep) { 
 	   return (OBX)this.GetStructure("OBX", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of OBX 
-	 */ 
+    /// <summary>   Gets the obx repetitions used. </summary>
+    ///
+    /// <value> The obx repetitions used. </value>
+
 	public int OBXRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -224,9 +257,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of NTE2 (NOTES AND COMMENTS) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE2 (NOTES AND COMMENTS) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte 2. </returns>
+
 	public NTE GetNTE2() {
 	   NTE ret = null;
 	   try {
@@ -238,19 +276,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE2
-	/// * (NOTES AND COMMENTS) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE2
+    ///  * (NOTES AND COMMENTS) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte 2. </returns>
+
 	public NTE GetNTE2(int rep) { 
 	   return (NTE)this.GetStructure("NTE2", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE2 
-	 */ 
+    /// <summary>   Gets the nte 2 repetitions used. </summary>
+    ///
+    /// <value> The nte 2 repetitions used. </value>
+
 	public int NTE2RepetitionsUsed { 
 get{
 	    int reps = -1; 

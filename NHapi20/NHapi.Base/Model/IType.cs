@@ -21,24 +21,33 @@
 
 namespace NHapi.Base.Model
 {
-    /// <summary> An HL7 datatype.  Datatypes normally implement either Composite or Primitive.    </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+    /// <summary>
+    /// An HL7 datatype.  Datatypes normally implement either Composite or Primitive.
+    /// </summary>
+
     public interface IType
     {
         #region Public Properties
 
-        /// <summary> Returns an object containing any extra (non-standard) components that 
-        /// have been added to this type at run-time.  This object can also be used
-        /// to add components.  
+        /// <summary>
+        /// Returns an object containing any extra (non-standard) components that have been added to this
+        /// type at run-time.  This object can also be used to add components.  
         /// </summary>
+        ///
+        /// <value> The extra components. </value>
+
         ExtraComponents ExtraComponents { get; }
 
-        /// <returns> the message to which this Type belongs
-        /// </returns>
+        /// <summary>   Gets the message. </summary>
+        ///
+        /// <value> the message to which this Type belongs. </value>
+
         IMessage Message { get; }
 
-        /// <summary>Returns the name of the type (used in XML encoding and profile checking) </summary>
+        /// <summary>   Returns the name of the type (used in XML encoding and profile checking) </summary>
+        ///
+        /// <value> The name of the type. </value>
+
         System.String TypeName { get; }
 
         #endregion

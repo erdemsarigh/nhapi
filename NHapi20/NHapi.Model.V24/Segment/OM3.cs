@@ -7,30 +7,31 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 OM3 message segment. 
-/// This segment has the following fields:<ol>
-///<li>OM3-1: Sequence Number - Test/ Observation Master File (NM)</li>
-///<li>OM3-2: Preferred Coding System (CE)</li>
-///<li>OM3-3: Valid Coded 'Answers' (CE)</li>
-///<li>OM3-4: Normal Text/Codes for Categorical Observations (CE)</li>
-///<li>OM3-5: Abnormal Text/Codes for Categorical Observations (CE)</li>
-///<li>OM3-6: Critical Text/Codes for Categorical Observations (CE)</li>
-///<li>OM3-7: Value Type (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 OM3 message segment. This segment has the following fields:<ol>
+/// <li>OM3-1: Sequence Number - Test/ Observation Master File (NM)</li>
+/// <li>OM3-2: Preferred Coding System (CE)</li>
+/// <li>OM3-3: Valid Coded 'Answers' (CE)</li>
+/// <li>OM3-4: Normal Text/Codes for Categorical Observations (CE)</li>
+/// <li>OM3-5: Abnormal Text/Codes for Categorical Observations (CE)</li>
+/// <li>OM3-6: Critical Text/Codes for Categorical Observations (CE)</li>
+/// <li>OM3-7: Value Type (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class OM3 : AbstractSegment  {
 
-  /**
-   * Creates a OM3 (Categorical Service/Test/Observation) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the OM3 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OM3(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -46,9 +47,10 @@ public class OM3 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Sequence Number - Test/ Observation Master File(OM3-1).
-	///</summary>
+    /// <summary>   Returns Sequence Number - Test/ Observation Master File(OM3-1). </summary>
+    ///
+    /// <value> The sequence number test observation master file. </value>
+
 	public NM SequenceNumberTestObservationMasterFile
 	{
 		get{
@@ -69,9 +71,10 @@ public class OM3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Preferred Coding System(OM3-2).
-	///</summary>
+    /// <summary>   Returns Preferred Coding System(OM3-2). </summary>
+    ///
+    /// <value> The preferred coding system. </value>
+
 	public CE PreferredCodingSystem
 	{
 		get{
@@ -92,9 +95,10 @@ public class OM3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Valid Coded 'Answers'(OM3-3).
-	///</summary>
+    /// <summary>   Returns Valid Coded 'Answers'(OM3-3). </summary>
+    ///
+    /// <value> The valid coded answers. </value>
+
 	public CE ValidCodedAnswers
 	{
 		get{
@@ -115,11 +119,17 @@ public class OM3 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Normal Text/Codes for Categorical Observations(OM3-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Normal Text/Codes for Categorical Observations(OM3-4). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The normal text codes for categorical observations. </returns>
+
 	public CE GetNormalTextCodesForCategoricalObservations(int rep)
 	{
 			CE ret = null;
@@ -134,9 +144,14 @@ public class OM3 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Normal Text/Codes for Categorical Observations (OM3-4).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetNormalTextCodesForCategoricalObservations() {
      CE[] ret = null;
     try {
@@ -155,9 +170,12 @@ public class OM3 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Normal Text/Codes for Categorical Observations (OM3-4).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The normal text codes for categorical observations repetitions used. </value>
+
   public int NormalTextCodesForCategoricalObservationsRepetitionsUsed
 {
 get{
@@ -173,9 +191,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Abnormal Text/Codes for Categorical Observations(OM3-5).
-	///</summary>
+
+    /// <summary>   Returns Abnormal Text/Codes for Categorical Observations(OM3-5). </summary>
+    ///
+    /// <value> The abnormal text codes for categorical observations. </value>
+
 	public CE AbnormalTextCodesForCategoricalObservations
 	{
 		get{
@@ -196,9 +216,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Critical Text/Codes for Categorical Observations(OM3-6).
-	///</summary>
+    /// <summary>   Returns Critical Text/Codes for Categorical Observations(OM3-6). </summary>
+    ///
+    /// <value> The critical text codes for categorical observations. </value>
+
 	public CE CriticalTextCodesForCategoricalObservations
 	{
 		get{
@@ -219,9 +240,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Value Type(OM3-7).
-	///</summary>
+    /// <summary>   Returns Value Type(OM3-7). </summary>
+    ///
+    /// <value> The type of the value. </value>
+
 	public ID ValueType
 	{
 		get{

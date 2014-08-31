@@ -7,27 +7,28 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 ORO message segment. 
-/// This segment has the following fields:<ol>
-///<li>ORO-1: ORDER ITEM ID (CE)</li>
-///<li>ORO-2: SUBSTITUTE ALLOWED (ID)</li>
-///<li>ORO-3: RESULTS COPIES TO (CN)</li>
-///<li>ORO-4: STOCK LOCATION (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ORO message segment. This segment has the following fields:<ol>
+/// <li>ORO-1: ORDER ITEM ID (CE)</li>
+/// <li>ORO-2: SUBSTITUTE ALLOWED (ID)</li>
+/// <li>ORO-3: RESULTS COPIES TO (CN)</li>
+/// <li>ORO-4: STOCK LOCATION (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ORO : AbstractSegment  {
 
-  /**
-   * Creates a ORO (ORDER OTHER) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ORO class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORO(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -40,9 +41,10 @@ public class ORO : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns ORDER ITEM ID(ORO-1).
-	///</summary>
+    /// <summary>   Returns ORDER ITEM ID(ORO-1). </summary>
+    ///
+    /// <value> The orderitemid. </value>
+
 	public CE ORDERITEMID
 	{
 		get{
@@ -63,9 +65,10 @@ public class ORO : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns SUBSTITUTE ALLOWED(ORO-2).
-	///</summary>
+    /// <summary>   Returns SUBSTITUTE ALLOWED(ORO-2). </summary>
+    ///
+    /// <value> The substituteallowed. </value>
+
 	public ID SUBSTITUTEALLOWED
 	{
 		get{
@@ -86,11 +89,17 @@ public class ORO : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of RESULTS COPIES TO(ORO-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of RESULTS COPIES TO(ORO-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The resultscopiesto. </returns>
+
 	public CN GetRESULTSCOPIESTO(int rep)
 	{
 			CN ret = null;
@@ -105,9 +114,12 @@ public class ORO : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of RESULTS COPIES TO (ORO-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of RESULTS COPIES TO (ORO-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of cn. </returns>
+
   public CN[] GetRESULTSCOPIESTO() {
      CN[] ret = null;
     try {
@@ -126,9 +138,10 @@ public class ORO : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of RESULTS COPIES TO (ORO-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of RESULTS COPIES TO (ORO-3). </summary>
+  ///
+  /// <value>   The resultscopiesto repetitions used. </value>
+
   public int RESULTSCOPIESTORepetitionsUsed
 {
 get{
@@ -144,9 +157,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns STOCK LOCATION(ORO-4).
-	///</summary>
+
+    /// <summary>   Returns STOCK LOCATION(ORO-4). </summary>
+    ///
+    /// <value> The stocklocation. </value>
+
 	public ID STOCKLOCATION
 	{
 		get{

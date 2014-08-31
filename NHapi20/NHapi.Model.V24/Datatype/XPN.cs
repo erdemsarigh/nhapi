@@ -6,9 +6,9 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V24.Datatype
 {
-
-///<summary>
-/// <p>The HL7 XPN (extended person name) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 XPN (extended person name) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>family name (FN)</li>
 /// <li>given name (ST)</li>
 /// <li>second and further given names or initials thereof (ST)</li>
@@ -21,22 +21,24 @@ namespace NHapi.Model.V24.Datatype
 /// <li>name validity range (DR)</li>
 /// <li>name assembly order (ID)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class XPN : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a XPN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a XPN. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public XPN(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a XPN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a XPN. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public XPN(IMessage message, string description) : base(message, description){
 		data = new IType[11];
 		data[0] = new FN(message,"Family name");
@@ -52,9 +54,10 @@ public class XPN : AbstractType, IComposite{
 		data[10] = new ID(message, 0,"Name assembly order");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -62,12 +65,15 @@ public class XPN : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -78,10 +84,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns family name (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns family name (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the family. </value>
+
 	public FN FamilyName {
 get{
 	   FN ret = null;
@@ -95,10 +105,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns given name (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns given name (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the given. </value>
+
 	public ST GivenName {
 get{
 	   ST ret = null;
@@ -112,10 +126,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns second and further given names or initials thereof (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns second and further given names or initials thereof (component #2).  This is a
+    /// convenience method that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The second and further given names or initials thereof. </value>
+
 	public ST SecondAndFurtherGivenNamesOrInitialsThereof {
 get{
 	   ST ret = null;
@@ -129,10 +147,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns suffix (e.g., JR or III) (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns suffix (e.g., JR or III) (component #3).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The suffix eg j ror iii. </value>
+
 	public ST SuffixEgJRorIII {
 get{
 	   ST ret = null;
@@ -146,10 +168,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns prefix (e.g., DR) (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns prefix (e.g., DR) (component #4).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The prefix eg dr. </value>
+
 	public ST PrefixEgDR {
 get{
 	   ST ret = null;
@@ -163,10 +189,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns degree (e.g., MD) (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns degree (e.g., MD) (component #5).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The degree eg md. </value>
+
 	public IS DegreeEgMD {
 get{
 	   IS ret = null;
@@ -180,10 +210,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns name type code (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns name type code (component #6).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name type code. </value>
+
 	public ID NameTypeCode {
 get{
 	   ID ret = null;
@@ -197,10 +231,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Name Representation code (component #7).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Name Representation code (component #7).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name representation code. </value>
+
 	public ID NameRepresentationCode {
 get{
 	   ID ret = null;
@@ -214,10 +252,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns name context (component #8).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns name context (component #8).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name context. </value>
+
 	public CE NameContext {
 get{
 	   CE ret = null;
@@ -231,10 +273,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns name validity range (component #9).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns name validity range (component #9).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name validity range. </value>
+
 	public DR NameValidityRange {
 get{
 	   DR ret = null;
@@ -248,10 +294,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns name assembly order (component #10).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns name assembly order (component #10).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name assembly order. </value>
+
 	public ID NameAssemblyOrder {
 get{
 	   ID ret = null;

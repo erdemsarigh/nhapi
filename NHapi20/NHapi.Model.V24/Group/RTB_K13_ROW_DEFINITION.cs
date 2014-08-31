@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RTB_K13_ROW_DEFINITION Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: RDF (Table Row Definition) </li>
-///<li>1: RDT (Table Row Data) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RTB_K13_ROW_DEFINITION Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: RDF (Table Row Definition) </li>
+/// <li>1: RDT (Table Row Data) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RTB_K13_ROW_DEFINITION : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RTB_K13_ROW_DEFINITION Group.
-	///</summary>
+    /// <summary>   Creates a new RTB_K13_ROW_DEFINITION Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RTB_K13_ROW_DEFINITION(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(RDF), true, false);
@@ -32,9 +35,10 @@ public class RTB_K13_ROW_DEFINITION : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns RDF (Table Row Definition) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RDF (Table Row Definition) - creates it if necessary. </summary>
+    ///
+    /// <value> The rdf. </value>
+
 	public RDF RDF { 
 get{
 	   RDF ret = null;
@@ -48,9 +52,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RDT (Table Row Data) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RDT (Table Row Data) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The rdt. </returns>
+
 	public RDT GetRDT() {
 	   RDT ret = null;
 	   try {
@@ -62,19 +71,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RDT
-	/// * (Table Row Data) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RDT
+    ///  * (Table Row Data) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The rdt. </returns>
+
 	public RDT GetRDT(int rep) { 
 	   return (RDT)this.GetStructure("RDT", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RDT 
-	 */ 
+    /// <summary>   Gets the rdt repetitions used. </summary>
+    ///
+    /// <value> The rdt repetitions used. </value>
+
 	public int RDTRepetitionsUsed { 
 get{
 	    int reps = -1; 

@@ -7,48 +7,49 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 FT1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>FT1-1: Set ID - Financial Transaction (SI)</li>
-///<li>FT1-2: Transaction ID (ST)</li>
-///<li>FT1-3: Transaction Batch ID (ST)</li>
-///<li>FT1-4: Transaction Date (TS)</li>
-///<li>FT1-5: Transaction Posting Date (TS)</li>
-///<li>FT1-6: Transaction Type (ID)</li>
-///<li>FT1-7: Transaction Code (CE)</li>
-///<li>FT1-8: Transaction Description (ST)</li>
-///<li>FT1-9: Transaction Description - alternate (ST)</li>
-///<li>FT1-10: Transaction Quantity (NM)</li>
-///<li>FT1-11: Transaction Amount - Extended (CP)</li>
-///<li>FT1-12: Transaction Amount - Unit (CP)</li>
-///<li>FT1-13: Department Code (CE)</li>
-///<li>FT1-14: Insurance Plan ID (CE)</li>
-///<li>FT1-15: Insurance Amount (CP)</li>
-///<li>FT1-16: Assigned Patient Location (PL)</li>
-///<li>FT1-17: Fee Schedule (ID)</li>
-///<li>FT1-18: Patient Type (ID)</li>
-///<li>FT1-19: Diagnosis Code (CE)</li>
-///<li>FT1-20: Performed By Code (XCN)</li>
-///<li>FT1-21: Ordered By Code (XCN)</li>
-///<li>FT1-22: Unit Cost (NM)</li>
-///<li>FT1-23: Filler Order Number (EI)</li>
-///<li>FT1-24: Entered By Code (XCN)</li>
-///<li>FT1-25: Procedure Code (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 FT1 message segment. This segment has the following fields:<ol>
+/// <li>FT1-1: Set ID - Financial Transaction (SI)</li>
+/// <li>FT1-2: Transaction ID (ST)</li>
+/// <li>FT1-3: Transaction Batch ID (ST)</li>
+/// <li>FT1-4: Transaction Date (TS)</li>
+/// <li>FT1-5: Transaction Posting Date (TS)</li>
+/// <li>FT1-6: Transaction Type (ID)</li>
+/// <li>FT1-7: Transaction Code (CE)</li>
+/// <li>FT1-8: Transaction Description (ST)</li>
+/// <li>FT1-9: Transaction Description - alternate (ST)</li>
+/// <li>FT1-10: Transaction Quantity (NM)</li>
+/// <li>FT1-11: Transaction Amount - Extended (CP)</li>
+/// <li>FT1-12: Transaction Amount - Unit (CP)</li>
+/// <li>FT1-13: Department Code (CE)</li>
+/// <li>FT1-14: Insurance Plan ID (CE)</li>
+/// <li>FT1-15: Insurance Amount (CP)</li>
+/// <li>FT1-16: Assigned Patient Location (PL)</li>
+/// <li>FT1-17: Fee Schedule (ID)</li>
+/// <li>FT1-18: Patient Type (ID)</li>
+/// <li>FT1-19: Diagnosis Code (CE)</li>
+/// <li>FT1-20: Performed By Code (XCN)</li>
+/// <li>FT1-21: Ordered By Code (XCN)</li>
+/// <li>FT1-22: Unit Cost (NM)</li>
+/// <li>FT1-23: Filler Order Number (EI)</li>
+/// <li>FT1-24: Entered By Code (XCN)</li>
+/// <li>FT1-25: Procedure Code (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class FT1 : AbstractSegment  {
 
-  /**
-   * Creates a FT1 (Financial transaction) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the FT1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public FT1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -82,9 +83,10 @@ public class FT1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - Financial Transaction(FT1-1).
-	///</summary>
+    /// <summary>   Returns Set ID - Financial Transaction(FT1-1). </summary>
+    ///
+    /// <value> The set identifier financial transaction. </value>
+
 	public SI SetIDFinancialTransaction
 	{
 		get{
@@ -105,9 +107,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transaction ID(FT1-2).
-	///</summary>
+    /// <summary>   Returns Transaction ID(FT1-2). </summary>
+    ///
+    /// <value> The identifier of the transaction. </value>
+
 	public ST TransactionID
 	{
 		get{
@@ -128,9 +131,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transaction Batch ID(FT1-3).
-	///</summary>
+    /// <summary>   Returns Transaction Batch ID(FT1-3). </summary>
+    ///
+    /// <value> The identifier of the transaction batch. </value>
+
 	public ST TransactionBatchID
 	{
 		get{
@@ -151,9 +155,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transaction Date(FT1-4).
-	///</summary>
+    /// <summary>   Returns Transaction Date(FT1-4). </summary>
+    ///
+    /// <value> The transaction date. </value>
+
 	public TS TransactionDate
 	{
 		get{
@@ -174,9 +179,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transaction Posting Date(FT1-5).
-	///</summary>
+    /// <summary>   Returns Transaction Posting Date(FT1-5). </summary>
+    ///
+    /// <value> The transaction posting date. </value>
+
 	public TS TransactionPostingDate
 	{
 		get{
@@ -197,9 +203,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transaction Type(FT1-6).
-	///</summary>
+    /// <summary>   Returns Transaction Type(FT1-6). </summary>
+    ///
+    /// <value> The type of the transaction. </value>
+
 	public ID TransactionType
 	{
 		get{
@@ -220,9 +227,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transaction Code(FT1-7).
-	///</summary>
+    /// <summary>   Returns Transaction Code(FT1-7). </summary>
+    ///
+    /// <value> The transaction code. </value>
+
 	public CE TransactionCode
 	{
 		get{
@@ -243,9 +251,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transaction Description(FT1-8).
-	///</summary>
+    /// <summary>   Returns Transaction Description(FT1-8). </summary>
+    ///
+    /// <value> Information describing the transaction. </value>
+
 	public ST TransactionDescription
 	{
 		get{
@@ -266,9 +275,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transaction Description - alternate(FT1-9).
-	///</summary>
+    /// <summary>   Returns Transaction Description - alternate(FT1-9). </summary>
+    ///
+    /// <value> The transaction description alternate. </value>
+
 	public ST TransactionDescriptionAlternate
 	{
 		get{
@@ -289,9 +299,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transaction Quantity(FT1-10).
-	///</summary>
+    /// <summary>   Returns Transaction Quantity(FT1-10). </summary>
+    ///
+    /// <value> The transaction quantity. </value>
+
 	public NM TransactionQuantity
 	{
 		get{
@@ -312,9 +323,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transaction Amount - Extended(FT1-11).
-	///</summary>
+    /// <summary>   Returns Transaction Amount - Extended(FT1-11). </summary>
+    ///
+    /// <value> The transaction amount extended. </value>
+
 	public CP TransactionAmountExtended
 	{
 		get{
@@ -335,9 +347,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Transaction Amount - Unit(FT1-12).
-	///</summary>
+    /// <summary>   Returns Transaction Amount - Unit(FT1-12). </summary>
+    ///
+    /// <value> The transaction amount unit. </value>
+
 	public CP TransactionAmountUnit
 	{
 		get{
@@ -358,9 +371,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Department Code(FT1-13).
-	///</summary>
+    /// <summary>   Returns Department Code(FT1-13). </summary>
+    ///
+    /// <value> The department code. </value>
+
 	public CE DepartmentCode
 	{
 		get{
@@ -381,9 +395,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Insurance Plan ID(FT1-14).
-	///</summary>
+    /// <summary>   Returns Insurance Plan ID(FT1-14). </summary>
+    ///
+    /// <value> The identifier of the insurance plan. </value>
+
 	public CE InsurancePlanID
 	{
 		get{
@@ -404,9 +419,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Insurance Amount(FT1-15).
-	///</summary>
+    /// <summary>   Returns Insurance Amount(FT1-15). </summary>
+    ///
+    /// <value> The insurance amount. </value>
+
 	public CP InsuranceAmount
 	{
 		get{
@@ -427,9 +443,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Assigned Patient Location(FT1-16).
-	///</summary>
+    /// <summary>   Returns Assigned Patient Location(FT1-16). </summary>
+    ///
+    /// <value> The assigned patient location. </value>
+
 	public PL AssignedPatientLocation
 	{
 		get{
@@ -450,9 +467,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Fee Schedule(FT1-17).
-	///</summary>
+    /// <summary>   Returns Fee Schedule(FT1-17). </summary>
+    ///
+    /// <value> The fee schedule. </value>
+
 	public ID FeeSchedule
 	{
 		get{
@@ -473,9 +491,10 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Patient Type(FT1-18).
-	///</summary>
+    /// <summary>   Returns Patient Type(FT1-18). </summary>
+    ///
+    /// <value> The type of the patient. </value>
+
 	public ID PatientType
 	{
 		get{
@@ -496,11 +515,17 @@ public class FT1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Diagnosis Code(FT1-19).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Diagnosis Code(FT1-19). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The diagnosis code. </returns>
+
 	public CE GetDiagnosisCode(int rep)
 	{
 			CE ret = null;
@@ -515,9 +540,12 @@ public class FT1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Diagnosis Code (FT1-19).
-   ///</summary>
+  /// <summary> Returns all repetitions of Diagnosis Code (FT1-19). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetDiagnosisCode() {
      CE[] ret = null;
     try {
@@ -536,9 +564,10 @@ public class FT1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Diagnosis Code (FT1-19).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Diagnosis Code (FT1-19). </summary>
+  ///
+  /// <value>   The diagnosis code repetitions used. </value>
+
   public int DiagnosisCodeRepetitionsUsed
 {
 get{
@@ -554,9 +583,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Performed By Code(FT1-20).
-	///</summary>
+
+    /// <summary>   Returns Performed By Code(FT1-20). </summary>
+    ///
+    /// <value> The performed by code. </value>
+
 	public XCN PerformedByCode
 	{
 		get{
@@ -577,9 +608,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Ordered By Code(FT1-21).
-	///</summary>
+    /// <summary>   Returns Ordered By Code(FT1-21). </summary>
+    ///
+    /// <value> The ordered by code. </value>
+
 	public XCN OrderedByCode
 	{
 		get{
@@ -600,9 +632,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Unit Cost(FT1-22).
-	///</summary>
+    /// <summary>   Returns Unit Cost(FT1-22). </summary>
+    ///
+    /// <value> The unit cost. </value>
+
 	public NM UnitCost
 	{
 		get{
@@ -623,9 +656,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Order Number(FT1-23).
-	///</summary>
+    /// <summary>   Returns Filler Order Number(FT1-23). </summary>
+    ///
+    /// <value> The filler order number. </value>
+
 	public EI FillerOrderNumber
 	{
 		get{
@@ -646,9 +680,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Entered By Code(FT1-24).
-	///</summary>
+    /// <summary>   Returns Entered By Code(FT1-24). </summary>
+    ///
+    /// <value> The entered by code. </value>
+
 	public XCN EnteredByCode
 	{
 		get{
@@ -669,9 +704,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Procedure Code(FT1-25).
-	///</summary>
+    /// <summary>   Returns Procedure Code(FT1-25). </summary>
+    ///
+    /// <value> The procedure code. </value>
+
 	public CE ProcedureCode
 	{
 		get{

@@ -5,43 +5,50 @@ namespace NHapi.Base.Parser
     using NHapi.Base.Log;
     using NHapi.Base.Model;
 
-    /// <summary> <p>A default XMLParser.  This class assigns segment elements (in an XML-encoded message) 
-    /// to Segment objects (in a Message object) using the name of a segment and the names 
-    /// of any groups in which the segment is nested.  The names of group classes must correspond
-    /// to the names of group elements (they must be identical except that a dot in the element 
-    /// name, following the message name, is replaced with an underscore, in order to consitute a 
-    /// valid class name). </p>
-    /// <p>At the time of writing, the group names in the XML spec are changing.  Many of the group 
-    /// names have been automatically generated based on the group contents.  However, these automatic 
-    /// names are gradually being replaced with manually assigned names.  This process is expected to 
-    /// be complete by November 2002.  As a result, mismatches are likely.  Messages could be  
-    /// transformed prior to parsing (using XSLT) as a work-around.  Alternatively the group class names 
-    /// could be changed to reflect updates in the XML spec.  Ultimately, HAPI group classes will be 
-    /// changed to correspond with the official group names, once these are all assigned.  </p>
+    /// <summary>
+    /// <p>A default XMLParser.  This class assigns segment elements (in an XML-encoded message)
+    /// to Segment objects (in a Message object) using the name of a segment and the names of any
+    /// groups in which the segment is nested.  The names of group classes must correspond to the
+    /// names of group elements (they must be identical except that a dot in the element name,
+    /// following the message name, is replaced with an underscore, in order to consitute a valid
+    /// class name). </p>
+    /// <p>At the time of writing, the group names in the XML spec are changing.  Many of the group
+    /// names have been automatically generated based on the group contents.  However, these
+    /// automatic names are gradually being replaced with manually assigned names.  This process is
+    /// expected to be complete by November 2002.  As a result, mismatches are likely.  Messages
+    /// could be  
+    /// transformed prior to parsing (using XSLT) as a work-around.  Alternatively the group class
+    /// names could be changed to reflect updates in the XML spec.  Ultimately, HAPI group classes
+    /// will be changed to correspond with the official group names, once these are all assigned.
+    /// </p>
     /// </summary>
-    /// <author>  Bryan Tripp
-    /// </author>
+
     public class DefaultXMLParser : XMLParser
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the DefaultXMLParser class. </summary>
         static DefaultXMLParser()
         {
             log = HapiLogFactory.GetHapiLog(typeof(DefaultXMLParser));
         }
 
-        /// <summary>Creates a new instance of DefaultXMLParser </summary>
+        /// <summary>   Creates a new instance of DefaultXMLParser. </summary>
         public DefaultXMLParser()
         {
         }
 
-        /// <summary>Creates a new instance of DefaultXMLParser </summary>
+        /// <summary>   Creates a new instance of DefaultXMLParser. </summary>
+        ///
+        /// <param name="modelClassFactory">    The model class factory. </param>
+
         public DefaultXMLParser(IModelClassFactory modelClassFactory)
             : base(modelClassFactory)
         {
@@ -51,7 +58,10 @@ namespace NHapi.Base.Parser
 
         #region Public Methods and Operators
 
-        /// <summary>Test harness </summary>
+        /// <summary>   Test harness. </summary>
+        ///
+        /// <param name="args"> Array of command-line argument strings. </param>
+
         [STAThread]
         public static new void Main(System.String[] args)
         {
@@ -103,13 +113,22 @@ namespace NHapi.Base.Parser
             }
         }
 
-        /// <summary> <p>Creates an XML Document that corresponds to the given Message object. </p>
-        /// <p>If you are implementing this method, you should create an XML Document, and insert XML Elements
-        /// into it that correspond to the groups and segments that belong to the message type that your subclass
-        /// of XMLParser supports.  Then, for each segment in the message, call the method
+        /// <summary>
+        /// <p>Creates an XML Document that corresponds to the given Message object. </p>
+        /// <p>If you are implementing this method, you should create an XML Document, and insert XML
+        /// Elements
+        /// into it that correspond to the groups and segments that belong to the message type that your
+        /// subclass of XMLParser supports.  Then, for each segment in the message, call the method
         /// <code>encode(Segment segmentObject, Element segmentElement)</code> using the Element for
         /// that segment and the corresponding Segment object from the given Message.</p>
         /// </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="source">   Source for the. </param>
+        ///
+        /// <returns>   A System.Xml.XmlDocument. </returns>
+
         public override System.Xml.XmlDocument EncodeDocument(IMessage source)
         {
             System.String messageClassName = source.GetType().FullName;
@@ -132,21 +151,29 @@ namespace NHapi.Base.Parser
             return doc;
         }
 
-        /// <summary> <p>Creates and populates a Message object from an XML Document that contains an XML-encoded HL7 message.</p>
-        /// <p>The easiest way to implement this method for a particular message structure is as follows:
-        /// <ol><li>Create an instance of the Message type you are going to handle with your subclass
-        /// of XMLParser</li>
-        /// <li>Go through the given Document and find the Elements that represent the top level of
-        /// each message segment. </li>
-        /// <li>For each of these segments, call <code>parse(Segment segmentObject, Element segmentElement)</code>,
-        /// providing the appropriate Segment from your Message object, and the corresponding Element.</li></ol>
-        /// At the end of this process, your Message object should be populated with data from the XML
-        /// Document.</p>
-        /// </summary>
-        /// <throws>  HL7Exception if the message is not correctly formatted. </throws>
-        /// <throws>  EncodingNotSupportedException if the message encoded </throws>
-        /// <summary>     is not supported by this parser.
-        /// </summary>
+        /// <summary>   <p>Creates and populates a Message object from an XML Document that contains an
+        ///             XML-encoded HL7 message.</p>
+        ///             <p>The easiest way to implement this method for a particular message structure is
+        ///             as follows:
+        ///             <ol><li>Create an instance of the Message type you are going to handle with your
+        ///             subclass
+        ///             of XMLParser</li>
+        ///             <li>Go through the given Document and find the Elements that represent the top
+        ///             level of
+        ///             each message segment. </li>
+        ///             <li>For each of these segments, call <code>parse(Segment segmentObject, Element
+        ///             segmentElement)</code>,
+        ///             providing the appropriate Segment from your Message object, and the corresponding
+        ///             Element.</li></ol>
+        ///             At the end of this process, your Message object should be populated with data
+        ///             from the XML Document.</p> </summary>
+        /// <summary>   is not supported by this parser. </summary>
+        ///
+        /// <param name="XMLMessage">   Message describing the XML. </param>
+        /// <param name="version">      The version. </param>
+        ///
+        /// <returns>   An IMessage. </returns>
+
         public override IMessage ParseDocument(System.Xml.XmlDocument XMLMessage, System.String version)
         {
             System.String messageName = XMLMessage.DocumentElement.Name;
@@ -159,21 +186,22 @@ namespace NHapi.Base.Parser
 
         #region Methods
 
-        /// <summary> Given the name of a group element in an XML message, returns the corresponding 
-        /// group class name.  This name is identical except in order to be a valid class 
-        /// name, the dot character immediately following the message name is replaced with 
-        /// an underscore.  For example, there is a group element called ADT_A01.INSURANCE and the 
-        /// corresponding group Class is called ADT_A01_INSURANCE. 
-        /// </summary>
-        //    protected static String makeGroupClassName(String elementName) {
-        //        return elementName.replace('.', '_');
-        //    }
-        /// <summary> Given the name of a message and a Group class, returns the corresponding group element name in an 
-        /// XML-encoded message.  This is the message name and group name separated by a dot. For example, 
-        /// ADT_A01.INSURANCE.
-        /// 
-        /// If it looks like a segment name (i.e. has 3 characters), no change is made. 
-        /// </summary>
+        /// <summary>   Given the name of a group element in an XML message, returns the corresponding
+        ///             group class name.  This name is identical except in order to be a valid class
+        ///             name, the dot character immediately following the message name is replaced with
+        ///             an underscore.  For example, there is a group element called ADT_A01.INSURANCE
+        ///             and the corresponding group Class is called ADT_A01_INSURANCE. </summary>
+        /// <summary>   Given the name of a message and a Group class, returns the corresponding group
+        ///             element name in an XML-encoded message.  This is the message name and group name
+        ///             separated by a dot. For example, ADT_A01.INSURANCE.
+        ///             
+        ///             If it looks like a segment name (i.e. has 3 characters), no change is made. </summary>
+        ///
+        /// <param name="messageName">  Name of the message. </param>
+        /// <param name="className">    Name of the class. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         protected internal static System.String MakeGroupElementName(System.String messageName, System.String className)
         {
             System.String ret = null;
@@ -198,9 +226,16 @@ namespace NHapi.Base.Parser
             return ret;
         }
 
-        /// <summary> Copies data from a group object into the corresponding group element, creating any 
-        /// necessary child nodes.  
+        /// <summary>
+        /// Copies data from a group object into the corresponding group element, creating any necessary
+        /// child nodes.  
         /// </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="groupObject">  The group object. </param>
+        /// <param name="groupElement"> Element describing the group. </param>
+
         private void Encode(IGroup groupObject, System.Xml.XmlElement groupElement)
         {
             System.String[] childNames = groupObject.Names;
@@ -243,6 +278,13 @@ namespace NHapi.Base.Parser
             }
         }
 
+        /// <summary>   Gets a child elements by tag name. </summary>
+        ///
+        /// <param name="theElement">   Element describing the. </param>
+        /// <param name="theName">      Name of the. </param>
+        ///
+        /// <returns>   The child elements by tag name. </returns>
+
         private System.Collections.IList GetChildElementsByTagName(
             System.Xml.XmlElement theElement,
             System.String theName)
@@ -263,9 +305,14 @@ namespace NHapi.Base.Parser
             return result;
         }
 
-        /// <summary> Populates the given group object with data from the given group element, ignoring 
-        /// any unrecognized nodes.  
+        /// <summary>
+        /// Populates the given group object with data from the given group element, ignoring any
+        /// unrecognized nodes.  
         /// </summary>
+        ///
+        /// <param name="groupObject">  The group object. </param>
+        /// <param name="groupElement"> Element describing the group. </param>
+
         private void Parse(IGroup groupObject, System.Xml.XmlElement groupElement)
         {
             System.String[] childNames = groupObject.Names;
@@ -299,7 +346,12 @@ namespace NHapi.Base.Parser
             }
         }
 
-        //param childIndexName may have an integer on the end if >1 sibling with same name (e.g. NTE2) 
+        /// <summary>
+        /// param childIndexName may have an integer on the end if >1 sibling with same name (e.g. NTE2)
+        /// </summary>
+        ///
+        /// <param name="theElem">  Element describing the. </param>
+        /// <param name="theObj">   the object. </param>
 
         private void ParseRep(System.Xml.XmlElement theElem, IStructure theObj)
         {
@@ -313,6 +365,14 @@ namespace NHapi.Base.Parser
             }
             log.Debug("Parsed element: " + theElem.Name);
         }
+
+        /// <summary>   Parse reps. </summary>
+        ///
+        /// <param name="groupElement">     Element describing the group. </param>
+        /// <param name="groupObject">      The group object. </param>
+        /// <param name="messageName">      Name of the message. </param>
+        /// <param name="childName">        Name of the child. </param>
+        /// <param name="childIndexName">   Name of the child index. </param>
 
         private void ParseReps(
             System.Xml.XmlElement groupElement,

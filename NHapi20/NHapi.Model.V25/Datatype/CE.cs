@@ -6,8 +6,7 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 CE (Coded Element) data type.  Consists of the following components: </p><ol>
 /// <li>Identifier (ST)</li>
 /// <li>Text (ST)</li>
@@ -16,22 +15,24 @@ namespace NHapi.Model.V25.Datatype
 /// <li>Alternate Text (ST)</li>
 /// <li>Name of Alternate Coding System (ID)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CE : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CE.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CE. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CE(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CE.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CE. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CE(IMessage message, string description) : base(message, description){
 		data = new IType[6];
 		data[0] = new ST(message,"Identifier");
@@ -42,9 +43,10 @@ public class CE : AbstractType, IComposite{
 		data[5] = new ID(message, 396,"Name of Alternate Coding System");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -52,12 +54,15 @@ public class CE : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -68,10 +73,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Identifier (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Identifier (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier. </value>
+
 	public ST Identifier {
 get{
 	   ST ret = null;
@@ -85,10 +94,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Text (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Text (component #1).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The text. </value>
+
 	public ST Text {
 get{
 	   ST ret = null;
@@ -102,10 +115,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Name of Coding System (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Name of Coding System (component #2).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The Name of the coding system. </value>
+
 	public ID NameOfCodingSystem {
 get{
 	   ID ret = null;
@@ -119,10 +136,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Alternate Identifier (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Alternate Identifier (component #3).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the alternate. </value>
+
 	public ST AlternateIdentifier {
 get{
 	   ST ret = null;
@@ -136,10 +157,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Alternate Text (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Alternate Text (component #4).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The alternate text. </value>
+
 	public ST AlternateText {
 get{
 	   ST ret = null;
@@ -153,10 +178,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Name of Alternate Coding System (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Name of Alternate Coding System (component #5).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The Name of the alternate coding system. </value>
+
 	public ID NameOfAlternateCodingSystem {
 get{
 	   ID ret = null;

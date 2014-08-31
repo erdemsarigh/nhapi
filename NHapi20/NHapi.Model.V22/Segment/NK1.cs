@@ -7,36 +7,37 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 NK1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>NK1-1: Set ID - Next of Kin (SI)</li>
-///<li>NK1-2: Name (PN)</li>
-///<li>NK1-3: Relationship (CE)</li>
-///<li>NK1-4: Address (AD)</li>
-///<li>NK1-5: Phone Number (TN)</li>
-///<li>NK1-6: Business Phone Number (TN)</li>
-///<li>NK1-7: Contact Role (CE)</li>
-///<li>NK1-8: Start Date (DT)</li>
-///<li>NK1-9: End Date (DT)</li>
-///<li>NK1-10: Next of Kin (ST)</li>
-///<li>NK1-11: Next of kin job code / class (CM_JOB_CODE)</li>
-///<li>NK1-12: Next of Kin Employee Number (ST)</li>
-///<li>NK1-13: Organization Name (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 NK1 message segment. This segment has the following fields:<ol>
+/// <li>NK1-1: Set ID - Next of Kin (SI)</li>
+/// <li>NK1-2: Name (PN)</li>
+/// <li>NK1-3: Relationship (CE)</li>
+/// <li>NK1-4: Address (AD)</li>
+/// <li>NK1-5: Phone Number (TN)</li>
+/// <li>NK1-6: Business Phone Number (TN)</li>
+/// <li>NK1-7: Contact Role (CE)</li>
+/// <li>NK1-8: Start Date (DT)</li>
+/// <li>NK1-9: End Date (DT)</li>
+/// <li>NK1-10: Next of Kin (ST)</li>
+/// <li>NK1-11: Next of kin job code / class (CM_JOB_CODE)</li>
+/// <li>NK1-12: Next of Kin Employee Number (ST)</li>
+/// <li>NK1-13: Organization Name (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class NK1 : AbstractSegment  {
 
-  /**
-   * Creates a NK1 (NEXT OF KIN) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the NK1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public NK1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -58,9 +59,10 @@ public class NK1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - Next of Kin(NK1-1).
-	///</summary>
+    /// <summary>   Returns Set ID - Next of Kin(NK1-1). </summary>
+    ///
+    /// <value> The set identifier next of kin. </value>
+
 	public SI SetIDNextOfKin
 	{
 		get{
@@ -81,9 +83,10 @@ public class NK1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Name(NK1-2).
-	///</summary>
+    /// <summary>   Returns Name(NK1-2). </summary>
+    ///
+    /// <value> The name. </value>
+
 	public PN Name
 	{
 		get{
@@ -104,9 +107,10 @@ public class NK1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Relationship(NK1-3).
-	///</summary>
+    /// <summary>   Returns Relationship(NK1-3). </summary>
+    ///
+    /// <value> The relationship. </value>
+
 	public CE Relationship
 	{
 		get{
@@ -127,9 +131,10 @@ public class NK1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Address(NK1-4).
-	///</summary>
+    /// <summary>   Returns Address(NK1-4). </summary>
+    ///
+    /// <value> The address. </value>
+
 	public AD Address
 	{
 		get{
@@ -150,11 +155,17 @@ public class NK1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Phone Number(NK1-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Phone Number(NK1-5). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The phone number. </returns>
+
 	public TN GetPhoneNumber(int rep)
 	{
 			TN ret = null;
@@ -169,9 +180,12 @@ public class NK1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Phone Number (NK1-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Phone Number (NK1-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tn. </returns>
+
   public TN[] GetPhoneNumber() {
      TN[] ret = null;
     try {
@@ -190,9 +204,10 @@ public class NK1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Phone Number (NK1-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Phone Number (NK1-5). </summary>
+  ///
+  /// <value>   The phone number repetitions used. </value>
+
   public int PhoneNumberRepetitionsUsed
 {
 get{
@@ -208,9 +223,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Business Phone Number(NK1-6).
-	///</summary>
+
+    /// <summary>   Returns Business Phone Number(NK1-6). </summary>
+    ///
+    /// <value> The business phone number. </value>
+
 	public TN BusinessPhoneNumber
 	{
 		get{
@@ -231,9 +248,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Contact Role(NK1-7).
-	///</summary>
+    /// <summary>   Returns Contact Role(NK1-7). </summary>
+    ///
+    /// <value> The contact role. </value>
+
 	public CE ContactRole
 	{
 		get{
@@ -254,9 +272,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date(NK1-8).
-	///</summary>
+    /// <summary>   Returns Start Date(NK1-8). </summary>
+    ///
+    /// <value> The start date. </value>
+
 	public DT StartDate
 	{
 		get{
@@ -277,9 +296,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns End Date(NK1-9).
-	///</summary>
+    /// <summary>   Returns End Date(NK1-9). </summary>
+    ///
+    /// <value> The end date. </value>
+
 	public DT EndDate
 	{
 		get{
@@ -300,9 +320,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Next of Kin(NK1-10).
-	///</summary>
+    /// <summary>   Returns Next of Kin(NK1-10). </summary>
+    ///
+    /// <value> The next of kin. </value>
+
 	public ST NextOfKin
 	{
 		get{
@@ -323,9 +344,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Next of kin job code / class(NK1-11).
-	///</summary>
+    /// <summary>   Returns Next of kin job code / class(NK1-11). </summary>
+    ///
+    /// <value> The next of kin job code class. </value>
+
 	public CM_JOB_CODE NextOfKinJobCodeClass
 	{
 		get{
@@ -346,9 +368,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Next of Kin Employee Number(NK1-12).
-	///</summary>
+    /// <summary>   Returns Next of Kin Employee Number(NK1-12). </summary>
+    ///
+    /// <value> The next of kin employee number. </value>
+
 	public ST NextOfKinEmployeeNumber
 	{
 		get{
@@ -369,9 +392,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Organization Name(NK1-13).
-	///</summary>
+    /// <summary>   Returns Organization Name(NK1-13). </summary>
+    ///
+    /// <value> The name of the organization. </value>
+
 	public ST OrganizationName
 	{
 		get{

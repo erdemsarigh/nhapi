@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the RAR_RAR_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (ORC - common order segment) </li>
-///<li>1: RAR_RAR_ENCODING (a Group object) optional </li>
-///<li>2: RXA (RXA - pharmacy/treatment administration segment) repeating</li>
-///<li>3: RXR (RXR - pharmacy/treatment route segment) </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RAR_RAR_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (ORC - common order segment) </li>
+/// <li>1: RAR_RAR_ENCODING (a Group object) optional </li>
+/// <li>2: RXA (RXA - pharmacy/treatment administration segment) repeating</li>
+/// <li>3: RXR (RXR - pharmacy/treatment route segment) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RAR_RAR_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RAR_RAR_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new RAR_RAR_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RAR_RAR_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -36,9 +39,10 @@ public class RAR_RAR_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (ORC - common order segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (ORC - common order segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -52,9 +56,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RAR_RAR_ENCODING (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RAR_RAR_ENCODING (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The encoding. </value>
+
 	public RAR_RAR_ENCODING ENCODING { 
 get{
 	   RAR_RAR_ENCODING ret = null;
@@ -68,9 +73,15 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RXA (RXA - pharmacy/treatment administration segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RXA (RXA - pharmacy/treatment administration segment) - creates
+    /// it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The rxa. </returns>
+
 	public RXA GetRXA() {
 	   RXA ret = null;
 	   try {
@@ -82,19 +93,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RXA
-	/// * (RXA - pharmacy/treatment administration segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RXA
+    ///  * (RXA - pharmacy/treatment administration segment) - creates it if necessary throws
+    ///  HL7Exception if the repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The rxa. </returns>
+
 	public RXA GetRXA(int rep) { 
 	   return (RXA)this.GetStructure("RXA", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RXA 
-	 */ 
+    /// <summary>   Gets the rxa repetitions used. </summary>
+    ///
+    /// <value> The rxa repetitions used. </value>
+
 	public int RXARepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -109,9 +126,12 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns RXR (RXR - pharmacy/treatment route segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns RXR (RXR - pharmacy/treatment route segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The rxr. </value>
+
 	public RXR RXR { 
 get{
 	   RXR ret = null;

@@ -7,46 +7,47 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 ARQ message segment. 
-/// This segment has the following fields:<ol>
-///<li>ARQ-1: Placer Appointment ID (EI)</li>
-///<li>ARQ-2: Filler Appointment ID (EI)</li>
-///<li>ARQ-3: Occurrence Number (NM)</li>
-///<li>ARQ-4: Placer Group Number (EI)</li>
-///<li>ARQ-5: Schedule ID (CE)</li>
-///<li>ARQ-6: Request Event Reason (CE)</li>
-///<li>ARQ-7: Appointment Reason (CE)</li>
-///<li>ARQ-8: Appointment Type (CE)</li>
-///<li>ARQ-9: Appointment Duration (NM)</li>
-///<li>ARQ-10: Appointment Duration Units (CE)</li>
-///<li>ARQ-11: Requested Start Date/Time Range (DR)</li>
-///<li>ARQ-12: Priority-ARQ (ST)</li>
-///<li>ARQ-13: Repeating Interval (RI)</li>
-///<li>ARQ-14: Repeating Interval Duration (ST)</li>
-///<li>ARQ-15: Placer Contact Person (XCN)</li>
-///<li>ARQ-16: Placer Contact Phone Number (XTN)</li>
-///<li>ARQ-17: Placer Contact Address (XAD)</li>
-///<li>ARQ-18: Placer Contact Location (PL)</li>
-///<li>ARQ-19: Entered by Person (XCN)</li>
-///<li>ARQ-20: Entered by Phone Number (XTN)</li>
-///<li>ARQ-21: Entered by Location (PL)</li>
-///<li>ARQ-22: Parent Placer Appointment ID (EI)</li>
-///<li>ARQ-23: Parent Filler Appointment ID (EI)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ARQ message segment. This segment has the following fields:<ol>
+/// <li>ARQ-1: Placer Appointment ID (EI)</li>
+/// <li>ARQ-2: Filler Appointment ID (EI)</li>
+/// <li>ARQ-3: Occurrence Number (NM)</li>
+/// <li>ARQ-4: Placer Group Number (EI)</li>
+/// <li>ARQ-5: Schedule ID (CE)</li>
+/// <li>ARQ-6: Request Event Reason (CE)</li>
+/// <li>ARQ-7: Appointment Reason (CE)</li>
+/// <li>ARQ-8: Appointment Type (CE)</li>
+/// <li>ARQ-9: Appointment Duration (NM)</li>
+/// <li>ARQ-10: Appointment Duration Units (CE)</li>
+/// <li>ARQ-11: Requested Start Date/Time Range (DR)</li>
+/// <li>ARQ-12: Priority-ARQ (ST)</li>
+/// <li>ARQ-13: Repeating Interval (RI)</li>
+/// <li>ARQ-14: Repeating Interval Duration (ST)</li>
+/// <li>ARQ-15: Placer Contact Person (XCN)</li>
+/// <li>ARQ-16: Placer Contact Phone Number (XTN)</li>
+/// <li>ARQ-17: Placer Contact Address (XAD)</li>
+/// <li>ARQ-18: Placer Contact Location (PL)</li>
+/// <li>ARQ-19: Entered by Person (XCN)</li>
+/// <li>ARQ-20: Entered by Phone Number (XTN)</li>
+/// <li>ARQ-21: Entered by Location (PL)</li>
+/// <li>ARQ-22: Parent Placer Appointment ID (EI)</li>
+/// <li>ARQ-23: Parent Filler Appointment ID (EI)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ARQ : AbstractSegment  {
 
-  /**
-   * Creates a ARQ (ARQ - appointment request segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ARQ class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ARQ(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -78,9 +79,10 @@ public class ARQ : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Placer Appointment ID(ARQ-1).
-	///</summary>
+    /// <summary>   Returns Placer Appointment ID(ARQ-1). </summary>
+    ///
+    /// <value> The identifier of the placer appointment. </value>
+
 	public EI PlacerAppointmentID
 	{
 		get{
@@ -101,9 +103,10 @@ public class ARQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Appointment ID(ARQ-2).
-	///</summary>
+    /// <summary>   Returns Filler Appointment ID(ARQ-2). </summary>
+    ///
+    /// <value> The identifier of the filler appointment. </value>
+
 	public EI FillerAppointmentID
 	{
 		get{
@@ -124,9 +127,10 @@ public class ARQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Occurrence Number(ARQ-3).
-	///</summary>
+    /// <summary>   Returns Occurrence Number(ARQ-3). </summary>
+    ///
+    /// <value> The occurrence number. </value>
+
 	public NM OccurrenceNumber
 	{
 		get{
@@ -147,9 +151,10 @@ public class ARQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Placer Group Number(ARQ-4).
-	///</summary>
+    /// <summary>   Returns Placer Group Number(ARQ-4). </summary>
+    ///
+    /// <value> The placer group number. </value>
+
 	public EI PlacerGroupNumber
 	{
 		get{
@@ -170,9 +175,10 @@ public class ARQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Schedule ID(ARQ-5).
-	///</summary>
+    /// <summary>   Returns Schedule ID(ARQ-5). </summary>
+    ///
+    /// <value> The identifier of the schedule. </value>
+
 	public CE ScheduleID
 	{
 		get{
@@ -193,9 +199,10 @@ public class ARQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Request Event Reason(ARQ-6).
-	///</summary>
+    /// <summary>   Returns Request Event Reason(ARQ-6). </summary>
+    ///
+    /// <value> The request event reason. </value>
+
 	public CE RequestEventReason
 	{
 		get{
@@ -216,9 +223,10 @@ public class ARQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Appointment Reason(ARQ-7).
-	///</summary>
+    /// <summary>   Returns Appointment Reason(ARQ-7). </summary>
+    ///
+    /// <value> The appointment reason. </value>
+
 	public CE AppointmentReason
 	{
 		get{
@@ -239,9 +247,10 @@ public class ARQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Appointment Type(ARQ-8).
-	///</summary>
+    /// <summary>   Returns Appointment Type(ARQ-8). </summary>
+    ///
+    /// <value> The type of the appointment. </value>
+
 	public CE AppointmentType
 	{
 		get{
@@ -262,9 +271,10 @@ public class ARQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Appointment Duration(ARQ-9).
-	///</summary>
+    /// <summary>   Returns Appointment Duration(ARQ-9). </summary>
+    ///
+    /// <value> The appointment duration. </value>
+
 	public NM AppointmentDuration
 	{
 		get{
@@ -285,9 +295,10 @@ public class ARQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Appointment Duration Units(ARQ-10).
-	///</summary>
+    /// <summary>   Returns Appointment Duration Units(ARQ-10). </summary>
+    ///
+    /// <value> The appointment duration units. </value>
+
 	public CE AppointmentDurationUnits
 	{
 		get{
@@ -308,11 +319,17 @@ public class ARQ : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Requested Start Date/Time Range(ARQ-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Requested Start Date/Time Range(ARQ-11). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The calculated requested start date time range. </returns>
+
 	public DR GetRequestedStartDateTimeRange(int rep)
 	{
 			DR ret = null;
@@ -327,9 +344,12 @@ public class ARQ : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Requested Start Date/Time Range (ARQ-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of Requested Start Date/Time Range (ARQ-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> The calculated requested start date time range. </returns>
+
   public DR[] GetRequestedStartDateTimeRange() {
      DR[] ret = null;
     try {
@@ -348,9 +368,10 @@ public class ARQ : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Requested Start Date/Time Range (ARQ-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Requested Start Date/Time Range (ARQ-11). </summary>
+  ///
+  /// <value>   The requested start date time range repetitions used. </value>
+
   public int RequestedStartDateTimeRangeRepetitionsUsed
 {
 get{
@@ -366,9 +387,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Priority-ARQ(ARQ-12).
-	///</summary>
+
+    /// <summary>   Returns Priority-ARQ(ARQ-12). </summary>
+    ///
+    /// <value> The priority a request. </value>
+
 	public ST PriorityARQ
 	{
 		get{
@@ -389,9 +412,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Repeating Interval(ARQ-13).
-	///</summary>
+    /// <summary>   Returns Repeating Interval(ARQ-13). </summary>
+    ///
+    /// <value> The repeating interval. </value>
+
 	public RI RepeatingInterval
 	{
 		get{
@@ -412,9 +436,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Repeating Interval Duration(ARQ-14).
-	///</summary>
+    /// <summary>   Returns Repeating Interval Duration(ARQ-14). </summary>
+    ///
+    /// <value> The repeating interval duration. </value>
+
 	public ST RepeatingIntervalDuration
 	{
 		get{
@@ -435,11 +460,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Placer Contact Person(ARQ-15).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Placer Contact Person(ARQ-15). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The placer contact person. </returns>
+
 	public XCN GetPlacerContactPerson(int rep)
 	{
 			XCN ret = null;
@@ -454,9 +485,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Placer Contact Person (ARQ-15).
-   ///</summary>
+  /// <summary> Returns all repetitions of Placer Contact Person (ARQ-15). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetPlacerContactPerson() {
      XCN[] ret = null;
     try {
@@ -475,9 +509,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Placer Contact Person (ARQ-15).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Placer Contact Person (ARQ-15). </summary>
+  ///
+  /// <value>   The placer contact person repetitions used. </value>
+
   public int PlacerContactPersonRepetitionsUsed
 {
 get{
@@ -493,11 +528,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Placer Contact Phone Number(ARQ-16).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Placer Contact Phone Number(ARQ-16). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The placer contact phone number. </returns>
+
 	public XTN GetPlacerContactPhoneNumber(int rep)
 	{
 			XTN ret = null;
@@ -512,9 +554,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Placer Contact Phone Number (ARQ-16).
-   ///</summary>
+  /// <summary> Returns all repetitions of Placer Contact Phone Number (ARQ-16). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetPlacerContactPhoneNumber() {
      XTN[] ret = null;
     try {
@@ -533,9 +578,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Placer Contact Phone Number (ARQ-16).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Placer Contact Phone Number (ARQ-16). </summary>
+  ///
+  /// <value>   The placer contact phone number repetitions used. </value>
+
   public int PlacerContactPhoneNumberRepetitionsUsed
 {
 get{
@@ -551,11 +597,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Placer Contact Address(ARQ-17).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Placer Contact Address(ARQ-17). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The placer contact address. </returns>
+
 	public XAD GetPlacerContactAddress(int rep)
 	{
 			XAD ret = null;
@@ -570,9 +623,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Placer Contact Address (ARQ-17).
-   ///</summary>
+  /// <summary> Returns all repetitions of Placer Contact Address (ARQ-17). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xad. </returns>
+
   public XAD[] GetPlacerContactAddress() {
      XAD[] ret = null;
     try {
@@ -591,9 +647,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Placer Contact Address (ARQ-17).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Placer Contact Address (ARQ-17). </summary>
+  ///
+  /// <value>   The placer contact address repetitions used. </value>
+
   public int PlacerContactAddressRepetitionsUsed
 {
 get{
@@ -609,9 +666,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Placer Contact Location(ARQ-18).
-	///</summary>
+
+    /// <summary>   Returns Placer Contact Location(ARQ-18). </summary>
+    ///
+    /// <value> The placer contact location. </value>
+
 	public PL PlacerContactLocation
 	{
 		get{
@@ -632,11 +691,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Entered by Person(ARQ-19).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Entered by Person(ARQ-19). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The entered by person. </returns>
+
 	public XCN GetEnteredByPerson(int rep)
 	{
 			XCN ret = null;
@@ -651,9 +716,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Entered by Person (ARQ-19).
-   ///</summary>
+  /// <summary> Returns all repetitions of Entered by Person (ARQ-19). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetEnteredByPerson() {
      XCN[] ret = null;
     try {
@@ -672,9 +740,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Entered by Person (ARQ-19).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Entered by Person (ARQ-19). </summary>
+  ///
+  /// <value>   The entered by person repetitions used. </value>
+
   public int EnteredByPersonRepetitionsUsed
 {
 get{
@@ -690,11 +759,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Entered by Phone Number(ARQ-20).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Entered by Phone Number(ARQ-20). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The entered by phone number. </returns>
+
 	public XTN GetEnteredByPhoneNumber(int rep)
 	{
 			XTN ret = null;
@@ -709,9 +785,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Entered by Phone Number (ARQ-20).
-   ///</summary>
+  /// <summary> Returns all repetitions of Entered by Phone Number (ARQ-20). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of extension. </returns>
+
   public XTN[] GetEnteredByPhoneNumber() {
      XTN[] ret = null;
     try {
@@ -730,9 +809,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Entered by Phone Number (ARQ-20).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Entered by Phone Number (ARQ-20). </summary>
+  ///
+  /// <value>   The entered by phone number repetitions used. </value>
+
   public int EnteredByPhoneNumberRepetitionsUsed
 {
 get{
@@ -748,9 +828,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Entered by Location(ARQ-21).
-	///</summary>
+
+    /// <summary>   Returns Entered by Location(ARQ-21). </summary>
+    ///
+    /// <value> The entered by location. </value>
+
 	public PL EnteredByLocation
 	{
 		get{
@@ -771,9 +853,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Parent Placer Appointment ID(ARQ-22).
-	///</summary>
+    /// <summary>   Returns Parent Placer Appointment ID(ARQ-22). </summary>
+    ///
+    /// <value> The identifier of the parent placer appointment. </value>
+
 	public EI ParentPlacerAppointmentID
 	{
 		get{
@@ -794,9 +877,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Parent Filler Appointment ID(ARQ-23).
-	///</summary>
+    /// <summary>   Returns Parent Filler Appointment ID(ARQ-23). </summary>
+    ///
+    /// <value> The identifier of the parent filler appointment. </value>
+
 	public EI ParentFillerAppointmentID
 	{
 		get{

@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the VXR_V03_INSURANCE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: IN1 (Insurance) </li>
-///<li>1: IN2 (Insurance Additional Information) optional </li>
-///<li>2: IN3 (Insurance Additional Information, Certification) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the VXR_V03_INSURANCE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: IN1 (Insurance) </li>
+/// <li>1: IN2 (Insurance Additional Information) optional </li>
+/// <li>2: IN3 (Insurance Additional Information, Certification) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class VXR_V03_INSURANCE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new VXR_V03_INSURANCE Group.
-	///</summary>
+    /// <summary>   Creates a new VXR_V03_INSURANCE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public VXR_V03_INSURANCE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(IN1), true, false);
@@ -34,9 +37,10 @@ public class VXR_V03_INSURANCE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns IN1 (Insurance) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns IN1 (Insurance) - creates it if necessary. </summary>
+    ///
+    /// <value> The in 1. </value>
+
 	public IN1 IN1 { 
 get{
 	   IN1 ret = null;
@@ -50,9 +54,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns IN2 (Insurance Additional Information) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns IN2 (Insurance Additional Information) - creates it if necessary. </summary>
+    ///
+    /// <value> The in 2. </value>
+
 	public IN2 IN2 { 
 get{
 	   IN2 ret = null;
@@ -66,9 +71,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns IN3 (Insurance Additional Information, Certification) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns IN3 (Insurance Additional Information, Certification) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The in 3. </value>
+
 	public IN3 IN3 { 
 get{
 	   IN3 ret = null;

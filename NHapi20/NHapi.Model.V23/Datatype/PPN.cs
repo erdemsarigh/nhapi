@@ -6,9 +6,9 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V23.Datatype
 {
-
-///<summary>
-/// <p>The HL7 PPN (performing person time stamp) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 PPN (performing person time stamp) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>ID number (ST)</li>
 /// <li>family name (ST)</li>
 /// <li>given name (ST)</li>
@@ -25,22 +25,24 @@ namespace NHapi.Model.V23.Datatype
 /// <li>assigning facility (HD)</li>
 /// <li>Date/Time Action Performed (TS)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class PPN : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a PPN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a PPN. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public PPN(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a PPN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a PPN. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public PPN(IMessage message, string description) : base(message, description){
 		data = new IType[15];
 		data[0] = new ST(message,"ID number");
@@ -60,9 +62,10 @@ public class PPN : AbstractType, IComposite{
 		data[14] = new TS(message,"Date/Time Action Performed");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -70,12 +73,15 @@ public class PPN : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -86,10 +92,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns ID number (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns ID number (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier number. </value>
+
 	public ST IDNumber {
 get{
 	   ST ret = null;
@@ -103,10 +113,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns family name (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns family name (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the family. </value>
+
 	public ST FamilyName {
 get{
 	   ST ret = null;
@@ -120,10 +134,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns given name (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns given name (component #2).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the given. </value>
+
 	public ST GivenName {
 get{
 	   ST ret = null;
@@ -137,10 +155,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns middle initial or name (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns middle initial or name (component #3).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the middle initial or. </value>
+
 	public ST MiddleInitialOrName {
 get{
 	   ST ret = null;
@@ -154,10 +176,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns suffix (e.g., JR or III) (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns suffix (e.g., JR or III) (component #4).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The suffix eg j ror iii. </value>
+
 	public ST SuffixEgJRorIII {
 get{
 	   ST ret = null;
@@ -171,10 +197,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns prefix (e.g., DR) (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns prefix (e.g., DR) (component #5).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The prefix eg dr. </value>
+
 	public ST PrefixEgDR {
 get{
 	   ST ret = null;
@@ -188,10 +218,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns degree (e.g., MD) (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns degree (e.g., MD) (component #6).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The degree eg md. </value>
+
 	public ST DegreeEgMD {
 get{
 	   ST ret = null;
@@ -205,10 +239,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns source table (component #7).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns source table (component #7).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The source table. </value>
+
 	public ID SourceTable {
 get{
 	   ID ret = null;
@@ -222,10 +260,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns assigning authority (component #8).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns assigning authority (component #8).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The assigning authority. </value>
+
 	public HD AssigningAuthority {
 get{
 	   HD ret = null;
@@ -239,10 +281,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns name type code (component #9).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns name type code (component #9).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name type code. </value>
+
 	public ID NameTypeCode {
 get{
 	   ID ret = null;
@@ -256,10 +302,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns identifier check digit (component #10).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns identifier check digit (component #10).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier check digit. </value>
+
 	public ST IdentifierCheckDigit {
 get{
 	   ST ret = null;
@@ -273,10 +323,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns code identifying the check digit scheme employed (component #11).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns code identifying the check digit scheme employed (component #11).  This is a
+    /// convenience method that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The code identifying the check digit scheme employed. </value>
+
 	public ID CodeIdentifyingTheCheckDigitSchemeEmployed {
 get{
 	   ID ret = null;
@@ -290,10 +344,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns identifier type code (component #12).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns identifier type code (component #12).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier type code. </value>
+
 	public IS IdentifierTypeCode {
 get{
 	   IS ret = null;
@@ -307,10 +365,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns assigning facility (component #13).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns assigning facility (component #13).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The assigning facility. </value>
+
 	public HD AssigningFacility {
 get{
 	   HD ret = null;
@@ -324,10 +386,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Date/Time Action Performed (component #14).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Date/Time Action Performed (component #14).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The date time action performed. </value>
+
 	public TS DateTimeActionPerformed {
 get{
 	   TS ret = null;

@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RQA_I08_PROCEDURE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PR1 (Procedures) </li>
-///<li>1: RQA_I08_AUTHORIZATION (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RQA_I08_PROCEDURE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PR1 (Procedures) </li>
+/// <li>1: RQA_I08_AUTHORIZATION (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RQA_I08_PROCEDURE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RQA_I08_PROCEDURE Group.
-	///</summary>
+    /// <summary>   Creates a new RQA_I08_PROCEDURE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RQA_I08_PROCEDURE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PR1), true, false);
@@ -32,9 +35,10 @@ public class RQA_I08_PROCEDURE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PR1 (Procedures) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PR1 (Procedures) - creates it if necessary. </summary>
+    ///
+    /// <value> The pr 1. </value>
+
 	public PR1 PR1 { 
 get{
 	   PR1 ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RQA_I08_AUTHORIZATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RQA_I08_AUTHORIZATION (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The authorization. </value>
+
 	public RQA_I08_AUTHORIZATION AUTHORIZATION { 
 get{
 	   RQA_I08_AUTHORIZATION ret = null;

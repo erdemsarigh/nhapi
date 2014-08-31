@@ -7,37 +7,38 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 GP2 message segment. 
-/// This segment has the following fields:<ol>
-///<li>GP2-1: Revenue Code (IS)</li>
-///<li>GP2-2: Number of Service Units (NM)</li>
-///<li>GP2-3: Charge (CP)</li>
-///<li>GP2-4: Reimbursement Action Code (IS)</li>
-///<li>GP2-5: Denial or Rejection Code (IS)</li>
-///<li>GP2-6: OCE Edit Code (IS)</li>
-///<li>GP2-7: Ambulatory Payment Classification Code (CE)</li>
-///<li>GP2-8: Modifier Edit Code (IS)</li>
-///<li>GP2-9: Payment Adjustment Code (IS)</li>
-///<li>GP2-10: Packaging Status Code (IS)</li>
-///<li>GP2-11: Expected HCFA Payment Amount (CP)</li>
-///<li>GP2-12: Reimbursement Type Code (IS)</li>
-///<li>GP2-13: Co-Pay Amount (CP)</li>
-///<li>GP2-14: Pay Rate per Unit (NM)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 GP2 message segment. This segment has the following fields:<ol>
+/// <li>GP2-1: Revenue Code (IS)</li>
+/// <li>GP2-2: Number of Service Units (NM)</li>
+/// <li>GP2-3: Charge (CP)</li>
+/// <li>GP2-4: Reimbursement Action Code (IS)</li>
+/// <li>GP2-5: Denial or Rejection Code (IS)</li>
+/// <li>GP2-6: OCE Edit Code (IS)</li>
+/// <li>GP2-7: Ambulatory Payment Classification Code (CE)</li>
+/// <li>GP2-8: Modifier Edit Code (IS)</li>
+/// <li>GP2-9: Payment Adjustment Code (IS)</li>
+/// <li>GP2-10: Packaging Status Code (IS)</li>
+/// <li>GP2-11: Expected HCFA Payment Amount (CP)</li>
+/// <li>GP2-12: Reimbursement Type Code (IS)</li>
+/// <li>GP2-13: Co-Pay Amount (CP)</li>
+/// <li>GP2-14: Pay Rate per Unit (NM)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class GP2 : AbstractSegment  {
 
-  /**
-   * Creates a GP2 (Grouping/Reimbursement - Procedure Line Item) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the GP2 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public GP2(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -60,9 +61,10 @@ public class GP2 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Revenue Code(GP2-1).
-	///</summary>
+    /// <summary>   Returns Revenue Code(GP2-1). </summary>
+    ///
+    /// <value> The revenue code. </value>
+
 	public IS RevenueCode
 	{
 		get{
@@ -83,9 +85,10 @@ public class GP2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Number of Service Units(GP2-2).
-	///</summary>
+    /// <summary>   Returns Number of Service Units(GP2-2). </summary>
+    ///
+    /// <value> The total number of service units. </value>
+
 	public NM NumberOfServiceUnits
 	{
 		get{
@@ -106,9 +109,10 @@ public class GP2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Charge(GP2-3).
-	///</summary>
+    /// <summary>   Returns Charge(GP2-3). </summary>
+    ///
+    /// <value> The charge. </value>
+
 	public CP Charge
 	{
 		get{
@@ -129,9 +133,10 @@ public class GP2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Reimbursement Action Code(GP2-4).
-	///</summary>
+    /// <summary>   Returns Reimbursement Action Code(GP2-4). </summary>
+    ///
+    /// <value> The reimbursement action code. </value>
+
 	public IS ReimbursementActionCode
 	{
 		get{
@@ -152,9 +157,10 @@ public class GP2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Denial or Rejection Code(GP2-5).
-	///</summary>
+    /// <summary>   Returns Denial or Rejection Code(GP2-5). </summary>
+    ///
+    /// <value> The denial or rejection code. </value>
+
 	public IS DenialOrRejectionCode
 	{
 		get{
@@ -175,11 +181,17 @@ public class GP2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of OCE Edit Code(GP2-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of OCE Edit Code(GP2-6). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The oce edit code. </returns>
+
 	public IS GetOCEEditCode(int rep)
 	{
 			IS ret = null;
@@ -194,9 +206,12 @@ public class GP2 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of OCE Edit Code (GP2-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of OCE Edit Code (GP2-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetOCEEditCode() {
      IS[] ret = null;
     try {
@@ -215,9 +230,10 @@ public class GP2 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of OCE Edit Code (GP2-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of OCE Edit Code (GP2-6). </summary>
+  ///
+  /// <value>   The oce edit code repetitions used. </value>
+
   public int OCEEditCodeRepetitionsUsed
 {
 get{
@@ -233,9 +249,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Ambulatory Payment Classification Code(GP2-7).
-	///</summary>
+
+    /// <summary>   Returns Ambulatory Payment Classification Code(GP2-7). </summary>
+    ///
+    /// <value> The ambulatory payment classification code. </value>
+
 	public CE AmbulatoryPaymentClassificationCode
 	{
 		get{
@@ -256,11 +274,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Modifier Edit Code(GP2-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Modifier Edit Code(GP2-8). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The modifier edit code. </returns>
+
 	public IS GetModifierEditCode(int rep)
 	{
 			IS ret = null;
@@ -275,9 +299,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Modifier Edit Code (GP2-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of Modifier Edit Code (GP2-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetModifierEditCode() {
      IS[] ret = null;
     try {
@@ -296,9 +323,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Modifier Edit Code (GP2-8).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Modifier Edit Code (GP2-8). </summary>
+  ///
+  /// <value>   The modifier edit code repetitions used. </value>
+
   public int ModifierEditCodeRepetitionsUsed
 {
 get{
@@ -314,9 +342,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Payment Adjustment Code(GP2-9).
-	///</summary>
+
+    /// <summary>   Returns Payment Adjustment Code(GP2-9). </summary>
+    ///
+    /// <value> The payment adjustment code. </value>
+
 	public IS PaymentAdjustmentCode
 	{
 		get{
@@ -337,9 +367,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Packaging Status Code(GP2-10).
-	///</summary>
+    /// <summary>   Returns Packaging Status Code(GP2-10). </summary>
+    ///
+    /// <value> The packaging status code. </value>
+
 	public IS PackagingStatusCode
 	{
 		get{
@@ -360,9 +391,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Expected HCFA Payment Amount(GP2-11).
-	///</summary>
+    /// <summary>   Returns Expected HCFA Payment Amount(GP2-11). </summary>
+    ///
+    /// <value> The expected hcfa payment amount. </value>
+
 	public CP ExpectedHCFAPaymentAmount
 	{
 		get{
@@ -383,9 +415,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Reimbursement Type Code(GP2-12).
-	///</summary>
+    /// <summary>   Returns Reimbursement Type Code(GP2-12). </summary>
+    ///
+    /// <value> The reimbursement type code. </value>
+
 	public IS ReimbursementTypeCode
 	{
 		get{
@@ -406,9 +439,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Co-Pay Amount(GP2-13).
-	///</summary>
+    /// <summary>   Returns Co-Pay Amount(GP2-13). </summary>
+    ///
+    /// <value> The co pay amount. </value>
+
 	public CP CoPayAmount
 	{
 		get{
@@ -429,9 +463,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Pay Rate per Unit(GP2-14).
-	///</summary>
+    /// <summary>   Returns Pay Rate per Unit(GP2-14). </summary>
+    ///
+    /// <value> The pay rate per unit. </value>
+
 	public NM PayRatePerUnit
 	{
 		get{

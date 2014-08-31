@@ -7,31 +7,32 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 DB1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>DB1-1: Set ID - DB1 (SI)</li>
-///<li>DB1-2: Disabled Person Code (IS)</li>
-///<li>DB1-3: Disabled Person Identifier (CX)</li>
-///<li>DB1-4: Disabled Indicator (ID)</li>
-///<li>DB1-5: Disability Start Date (DT)</li>
-///<li>DB1-6: Disability End Date (DT)</li>
-///<li>DB1-7: Disability Return to Work Date (DT)</li>
-///<li>DB1-8: Disability Unable to Work Date (DT)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 DB1 message segment. This segment has the following fields:<ol>
+/// <li>DB1-1: Set ID - DB1 (SI)</li>
+/// <li>DB1-2: Disabled Person Code (IS)</li>
+/// <li>DB1-3: Disabled Person Identifier (CX)</li>
+/// <li>DB1-4: Disabled Indicator (ID)</li>
+/// <li>DB1-5: Disability Start Date (DT)</li>
+/// <li>DB1-6: Disability End Date (DT)</li>
+/// <li>DB1-7: Disability Return to Work Date (DT)</li>
+/// <li>DB1-8: Disability Unable to Work Date (DT)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class DB1 : AbstractSegment  {
 
-  /**
-   * Creates a DB1 (DB1 - Disability segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the DB1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public DB1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -48,9 +49,10 @@ public class DB1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - DB1(DB1-1).
-	///</summary>
+    /// <summary>   Returns Set ID - DB1(DB1-1). </summary>
+    ///
+    /// <value> The set iddb 1. </value>
+
 	public SI SetIDDB1
 	{
 		get{
@@ -71,9 +73,10 @@ public class DB1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Disabled Person Code(DB1-2).
-	///</summary>
+    /// <summary>   Returns Disabled Person Code(DB1-2). </summary>
+    ///
+    /// <value> The disabled person code. </value>
+
 	public IS DisabledPersonCode
 	{
 		get{
@@ -94,11 +97,17 @@ public class DB1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Disabled Person Identifier(DB1-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Disabled Person Identifier(DB1-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The disabled person identifier. </returns>
+
 	public CX GetDisabledPersonIdentifier(int rep)
 	{
 			CX ret = null;
@@ -113,9 +122,12 @@ public class DB1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Disabled Person Identifier (DB1-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Disabled Person Identifier (DB1-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of cx. </returns>
+
   public CX[] GetDisabledPersonIdentifier() {
      CX[] ret = null;
     try {
@@ -134,9 +146,10 @@ public class DB1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Disabled Person Identifier (DB1-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Disabled Person Identifier (DB1-3). </summary>
+  ///
+  /// <value>   The disabled person identifier repetitions used. </value>
+
   public int DisabledPersonIdentifierRepetitionsUsed
 {
 get{
@@ -152,9 +165,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Disabled Indicator(DB1-4).
-	///</summary>
+
+    /// <summary>   Returns Disabled Indicator(DB1-4). </summary>
+    ///
+    /// <value> The disabled indicator. </value>
+
 	public ID DisabledIndicator
 	{
 		get{
@@ -175,9 +190,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Disability Start Date(DB1-5).
-	///</summary>
+    /// <summary>   Returns Disability Start Date(DB1-5). </summary>
+    ///
+    /// <value> The disability start date. </value>
+
 	public DT DisabilityStartDate
 	{
 		get{
@@ -198,9 +214,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Disability End Date(DB1-6).
-	///</summary>
+    /// <summary>   Returns Disability End Date(DB1-6). </summary>
+    ///
+    /// <value> The disability end date. </value>
+
 	public DT DisabilityEndDate
 	{
 		get{
@@ -221,9 +238,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Disability Return to Work Date(DB1-7).
-	///</summary>
+    /// <summary>   Returns Disability Return to Work Date(DB1-7). </summary>
+    ///
+    /// <value> The disability return to work date. </value>
+
 	public DT DisabilityReturnToWorkDate
 	{
 		get{
@@ -244,9 +262,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Disability Unable to Work Date(DB1-8).
-	///</summary>
+    /// <summary>   Returns Disability Unable to Work Date(DB1-8). </summary>
+    ///
+    /// <value> The disability unable to work date. </value>
+
 	public DT DisabilityUnableToWorkDate
 	{
 		get{

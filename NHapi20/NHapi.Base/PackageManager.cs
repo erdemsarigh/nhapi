@@ -4,25 +4,33 @@ namespace NHapi.Base
 
     using NHapi.Base.Model.Configuration;
 
+    /// <summary>   Manager for packages. </summary>
     internal class PackageManager
     {
         #region Static Fields
 
+        /// <summary>   The instance. </summary>
         private static readonly PackageManager _instance = new PackageManager();
 
         #endregion
 
         #region Fields
 
+        /// <summary>   The packages. </summary>
         private List<Hl7Package> _packages = new List<Hl7Package>();
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the PackageManager class. </summary>
         static PackageManager()
         {
         }
+
+        /// <summary>
+        /// Prevents a default instance of the PackageManager class from being created.
+        /// </summary>
 
         private PackageManager()
         {
@@ -33,6 +41,10 @@ namespace NHapi.Base
         #endregion
 
         #region Public Properties
+
+        /// <summary>   Gets the instance. </summary>
+        ///
+        /// <value> The instance. </value>
 
         public static PackageManager Instance
         {
@@ -46,11 +58,16 @@ namespace NHapi.Base
 
         #region Public Methods and Operators
 
-        /// <summary> Returns the package name for model elements of the given version - e.g.
-        /// "NHapi.Base.Model.v24.".  This method
-        /// is identical to <code>getVersionPackagePath(...)</code> except that path
-        /// separators are replaced with dots.
+        /// <summary>
+        /// Returns the package name for model elements of the given version - e.g.
+        /// "NHapi.Base.Model.v24.".  This method is identical to <code>getVersionPackagePath(...)</code>
+        /// except that path separators are replaced with dots.
         /// </summary>
+        ///
+        /// <param name="ver">  The version. </param>
+        ///
+        /// <returns>   The version package name. </returns>
+
         public static System.String GetVersionPackageName(System.String ver)
         {
             System.String path = GetVersionPackagePath(ver);
@@ -59,11 +76,17 @@ namespace NHapi.Base
             return packg;
         }
 
-        /// <summary> Returns the path to the base package for model elements of the given version
+        /// <summary>
+        /// Returns the path to the base package for model elements of the given version
         /// - e.g. "NHapi.Model.VXXX".
-        /// This package should have the packages datatype, segment, group, and message
-        /// under it. The path ends in with a slash.
+        /// This package should have the packages datatype, segment, group, and message under it. The
+        /// path ends in with a slash.
         /// </summary>
+        ///
+        /// <param name="ver">  The version. </param>
+        ///
+        /// <returns>   The version package path. </returns>
+
         public static System.String GetVersionPackagePath(System.String ver)
         {
             System.Text.StringBuilder path = new System.Text.StringBuilder("NHapi.Model.V");
@@ -80,10 +103,20 @@ namespace NHapi.Base
             return path.ToString();
         }
 
+        /// <summary>   Gets all packages. </summary>
+        ///
+        /// <returns>   all packages. </returns>
+
         public IList<Hl7Package> GetAllPackages()
         {
             return this._packages;
         }
+
+        /// <summary>   Query if 'version' is valid version. </summary>
+        ///
+        /// <param name="version">  The version. </param>
+        ///
+        /// <returns>   true if valid version, false if not. </returns>
 
         public bool IsValidVersion(string version)
         {
@@ -102,6 +135,7 @@ namespace NHapi.Base
 
         #region Methods
 
+        /// <summary>   Loads additional versions. </summary>
         private void LoadAdditionalVersions()
         {
             HL7PackageConfigurationSection configSection =
@@ -116,6 +150,7 @@ namespace NHapi.Base
             }
         }
 
+        /// <summary>   Loads base versions. </summary>
         private void LoadBaseVersions()
         {
             string[] versions = { "2.2", "2.3", "2.3.1", "2.4", "2.5", "2.5.1" };

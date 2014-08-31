@@ -7,31 +7,32 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 QRF message segment. 
-/// This segment has the following fields:<ol>
-///<li>QRF-1: Where Subject Filter (ST)</li>
-///<li>QRF-2: When data start date / time (TS)</li>
-///<li>QRF-3: When data end date / time (TS)</li>
-///<li>QRF-4: What User Qualifier (ST)</li>
-///<li>QRF-5: Other QRY Subject Filter (ST)</li>
-///<li>QRF-6: Which date / time qualifier (ID)</li>
-///<li>QRF-7: Which date / time status qualifier (ID)</li>
-///<li>QRF-8: Date / time selection qualifier (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 QRF message segment. This segment has the following fields:<ol>
+/// <li>QRF-1: Where Subject Filter (ST)</li>
+/// <li>QRF-2: When data start date / time (TS)</li>
+/// <li>QRF-3: When data end date / time (TS)</li>
+/// <li>QRF-4: What User Qualifier (ST)</li>
+/// <li>QRF-5: Other QRY Subject Filter (ST)</li>
+/// <li>QRF-6: Which date / time qualifier (ID)</li>
+/// <li>QRF-7: Which date / time status qualifier (ID)</li>
+/// <li>QRF-8: Date / time selection qualifier (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class QRF : AbstractSegment  {
 
-  /**
-   * Creates a QRF (QUERY FILTER) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the QRF class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public QRF(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -48,11 +49,17 @@ public class QRF : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns a single repetition of Where Subject Filter(QRF-1).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Where Subject Filter(QRF-1). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The where subject filter. </returns>
+
 	public ST GetWhereSubjectFilter(int rep)
 	{
 			ST ret = null;
@@ -67,9 +74,12 @@ public class QRF : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Where Subject Filter (QRF-1).
-   ///</summary>
+  /// <summary> Returns all repetitions of Where Subject Filter (QRF-1). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetWhereSubjectFilter() {
      ST[] ret = null;
     try {
@@ -88,9 +98,10 @@ public class QRF : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Where Subject Filter (QRF-1).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Where Subject Filter (QRF-1). </summary>
+  ///
+  /// <value>   The where subject filter repetitions used. </value>
+
   public int WhereSubjectFilterRepetitionsUsed
 {
 get{
@@ -106,9 +117,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns When data start date / time(QRF-2).
-	///</summary>
+
+    /// <summary>   Returns When data start date / time(QRF-2). </summary>
+    ///
+    /// <value> The when data start date time. </value>
+
 	public TS WhenDataStartDateTime
 	{
 		get{
@@ -129,9 +142,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns When data end date / time(QRF-3).
-	///</summary>
+    /// <summary>   Returns When data end date / time(QRF-3). </summary>
+    ///
+    /// <value> The when data end date time. </value>
+
 	public TS WhenDataEndDateTime
 	{
 		get{
@@ -152,11 +166,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of What User Qualifier(QRF-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of What User Qualifier(QRF-4). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The what user qualifier. </returns>
+
 	public ST GetWhatUserQualifier(int rep)
 	{
 			ST ret = null;
@@ -171,9 +191,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of What User Qualifier (QRF-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of What User Qualifier (QRF-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetWhatUserQualifier() {
      ST[] ret = null;
     try {
@@ -192,9 +215,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of What User Qualifier (QRF-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of What User Qualifier (QRF-4). </summary>
+  ///
+  /// <value>   The what user qualifier repetitions used. </value>
+
   public int WhatUserQualifierRepetitionsUsed
 {
 get{
@@ -210,11 +234,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Other QRY Subject Filter(QRF-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Other QRY Subject Filter(QRF-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The other query subject filter. </returns>
+
 	public ST GetOtherQRYSubjectFilter(int rep)
 	{
 			ST ret = null;
@@ -229,9 +260,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Other QRY Subject Filter (QRF-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Other QRY Subject Filter (QRF-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetOtherQRYSubjectFilter() {
      ST[] ret = null;
     try {
@@ -250,9 +284,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Other QRY Subject Filter (QRF-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Other QRY Subject Filter (QRF-5). </summary>
+  ///
+  /// <value>   The other query subject filter repetitions used. </value>
+
   public int OtherQRYSubjectFilterRepetitionsUsed
 {
 get{
@@ -268,11 +303,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Which date / time qualifier(QRF-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Which date / time qualifier(QRF-6). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The which date time qualifier. </returns>
+
 	public ID GetWhichDateTimeQualifier(int rep)
 	{
 			ID ret = null;
@@ -287,9 +329,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Which date / time qualifier (QRF-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of Which date / time qualifier (QRF-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetWhichDateTimeQualifier() {
      ID[] ret = null;
     try {
@@ -308,9 +353,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Which date / time qualifier (QRF-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Which date / time qualifier (QRF-6). </summary>
+  ///
+  /// <value>   The which date time qualifier repetitions used. </value>
+
   public int WhichDateTimeQualifierRepetitionsUsed
 {
 get{
@@ -326,11 +372,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Which date / time status qualifier(QRF-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Which date / time status qualifier(QRF-7). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The which date time status qualifier. </returns>
+
 	public ID GetWhichDateTimeStatusQualifier(int rep)
 	{
 			ID ret = null;
@@ -345,9 +398,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Which date / time status qualifier (QRF-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Which date / time status qualifier (QRF-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetWhichDateTimeStatusQualifier() {
      ID[] ret = null;
     try {
@@ -366,9 +422,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Which date / time status qualifier (QRF-7).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The which date time status qualifier repetitions used. </value>
+
   public int WhichDateTimeStatusQualifierRepetitionsUsed
 {
 get{
@@ -384,11 +443,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Date / time selection qualifier(QRF-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Date / time selection qualifier(QRF-8). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The date time selection qualifier. </returns>
+
 	public ID GetDateTimeSelectionQualifier(int rep)
 	{
 			ID ret = null;
@@ -403,9 +469,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Date / time selection qualifier (QRF-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of Date / time selection qualifier (QRF-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetDateTimeSelectionQualifier() {
      ID[] ret = null;
     try {
@@ -424,9 +493,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Date / time selection qualifier (QRF-8).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Date / time selection qualifier (QRF-8). </summary>
+  ///
+  /// <value>   The date time selection qualifier repetitions used. </value>
+
   public int DateTimeSelectionQualifierRepetitionsUsed
 {
 get{

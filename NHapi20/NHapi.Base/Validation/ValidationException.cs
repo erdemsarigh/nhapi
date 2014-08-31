@@ -23,31 +23,36 @@ namespace NHapi.Base.validation
 {
     using System;
 
-    /// <summary> A failure to validate against a rule.  </summary>
-    /// <author>  Bryan Tripp
-    /// </author>
+    /// <summary>   A failure to validate against a rule. </summary>
     [Serializable]
     public class ValidationException : System.Exception
     {
         #region Constructors and Destructors
 
-        /// <summary> Creates a new instance of <code>ValidationException</code> without detail message.</summary>
+        /// <summary>
+        /// Creates a new instance of <code>ValidationException</code> without detail message.
+        /// </summary>
+
         public ValidationException()
         {
         }
 
-        /// <param name="message">
-        /// </param>
-        /// <param name="cause">
-        /// </param>
+        /// <summary>   Initializes a new instance of the ValidationException class. </summary>
+        ///
+        /// <param name="message">  . </param>
+        /// <param name="cause">    . </param>
+
         public ValidationException(System.String message, System.Exception cause)
             : base(message, cause)
         {
         }
 
-        /// <summary> Constructs an instance of <code>ValidationException</code> with the specified detail message.</summary>
-        /// <param name="msg">the detail message.
-        /// </param>
+        /// <summary>
+        /// Constructs an instance of <code>ValidationException</code> with the specified detail message.
+        /// </summary>
+        ///
+        /// <param name="msg">  the detail message. </param>
+
         public ValidationException(System.String msg)
             : base(msg)
         {

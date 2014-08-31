@@ -21,39 +21,37 @@
 
 namespace NHapi.Base.validation.impl
 {
-    /// <summary> An association between a type of item to be validated (eg a datatype or 
-    /// message) and a validation <code>Rule</code>.  
-    /// 
+    /// <summary>
+    /// An association between a type of item to be validated (eg a datatype or message) and a
+    /// validation <code>Rule</code>.  
     /// </summary>
-    /// <author>  <a href="mailto:bryan.tripp@uhn.on.ca">Bryan Tripp</a>
-    /// </author>
-    /// <version>  $Revision: 1.3 $ updated on $Date: 2005/06/14 20:16:01 $ by $Author: bryan_tripp $
-    /// </version>
+
     public class RuleBinding
     {
         #region Fields
 
+        /// <summary>   true to my active flag. </summary>
         private bool myActiveFlag;
 
+        /// <summary>   my rule. </summary>
         private IRule myRule;
 
+        /// <summary>   my scope. </summary>
         private System.String myScope;
 
+        /// <summary>   my version. </summary>
         private System.String myVersion;
 
         #endregion
 
         #region Constructors and Destructors
 
-        /// <summary> Active by default.  
-        /// 
-        /// </summary>
-        /// <param name="theVersion">see {@link #getVersion()}
-        /// </param>
-        /// <param name="theScope">see {@link #getScope()}
-        /// </param>
-        /// <param name="theRule">see {@link #getRule()}
-        /// </param>
+        /// <summary>   Active by default.   </summary>
+        ///
+        /// <param name="theVersion">   see {@link #getVersion()} </param>
+        /// <param name="theScope">     see {@link #getScope()} </param>
+        /// <param name="theRule">      see {@link #getRule()} </param>
+
         public RuleBinding(System.String theVersion, System.String theScope, IRule theRule)
         {
             this.myActiveFlag = true;
@@ -66,10 +64,12 @@ namespace NHapi.Base.validation.impl
 
         #region Public Properties
 
-        /// <returns> true if the binding is currently active
-        /// </returns>
-        /// <param name="isActive">true if the binding is currently active
-        /// </param>
+        /// <summary>   Gets or sets a value indicating whether the active. </summary>
+        ///
+        /// <value> true if the binding is currently active. </value>
+        ///
+        /// ### <param name="isActive"> true if the binding is currently active. </param>
+
         public virtual bool Active
         {
             get
@@ -83,8 +83,10 @@ namespace NHapi.Base.validation.impl
             }
         }
 
-        /// <returns> a <code>Rule</code> that applies to the associated version and scope
-        /// </returns>
+        /// <summary>   Gets the rule. </summary>
+        ///
+        /// <value> a <code>Rule</code> that applies to the associated version and scope. </value>
+
         public virtual IRule Rule
         {
             get
@@ -93,11 +95,15 @@ namespace NHapi.Base.validation.impl
             }
         }
 
-        /// <returns> the scope of item types to which the rule applies.  For <code>MessageRule</code>s
-        /// this is the message type and trigger event, separated by a ^ (either value may be *, meaning 
-        /// any).  For <code>PrimitiveTypeRule</code>s this is the datatype name (* means any).  For 
-        /// <code>EncodingRule</code>s this is the encoding name (again, * means any).   
-        /// </returns>
+        /// <summary>   Gets the scope. </summary>
+        ///
+        /// <value>
+        /// the scope of item types to which the rule applies.  For <code>MessageRule</code>s this is the
+        /// message type and trigger event, separated by a ^ (either value may be *, meaning any).  For
+        /// <code>PrimitiveTypeRule</code>s this is the datatype name (* means any).  For
+        /// <code>EncodingRule</code>s this is the encoding name (again, * means any).
+        /// </value>
+
         public virtual System.String Scope
         {
             get
@@ -106,8 +112,10 @@ namespace NHapi.Base.validation.impl
             }
         }
 
-        /// <returns> the version to which the binding applies (* means all versions)
-        /// </returns>
+        /// <summary>   Gets the version. </summary>
+        ///
+        /// <value> the version to which the binding applies (* means all versions) </value>
+
         public virtual System.String Version
         {
             get
@@ -120,19 +128,27 @@ namespace NHapi.Base.validation.impl
 
         #region Public Methods and Operators
 
-        /// <param name="theType">an item description to be checked against getScope()  
-        /// </param>
-        /// <returns> true if the given type is within scope, ie if it matches getScope() or getScope() is * 
+        /// <summary>   Applies to scope. </summary>
+        ///
+        /// <param name="theType">  an item description to be checked against getScope()  </param>
+        ///
+        /// <returns>
+        /// true if the given type is within scope, ie if it matches getScope() or getScope() is *.
         /// </returns>
+
         public virtual bool appliesToScope(System.String theType)
         {
             return this.applies(this.Scope, theType);
         }
 
-        /// <param name="theVersion">an HL7 version
-        /// </param>
-        /// <returns> true if this binding applies to the given version (ie getVersion() matches or is *)  
+        /// <summary>   Applies to version. </summary>
+        ///
+        /// <param name="theVersion">   an HL7 version. </param>
+        ///
+        /// <returns>
+        /// true if this binding applies to the given version (ie getVersion() matches or is *)  
         /// </returns>
+
         public virtual bool appliesToVersion(System.String theVersion)
         {
             return this.applies(this.Version, theVersion);
@@ -142,15 +158,13 @@ namespace NHapi.Base.validation.impl
 
         #region Methods
 
-        /// <summary> An abstraction of appliesToVersion() and appliesToScope(). 
-        /// 
-        /// </summary>
-        /// <param name="theBindingData">
-        /// </param>
-        /// <param name="theItemData">
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary>   An abstraction of appliesToVersion() and appliesToScope(). </summary>
+        ///
+        /// <param name="theBindingData">   . </param>
+        /// <param name="theItemData">      . </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         protected internal virtual bool applies(System.String theBindingData, System.String theItemData)
         {
             bool applies = false;

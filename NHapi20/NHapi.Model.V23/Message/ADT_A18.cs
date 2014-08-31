@@ -9,38 +9,41 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V23.Message
 
 {
-///<summary>
-/// Represents a ADT_A18 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a ADT_A18 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message header segment) </li>
-///<li>1: EVN (Event type) </li>
-///<li>2: PID (Patient Identification) </li>
-///<li>3: PD1 (Patient Demographic) optional </li>
-///<li>4: MRG (Merge patient information) optional </li>
-///<li>5: PV1 (Patient visit) </li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message header segment) </li>
+/// <li>1: EVN (Event type) </li>
+/// <li>2: PID (Patient Identification) </li>
+/// <li>3: PD1 (Patient Demographic) optional </li>
+/// <li>4: MRG (Merge patient information) optional </li>
+/// <li>5: PV1 (Patient visit) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ADT_A18 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new ADT_A18 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new ADT_A18 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public ADT_A18(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new ADT_A18 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new ADT_A18 Group with DefaultModelClassFactory. </summary>
 	public ADT_A18() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for ADT_A18.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for ADT_A18.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -54,6 +57,13 @@ public class ADT_A18 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -61,9 +71,11 @@ public class ADT_A18 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -77,9 +89,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns EVN (Event type) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns EVN (Event type) - creates it if necessary. </summary>
+    ///
+    /// <value> The evn. </value>
+
 	public EVN EVN { 
 get{
 	   EVN ret = null;
@@ -93,9 +106,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PID (Patient Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -109,9 +123,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (Patient Demographic) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PD1 (Patient Demographic) - creates it if necessary. </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;
@@ -125,9 +140,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MRG (Merge patient information) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MRG (Merge patient information) - creates it if necessary. </summary>
+    ///
+    /// <value> The mrg. </value>
+
 	public MRG MRG { 
 get{
 	   MRG ret = null;
@@ -141,9 +157,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV1 (Patient visit) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PV1 (Patient visit) - creates it if necessary. </summary>
+    ///
+    /// <value> The pv 1. </value>
+
 	public PV1 PV1 { 
 get{
 	   PV1 ret = null;

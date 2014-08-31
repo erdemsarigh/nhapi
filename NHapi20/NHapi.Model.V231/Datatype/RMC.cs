@@ -6,29 +6,30 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V231.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 RMC (Room Coverage) data type.  Consists of the following components: </p><ol>
 /// <li>room type (IS)</li>
 /// <li>amount type (IS)</li>
 /// <li>coverage amount (NM)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class RMC : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a RMC.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a RMC. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public RMC(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a RMC.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a RMC. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public RMC(IMessage message, string description) : base(message, description){
 		data = new IType[3];
 		data[0] = new IS(message, 0,"Room type");
@@ -36,9 +37,10 @@ public class RMC : AbstractType, IComposite{
 		data[2] = new NM(message,"Coverage amount");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -46,12 +48,15 @@ public class RMC : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -62,10 +67,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns room type (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns room type (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the room. </value>
+
 	public IS RoomType {
 get{
 	   IS ret = null;
@@ -79,10 +88,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns amount type (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns amount type (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the amount. </value>
+
 	public IS AmountType {
 get{
 	   IS ret = null;
@@ -96,10 +109,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns coverage amount (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns coverage amount (component #2).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The coverage amount. </value>
+
 	public NM CoverageAmount {
 get{
 	   NM ret = null;

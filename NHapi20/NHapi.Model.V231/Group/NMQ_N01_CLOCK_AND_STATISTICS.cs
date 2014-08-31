@@ -8,22 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the NMQ_N01_CLOCK_AND_STATISTICS Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: NCK (System Clock) optional </li>
-///<li>1: NST (Application control level statistics) optional </li>
-///<li>2: NSC (Application status change) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the NMQ_N01_CLOCK_AND_STATISTICS Group.  A Group is an ordered collection of
+/// message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: NCK (System Clock) optional </li>
+/// <li>1: NST (Application control level statistics) optional </li>
+/// <li>2: NSC (Application status change) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class NMQ_N01_CLOCK_AND_STATISTICS : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new NMQ_N01_CLOCK_AND_STATISTICS Group.
-	///</summary>
+    /// <summary>   Creates a new NMQ_N01_CLOCK_AND_STATISTICS Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public NMQ_N01_CLOCK_AND_STATISTICS(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(NCK), false, false);
@@ -34,9 +38,10 @@ public class NMQ_N01_CLOCK_AND_STATISTICS : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns NCK (System Clock) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns NCK (System Clock) - creates it if necessary. </summary>
+    ///
+    /// <value> The nck. </value>
+
 	public NCK NCK { 
 get{
 	   NCK ret = null;
@@ -50,9 +55,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns NST (Application control level statistics) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns NST (Application control level statistics) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The nst. </value>
+
 	public NST NST { 
 get{
 	   NST ret = null;
@@ -66,9 +74,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns NSC (Application status change) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns NSC (Application status change) - creates it if necessary. </summary>
+    ///
+    /// <value> The nsc. </value>
+
 	public NSC NSC { 
 get{
 	   NSC ret = null;

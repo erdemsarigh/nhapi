@@ -8,26 +8,29 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the RDE_O01_PATIENT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PID (Patient Identification) </li>
-///<li>1: PD1 (Patient Demographic) optional </li>
-///<li>2: NTE (Notes and comments segment) optional repeating</li>
-///<li>3: RDE_O01_PATIENT_VISIT (a Group object) optional </li>
-///<li>4: RDE_O01_INSURANCE (a Group object) optional repeating</li>
-///<li>5: GT1 (Guarantor) optional </li>
-///<li>6: AL1 (Patient allergy information) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RDE_O01_PATIENT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PID (Patient Identification) </li>
+/// <li>1: PD1 (Patient Demographic) optional </li>
+/// <li>2: NTE (Notes and comments segment) optional repeating</li>
+/// <li>3: RDE_O01_PATIENT_VISIT (a Group object) optional </li>
+/// <li>4: RDE_O01_INSURANCE (a Group object) optional repeating</li>
+/// <li>5: GT1 (Guarantor) optional </li>
+/// <li>6: AL1 (Patient allergy information) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RDE_O01_PATIENT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RDE_O01_PATIENT Group.
-	///</summary>
+    /// <summary>   Creates a new RDE_O01_PATIENT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RDE_O01_PATIENT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PID), true, false);
@@ -42,9 +45,10 @@ public class RDE_O01_PATIENT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PID (Patient Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -58,9 +62,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (Patient Demographic) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PD1 (Patient Demographic) - creates it if necessary. </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;
@@ -74,9 +79,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -88,19 +98,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -115,9 +131,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns RDE_O01_PATIENT_VISIT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RDE_O01_PATIENT_VISIT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient visit. </value>
+
 	public RDE_O01_PATIENT_VISIT PATIENT_VISIT { 
 get{
 	   RDE_O01_PATIENT_VISIT ret = null;
@@ -131,9 +148,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RDE_O01_INSURANCE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RDE_O01_INSURANCE (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The insurance. </returns>
+
 	public RDE_O01_INSURANCE GetINSURANCE() {
 	   RDE_O01_INSURANCE ret = null;
 	   try {
@@ -145,19 +167,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RDE_O01_INSURANCE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RDE_O01_INSURANCE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The insurance. </returns>
+
 	public RDE_O01_INSURANCE GetINSURANCE(int rep) { 
 	   return (RDE_O01_INSURANCE)this.GetStructure("INSURANCE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RDE_O01_INSURANCE 
-	 */ 
+    /// <summary>   Gets the insurance repetitions used. </summary>
+    ///
+    /// <value> The insurance repetitions used. </value>
+
 	public int INSURANCERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -172,9 +200,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns GT1 (Guarantor) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns GT1 (Guarantor) - creates it if necessary. </summary>
+    ///
+    /// <value> The gt 1. </value>
+
 	public GT1 GT1 { 
 get{
 	   GT1 ret = null;
@@ -188,9 +217,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of AL1 (Patient allergy information) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of AL1 (Patient allergy information) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   a l 1. </returns>
+
 	public AL1 GetAL1() {
 	   AL1 ret = null;
 	   try {
@@ -202,19 +236,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of AL1
-	/// * (Patient allergy information) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of AL1
+    ///  * (Patient allergy information) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   a l 1. </returns>
+
 	public AL1 GetAL1(int rep) { 
 	   return (AL1)this.GetStructure("AL1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of AL1 
-	 */ 
+    /// <summary>   Gets the al 1 repetitions used. </summary>
+    ///
+    /// <value> The al 1 repetitions used. </value>
+
 	public int AL1RepetitionsUsed { 
 get{
 	    int reps = -1; 

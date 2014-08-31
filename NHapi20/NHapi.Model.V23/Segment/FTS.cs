@@ -7,25 +7,26 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 FTS message segment. 
-/// This segment has the following fields:<ol>
-///<li>FTS-1: File Batch Count (NM)</li>
-///<li>FTS-2: File Trailer Comment (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 FTS message segment. This segment has the following fields:<ol>
+/// <li>FTS-1: File Batch Count (NM)</li>
+/// <li>FTS-2: File Trailer Comment (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class FTS : AbstractSegment  {
 
-  /**
-   * Creates a FTS (File trailer segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the FTS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public FTS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -36,9 +37,10 @@ public class FTS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns File Batch Count(FTS-1).
-	///</summary>
+    /// <summary>   Returns File Batch Count(FTS-1). </summary>
+    ///
+    /// <value> The number of file batches. </value>
+
 	public NM FileBatchCount
 	{
 		get{
@@ -59,9 +61,10 @@ public class FTS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns File Trailer Comment(FTS-2).
-	///</summary>
+    /// <summary>   Returns File Trailer Comment(FTS-2). </summary>
+    ///
+    /// <value> The file trailer comment. </value>
+
 	public ST FileTrailerComment
 	{
 		get{

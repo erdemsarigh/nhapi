@@ -7,33 +7,34 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 OM2 message segment. 
-/// This segment has the following fields:<ol>
-///<li>OM2-1: Sequence Number - Test/Observation Master File (NM)</li>
-///<li>OM2-2: Units of Measure (CE)</li>
-///<li>OM2-3: Range of Decimal Precision (NM)</li>
-///<li>OM2-4: Corresponding SI Units of Measure (CE)</li>
-///<li>OM2-5: SI Conversion Factor (TX)</li>
-///<li>OM2-6: Reference (Normal) Range - Ordinal and Continuous Obs (RFR)</li>
-///<li>OM2-7: Critical Range for Ordinal and Continuous Obs (NR)</li>
-///<li>OM2-8: Absolute Range for Ordinal and Continuous Obs (RFR)</li>
-///<li>OM2-9: Delta Check Criteria (DLT)</li>
-///<li>OM2-10: Minimum Meaningful Increments (NM)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 OM2 message segment. This segment has the following fields:<ol>
+/// <li>OM2-1: Sequence Number - Test/Observation Master File (NM)</li>
+/// <li>OM2-2: Units of Measure (CE)</li>
+/// <li>OM2-3: Range of Decimal Precision (NM)</li>
+/// <li>OM2-4: Corresponding SI Units of Measure (CE)</li>
+/// <li>OM2-5: SI Conversion Factor (TX)</li>
+/// <li>OM2-6: Reference (Normal) Range - Ordinal and Continuous Obs (RFR)</li>
+/// <li>OM2-7: Critical Range for Ordinal and Continuous Obs (NR)</li>
+/// <li>OM2-8: Absolute Range for Ordinal and Continuous Obs (RFR)</li>
+/// <li>OM2-9: Delta Check Criteria (DLT)</li>
+/// <li>OM2-10: Minimum Meaningful Increments (NM)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class OM2 : AbstractSegment  {
 
-  /**
-   * Creates a OM2 (OM2 - numeric observation segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the OM2 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OM2(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -52,9 +53,10 @@ public class OM2 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Sequence Number - Test/Observation Master File(OM2-1).
-	///</summary>
+    /// <summary>   Returns Sequence Number - Test/Observation Master File(OM2-1). </summary>
+    ///
+    /// <value> The sequence number test observation master file. </value>
+
 	public NM SequenceNumberTestObservationMasterFile
 	{
 		get{
@@ -75,9 +77,10 @@ public class OM2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Units of Measure(OM2-2).
-	///</summary>
+    /// <summary>   Returns Units of Measure(OM2-2). </summary>
+    ///
+    /// <value> The units of measure. </value>
+
 	public CE UnitsOfMeasure
 	{
 		get{
@@ -98,11 +101,17 @@ public class OM2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Range of Decimal Precision(OM2-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Range of Decimal Precision(OM2-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The range of decimal precision. </returns>
+
 	public NM GetRangeOfDecimalPrecision(int rep)
 	{
 			NM ret = null;
@@ -117,9 +126,12 @@ public class OM2 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Range of Decimal Precision (OM2-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Range of Decimal Precision (OM2-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of nm. </returns>
+
   public NM[] GetRangeOfDecimalPrecision() {
      NM[] ret = null;
     try {
@@ -138,9 +150,10 @@ public class OM2 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Range of Decimal Precision (OM2-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Range of Decimal Precision (OM2-3). </summary>
+  ///
+  /// <value>   The range of decimal precision repetitions used. </value>
+
   public int RangeOfDecimalPrecisionRepetitionsUsed
 {
 get{
@@ -156,9 +169,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Corresponding SI Units of Measure(OM2-4).
-	///</summary>
+
+    /// <summary>   Returns Corresponding SI Units of Measure(OM2-4). </summary>
+    ///
+    /// <value> The corresponding SI units of measure. </value>
+
 	public CE CorrespondingSIUnitsOfMeasure
 	{
 		get{
@@ -179,9 +194,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns SI Conversion Factor(OM2-5).
-	///</summary>
+    /// <summary>   Returns SI Conversion Factor(OM2-5). </summary>
+    ///
+    /// <value> The SI conversion factor. </value>
+
 	public TX SIConversionFactor
 	{
 		get{
@@ -202,9 +218,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Reference (Normal) Range - Ordinal and Continuous Obs(OM2-6).
-	///</summary>
+    /// <summary>   Returns Reference (Normal) Range - Ordinal and Continuous Obs(OM2-6). </summary>
+    ///
+    /// <value> The reference normal range ordinal continuous obs. </value>
+
 	public RFR ReferenceNormalRangeOrdinalContinuousObs
 	{
 		get{
@@ -225,9 +242,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Critical Range for Ordinal and Continuous Obs(OM2-7).
-	///</summary>
+    /// <summary>   Returns Critical Range for Ordinal and Continuous Obs(OM2-7). </summary>
+    ///
+    /// <value> The critical range for ordinal continuous obs. </value>
+
 	public NR CriticalRangeForOrdinalContinuousObs
 	{
 		get{
@@ -248,9 +266,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Absolute Range for Ordinal and Continuous Obs(OM2-8).
-	///</summary>
+    /// <summary>   Returns Absolute Range for Ordinal and Continuous Obs(OM2-8). </summary>
+    ///
+    /// <value> The absolute range for ordinal continuous obs. </value>
+
 	public RFR AbsoluteRangeForOrdinalContinuousObs
 	{
 		get{
@@ -271,11 +290,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Delta Check Criteria(OM2-9).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Delta Check Criteria(OM2-9). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The delta check criteria. </returns>
+
 	public DLT GetDeltaCheckCriteria(int rep)
 	{
 			DLT ret = null;
@@ -290,9 +315,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Delta Check Criteria (OM2-9).
-   ///</summary>
+  /// <summary> Returns all repetitions of Delta Check Criteria (OM2-9). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of dlt. </returns>
+
   public DLT[] GetDeltaCheckCriteria() {
      DLT[] ret = null;
     try {
@@ -311,9 +339,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Delta Check Criteria (OM2-9).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Delta Check Criteria (OM2-9). </summary>
+  ///
+  /// <value>   The delta check criteria repetitions used. </value>
+
   public int DeltaCheckCriteriaRepetitionsUsed
 {
 get{
@@ -329,9 +358,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Minimum Meaningful Increments(OM2-10).
-	///</summary>
+
+    /// <summary>   Returns Minimum Meaningful Increments(OM2-10). </summary>
+    ///
+    /// <value> The minimum meaningful increments. </value>
+
 	public NM MinimumMeaningfulIncrements
 	{
 		get{

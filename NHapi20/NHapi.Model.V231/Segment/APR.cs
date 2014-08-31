@@ -7,28 +7,29 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 APR message segment. 
-/// This segment has the following fields:<ol>
-///<li>APR-1: Time Selection Criteria (SCV)</li>
-///<li>APR-2: Resource Selection Criteria (SCV)</li>
-///<li>APR-3: Location Selection Criteria (SCV)</li>
-///<li>APR-4: Slot Spacing Criteria (NM)</li>
-///<li>APR-5: Filler Override Criteria (SCV)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 APR message segment. This segment has the following fields:<ol>
+/// <li>APR-1: Time Selection Criteria (SCV)</li>
+/// <li>APR-2: Resource Selection Criteria (SCV)</li>
+/// <li>APR-3: Location Selection Criteria (SCV)</li>
+/// <li>APR-4: Slot Spacing Criteria (NM)</li>
+/// <li>APR-5: Filler Override Criteria (SCV)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class APR : AbstractSegment  {
 
-  /**
-   * Creates a APR (APR - appointment preferences segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the APR class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public APR(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -42,11 +43,17 @@ public class APR : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns a single repetition of Time Selection Criteria(APR-1).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Time Selection Criteria(APR-1). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The time selection criteria. </returns>
+
 	public SCV GetTimeSelectionCriteria(int rep)
 	{
 			SCV ret = null;
@@ -61,9 +68,12 @@ public class APR : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Time Selection Criteria (APR-1).
-   ///</summary>
+  /// <summary> Returns all repetitions of Time Selection Criteria (APR-1). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of scv. </returns>
+
   public SCV[] GetTimeSelectionCriteria() {
      SCV[] ret = null;
     try {
@@ -82,9 +92,10 @@ public class APR : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Time Selection Criteria (APR-1).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Time Selection Criteria (APR-1). </summary>
+  ///
+  /// <value>   The time selection criteria repetitions used. </value>
+
   public int TimeSelectionCriteriaRepetitionsUsed
 {
 get{
@@ -100,11 +111,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Resource Selection Criteria(APR-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Resource Selection Criteria(APR-2). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The resource selection criteria. </returns>
+
 	public SCV GetResourceSelectionCriteria(int rep)
 	{
 			SCV ret = null;
@@ -119,9 +137,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Resource Selection Criteria (APR-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Resource Selection Criteria (APR-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of scv. </returns>
+
   public SCV[] GetResourceSelectionCriteria() {
      SCV[] ret = null;
     try {
@@ -140,9 +161,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Resource Selection Criteria (APR-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Resource Selection Criteria (APR-2). </summary>
+  ///
+  /// <value>   The resource selection criteria repetitions used. </value>
+
   public int ResourceSelectionCriteriaRepetitionsUsed
 {
 get{
@@ -158,11 +180,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Location Selection Criteria(APR-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Location Selection Criteria(APR-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The location selection criteria. </returns>
+
 	public SCV GetLocationSelectionCriteria(int rep)
 	{
 			SCV ret = null;
@@ -177,9 +206,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Location Selection Criteria (APR-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Location Selection Criteria (APR-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of scv. </returns>
+
   public SCV[] GetLocationSelectionCriteria() {
      SCV[] ret = null;
     try {
@@ -198,9 +230,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Location Selection Criteria (APR-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Location Selection Criteria (APR-3). </summary>
+  ///
+  /// <value>   The location selection criteria repetitions used. </value>
+
   public int LocationSelectionCriteriaRepetitionsUsed
 {
 get{
@@ -216,9 +249,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Slot Spacing Criteria(APR-4).
-	///</summary>
+
+    /// <summary>   Returns Slot Spacing Criteria(APR-4). </summary>
+    ///
+    /// <value> The slot spacing criteria. </value>
+
 	public NM SlotSpacingCriteria
 	{
 		get{
@@ -239,11 +274,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Filler Override Criteria(APR-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Filler Override Criteria(APR-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The filler override criteria. </returns>
+
 	public SCV GetFillerOverrideCriteria(int rep)
 	{
 			SCV ret = null;
@@ -258,9 +299,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Filler Override Criteria (APR-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Filler Override Criteria (APR-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of scv. </returns>
+
   public SCV[] GetFillerOverrideCriteria() {
      SCV[] ret = null;
     try {
@@ -279,9 +323,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Filler Override Criteria (APR-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Filler Override Criteria (APR-5). </summary>
+  ///
+  /// <value>   The filler override criteria repetitions used. </value>
+
   public int FillerOverrideCriteriaRepetitionsUsed
 {
 get{

@@ -6,8 +6,7 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V22.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 CM_RFR (reference range) data type.  Consists of the following components: </p><ol>
 /// <li>Reference Range (CM_RANGE)</li>
 /// <li>Sex (ID)</li>
@@ -17,22 +16,24 @@ namespace NHapi.Model.V22.Datatype
 /// <li>Race / Subspecies (ID)</li>
 /// <li>Text Condition (ST)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CM_RFR : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CM_RFR.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CM_RFR. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CM_RFR(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CM_RFR.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CM_RFR. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CM_RFR(IMessage message, string description) : base(message, description){
 		data = new IType[7];
 		data[0] = new CM_RANGE(message,"Reference Range");
@@ -44,9 +45,10 @@ public class CM_RFR : AbstractType, IComposite{
 		data[6] = new ST(message,"Text Condition");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -54,12 +56,15 @@ public class CM_RFR : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -70,10 +75,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Reference Range (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Reference Range (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The reference range. </value>
+
 	public CM_RANGE ReferenceRange {
 get{
 	   CM_RANGE ret = null;
@@ -87,10 +96,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Sex (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Sex (component #1).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The sex. </value>
+
 	public ID Sex {
 get{
 	   ID ret = null;
@@ -104,10 +117,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Age Range (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Age Range (component #2).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The age range. </value>
+
 	public CM_RANGE AgeRange {
 get{
 	   CM_RANGE ret = null;
@@ -121,10 +138,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Gestational Age Range (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Gestational Age Range (component #3).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The gestational age range. </value>
+
 	public CM_RANGE GestationalAgeRange {
 get{
 	   CM_RANGE ret = null;
@@ -138,10 +159,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Species (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Species (component #4).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The species. </value>
+
 	public ST Species {
 get{
 	   ST ret = null;
@@ -155,10 +180,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Race / Subspecies (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Race / Subspecies (component #5).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The race subspecies. </value>
+
 	public ID RaceSubspecies {
 get{
 	   ID ret = null;
@@ -172,10 +201,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Text Condition (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Text Condition (component #6).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The text condition. </value>
+
 	public ST TextCondition {
 get{
 	   ST ret = null;

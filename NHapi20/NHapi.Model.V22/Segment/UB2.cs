@@ -7,39 +7,40 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 UB2 message segment. 
-/// This segment has the following fields:<ol>
-///<li>UB2-1: Set ID - UB92 (SI)</li>
-///<li>UB2-2: Co-insurance days (9) (ST)</li>
-///<li>UB2-3: Condition code (24-30) (ID)</li>
-///<li>UB2-4: Covered days (7) (ST)</li>
-///<li>UB2-5: Non-covered days (8) (ST)</li>
-///<li>UB2-6: Value amount and code (39-41) (CM_UVC)</li>
-///<li>UB2-7: Occurrence code and date (32-35) (CM_OCD)</li>
-///<li>UB2-8: Occurrence span code / dates (36) (CM_OSP)</li>
-///<li>UB2-9: UB92 locator 2 (state) (ST)</li>
-///<li>UB2-10: UB92 locator 11 (state) (ST)</li>
-///<li>UB2-11: UB92 locator 31 (national) (ST)</li>
-///<li>UB2-12: Document control number (37) (ST)</li>
-///<li>UB2-13: UB92 locator 49 (national) (ST)</li>
-///<li>UB2-14: UB92 locator 56 (state) (ST)</li>
-///<li>UB2-15: UB92 locator 57 (national) (ST)</li>
-///<li>UB2-16: UB92 Locator 78 (state) (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 UB2 message segment. This segment has the following fields:<ol>
+/// <li>UB2-1: Set ID - UB92 (SI)</li>
+/// <li>UB2-2: Co-insurance days (9) (ST)</li>
+/// <li>UB2-3: Condition code (24-30) (ID)</li>
+/// <li>UB2-4: Covered days (7) (ST)</li>
+/// <li>UB2-5: Non-covered days (8) (ST)</li>
+/// <li>UB2-6: Value amount and code (39-41) (CM_UVC)</li>
+/// <li>UB2-7: Occurrence code and date (32-35) (CM_OCD)</li>
+/// <li>UB2-8: Occurrence span code / dates (36) (CM_OSP)</li>
+/// <li>UB2-9: UB92 locator 2 (state) (ST)</li>
+/// <li>UB2-10: UB92 locator 11 (state) (ST)</li>
+/// <li>UB2-11: UB92 locator 31 (national) (ST)</li>
+/// <li>UB2-12: Document control number (37) (ST)</li>
+/// <li>UB2-13: UB92 locator 49 (national) (ST)</li>
+/// <li>UB2-14: UB92 locator 56 (state) (ST)</li>
+/// <li>UB2-15: UB92 locator 57 (national) (ST)</li>
+/// <li>UB2-16: UB92 Locator 78 (state) (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class UB2 : AbstractSegment  {
 
-  /**
-   * Creates a UB2 (UB92 DATA) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the UB2 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public UB2(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -64,9 +65,10 @@ public class UB2 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - UB92(UB2-1).
-	///</summary>
+    /// <summary>   Returns Set ID - UB92(UB2-1). </summary>
+    ///
+    /// <value> The set idub 92. </value>
+
 	public SI SetIDUB92
 	{
 		get{
@@ -87,9 +89,10 @@ public class UB2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Co-insurance days (9)(UB2-2).
-	///</summary>
+    /// <summary>   Returns Co-insurance days (9)(UB2-2). </summary>
+    ///
+    /// <value> The co insurance days 9. </value>
+
 	public ST CoInsuranceDays9
 	{
 		get{
@@ -110,11 +113,17 @@ public class UB2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Condition code (24-30)(UB2-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Condition code (24-30)(UB2-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The condition code 2430. </returns>
+
 	public ID GetConditionCode2430(int rep)
 	{
 			ID ret = null;
@@ -129,9 +138,12 @@ public class UB2 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Condition code (24-30) (UB2-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Condition code (24-30) (UB2-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetConditionCode2430() {
      ID[] ret = null;
     try {
@@ -150,9 +162,10 @@ public class UB2 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Condition code (24-30) (UB2-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Condition code (24-30) (UB2-3). </summary>
+  ///
+  /// <value>   The condition code 2430 repetitions used. </value>
+
   public int ConditionCode2430RepetitionsUsed
 {
 get{
@@ -168,9 +181,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Covered days (7)(UB2-4).
-	///</summary>
+
+    /// <summary>   Returns Covered days (7)(UB2-4). </summary>
+    ///
+    /// <value> The covered days 7. </value>
+
 	public ST CoveredDays7
 	{
 		get{
@@ -191,9 +206,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Non-covered days (8)(UB2-5).
-	///</summary>
+    /// <summary>   Returns Non-covered days (8)(UB2-5). </summary>
+    ///
+    /// <value> The non covered days 8. </value>
+
 	public ST NonCoveredDays8
 	{
 		get{
@@ -214,11 +230,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Value amount and code (39-41)(UB2-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Value amount and code (39-41)(UB2-6). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The value amount and code 3941. </returns>
+
 	public CM_UVC GetValueAmountAndCode3941(int rep)
 	{
 			CM_UVC ret = null;
@@ -233,9 +255,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Value amount and code (39-41) (UB2-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of Value amount and code (39-41) (UB2-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of centimetres uvc. </returns>
+
   public CM_UVC[] GetValueAmountAndCode3941() {
      CM_UVC[] ret = null;
     try {
@@ -254,9 +279,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Value amount and code (39-41) (UB2-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Value amount and code (39-41) (UB2-6). </summary>
+  ///
+  /// <value>   The value amount and code 3941 repetitions used. </value>
+
   public int ValueAmountAndCode3941RepetitionsUsed
 {
 get{
@@ -272,11 +298,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Occurrence code and date (32-35)(UB2-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Occurrence code and date (32-35)(UB2-7). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The occurrence code and date 3235. </returns>
+
 	public CM_OCD GetOccurrenceCodeAndDate3235(int rep)
 	{
 			CM_OCD ret = null;
@@ -291,9 +324,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Occurrence code and date (32-35) (UB2-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Occurrence code and date (32-35) (UB2-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of centimetres ocd. </returns>
+
   public CM_OCD[] GetOccurrenceCodeAndDate3235() {
      CM_OCD[] ret = null;
     try {
@@ -312,9 +348,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Occurrence code and date (32-35) (UB2-7).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Occurrence code and date (32-35) (UB2-7). </summary>
+  ///
+  /// <value>   The occurrence code and date 3235 repetitions used. </value>
+
   public int OccurrenceCodeAndDate3235RepetitionsUsed
 {
 get{
@@ -330,11 +367,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Occurrence span code / dates (36)(UB2-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Occurrence span code / dates (36)(UB2-8). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The occurrence span code dates. </returns>
+
 	public CM_OSP GetOccurrenceSpanCodeDates(int rep)
 	{
 			CM_OSP ret = null;
@@ -349,9 +393,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Occurrence span code / dates (36) (UB2-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of Occurrence span code / dates (36) (UB2-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of centimetres osp. </returns>
+
   public CM_OSP[] GetOccurrenceSpanCodeDates() {
      CM_OSP[] ret = null;
     try {
@@ -370,9 +417,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Occurrence span code / dates (36) (UB2-8).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The occurrence span code dates repetitions used. </value>
+
   public int OccurrenceSpanCodeDatesRepetitionsUsed
 {
 get{
@@ -388,11 +438,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of UB92 locator 2 (state)(UB2-9).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of UB92 locator 2 (state)(UB2-9). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ub 92 locator 2 state. </returns>
+
 	public ST GetUB92Locator2State(int rep)
 	{
 			ST ret = null;
@@ -407,9 +464,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of UB92 locator 2 (state) (UB2-9).
-   ///</summary>
+  /// <summary> Returns all repetitions of UB92 locator 2 (state) (UB2-9). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetUB92Locator2State() {
      ST[] ret = null;
     try {
@@ -428,9 +488,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of UB92 locator 2 (state) (UB2-9).
-   ///</summary>
+  /// <summary> Returns the total repetitions of UB92 locator 2 (state) (UB2-9). </summary>
+  ///
+  /// <value>   The ub 92 locator 2 state repetitions used. </value>
+
   public int UB92Locator2StateRepetitionsUsed
 {
 get{
@@ -446,11 +507,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of UB92 locator 11 (state)(UB2-10).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of UB92 locator 11 (state)(UB2-10). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ub 92 locator 11 state. </returns>
+
 	public ST GetUB92Locator11State(int rep)
 	{
 			ST ret = null;
@@ -465,9 +533,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of UB92 locator 11 (state) (UB2-10).
-   ///</summary>
+  /// <summary> Returns all repetitions of UB92 locator 11 (state) (UB2-10). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetUB92Locator11State() {
      ST[] ret = null;
     try {
@@ -486,9 +557,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of UB92 locator 11 (state) (UB2-10).
-   ///</summary>
+  /// <summary> Returns the total repetitions of UB92 locator 11 (state) (UB2-10). </summary>
+  ///
+  /// <value>   The ub 92 locator 11 state repetitions used. </value>
+
   public int UB92Locator11StateRepetitionsUsed
 {
 get{
@@ -504,9 +576,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns UB92 locator 31 (national)(UB2-11).
-	///</summary>
+
+    /// <summary>   Returns UB92 locator 31 (national)(UB2-11). </summary>
+    ///
+    /// <value> The ub 92 locator 31 national. </value>
+
 	public ST UB92Locator31National
 	{
 		get{
@@ -527,11 +601,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Document control number (37)(UB2-12).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Document control number (37)(UB2-12). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The document control number. </returns>
+
 	public ST GetDocumentControlNumber(int rep)
 	{
 			ST ret = null;
@@ -546,9 +626,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Document control number (37) (UB2-12).
-   ///</summary>
+  /// <summary> Returns all repetitions of Document control number (37) (UB2-12). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetDocumentControlNumber() {
      ST[] ret = null;
     try {
@@ -567,9 +650,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Document control number (37) (UB2-12).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Document control number (37) (UB2-12). </summary>
+  ///
+  /// <value>   The document control number repetitions used. </value>
+
   public int DocumentControlNumberRepetitionsUsed
 {
 get{
@@ -585,11 +669,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of UB92 locator 49 (national)(UB2-13).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of UB92 locator 49 (national)(UB2-13). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ub 92 locator 49 national. </returns>
+
 	public ST GetUB92Locator49National(int rep)
 	{
 			ST ret = null;
@@ -604,9 +695,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of UB92 locator 49 (national) (UB2-13).
-   ///</summary>
+  /// <summary> Returns all repetitions of UB92 locator 49 (national) (UB2-13). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetUB92Locator49National() {
      ST[] ret = null;
     try {
@@ -625,9 +719,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of UB92 locator 49 (national) (UB2-13).
-   ///</summary>
+  /// <summary> Returns the total repetitions of UB92 locator 49 (national) (UB2-13). </summary>
+  ///
+  /// <value>   The ub 92 locator 49 national repetitions used. </value>
+
   public int UB92Locator49NationalRepetitionsUsed
 {
 get{
@@ -643,11 +738,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of UB92 locator 56 (state)(UB2-14).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of UB92 locator 56 (state)(UB2-14). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ub 92 locator 56 state. </returns>
+
 	public ST GetUB92Locator56State(int rep)
 	{
 			ST ret = null;
@@ -662,9 +764,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of UB92 locator 56 (state) (UB2-14).
-   ///</summary>
+  /// <summary> Returns all repetitions of UB92 locator 56 (state) (UB2-14). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetUB92Locator56State() {
      ST[] ret = null;
     try {
@@ -683,9 +788,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of UB92 locator 56 (state) (UB2-14).
-   ///</summary>
+  /// <summary> Returns the total repetitions of UB92 locator 56 (state) (UB2-14). </summary>
+  ///
+  /// <value>   The ub 92 locator 56 state repetitions used. </value>
+
   public int UB92Locator56StateRepetitionsUsed
 {
 get{
@@ -701,9 +807,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns UB92 locator 57 (national)(UB2-15).
-	///</summary>
+
+    /// <summary>   Returns UB92 locator 57 (national)(UB2-15). </summary>
+    ///
+    /// <value> The ub 92 locator 57 national. </value>
+
 	public ST UB92Locator57National
 	{
 		get{
@@ -724,11 +832,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of UB92 Locator 78 (state)(UB2-16).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of UB92 Locator 78 (state)(UB2-16). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ub 92 locator 78 state. </returns>
+
 	public ST GetUB92Locator78State(int rep)
 	{
 			ST ret = null;
@@ -743,9 +857,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of UB92 Locator 78 (state) (UB2-16).
-   ///</summary>
+  /// <summary> Returns all repetitions of UB92 Locator 78 (state) (UB2-16). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetUB92Locator78State() {
      ST[] ret = null;
     try {
@@ -764,9 +881,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of UB92 Locator 78 (state) (UB2-16).
-   ///</summary>
+  /// <summary> Returns the total repetitions of UB92 Locator 78 (state) (UB2-16). </summary>
+  ///
+  /// <value>   The ub 92 locator 78 state repetitions used. </value>
+
   public int UB92Locator78StateRepetitionsUsed
 {
 get{

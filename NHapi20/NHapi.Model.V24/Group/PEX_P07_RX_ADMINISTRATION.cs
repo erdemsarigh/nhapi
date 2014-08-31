@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the PEX_P07_RX_ADMINISTRATION Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: RXA (Pharmacy/Treatment Administration) </li>
-///<li>1: RXR (Pharmacy/Treatment Route) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the PEX_P07_RX_ADMINISTRATION Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: RXA (Pharmacy/Treatment Administration) </li>
+/// <li>1: RXR (Pharmacy/Treatment Route) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class PEX_P07_RX_ADMINISTRATION : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new PEX_P07_RX_ADMINISTRATION Group.
-	///</summary>
+    /// <summary>   Creates a new PEX_P07_RX_ADMINISTRATION Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PEX_P07_RX_ADMINISTRATION(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(RXA), true, false);
@@ -32,9 +35,10 @@ public class PEX_P07_RX_ADMINISTRATION : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns RXA (Pharmacy/Treatment Administration) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RXA (Pharmacy/Treatment Administration) - creates it if necessary. </summary>
+    ///
+    /// <value> The rxa. </value>
+
 	public RXA RXA { 
 get{
 	   RXA ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RXR (Pharmacy/Treatment Route) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RXR (Pharmacy/Treatment Route) - creates it if necessary. </summary>
+    ///
+    /// <value> The rxr. </value>
+
 	public RXR RXR { 
 get{
 	   RXR ret = null;

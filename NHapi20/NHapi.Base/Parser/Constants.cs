@@ -1,8 +1,6 @@
 namespace NHapi.Base.Parser
 {
-    /// <summary>
-    /// The class types for the default model factory
-    /// </summary>
+    /// <summary>   The class types for the default model factory. </summary>
     public enum ClassType
     {
         /// <summary>

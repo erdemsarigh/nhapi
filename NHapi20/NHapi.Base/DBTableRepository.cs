@@ -26,39 +26,42 @@ namespace NHapi.Base
 
     using NHapi.Base.Log;
 
-    /// <summary> Implements TableRepository by looking up values from the default HL7
-    /// normative database.  Values are cached after they are looked up once.  
+    /// <summary>
+    /// Implements TableRepository by looking up values from the default HL7 normative database.
+    /// Values are cached after they are looked up once.  
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+
     public class DBTableRepository : TableRepository
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Fields
 
-        private int bufferSize = 3000; //max # of tables or values that can be cached at a time
+        /// <summary>   max # of tables or values that can be cached at a time. </summary>
+        private int bufferSize = 3000;
 
+        /// <summary>   List of tables. </summary>
         private int[] tableList;
 
+        /// <summary>   The tables. </summary>
         private System.Collections.Hashtable tables;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the DBTableRepository class. </summary>
         static DBTableRepository()
         {
             log = HapiLogFactory.GetHapiLog(typeof(DBTableRepository));
         }
 
-        /// <summary>
-        /// Table repository
-        /// </summary>
+        /// <summary>   Table repository. </summary>
         protected internal DBTableRepository()
         {
             this.tableList = null;
@@ -69,7 +72,12 @@ namespace NHapi.Base
 
         #region Public Properties
 
-        /// <summary> Returns a list of HL7 lookup tables that are defined in the normative database.  </summary>
+        /// <summary>
+        /// Returns a list of HL7 lookup tables that are defined in the normative database.
+        /// </summary>
+        ///
+        /// <value> The tables. </value>
+
         public override int[] Tables
         {
             get
@@ -110,7 +118,13 @@ namespace NHapi.Base
 
         #region Public Methods and Operators
 
-        /// <summary> Returns true if the given value exists in the given table.</summary>
+        /// <summary>   Returns true if the given value exists in the given table. </summary>
+        ///
+        /// <param name="table">            The table. </param>
+        /// <param name="value_Renamed">    The value renamed. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         public override bool checkValue(int table, System.String value_Renamed)
         {
             bool exists = false;
@@ -129,10 +143,21 @@ namespace NHapi.Base
             return exists;
         }
 
-        /// <summary> Returns the description matching the table and value given.  As currently implemented
-        /// this method performs a database call each time - caching should probably be added,
-        /// although this method will probably not be used very often.   
+        /// <summary>
+        /// Returns the description matching the table and value given.  As currently implemented this
+        /// method performs a database call each time - caching should probably be added, although this
+        /// method will probably not be used very often.
         /// </summary>
+        ///
+        /// <exception cref="UnknownValueException">    Thrown when an Unknown Value error condition
+        ///                                             occurs. </exception>
+        /// <exception cref="LookupException">          Thrown when a Lookup error condition occurs. </exception>
+        ///
+        /// <param name="table">            The table. </param>
+        /// <param name="value_Renamed">    The value renamed. </param>
+        ///
+        /// <returns>   The description. </returns>
+
         public override System.String getDescription(int table, System.String value_Renamed)
         {
             System.String description = null;
@@ -172,7 +197,18 @@ namespace NHapi.Base
             return description;
         }
 
-        /// <summary> Returns a list of the values for the given table in the normative database. </summary>
+        /// <summary>
+        /// Returns a list of the values for the given table in the normative database.
+        /// </summary>
+        ///
+        /// <exception cref="LookupException">          Thrown when a Lookup error condition occurs. </exception>
+        /// <exception cref="UndefinedTableException">  Thrown when an Undefined Table error condition
+        ///                                             occurs. </exception>
+        ///
+        /// <param name="table">    The table. </param>
+        ///
+        /// <returns>   An array of string. </returns>
+
         public override System.String[] getValues(int table)
         {
             System.Int32 key = table;

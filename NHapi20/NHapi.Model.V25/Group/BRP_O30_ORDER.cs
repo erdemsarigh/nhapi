@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V25.Group
 {
-///<summary>
-///Represents the BRP_O30_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common Order) </li>
-///<li>1: BRP_O30_TIMING (a Group object) optional repeating</li>
-///<li>2: BPO (Blood product order) optional </li>
-///<li>3: BPX (Blood product dispense status) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the BRP_O30_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common Order) </li>
+/// <li>1: BRP_O30_TIMING (a Group object) optional repeating</li>
+/// <li>2: BPO (Blood product order) optional </li>
+/// <li>3: BPX (Blood product dispense status) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class BRP_O30_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new BRP_O30_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new BRP_O30_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public BRP_O30_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -36,9 +39,10 @@ public class BRP_O30_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common Order) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common Order) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -52,9 +56,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of BRP_O30_TIMING (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of BRP_O30_TIMING (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The timing. </returns>
+
 	public BRP_O30_TIMING GetTIMING() {
 	   BRP_O30_TIMING ret = null;
 	   try {
@@ -66,19 +75,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of BRP_O30_TIMING
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of BRP_O30_TIMING
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The timing. </returns>
+
 	public BRP_O30_TIMING GetTIMING(int rep) { 
 	   return (BRP_O30_TIMING)this.GetStructure("TIMING", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of BRP_O30_TIMING 
-	 */ 
+    /// <summary>   Gets the timing repetitions used. </summary>
+    ///
+    /// <value> The timing repetitions used. </value>
+
 	public int TIMINGRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -93,9 +108,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns BPO (Blood product order) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns BPO (Blood product order) - creates it if necessary. </summary>
+    ///
+    /// <value> The bpo. </value>
+
 	public BPO BPO { 
 get{
 	   BPO ret = null;
@@ -109,9 +125,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of BPX (Blood product dispense status) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of BPX (Blood product dispense status) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The bpx. </returns>
+
 	public BPX GetBPX() {
 	   BPX ret = null;
 	   try {
@@ -123,19 +144,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of BPX
-	/// * (Blood product dispense status) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of BPX
+    ///  * (Blood product dispense status) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The bpx. </returns>
+
 	public BPX GetBPX(int rep) { 
 	   return (BPX)this.GetStructure("BPX", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of BPX 
-	 */ 
+    /// <summary>   Gets the bpx repetitions used. </summary>
+    ///
+    /// <value> The bpx repetitions used. </value>
+
 	public int BPXRepetitionsUsed { 
 get{
 	    int reps = -1; 

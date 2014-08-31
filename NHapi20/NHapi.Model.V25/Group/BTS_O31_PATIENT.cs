@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V25.Group
 {
-///<summary>
-///Represents the BTS_O31_PATIENT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PID (Patient Identification) </li>
-///<li>1: PD1 (Patient Additional Demographic) optional </li>
-///<li>2: NTE (Notes and Comments) optional repeating</li>
-///<li>3: BTS_O31_PATIENT_VISIT (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the BTS_O31_PATIENT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PID (Patient Identification) </li>
+/// <li>1: PD1 (Patient Additional Demographic) optional </li>
+/// <li>2: NTE (Notes and Comments) optional repeating</li>
+/// <li>3: BTS_O31_PATIENT_VISIT (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class BTS_O31_PATIENT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new BTS_O31_PATIENT Group.
-	///</summary>
+    /// <summary>   Creates a new BTS_O31_PATIENT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public BTS_O31_PATIENT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PID), true, false);
@@ -36,9 +39,10 @@ public class BTS_O31_PATIENT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PID (Patient Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -52,9 +56,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (Patient Additional Demographic) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PD1 (Patient Additional Demographic) - creates it if necessary. </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;
@@ -68,9 +73,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -82,19 +92,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and Comments) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and Comments) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -109,9 +125,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns BTS_O31_PATIENT_VISIT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns BTS_O31_PATIENT_VISIT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient visit. </value>
+
 	public BTS_O31_PATIENT_VISIT PATIENT_VISIT { 
 get{
 	   BTS_O31_PATIENT_VISIT ret = null;

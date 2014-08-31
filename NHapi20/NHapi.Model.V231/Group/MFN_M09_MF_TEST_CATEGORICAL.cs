@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the MFN_M09_MF_TEST_CATEGORICAL Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: MFE (MFE - master file entry segment) </li>
-///<li>1: OM1 (OM1 - general segment (fields that apply to most observations)) </li>
-///<li>2: MFN_M09_MF_TEST_CAT_DETAIL (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the MFN_M09_MF_TEST_CATEGORICAL Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: MFE (MFE - master file entry segment) </li>
+/// <li>1: OM1 (OM1 - general segment (fields that apply to most observations)) </li>
+/// <li>2: MFN_M09_MF_TEST_CAT_DETAIL (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFN_M09_MF_TEST_CATEGORICAL : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new MFN_M09_MF_TEST_CATEGORICAL Group.
-	///</summary>
+    /// <summary>   Creates a new MFN_M09_MF_TEST_CATEGORICAL Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFN_M09_MF_TEST_CATEGORICAL(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(MFE), true, false);
@@ -34,9 +37,10 @@ public class MFN_M09_MF_TEST_CATEGORICAL : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns MFE (MFE - master file entry segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MFE (MFE - master file entry segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The mfe. </value>
+
 	public MFE MFE { 
 get{
 	   MFE ret = null;
@@ -50,9 +54,13 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns OM1 (OM1 - general segment (fields that apply to most observations)) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns OM1 (OM1 - general segment (fields that apply to most observations)) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <value> The om 1. </value>
+
 	public OM1 OM1 { 
 get{
 	   OM1 ret = null;
@@ -66,9 +74,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MFN_M09_MF_TEST_CAT_DETAIL (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns MFN_M09_MF_TEST_CAT_DETAIL (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The mf test category detail. </value>
+
 	public MFN_M09_MF_TEST_CAT_DETAIL MF_TEST_CAT_DETAIL { 
 get{
 	   MFN_M09_MF_TEST_CAT_DETAIL ret = null;

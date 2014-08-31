@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 RGS message segment. 
-/// This segment has the following fields:<ol>
-///<li>RGS-1: Set ID - RGS (SI)</li>
-///<li>RGS-2: Segment Action Code (ID)</li>
-///<li>RGS-3: Resource Group ID (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 RGS message segment. This segment has the following fields:<ol>
+/// <li>RGS-1: Set ID - RGS (SI)</li>
+/// <li>RGS-2: Segment Action Code (ID)</li>
+/// <li>RGS-3: Resource Group ID (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class RGS : AbstractSegment  {
 
-  /**
-   * Creates a RGS (Resource Group) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the RGS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RGS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class RGS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - RGS(RGS-1).
-	///</summary>
+    /// <summary>   Returns Set ID - RGS(RGS-1). </summary>
+    ///
+    /// <value> The set idrgs. </value>
+
 	public SI SetIDRGS
 	{
 		get{
@@ -61,9 +63,10 @@ public class RGS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Segment Action Code(RGS-2).
-	///</summary>
+    /// <summary>   Returns Segment Action Code(RGS-2). </summary>
+    ///
+    /// <value> The segment action code. </value>
+
 	public ID SegmentActionCode
 	{
 		get{
@@ -84,9 +87,10 @@ public class RGS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Resource Group ID(RGS-3).
-	///</summary>
+    /// <summary>   Returns Resource Group ID(RGS-3). </summary>
+    ///
+    /// <value> The identifier of the resource group. </value>
+
 	public CE ResourceGroupID
 	{
 		get{

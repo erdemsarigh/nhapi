@@ -8,21 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the MFN_M07_MF_PHASE_SCHED_DETAIL Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: CM1 (Clinical Study Phase Master) </li>
-///<li>1: CM2 (Clinical Study Schedule Master) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the MFN_M07_MF_PHASE_SCHED_DETAIL Group.  A Group is an ordered collection of
+/// message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: CM1 (Clinical Study Phase Master) </li>
+/// <li>1: CM2 (Clinical Study Schedule Master) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFN_M07_MF_PHASE_SCHED_DETAIL : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new MFN_M07_MF_PHASE_SCHED_DETAIL Group.
-	///</summary>
+    /// <summary>   Creates a new MFN_M07_MF_PHASE_SCHED_DETAIL Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFN_M07_MF_PHASE_SCHED_DETAIL(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(CM1), true, false);
@@ -32,9 +36,10 @@ public class MFN_M07_MF_PHASE_SCHED_DETAIL : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns CM1 (Clinical Study Phase Master) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns CM1 (Clinical Study Phase Master) - creates it if necessary. </summary>
+    ///
+    /// <value> The centimetres 1. </value>
+
 	public CM1 CM1 { 
 get{
 	   CM1 ret = null;
@@ -48,9 +53,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of CM2 (Clinical Study Schedule Master) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of CM2 (Clinical Study Schedule Master) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The centimetres 2. </returns>
+
 	public CM2 GetCM2() {
 	   CM2 ret = null;
 	   try {
@@ -62,19 +72,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of CM2
-	/// * (Clinical Study Schedule Master) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of CM2
+    ///  * (Clinical Study Schedule Master) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The centimetres 2. </returns>
+
 	public CM2 GetCM2(int rep) { 
 	   return (CM2)this.GetStructure("CM2", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of CM2 
-	 */ 
+    /// <summary>   Gets the centimetres 2 repetitions used. </summary>
+    ///
+    /// <value> The centimetres 2 repetitions used. </value>
+
 	public int CM2RepetitionsUsed { 
 get{
 	    int reps = -1; 

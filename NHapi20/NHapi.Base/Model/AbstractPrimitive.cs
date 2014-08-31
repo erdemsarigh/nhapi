@@ -27,35 +27,32 @@ namespace NHapi.Base.Model
 {
     using NHapi.Base.validation;
 
-    /// <summary> Base class for Primitives.  Performs validation in setValue().
-    /// 
-    /// </summary>
-    /// <author>  Bryan Tripp
-    /// </author>
+    /// <summary>   Base class for Primitives.  Performs validation in setValue(). </summary>
     public abstract class AbstractPrimitive : AbstractType, IPrimitive
     {
         #region Fields
 
+        /// <summary>   my value. </summary>
         private System.String myValue;
 
         #endregion
 
         #region Constructors and Destructors
 
-        ///<summary>
-        /// <param name="message">message to which this type belongs
-        /// </param>
-        /// </summary>
+        /// <summary>   Initializes a new instance of the AbstractPrimitive class. </summary>
+        ///
+        /// <param name="message">  message to which this type belongs. </param>
+
         public AbstractPrimitive(IMessage message)
             : this(message, null)
         {
         }
 
-        ///<summary>
-        /// <param name="message">message to which this type belongs
-        /// <param name="description">The descption of the primitive</param>
-        /// </param>
-        /// </summary>
+        /// <summary>   Initializes a new instance of the AbstractPrimitive class. </summary>
+        ///
+        /// <param name="message">      message to which this type belongs. </param>
+        /// <param name="description">  The descption of the primitive. </param>
+
         public AbstractPrimitive(IMessage message, string description)
             : base(message, description)
         {
@@ -65,11 +62,13 @@ namespace NHapi.Base.Model
 
         #region Public Properties
 
-        /// <summary> Sets the value of this Primitive, first performing validation as specified 
-        /// by <code>getMessage().getValidationContext()</code>.  No validation is performed 
-        /// if getMessage() returns null. 
-        /// 
+        /// <summary>
+        /// Gets or sets the value of this Primitive, first performing validation as specified by
+        /// <code>getMessage().getValidationContext()</code>.  No validation is performed if getMessage() returns null.
         /// </summary>
+        ///
+        /// <value> The value. </value>
+
         public virtual System.String Value
         {
             get
@@ -109,7 +108,10 @@ namespace NHapi.Base.Model
 
         #region Public Methods and Operators
 
-        /// <summary> Returns the value of getValue() </summary>
+        /// <summary>   Returns the value of getValue() </summary>
+        ///
+        /// <returns>   A System.String that represents this object. </returns>
+
         public override System.String ToString()
         {
             return this.Value;

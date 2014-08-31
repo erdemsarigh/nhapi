@@ -7,41 +7,42 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 PRC message segment. 
-/// This segment has the following fields:<ol>
-///<li>PRC-1: Primary Key Value - PRC (CE)</li>
-///<li>PRC-2: Facility ID - PRC (CE)</li>
-///<li>PRC-3: Department (CE)</li>
-///<li>PRC-4: Valid Patient Classes (IS)</li>
-///<li>PRC-5: Price (CP)</li>
-///<li>PRC-6: Formula (ST)</li>
-///<li>PRC-7: Minimum Quantity (NM)</li>
-///<li>PRC-8: Maximum Quantity (NM)</li>
-///<li>PRC-9: Minimum Price (MO)</li>
-///<li>PRC-10: Maximum Price (MO)</li>
-///<li>PRC-11: Effective Start Date (TS)</li>
-///<li>PRC-12: Effective End Date (TS)</li>
-///<li>PRC-13: Price Override Flag (IS)</li>
-///<li>PRC-14: Billing Category (CE)</li>
-///<li>PRC-15: Chargeable Flag (ID)</li>
-///<li>PRC-16: Active/Inactive Flag (ID)</li>
-///<li>PRC-17: Cost (MO)</li>
-///<li>PRC-18: Charge On Indicator (IS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PRC message segment. This segment has the following fields:<ol>
+/// <li>PRC-1: Primary Key Value - PRC (CE)</li>
+/// <li>PRC-2: Facility ID - PRC (CE)</li>
+/// <li>PRC-3: Department (CE)</li>
+/// <li>PRC-4: Valid Patient Classes (IS)</li>
+/// <li>PRC-5: Price (CP)</li>
+/// <li>PRC-6: Formula (ST)</li>
+/// <li>PRC-7: Minimum Quantity (NM)</li>
+/// <li>PRC-8: Maximum Quantity (NM)</li>
+/// <li>PRC-9: Minimum Price (MO)</li>
+/// <li>PRC-10: Maximum Price (MO)</li>
+/// <li>PRC-11: Effective Start Date (TS)</li>
+/// <li>PRC-12: Effective End Date (TS)</li>
+/// <li>PRC-13: Price Override Flag (IS)</li>
+/// <li>PRC-14: Billing Category (CE)</li>
+/// <li>PRC-15: Chargeable Flag (ID)</li>
+/// <li>PRC-16: Active/Inactive Flag (ID)</li>
+/// <li>PRC-17: Cost (MO)</li>
+/// <li>PRC-18: Charge On Indicator (IS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PRC : AbstractSegment  {
 
-  /**
-   * Creates a PRC (PRC -  pricing segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PRC class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PRC(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -68,9 +69,10 @@ public class PRC : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Primary Key Value - PRC(PRC-1).
-	///</summary>
+    /// <summary>   Returns Primary Key Value - PRC(PRC-1). </summary>
+    ///
+    /// <value> The primary key value prc. </value>
+
 	public CE PrimaryKeyValuePRC
 	{
 		get{
@@ -91,11 +93,17 @@ public class PRC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Facility ID - PRC(PRC-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Facility ID - PRC(PRC-2). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The facility idprc. </returns>
+
 	public CE GetFacilityIDPRC(int rep)
 	{
 			CE ret = null;
@@ -110,9 +118,12 @@ public class PRC : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Facility ID - PRC (PRC-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Facility ID - PRC (PRC-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetFacilityIDPRC() {
      CE[] ret = null;
     try {
@@ -131,9 +142,10 @@ public class PRC : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Facility ID - PRC (PRC-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Facility ID - PRC (PRC-2). </summary>
+  ///
+  /// <value>   The facility idprc repetitions used. </value>
+
   public int FacilityIDPRCRepetitionsUsed
 {
 get{
@@ -149,11 +161,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Department(PRC-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Department(PRC-3). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The department. </returns>
+
 	public CE GetDepartment(int rep)
 	{
 			CE ret = null;
@@ -168,9 +187,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Department (PRC-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Department (PRC-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetDepartment() {
      CE[] ret = null;
     try {
@@ -189,9 +211,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Department (PRC-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Department (PRC-3). </summary>
+  ///
+  /// <value>   The department repetitions used. </value>
+
   public int DepartmentRepetitionsUsed
 {
 get{
@@ -207,11 +230,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Valid Patient Classes(PRC-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Valid Patient Classes(PRC-4). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The valid patient classes. </returns>
+
 	public IS GetValidPatientClasses(int rep)
 	{
 			IS ret = null;
@@ -226,9 +256,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Valid Patient Classes (PRC-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Valid Patient Classes (PRC-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetValidPatientClasses() {
      IS[] ret = null;
     try {
@@ -247,9 +280,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Valid Patient Classes (PRC-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Valid Patient Classes (PRC-4). </summary>
+  ///
+  /// <value>   The valid patient classes repetitions used. </value>
+
   public int ValidPatientClassesRepetitionsUsed
 {
 get{
@@ -265,11 +299,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Price(PRC-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Price(PRC-5). throws HL7Exception if the repetition number is
+    /// invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The price. </returns>
+
 	public CP GetPrice(int rep)
 	{
 			CP ret = null;
@@ -284,9 +325,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Price (PRC-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Price (PRC-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of cp. </returns>
+
   public CP[] GetPrice() {
      CP[] ret = null;
     try {
@@ -305,9 +349,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Price (PRC-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Price (PRC-5). </summary>
+  ///
+  /// <value>   The price repetitions used. </value>
+
   public int PriceRepetitionsUsed
 {
 get{
@@ -323,11 +368,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Formula(PRC-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Formula(PRC-6). throws HL7Exception if the repetition number
+    /// is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The formula. </returns>
+
 	public ST GetFormula(int rep)
 	{
 			ST ret = null;
@@ -342,9 +394,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Formula (PRC-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of Formula (PRC-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetFormula() {
      ST[] ret = null;
     try {
@@ -363,9 +418,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Formula (PRC-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Formula (PRC-6). </summary>
+  ///
+  /// <value>   The formula repetitions used. </value>
+
   public int FormulaRepetitionsUsed
 {
 get{
@@ -381,9 +437,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Minimum Quantity(PRC-7).
-	///</summary>
+
+    /// <summary>   Returns Minimum Quantity(PRC-7). </summary>
+    ///
+    /// <value> The minimum quantity. </value>
+
 	public NM MinimumQuantity
 	{
 		get{
@@ -404,9 +462,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Maximum Quantity(PRC-8).
-	///</summary>
+    /// <summary>   Returns Maximum Quantity(PRC-8). </summary>
+    ///
+    /// <value> The maximum quantity. </value>
+
 	public NM MaximumQuantity
 	{
 		get{
@@ -427,9 +486,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Minimum Price(PRC-9).
-	///</summary>
+    /// <summary>   Returns Minimum Price(PRC-9). </summary>
+    ///
+    /// <value> The minimum price. </value>
+
 	public MO MinimumPrice
 	{
 		get{
@@ -450,9 +510,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Maximum Price(PRC-10).
-	///</summary>
+    /// <summary>   Returns Maximum Price(PRC-10). </summary>
+    ///
+    /// <value> The maximum price. </value>
+
 	public MO MaximumPrice
 	{
 		get{
@@ -473,9 +534,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Effective Start Date(PRC-11).
-	///</summary>
+    /// <summary>   Returns Effective Start Date(PRC-11). </summary>
+    ///
+    /// <value> The effective start date. </value>
+
 	public TS EffectiveStartDate
 	{
 		get{
@@ -496,9 +558,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Effective End Date(PRC-12).
-	///</summary>
+    /// <summary>   Returns Effective End Date(PRC-12). </summary>
+    ///
+    /// <value> The effective end date. </value>
+
 	public TS EffectiveEndDate
 	{
 		get{
@@ -519,9 +582,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Price Override Flag(PRC-13).
-	///</summary>
+    /// <summary>   Returns Price Override Flag(PRC-13). </summary>
+    ///
+    /// <value> The price override flag. </value>
+
 	public IS PriceOverrideFlag
 	{
 		get{
@@ -542,11 +606,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Billing Category(PRC-14).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Billing Category(PRC-14). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The billing category. </returns>
+
 	public CE GetBillingCategory(int rep)
 	{
 			CE ret = null;
@@ -561,9 +631,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Billing Category (PRC-14).
-   ///</summary>
+  /// <summary> Returns all repetitions of Billing Category (PRC-14). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetBillingCategory() {
      CE[] ret = null;
     try {
@@ -582,9 +655,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Billing Category (PRC-14).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Billing Category (PRC-14). </summary>
+  ///
+  /// <value>   The billing category repetitions used. </value>
+
   public int BillingCategoryRepetitionsUsed
 {
 get{
@@ -600,9 +674,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Chargeable Flag(PRC-15).
-	///</summary>
+
+    /// <summary>   Returns Chargeable Flag(PRC-15). </summary>
+    ///
+    /// <value> The chargeable flag. </value>
+
 	public ID ChargeableFlag
 	{
 		get{
@@ -623,9 +699,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Active/Inactive Flag(PRC-16).
-	///</summary>
+    /// <summary>   Returns Active/Inactive Flag(PRC-16). </summary>
+    ///
+    /// <value> The active inactive flag. </value>
+
 	public ID ActiveInactiveFlag
 	{
 		get{
@@ -646,9 +723,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Cost(PRC-17).
-	///</summary>
+    /// <summary>   Returns Cost(PRC-17). </summary>
+    ///
+    /// <value> The cost. </value>
+
 	public MO Cost
 	{
 		get{
@@ -669,9 +747,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Charge On Indicator(PRC-18).
-	///</summary>
+    /// <summary>   Returns Charge On Indicator(PRC-18). </summary>
+    ///
+    /// <value> The charge on indicator. </value>
+
 	public IS ChargeOnIndicator
 	{
 		get{

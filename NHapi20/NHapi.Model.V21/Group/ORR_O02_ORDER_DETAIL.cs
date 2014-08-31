@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V21.Group
 {
-///<summary>
-///Represents the ORR_O02_ORDER_DETAIL Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: OBR (OBSERVATION REQUEST) </li>
-///<li>1: ORO (ORDER OTHER) </li>
-///<li>2: RX1 (PHARMACY ORDER) </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ORR_O02_ORDER_DETAIL Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: OBR (OBSERVATION REQUEST) </li>
+/// <li>1: ORO (ORDER OTHER) </li>
+/// <li>2: RX1 (PHARMACY ORDER) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ORR_O02_ORDER_DETAIL : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ORR_O02_ORDER_DETAIL Group.
-	///</summary>
+    /// <summary>   Creates a new ORR_O02_ORDER_DETAIL Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORR_O02_ORDER_DETAIL(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(OBR), true, false);
@@ -34,9 +37,10 @@ public class ORR_O02_ORDER_DETAIL : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns OBR (OBSERVATION REQUEST) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OBR (OBSERVATION REQUEST) - creates it if necessary. </summary>
+    ///
+    /// <value> The obr. </value>
+
 	public OBR OBR { 
 get{
 	   OBR ret = null;
@@ -50,9 +54,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ORO (ORDER OTHER) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORO (ORDER OTHER) - creates it if necessary. </summary>
+    ///
+    /// <value> The oro. </value>
+
 	public ORO ORO { 
 get{
 	   ORO ret = null;
@@ -66,9 +71,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RX1 (PHARMACY ORDER) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RX1 (PHARMACY ORDER) - creates it if necessary. </summary>
+    ///
+    /// <value> The receive 1. </value>
+
 	public RX1 RX1 { 
 get{
 	   RX1 ret = null;

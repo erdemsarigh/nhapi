@@ -7,29 +7,30 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 PTH message segment. 
-/// This segment has the following fields:<ol>
-///<li>PTH-1: Action Code (ID)</li>
-///<li>PTH-2: Pathway ID (CE)</li>
-///<li>PTH-3: Pathway Instance ID (EI)</li>
-///<li>PTH-4: Pathway Established Date/Time (TS)</li>
-///<li>PTH-5: Pathway Life Cycle Status (CE)</li>
-///<li>PTH-6: Change Pathway Life Cycle Status Date/Time (TS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PTH message segment. This segment has the following fields:<ol>
+/// <li>PTH-1: Action Code (ID)</li>
+/// <li>PTH-2: Pathway ID (CE)</li>
+/// <li>PTH-3: Pathway Instance ID (EI)</li>
+/// <li>PTH-4: Pathway Established Date/Time (TS)</li>
+/// <li>PTH-5: Pathway Life Cycle Status (CE)</li>
+/// <li>PTH-6: Change Pathway Life Cycle Status Date/Time (TS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PTH : AbstractSegment  {
 
-  /**
-   * Creates a PTH (Pathway) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PTH class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PTH(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -44,9 +45,10 @@ public class PTH : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Action Code(PTH-1).
-	///</summary>
+    /// <summary>   Returns Action Code(PTH-1). </summary>
+    ///
+    /// <value> The action code. </value>
+
 	public ID ActionCode
 	{
 		get{
@@ -67,9 +69,10 @@ public class PTH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Pathway ID(PTH-2).
-	///</summary>
+    /// <summary>   Returns Pathway ID(PTH-2). </summary>
+    ///
+    /// <value> The identifier of the pathway. </value>
+
 	public CE PathwayID
 	{
 		get{
@@ -90,9 +93,10 @@ public class PTH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Pathway Instance ID(PTH-3).
-	///</summary>
+    /// <summary>   Returns Pathway Instance ID(PTH-3). </summary>
+    ///
+    /// <value> The identifier of the pathway instance. </value>
+
 	public EI PathwayInstanceID
 	{
 		get{
@@ -113,9 +117,10 @@ public class PTH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Pathway Established Date/Time(PTH-4).
-	///</summary>
+    /// <summary>   Returns Pathway Established Date/Time(PTH-4). </summary>
+    ///
+    /// <value> The pathway established date time. </value>
+
 	public TS PathwayEstablishedDateTime
 	{
 		get{
@@ -136,9 +141,10 @@ public class PTH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Pathway Life Cycle Status(PTH-5).
-	///</summary>
+    /// <summary>   Returns Pathway Life Cycle Status(PTH-5). </summary>
+    ///
+    /// <value> The pathway life cycle status. </value>
+
 	public CE PathwayLifeCycleStatus
 	{
 		get{
@@ -159,9 +165,10 @@ public class PTH : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Change Pathway Life Cycle Status Date/Time(PTH-6).
-	///</summary>
+    /// <summary>   Returns Change Pathway Life Cycle Status Date/Time(PTH-6). </summary>
+    ///
+    /// <value> The change pathway life cycle status date time. </value>
+
 	public TS ChangePathwayLifeCycleStatusDateTime
 	{
 		get{

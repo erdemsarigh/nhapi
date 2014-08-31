@@ -28,52 +28,58 @@ namespace NHapi.Base.Model.Primitive
 {
     using NHapi.Base.Log;
 
-    /// <summary> This class contains functionality used by the DT class
-    /// in the version 2.3.0, 2.3.1, and 2.4 packages
+    /// <summary>
+    /// This class contains functionality used by the DT class in the version 2.3.0, 2.3.1, and 2.4
+    /// packages
     /// 
-    /// Note: The class description below has been excerpted from the Hl7 2.4 documentation. Sectional
-    /// references made below also refer to the same documentation.
+    /// Note: The class description below has been excerpted from the Hl7 2.4 documentation.
+    /// Sectional references made below also refer to the same documentation.
     /// 
-    /// Format: YYYY[MM[DD]]
-    /// In prior versions of HL7, this data type was always specified to be in the format YYYYMMDD. In the current and future
-    /// versions, the precision of a date may be expressed by limiting the number of digits used with the format specification
-    /// YYYY[MM[DD]]. Thus, YYYY is used to specify a precision of "year," YYYYMM specifies a precision of "month,"
-    /// and YYYYMMDD specifies a precision of "day."
-    /// By site-specific agreement, YYYYMMDD may be used where backward compatibility must be maintained.
-    /// Examples:   |19880704|  |199503|
+    /// Format: YYYY[MM[DD]] In prior versions of HL7, this data type was always specified to be in
+    /// the format YYYYMMDD. In the current and future versions, the precision of a date may be
+    /// expressed by limiting the number of digits used with the format specification YYYY[MM[DD]].
+    /// Thus, YYYY is used to specify a precision of "year," YYYYMM specifies a precision of "month,"
+    /// and YYYYMMDD specifies a precision of "day." By site-specific agreement, YYYYMMDD may be used
+    /// where backward compatibility must be maintained. Examples:   |19880704|  |199503|.
     /// </summary>
-    /// <author>  Neal Acharya
-    /// </author>
+
     public class CommonDT
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Fields
 
+        /// <summary>   The day. </summary>
         private int day;
 
+        /// <summary>   The month. </summary>
         private int month;
 
+        /// <summary>   The value renamed. </summary>
         private System.String value_Renamed;
 
+        /// <summary>   The year. </summary>
         private int year;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the CommonDT class. </summary>
         static CommonDT()
         {
             log = HapiLogFactory.GetHapiLog(typeof(CommonDT));
         }
 
-        /// <summary> Constructs a DT datatype with fields initialzed to zero and value initialized
-        /// to null.
+        /// <summary>
+        /// Constructs a DT datatype with fields initialzed to zero and value initialized to null.
         /// </summary>
+
         public CommonDT()
         {
             //initialize all DT fields
@@ -83,10 +89,13 @@ namespace NHapi.Base.Model.Primitive
             this.day = 0;
         }
 
-        /// <summary> Constructs a DT object with the given value.
-        /// The stored value will be in the following
-        /// format YYYY[MM[DD]].
+        /// <summary>
+        /// Constructs a DT object with the given value. The stored value will be in the following format
+        /// YYYY[MM[DD]].
         /// </summary>
+        ///
+        /// <param name="val">  The value. </param>
+
         public CommonDT(System.String val)
         {
             this.Value = val;
@@ -96,7 +105,10 @@ namespace NHapi.Base.Model.Primitive
 
         #region Public Properties
 
-        /// <summary> Returns the day as an integer.</summary>
+        /// <summary>   Returns the day as an integer. </summary>
+        ///
+        /// <value> The day. </value>
+
         public virtual int Day
         {
             get
@@ -105,7 +117,10 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the month as an integer.</summary>
+        /// <summary>   Returns the month as an integer. </summary>
+        ///
+        /// <value> The month. </value>
+
         public virtual int Month
         {
             get
@@ -114,12 +129,12 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the HL7 DT string value.</summary>
-        /// <summary> This method takes in a string HL7 date value and performs validations
-        /// then sets the value field. The stored value will be in the following
-        /// format YYYY[MM[DD]].
-        /// 
-        /// </summary>
+        /// <summary>   Returns the HL7 DT string value. </summary>
+        /// <summary>   This method takes in a string HL7 date value and performs validations then sets
+        ///             the value field. The stored value will be in the following format YYYY[MM[DD]]. </summary>
+        ///
+        /// <value> The value. </value>
+
         public virtual System.String Value
         {
             get
@@ -200,7 +215,10 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> Returns the year as an integer.</summary>
+        /// <summary>   Returns the year as an integer. </summary>
+        ///
+        /// <value> The year. </value>
+
         public virtual int Year
         {
             get
@@ -209,10 +227,13 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> This method takes in an integer value for the year and performs validations,
-        /// it then sets the value field formatted as an HL7 date.
-        /// value with year precision (YYYY)
+        /// <summary>
+        /// This method takes in an integer value for the year and performs validations, it then sets the
+        /// value field formatted as an HL7 date. value with year precision (YYYY)
         /// </summary>
+        ///
+        /// <value> The year precision. </value>
+
         public virtual int YearPrecision
         {
             set
@@ -255,9 +276,16 @@ namespace NHapi.Base.Model.Primitive
 
         #region Public Methods and Operators
 
-        /// <summary> Returns a string value representing the input Gregorian Calendar object in
-        /// an Hl7 Date Format.
+        /// <summary>
+        /// Returns a string value representing the input Gregorian Calendar object in an Hl7 Date Format.
         /// </summary>
+        ///
+        /// <exception cref="DataTypeException">    Thrown when a Data Type error condition occurs. </exception>
+        ///
+        /// <param name="cal">  The cal. </param>
+        ///
+        /// <returns>   cal as a System.String. </returns>
+
         public static System.String toHl7DTFormat(System.Globalization.GregorianCalendar cal)
         {
             System.String val = "";
@@ -283,10 +311,18 @@ namespace NHapi.Base.Model.Primitive
             return val;
         }
 
-        /// <summary> This method takes in integer values for the year and month and day
-        /// and performs validations, it then sets the value in the object
-        /// formatted as an HL7 date value with year and month and day precision (YYYYMMDD).
+        /// <summary>
+        /// This method takes in integer values for the year and month and day and performs validations,
+        /// it then sets the value in the object formatted as an HL7 date value with year and month and
+        /// day precision (YYYYMMDD).
         /// </summary>
+        ///
+        /// <exception cref="DataTypeException">    Thrown when a Data Type error condition occurs. </exception>
+        ///
+        /// <param name="yr">   The yr. </param>
+        /// <param name="mnth"> The mnth. </param>
+        /// <param name="dy">   The dy. </param>
+
         public virtual void setYearMonthDayPrecision(int yr, int mnth, int dy)
         {
             try
@@ -319,11 +355,17 @@ namespace NHapi.Base.Model.Primitive
             }
         }
 
-        /// <summary> This method takes in integer values for the year and month and performs validations,
-        /// it then sets the value field formatted as an HL7 date
-        /// value with year and month precision (YYYYMM).
+        /// <summary>
+        /// This method takes in integer values for the year and month and performs validations, it then
+        /// sets the value field formatted as an HL7 date value with year and month precision (YYYYMM).
         /// Note: The first month = 1 = January.
         /// </summary>
+        ///
+        /// <exception cref="DataTypeException">    Thrown when a Data Type error condition occurs. </exception>
+        ///
+        /// <param name="yr">   The yr. </param>
+        /// <param name="mnth"> The mnth. </param>
+
         public virtual void setYearMonthPrecision(int yr, int mnth)
         {
             try

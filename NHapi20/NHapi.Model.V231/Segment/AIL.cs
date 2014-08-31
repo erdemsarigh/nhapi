@@ -7,35 +7,36 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 AIL message segment. 
-/// This segment has the following fields:<ol>
-///<li>AIL-1: Set ID - AIL (SI)</li>
-///<li>AIL-2: Segment Action Code (ID)</li>
-///<li>AIL-3: Location Resource ID (PL)</li>
-///<li>AIL-4: Location Type-AIL (CE)</li>
-///<li>AIL-5: Location Group (CE)</li>
-///<li>AIL-6: Start Date/Time (TS)</li>
-///<li>AIL-7: Start Date/Time Offset (NM)</li>
-///<li>AIL-8: Start Date/Time Offset Units (CE)</li>
-///<li>AIL-9: Duration (NM)</li>
-///<li>AIL-10: Duration Units (CE)</li>
-///<li>AIL-11: Allow Substitution Code (IS)</li>
-///<li>AIL-12: Filler Status Code (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 AIL message segment. This segment has the following fields:<ol>
+/// <li>AIL-1: Set ID - AIL (SI)</li>
+/// <li>AIL-2: Segment Action Code (ID)</li>
+/// <li>AIL-3: Location Resource ID (PL)</li>
+/// <li>AIL-4: Location Type-AIL (CE)</li>
+/// <li>AIL-5: Location Group (CE)</li>
+/// <li>AIL-6: Start Date/Time (TS)</li>
+/// <li>AIL-7: Start Date/Time Offset (NM)</li>
+/// <li>AIL-8: Start Date/Time Offset Units (CE)</li>
+/// <li>AIL-9: Duration (NM)</li>
+/// <li>AIL-10: Duration Units (CE)</li>
+/// <li>AIL-11: Allow Substitution Code (IS)</li>
+/// <li>AIL-12: Filler Status Code (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class AIL : AbstractSegment  {
 
-  /**
-   * Creates a AIL (AIL - appointment information - location resource segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the AIL class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public AIL(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -56,9 +57,10 @@ public class AIL : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - AIL(AIL-1).
-	///</summary>
+    /// <summary>   Returns Set ID - AIL(AIL-1). </summary>
+    ///
+    /// <value> The set idail. </value>
+
 	public SI SetIDAIL
 	{
 		get{
@@ -79,9 +81,10 @@ public class AIL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Segment Action Code(AIL-2).
-	///</summary>
+    /// <summary>   Returns Segment Action Code(AIL-2). </summary>
+    ///
+    /// <value> The segment action code. </value>
+
 	public ID SegmentActionCode
 	{
 		get{
@@ -102,9 +105,10 @@ public class AIL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Location Resource ID(AIL-3).
-	///</summary>
+    /// <summary>   Returns Location Resource ID(AIL-3). </summary>
+    ///
+    /// <value> The identifier of the location resource. </value>
+
 	public PL LocationResourceID
 	{
 		get{
@@ -125,9 +129,10 @@ public class AIL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Location Type-AIL(AIL-4).
-	///</summary>
+    /// <summary>   Returns Location Type-AIL(AIL-4). </summary>
+    ///
+    /// <value> The location type an il. </value>
+
 	public CE LocationTypeAIL
 	{
 		get{
@@ -148,9 +153,10 @@ public class AIL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Location Group(AIL-5).
-	///</summary>
+    /// <summary>   Returns Location Group(AIL-5). </summary>
+    ///
+    /// <value> The location group. </value>
+
 	public CE LocationGroup
 	{
 		get{
@@ -171,9 +177,10 @@ public class AIL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date/Time(AIL-6).
-	///</summary>
+    /// <summary>   Returns Start Date/Time(AIL-6). </summary>
+    ///
+    /// <value> The start date time. </value>
+
 	public TS StartDateTime
 	{
 		get{
@@ -194,9 +201,10 @@ public class AIL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date/Time Offset(AIL-7).
-	///</summary>
+    /// <summary>   Returns Start Date/Time Offset(AIL-7). </summary>
+    ///
+    /// <value> The start date time offset. </value>
+
 	public NM StartDateTimeOffset
 	{
 		get{
@@ -217,9 +225,10 @@ public class AIL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date/Time Offset Units(AIL-8).
-	///</summary>
+    /// <summary>   Returns Start Date/Time Offset Units(AIL-8). </summary>
+    ///
+    /// <value> The start date time offset units. </value>
+
 	public CE StartDateTimeOffsetUnits
 	{
 		get{
@@ -240,9 +249,10 @@ public class AIL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Duration(AIL-9).
-	///</summary>
+    /// <summary>   Returns Duration(AIL-9). </summary>
+    ///
+    /// <value> The duration. </value>
+
 	public NM Duration
 	{
 		get{
@@ -263,9 +273,10 @@ public class AIL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Duration Units(AIL-10).
-	///</summary>
+    /// <summary>   Returns Duration Units(AIL-10). </summary>
+    ///
+    /// <value> The duration units. </value>
+
 	public CE DurationUnits
 	{
 		get{
@@ -286,9 +297,10 @@ public class AIL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Allow Substitution Code(AIL-11).
-	///</summary>
+    /// <summary>   Returns Allow Substitution Code(AIL-11). </summary>
+    ///
+    /// <value> The allow substitution code. </value>
+
 	public IS AllowSubstitutionCode
 	{
 		get{
@@ -309,9 +321,10 @@ public class AIL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Status Code(AIL-12).
-	///</summary>
+    /// <summary>   Returns Filler Status Code(AIL-12). </summary>
+    ///
+    /// <value> The filler status code. </value>
+
 	public CE FillerStatusCode
 	{
 		get{

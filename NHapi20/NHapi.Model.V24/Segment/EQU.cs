@@ -7,28 +7,29 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 EQU message segment. 
-/// This segment has the following fields:<ol>
-///<li>EQU-1: Equipment Instance Identifier (EI)</li>
-///<li>EQU-2: Event Date/Time (TS)</li>
-///<li>EQU-3: Equipment State (CE)</li>
-///<li>EQU-4: Local/Remote Control State (CE)</li>
-///<li>EQU-5: Alert Level (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 EQU message segment. This segment has the following fields:<ol>
+/// <li>EQU-1: Equipment Instance Identifier (EI)</li>
+/// <li>EQU-2: Event Date/Time (TS)</li>
+/// <li>EQU-3: Equipment State (CE)</li>
+/// <li>EQU-4: Local/Remote Control State (CE)</li>
+/// <li>EQU-5: Alert Level (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class EQU : AbstractSegment  {
 
-  /**
-   * Creates a EQU (Equipment Detail) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the EQU class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public EQU(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -42,9 +43,10 @@ public class EQU : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Equipment Instance Identifier(EQU-1).
-	///</summary>
+    /// <summary>   Returns Equipment Instance Identifier(EQU-1). </summary>
+    ///
+    /// <value> The identifier of the equipment instance. </value>
+
 	public EI EquipmentInstanceIdentifier
 	{
 		get{
@@ -65,9 +67,10 @@ public class EQU : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Event Date/Time(EQU-2).
-	///</summary>
+    /// <summary>   Returns Event Date/Time(EQU-2). </summary>
+    ///
+    /// <value> The event date time. </value>
+
 	public TS EventDateTime
 	{
 		get{
@@ -88,9 +91,10 @@ public class EQU : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Equipment State(EQU-3).
-	///</summary>
+    /// <summary>   Returns Equipment State(EQU-3). </summary>
+    ///
+    /// <value> The equipment state. </value>
+
 	public CE EquipmentState
 	{
 		get{
@@ -111,9 +115,10 @@ public class EQU : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Local/Remote Control State(EQU-4).
-	///</summary>
+    /// <summary>   Returns Local/Remote Control State(EQU-4). </summary>
+    ///
+    /// <value> The local remote control state. </value>
+
 	public CE LocalRemoteControlState
 	{
 		get{
@@ -134,9 +139,10 @@ public class EQU : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Alert Level(EQU-5).
-	///</summary>
+    /// <summary>   Returns Alert Level(EQU-5). </summary>
+    ///
+    /// <value> The alert level. </value>
+
 	public CE AlertLevel
 	{
 		get{

@@ -6,29 +6,31 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V24.Datatype
 {
-
-///<summary>
-/// <p>The HL7 CCP (channel calibration parameters) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 CCP (channel calibration parameters) data type.  Consists of the following
+/// components: </p><ol>
 /// <li>channel calibration sensitivity correction factor (NM)</li>
 /// <li>channel calibration baseline (NM)</li>
 /// <li>channel calibration time skew (NM)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CCP : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CCP.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CCP. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CCP(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CCP.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CCP. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CCP(IMessage message, string description) : base(message, description){
 		data = new IType[3];
 		data[0] = new NM(message,"Channel calibration sensitivity correction factor");
@@ -36,9 +38,10 @@ public class CCP : AbstractType, IComposite{
 		data[2] = new NM(message,"Channel calibration time skew");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -46,12 +49,15 @@ public class CCP : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -62,10 +68,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns channel calibration sensitivity correction factor (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns channel calibration sensitivity correction factor (component #0).  This is a
+    /// convenience method that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The channel calibration sensitivity correction factor. </value>
+
 	public NM ChannelCalibrationSensitivityCorrectionFactor {
 get{
 	   NM ret = null;
@@ -79,10 +89,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns channel calibration baseline (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns channel calibration baseline (component #1).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The channel calibration baseline. </value>
+
 	public NM ChannelCalibrationBaseline {
 get{
 	   NM ret = null;
@@ -96,10 +110,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns channel calibration time skew (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns channel calibration time skew (component #2).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The channel calibration time skew. </value>
+
 	public NM ChannelCalibrationTimeSkew {
 get{
 	   NM ret = null;

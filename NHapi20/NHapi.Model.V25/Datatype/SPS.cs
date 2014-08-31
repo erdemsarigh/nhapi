@@ -6,8 +6,7 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 SPS (Specimen Source) data type.  Consists of the following components: </p><ol>
 /// <li>Specimen Source Name or Code (CWE)</li>
 /// <li>Additives (CWE)</li>
@@ -17,22 +16,24 @@ namespace NHapi.Model.V25.Datatype
 /// <li>Collection Method Modifier Code (CWE)</li>
 /// <li>Specimen Role (CWE)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class SPS : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a SPS.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a SPS. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public SPS(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a SPS.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a SPS. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public SPS(IMessage message, string description) : base(message, description){
 		data = new IType[7];
 		data[0] = new CWE(message,"Specimen Source Name or Code");
@@ -44,9 +45,10 @@ public class SPS : AbstractType, IComposite{
 		data[6] = new CWE(message,"Specimen Role");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -54,12 +56,15 @@ public class SPS : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -70,10 +75,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Specimen Source Name or Code (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Specimen Source Name or Code (component #0).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The specimen source name or code. </value>
+
 	public CWE SpecimenSourceNameOrCode {
 get{
 	   CWE ret = null;
@@ -87,10 +96,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Additives (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Additives (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The additives. </value>
+
 	public CWE Additives {
 get{
 	   CWE ret = null;
@@ -104,10 +117,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Specimen Collection Method (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Specimen Collection Method (component #2).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The specimen collection method. </value>
+
 	public TX SpecimenCollectionMethod {
 get{
 	   TX ret = null;
@@ -121,10 +138,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Body Site (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Body Site (component #3).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The body site. </value>
+
 	public CWE BodySite {
 get{
 	   CWE ret = null;
@@ -138,10 +159,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Site Modifier (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Site Modifier (component #4).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The site modifier. </value>
+
 	public CWE SiteModifier {
 get{
 	   CWE ret = null;
@@ -155,10 +180,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Collection Method Modifier Code (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Collection Method Modifier Code (component #5).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The collection method modifier code. </value>
+
 	public CWE CollectionMethodModifierCode {
 get{
 	   CWE ret = null;
@@ -172,10 +201,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Specimen Role (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Specimen Role (component #6).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The specimen role. </value>
+
 	public CWE SpecimenRole {
 get{
 	   CWE ret = null;

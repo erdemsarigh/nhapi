@@ -21,26 +21,23 @@
 
 namespace NHapi.Base.validation.impl
 {
-    /// <summary> Checks that Primitive values conform to a certain size limit.  
-    /// 
-    /// </summary>
-    /// <author>  <a href="mailto:bryan.tripp@uhn.on.ca">Bryan Tripp</a>
-    /// </author>
-    /// <version>  $Revision: 1.3 $ updated on $Date: 2005/06/14 20:16:01 $ by $Author: bryan_tripp $
-    /// </version>
+    /// <summary>   Checks that Primitive values conform to a certain size limit.   </summary>
     public class SizeRule : IPrimitiveTypeRule
     {
         #region Fields
 
+        /// <summary>   my maximum characters. </summary>
         private int myMaxChars;
 
         #endregion
 
         #region Constructors and Destructors
 
-        /// <param name="theMaxChars">the maximum number of characters this rule allows in a 
-        /// primitive value
-        /// </param>
+        /// <summary>   Initializes a new instance of the SizeRule class. </summary>
+        ///
+        /// <param name="theMaxChars">  the maximum number of characters this rule allows in a primitive
+        ///                             value. </param>
+
         public SizeRule(int theMaxChars)
         {
             this.myMaxChars = theMaxChars;
@@ -50,8 +47,12 @@ namespace NHapi.Base.validation.impl
 
         #region Public Properties
 
-        /// <seealso cref="NHapi.Base.validation.Rule.getDescription()">
-        /// </seealso>
+        /// <summary>   Gets the description. </summary>
+        ///
+        /// <value> The description. </value>
+        ///
+        /// <seealso cref="NHapi.Base.validation.Rule.getDescription()"/>
+
         public virtual System.String Description
         {
             get
@@ -60,8 +61,12 @@ namespace NHapi.Base.validation.impl
             }
         }
 
-        /// <seealso cref="NHapi.Base.validation.Rule.getSectionReference()">
-        /// </seealso>
+        /// <summary>   Gets the section reference. </summary>
+        ///
+        /// <value> The section reference. </value>
+        ///
+        /// <seealso cref="NHapi.Base.validation.Rule.getSectionReference()"/>
+
         public virtual System.String SectionReference
         {
             get
@@ -74,19 +79,30 @@ namespace NHapi.Base.validation.impl
 
         #region Public Methods and Operators
 
-        /// <summary> Does nothing.  If what you wanted was to trim the value to the max size, you should
-        /// make a separate rule for that.  
-        /// 
+        /// <summary>
+        /// Does nothing.  If what you wanted was to trim the value to the max size, you should make a
+        /// separate rule for that.  
         /// </summary>
-        /// <seealso cref="NHapi.Base.validation.PrimitiveTypeRule.correct(java.lang.String)">
-        /// </seealso>
+        ///
+        /// <param name="value_Renamed">    The value renamed. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+        ///
+        /// <seealso cref="NHapi.Base.validation.PrimitiveTypeRule.correct(java.lang.String)"/>
+
         public virtual System.String correct(System.String value_Renamed)
         {
             return value_Renamed;
         }
 
-        /// <seealso cref="NHapi.Base.validation.PrimitiveTypeRule.test(java.lang.String)">
-        /// </seealso>
+        /// <summary>   Tests the given value renamed. </summary>
+        ///
+        /// <param name="value_Renamed">    The value renamed. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+        ///
+        /// <seealso cref="NHapi.Base.validation.PrimitiveTypeRule.test(java.lang.String)"/>
+
         public virtual bool test(System.String value_Renamed)
         {
             bool ok = true;

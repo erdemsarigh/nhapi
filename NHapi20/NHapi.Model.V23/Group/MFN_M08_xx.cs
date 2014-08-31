@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the MFN_M08_xx Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: OM2 (Numeric observation) optional </li>
-///<li>1: OM3 (Categorical test/observation) optional </li>
-///<li>2: OM4 (Observations that require specimens) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the MFN_M08_xx Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: OM2 (Numeric observation) optional </li>
+/// <li>1: OM3 (Categorical test/observation) optional </li>
+/// <li>2: OM4 (Observations that require specimens) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFN_M08_xx : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new MFN_M08_xx Group.
-	///</summary>
+    /// <summary>   Creates a new MFN_M08_xx Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFN_M08_xx(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(OM2), false, false);
@@ -34,9 +37,10 @@ public class MFN_M08_xx : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns OM2 (Numeric observation) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OM2 (Numeric observation) - creates it if necessary. </summary>
+    ///
+    /// <value> The om 2. </value>
+
 	public OM2 OM2 { 
 get{
 	   OM2 ret = null;
@@ -50,9 +54,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns OM3 (Categorical test/observation) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OM3 (Categorical test/observation) - creates it if necessary. </summary>
+    ///
+    /// <value> The om 3. </value>
+
 	public OM3 OM3 { 
 get{
 	   OM3 ret = null;
@@ -66,9 +71,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns OM4 (Observations that require specimens) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns OM4 (Observations that require specimens) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The om 4. </value>
+
 	public OM4 OM4 { 
 get{
 	   OM4 ret = null;

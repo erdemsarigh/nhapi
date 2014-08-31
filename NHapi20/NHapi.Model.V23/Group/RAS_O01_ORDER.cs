@@ -8,26 +8,29 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the RAS_O01_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common order segment) </li>
-///<li>1: RAS_O01_ORDER_DETAIL (a Group object) optional </li>
-///<li>2: RAS_O01_ENCODING (a Group object) optional </li>
-///<li>3: RXA (Pharmacy administration segment) repeating</li>
-///<li>4: RXR (Pharmacy route segment) </li>
-///<li>5: RAS_O01_OBSERVATION (a Group object) optional repeating</li>
-///<li>6: CTI (Clinical Trial Identification) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RAS_O01_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common order segment) </li>
+/// <li>1: RAS_O01_ORDER_DETAIL (a Group object) optional </li>
+/// <li>2: RAS_O01_ENCODING (a Group object) optional </li>
+/// <li>3: RXA (Pharmacy administration segment) repeating</li>
+/// <li>4: RXR (Pharmacy route segment) </li>
+/// <li>5: RAS_O01_OBSERVATION (a Group object) optional repeating</li>
+/// <li>6: CTI (Clinical Trial Identification) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RAS_O01_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RAS_O01_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new RAS_O01_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RAS_O01_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -42,9 +45,10 @@ public class RAS_O01_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common order segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common order segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -58,9 +62,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RAS_O01_ORDER_DETAIL (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RAS_O01_ORDER_DETAIL (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The order detail. </value>
+
 	public RAS_O01_ORDER_DETAIL ORDER_DETAIL { 
 get{
 	   RAS_O01_ORDER_DETAIL ret = null;
@@ -74,9 +79,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RAS_O01_ENCODING (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RAS_O01_ENCODING (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The encoding. </value>
+
 	public RAS_O01_ENCODING ENCODING { 
 get{
 	   RAS_O01_ENCODING ret = null;
@@ -90,9 +96,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RXA (Pharmacy administration segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RXA (Pharmacy administration segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The rxa. </returns>
+
 	public RXA GetRXA() {
 	   RXA ret = null;
 	   try {
@@ -104,19 +115,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RXA
-	/// * (Pharmacy administration segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RXA
+    ///  * (Pharmacy administration segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The rxa. </returns>
+
 	public RXA GetRXA(int rep) { 
 	   return (RXA)this.GetStructure("RXA", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RXA 
-	 */ 
+    /// <summary>   Gets the rxa repetitions used. </summary>
+    ///
+    /// <value> The rxa repetitions used. </value>
+
 	public int RXARepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -131,9 +148,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns RXR (Pharmacy route segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RXR (Pharmacy route segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The rxr. </value>
+
 	public RXR RXR { 
 get{
 	   RXR ret = null;
@@ -147,9 +165,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RAS_O01_OBSERVATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RAS_O01_OBSERVATION (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public RAS_O01_OBSERVATION GetOBSERVATION() {
 	   RAS_O01_OBSERVATION ret = null;
 	   try {
@@ -161,19 +184,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RAS_O01_OBSERVATION
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RAS_O01_OBSERVATION
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public RAS_O01_OBSERVATION GetOBSERVATION(int rep) { 
 	   return (RAS_O01_OBSERVATION)this.GetStructure("OBSERVATION", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RAS_O01_OBSERVATION 
-	 */ 
+    /// <summary>   Gets the observation repetitions used. </summary>
+    ///
+    /// <value> The observation repetitions used. </value>
+
 	public int OBSERVATIONRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -188,9 +217,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of CTI (Clinical Trial Identification) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of CTI (Clinical Trial Identification) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The cti. </returns>
+
 	public CTI GetCTI() {
 	   CTI ret = null;
 	   try {
@@ -202,19 +236,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of CTI
-	/// * (Clinical Trial Identification) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of CTI
+    ///  * (Clinical Trial Identification) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The cti. </returns>
+
 	public CTI GetCTI(int rep) { 
 	   return (CTI)this.GetStructure("CTI", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of CTI 
-	 */ 
+    /// <summary>   Gets the cti repetitions used. </summary>
+    ///
+    /// <value> The cti repetitions used. </value>
+
 	public int CTIRepetitionsUsed { 
 get{
 	    int reps = -1; 

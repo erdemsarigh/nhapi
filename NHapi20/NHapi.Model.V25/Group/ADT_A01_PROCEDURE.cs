@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V25.Group
 {
-///<summary>
-///Represents the ADT_A01_PROCEDURE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PR1 (Procedures) </li>
-///<li>1: ROL (Role) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ADT_A01_PROCEDURE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PR1 (Procedures) </li>
+/// <li>1: ROL (Role) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ADT_A01_PROCEDURE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ADT_A01_PROCEDURE Group.
-	///</summary>
+    /// <summary>   Creates a new ADT_A01_PROCEDURE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ADT_A01_PROCEDURE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PR1), true, false);
@@ -32,9 +35,10 @@ public class ADT_A01_PROCEDURE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PR1 (Procedures) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PR1 (Procedures) - creates it if necessary. </summary>
+    ///
+    /// <value> The pr 1. </value>
+
 	public PR1 PR1 { 
 get{
 	   PR1 ret = null;
@@ -48,9 +52,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of ROL (Role) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns  first repetition of ROL (Role) - creates it if necessary. </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The rol. </returns>
+
 	public ROL GetROL() {
 	   ROL ret = null;
 	   try {
@@ -62,19 +69,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of ROL
-	/// * (Role) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of ROL
+    ///  * (Role) - creates it if necessary throws HL7Exception if the repetition requested is more
+    ///  than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The rol. </returns>
+
 	public ROL GetROL(int rep) { 
 	   return (ROL)this.GetStructure("ROL", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of ROL 
-	 */ 
+    /// <summary>   Gets the rol repetitions used. </summary>
+    ///
+    /// <value> The rol repetitions used. </value>
+
 	public int ROLRepetitionsUsed { 
 get{
 	    int reps = -1; 

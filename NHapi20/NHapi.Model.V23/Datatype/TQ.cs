@@ -6,8 +6,7 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V23.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 TQ (timing quantity) data type.  Consists of the following components: </p><ol>
 /// <li>quantity (CQ)</li>
 /// <li>interval (CM_RI)</li>
@@ -20,22 +19,24 @@ namespace NHapi.Model.V23.Datatype
 /// <li>conjunction (ST)</li>
 /// <li>order sequencing (CM_OSD)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class TQ : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a TQ.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a TQ. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public TQ(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a TQ.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a TQ. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public TQ(IMessage message, string description) : base(message, description){
 		data = new IType[10];
 		data[0] = new CQ(message,"Quantity");
@@ -50,9 +51,10 @@ public class TQ : AbstractType, IComposite{
 		data[9] = new CM_OSD(message,"Order sequencing");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -60,12 +62,15 @@ public class TQ : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -76,10 +81,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns quantity (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns quantity (component #0).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The quantity. </value>
+
 	public CQ Quantity {
 get{
 	   CQ ret = null;
@@ -93,10 +102,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns interval (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns interval (component #1).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The interval. </value>
+
 	public CM_RI Interval {
 get{
 	   CM_RI ret = null;
@@ -110,10 +123,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns duration (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns duration (component #2).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The duration. </value>
+
 	public ST Duration {
 get{
 	   ST ret = null;
@@ -127,10 +144,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns start date/time (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns start date/time (component #3).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The start date time. </value>
+
 	public TS StartDateTime {
 get{
 	   TS ret = null;
@@ -144,10 +165,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns end date/time (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns end date/time (component #4).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The end date time. </value>
+
 	public TS EndDateTime {
 get{
 	   TS ret = null;
@@ -161,10 +186,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns priority (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns priority (component #5).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The priority. </value>
+
 	public ST Priority {
 get{
 	   ST ret = null;
@@ -178,10 +207,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns condition (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns condition (component #6).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The condition. </value>
+
 	public ST Condition {
 get{
 	   ST ret = null;
@@ -195,10 +228,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns text (TX) (component #7).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns text (TX) (component #7).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The text. </value>
+
 	public TX Text {
 get{
 	   TX ret = null;
@@ -212,10 +249,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns conjunction (component #8).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns conjunction (component #8).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The conjunction. </value>
+
 	public ST Conjunction {
 get{
 	   ST ret = null;
@@ -229,10 +270,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns order sequencing (component #9).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns order sequencing (component #9).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The order sequencing. </value>
+
 	public CM_OSD OrderSequencing {
 get{
 	   CM_OSD ret = null;

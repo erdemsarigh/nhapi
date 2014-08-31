@@ -7,27 +7,28 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 NDS message segment. 
-/// This segment has the following fields:<ol>
-///<li>NDS-1: Notification Reference Number (NM)</li>
-///<li>NDS-2: Notification Date/Time (TS)</li>
-///<li>NDS-3: Notification Alert Severity (CE)</li>
-///<li>NDS-4: Notification Code (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 NDS message segment. This segment has the following fields:<ol>
+/// <li>NDS-1: Notification Reference Number (NM)</li>
+/// <li>NDS-2: Notification Date/Time (TS)</li>
+/// <li>NDS-3: Notification Alert Severity (CE)</li>
+/// <li>NDS-4: Notification Code (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class NDS : AbstractSegment  {
 
-  /**
-   * Creates a NDS (Notification Detail) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the NDS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public NDS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -40,9 +41,10 @@ public class NDS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Notification Reference Number(NDS-1).
-	///</summary>
+    /// <summary>   Returns Notification Reference Number(NDS-1). </summary>
+    ///
+    /// <value> The notification reference number. </value>
+
 	public NM NotificationReferenceNumber
 	{
 		get{
@@ -63,9 +65,10 @@ public class NDS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Notification Date/Time(NDS-2).
-	///</summary>
+    /// <summary>   Returns Notification Date/Time(NDS-2). </summary>
+    ///
+    /// <value> The notification date time. </value>
+
 	public TS NotificationDateTime
 	{
 		get{
@@ -86,9 +89,10 @@ public class NDS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Notification Alert Severity(NDS-3).
-	///</summary>
+    /// <summary>   Returns Notification Alert Severity(NDS-3). </summary>
+    ///
+    /// <value> The notification alert severity. </value>
+
 	public CE NotificationAlertSeverity
 	{
 		get{
@@ -109,9 +113,10 @@ public class NDS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Notification Code(NDS-4).
-	///</summary>
+    /// <summary>   Returns Notification Code(NDS-4). </summary>
+    ///
+    /// <value> The notification code. </value>
+
 	public CE NotificationCode
 	{
 		get{

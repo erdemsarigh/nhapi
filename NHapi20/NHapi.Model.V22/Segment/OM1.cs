@@ -7,65 +7,66 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 OM1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>OM1-1: Segment Type ID (ST)</li>
-///<li>OM1-2: Sequence Number - Test/ Observation Master File (NM)</li>
-///<li>OM1-3: Producer's test / observation ID (CE)</li>
-///<li>OM1-4: Permitted Data Types (ID)</li>
-///<li>OM1-5: Specimen Required (ID)</li>
-///<li>OM1-6: Producer ID (CE)</li>
-///<li>OM1-7: Observation Description (TX)</li>
-///<li>OM1-8: Other test / observation IDs for the observation (CE)</li>
-///<li>OM1-9: Other Names (ST)</li>
-///<li>OM1-10: Preferred Report Name for the Observation (ST)</li>
-///<li>OM1-11: Preferred Short Name or Mnemonic for Observation (ST)</li>
-///<li>OM1-12: Preferred Long Name for the Observation (ST)</li>
-///<li>OM1-13: Orderability (ID)</li>
-///<li>OM1-14: Identity of instrument used to perform this study (CE)</li>
-///<li>OM1-15: Coded Representation of Method (CE)</li>
-///<li>OM1-16: Portable (ID)</li>
-///<li>OM1-17: Observation producing department / section (ID)</li>
-///<li>OM1-18: Telephone Number of Section (TN)</li>
-///<li>OM1-19: Nature of test / observation (ID)</li>
-///<li>OM1-20: Report Subheader (CE)</li>
-///<li>OM1-21: Report Display Order (ST)</li>
-///<li>OM1-22: Date / time stamp for any change in definition for obs (TS)</li>
-///<li>OM1-23: Effective date / time of change (TS)</li>
-///<li>OM1-24: Typical Turn-around Time (NM)</li>
-///<li>OM1-25: Processing Time (NM)</li>
-///<li>OM1-26: Processing Priority (ID)</li>
-///<li>OM1-27: Reporting Priority (ID)</li>
-///<li>OM1-28: Outside Site(s) Where Observation may be Performed (CE)</li>
-///<li>OM1-29: Address of Outside Site(s) (AD)</li>
-///<li>OM1-30: Phone Number of Outside Site (TN)</li>
-///<li>OM1-31: Confidentiality Code (ID)</li>
-///<li>OM1-32: Observations required to interpret the observation (CE)</li>
-///<li>OM1-33: Interpretation of Observations (TX)</li>
-///<li>OM1-34: Contraindications to Observations (CE)</li>
-///<li>OM1-35: Reflex tests / observations (CE)</li>
-///<li>OM1-36: Rules that Trigger Reflex Testing (ST)</li>
-///<li>OM1-37: Fixed Canned Message (CE)</li>
-///<li>OM1-38: Patient Preparation (TX)</li>
-///<li>OM1-39: Procedure Medication (CE)</li>
-///<li>OM1-40: Factors that may affect the observation (TX)</li>
-///<li>OM1-41: Test / observation performance schedule (ST)</li>
-///<li>OM1-42: Description of Test Methods (TX)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 OM1 message segment. This segment has the following fields:<ol>
+/// <li>OM1-1: Segment Type ID (ST)</li>
+/// <li>OM1-2: Sequence Number - Test/ Observation Master File (NM)</li>
+/// <li>OM1-3: Producer's test / observation ID (CE)</li>
+/// <li>OM1-4: Permitted Data Types (ID)</li>
+/// <li>OM1-5: Specimen Required (ID)</li>
+/// <li>OM1-6: Producer ID (CE)</li>
+/// <li>OM1-7: Observation Description (TX)</li>
+/// <li>OM1-8: Other test / observation IDs for the observation (CE)</li>
+/// <li>OM1-9: Other Names (ST)</li>
+/// <li>OM1-10: Preferred Report Name for the Observation (ST)</li>
+/// <li>OM1-11: Preferred Short Name or Mnemonic for Observation (ST)</li>
+/// <li>OM1-12: Preferred Long Name for the Observation (ST)</li>
+/// <li>OM1-13: Orderability (ID)</li>
+/// <li>OM1-14: Identity of instrument used to perform this study (CE)</li>
+/// <li>OM1-15: Coded Representation of Method (CE)</li>
+/// <li>OM1-16: Portable (ID)</li>
+/// <li>OM1-17: Observation producing department / section (ID)</li>
+/// <li>OM1-18: Telephone Number of Section (TN)</li>
+/// <li>OM1-19: Nature of test / observation (ID)</li>
+/// <li>OM1-20: Report Subheader (CE)</li>
+/// <li>OM1-21: Report Display Order (ST)</li>
+/// <li>OM1-22: Date / time stamp for any change in definition for obs (TS)</li>
+/// <li>OM1-23: Effective date / time of change (TS)</li>
+/// <li>OM1-24: Typical Turn-around Time (NM)</li>
+/// <li>OM1-25: Processing Time (NM)</li>
+/// <li>OM1-26: Processing Priority (ID)</li>
+/// <li>OM1-27: Reporting Priority (ID)</li>
+/// <li>OM1-28: Outside Site(s) Where Observation may be Performed (CE)</li>
+/// <li>OM1-29: Address of Outside Site(s) (AD)</li>
+/// <li>OM1-30: Phone Number of Outside Site (TN)</li>
+/// <li>OM1-31: Confidentiality Code (ID)</li>
+/// <li>OM1-32: Observations required to interpret the observation (CE)</li>
+/// <li>OM1-33: Interpretation of Observations (TX)</li>
+/// <li>OM1-34: Contraindications to Observations (CE)</li>
+/// <li>OM1-35: Reflex tests / observations (CE)</li>
+/// <li>OM1-36: Rules that Trigger Reflex Testing (ST)</li>
+/// <li>OM1-37: Fixed Canned Message (CE)</li>
+/// <li>OM1-38: Patient Preparation (TX)</li>
+/// <li>OM1-39: Procedure Medication (CE)</li>
+/// <li>OM1-40: Factors that may affect the observation (TX)</li>
+/// <li>OM1-41: Test / observation performance schedule (ST)</li>
+/// <li>OM1-42: Description of Test Methods (TX)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class OM1 : AbstractSegment  {
 
-  /**
-   * Creates a OM1 (GENERAL - fields that apply to most observations) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the OM1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OM1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -116,9 +117,10 @@ public class OM1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Segment Type ID(OM1-1).
-	///</summary>
+    /// <summary>   Returns Segment Type ID(OM1-1). </summary>
+    ///
+    /// <value> The identifier of the segment type. </value>
+
 	public ST SegmentTypeID
 	{
 		get{
@@ -139,9 +141,10 @@ public class OM1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Sequence Number - Test/ Observation Master File(OM1-2).
-	///</summary>
+    /// <summary>   Returns Sequence Number - Test/ Observation Master File(OM1-2). </summary>
+    ///
+    /// <value> The sequence number test observation master file. </value>
+
 	public NM SequenceNumberTestObservationMasterFile
 	{
 		get{
@@ -162,9 +165,10 @@ public class OM1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Producer's test / observation ID(OM1-3).
-	///</summary>
+    /// <summary>   Returns Producer's test / observation ID(OM1-3). </summary>
+    ///
+    /// <value> The identifier of the producer s test observation. </value>
+
 	public CE ProducerSTestObservationID
 	{
 		get{
@@ -185,11 +189,17 @@ public class OM1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Permitted Data Types(OM1-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Permitted Data Types(OM1-4). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The permitted data types. </returns>
+
 	public ID GetPermittedDataTypes(int rep)
 	{
 			ID ret = null;
@@ -204,9 +214,12 @@ public class OM1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Permitted Data Types (OM1-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Permitted Data Types (OM1-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetPermittedDataTypes() {
      ID[] ret = null;
     try {
@@ -225,9 +238,10 @@ public class OM1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Permitted Data Types (OM1-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Permitted Data Types (OM1-4). </summary>
+  ///
+  /// <value>   The permitted data types repetitions used. </value>
+
   public int PermittedDataTypesRepetitionsUsed
 {
 get{
@@ -243,9 +257,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Specimen Required(OM1-5).
-	///</summary>
+
+    /// <summary>   Returns Specimen Required(OM1-5). </summary>
+    ///
+    /// <value> The specimen required. </value>
+
 	public ID SpecimenRequired
 	{
 		get{
@@ -266,9 +282,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Producer ID(OM1-6).
-	///</summary>
+    /// <summary>   Returns Producer ID(OM1-6). </summary>
+    ///
+    /// <value> The identifier of the producer. </value>
+
 	public CE ProducerID
 	{
 		get{
@@ -289,9 +306,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Observation Description(OM1-7).
-	///</summary>
+    /// <summary>   Returns Observation Description(OM1-7). </summary>
+    ///
+    /// <value> Information describing the observation. </value>
+
 	public TX ObservationDescription
 	{
 		get{
@@ -312,9 +330,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Other test / observation IDs for the observation(OM1-8).
-	///</summary>
+    /// <summary>   Returns Other test / observation IDs for the observation(OM1-8). </summary>
+    ///
+    /// <value> The other test observation i ds for the observation. </value>
+
 	public CE OtherTestObservationIDsForTheObservation
 	{
 		get{
@@ -335,11 +354,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Other Names(OM1-9).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Other Names(OM1-9). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The other names. </returns>
+
 	public ST GetOtherNames(int rep)
 	{
 			ST ret = null;
@@ -354,9 +379,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Other Names (OM1-9).
-   ///</summary>
+  /// <summary> Returns all repetitions of Other Names (OM1-9). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetOtherNames() {
      ST[] ret = null;
     try {
@@ -375,9 +403,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Other Names (OM1-9).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Other Names (OM1-9). </summary>
+  ///
+  /// <value>   The other names repetitions used. </value>
+
   public int OtherNamesRepetitionsUsed
 {
 get{
@@ -393,9 +422,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Preferred Report Name for the Observation(OM1-10).
-	///</summary>
+
+    /// <summary>   Returns Preferred Report Name for the Observation(OM1-10). </summary>
+    ///
+    /// <value> The preferred report name for the observation. </value>
+
 	public ST PreferredReportNameForTheObservation
 	{
 		get{
@@ -416,9 +447,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Preferred Short Name or Mnemonic for Observation(OM1-11).
-	///</summary>
+    /// <summary>   Returns Preferred Short Name or Mnemonic for Observation(OM1-11). </summary>
+    ///
+    /// <value> The preferred short name or mnemonic for observation. </value>
+
 	public ST PreferredShortNameOrMnemonicForObservation
 	{
 		get{
@@ -439,9 +471,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Preferred Long Name for the Observation(OM1-12).
-	///</summary>
+    /// <summary>   Returns Preferred Long Name for the Observation(OM1-12). </summary>
+    ///
+    /// <value> The preferred long name for the observation. </value>
+
 	public ST PreferredLongNameForTheObservation
 	{
 		get{
@@ -462,9 +495,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Orderability(OM1-13).
-	///</summary>
+    /// <summary>   Returns Orderability(OM1-13). </summary>
+    ///
+    /// <value> The orderability. </value>
+
 	public ID Orderability
 	{
 		get{
@@ -485,11 +519,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Identity of instrument used to perform this study(OM1-14).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Identity of instrument used to perform this study(OM1-14).
+    /// throws HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The identity of instrument used to perform this study. </returns>
+
 	public CE GetIdentityOfInstrumentUsedToPerformThisStudy(int rep)
 	{
 			CE ret = null;
@@ -504,9 +544,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Identity of instrument used to perform this study (OM1-14).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetIdentityOfInstrumentUsedToPerformThisStudy() {
      CE[] ret = null;
     try {
@@ -525,9 +570,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Identity of instrument used to perform this study (OM1-14).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The identity of instrument used to perform this study repetitions used. </value>
+
   public int IdentityOfInstrumentUsedToPerformThisStudyRepetitionsUsed
 {
 get{
@@ -543,11 +591,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Coded Representation of Method(OM1-15).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Coded Representation of Method(OM1-15). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The coded representation of method. </returns>
+
 	public CE GetCodedRepresentationOfMethod(int rep)
 	{
 			CE ret = null;
@@ -562,9 +617,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Coded Representation of Method (OM1-15).
-   ///</summary>
+  /// <summary> Returns all repetitions of Coded Representation of Method (OM1-15). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetCodedRepresentationOfMethod() {
      CE[] ret = null;
     try {
@@ -583,9 +641,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Coded Representation of Method (OM1-15).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Coded Representation of Method (OM1-15). </summary>
+  ///
+  /// <value>   The coded representation of method repetitions used. </value>
+
   public int CodedRepresentationOfMethodRepetitionsUsed
 {
 get{
@@ -601,9 +660,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Portable(OM1-16).
-	///</summary>
+
+    /// <summary>   Returns Portable(OM1-16). </summary>
+    ///
+    /// <value> The portable. </value>
+
 	public ID Portable
 	{
 		get{
@@ -624,11 +685,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Observation producing department / section(OM1-17).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Observation producing department / section(OM1-17). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The observation producing department section. </returns>
+
 	public ID GetObservationProducingDepartmentSection(int rep)
 	{
 			ID ret = null;
@@ -643,9 +710,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Observation producing department / section (OM1-17).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetObservationProducingDepartmentSection() {
      ID[] ret = null;
     try {
@@ -664,9 +736,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Observation producing department / section (OM1-17).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The observation producing department section repetitions used. </value>
+
   public int ObservationProducingDepartmentSectionRepetitionsUsed
 {
 get{
@@ -682,9 +757,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Telephone Number of Section(OM1-18).
-	///</summary>
+
+    /// <summary>   Returns Telephone Number of Section(OM1-18). </summary>
+    ///
+    /// <value> The telephone number of section. </value>
+
 	public TN TelephoneNumberOfSection
 	{
 		get{
@@ -705,9 +782,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Nature of test / observation(OM1-19).
-	///</summary>
+    /// <summary>   Returns Nature of test / observation(OM1-19). </summary>
+    ///
+    /// <value> The nature of test observation. </value>
+
 	public ID NatureOfTestObservation
 	{
 		get{
@@ -728,9 +806,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Report Subheader(OM1-20).
-	///</summary>
+    /// <summary>   Returns Report Subheader(OM1-20). </summary>
+    ///
+    /// <value> The report subheader. </value>
+
 	public CE ReportSubheader
 	{
 		get{
@@ -751,9 +830,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Report Display Order(OM1-21).
-	///</summary>
+    /// <summary>   Returns Report Display Order(OM1-21). </summary>
+    ///
+    /// <value> The report display order. </value>
+
 	public ST ReportDisplayOrder
 	{
 		get{
@@ -774,9 +854,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date / time stamp for any change in definition for obs(OM1-22).
-	///</summary>
+    /// <summary>   Returns Date / time stamp for any change in definition for obs(OM1-22). </summary>
+    ///
+    /// <value> The date time stamp for any change in definition for obs. </value>
+
 	public TS DateTimeStampForAnyChangeInDefinitionForObs
 	{
 		get{
@@ -797,9 +878,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Effective date / time of change(OM1-23).
-	///</summary>
+    /// <summary>   Returns Effective date / time of change(OM1-23). </summary>
+    ///
+    /// <value> The effective date time of change. </value>
+
 	public TS EffectiveDateTimeOfChange
 	{
 		get{
@@ -820,9 +902,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Typical Turn-around Time(OM1-24).
-	///</summary>
+    /// <summary>   Returns Typical Turn-around Time(OM1-24). </summary>
+    ///
+    /// <value> The typical turn around time. </value>
+
 	public NM TypicalTurnAroundTime
 	{
 		get{
@@ -843,9 +926,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Processing Time(OM1-25).
-	///</summary>
+    /// <summary>   Returns Processing Time(OM1-25). </summary>
+    ///
+    /// <value> The processing time. </value>
+
 	public NM ProcessingTime
 	{
 		get{
@@ -866,11 +950,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Processing Priority(OM1-26).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Processing Priority(OM1-26). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The processing priority. </returns>
+
 	public ID GetProcessingPriority(int rep)
 	{
 			ID ret = null;
@@ -885,9 +975,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Processing Priority (OM1-26).
-   ///</summary>
+  /// <summary> Returns all repetitions of Processing Priority (OM1-26). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetProcessingPriority() {
      ID[] ret = null;
     try {
@@ -906,9 +999,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Processing Priority (OM1-26).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Processing Priority (OM1-26). </summary>
+  ///
+  /// <value>   The processing priority repetitions used. </value>
+
   public int ProcessingPriorityRepetitionsUsed
 {
 get{
@@ -924,9 +1018,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Reporting Priority(OM1-27).
-	///</summary>
+
+    /// <summary>   Returns Reporting Priority(OM1-27). </summary>
+    ///
+    /// <value> The reporting priority. </value>
+
 	public ID ReportingPriority
 	{
 		get{
@@ -947,11 +1043,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Outside Site(s) Where Observation may be Performed(OM1-28).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Outside Site(s) Where Observation may be Performed(OM1-28).
+    /// throws HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The outside site s where observation may be performed. </returns>
+
 	public CE GetOutsideSiteSWhereObservationMayBePerformed(int rep)
 	{
 			CE ret = null;
@@ -966,9 +1068,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Outside Site(s) Where Observation may be Performed (OM1-28).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetOutsideSiteSWhereObservationMayBePerformed() {
      CE[] ret = null;
     try {
@@ -987,9 +1094,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Outside Site(s) Where Observation may be Performed (OM1-28).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The outside site s where observation may be performed repetitions used. </value>
+
   public int OutsideSiteSWhereObservationMayBePerformedRepetitionsUsed
 {
 get{
@@ -1005,11 +1115,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Address of Outside Site(s)(OM1-29).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Address of Outside Site(s)(OM1-29). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The address of outside site s. </returns>
+
 	public AD GetAddressOfOutsideSiteS(int rep)
 	{
 			AD ret = null;
@@ -1024,9 +1141,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Address of Outside Site(s) (OM1-29).
-   ///</summary>
+  /// <summary> Returns all repetitions of Address of Outside Site(s) (OM1-29). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ad. </returns>
+
   public AD[] GetAddressOfOutsideSiteS() {
      AD[] ret = null;
     try {
@@ -1045,9 +1165,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Address of Outside Site(s) (OM1-29).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Address of Outside Site(s) (OM1-29). </summary>
+  ///
+  /// <value>   The address of outside site s repetitions used. </value>
+
   public int AddressOfOutsideSiteSRepetitionsUsed
 {
 get{
@@ -1063,11 +1184,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Phone Number of Outside Site(OM1-30).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Phone Number of Outside Site(OM1-30). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The phone number of outside site. </returns>
+
 	public TN GetPhoneNumberOfOutsideSite(int rep)
 	{
 			TN ret = null;
@@ -1082,9 +1210,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Phone Number of Outside Site (OM1-30).
-   ///</summary>
+  /// <summary> Returns all repetitions of Phone Number of Outside Site (OM1-30). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tn. </returns>
+
   public TN[] GetPhoneNumberOfOutsideSite() {
      TN[] ret = null;
     try {
@@ -1103,9 +1234,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Phone Number of Outside Site (OM1-30).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Phone Number of Outside Site (OM1-30). </summary>
+  ///
+  /// <value>   The phone number of outside site repetitions used. </value>
+
   public int PhoneNumberOfOutsideSiteRepetitionsUsed
 {
 get{
@@ -1121,9 +1253,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Confidentiality Code(OM1-31).
-	///</summary>
+
+    /// <summary>   Returns Confidentiality Code(OM1-31). </summary>
+    ///
+    /// <value> The confidentiality code. </value>
+
 	public ID ConfidentialityCode
 	{
 		get{
@@ -1144,11 +1278,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Observations required to interpret the observation(OM1-32).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Observations required to interpret the observation(OM1-32).
+    /// throws HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The observations required to interpret the observation. </returns>
+
 	public CE GetObservationsRequiredToInterpretTheObservation(int rep)
 	{
 			CE ret = null;
@@ -1163,9 +1303,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Observations required to interpret the observation (OM1-32).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetObservationsRequiredToInterpretTheObservation() {
      CE[] ret = null;
     try {
@@ -1184,9 +1329,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Observations required to interpret the observation (OM1-32).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The observations required to interpret the observation repetitions used. </value>
+
   public int ObservationsRequiredToInterpretTheObservationRepetitionsUsed
 {
 get{
@@ -1202,9 +1350,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Interpretation of Observations(OM1-33).
-	///</summary>
+
+    /// <summary>   Returns Interpretation of Observations(OM1-33). </summary>
+    ///
+    /// <value> The interpretation of observations. </value>
+
 	public TX InterpretationOfObservations
 	{
 		get{
@@ -1225,11 +1375,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Contraindications to Observations(OM1-34).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Contraindications to Observations(OM1-34). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The contraindications to observations. </returns>
+
 	public CE GetContraindicationsToObservations(int rep)
 	{
 			CE ret = null;
@@ -1244,9 +1400,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Contraindications to Observations (OM1-34).
-   ///</summary>
+  /// <summary> Returns all repetitions of Contraindications to Observations (OM1-34). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetContraindicationsToObservations() {
      CE[] ret = null;
     try {
@@ -1265,9 +1424,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Contraindications to Observations (OM1-34).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The contraindications to observations repetitions used. </value>
+
   public int ContraindicationsToObservationsRepetitionsUsed
 {
 get{
@@ -1283,11 +1445,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Reflex tests / observations(OM1-35).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Reflex tests / observations(OM1-35). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The reflex tests observations. </returns>
+
 	public CE GetReflexTestsObservations(int rep)
 	{
 			CE ret = null;
@@ -1302,9 +1471,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Reflex tests / observations (OM1-35).
-   ///</summary>
+  /// <summary> Returns all repetitions of Reflex tests / observations (OM1-35). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetReflexTestsObservations() {
      CE[] ret = null;
     try {
@@ -1323,9 +1495,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Reflex tests / observations (OM1-35).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Reflex tests / observations (OM1-35). </summary>
+  ///
+  /// <value>   The reflex tests observations repetitions used. </value>
+
   public int ReflexTestsObservationsRepetitionsUsed
 {
 get{
@@ -1341,9 +1514,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Rules that Trigger Reflex Testing(OM1-36).
-	///</summary>
+
+    /// <summary>   Returns Rules that Trigger Reflex Testing(OM1-36). </summary>
+    ///
+    /// <value> The rules that trigger reflex testing. </value>
+
 	public ST RulesThatTriggerReflexTesting
 	{
 		get{
@@ -1364,11 +1539,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Fixed Canned Message(OM1-37).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Fixed Canned Message(OM1-37). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The fixed canned message. </returns>
+
 	public CE GetFixedCannedMessage(int rep)
 	{
 			CE ret = null;
@@ -1383,9 +1564,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Fixed Canned Message (OM1-37).
-   ///</summary>
+  /// <summary> Returns all repetitions of Fixed Canned Message (OM1-37). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetFixedCannedMessage() {
      CE[] ret = null;
     try {
@@ -1404,9 +1588,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Fixed Canned Message (OM1-37).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Fixed Canned Message (OM1-37). </summary>
+  ///
+  /// <value>   The fixed canned message repetitions used. </value>
+
   public int FixedCannedMessageRepetitionsUsed
 {
 get{
@@ -1422,9 +1607,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Patient Preparation(OM1-38).
-	///</summary>
+
+    /// <summary>   Returns Patient Preparation(OM1-38). </summary>
+    ///
+    /// <value> The patient preparation. </value>
+
 	public TX PatientPreparation
 	{
 		get{
@@ -1445,9 +1632,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Procedure Medication(OM1-39).
-	///</summary>
+    /// <summary>   Returns Procedure Medication(OM1-39). </summary>
+    ///
+    /// <value> The procedure medication. </value>
+
 	public CE ProcedureMedication
 	{
 		get{
@@ -1468,9 +1656,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Factors that may affect the observation(OM1-40).
-	///</summary>
+    /// <summary>   Returns Factors that may affect the observation(OM1-40). </summary>
+    ///
+    /// <value> The factors that may affect the observation. </value>
+
 	public TX FactorsThatMayAffectTheObservation
 	{
 		get{
@@ -1491,11 +1680,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Test / observation performance schedule(OM1-41).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Test / observation performance schedule(OM1-41). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The test observation performance schedule. </returns>
+
 	public ST GetTestObservationPerformanceSchedule(int rep)
 	{
 			ST ret = null;
@@ -1510,9 +1705,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Test / observation performance schedule (OM1-41).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetTestObservationPerformanceSchedule() {
      ST[] ret = null;
     try {
@@ -1531,9 +1731,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Test / observation performance schedule (OM1-41).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The test observation performance schedule repetitions used. </value>
+
   public int TestObservationPerformanceScheduleRepetitionsUsed
 {
 get{
@@ -1549,9 +1752,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Description of Test Methods(OM1-42).
-	///</summary>
+
+    /// <summary>   Returns Description of Test Methods(OM1-42). </summary>
+    ///
+    /// <value> The description of test methods. </value>
+
 	public TX DescriptionOfTestMethods
 	{
 		get{

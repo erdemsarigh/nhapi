@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 QPD message segment. 
-/// This segment has the following fields:<ol>
-///<li>QPD-1: Message Query Name (CE)</li>
-///<li>QPD-2: Query Tag (ST)</li>
-///<li>QPD-3: User Parameters (in successive fields) (varies)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 QPD message segment. This segment has the following fields:<ol>
+/// <li>QPD-1: Message Query Name (CE)</li>
+/// <li>QPD-2: Query Tag (ST)</li>
+/// <li>QPD-3: User Parameters (in successive fields) (varies)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class QPD : AbstractSegment  {
 
-  /**
-   * Creates a QPD (Query Parameter Definition) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the QPD class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public QPD(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class QPD : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Message Query Name(QPD-1).
-	///</summary>
+    /// <summary>   Returns Message Query Name(QPD-1). </summary>
+    ///
+    /// <value> The name of the message query. </value>
+
 	public CE MessageQueryName
 	{
 		get{
@@ -61,9 +63,10 @@ public class QPD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Query Tag(QPD-2).
-	///</summary>
+    /// <summary>   Returns Query Tag(QPD-2). </summary>
+    ///
+    /// <value> The query tag. </value>
+
 	public ST QueryTag
 	{
 		get{
@@ -84,9 +87,10 @@ public class QPD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns User Parameters (in successive fields)(QPD-3).
-	///</summary>
+    /// <summary>   Returns User Parameters (in successive fields)(QPD-3). </summary>
+    ///
+    /// <value> The user parameters insuccessivefields. </value>
+
 	public Varies UserParametersInsuccessivefields
 	{
 		get{

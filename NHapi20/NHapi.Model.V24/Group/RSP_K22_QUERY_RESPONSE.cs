@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RSP_K22_QUERY_RESPONSE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PID (Patient identification) </li>
-///<li>1: PD1 (patient additional demographic) optional </li>
-///<li>2: QRI (Query Response Instance) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RSP_K22_QUERY_RESPONSE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PID (Patient identification) </li>
+/// <li>1: PD1 (patient additional demographic) optional </li>
+/// <li>2: QRI (Query Response Instance) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RSP_K22_QUERY_RESPONSE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RSP_K22_QUERY_RESPONSE Group.
-	///</summary>
+    /// <summary>   Creates a new RSP_K22_QUERY_RESPONSE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RSP_K22_QUERY_RESPONSE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PID), true, false);
@@ -34,9 +37,10 @@ public class RSP_K22_QUERY_RESPONSE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PID (Patient identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -50,9 +54,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (patient additional demographic) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PD1 (patient additional demographic) - creates it if necessary. </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;
@@ -66,9 +71,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QRI (Query Response Instance) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QRI (Query Response Instance) - creates it if necessary. </summary>
+    ///
+    /// <value> The qri. </value>
+
 	public QRI QRI { 
 get{
 	   QRI ret = null;

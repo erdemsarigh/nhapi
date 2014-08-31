@@ -9,34 +9,37 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V22.Message
 
 {
-///<summary>
-/// Represents a NMD_N01 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a NMD_N01 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (MESSAGE HEADER) </li>
-///<li>1: NMD_N01_CLOCK_AND_STATS_WITH_NOTES (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (MESSAGE HEADER) </li>
+/// <li>1: NMD_N01_CLOCK_AND_STATS_WITH_NOTES (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class NMD_N01 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new NMD_N01 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new NMD_N01 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public NMD_N01(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new NMD_N01 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new NMD_N01 Group with DefaultModelClassFactory. </summary>
 	public NMD_N01() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for NMD_N01.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for NMD_N01.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -46,6 +49,13 @@ public class NMD_N01 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -53,9 +63,11 @@ public class NMD_N01 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MESSAGE HEADER) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MESSAGE HEADER) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -69,9 +81,15 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NMD_N01_CLOCK_AND_STATS_WITH_NOTES (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NMD_N01_CLOCK_AND_STATS_WITH_NOTES (a Group object) - creates it
+    /// if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The clock and stats with notes. </returns>
+
 	public NMD_N01_CLOCK_AND_STATS_WITH_NOTES GetCLOCK_AND_STATS_WITH_NOTES() {
 	   NMD_N01_CLOCK_AND_STATS_WITH_NOTES ret = null;
 	   try {
@@ -83,19 +101,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NMD_N01_CLOCK_AND_STATS_WITH_NOTES
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NMD_N01_CLOCK_AND_STATS_WITH_NOTES
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The clock and stats with notes. </returns>
+
 	public NMD_N01_CLOCK_AND_STATS_WITH_NOTES GetCLOCK_AND_STATS_WITH_NOTES(int rep) { 
 	   return (NMD_N01_CLOCK_AND_STATS_WITH_NOTES)this.GetStructure("CLOCK_AND_STATS_WITH_NOTES", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NMD_N01_CLOCK_AND_STATS_WITH_NOTES 
-	 */ 
+    /// <summary>   Gets the clock and stats with notes repetitions used. </summary>
+    ///
+    /// <value> The clock and stats with notes repetitions used. </value>
+
 	public int CLOCK_AND_STATS_WITH_NOTESRepetitionsUsed { 
 get{
 	    int reps = -1; 

@@ -9,37 +9,40 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V23.Message
 
 {
-///<summary>
-/// Represents a MDM_T01 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a MDM_T01 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message header segment) </li>
-///<li>1: EVN (Event type) </li>
-///<li>2: PID (Patient Identification) </li>
-///<li>3: PV1 (Patient visit) </li>
-///<li>4: TXA (Document notification segment) </li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message header segment) </li>
+/// <li>1: EVN (Event type) </li>
+/// <li>2: PID (Patient Identification) </li>
+/// <li>3: PV1 (Patient visit) </li>
+/// <li>4: TXA (Document notification segment) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MDM_T01 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new MDM_T01 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new MDM_T01 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public MDM_T01(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new MDM_T01 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new MDM_T01 Group with DefaultModelClassFactory. </summary>
 	public MDM_T01() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for MDM_T01.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for MDM_T01.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -52,6 +55,13 @@ public class MDM_T01 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -59,9 +69,11 @@ public class MDM_T01 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -75,9 +87,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns EVN (Event type) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns EVN (Event type) - creates it if necessary. </summary>
+    ///
+    /// <value> The evn. </value>
+
 	public EVN EVN { 
 get{
 	   EVN ret = null;
@@ -91,9 +104,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PID (Patient Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -107,9 +121,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV1 (Patient visit) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PV1 (Patient visit) - creates it if necessary. </summary>
+    ///
+    /// <value> The pv 1. </value>
+
 	public PV1 PV1 { 
 get{
 	   PV1 ret = null;
@@ -123,9 +138,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns TXA (Document notification segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns TXA (Document notification segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The txa. </value>
+
 	public TXA TXA { 
 get{
 	   TXA ret = null;

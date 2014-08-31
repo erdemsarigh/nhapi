@@ -8,24 +8,27 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V25.Group
 {
-///<summary>
-///Represents the BPS_O29_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common Order) </li>
-///<li>1: BPS_O29_TIMING (a Group object) optional repeating</li>
-///<li>2: BPO (Blood product order) </li>
-///<li>3: NTE (Notes and Comments) optional repeating</li>
-///<li>4: BPS_O29_PRODUCT (a Group object) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the BPS_O29_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common Order) </li>
+/// <li>1: BPS_O29_TIMING (a Group object) optional repeating</li>
+/// <li>2: BPO (Blood product order) </li>
+/// <li>3: NTE (Notes and Comments) optional repeating</li>
+/// <li>4: BPS_O29_PRODUCT (a Group object) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class BPS_O29_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new BPS_O29_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new BPS_O29_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public BPS_O29_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -38,9 +41,10 @@ public class BPS_O29_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common Order) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common Order) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -54,9 +58,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of BPS_O29_TIMING (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of BPS_O29_TIMING (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The timing. </returns>
+
 	public BPS_O29_TIMING GetTIMING() {
 	   BPS_O29_TIMING ret = null;
 	   try {
@@ -68,19 +77,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of BPS_O29_TIMING
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of BPS_O29_TIMING
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The timing. </returns>
+
 	public BPS_O29_TIMING GetTIMING(int rep) { 
 	   return (BPS_O29_TIMING)this.GetStructure("TIMING", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of BPS_O29_TIMING 
-	 */ 
+    /// <summary>   Gets the timing repetitions used. </summary>
+    ///
+    /// <value> The timing repetitions used. </value>
+
 	public int TIMINGRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -95,9 +110,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns BPO (Blood product order) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns BPO (Blood product order) - creates it if necessary. </summary>
+    ///
+    /// <value> The bpo. </value>
+
 	public BPO BPO { 
 get{
 	   BPO ret = null;
@@ -111,9 +127,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -125,19 +146,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and Comments) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and Comments) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -152,9 +179,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of BPS_O29_PRODUCT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of BPS_O29_PRODUCT (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The product. </returns>
+
 	public BPS_O29_PRODUCT GetPRODUCT() {
 	   BPS_O29_PRODUCT ret = null;
 	   try {
@@ -166,19 +198,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of BPS_O29_PRODUCT
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of BPS_O29_PRODUCT
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The product. </returns>
+
 	public BPS_O29_PRODUCT GetPRODUCT(int rep) { 
 	   return (BPS_O29_PRODUCT)this.GetStructure("PRODUCT", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of BPS_O29_PRODUCT 
-	 */ 
+    /// <summary>   Gets the product repetitions used. </summary>
+    ///
+    /// <value> The product repetitions used. </value>
+
 	public int PRODUCTRepetitionsUsed { 
 get{
 	    int reps = -1; 

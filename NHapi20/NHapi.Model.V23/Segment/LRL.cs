@@ -7,29 +7,30 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 LRL message segment. 
-/// This segment has the following fields:<ol>
-///<li>LRL-1: Primary Key Value (PL)</li>
-///<li>LRL-2: Segment Action Code (ID)</li>
-///<li>LRL-3: Segment Unique Key (EI)</li>
-///<li>LRL-4: Location Relationship ID (CE)</li>
-///<li>LRL-5: Organizational Location Relationship Value (XON)</li>
-///<li>LRL-6: Patient Location Relationship Value (PL)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 LRL message segment. This segment has the following fields:<ol>
+/// <li>LRL-1: Primary Key Value (PL)</li>
+/// <li>LRL-2: Segment Action Code (ID)</li>
+/// <li>LRL-3: Segment Unique Key (EI)</li>
+/// <li>LRL-4: Location Relationship ID (CE)</li>
+/// <li>LRL-5: Organizational Location Relationship Value (XON)</li>
+/// <li>LRL-6: Patient Location Relationship Value (PL)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class LRL : AbstractSegment  {
 
-  /**
-   * Creates a LRL (Location Relationship) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the LRL class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public LRL(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -44,9 +45,10 @@ public class LRL : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Primary Key Value(LRL-1).
-	///</summary>
+    /// <summary>   Returns Primary Key Value(LRL-1). </summary>
+    ///
+    /// <value> The primary key value. </value>
+
 	public PL PrimaryKeyValue
 	{
 		get{
@@ -67,9 +69,10 @@ public class LRL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Segment Action Code(LRL-2).
-	///</summary>
+    /// <summary>   Returns Segment Action Code(LRL-2). </summary>
+    ///
+    /// <value> The segment action code. </value>
+
 	public ID SegmentActionCode
 	{
 		get{
@@ -90,9 +93,10 @@ public class LRL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Segment Unique Key(LRL-3).
-	///</summary>
+    /// <summary>   Returns Segment Unique Key(LRL-3). </summary>
+    ///
+    /// <value> The segment unique key. </value>
+
 	public EI SegmentUniqueKey
 	{
 		get{
@@ -113,9 +117,10 @@ public class LRL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Location Relationship ID(LRL-4).
-	///</summary>
+    /// <summary>   Returns Location Relationship ID(LRL-4). </summary>
+    ///
+    /// <value> The identifier of the location relationship. </value>
+
 	public CE LocationRelationshipID
 	{
 		get{
@@ -136,9 +141,10 @@ public class LRL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Organizational Location Relationship Value(LRL-5).
-	///</summary>
+    /// <summary>   Returns Organizational Location Relationship Value(LRL-5). </summary>
+    ///
+    /// <value> The organizational location relationship value. </value>
+
 	public XON OrganizationalLocationRelationshipValue
 	{
 		get{
@@ -159,9 +165,10 @@ public class LRL : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Patient Location Relationship Value(LRL-6).
-	///</summary>
+    /// <summary>   Returns Patient Location Relationship Value(LRL-6). </summary>
+    ///
+    /// <value> The patient location relationship value. </value>
+
 	public PL PatientLocationRelationshipValue
 	{
 		get{

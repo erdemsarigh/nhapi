@@ -6,8 +6,7 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V23.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 CM_OSD (order sequence) data type.  Consists of the following components: </p><ol>
 /// <li>sequence/results flag (ID)</li>
 /// <li>placer order number entity identifier (ST)</li>
@@ -21,22 +20,24 @@ namespace NHapi.Model.V23.Datatype
 /// <li>filler order number universal ID (ST)</li>
 /// <li>filler order number universal ID type (ID)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CM_OSD : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CM_OSD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CM_OSD. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CM_OSD(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CM_OSD.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CM_OSD. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CM_OSD(IMessage message, string description) : base(message, description){
 		data = new IType[11];
 		data[0] = new ID(message, 0,"Sequence/results flag");
@@ -52,9 +53,10 @@ public class CM_OSD : AbstractType, IComposite{
 		data[10] = new ID(message, 0,"Filler order number universal ID type");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -62,12 +64,15 @@ public class CM_OSD : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -78,10 +83,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns sequence/results flag (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns sequence/results flag (component #0).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The sequence results flag. </value>
+
 	public ID SequenceResultsFlag {
 get{
 	   ID ret = null;
@@ -95,10 +104,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns placer order number entity identifier (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns placer order number entity identifier (component #1).  This is a convenience method
+    /// that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the placer order number entity. </value>
+
 	public ST PlacerOrderNumberEntityIdentifier {
 get{
 	   ST ret = null;
@@ -112,10 +125,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns placer order number namespace ID (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns placer order number namespace ID (component #2).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the placer order number namespace. </value>
+
 	public IS PlacerOrderNumberNamespaceID {
 get{
 	   IS ret = null;
@@ -129,10 +146,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns filler order number entity identifier (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns filler order number entity identifier (component #3).  This is a convenience method
+    /// that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the filler order number entity. </value>
+
 	public ST FillerOrderNumberEntityIdentifier {
 get{
 	   ST ret = null;
@@ -146,10 +167,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns filler order number namespace ID (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns filler order number namespace ID (component #4).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the filler order number namespace. </value>
+
 	public IS FillerOrderNumberNamespaceID {
 get{
 	   IS ret = null;
@@ -163,10 +188,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns sequence condition value (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns sequence condition value (component #5).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The sequence condition value. </value>
+
 	public ST SequenceConditionValue {
 get{
 	   ST ret = null;
@@ -180,10 +209,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns maximum number of repeats (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns maximum number of repeats (component #6).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The maximum number of repeats. </value>
+
 	public NM MaximumNumberOfRepeats {
 get{
 	   NM ret = null;
@@ -197,10 +230,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns placer order number universal ID (component #7).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns placer order number universal ID (component #7).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the placer order number universal. </value>
+
 	public ST PlacerOrderNumberUniversalID {
 get{
 	   ST ret = null;
@@ -214,10 +251,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns placer order number universal ID type (component #8).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns placer order number universal ID type (component #8).  This is a convenience method
+    /// that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the placer order number universal identifier. </value>
+
 	public ID PlacerOrderNumberUniversalIDType {
 get{
 	   ID ret = null;
@@ -231,10 +272,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns filler order number universal ID (component #9).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns filler order number universal ID (component #9).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the filler order number universal. </value>
+
 	public ST FillerOrderNumberUniversalID {
 get{
 	   ST ret = null;
@@ -248,10 +293,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns filler order number universal ID type (component #10).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns filler order number universal ID type (component #10).  This is a convenience method
+    /// that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the filler order number universal identifier. </value>
+
 	public ID FillerOrderNumberUniversalIDType {
 get{
 	   ID ret = null;

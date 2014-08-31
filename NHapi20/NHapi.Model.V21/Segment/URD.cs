@@ -7,30 +7,31 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 URD message segment. 
-/// This segment has the following fields:<ol>
-///<li>URD-1: R/U DATE/TIME (TS)</li>
-///<li>URD-2: REPORT PRIORITY (ID)</li>
-///<li>URD-3: R/U WHO SUBJECT DEFINITION (ST)</li>
-///<li>URD-4: R/U WHAT SUBJECT DEFINITION (ID)</li>
-///<li>URD-5: R/U WHAT DEPARTMENT CODE (ST)</li>
-///<li>URD-6: R/U DISPLAY/PRINT LOCATIONS (ST)</li>
-///<li>URD-7: R/U RESULTS LEVEL (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 URD message segment. This segment has the following fields:<ol>
+/// <li>URD-1: R/U DATE/TIME (TS)</li>
+/// <li>URD-2: REPORT PRIORITY (ID)</li>
+/// <li>URD-3: R/U WHO SUBJECT DEFINITION (ST)</li>
+/// <li>URD-4: R/U WHAT SUBJECT DEFINITION (ID)</li>
+/// <li>URD-5: R/U WHAT DEPARTMENT CODE (ST)</li>
+/// <li>URD-6: R/U DISPLAY/PRINT LOCATIONS (ST)</li>
+/// <li>URD-7: R/U RESULTS LEVEL (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class URD : AbstractSegment  {
 
-  /**
-   * Creates a URD (RESULTS/UPDATE DEFINITION) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the URD class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public URD(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -46,9 +47,10 @@ public class URD : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns R/U DATE/TIME(URD-1).
-	///</summary>
+    /// <summary>   Returns R/U DATE/TIME(URD-1). </summary>
+    ///
+    /// <value> The rudatetime. </value>
+
 	public TS RUDATETIME
 	{
 		get{
@@ -69,9 +71,10 @@ public class URD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns REPORT PRIORITY(URD-2).
-	///</summary>
+    /// <summary>   Returns REPORT PRIORITY(URD-2). </summary>
+    ///
+    /// <value> The reportpriority. </value>
+
 	public ID REPORTPRIORITY
 	{
 		get{
@@ -92,11 +95,17 @@ public class URD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of R/U WHO SUBJECT DEFINITION(URD-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of R/U WHO SUBJECT DEFINITION(URD-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ruwhosubjectdefinition. </returns>
+
 	public ST GetRUWHOSUBJECTDEFINITION(int rep)
 	{
 			ST ret = null;
@@ -111,9 +120,12 @@ public class URD : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of R/U WHO SUBJECT DEFINITION (URD-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of R/U WHO SUBJECT DEFINITION (URD-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetRUWHOSUBJECTDEFINITION() {
      ST[] ret = null;
     try {
@@ -132,9 +144,10 @@ public class URD : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of R/U WHO SUBJECT DEFINITION (URD-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of R/U WHO SUBJECT DEFINITION (URD-3). </summary>
+  ///
+  /// <value>   The ruwhosubjectdefinition repetitions used. </value>
+
   public int RUWHOSUBJECTDEFINITIONRepetitionsUsed
 {
 get{
@@ -150,11 +163,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of R/U WHAT SUBJECT DEFINITION(URD-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of R/U WHAT SUBJECT DEFINITION(URD-4). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ruwhatsubjectdefinition. </returns>
+
 	public ID GetRUWHATSUBJECTDEFINITION(int rep)
 	{
 			ID ret = null;
@@ -169,9 +189,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of R/U WHAT SUBJECT DEFINITION (URD-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of R/U WHAT SUBJECT DEFINITION (URD-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetRUWHATSUBJECTDEFINITION() {
      ID[] ret = null;
     try {
@@ -190,9 +213,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of R/U WHAT SUBJECT DEFINITION (URD-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of R/U WHAT SUBJECT DEFINITION (URD-4). </summary>
+  ///
+  /// <value>   The ruwhatsubjectdefinition repetitions used. </value>
+
   public int RUWHATSUBJECTDEFINITIONRepetitionsUsed
 {
 get{
@@ -208,11 +232,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of R/U WHAT DEPARTMENT CODE(URD-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of R/U WHAT DEPARTMENT CODE(URD-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ruwhatdepartmentcode. </returns>
+
 	public ST GetRUWHATDEPARTMENTCODE(int rep)
 	{
 			ST ret = null;
@@ -227,9 +258,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of R/U WHAT DEPARTMENT CODE (URD-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of R/U WHAT DEPARTMENT CODE (URD-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetRUWHATDEPARTMENTCODE() {
      ST[] ret = null;
     try {
@@ -248,9 +282,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of R/U WHAT DEPARTMENT CODE (URD-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of R/U WHAT DEPARTMENT CODE (URD-5). </summary>
+  ///
+  /// <value>   The ruwhatdepartmentcode repetitions used. </value>
+
   public int RUWHATDEPARTMENTCODERepetitionsUsed
 {
 get{
@@ -266,11 +301,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of R/U DISPLAY/PRINT LOCATIONS(URD-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of R/U DISPLAY/PRINT LOCATIONS(URD-6). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The rudisplayprintlocations. </returns>
+
 	public ST GetRUDISPLAYPRINTLOCATIONS(int rep)
 	{
 			ST ret = null;
@@ -285,9 +327,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of R/U DISPLAY/PRINT LOCATIONS (URD-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of R/U DISPLAY/PRINT LOCATIONS (URD-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetRUDISPLAYPRINTLOCATIONS() {
      ST[] ret = null;
     try {
@@ -306,9 +351,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of R/U DISPLAY/PRINT LOCATIONS (URD-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of R/U DISPLAY/PRINT LOCATIONS (URD-6). </summary>
+  ///
+  /// <value>   The rudisplayprintlocations repetitions used. </value>
+
   public int RUDISPLAYPRINTLOCATIONSRepetitionsUsed
 {
 get{
@@ -324,9 +370,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns R/U RESULTS LEVEL(URD-7).
-	///</summary>
+
+    /// <summary>   Returns R/U RESULTS LEVEL(URD-7). </summary>
+    ///
+    /// <value> The ruresultslevel. </value>
+
 	public ID RURESULTSLEVEL
 	{
 		get{

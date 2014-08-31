@@ -9,40 +9,43 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V231.Message
 
 {
-///<summary>
-/// Represents a RQC_I06 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a RQC_I06 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (MSH - message header segment) </li>
-///<li>1: QRD (QRD - original-style query definition segment) </li>
-///<li>2: QRF (QRF - original style query filter segment) optional </li>
-///<li>3: RQC_I06_PROVIDER (a Group object) repeating</li>
-///<li>4: PID (PID - patient identification segment) </li>
-///<li>5: NK1 (NK1 - next of kin / associated parties segment-) optional repeating</li>
-///<li>6: GT1 (GT1 - guarantor segment) optional </li>
-///<li>7: NTE (NTE - notes and comments segment) optional repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (MSH - message header segment) </li>
+/// <li>1: QRD (QRD - original-style query definition segment) </li>
+/// <li>2: QRF (QRF - original style query filter segment) optional </li>
+/// <li>3: RQC_I06_PROVIDER (a Group object) repeating</li>
+/// <li>4: PID (PID - patient identification segment) </li>
+/// <li>5: NK1 (NK1 - next of kin / associated parties segment-) optional repeating</li>
+/// <li>6: GT1 (GT1 - guarantor segment) optional </li>
+/// <li>7: NTE (NTE - notes and comments segment) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RQC_I06 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new RQC_I06 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new RQC_I06 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public RQC_I06(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new RQC_I06 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new RQC_I06 Group with DefaultModelClassFactory. </summary>
 	public RQC_I06() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for RQC_I06.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for RQC_I06.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -58,6 +61,13 @@ public class RQC_I06 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -65,9 +75,11 @@ public class RQC_I06 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MSH - message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MSH - message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -81,9 +93,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QRD (QRD - original-style query definition segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns QRD (QRD - original-style query definition segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The qrd. </value>
+
 	public QRD QRD { 
 get{
 	   QRD ret = null;
@@ -97,9 +112,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QRF (QRF - original style query filter segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns QRF (QRF - original style query filter segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The qrf. </value>
+
 	public QRF QRF { 
 get{
 	   QRF ret = null;
@@ -113,9 +131,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RQC_I06_PROVIDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RQC_I06_PROVIDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The provider. </returns>
+
 	public RQC_I06_PROVIDER GetPROVIDER() {
 	   RQC_I06_PROVIDER ret = null;
 	   try {
@@ -127,19 +150,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RQC_I06_PROVIDER
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RQC_I06_PROVIDER
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The provider. </returns>
+
 	public RQC_I06_PROVIDER GetPROVIDER(int rep) { 
 	   return (RQC_I06_PROVIDER)this.GetStructure("PROVIDER", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RQC_I06_PROVIDER 
-	 */ 
+    /// <summary>   Gets the provider repetitions used. </summary>
+    ///
+    /// <value> The provider repetitions used. </value>
+
 	public int PROVIDERRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -154,9 +183,12 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns PID (PID - patient identification segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns PID (PID - patient identification segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -170,9 +202,15 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NK1 (NK1 - next of kin / associated parties segment-) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NK1 (NK1 - next of kin / associated parties segment-) - creates
+    /// it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nk 1. </returns>
+
 	public NK1 GetNK1() {
 	   NK1 ret = null;
 	   try {
@@ -184,19 +222,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NK1
-	/// * (NK1 - next of kin / associated parties segment-) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NK1
+    ///  * (NK1 - next of kin / associated parties segment-) - creates it if necessary throws
+    ///  HL7Exception if the repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nk 1. </returns>
+
 	public NK1 GetNK1(int rep) { 
 	   return (NK1)this.GetStructure("NK1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NK1 
-	 */ 
+    /// <summary>   Gets the nk 1 repetitions used. </summary>
+    ///
+    /// <value> The nk 1 repetitions used. </value>
+
 	public int NK1RepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -211,9 +255,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns GT1 (GT1 - guarantor segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns GT1 (GT1 - guarantor segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The gt 1. </value>
+
 	public GT1 GT1 { 
 get{
 	   GT1 ret = null;
@@ -227,9 +272,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -241,19 +291,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (NTE - notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (NTE - notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 

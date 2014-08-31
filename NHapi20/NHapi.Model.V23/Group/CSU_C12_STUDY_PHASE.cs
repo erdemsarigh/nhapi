@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the CSU_C12_STUDY_PHASE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: CSP (Clinical Study Phase) optional </li>
-///<li>1: CSU_C12_STUDY_SCHEDULE (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the CSU_C12_STUDY_PHASE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: CSP (Clinical Study Phase) optional </li>
+/// <li>1: CSU_C12_STUDY_SCHEDULE (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class CSU_C12_STUDY_PHASE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new CSU_C12_STUDY_PHASE Group.
-	///</summary>
+    /// <summary>   Creates a new CSU_C12_STUDY_PHASE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public CSU_C12_STUDY_PHASE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(CSP), false, false);
@@ -32,9 +35,10 @@ public class CSU_C12_STUDY_PHASE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns CSP (Clinical Study Phase) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns CSP (Clinical Study Phase) - creates it if necessary. </summary>
+    ///
+    /// <value> The csp. </value>
+
 	public CSP CSP { 
 get{
 	   CSP ret = null;
@@ -48,9 +52,15 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of CSU_C12_STUDY_SCHEDULE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of CSU_C12_STUDY_SCHEDULE (a Group object) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The study schedule. </returns>
+
 	public CSU_C12_STUDY_SCHEDULE GetSTUDY_SCHEDULE() {
 	   CSU_C12_STUDY_SCHEDULE ret = null;
 	   try {
@@ -62,19 +72,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of CSU_C12_STUDY_SCHEDULE
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of CSU_C12_STUDY_SCHEDULE
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The study schedule. </returns>
+
 	public CSU_C12_STUDY_SCHEDULE GetSTUDY_SCHEDULE(int rep) { 
 	   return (CSU_C12_STUDY_SCHEDULE)this.GetStructure("STUDY_SCHEDULE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of CSU_C12_STUDY_SCHEDULE 
-	 */ 
+    /// <summary>   Gets the study schedule repetitions used. </summary>
+    ///
+    /// <value> The study schedule repetitions used. </value>
+
 	public int STUDY_SCHEDULERepetitionsUsed { 
 get{
 	    int reps = -1; 

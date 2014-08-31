@@ -23,13 +23,15 @@ namespace NHapi.Base
 {
     using System;
 
-    /// <summary> Thrown when a lookup table is not known to a TableRepository. </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+    /// <summary>   Thrown when a lookup table is not known to a TableRepository. </summary>
     [Serializable]
     public class UndefinedTableException : UnknownValueException
     {
         #region Constructors and Destructors
+
+        /// <summary>   Initializes a new instance of the UndefinedTableException class. </summary>
+        ///
+        /// <param name="message">  The message. </param>
 
         public UndefinedTableException(System.String message)
             : base(message)

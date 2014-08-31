@@ -7,28 +7,29 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 MSA message segment. 
-/// This segment has the following fields:<ol>
-///<li>MSA-1: ACKNOWLEDGMENT CODE (ID)</li>
-///<li>MSA-2: MESSAGE CONTROL ID (ST)</li>
-///<li>MSA-3: TEXT MESSAGE (ST)</li>
-///<li>MSA-4: EXPECTED SEQUENCE NUMBER (NM)</li>
-///<li>MSA-5: DELAYED ACKNOWLEDGMENT TYPE (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 MSA message segment. This segment has the following fields:<ol>
+/// <li>MSA-1: ACKNOWLEDGMENT CODE (ID)</li>
+/// <li>MSA-2: MESSAGE CONTROL ID (ST)</li>
+/// <li>MSA-3: TEXT MESSAGE (ST)</li>
+/// <li>MSA-4: EXPECTED SEQUENCE NUMBER (NM)</li>
+/// <li>MSA-5: DELAYED ACKNOWLEDGMENT TYPE (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class MSA : AbstractSegment  {
 
-  /**
-   * Creates a MSA (MESSAGE ACKNOWLEDGMENT) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the MSA class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MSA(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -42,9 +43,10 @@ public class MSA : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns ACKNOWLEDGMENT CODE(MSA-1).
-	///</summary>
+    /// <summary>   Returns ACKNOWLEDGMENT CODE(MSA-1). </summary>
+    ///
+    /// <value> The acknowledgmentcode. </value>
+
 	public ID ACKNOWLEDGMENTCODE
 	{
 		get{
@@ -65,9 +67,10 @@ public class MSA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns MESSAGE CONTROL ID(MSA-2).
-	///</summary>
+    /// <summary>   Returns MESSAGE CONTROL ID(MSA-2). </summary>
+    ///
+    /// <value> The messagecontrolid. </value>
+
 	public ST MESSAGECONTROLID
 	{
 		get{
@@ -88,9 +91,10 @@ public class MSA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns TEXT MESSAGE(MSA-3).
-	///</summary>
+    /// <summary>   Returns TEXT MESSAGE(MSA-3). </summary>
+    ///
+    /// <value> The textmessage. </value>
+
 	public ST TEXTMESSAGE
 	{
 		get{
@@ -111,9 +115,10 @@ public class MSA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns EXPECTED SEQUENCE NUMBER(MSA-4).
-	///</summary>
+    /// <summary>   Returns EXPECTED SEQUENCE NUMBER(MSA-4). </summary>
+    ///
+    /// <value> The expectedsequencenumber. </value>
+
 	public NM EXPECTEDSEQUENCENUMBER
 	{
 		get{
@@ -134,9 +139,10 @@ public class MSA : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DELAYED ACKNOWLEDGMENT TYPE(MSA-5).
-	///</summary>
+    /// <summary>   Returns DELAYED ACKNOWLEDGMENT TYPE(MSA-5). </summary>
+    ///
+    /// <value> The delayedacknowledgmenttype. </value>
+
 	public ID DELAYEDACKNOWLEDGMENTTYPE
 	{
 		get{

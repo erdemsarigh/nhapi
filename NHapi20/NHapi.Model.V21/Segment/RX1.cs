@@ -7,53 +7,54 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 RX1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>RX1-1: UNUSED (ST)</li>
-///<li>RX1-2: UNUSED (ST)</li>
-///<li>RX1-3: ROUTE (ST)</li>
-///<li>RX1-4: SITE ADMINISTERED (ST)</li>
-///<li>RX1-5: IV SOLUTION RATE (CQ)</li>
-///<li>RX1-6: DRUG STRENGTH (CQ)</li>
-///<li>RX1-7: FINAL CONCENTRATION (NM)</li>
-///<li>RX1-8: FINAL VOLUME IN ML. (NM)</li>
-///<li>RX1-9: DRUG DOSE (CM)</li>
-///<li>RX1-10: DRUG ROLE (ID)</li>
-///<li>RX1-11: PRESCRIPTION SEQUENCE # (NM)</li>
-///<li>RX1-12: QUANTITY DISPENSED (CQ)</li>
-///<li>RX1-13: UNUSED (ST)</li>
-///<li>RX1-14: DRUG ID (CE)</li>
-///<li>RX1-15: COMPONENT DRUG IDS (ID)</li>
-///<li>RX1-16: PRESCRIPTION TYPE (ID)</li>
-///<li>RX1-17: SUBSTITUTION STATUS (ID)</li>
-///<li>RX1-18: RX ORDER STATUS (ID)</li>
-///<li>RX1-19: NUMBER OF REFILLS (NM)</li>
-///<li>RX1-20: UNUSED (ST)</li>
-///<li>RX1-21: REFILLS REMAINING (NM)</li>
-///<li>RX1-22: DEA CLASS (ID)</li>
-///<li>RX1-23: ORDERING MD'S DEA NUMBER (NM)</li>
-///<li>RX1-24: UNUSED (ST)</li>
-///<li>RX1-25: LAST REFILL DATE/TIME (TS)</li>
-///<li>RX1-26: RX NUMBER (ST)</li>
-///<li>RX1-27: PRN STATUS (ID)</li>
-///<li>RX1-28: PHARMACY INSTRUCTIONS (TX)</li>
-///<li>RX1-29: PATIENT INSTRUCTIONS (TX)</li>
-///<li>RX1-30: INSTRUCTIONS (SIG) (TX)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 RX1 message segment. This segment has the following fields:<ol>
+/// <li>RX1-1: UNUSED (ST)</li>
+/// <li>RX1-2: UNUSED (ST)</li>
+/// <li>RX1-3: ROUTE (ST)</li>
+/// <li>RX1-4: SITE ADMINISTERED (ST)</li>
+/// <li>RX1-5: IV SOLUTION RATE (CQ)</li>
+/// <li>RX1-6: DRUG STRENGTH (CQ)</li>
+/// <li>RX1-7: FINAL CONCENTRATION (NM)</li>
+/// <li>RX1-8: FINAL VOLUME IN ML. (NM)</li>
+/// <li>RX1-9: DRUG DOSE (CM)</li>
+/// <li>RX1-10: DRUG ROLE (ID)</li>
+/// <li>RX1-11: PRESCRIPTION SEQUENCE # (NM)</li>
+/// <li>RX1-12: QUANTITY DISPENSED (CQ)</li>
+/// <li>RX1-13: UNUSED (ST)</li>
+/// <li>RX1-14: DRUG ID (CE)</li>
+/// <li>RX1-15: COMPONENT DRUG IDS (ID)</li>
+/// <li>RX1-16: PRESCRIPTION TYPE (ID)</li>
+/// <li>RX1-17: SUBSTITUTION STATUS (ID)</li>
+/// <li>RX1-18: RX ORDER STATUS (ID)</li>
+/// <li>RX1-19: NUMBER OF REFILLS (NM)</li>
+/// <li>RX1-20: UNUSED (ST)</li>
+/// <li>RX1-21: REFILLS REMAINING (NM)</li>
+/// <li>RX1-22: DEA CLASS (ID)</li>
+/// <li>RX1-23: ORDERING MD'S DEA NUMBER (NM)</li>
+/// <li>RX1-24: UNUSED (ST)</li>
+/// <li>RX1-25: LAST REFILL DATE/TIME (TS)</li>
+/// <li>RX1-26: RX NUMBER (ST)</li>
+/// <li>RX1-27: PRN STATUS (ID)</li>
+/// <li>RX1-28: PHARMACY INSTRUCTIONS (TX)</li>
+/// <li>RX1-29: PATIENT INSTRUCTIONS (TX)</li>
+/// <li>RX1-30: INSTRUCTIONS (SIG) (TX)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class RX1 : AbstractSegment  {
 
-  /**
-   * Creates a RX1 (PHARMACY ORDER) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the RX1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RX1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -92,9 +93,10 @@ public class RX1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns ROUTE(RX1-3).
-	///</summary>
+    /// <summary>   Returns ROUTE(RX1-3). </summary>
+    ///
+    /// <value> The route. </value>
+
 	public ST ROUTE
 	{
 		get{
@@ -115,9 +117,10 @@ public class RX1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns SITE ADMINISTERED(RX1-4).
-	///</summary>
+    /// <summary>   Returns SITE ADMINISTERED(RX1-4). </summary>
+    ///
+    /// <value> The siteadministered. </value>
+
 	public ST SITEADMINISTERED
 	{
 		get{
@@ -138,9 +141,10 @@ public class RX1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns IV SOLUTION RATE(RX1-5).
-	///</summary>
+    /// <summary>   Returns IV SOLUTION RATE(RX1-5). </summary>
+    ///
+    /// <value> The ivsolutionrate. </value>
+
 	public CQ IVSOLUTIONRATE
 	{
 		get{
@@ -161,9 +165,10 @@ public class RX1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DRUG STRENGTH(RX1-6).
-	///</summary>
+    /// <summary>   Returns DRUG STRENGTH(RX1-6). </summary>
+    ///
+    /// <value> The drugstrength. </value>
+
 	public CQ DRUGSTRENGTH
 	{
 		get{
@@ -184,9 +189,10 @@ public class RX1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns FINAL CONCENTRATION(RX1-7).
-	///</summary>
+    /// <summary>   Returns FINAL CONCENTRATION(RX1-7). </summary>
+    ///
+    /// <value> The finalconcentration. </value>
+
 	public NM FINALCONCENTRATION
 	{
 		get{
@@ -207,9 +213,10 @@ public class RX1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns FINAL VOLUME IN ML.(RX1-8).
-	///</summary>
+    /// <summary>   Returns FINAL VOLUME IN ML.(RX1-8). </summary>
+    ///
+    /// <value> The finalvolumeinml. </value>
+
 	public NM FINALVOLUMEINML
 	{
 		get{
@@ -230,9 +237,10 @@ public class RX1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DRUG DOSE(RX1-9).
-	///</summary>
+    /// <summary>   Returns DRUG DOSE(RX1-9). </summary>
+    ///
+    /// <value> The drugdose. </value>
+
 	public CM DRUGDOSE
 	{
 		get{
@@ -253,9 +261,10 @@ public class RX1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DRUG ROLE(RX1-10).
-	///</summary>
+    /// <summary>   Returns DRUG ROLE(RX1-10). </summary>
+    ///
+    /// <value> The drugrole. </value>
+
 	public ID DRUGROLE
 	{
 		get{
@@ -276,9 +285,10 @@ public class RX1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns PRESCRIPTION SEQUENCE #(RX1-11).
-	///</summary>
+    /// <summary>   Returns PRESCRIPTION SEQUENCE #(RX1-11). </summary>
+    ///
+    /// <value> The prescriptionsequence. </value>
+
 	public NM PRESCRIPTIONSEQUENCE
 	{
 		get{
@@ -299,9 +309,10 @@ public class RX1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns QUANTITY DISPENSED(RX1-12).
-	///</summary>
+    /// <summary>   Returns QUANTITY DISPENSED(RX1-12). </summary>
+    ///
+    /// <value> The quantitydispensed. </value>
+
 	public CQ QUANTITYDISPENSED
 	{
 		get{
@@ -322,9 +333,10 @@ public class RX1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DRUG ID(RX1-14).
-	///</summary>
+    /// <summary>   Returns DRUG ID(RX1-14). </summary>
+    ///
+    /// <value> The drugid. </value>
+
 	public CE DRUGID
 	{
 		get{
@@ -345,11 +357,17 @@ public class RX1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of COMPONENT DRUG IDS(RX1-15).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of COMPONENT DRUG IDS(RX1-15). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The componentdrugids. </returns>
+
 	public ID GetCOMPONENTDRUGIDS(int rep)
 	{
 			ID ret = null;
@@ -364,9 +382,12 @@ public class RX1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of COMPONENT DRUG IDS (RX1-15).
-   ///</summary>
+  /// <summary> Returns all repetitions of COMPONENT DRUG IDS (RX1-15). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetCOMPONENTDRUGIDS() {
      ID[] ret = null;
     try {
@@ -385,9 +406,10 @@ public class RX1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of COMPONENT DRUG IDS (RX1-15).
-   ///</summary>
+  /// <summary> Returns the total repetitions of COMPONENT DRUG IDS (RX1-15). </summary>
+  ///
+  /// <value>   The componentdrugids repetitions used. </value>
+
   public int COMPONENTDRUGIDSRepetitionsUsed
 {
 get{
@@ -403,9 +425,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns PRESCRIPTION TYPE(RX1-16).
-	///</summary>
+
+    /// <summary>   Returns PRESCRIPTION TYPE(RX1-16). </summary>
+    ///
+    /// <value> The prescriptiontype. </value>
+
 	public ID PRESCRIPTIONTYPE
 	{
 		get{
@@ -426,9 +450,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns SUBSTITUTION STATUS(RX1-17).
-	///</summary>
+    /// <summary>   Returns SUBSTITUTION STATUS(RX1-17). </summary>
+    ///
+    /// <value> The substitutionstatus. </value>
+
 	public ID SUBSTITUTIONSTATUS
 	{
 		get{
@@ -449,9 +474,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns RX ORDER STATUS(RX1-18).
-	///</summary>
+    /// <summary>   Returns RX ORDER STATUS(RX1-18). </summary>
+    ///
+    /// <value> The rxorderstatus. </value>
+
 	public ID RXORDERSTATUS
 	{
 		get{
@@ -472,9 +498,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns NUMBER OF REFILLS(RX1-19).
-	///</summary>
+    /// <summary>   Returns NUMBER OF REFILLS(RX1-19). </summary>
+    ///
+    /// <value> The total number of refills. </value>
+
 	public NM NUMBEROFREFILLS
 	{
 		get{
@@ -495,9 +522,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns REFILLS REMAINING(RX1-21).
-	///</summary>
+    /// <summary>   Returns REFILLS REMAINING(RX1-21). </summary>
+    ///
+    /// <value> The refillsremaining. </value>
+
 	public NM REFILLSREMAINING
 	{
 		get{
@@ -518,9 +546,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns DEA CLASS(RX1-22).
-	///</summary>
+    /// <summary>   Returns DEA CLASS(RX1-22). </summary>
+    ///
+    /// <value> The deaclass. </value>
+
 	public ID DEACLASS
 	{
 		get{
@@ -541,9 +570,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns ORDERING MD'S DEA NUMBER(RX1-23).
-	///</summary>
+    /// <summary>   Returns ORDERING MD'S DEA NUMBER(RX1-23). </summary>
+    ///
+    /// <value> The orderingmdsdeanumber. </value>
+
 	public NM ORDERINGMDSDEANUMBER
 	{
 		get{
@@ -564,9 +594,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns LAST REFILL DATE/TIME(RX1-25).
-	///</summary>
+    /// <summary>   Returns LAST REFILL DATE/TIME(RX1-25). </summary>
+    ///
+    /// <value> The lastrefilldatetime. </value>
+
 	public TS LASTREFILLDATETIME
 	{
 		get{
@@ -587,9 +618,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns RX NUMBER(RX1-26).
-	///</summary>
+    /// <summary>   Returns RX NUMBER(RX1-26). </summary>
+    ///
+    /// <value> The rxnumber. </value>
+
 	public ST RXNUMBER
 	{
 		get{
@@ -610,9 +642,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns PRN STATUS(RX1-27).
-	///</summary>
+    /// <summary>   Returns PRN STATUS(RX1-27). </summary>
+    ///
+    /// <value> The prnstatus. </value>
+
 	public ID PRNSTATUS
 	{
 		get{
@@ -633,11 +666,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of PHARMACY INSTRUCTIONS(RX1-28).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of PHARMACY INSTRUCTIONS(RX1-28). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The pharmacyinstructions. </returns>
+
 	public TX GetPHARMACYINSTRUCTIONS(int rep)
 	{
 			TX ret = null;
@@ -652,9 +691,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of PHARMACY INSTRUCTIONS (RX1-28).
-   ///</summary>
+  /// <summary> Returns all repetitions of PHARMACY INSTRUCTIONS (RX1-28). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of transmit. </returns>
+
   public TX[] GetPHARMACYINSTRUCTIONS() {
      TX[] ret = null;
     try {
@@ -673,9 +715,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of PHARMACY INSTRUCTIONS (RX1-28).
-   ///</summary>
+  /// <summary> Returns the total repetitions of PHARMACY INSTRUCTIONS (RX1-28). </summary>
+  ///
+  /// <value>   The pharmacyinstructions repetitions used. </value>
+
   public int PHARMACYINSTRUCTIONSRepetitionsUsed
 {
 get{
@@ -691,11 +734,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of PATIENT INSTRUCTIONS(RX1-29).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of PATIENT INSTRUCTIONS(RX1-29). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The patientinstructions. </returns>
+
 	public TX GetPATIENTINSTRUCTIONS(int rep)
 	{
 			TX ret = null;
@@ -710,9 +760,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of PATIENT INSTRUCTIONS (RX1-29).
-   ///</summary>
+  /// <summary> Returns all repetitions of PATIENT INSTRUCTIONS (RX1-29). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of transmit. </returns>
+
   public TX[] GetPATIENTINSTRUCTIONS() {
      TX[] ret = null;
     try {
@@ -731,9 +784,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of PATIENT INSTRUCTIONS (RX1-29).
-   ///</summary>
+  /// <summary> Returns the total repetitions of PATIENT INSTRUCTIONS (RX1-29). </summary>
+  ///
+  /// <value>   The patientinstructions repetitions used. </value>
+
   public int PATIENTINSTRUCTIONSRepetitionsUsed
 {
 get{
@@ -749,11 +803,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of INSTRUCTIONS (SIG)(RX1-30).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of INSTRUCTIONS (SIG)(RX1-30). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The instructions. </returns>
+
 	public TX GetINSTRUCTIONS(int rep)
 	{
 			TX ret = null;
@@ -768,9 +829,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of INSTRUCTIONS (SIG) (RX1-30).
-   ///</summary>
+  /// <summary> Returns all repetitions of INSTRUCTIONS (SIG) (RX1-30). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of transmit. </returns>
+
   public TX[] GetINSTRUCTIONS() {
      TX[] ret = null;
     try {
@@ -789,9 +853,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of INSTRUCTIONS (SIG) (RX1-30).
-   ///</summary>
+  /// <summary> Returns the total repetitions of INSTRUCTIONS (SIG) (RX1-30). </summary>
+  ///
+  /// <value>   The instructions repetitions used. </value>
+
   public int INSTRUCTIONSRepetitionsUsed
 {
 get{

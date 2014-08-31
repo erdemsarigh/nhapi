@@ -6,8 +6,7 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 RPT (Repeat Pattern) data type.  Consists of the following components: </p><ol>
 /// <li>Repeat Pattern Code (CWE)</li>
 /// <li>Calendar Alignment (ID)</li>
@@ -21,22 +20,24 @@ namespace NHapi.Model.V25.Datatype
 /// <li>Event Offset Units (IS)</li>
 /// <li>General Timing Specification (GTS)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class RPT : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a RPT.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a RPT. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public RPT(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a RPT.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a RPT. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public RPT(IMessage message, string description) : base(message, description){
 		data = new IType[11];
 		data[0] = new CWE(message,"Repeat Pattern Code");
@@ -52,9 +53,10 @@ public class RPT : AbstractType, IComposite{
 		data[10] = new GTS(message,"General Timing Specification");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -62,12 +64,15 @@ public class RPT : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -78,10 +83,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Repeat Pattern Code (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Repeat Pattern Code (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The repeat pattern code. </value>
+
 	public CWE RepeatPatternCode {
 get{
 	   CWE ret = null;
@@ -95,10 +104,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Calendar Alignment (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Calendar Alignment (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The calendar alignment. </value>
+
 	public ID CalendarAlignment {
 get{
 	   ID ret = null;
@@ -112,10 +125,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Phase Range Begin Value (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Phase Range Begin Value (component #2).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The phase range begin value. </value>
+
 	public NM PhaseRangeBeginValue {
 get{
 	   NM ret = null;
@@ -129,10 +146,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Phase Range End Value (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Phase Range End Value (component #3).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The phase range end value. </value>
+
 	public NM PhaseRangeEndValue {
 get{
 	   NM ret = null;
@@ -146,10 +167,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Period Quantity (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Period Quantity (component #4).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The period quantity. </value>
+
 	public NM PeriodQuantity {
 get{
 	   NM ret = null;
@@ -163,10 +188,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Period Units (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Period Units (component #5).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The period units. </value>
+
 	public IS PeriodUnits {
 get{
 	   IS ret = null;
@@ -180,10 +209,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Institution Specified Time (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Institution Specified Time (component #6).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The institution specified time. </value>
+
 	public ID InstitutionSpecifiedTime {
 get{
 	   ID ret = null;
@@ -197,10 +230,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Event (component #7).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Event (component #7).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The event. </value>
+
 	public ID Event {
 get{
 	   ID ret = null;
@@ -214,10 +251,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Event Offset Quantity (component #8).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Event Offset Quantity (component #8).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The event offset quantity. </value>
+
 	public NM EventOffsetQuantity {
 get{
 	   NM ret = null;
@@ -231,10 +272,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Event Offset Units (component #9).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Event Offset Units (component #9).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The event offset units. </value>
+
 	public IS EventOffsetUnits {
 get{
 	   IS ret = null;
@@ -248,10 +293,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns General Timing Specification (component #10).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns General Timing Specification (component #10).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The general timing specification. </value>
+
 	public GTS GeneralTimingSpecification {
 get{
 	   GTS ret = null;

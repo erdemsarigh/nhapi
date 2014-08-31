@@ -7,42 +7,43 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 OBX message segment. 
-/// This segment has the following fields:<ol>
-///<li>OBX-1: Set ID - OBX (SI)</li>
-///<li>OBX-2: Value Type (ID)</li>
-///<li>OBX-3: Observation Identifier (CE)</li>
-///<li>OBX-4: Observation Sub-Id (ST)</li>
-///<li>OBX-5: Observation Value (varies)</li>
-///<li>OBX-6: Units (CE)</li>
-///<li>OBX-7: References Range (ST)</li>
-///<li>OBX-8: Abnormal Flags (IS)</li>
-///<li>OBX-9: Probability (NM)</li>
-///<li>OBX-10: Nature of Abnormal Test (ID)</li>
-///<li>OBX-11: Observation Result Status (ID)</li>
-///<li>OBX-12: Date Last Observation Normal Value (TS)</li>
-///<li>OBX-13: User Defined Access Checks (ST)</li>
-///<li>OBX-14: Date/Time of the Observation (TS)</li>
-///<li>OBX-15: Producer's ID (CE)</li>
-///<li>OBX-16: Responsible Observer (XCN)</li>
-///<li>OBX-17: Observation Method (CE)</li>
-///<li>OBX-18: Equipment Instance Identifier (EI)</li>
-///<li>OBX-19: Date/Time of the Analysis (TS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 OBX message segment. This segment has the following fields:<ol>
+/// <li>OBX-1: Set ID - OBX (SI)</li>
+/// <li>OBX-2: Value Type (ID)</li>
+/// <li>OBX-3: Observation Identifier (CE)</li>
+/// <li>OBX-4: Observation Sub-Id (ST)</li>
+/// <li>OBX-5: Observation Value (varies)</li>
+/// <li>OBX-6: Units (CE)</li>
+/// <li>OBX-7: References Range (ST)</li>
+/// <li>OBX-8: Abnormal Flags (IS)</li>
+/// <li>OBX-9: Probability (NM)</li>
+/// <li>OBX-10: Nature of Abnormal Test (ID)</li>
+/// <li>OBX-11: Observation Result Status (ID)</li>
+/// <li>OBX-12: Date Last Observation Normal Value (TS)</li>
+/// <li>OBX-13: User Defined Access Checks (ST)</li>
+/// <li>OBX-14: Date/Time of the Observation (TS)</li>
+/// <li>OBX-15: Producer's ID (CE)</li>
+/// <li>OBX-16: Responsible Observer (XCN)</li>
+/// <li>OBX-17: Observation Method (CE)</li>
+/// <li>OBX-18: Equipment Instance Identifier (EI)</li>
+/// <li>OBX-19: Date/Time of the Analysis (TS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class OBX : AbstractSegment  {
 
-  /**
-   * Creates a OBX (Observation/Result) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the OBX class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OBX(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -70,9 +71,10 @@ public class OBX : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - OBX(OBX-1).
-	///</summary>
+    /// <summary>   Returns Set ID - OBX(OBX-1). </summary>
+    ///
+    /// <value> The set idobx. </value>
+
 	public SI SetIDOBX
 	{
 		get{
@@ -93,9 +95,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Value Type(OBX-2).
-	///</summary>
+    /// <summary>   Returns Value Type(OBX-2). </summary>
+    ///
+    /// <value> The type of the value. </value>
+
 	public ID ValueType
 	{
 		get{
@@ -116,9 +119,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Observation Identifier(OBX-3).
-	///</summary>
+    /// <summary>   Returns Observation Identifier(OBX-3). </summary>
+    ///
+    /// <value> The identifier of the observation. </value>
+
 	public CE ObservationIdentifier
 	{
 		get{
@@ -139,9 +143,10 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Observation Sub-Id(OBX-4).
-	///</summary>
+    /// <summary>   Returns Observation Sub-Id(OBX-4). </summary>
+    ///
+    /// <value> The identifier of the observation sub. </value>
+
 	public ST ObservationSubId
 	{
 		get{
@@ -162,11 +167,17 @@ public class OBX : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Observation Value(OBX-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Observation Value(OBX-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The observation value. </returns>
+
 	public Varies GetObservationValue(int rep)
 	{
 			Varies ret = null;
@@ -181,9 +192,12 @@ public class OBX : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Observation Value (OBX-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of Observation Value (OBX-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of varies. </returns>
+
   public Varies[] GetObservationValue() {
      Varies[] ret = null;
     try {
@@ -202,9 +216,10 @@ public class OBX : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Observation Value (OBX-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Observation Value (OBX-5). </summary>
+  ///
+  /// <value>   The observation value repetitions used. </value>
+
   public int ObservationValueRepetitionsUsed
 {
 get{
@@ -220,9 +235,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Units(OBX-6).
-	///</summary>
+
+    /// <summary>   Returns Units(OBX-6). </summary>
+    ///
+    /// <value> The units. </value>
+
 	public CE Units
 	{
 		get{
@@ -243,9 +260,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns References Range(OBX-7).
-	///</summary>
+    /// <summary>   Returns References Range(OBX-7). </summary>
+    ///
+    /// <value> The references range. </value>
+
 	public ST ReferencesRange
 	{
 		get{
@@ -266,9 +284,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Abnormal Flags(OBX-8).
-	///</summary>
+    /// <summary>   Returns Abnormal Flags(OBX-8). </summary>
+    ///
+    /// <value> The abnormal flags. </value>
+
 	public IS AbnormalFlags
 	{
 		get{
@@ -289,11 +308,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Probability(OBX-9).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Probability(OBX-9). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The probability. </returns>
+
 	public NM GetProbability(int rep)
 	{
 			NM ret = null;
@@ -308,9 +333,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Probability (OBX-9).
-   ///</summary>
+  /// <summary> Returns all repetitions of Probability (OBX-9). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of nm. </returns>
+
   public NM[] GetProbability() {
      NM[] ret = null;
     try {
@@ -329,9 +357,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Probability (OBX-9).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Probability (OBX-9). </summary>
+  ///
+  /// <value>   The probability repetitions used. </value>
+
   public int ProbabilityRepetitionsUsed
 {
 get{
@@ -347,9 +376,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Nature of Abnormal Test(OBX-10).
-	///</summary>
+
+    /// <summary>   Returns Nature of Abnormal Test(OBX-10). </summary>
+    ///
+    /// <value> The nature of abnormal test. </value>
+
 	public ID NatureOfAbnormalTest
 	{
 		get{
@@ -370,9 +401,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Observation Result Status(OBX-11).
-	///</summary>
+    /// <summary>   Returns Observation Result Status(OBX-11). </summary>
+    ///
+    /// <value> The observation result status. </value>
+
 	public ID ObservationResultStatus
 	{
 		get{
@@ -393,9 +425,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date Last Observation Normal Value(OBX-12).
-	///</summary>
+    /// <summary>   Returns Date Last Observation Normal Value(OBX-12). </summary>
+    ///
+    /// <value> The date last observation normal value. </value>
+
 	public TS DateLastObservationNormalValue
 	{
 		get{
@@ -416,9 +449,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns User Defined Access Checks(OBX-13).
-	///</summary>
+    /// <summary>   Returns User Defined Access Checks(OBX-13). </summary>
+    ///
+    /// <value> The user defined access checks. </value>
+
 	public ST UserDefinedAccessChecks
 	{
 		get{
@@ -439,9 +473,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date/Time of the Observation(OBX-14).
-	///</summary>
+    /// <summary>   Returns Date/Time of the Observation(OBX-14). </summary>
+    ///
+    /// <value> The date time of the observation. </value>
+
 	public TS DateTimeOfTheObservation
 	{
 		get{
@@ -462,9 +497,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Producer's ID(OBX-15).
-	///</summary>
+    /// <summary>   Returns Producer's ID(OBX-15). </summary>
+    ///
+    /// <value> The producer SID. </value>
+
 	public CE ProducerSID
 	{
 		get{
@@ -485,9 +521,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Responsible Observer(OBX-16).
-	///</summary>
+    /// <summary>   Returns Responsible Observer(OBX-16). </summary>
+    ///
+    /// <value> The responsible observer. </value>
+
 	public XCN ResponsibleObserver
 	{
 		get{
@@ -508,11 +545,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Observation Method(OBX-17).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Observation Method(OBX-17). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The observation method. </returns>
+
 	public CE GetObservationMethod(int rep)
 	{
 			CE ret = null;
@@ -527,9 +570,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Observation Method (OBX-17).
-   ///</summary>
+  /// <summary> Returns all repetitions of Observation Method (OBX-17). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetObservationMethod() {
      CE[] ret = null;
     try {
@@ -548,9 +594,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Observation Method (OBX-17).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Observation Method (OBX-17). </summary>
+  ///
+  /// <value>   The observation method repetitions used. </value>
+
   public int ObservationMethodRepetitionsUsed
 {
 get{
@@ -566,11 +613,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Equipment Instance Identifier(OBX-18).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Equipment Instance Identifier(OBX-18). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The equipment instance identifier. </returns>
+
 	public EI GetEquipmentInstanceIdentifier(int rep)
 	{
 			EI ret = null;
@@ -585,9 +639,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Equipment Instance Identifier (OBX-18).
-   ///</summary>
+  /// <summary> Returns all repetitions of Equipment Instance Identifier (OBX-18). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ei. </returns>
+
   public EI[] GetEquipmentInstanceIdentifier() {
      EI[] ret = null;
     try {
@@ -606,9 +663,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Equipment Instance Identifier (OBX-18).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Equipment Instance Identifier (OBX-18). </summary>
+  ///
+  /// <value>   The equipment instance identifier repetitions used. </value>
+
   public int EquipmentInstanceIdentifierRepetitionsUsed
 {
 get{
@@ -624,9 +682,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Date/Time of the Analysis(OBX-19).
-	///</summary>
+
+    /// <summary>   Returns Date/Time of the Analysis(OBX-19). </summary>
+    ///
+    /// <value> The date time of the analysis. </value>
+
 	public TS DateTimeOfTheAnalysis
 	{
 		get{

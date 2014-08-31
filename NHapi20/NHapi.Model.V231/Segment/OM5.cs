@@ -7,26 +7,27 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 OM5 message segment. 
-/// This segment has the following fields:<ol>
-///<li>OM5-1: Sequence Number - Test/Observation Master File (NM)</li>
-///<li>OM5-2: Test/Observations Included within an Ordered Test Battery (CE)</li>
-///<li>OM5-3: Observation ID Suffixes (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 OM5 message segment. This segment has the following fields:<ol>
+/// <li>OM5-1: Sequence Number - Test/Observation Master File (NM)</li>
+/// <li>OM5-2: Test/Observations Included within an Ordered Test Battery (CE)</li>
+/// <li>OM5-3: Observation ID Suffixes (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class OM5 : AbstractSegment  {
 
-  /**
-   * Creates a OM5 (OM5 - observation batteries (sets)  segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the OM5 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OM5(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -38,9 +39,10 @@ public class OM5 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Sequence Number - Test/Observation Master File(OM5-1).
-	///</summary>
+    /// <summary>   Returns Sequence Number - Test/Observation Master File(OM5-1). </summary>
+    ///
+    /// <value> The sequence number test observation master file. </value>
+
 	public NM SequenceNumberTestObservationMasterFile
 	{
 		get{
@@ -61,11 +63,17 @@ public class OM5 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Test/Observations Included within an Ordered Test Battery(OM5-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Test/Observations Included within an Ordered Test Battery(OM5-
+    /// 2). throws HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The test observations included within an ordered test battery. </returns>
+
 	public CE GetTestObservationsIncludedWithinAnOrderedTestBattery(int rep)
 	{
 			CE ret = null;
@@ -80,9 +88,14 @@ public class OM5 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Test/Observations Included within an Ordered Test Battery (OM5-2).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetTestObservationsIncludedWithinAnOrderedTestBattery() {
      CE[] ret = null;
     try {
@@ -101,9 +114,15 @@ public class OM5 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Test/Observations Included within an Ordered Test Battery (OM5-2).
-   ///</summary>
+  /// <summary>
+  /// Returns the total repetitions of Test/Observations Included within an Ordered Test Battery (OM5-
+  /// 2).
+  /// </summary>
+  ///
+  /// <value>
+  /// The test observations included within an ordered test battery repetitions used.
+  /// </value>
+
   public int TestObservationsIncludedWithinAnOrderedTestBatteryRepetitionsUsed
 {
 get{
@@ -119,9 +138,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Observation ID Suffixes(OM5-3).
-	///</summary>
+
+    /// <summary>   Returns Observation ID Suffixes(OM5-3). </summary>
+    ///
+    /// <value> The observation identifier suffixes. </value>
+
 	public ST ObservationIDSuffixes
 	{
 		get{

@@ -7,35 +7,36 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 BHS message segment. 
-/// This segment has the following fields:<ol>
-///<li>BHS-1: Batch Field Separator (ST)</li>
-///<li>BHS-2: Batch Encoding Characters (ST)</li>
-///<li>BHS-3: Batch Sending Application (ST)</li>
-///<li>BHS-4: Batch Sending Facility (ST)</li>
-///<li>BHS-5: Batch Receiving Application (ST)</li>
-///<li>BHS-6: Batch Receiving Facility (ST)</li>
-///<li>BHS-7: Batch Creation Date/Time (TS)</li>
-///<li>BHS-8: Batch Security (ST)</li>
-///<li>BHS-9: Batch Name/ID/Type (ST)</li>
-///<li>BHS-10: Batch Comment (ST)</li>
-///<li>BHS-11: Batch Control ID (ST)</li>
-///<li>BHS-12: Reference Batch Control ID (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 BHS message segment. This segment has the following fields:<ol>
+/// <li>BHS-1: Batch Field Separator (ST)</li>
+/// <li>BHS-2: Batch Encoding Characters (ST)</li>
+/// <li>BHS-3: Batch Sending Application (ST)</li>
+/// <li>BHS-4: Batch Sending Facility (ST)</li>
+/// <li>BHS-5: Batch Receiving Application (ST)</li>
+/// <li>BHS-6: Batch Receiving Facility (ST)</li>
+/// <li>BHS-7: Batch Creation Date/Time (TS)</li>
+/// <li>BHS-8: Batch Security (ST)</li>
+/// <li>BHS-9: Batch Name/ID/Type (ST)</li>
+/// <li>BHS-10: Batch Comment (ST)</li>
+/// <li>BHS-11: Batch Control ID (ST)</li>
+/// <li>BHS-12: Reference Batch Control ID (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class BHS : AbstractSegment  {
 
-  /**
-   * Creates a BHS (Batch Header) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the BHS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public BHS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -56,9 +57,10 @@ public class BHS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Batch Field Separator(BHS-1).
-	///</summary>
+    /// <summary>   Returns Batch Field Separator(BHS-1). </summary>
+    ///
+    /// <value> The batch field separator. </value>
+
 	public ST BatchFieldSeparator
 	{
 		get{
@@ -79,9 +81,10 @@ public class BHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Batch Encoding Characters(BHS-2).
-	///</summary>
+    /// <summary>   Returns Batch Encoding Characters(BHS-2). </summary>
+    ///
+    /// <value> The batch encoding characters. </value>
+
 	public ST BatchEncodingCharacters
 	{
 		get{
@@ -102,9 +105,10 @@ public class BHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Batch Sending Application(BHS-3).
-	///</summary>
+    /// <summary>   Returns Batch Sending Application(BHS-3). </summary>
+    ///
+    /// <value> The batch sending application. </value>
+
 	public ST BatchSendingApplication
 	{
 		get{
@@ -125,9 +129,10 @@ public class BHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Batch Sending Facility(BHS-4).
-	///</summary>
+    /// <summary>   Returns Batch Sending Facility(BHS-4). </summary>
+    ///
+    /// <value> The batch sending facility. </value>
+
 	public ST BatchSendingFacility
 	{
 		get{
@@ -148,9 +153,10 @@ public class BHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Batch Receiving Application(BHS-5).
-	///</summary>
+    /// <summary>   Returns Batch Receiving Application(BHS-5). </summary>
+    ///
+    /// <value> The batch receiving application. </value>
+
 	public ST BatchReceivingApplication
 	{
 		get{
@@ -171,9 +177,10 @@ public class BHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Batch Receiving Facility(BHS-6).
-	///</summary>
+    /// <summary>   Returns Batch Receiving Facility(BHS-6). </summary>
+    ///
+    /// <value> The batch receiving facility. </value>
+
 	public ST BatchReceivingFacility
 	{
 		get{
@@ -194,9 +201,10 @@ public class BHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Batch Creation Date/Time(BHS-7).
-	///</summary>
+    /// <summary>   Returns Batch Creation Date/Time(BHS-7). </summary>
+    ///
+    /// <value> The batch creation date time. </value>
+
 	public TS BatchCreationDateTime
 	{
 		get{
@@ -217,9 +225,10 @@ public class BHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Batch Security(BHS-8).
-	///</summary>
+    /// <summary>   Returns Batch Security(BHS-8). </summary>
+    ///
+    /// <value> The batch security. </value>
+
 	public ST BatchSecurity
 	{
 		get{
@@ -240,9 +249,10 @@ public class BHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Batch Name/ID/Type(BHS-9).
-	///</summary>
+    /// <summary>   Returns Batch Name/ID/Type(BHS-9). </summary>
+    ///
+    /// <value> The type of the batch name identifier. </value>
+
 	public ST BatchNameIDType
 	{
 		get{
@@ -263,9 +273,10 @@ public class BHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Batch Comment(BHS-10).
-	///</summary>
+    /// <summary>   Returns Batch Comment(BHS-10). </summary>
+    ///
+    /// <value> The batch comment. </value>
+
 	public ST BatchComment
 	{
 		get{
@@ -286,9 +297,10 @@ public class BHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Batch Control ID(BHS-11).
-	///</summary>
+    /// <summary>   Returns Batch Control ID(BHS-11). </summary>
+    ///
+    /// <value> The identifier of the batch control. </value>
+
 	public ST BatchControlID
 	{
 		get{
@@ -309,9 +321,10 @@ public class BHS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Reference Batch Control ID(BHS-12).
-	///</summary>
+    /// <summary>   Returns Reference Batch Control ID(BHS-12). </summary>
+    ///
+    /// <value> The identifier of the reference batch control. </value>
+
 	public ST ReferenceBatchControlID
 	{
 		get{

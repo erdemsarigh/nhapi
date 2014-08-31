@@ -7,27 +7,28 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 MFE message segment. 
-/// This segment has the following fields:<ol>
-///<li>MFE-1: Record-Level Event Code (ID)</li>
-///<li>MFE-2: MFN Control ID (ST)</li>
-///<li>MFE-3: Effective Date/Time (TS)</li>
-///<li>MFE-4: Primary Key Value (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 MFE message segment. This segment has the following fields:<ol>
+/// <li>MFE-1: Record-Level Event Code (ID)</li>
+/// <li>MFE-2: MFN Control ID (ST)</li>
+/// <li>MFE-3: Effective Date/Time (TS)</li>
+/// <li>MFE-4: Primary Key Value (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class MFE : AbstractSegment  {
 
-  /**
-   * Creates a MFE (Master file entry segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the MFE class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFE(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -40,9 +41,10 @@ public class MFE : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Record-Level Event Code(MFE-1).
-	///</summary>
+    /// <summary>   Returns Record-Level Event Code(MFE-1). </summary>
+    ///
+    /// <value> The record level event code. </value>
+
 	public ID RecordLevelEventCode
 	{
 		get{
@@ -63,9 +65,10 @@ public class MFE : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns MFN Control ID(MFE-2).
-	///</summary>
+    /// <summary>   Returns MFN Control ID(MFE-2). </summary>
+    ///
+    /// <value> The identifier of the mfn control. </value>
+
 	public ST MFNControlID
 	{
 		get{
@@ -86,9 +89,10 @@ public class MFE : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Effective Date/Time(MFE-3).
-	///</summary>
+    /// <summary>   Returns Effective Date/Time(MFE-3). </summary>
+    ///
+    /// <value> The effective date time. </value>
+
 	public TS EffectiveDateTime
 	{
 		get{
@@ -109,11 +113,17 @@ public class MFE : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Primary Key Value(MFE-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Primary Key Value(MFE-4). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The primary key value. </returns>
+
 	public CE GetPrimaryKeyValue(int rep)
 	{
 			CE ret = null;
@@ -128,9 +138,12 @@ public class MFE : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Primary Key Value (MFE-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Primary Key Value (MFE-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetPrimaryKeyValue() {
      CE[] ret = null;
     try {
@@ -149,9 +162,10 @@ public class MFE : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Primary Key Value (MFE-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Primary Key Value (MFE-4). </summary>
+  ///
+  /// <value>   The primary key value repetitions used. </value>
+
   public int PrimaryKeyValueRepetitionsUsed
 {
 get{

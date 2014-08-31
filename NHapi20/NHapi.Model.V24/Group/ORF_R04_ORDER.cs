@@ -8,25 +8,28 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the ORF_R04_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common Order) optional </li>
-///<li>1: OBR (Observation Request) </li>
-///<li>2: NTE (Notes and Comments) optional repeating</li>
-///<li>3: CTD (Contact Data) optional </li>
-///<li>4: ORF_R04_OBSERVATION (a Group object) repeating</li>
-///<li>5: CTI (Clinical Trial Identification) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ORF_R04_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common Order) optional </li>
+/// <li>1: OBR (Observation Request) </li>
+/// <li>2: NTE (Notes and Comments) optional repeating</li>
+/// <li>3: CTD (Contact Data) optional </li>
+/// <li>4: ORF_R04_OBSERVATION (a Group object) repeating</li>
+/// <li>5: CTI (Clinical Trial Identification) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ORF_R04_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ORF_R04_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new ORF_R04_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORF_R04_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), false, false);
@@ -40,9 +43,10 @@ public class ORF_R04_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common Order) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common Order) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -56,9 +60,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns OBR (Observation Request) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OBR (Observation Request) - creates it if necessary. </summary>
+    ///
+    /// <value> The obr. </value>
+
 	public OBR OBR { 
 get{
 	   OBR ret = null;
@@ -72,9 +77,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -86,19 +96,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and Comments) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and Comments) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -113,9 +129,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns CTD (Contact Data) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns CTD (Contact Data) - creates it if necessary. </summary>
+    ///
+    /// <value> The ctd. </value>
+
 	public CTD CTD { 
 get{
 	   CTD ret = null;
@@ -129,9 +146,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of ORF_R04_OBSERVATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of ORF_R04_OBSERVATION (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public ORF_R04_OBSERVATION GetOBSERVATION() {
 	   ORF_R04_OBSERVATION ret = null;
 	   try {
@@ -143,19 +165,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of ORF_R04_OBSERVATION
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of ORF_R04_OBSERVATION
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public ORF_R04_OBSERVATION GetOBSERVATION(int rep) { 
 	   return (ORF_R04_OBSERVATION)this.GetStructure("OBSERVATION", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of ORF_R04_OBSERVATION 
-	 */ 
+    /// <summary>   Gets the observation repetitions used. </summary>
+    ///
+    /// <value> The observation repetitions used. </value>
+
 	public int OBSERVATIONRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -170,9 +198,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of CTI (Clinical Trial Identification) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of CTI (Clinical Trial Identification) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The cti. </returns>
+
 	public CTI GetCTI() {
 	   CTI ret = null;
 	   try {
@@ -184,19 +217,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of CTI
-	/// * (Clinical Trial Identification) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of CTI
+    ///  * (Clinical Trial Identification) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The cti. </returns>
+
 	public CTI GetCTI(int rep) { 
 	   return (CTI)this.GetStructure("CTI", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of CTI 
-	 */ 
+    /// <summary>   Gets the cti repetitions used. </summary>
+    ///
+    /// <value> The cti repetitions used. </value>
+
 	public int CTIRepetitionsUsed { 
 get{
 	    int reps = -1; 

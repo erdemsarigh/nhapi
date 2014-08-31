@@ -6,9 +6,9 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 XON (Extended Composite Name and Identification Number for Organizations) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 XON (Extended Composite Name and Identification Number for Organizations) data
+/// type.  Consists of the following components: </p><ol>
 /// <li>Organization Name (ST)</li>
 /// <li>Organization Name Type Code (IS)</li>
 /// <li>ID Number (NM)</li>
@@ -20,22 +20,24 @@ namespace NHapi.Model.V25.Datatype
 /// <li>Name Representation Code (ID)</li>
 /// <li>Organization Identifier (ST)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class XON : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a XON.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a XON. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public XON(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a XON.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a XON. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public XON(IMessage message, string description) : base(message, description){
 		data = new IType[10];
 		data[0] = new ST(message,"Organization Name");
@@ -50,9 +52,10 @@ public class XON : AbstractType, IComposite{
 		data[9] = new ST(message,"Organization Identifier");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -60,12 +63,15 @@ public class XON : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -76,10 +82,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Organization Name (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Organization Name (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name of the organization. </value>
+
 	public ST OrganizationName {
 get{
 	   ST ret = null;
@@ -93,10 +103,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Organization Name Type Code (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Organization Name Type Code (component #1).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The organization name type code. </value>
+
 	public IS OrganizationNameTypeCode {
 get{
 	   IS ret = null;
@@ -110,10 +124,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns ID Number (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns ID Number (component #2).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier number. </value>
+
 	public NM IDNumber {
 get{
 	   NM ret = null;
@@ -127,10 +145,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Check Digit (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Check Digit (component #3).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The check digit. </value>
+
 	public NM CheckDigit {
 get{
 	   NM ret = null;
@@ -144,10 +166,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Check Digit Scheme (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Check Digit Scheme (component #4).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The check digit scheme. </value>
+
 	public ID CheckDigitScheme {
 get{
 	   ID ret = null;
@@ -161,10 +187,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Assigning Authority (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Assigning Authority (component #5).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The assigning authority. </value>
+
 	public HD AssigningAuthority {
 get{
 	   HD ret = null;
@@ -178,10 +208,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Identifier Type Code (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Identifier Type Code (component #6).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier type code. </value>
+
 	public ID IdentifierTypeCode {
 get{
 	   ID ret = null;
@@ -195,10 +229,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Assigning Facility (component #7).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Assigning Facility (component #7).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The assigning facility. </value>
+
 	public HD AssigningFacility {
 get{
 	   HD ret = null;
@@ -212,10 +250,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Name Representation Code (component #8).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Name Representation Code (component #8).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The name representation code. </value>
+
 	public ID NameRepresentationCode {
 get{
 	   ID ret = null;
@@ -229,10 +271,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Organization Identifier (component #9).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Organization Identifier (component #9).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the organization. </value>
+
 	public ST OrganizationIdentifier {
 get{
 	   ST ret = null;

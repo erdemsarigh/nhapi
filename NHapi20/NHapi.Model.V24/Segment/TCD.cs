@@ -7,31 +7,32 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 TCD message segment. 
-/// This segment has the following fields:<ol>
-///<li>TCD-1: Universal Service Identifier (CE)</li>
-///<li>TCD-2: Auto-Dilution Factor (SN)</li>
-///<li>TCD-3: Rerun Dilution Factor (SN)</li>
-///<li>TCD-4: Pre-Dilution Factor (SN)</li>
-///<li>TCD-5: Endogenous Content of Pre-Dilution Diluent (SN)</li>
-///<li>TCD-6: Automatic Repeat Allowed (ID)</li>
-///<li>TCD-7: Reflex Allowed (ID)</li>
-///<li>TCD-8: Analyte Repeat Status (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 TCD message segment. This segment has the following fields:<ol>
+/// <li>TCD-1: Universal Service Identifier (CE)</li>
+/// <li>TCD-2: Auto-Dilution Factor (SN)</li>
+/// <li>TCD-3: Rerun Dilution Factor (SN)</li>
+/// <li>TCD-4: Pre-Dilution Factor (SN)</li>
+/// <li>TCD-5: Endogenous Content of Pre-Dilution Diluent (SN)</li>
+/// <li>TCD-6: Automatic Repeat Allowed (ID)</li>
+/// <li>TCD-7: Reflex Allowed (ID)</li>
+/// <li>TCD-8: Analyte Repeat Status (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class TCD : AbstractSegment  {
 
-  /**
-   * Creates a TCD (Test Code Detail) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the TCD class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public TCD(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -48,9 +49,10 @@ public class TCD : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Universal Service Identifier(TCD-1).
-	///</summary>
+    /// <summary>   Returns Universal Service Identifier(TCD-1). </summary>
+    ///
+    /// <value> The identifier of the universal service. </value>
+
 	public CE UniversalServiceIdentifier
 	{
 		get{
@@ -71,9 +73,10 @@ public class TCD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Auto-Dilution Factor(TCD-2).
-	///</summary>
+    /// <summary>   Returns Auto-Dilution Factor(TCD-2). </summary>
+    ///
+    /// <value> The automatic dilution factor. </value>
+
 	public SN AutoDilutionFactor
 	{
 		get{
@@ -94,9 +97,10 @@ public class TCD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Rerun Dilution Factor(TCD-3).
-	///</summary>
+    /// <summary>   Returns Rerun Dilution Factor(TCD-3). </summary>
+    ///
+    /// <value> The rerun dilution factor. </value>
+
 	public SN RerunDilutionFactor
 	{
 		get{
@@ -117,9 +121,10 @@ public class TCD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Pre-Dilution Factor(TCD-4).
-	///</summary>
+    /// <summary>   Returns Pre-Dilution Factor(TCD-4). </summary>
+    ///
+    /// <value> The pre dilution factor. </value>
+
 	public SN PreDilutionFactor
 	{
 		get{
@@ -140,9 +145,10 @@ public class TCD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Endogenous Content of Pre-Dilution Diluent(TCD-5).
-	///</summary>
+    /// <summary>   Returns Endogenous Content of Pre-Dilution Diluent(TCD-5). </summary>
+    ///
+    /// <value> The endogenous content of pre dilution diluent. </value>
+
 	public SN EndogenousContentOfPreDilutionDiluent
 	{
 		get{
@@ -163,9 +169,10 @@ public class TCD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Automatic Repeat Allowed(TCD-6).
-	///</summary>
+    /// <summary>   Returns Automatic Repeat Allowed(TCD-6). </summary>
+    ///
+    /// <value> The automatic repeat allowed. </value>
+
 	public ID AutomaticRepeatAllowed
 	{
 		get{
@@ -186,9 +193,10 @@ public class TCD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Reflex Allowed(TCD-7).
-	///</summary>
+    /// <summary>   Returns Reflex Allowed(TCD-7). </summary>
+    ///
+    /// <value> The reflex allowed. </value>
+
 	public ID ReflexAllowed
 	{
 		get{
@@ -209,9 +217,10 @@ public class TCD : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Analyte Repeat Status(TCD-8).
-	///</summary>
+    /// <summary>   Returns Analyte Repeat Status(TCD-8). </summary>
+    ///
+    /// <value> The analyte repeat status. </value>
+
 	public CE AnalyteRepeatStatus
 	{
 		get{

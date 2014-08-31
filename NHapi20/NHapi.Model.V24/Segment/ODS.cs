@@ -7,27 +7,28 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 ODS message segment. 
-/// This segment has the following fields:<ol>
-///<li>ODS-1: Type (ID)</li>
-///<li>ODS-2: Service Period (CE)</li>
-///<li>ODS-3: Diet, Supplement, or Preference Code (CE)</li>
-///<li>ODS-4: Text Instruction (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ODS message segment. This segment has the following fields:<ol>
+/// <li>ODS-1: Type (ID)</li>
+/// <li>ODS-2: Service Period (CE)</li>
+/// <li>ODS-3: Diet, Supplement, or Preference Code (CE)</li>
+/// <li>ODS-4: Text Instruction (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ODS : AbstractSegment  {
 
-  /**
-   * Creates a ODS (Dietary Orders, Supplements, and Preferences) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ODS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ODS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -40,9 +41,10 @@ public class ODS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Type(ODS-1).
-	///</summary>
+    /// <summary>   Returns Type(ODS-1). </summary>
+    ///
+    /// <value> The type. </value>
+
 	public ID Type
 	{
 		get{
@@ -63,11 +65,17 @@ public class ODS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Service Period(ODS-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Service Period(ODS-2). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The service period. </returns>
+
 	public CE GetServicePeriod(int rep)
 	{
 			CE ret = null;
@@ -82,9 +90,12 @@ public class ODS : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Service Period (ODS-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Service Period (ODS-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetServicePeriod() {
      CE[] ret = null;
     try {
@@ -103,9 +114,10 @@ public class ODS : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Service Period (ODS-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Service Period (ODS-2). </summary>
+  ///
+  /// <value>   The service period repetitions used. </value>
+
   public int ServicePeriodRepetitionsUsed
 {
 get{
@@ -121,11 +133,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Diet, Supplement, or Preference Code(ODS-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Diet, Supplement, or Preference Code(ODS-3). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The diet supplement or preference code. </returns>
+
 	public CE GetDietSupplementOrPreferenceCode(int rep)
 	{
 			CE ret = null;
@@ -140,9 +159,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Diet, Supplement, or Preference Code (ODS-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Diet, Supplement, or Preference Code (ODS-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetDietSupplementOrPreferenceCode() {
      CE[] ret = null;
     try {
@@ -161,9 +183,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Diet, Supplement, or Preference Code (ODS-3).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The diet supplement or preference code repetitions used. </value>
+
   public int DietSupplementOrPreferenceCodeRepetitionsUsed
 {
 get{
@@ -179,11 +204,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Text Instruction(ODS-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Text Instruction(ODS-4). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The text instruction. </returns>
+
 	public ST GetTextInstruction(int rep)
 	{
 			ST ret = null;
@@ -198,9 +230,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Text Instruction (ODS-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Text Instruction (ODS-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetTextInstruction() {
      ST[] ret = null;
     try {
@@ -219,9 +254,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Text Instruction (ODS-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Text Instruction (ODS-4). </summary>
+  ///
+  /// <value>   The text instruction repetitions used. </value>
+
   public int TextInstructionRepetitionsUsed
 {
 get{

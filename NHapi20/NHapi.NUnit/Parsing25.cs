@@ -11,12 +11,15 @@ using NUnit.Framework;
 
 namespace NHapi.NUnit
 {
-	/// <summary>
-	/// This test case is in response to BUG 1807858 on source forge.  This BUG really isn't a bug, but the expected functionality.
-	/// </summary>
+    /// <summary>
+    /// This test case is in response to BUG 1807858 on source forge.  This BUG really isn't a bug,
+    /// but the expected functionality.
+    /// </summary>
+
 	[TestFixture]
 	public class Parsing25
 	{
+        /// <summary>   Tests adt a 28 mapping from hl 7. </summary>
 		[Test]
 		public void TestAdtA28MappingFromHl7()
 		{
@@ -34,6 +37,7 @@ PV1|1";
 			Assert.AreEqual("1", a05.PID.SetIDPID.Value);
 		}
 
+        /// <summary>   Tests adt a 28 mapping to hl 7. </summary>
 		[Test]
 		public void TestAdtA28MappingToHl7()
 		{

@@ -7,27 +7,28 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 CM2 message segment. 
-/// This segment has the following fields:<ol>
-///<li>CM2-1: Set ID - CM2 (SI)</li>
-///<li>CM2-2: Scheduled Time Point (CE)</li>
-///<li>CM2-3: Description of Time Point (ST)</li>
-///<li>CM2-4: Events Scheduled This Time Point (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 CM2 message segment. This segment has the following fields:<ol>
+/// <li>CM2-1: Set ID - CM2 (SI)</li>
+/// <li>CM2-2: Scheduled Time Point (CE)</li>
+/// <li>CM2-3: Description of Time Point (ST)</li>
+/// <li>CM2-4: Events Scheduled This Time Point (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class CM2 : AbstractSegment  {
 
-  /**
-   * Creates a CM2 (CM2 - clinical study schedule master segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the CM2 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public CM2(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -40,9 +41,10 @@ public class CM2 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - CM2(CM2-1).
-	///</summary>
+    /// <summary>   Returns Set ID - CM2(CM2-1). </summary>
+    ///
+    /// <value> The set idcm 2. </value>
+
 	public SI SetIDCM2
 	{
 		get{
@@ -63,9 +65,10 @@ public class CM2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Scheduled Time Point(CM2-2).
-	///</summary>
+    /// <summary>   Returns Scheduled Time Point(CM2-2). </summary>
+    ///
+    /// <value> The scheduled time point. </value>
+
 	public CE ScheduledTimePoint
 	{
 		get{
@@ -86,9 +89,10 @@ public class CM2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Description of Time Point(CM2-3).
-	///</summary>
+    /// <summary>   Returns Description of Time Point(CM2-3). </summary>
+    ///
+    /// <value> The description of time point. </value>
+
 	public ST DescriptionOfTimePoint
 	{
 		get{
@@ -109,11 +113,17 @@ public class CM2 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Events Scheduled This Time Point(CM2-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Events Scheduled This Time Point(CM2-4). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The events scheduled this time point. </returns>
+
 	public CE GetEventsScheduledThisTimePoint(int rep)
 	{
 			CE ret = null;
@@ -128,9 +138,12 @@ public class CM2 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Events Scheduled This Time Point (CM2-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of Events Scheduled This Time Point (CM2-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetEventsScheduledThisTimePoint() {
      CE[] ret = null;
     try {
@@ -149,9 +162,10 @@ public class CM2 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Events Scheduled This Time Point (CM2-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Events Scheduled This Time Point (CM2-4). </summary>
+  ///
+  /// <value>   The events scheduled this time point repetitions used. </value>
+
   public int EventsScheduledThisTimePointRepetitionsUsed
 {
 get{

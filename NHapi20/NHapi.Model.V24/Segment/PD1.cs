@@ -7,44 +7,45 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 PD1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>PD1-1: Living Dependency (IS)</li>
-///<li>PD1-2: Living Arrangement (IS)</li>
-///<li>PD1-3: Patient Primary Facility (XON)</li>
-///<li>PD1-4: Patient Primary Care Provider Name and ID No. (XCN)</li>
-///<li>PD1-5: Student Indicator (IS)</li>
-///<li>PD1-6: Handicap (IS)</li>
-///<li>PD1-7: Living Will Code (IS)</li>
-///<li>PD1-8: Organ Donor Code (IS)</li>
-///<li>PD1-9: Separate Bill (ID)</li>
-///<li>PD1-10: Duplicate Patient (CX)</li>
-///<li>PD1-11: Publicity Code (CE)</li>
-///<li>PD1-12: Protection Indicator (ID)</li>
-///<li>PD1-13: Protection Indicator Effective Date (DT)</li>
-///<li>PD1-14: Place of Worship (XON)</li>
-///<li>PD1-15: Advance Directive Code (CE)</li>
-///<li>PD1-16: Immunization Registry Status (IS)</li>
-///<li>PD1-17: Immunization Registry Status Effective Date (DT)</li>
-///<li>PD1-18: Publicity Code Effective Date (DT)</li>
-///<li>PD1-19: Military Branch (IS)</li>
-///<li>PD1-20: Military Rank/Grade (IS)</li>
-///<li>PD1-21: Military Status (IS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PD1 message segment. This segment has the following fields:<ol>
+/// <li>PD1-1: Living Dependency (IS)</li>
+/// <li>PD1-2: Living Arrangement (IS)</li>
+/// <li>PD1-3: Patient Primary Facility (XON)</li>
+/// <li>PD1-4: Patient Primary Care Provider Name and ID No. (XCN)</li>
+/// <li>PD1-5: Student Indicator (IS)</li>
+/// <li>PD1-6: Handicap (IS)</li>
+/// <li>PD1-7: Living Will Code (IS)</li>
+/// <li>PD1-8: Organ Donor Code (IS)</li>
+/// <li>PD1-9: Separate Bill (ID)</li>
+/// <li>PD1-10: Duplicate Patient (CX)</li>
+/// <li>PD1-11: Publicity Code (CE)</li>
+/// <li>PD1-12: Protection Indicator (ID)</li>
+/// <li>PD1-13: Protection Indicator Effective Date (DT)</li>
+/// <li>PD1-14: Place of Worship (XON)</li>
+/// <li>PD1-15: Advance Directive Code (CE)</li>
+/// <li>PD1-16: Immunization Registry Status (IS)</li>
+/// <li>PD1-17: Immunization Registry Status Effective Date (DT)</li>
+/// <li>PD1-18: Publicity Code Effective Date (DT)</li>
+/// <li>PD1-19: Military Branch (IS)</li>
+/// <li>PD1-20: Military Rank/Grade (IS)</li>
+/// <li>PD1-21: Military Status (IS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PD1 : AbstractSegment  {
 
-  /**
-   * Creates a PD1 (patient additional demographic) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PD1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PD1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -74,11 +75,17 @@ public class PD1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns a single repetition of Living Dependency(PD1-1).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Living Dependency(PD1-1). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The living dependency. </returns>
+
 	public IS GetLivingDependency(int rep)
 	{
 			IS ret = null;
@@ -93,9 +100,12 @@ public class PD1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Living Dependency (PD1-1).
-   ///</summary>
+  /// <summary> Returns all repetitions of Living Dependency (PD1-1). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of is. </returns>
+
   public IS[] GetLivingDependency() {
      IS[] ret = null;
     try {
@@ -114,9 +124,10 @@ public class PD1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Living Dependency (PD1-1).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Living Dependency (PD1-1). </summary>
+  ///
+  /// <value>   The living dependency repetitions used. </value>
+
   public int LivingDependencyRepetitionsUsed
 {
 get{
@@ -132,9 +143,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Living Arrangement(PD1-2).
-	///</summary>
+
+    /// <summary>   Returns Living Arrangement(PD1-2). </summary>
+    ///
+    /// <value> The living arrangement. </value>
+
 	public IS LivingArrangement
 	{
 		get{
@@ -155,11 +168,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Patient Primary Facility(PD1-3).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Patient Primary Facility(PD1-3). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The patient primary facility. </returns>
+
 	public XON GetPatientPrimaryFacility(int rep)
 	{
 			XON ret = null;
@@ -174,9 +193,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Patient Primary Facility (PD1-3).
-   ///</summary>
+  /// <summary> Returns all repetitions of Patient Primary Facility (PD1-3). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of XON. </returns>
+
   public XON[] GetPatientPrimaryFacility() {
      XON[] ret = null;
     try {
@@ -195,9 +217,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Patient Primary Facility (PD1-3).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Patient Primary Facility (PD1-3). </summary>
+  ///
+  /// <value>   The patient primary facility repetitions used. </value>
+
   public int PatientPrimaryFacilityRepetitionsUsed
 {
 get{
@@ -213,11 +236,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Patient Primary Care Provider Name and ID No.(PD1-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Patient Primary Care Provider Name and ID No.(PD1-4). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The patient primary care provider name identifier no. </returns>
+
 	public XCN GetPatientPrimaryCareProviderNameIDNo(int rep)
 	{
 			XCN ret = null;
@@ -232,9 +262,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Patient Primary Care Provider Name and ID No. (PD1-4).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetPatientPrimaryCareProviderNameIDNo() {
      XCN[] ret = null;
     try {
@@ -253,9 +288,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Patient Primary Care Provider Name and ID No. (PD1-4).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The patient primary care provider name identifier no repetitions used. </value>
+
   public int PatientPrimaryCareProviderNameIDNoRepetitionsUsed
 {
 get{
@@ -271,9 +309,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Student Indicator(PD1-5).
-	///</summary>
+
+    /// <summary>   Returns Student Indicator(PD1-5). </summary>
+    ///
+    /// <value> The student indicator. </value>
+
 	public IS StudentIndicator
 	{
 		get{
@@ -294,9 +334,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Handicap(PD1-6).
-	///</summary>
+    /// <summary>   Returns Handicap(PD1-6). </summary>
+    ///
+    /// <value> The handicap. </value>
+
 	public IS Handicap
 	{
 		get{
@@ -317,9 +358,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Living Will Code(PD1-7).
-	///</summary>
+    /// <summary>   Returns Living Will Code(PD1-7). </summary>
+    ///
+    /// <value> The living will code. </value>
+
 	public IS LivingWillCode
 	{
 		get{
@@ -340,9 +382,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Organ Donor Code(PD1-8).
-	///</summary>
+    /// <summary>   Returns Organ Donor Code(PD1-8). </summary>
+    ///
+    /// <value> The organ donor code. </value>
+
 	public IS OrganDonorCode
 	{
 		get{
@@ -363,9 +406,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Separate Bill(PD1-9).
-	///</summary>
+    /// <summary>   Returns Separate Bill(PD1-9). </summary>
+    ///
+    /// <value> The separate bill. </value>
+
 	public ID SeparateBill
 	{
 		get{
@@ -386,11 +430,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Duplicate Patient(PD1-10).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Duplicate Patient(PD1-10). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The duplicate patient. </returns>
+
 	public CX GetDuplicatePatient(int rep)
 	{
 			CX ret = null;
@@ -405,9 +455,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Duplicate Patient (PD1-10).
-   ///</summary>
+  /// <summary> Returns all repetitions of Duplicate Patient (PD1-10). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of cx. </returns>
+
   public CX[] GetDuplicatePatient() {
      CX[] ret = null;
     try {
@@ -426,9 +479,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Duplicate Patient (PD1-10).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Duplicate Patient (PD1-10). </summary>
+  ///
+  /// <value>   The duplicate patient repetitions used. </value>
+
   public int DuplicatePatientRepetitionsUsed
 {
 get{
@@ -444,9 +498,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Publicity Code(PD1-11).
-	///</summary>
+
+    /// <summary>   Returns Publicity Code(PD1-11). </summary>
+    ///
+    /// <value> The publicity code. </value>
+
 	public CE PublicityCode
 	{
 		get{
@@ -467,9 +523,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Protection Indicator(PD1-12).
-	///</summary>
+    /// <summary>   Returns Protection Indicator(PD1-12). </summary>
+    ///
+    /// <value> The protection indicator. </value>
+
 	public ID ProtectionIndicator
 	{
 		get{
@@ -490,9 +547,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Protection Indicator Effective Date(PD1-13).
-	///</summary>
+    /// <summary>   Returns Protection Indicator Effective Date(PD1-13). </summary>
+    ///
+    /// <value> The protection indicator effective date. </value>
+
 	public DT ProtectionIndicatorEffectiveDate
 	{
 		get{
@@ -513,11 +571,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Place of Worship(PD1-14).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Place of Worship(PD1-14). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The place of worship. </returns>
+
 	public XON GetPlaceOfWorship(int rep)
 	{
 			XON ret = null;
@@ -532,9 +596,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Place of Worship (PD1-14).
-   ///</summary>
+  /// <summary> Returns all repetitions of Place of Worship (PD1-14). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of XON. </returns>
+
   public XON[] GetPlaceOfWorship() {
      XON[] ret = null;
     try {
@@ -553,9 +620,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Place of Worship (PD1-14).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Place of Worship (PD1-14). </summary>
+  ///
+  /// <value>   The place of worship repetitions used. </value>
+
   public int PlaceOfWorshipRepetitionsUsed
 {
 get{
@@ -571,11 +639,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Advance Directive Code(PD1-15).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Advance Directive Code(PD1-15). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The advance directive code. </returns>
+
 	public CE GetAdvanceDirectiveCode(int rep)
 	{
 			CE ret = null;
@@ -590,9 +665,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Advance Directive Code (PD1-15).
-   ///</summary>
+  /// <summary> Returns all repetitions of Advance Directive Code (PD1-15). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetAdvanceDirectiveCode() {
      CE[] ret = null;
     try {
@@ -611,9 +689,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Advance Directive Code (PD1-15).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Advance Directive Code (PD1-15). </summary>
+  ///
+  /// <value>   The advance directive code repetitions used. </value>
+
   public int AdvanceDirectiveCodeRepetitionsUsed
 {
 get{
@@ -629,9 +708,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Immunization Registry Status(PD1-16).
-	///</summary>
+
+    /// <summary>   Returns Immunization Registry Status(PD1-16). </summary>
+    ///
+    /// <value> The immunization registry status. </value>
+
 	public IS ImmunizationRegistryStatus
 	{
 		get{
@@ -652,9 +733,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Immunization Registry Status Effective Date(PD1-17).
-	///</summary>
+    /// <summary>   Returns Immunization Registry Status Effective Date(PD1-17). </summary>
+    ///
+    /// <value> The immunization registry status effective date. </value>
+
 	public DT ImmunizationRegistryStatusEffectiveDate
 	{
 		get{
@@ -675,9 +757,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Publicity Code Effective Date(PD1-18).
-	///</summary>
+    /// <summary>   Returns Publicity Code Effective Date(PD1-18). </summary>
+    ///
+    /// <value> The publicity code effective date. </value>
+
 	public DT PublicityCodeEffectiveDate
 	{
 		get{
@@ -698,9 +781,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Military Branch(PD1-19).
-	///</summary>
+    /// <summary>   Returns Military Branch(PD1-19). </summary>
+    ///
+    /// <value> The military branch. </value>
+
 	public IS MilitaryBranch
 	{
 		get{
@@ -721,9 +805,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Military Rank/Grade(PD1-20).
-	///</summary>
+    /// <summary>   Returns Military Rank/Grade(PD1-20). </summary>
+    ///
+    /// <value> The military rank grade. </value>
+
 	public IS MilitaryRankGrade
 	{
 		get{
@@ -744,9 +829,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Military Status(PD1-21).
-	///</summary>
+    /// <summary>   Returns Military Status(PD1-21). </summary>
+    ///
+    /// <value> The military status. </value>
+
 	public IS MilitaryStatus
 	{
 		get{

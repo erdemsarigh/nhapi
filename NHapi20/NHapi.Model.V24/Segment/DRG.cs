@@ -7,34 +7,35 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 DRG message segment. 
-/// This segment has the following fields:<ol>
-///<li>DRG-1: Diagnostic Related Group (CE)</li>
-///<li>DRG-2: DRG Assigned Date/Time (TS)</li>
-///<li>DRG-3: DRG Approval Indicator (ID)</li>
-///<li>DRG-4: DRG Grouper Review Code (IS)</li>
-///<li>DRG-5: Outlier Type (CE)</li>
-///<li>DRG-6: Outlier Days (NM)</li>
-///<li>DRG-7: Outlier Cost (CP)</li>
-///<li>DRG-8: DRG Payor (IS)</li>
-///<li>DRG-9: Outlier Reimbursement (CP)</li>
-///<li>DRG-10: Confidential Indicator (ID)</li>
-///<li>DRG-11: DRG Transfer Type (IS)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 DRG message segment. This segment has the following fields:<ol>
+/// <li>DRG-1: Diagnostic Related Group (CE)</li>
+/// <li>DRG-2: DRG Assigned Date/Time (TS)</li>
+/// <li>DRG-3: DRG Approval Indicator (ID)</li>
+/// <li>DRG-4: DRG Grouper Review Code (IS)</li>
+/// <li>DRG-5: Outlier Type (CE)</li>
+/// <li>DRG-6: Outlier Days (NM)</li>
+/// <li>DRG-7: Outlier Cost (CP)</li>
+/// <li>DRG-8: DRG Payor (IS)</li>
+/// <li>DRG-9: Outlier Reimbursement (CP)</li>
+/// <li>DRG-10: Confidential Indicator (ID)</li>
+/// <li>DRG-11: DRG Transfer Type (IS)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class DRG : AbstractSegment  {
 
-  /**
-   * Creates a DRG (Diagnosis Related Group) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the DRG class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public DRG(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -54,9 +55,10 @@ public class DRG : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Diagnostic Related Group(DRG-1).
-	///</summary>
+    /// <summary>   Returns Diagnostic Related Group(DRG-1). </summary>
+    ///
+    /// <value> The diagnostic related group. </value>
+
 	public CE DiagnosticRelatedGroup
 	{
 		get{
@@ -77,9 +79,10 @@ public class DRG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DRG Assigned Date/Time(DRG-2).
-	///</summary>
+    /// <summary>   Returns DRG Assigned Date/Time(DRG-2). </summary>
+    ///
+    /// <value> The drg assigned date time. </value>
+
 	public TS DRGAssignedDateTime
 	{
 		get{
@@ -100,9 +103,10 @@ public class DRG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DRG Approval Indicator(DRG-3).
-	///</summary>
+    /// <summary>   Returns DRG Approval Indicator(DRG-3). </summary>
+    ///
+    /// <value> The drg approval indicator. </value>
+
 	public ID DRGApprovalIndicator
 	{
 		get{
@@ -123,9 +127,10 @@ public class DRG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DRG Grouper Review Code(DRG-4).
-	///</summary>
+    /// <summary>   Returns DRG Grouper Review Code(DRG-4). </summary>
+    ///
+    /// <value> The drg grouper review code. </value>
+
 	public IS DRGGrouperReviewCode
 	{
 		get{
@@ -146,9 +151,10 @@ public class DRG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Outlier Type(DRG-5).
-	///</summary>
+    /// <summary>   Returns Outlier Type(DRG-5). </summary>
+    ///
+    /// <value> The type of the outlier. </value>
+
 	public CE OutlierType
 	{
 		get{
@@ -169,9 +175,10 @@ public class DRG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Outlier Days(DRG-6).
-	///</summary>
+    /// <summary>   Returns Outlier Days(DRG-6). </summary>
+    ///
+    /// <value> The outlier days. </value>
+
 	public NM OutlierDays
 	{
 		get{
@@ -192,9 +199,10 @@ public class DRG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Outlier Cost(DRG-7).
-	///</summary>
+    /// <summary>   Returns Outlier Cost(DRG-7). </summary>
+    ///
+    /// <value> The outlier cost. </value>
+
 	public CP OutlierCost
 	{
 		get{
@@ -215,9 +223,10 @@ public class DRG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DRG Payor(DRG-8).
-	///</summary>
+    /// <summary>   Returns DRG Payor(DRG-8). </summary>
+    ///
+    /// <value> The drg payor. </value>
+
 	public IS DRGPayor
 	{
 		get{
@@ -238,9 +247,10 @@ public class DRG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Outlier Reimbursement(DRG-9).
-	///</summary>
+    /// <summary>   Returns Outlier Reimbursement(DRG-9). </summary>
+    ///
+    /// <value> The outlier reimbursement. </value>
+
 	public CP OutlierReimbursement
 	{
 		get{
@@ -261,9 +271,10 @@ public class DRG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Confidential Indicator(DRG-10).
-	///</summary>
+    /// <summary>   Returns Confidential Indicator(DRG-10). </summary>
+    ///
+    /// <value> The confidential indicator. </value>
+
 	public ID ConfidentialIndicator
 	{
 		get{
@@ -284,9 +295,10 @@ public class DRG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns DRG Transfer Type(DRG-11).
-	///</summary>
+    /// <summary>   Returns DRG Transfer Type(DRG-11). </summary>
+    ///
+    /// <value> The type of the drg transfer. </value>
+
 	public IS DRGTransferType
 	{
 		get{

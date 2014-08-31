@@ -8,26 +8,29 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the RDS_O01_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common order segment) </li>
-///<li>1: RDS_O01_ORDER_DETAIL (a Group object) optional </li>
-///<li>2: RDS_O01_ENCODING (a Group object) optional </li>
-///<li>3: RXD (Pharmacy dispense segment) </li>
-///<li>4: RXR (Pharmacy route segment) repeating</li>
-///<li>5: RXC (Pharmacy component order segment) optional repeating</li>
-///<li>6: RDS_O01_OBSERVATION (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RDS_O01_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common order segment) </li>
+/// <li>1: RDS_O01_ORDER_DETAIL (a Group object) optional </li>
+/// <li>2: RDS_O01_ENCODING (a Group object) optional </li>
+/// <li>3: RXD (Pharmacy dispense segment) </li>
+/// <li>4: RXR (Pharmacy route segment) repeating</li>
+/// <li>5: RXC (Pharmacy component order segment) optional repeating</li>
+/// <li>6: RDS_O01_OBSERVATION (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RDS_O01_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RDS_O01_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new RDS_O01_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RDS_O01_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -42,9 +45,10 @@ public class RDS_O01_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common order segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common order segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -58,9 +62,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RDS_O01_ORDER_DETAIL (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RDS_O01_ORDER_DETAIL (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The order detail. </value>
+
 	public RDS_O01_ORDER_DETAIL ORDER_DETAIL { 
 get{
 	   RDS_O01_ORDER_DETAIL ret = null;
@@ -74,9 +79,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RDS_O01_ENCODING (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RDS_O01_ENCODING (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The encoding. </value>
+
 	public RDS_O01_ENCODING ENCODING { 
 get{
 	   RDS_O01_ENCODING ret = null;
@@ -90,9 +96,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RXD (Pharmacy dispense segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RXD (Pharmacy dispense segment) - creates it if necessary. </summary>
+    ///
+    /// <value> Information describing the receive. </value>
+
 	public RXD RXD { 
 get{
 	   RXD ret = null;
@@ -106,9 +113,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RXR (Pharmacy route segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RXR (Pharmacy route segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The rxr. </returns>
+
 	public RXR GetRXR() {
 	   RXR ret = null;
 	   try {
@@ -120,19 +132,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RXR
-	/// * (Pharmacy route segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RXR
+    ///  * (Pharmacy route segment) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The rxr. </returns>
+
 	public RXR GetRXR(int rep) { 
 	   return (RXR)this.GetStructure("RXR", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RXR 
-	 */ 
+    /// <summary>   Gets the rxr repetitions used. </summary>
+    ///
+    /// <value> The rxr repetitions used. </value>
+
 	public int RXRRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -147,9 +165,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of RXC (Pharmacy component order segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RXC (Pharmacy component order segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The rxc. </returns>
+
 	public RXC GetRXC() {
 	   RXC ret = null;
 	   try {
@@ -161,19 +184,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RXC
-	/// * (Pharmacy component order segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RXC
+    ///  * (Pharmacy component order segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The rxc. </returns>
+
 	public RXC GetRXC(int rep) { 
 	   return (RXC)this.GetStructure("RXC", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RXC 
-	 */ 
+    /// <summary>   Gets the rxc repetitions used. </summary>
+    ///
+    /// <value> The rxc repetitions used. </value>
+
 	public int RXCRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -188,9 +217,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of RDS_O01_OBSERVATION (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RDS_O01_OBSERVATION (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public RDS_O01_OBSERVATION GetOBSERVATION() {
 	   RDS_O01_OBSERVATION ret = null;
 	   try {
@@ -202,19 +236,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RDS_O01_OBSERVATION
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RDS_O01_OBSERVATION
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The observation. </returns>
+
 	public RDS_O01_OBSERVATION GetOBSERVATION(int rep) { 
 	   return (RDS_O01_OBSERVATION)this.GetStructure("OBSERVATION", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RDS_O01_OBSERVATION 
-	 */ 
+    /// <summary>   Gets the observation repetitions used. </summary>
+    ///
+    /// <value> The observation repetitions used. </value>
+
 	public int OBSERVATIONRepetitionsUsed { 
 get{
 	    int reps = -1; 

@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the OMD_O01_ORDER_DIET Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common order segment) </li>
-///<li>1: OMD_O01_DIET (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the OMD_O01_ORDER_DIET Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common order segment) </li>
+/// <li>1: OMD_O01_DIET (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class OMD_O01_ORDER_DIET : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new OMD_O01_ORDER_DIET Group.
-	///</summary>
+    /// <summary>   Creates a new OMD_O01_ORDER_DIET Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public OMD_O01_ORDER_DIET(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -32,9 +35,10 @@ public class OMD_O01_ORDER_DIET : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common order segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common order segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns OMD_O01_DIET (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OMD_O01_DIET (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The diet. </value>
+
 	public OMD_O01_DIET DIET { 
 get{
 	   OMD_O01_DIET ret = null;

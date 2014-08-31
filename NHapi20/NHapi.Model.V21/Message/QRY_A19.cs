@@ -9,34 +9,37 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V21.Message
 
 {
-///<summary>
-/// Represents a QRY_A19 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a QRY_A19 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (MESSAGE HEADER) </li>
-///<li>1: QRD (QUERY DEFINITION) </li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (MESSAGE HEADER) </li>
+/// <li>1: QRD (QUERY DEFINITION) </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class QRY_A19 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new QRY_A19 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new QRY_A19 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public QRY_A19(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new QRY_A19 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new QRY_A19 Group with DefaultModelClassFactory. </summary>
 	public QRY_A19() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for QRY_A19.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for QRY_A19.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -46,6 +49,13 @@ public class QRY_A19 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -53,9 +63,11 @@ public class QRY_A19 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (MESSAGE HEADER) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (MESSAGE HEADER) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -69,9 +81,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QRD (QUERY DEFINITION) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QRD (QUERY DEFINITION) - creates it if necessary. </summary>
+    ///
+    /// <value> The qrd. </value>
+
 	public QRD QRD { 
 get{
 	   QRD ret = null;

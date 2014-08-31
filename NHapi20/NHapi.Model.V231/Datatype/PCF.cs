@@ -6,29 +6,31 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V231.Datatype
 {
-
-///<summary>
-/// <p>The HL7 PCF (Pre-certification required) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 PCF (Pre-certification required) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>pre-certification patient type (IS)</li>
 /// <li>pre-certification required (ID)</li>
 /// <li>pre-certification window (TS)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class PCF : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a PCF.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a PCF. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public PCF(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a PCF.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a PCF. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public PCF(IMessage message, string description) : base(message, description){
 		data = new IType[3];
 		data[0] = new IS(message, 0,"Pre-certification patient type");
@@ -36,9 +38,10 @@ public class PCF : AbstractType, IComposite{
 		data[2] = new TS(message,"Pre-certification window");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -46,12 +49,15 @@ public class PCF : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -62,10 +68,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns pre-certification patient type (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns pre-certification patient type (component #0).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the pre certification patient. </value>
+
 	public IS PreCertificationPatientType {
 get{
 	   IS ret = null;
@@ -79,10 +89,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns pre-certification required (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns pre-certification required (component #1).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The pre certification required. </value>
+
 	public ID PreCertificationRequired {
 get{
 	   ID ret = null;
@@ -96,10 +110,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns pre-certification window (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns pre-certification window (component #2).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The pre certification window. </value>
+
 	public TS PreCertificationWindow {
 get{
 	   TS ret = null;

@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the NMQ_N01_QRY_WITH_DETAIL Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: QRD (QRD - original-style query definition segment) </li>
-///<li>1: QRF (QRF - original style query filter segment) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the NMQ_N01_QRY_WITH_DETAIL Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: QRD (QRD - original-style query definition segment) </li>
+/// <li>1: QRF (QRF - original style query filter segment) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class NMQ_N01_QRY_WITH_DETAIL : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new NMQ_N01_QRY_WITH_DETAIL Group.
-	///</summary>
+    /// <summary>   Creates a new NMQ_N01_QRY_WITH_DETAIL Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public NMQ_N01_QRY_WITH_DETAIL(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(QRD), true, false);
@@ -32,9 +35,12 @@ public class NMQ_N01_QRY_WITH_DETAIL : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns QRD (QRD - original-style query definition segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns QRD (QRD - original-style query definition segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The qrd. </value>
+
 	public QRD QRD { 
 get{
 	   QRD ret = null;
@@ -48,9 +54,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QRF (QRF - original style query filter segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns QRF (QRF - original style query filter segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The qrf. </value>
+
 	public QRF QRF { 
 get{
 	   QRF ret = null;

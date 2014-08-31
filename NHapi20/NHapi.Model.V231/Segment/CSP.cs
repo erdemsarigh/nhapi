@@ -7,27 +7,28 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 CSP message segment. 
-/// This segment has the following fields:<ol>
-///<li>CSP-1: Study Phase Identifier (CE)</li>
-///<li>CSP-2: Date/time Study Phase Began (TS)</li>
-///<li>CSP-3: Date/time Study Phase Ended (TS)</li>
-///<li>CSP-4: Study Phase Evaluability (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 CSP message segment. This segment has the following fields:<ol>
+/// <li>CSP-1: Study Phase Identifier (CE)</li>
+/// <li>CSP-2: Date/time Study Phase Began (TS)</li>
+/// <li>CSP-3: Date/time Study Phase Ended (TS)</li>
+/// <li>CSP-4: Study Phase Evaluability (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class CSP : AbstractSegment  {
 
-  /**
-   * Creates a CSP (CSP - clinical study phase segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the CSP class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public CSP(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -40,9 +41,10 @@ public class CSP : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Study Phase Identifier(CSP-1).
-	///</summary>
+    /// <summary>   Returns Study Phase Identifier(CSP-1). </summary>
+    ///
+    /// <value> The identifier of the study phase. </value>
+
 	public CE StudyPhaseIdentifier
 	{
 		get{
@@ -63,9 +65,10 @@ public class CSP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date/time Study Phase Began(CSP-2).
-	///</summary>
+    /// <summary>   Returns Date/time Study Phase Began(CSP-2). </summary>
+    ///
+    /// <value> The date time study phase began. </value>
+
 	public TS DateTimeStudyPhaseBegan
 	{
 		get{
@@ -86,9 +89,10 @@ public class CSP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Date/time Study Phase Ended(CSP-3).
-	///</summary>
+    /// <summary>   Returns Date/time Study Phase Ended(CSP-3). </summary>
+    ///
+    /// <value> The date time study phase ended. </value>
+
 	public TS DateTimeStudyPhaseEnded
 	{
 		get{
@@ -109,9 +113,10 @@ public class CSP : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Study Phase Evaluability(CSP-4).
-	///</summary>
+    /// <summary>   Returns Study Phase Evaluability(CSP-4). </summary>
+    ///
+    /// <value> The study phase evaluability. </value>
+
 	public CE StudyPhaseEvaluability
 	{
 		get{

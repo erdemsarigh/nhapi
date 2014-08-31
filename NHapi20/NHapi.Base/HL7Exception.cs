@@ -28,165 +28,137 @@ namespace NHapi.Base
     using NHapi.Base.Model;
     using NHapi.Base.Util;
 
-    /// <summary> Represents an exception encountered while processing 
-    /// an HL7 message.  
-    /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+    /// <summary>   Represents an exception encountered while processing an HL7 message.   </summary>
     [Serializable]
     public class HL7Exception : System.Exception
     {
         #region Constants
 
-        /// <summary>
-        /// Acknowledgement Application Accept 
-        /// </summary>
+        /// <summary>   Acknowledgement Application Accept. </summary>
         public const int ACK_AA = 1;
 
-        /// <summary>
-        /// Acknowledgement Application Error
-        /// </summary>
+        /// <summary>   Acknowledgement Application Error. </summary>
         public const int ACK_AE = 2;
 
-        /// <summary>
-        /// Acknowledgement Application Reject
-        /// </summary>
+        /// <summary>   Acknowledgement Application Reject. </summary>
         public const int ACK_AR = 3;
 
-        /// <summary>
-        /// Appplication error
-        /// </summary>
+        /// <summary>   Appplication error. </summary>
         public const int APPLICATION_INTERNAL_ERROR = 207;
 
-        /// <summary>
-        /// Application record locked
-        /// </summary>
+        /// <summary>   Application record locked. </summary>
         public const int APPLICATION_RECORD_LOCKED = 206;
 
-        /// <summary>
-        /// Date type error
-        /// </summary>
+        /// <summary>   Date type error. </summary>
         public const int DATA_TYPE_ERROR = 102;
 
-        /// <summary>
-        /// Duplicate key id
-        /// </summary>
+        /// <summary>   Duplicate key id. </summary>
         public const int DUPLICATE_KEY_IDENTIFIER = 205;
 
-        /// <summary>
-        /// Message accepted
-        /// </summary>
+        /// <summary>   Message accepted. </summary>
         public const int MESSAGE_ACCEPTED = 0;
 
-        /// <summary>
-        /// Required field missing
-        /// </summary>
+        /// <summary>   Required field missing. </summary>
         public const int REQUIRED_FIELD_MISSING = 101;
 
-        /// <summary>
-        /// Segment sequence error
-        /// </summary>
+        /// <summary>   Segment sequence error. </summary>
         public const int SEGMENT_SEQUENCE_ERROR = 100;
 
-        /// <summary>
-        /// Table value not found
-        /// </summary>
+        /// <summary>   Table value not found. </summary>
         public const int TABLE_VALUE_NOT_FOUND = 103;
 
-        /// <summary>
-        /// Unknown key id
-        /// </summary>
+        /// <summary>   Unknown key id. </summary>
         public const int UNKNOWN_KEY_IDENTIFIER = 204;
 
-        /// <summary>
-        /// Unsupported event code
-        /// </summary>
+        /// <summary>   Unsupported event code. </summary>
         public const int UNSUPPORTED_EVENT_CODE = 201;
 
-        /// <summary>
-        /// Unsupported message type
-        /// </summary>
+        /// <summary>   Unsupported message type. </summary>
         public const int UNSUPPORTED_MESSAGE_TYPE = 200;
 
-        /// <summary>
-        /// Unsupported processing id
-        /// </summary>
+        /// <summary>   Unsupported processing id. </summary>
         public const int UNSUPPORTED_PROCESSING_ID = 202;
 
-        /// <summary>
-        /// Unsupported version id
-        /// </summary>
+        /// <summary>   Unsupported version id. </summary>
         public const int UNSUPPORTED_VERSION_ID = 203;
 
         #endregion
 
         #region Static Fields
 
+        /// <summary>   our log. </summary>
         private static readonly IHapiLog ourLog;
 
         #endregion
 
         #region Fields
 
+        /// <summary>   The error code. </summary>
         private int errCode = -1;
 
+        /// <summary>   The field position. </summary>
         private int fieldPosition = -1;
 
+        /// <summary>   The segment. </summary>
         private System.String segment;
 
+        /// <summary>   The segment rep. </summary>
         private int segmentRep = -1;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the HL7Exception class. </summary>
         static HL7Exception()
         {
             ourLog = HapiLogFactory.GetHapiLog(typeof(HL7Exception));
         }
 
-        /// <summary> Creates an HL7Exception.
-        /// <param name="message">The error message</param>
-        /// <param name="errorCondition">a code describing the the error condition, from HL7
-        /// table 0357 (see section 2.16.8 of standard v 2.4) - HL7Exception defines 
-        /// these codes as integer constants that can be used here (e.g. 
-        /// HL7Exception.UNSUPPORTED_MESSAGE_TYPE)
-        /// </param>
-        /// <param name="cause">The excption that caused this exception tobe thrown.
-        /// </param>
-        /// </summary>
+        /// <summary>   Creates an HL7Exception. </summary>
+        ///
+        /// <param name="message">          The error message. </param>
+        /// <param name="errorCondition">   a code describing the the error condition, from HL7 table
+        ///                                 0357 (see section 2.16.8 of standard v 2.4) - HL7Exception
+        ///                                 defines these codes as integer constants that can be used
+        ///                                 here (e.g. HL7Exception.UNSUPPORTED_MESSAGE_TYPE) </param>
+        /// <param name="cause">            The excption that caused this exception tobe thrown. </param>
+
         public HL7Exception(System.String message, int errorCondition, System.Exception cause)
             : base(message, cause)
         {
             this.errCode = errorCondition;
         }
 
-        /// <summary> Creates an HL7Exception.
-        /// <param name="message">the error message</param>
-        /// <param name="errorCondition">a code describing the the error condition, from HL7
-        /// table 0357 (see section 2.16.8 of standard v 2.4) - HL7Exception defines 
-        /// these codes as integer constants that can be used here (e.g. 
-        /// HL7Exception.UNSUPPORTED_MESSAGE_TYPE)
-        /// </param>
-        /// </summary>
+        /// <summary>   Creates an HL7Exception. </summary>
+        ///
+        /// <param name="message">          the error message. </param>
+        /// <param name="errorCondition">   a code describing the the error condition, from HL7 table
+        ///                                 0357 (see section 2.16.8 of standard v 2.4) - HL7Exception
+        ///                                 defines these codes as integer constants that can be used
+        ///                                 here (e.g. HL7Exception.UNSUPPORTED_MESSAGE_TYPE) </param>
+
         public HL7Exception(System.String message, int errorCondition)
             : base(message)
         {
             this.errCode = errorCondition;
         }
 
-        /// <summary> Creates an HL7Exception with the code APPLICATION_INTERNAL_ERROR
-        /// <param name="cause">The excption that caused this exception tobe thrown.
-        /// </param>
-        /// <param name="message">the error message</param>
-        /// </summary>
+        /// <summary>   Creates an HL7Exception with the code APPLICATION_INTERNAL_ERROR. </summary>
+        ///
+        /// <param name="message">  the error message. </param>
+        /// <param name="cause">    The excption that caused this exception tobe thrown. </param>
+
         public HL7Exception(System.String message, System.Exception cause)
             : base(message, cause)
         {
             this.errCode = HL7Exception.APPLICATION_INTERNAL_ERROR;
         }
 
-        /// <summary> Creates an HL7Exception with the code APPLICATION_INTERNAL_ERROR</summary>
+        /// <summary>   Creates an HL7Exception with the code APPLICATION_INTERNAL_ERROR. </summary>
+        ///
+        /// <param name="message">  The error message. </param>
+
         public HL7Exception(System.String message)
             : base(message)
         {
@@ -197,12 +169,13 @@ namespace NHapi.Base
 
         #region Public Properties
 
-        /// <summary> Returns the field number within the segment where the error occured if it has been 
-        /// set, -1 otherwise; numbering starts at 1.
-        /// </summary>
-        /// <summary> Sets the field number (within a segment) where the error occured; numbering 
-        /// starts at 1. 
-        /// </summary>
+        /// <summary>   Returns the field number within the segment where the error occured if it has
+        ///             been set, -1 otherwise; numbering starts at 1. </summary>
+        /// <summary>   Sets the field number (within a segment) where the error occured; numbering
+        ///             starts at 1. </summary>
+        ///
+        /// <value> The field position. </value>
+
         public virtual int FieldPosition
         {
             get
@@ -216,9 +189,12 @@ namespace NHapi.Base
             }
         }
 
-        /// <summary> Overrides Throwable.getMessage() to add the field location of the problem if 
-        /// available.
+        /// <summary>
+        /// Overrides Throwable.getMessage() to add the field location of the problem if available.
         /// </summary>
+        ///
+        /// <value> The message. </value>
+
         public override System.String Message
         {
             get
@@ -245,10 +221,12 @@ namespace NHapi.Base
             }
         }
 
-        /// <summary> Returns the name of the segment where the error occured, if this has been set
-        /// (null otherwise).
-        /// </summary>
-        /// <summary> Sets the name of the segment where the error occured. </summary>
+        /// <summary>   Returns the name of the segment where the error occured, if this has been set
+        ///             (null otherwise). </summary>
+        /// <summary>   Sets the name of the segment where the error occured. </summary>
+        ///
+        /// <value> The name of the segment. </value>
+
         public virtual System.String SegmentName
         {
             get
@@ -262,15 +240,15 @@ namespace NHapi.Base
             }
         }
 
-        /// <summary> Returns the sequence number of the segment where the error occured (if there 
-        /// are multiple segments with the same name) if this has been set, -1 otherwise - 
-        /// numbering starts at 1.
-        /// </summary>
-        /// <summary> Sets the sequence number of the segment where the error occured if there 
-        /// are multiplt segments with the same name (ie the sequenceNum'th segment 
-        /// with the name specified in <code>setSegmentName</code>).  Numbering 
-        /// starts at 1.
-        /// </summary>
+        /// <summary>   Returns the sequence number of the segment where the error occured (if there are
+        ///             multiple segments with the same name) if this has been set, -1 otherwise -
+        ///             numbering starts at 1. </summary>
+        /// <summary>   Sets the sequence number of the segment where the error occured if there are
+        ///             multiplt segments with the same name (ie the sequenceNum'th segment with the name
+        ///             specified in <code>setSegmentName</code>).  Numbering starts at 1. </summary>
+        ///
+        /// <value> The segment repetition. </value>
+
         public virtual int SegmentRepetition
         {
             get
@@ -288,7 +266,12 @@ namespace NHapi.Base
 
         #region Public Methods and Operators
 
-        /// <summary> Populates the given error segment with information from this Exception.</summary>
+        /// <summary>   Populates the given error segment with information from this Exception. </summary>
+        ///
+        /// <exception cref="HL7Exception"> Thrown when a HL 7 error condition occurs. </exception>
+        ///
+        /// <param name="errorSegment"> The error segment. </param>
+
         public virtual void populate(ISegment errorSegment)
         {
             //make sure it's an ERR

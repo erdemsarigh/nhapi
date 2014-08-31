@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the MFN_M10_MF_TEST_BATTERIES Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: MFE (Master File Entry) </li>
-///<li>1: OM1 (General Segment) </li>
-///<li>2: MFN_M10_MF_TEST_BATT_DETAIL (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the MFN_M10_MF_TEST_BATTERIES Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: MFE (Master File Entry) </li>
+/// <li>1: OM1 (General Segment) </li>
+/// <li>2: MFN_M10_MF_TEST_BATT_DETAIL (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFN_M10_MF_TEST_BATTERIES : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new MFN_M10_MF_TEST_BATTERIES Group.
-	///</summary>
+    /// <summary>   Creates a new MFN_M10_MF_TEST_BATTERIES Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MFN_M10_MF_TEST_BATTERIES(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(MFE), true, false);
@@ -34,9 +37,10 @@ public class MFN_M10_MF_TEST_BATTERIES : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns MFE (Master File Entry) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MFE (Master File Entry) - creates it if necessary. </summary>
+    ///
+    /// <value> The mfe. </value>
+
 	public MFE MFE { 
 get{
 	   MFE ret = null;
@@ -50,9 +54,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns OM1 (General Segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns OM1 (General Segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The om 1. </value>
+
 	public OM1 OM1 { 
 get{
 	   OM1 ret = null;
@@ -66,9 +71,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MFN_M10_MF_TEST_BATT_DETAIL (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns MFN_M10_MF_TEST_BATT_DETAIL (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The mf test batt detail. </value>
+
 	public MFN_M10_MF_TEST_BATT_DETAIL MF_TEST_BATT_DETAIL { 
 get{
 	   MFN_M10_MF_TEST_BATT_DETAIL ret = null;

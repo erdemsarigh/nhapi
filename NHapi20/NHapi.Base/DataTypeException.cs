@@ -24,47 +24,51 @@ namespace NHapi.Base
 {
     using System;
 
-    /// <summary> Represents a problem with the validity of a data type, such as an attempt 
-    /// to set the value of a primitive type to something invalid for that type. 
+    /// <summary>
+    /// Represents a problem with the validity of a data type, such as an attempt to set the value of
+    /// a primitive type to something invalid for that type.
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+
     [Serializable]
     public class DataTypeException : HL7Exception
     {
         #region Constructors and Destructors
 
-        /// <param name="message">
-        /// </param>
-        /// <param name="errorCondition">
-        /// </param>
-        /// <param name="cause">
-        /// </param>
+        /// <summary>   Initializes a new instance of the DataTypeException class. </summary>
+        ///
+        /// <param name="message">          . </param>
+        /// <param name="errorCondition">   . </param>
+        /// <param name="cause">            . </param>
+
         public DataTypeException(System.String message, int errorCondition, System.Exception cause)
             : base(message, errorCondition, cause)
         {
         }
 
-        /// <param name="message">
-        /// </param>
-        /// <param name="errorCondition">
-        /// </param>
+        /// <summary>   Initializes a new instance of the DataTypeException class. </summary>
+        ///
+        /// <param name="message">          . </param>
+        /// <param name="errorCondition">   . </param>
+
         public DataTypeException(System.String message, int errorCondition)
             : base(message, errorCondition)
         {
         }
 
-        /// <param name="message">
-        /// </param>
-        /// <param name="cause">
-        /// </param>
+        /// <summary>   Initializes a new instance of the DataTypeException class. </summary>
+        ///
+        /// <param name="message">  . </param>
+        /// <param name="cause">    . </param>
+
         public DataTypeException(System.String message, System.Exception cause)
             : base(message, cause)
         {
         }
 
-        /// <param name="message">
-        /// </param>
+        /// <summary>   Initializes a new instance of the DataTypeException class. </summary>
+        ///
+        /// <param name="message">  . </param>
+
         public DataTypeException(System.String message)
             : base(message)
         {

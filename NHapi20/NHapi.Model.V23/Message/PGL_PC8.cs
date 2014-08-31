@@ -9,36 +9,39 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V23.Message
 
 {
-///<summary>
-/// Represents a PGL_PC8 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a PGL_PC8 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message header segment) </li>
-///<li>1: PID (Patient Identification) </li>
-///<li>2: PGL_PC8_PATIENT_VISIT (a Group object) optional </li>
-///<li>3: PGL_PC8_GOAL (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message header segment) </li>
+/// <li>1: PID (Patient Identification) </li>
+/// <li>2: PGL_PC8_PATIENT_VISIT (a Group object) optional </li>
+/// <li>3: PGL_PC8_GOAL (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class PGL_PC8 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new PGL_PC8 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new PGL_PC8 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public PGL_PC8(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new PGL_PC8 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new PGL_PC8 Group with DefaultModelClassFactory. </summary>
 	public PGL_PC8() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for PGL_PC8.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for PGL_PC8.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -50,6 +53,13 @@ public class PGL_PC8 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -57,9 +67,11 @@ public class PGL_PC8 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -73,9 +85,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PID (Patient Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -89,9 +102,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PGL_PC8_PATIENT_VISIT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PGL_PC8_PATIENT_VISIT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient visit. </value>
+
 	public PGL_PC8_PATIENT_VISIT PATIENT_VISIT { 
 get{
 	   PGL_PC8_PATIENT_VISIT ret = null;
@@ -105,9 +119,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of PGL_PC8_GOAL (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of PGL_PC8_GOAL (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The goal. </returns>
+
 	public PGL_PC8_GOAL GetGOAL() {
 	   PGL_PC8_GOAL ret = null;
 	   try {
@@ -119,19 +138,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of PGL_PC8_GOAL
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of PGL_PC8_GOAL
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The goal. </returns>
+
 	public PGL_PC8_GOAL GetGOAL(int rep) { 
 	   return (PGL_PC8_GOAL)this.GetStructure("GOAL", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of PGL_PC8_GOAL 
-	 */ 
+    /// <summary>   Gets the goal repetitions used. </summary>
+    ///
+    /// <value> The goal repetitions used. </value>
+
 	public int GOALRepetitionsUsed { 
 get{
 	    int reps = -1; 

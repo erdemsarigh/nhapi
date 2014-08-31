@@ -6,9 +6,9 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V25.Datatype
 {
-
-///<summary>
-/// <p>The HL7 CSU (Channel Sensitivity) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 CSU (Channel Sensitivity) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>Channel Sensitivity (NM)</li>
 /// <li>Unit of Measure Identifier (ST)</li>
 /// <li>Unit of Measure Description (ST)</li>
@@ -17,22 +17,24 @@ namespace NHapi.Model.V25.Datatype
 /// <li>Alternate Unit of Measure Description (ST)</li>
 /// <li>Alternate Unit of Measure Coding System (ID)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class CSU : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a CSU.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a CSU. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public CSU(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a CSU.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a CSU. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public CSU(IMessage message, string description) : base(message, description){
 		data = new IType[7];
 		data[0] = new NM(message,"Channel Sensitivity");
@@ -44,9 +46,10 @@ public class CSU : AbstractType, IComposite{
 		data[6] = new ID(message, 396,"Alternate Unit of Measure Coding System");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -54,12 +57,15 @@ public class CSU : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -70,10 +76,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns Channel Sensitivity (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Channel Sensitivity (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The channel sensitivity. </value>
+
 	public NM ChannelSensitivity {
 get{
 	   NM ret = null;
@@ -87,10 +97,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Unit of Measure Identifier (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Unit of Measure Identifier (component #1).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the unit of measure. </value>
+
 	public ST UnitOfMeasureIdentifier {
 get{
 	   ST ret = null;
@@ -104,10 +118,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Unit of Measure Description (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Unit of Measure Description (component #2).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> Information describing the unit of measure. </value>
+
 	public ST UnitOfMeasureDescription {
 get{
 	   ST ret = null;
@@ -121,10 +139,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Unit of Measure Coding System (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Unit of Measure Coding System (component #3).  This is a convenience method that
+    /// saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The unit of measure coding system. </value>
+
 	public ID UnitOfMeasureCodingSystem {
 get{
 	   ID ret = null;
@@ -138,10 +160,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Alternate Unit of Measure Identifier (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Alternate Unit of Measure Identifier (component #4).  This is a convenience method
+    /// that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier of the alternate unit of measure. </value>
+
 	public ST AlternateUnitOfMeasureIdentifier {
 get{
 	   ST ret = null;
@@ -155,10 +181,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Alternate Unit of Measure Description (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Alternate Unit of Measure Description (component #5).  This is a convenience method
+    /// that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> Information describing the alternate unit of measure. </value>
+
 	public ST AlternateUnitOfMeasureDescription {
 get{
 	   ST ret = null;
@@ -172,10 +202,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns Alternate Unit of Measure Coding System (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns Alternate Unit of Measure Coding System (component #6).  This is a convenience method
+    /// that saves you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The alternate unit of measure coding system. </value>
+
 	public ID AlternateUnitOfMeasureCodingSystem {
 get{
 	   ID ret = null;

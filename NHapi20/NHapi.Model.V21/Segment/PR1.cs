@@ -7,36 +7,37 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 PR1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>PR1-1: SET ID - PROCEDURE (SI)</li>
-///<li>PR1-2: PROCEDURE CODING METHOD. (ID)</li>
-///<li>PR1-3: PROCEDURE CODE (ID)</li>
-///<li>PR1-4: PROCEDURE DESCRIPTION (ST)</li>
-///<li>PR1-5: PROCEDURE DATE/TIME (TS)</li>
-///<li>PR1-6: PROCEDURE TYPE (ID)</li>
-///<li>PR1-7: PROCEDURE MINUTES (NM)</li>
-///<li>PR1-8: ANESTHESIOLOGIST (CN)</li>
-///<li>PR1-9: ANESTHESIA CODE (ID)</li>
-///<li>PR1-10: ANESTHESIA MINUTES (NM)</li>
-///<li>PR1-11: SURGEON (CN)</li>
-///<li>PR1-12: RESIDENT CODE (CN)</li>
-///<li>PR1-13: CONSENT CODE (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PR1 message segment. This segment has the following fields:<ol>
+/// <li>PR1-1: SET ID - PROCEDURE (SI)</li>
+/// <li>PR1-2: PROCEDURE CODING METHOD. (ID)</li>
+/// <li>PR1-3: PROCEDURE CODE (ID)</li>
+/// <li>PR1-4: PROCEDURE DESCRIPTION (ST)</li>
+/// <li>PR1-5: PROCEDURE DATE/TIME (TS)</li>
+/// <li>PR1-6: PROCEDURE TYPE (ID)</li>
+/// <li>PR1-7: PROCEDURE MINUTES (NM)</li>
+/// <li>PR1-8: ANESTHESIOLOGIST (CN)</li>
+/// <li>PR1-9: ANESTHESIA CODE (ID)</li>
+/// <li>PR1-10: ANESTHESIA MINUTES (NM)</li>
+/// <li>PR1-11: SURGEON (CN)</li>
+/// <li>PR1-12: RESIDENT CODE (CN)</li>
+/// <li>PR1-13: CONSENT CODE (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PR1 : AbstractSegment  {
 
-  /**
-   * Creates a PR1 (PROCEDURES) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PR1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PR1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -58,11 +59,17 @@ public class PR1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns a single repetition of SET ID - PROCEDURE(PR1-1).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of SET ID - PROCEDURE(PR1-1). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The setidprocedure. </returns>
+
 	public SI GetSETIDPROCEDURE(int rep)
 	{
 			SI ret = null;
@@ -77,9 +84,12 @@ public class PR1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of SET ID - PROCEDURE (PR1-1).
-   ///</summary>
+  /// <summary> Returns all repetitions of SET ID - PROCEDURE (PR1-1). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of SI. </returns>
+
   public SI[] GetSETIDPROCEDURE() {
      SI[] ret = null;
     try {
@@ -98,9 +108,10 @@ public class PR1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of SET ID - PROCEDURE (PR1-1).
-   ///</summary>
+  /// <summary> Returns the total repetitions of SET ID - PROCEDURE (PR1-1). </summary>
+  ///
+  /// <value>   The setidprocedure repetitions used. </value>
+
   public int SETIDPROCEDURERepetitionsUsed
 {
 get{
@@ -116,9 +127,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns PROCEDURE CODING METHOD.(PR1-2).
-	///</summary>
+
+    /// <summary>   Returns PROCEDURE CODING METHOD.(PR1-2). </summary>
+    ///
+    /// <value> The procedurecodingmethod. </value>
+
 	public ID PROCEDURECODINGMETHOD
 	{
 		get{
@@ -139,9 +152,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns PROCEDURE CODE(PR1-3).
-	///</summary>
+    /// <summary>   Returns PROCEDURE CODE(PR1-3). </summary>
+    ///
+    /// <value> The procedurecode. </value>
+
 	public ID PROCEDURECODE
 	{
 		get{
@@ -162,9 +176,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns PROCEDURE DESCRIPTION(PR1-4).
-	///</summary>
+    /// <summary>   Returns PROCEDURE DESCRIPTION(PR1-4). </summary>
+    ///
+    /// <value> The proceduredescription. </value>
+
 	public ST PROCEDUREDESCRIPTION
 	{
 		get{
@@ -185,9 +200,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns PROCEDURE DATE/TIME(PR1-5).
-	///</summary>
+    /// <summary>   Returns PROCEDURE DATE/TIME(PR1-5). </summary>
+    ///
+    /// <value> The proceduredatetime. </value>
+
 	public TS PROCEDUREDATETIME
 	{
 		get{
@@ -208,9 +224,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns PROCEDURE TYPE(PR1-6).
-	///</summary>
+    /// <summary>   Returns PROCEDURE TYPE(PR1-6). </summary>
+    ///
+    /// <value> The proceduretype. </value>
+
 	public ID PROCEDURETYPE
 	{
 		get{
@@ -231,9 +248,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns PROCEDURE MINUTES(PR1-7).
-	///</summary>
+    /// <summary>   Returns PROCEDURE MINUTES(PR1-7). </summary>
+    ///
+    /// <value> The procedureminutes. </value>
+
 	public NM PROCEDUREMINUTES
 	{
 		get{
@@ -254,9 +272,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns ANESTHESIOLOGIST(PR1-8).
-	///</summary>
+    /// <summary>   Returns ANESTHESIOLOGIST(PR1-8). </summary>
+    ///
+    /// <value> The anesthesiologist. </value>
+
 	public CN ANESTHESIOLOGIST
 	{
 		get{
@@ -277,9 +296,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns ANESTHESIA CODE(PR1-9).
-	///</summary>
+    /// <summary>   Returns ANESTHESIA CODE(PR1-9). </summary>
+    ///
+    /// <value> The anesthesiacode. </value>
+
 	public ID ANESTHESIACODE
 	{
 		get{
@@ -300,9 +320,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns ANESTHESIA MINUTES(PR1-10).
-	///</summary>
+    /// <summary>   Returns ANESTHESIA MINUTES(PR1-10). </summary>
+    ///
+    /// <value> The anesthesiaminutes. </value>
+
 	public NM ANESTHESIAMINUTES
 	{
 		get{
@@ -323,9 +344,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns SURGEON(PR1-11).
-	///</summary>
+    /// <summary>   Returns SURGEON(PR1-11). </summary>
+    ///
+    /// <value> The surgeon. </value>
+
 	public CN SURGEON
 	{
 		get{
@@ -346,9 +368,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns RESIDENT CODE(PR1-12).
-	///</summary>
+    /// <summary>   Returns RESIDENT CODE(PR1-12). </summary>
+    ///
+    /// <value> The residentcode. </value>
+
 	public CN RESIDENTCODE
 	{
 		get{
@@ -369,9 +392,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns CONSENT CODE(PR1-13).
-	///</summary>
+    /// <summary>   Returns CONSENT CODE(PR1-13). </summary>
+    ///
+    /// <value> The consentcode. </value>
+
 	public ID CONSENTCODE
 	{
 		get{

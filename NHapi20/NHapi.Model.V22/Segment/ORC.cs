@@ -7,42 +7,43 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 ORC message segment. 
-/// This segment has the following fields:<ol>
-///<li>ORC-1: Order Control (ID)</li>
-///<li>ORC-2: Placer Order Number (CM_PLACER)</li>
-///<li>ORC-3: Filler Order Number (CM_FILLER)</li>
-///<li>ORC-4: Placer Group Number (CM_GROUP_ID)</li>
-///<li>ORC-5: Order Status (ID)</li>
-///<li>ORC-6: Response Flag (ID)</li>
-///<li>ORC-7: Quantity / timing (TQ)</li>
-///<li>ORC-8: Parent (CM_EIP)</li>
-///<li>ORC-9: Date / time of transaction (TS)</li>
-///<li>ORC-10: Entered By (CN_PERSON)</li>
-///<li>ORC-11: Verified By (CN_PERSON)</li>
-///<li>ORC-12: Ordering Provider (CN_PERSON)</li>
-///<li>ORC-13: Enterer's Location (CM_PARENT_RESULT)</li>
-///<li>ORC-14: Call Back Phone Number (TN)</li>
-///<li>ORC-15: Order effective date / time (TS)</li>
-///<li>ORC-16: Order Control Code Reason (CE)</li>
-///<li>ORC-17: Entering Organization (CE)</li>
-///<li>ORC-18: Entering Device (CE)</li>
-///<li>ORC-19: Action by (CN_PERSON)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 ORC message segment. This segment has the following fields:<ol>
+/// <li>ORC-1: Order Control (ID)</li>
+/// <li>ORC-2: Placer Order Number (CM_PLACER)</li>
+/// <li>ORC-3: Filler Order Number (CM_FILLER)</li>
+/// <li>ORC-4: Placer Group Number (CM_GROUP_ID)</li>
+/// <li>ORC-5: Order Status (ID)</li>
+/// <li>ORC-6: Response Flag (ID)</li>
+/// <li>ORC-7: Quantity / timing (TQ)</li>
+/// <li>ORC-8: Parent (CM_EIP)</li>
+/// <li>ORC-9: Date / time of transaction (TS)</li>
+/// <li>ORC-10: Entered By (CN_PERSON)</li>
+/// <li>ORC-11: Verified By (CN_PERSON)</li>
+/// <li>ORC-12: Ordering Provider (CN_PERSON)</li>
+/// <li>ORC-13: Enterer's Location (CM_PARENT_RESULT)</li>
+/// <li>ORC-14: Call Back Phone Number (TN)</li>
+/// <li>ORC-15: Order effective date / time (TS)</li>
+/// <li>ORC-16: Order Control Code Reason (CE)</li>
+/// <li>ORC-17: Entering Organization (CE)</li>
+/// <li>ORC-18: Entering Device (CE)</li>
+/// <li>ORC-19: Action by (CN_PERSON)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class ORC : AbstractSegment  {
 
-  /**
-   * Creates a ORC (COMMOM ORDER) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the ORC class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORC(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -70,9 +71,10 @@ public class ORC : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Order Control(ORC-1).
-	///</summary>
+    /// <summary>   Returns Order Control(ORC-1). </summary>
+    ///
+    /// <value> The order control. </value>
+
 	public ID OrderControl
 	{
 		get{
@@ -93,9 +95,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Placer Order Number(ORC-2).
-	///</summary>
+    /// <summary>   Returns Placer Order Number(ORC-2). </summary>
+    ///
+    /// <value> The placer order number. </value>
+
 	public CM_PLACER PlacerOrderNumber
 	{
 		get{
@@ -116,9 +119,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Order Number(ORC-3).
-	///</summary>
+    /// <summary>   Returns Filler Order Number(ORC-3). </summary>
+    ///
+    /// <value> The filler order number. </value>
+
 	public CM_FILLER FillerOrderNumber
 	{
 		get{
@@ -139,9 +143,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Placer Group Number(ORC-4).
-	///</summary>
+    /// <summary>   Returns Placer Group Number(ORC-4). </summary>
+    ///
+    /// <value> The placer group number. </value>
+
 	public CM_GROUP_ID PlacerGroupNumber
 	{
 		get{
@@ -162,9 +167,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Order Status(ORC-5).
-	///</summary>
+    /// <summary>   Returns Order Status(ORC-5). </summary>
+    ///
+    /// <value> The order status. </value>
+
 	public ID OrderStatus
 	{
 		get{
@@ -185,9 +191,10 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Response Flag(ORC-6).
-	///</summary>
+    /// <summary>   Returns Response Flag(ORC-6). </summary>
+    ///
+    /// <value> The response flag. </value>
+
 	public ID ResponseFlag
 	{
 		get{
@@ -208,11 +215,17 @@ public class ORC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Quantity / timing(ORC-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Quantity / timing(ORC-7). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The quantity timing. </returns>
+
 	public TQ GetQuantityTiming(int rep)
 	{
 			TQ ret = null;
@@ -227,9 +240,12 @@ public class ORC : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Quantity / timing (ORC-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Quantity / timing (ORC-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tq. </returns>
+
   public TQ[] GetQuantityTiming() {
      TQ[] ret = null;
     try {
@@ -248,9 +264,10 @@ public class ORC : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Quantity / timing (ORC-7).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Quantity / timing (ORC-7). </summary>
+  ///
+  /// <value>   The quantity timing repetitions used. </value>
+
   public int QuantityTimingRepetitionsUsed
 {
 get{
@@ -266,9 +283,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Parent(ORC-8).
-	///</summary>
+
+    /// <summary>   Returns Parent(ORC-8). </summary>
+    ///
+    /// <value> The parent. </value>
+
 	public CM_EIP Parent
 	{
 		get{
@@ -289,9 +308,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Date / time of transaction(ORC-9).
-	///</summary>
+    /// <summary>   Returns Date / time of transaction(ORC-9). </summary>
+    ///
+    /// <value> The date time of transaction. </value>
+
 	public TS DateTimeOfTransaction
 	{
 		get{
@@ -312,9 +332,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Entered By(ORC-10).
-	///</summary>
+    /// <summary>   Returns Entered By(ORC-10). </summary>
+    ///
+    /// <value> Amount to entered by. </value>
+
 	public CN_PERSON EnteredBy
 	{
 		get{
@@ -335,9 +356,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Verified By(ORC-11).
-	///</summary>
+    /// <summary>   Returns Verified By(ORC-11). </summary>
+    ///
+    /// <value> Amount to verified by. </value>
+
 	public CN_PERSON VerifiedBy
 	{
 		get{
@@ -358,9 +380,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Ordering Provider(ORC-12).
-	///</summary>
+    /// <summary>   Returns Ordering Provider(ORC-12). </summary>
+    ///
+    /// <value> The ordering provider. </value>
+
 	public CN_PERSON OrderingProvider
 	{
 		get{
@@ -381,9 +404,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Enterer's Location(ORC-13).
-	///</summary>
+    /// <summary>   Returns Enterer's Location(ORC-13). </summary>
+    ///
+    /// <value> The enterer s location. </value>
+
 	public CM_PARENT_RESULT EntererSLocation
 	{
 		get{
@@ -404,11 +428,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Call Back Phone Number(ORC-14).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Call Back Phone Number(ORC-14). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The call back phone number. </returns>
+
 	public TN GetCallBackPhoneNumber(int rep)
 	{
 			TN ret = null;
@@ -423,9 +453,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Call Back Phone Number (ORC-14).
-   ///</summary>
+  /// <summary> Returns all repetitions of Call Back Phone Number (ORC-14). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tn. </returns>
+
   public TN[] GetCallBackPhoneNumber() {
      TN[] ret = null;
     try {
@@ -444,9 +477,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Call Back Phone Number (ORC-14).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Call Back Phone Number (ORC-14). </summary>
+  ///
+  /// <value>   The call back phone number repetitions used. </value>
+
   public int CallBackPhoneNumberRepetitionsUsed
 {
 get{
@@ -462,9 +496,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Order effective date / time(ORC-15).
-	///</summary>
+
+    /// <summary>   Returns Order effective date / time(ORC-15). </summary>
+    ///
+    /// <value> The order effective date time. </value>
+
 	public TS OrderEffectiveDateTime
 	{
 		get{
@@ -485,9 +521,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Order Control Code Reason(ORC-16).
-	///</summary>
+    /// <summary>   Returns Order Control Code Reason(ORC-16). </summary>
+    ///
+    /// <value> The order control code reason. </value>
+
 	public CE OrderControlCodeReason
 	{
 		get{
@@ -508,9 +545,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Entering Organization(ORC-17).
-	///</summary>
+    /// <summary>   Returns Entering Organization(ORC-17). </summary>
+    ///
+    /// <value> The entering organization. </value>
+
 	public CE EnteringOrganization
 	{
 		get{
@@ -531,9 +569,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Entering Device(ORC-18).
-	///</summary>
+    /// <summary>   Returns Entering Device(ORC-18). </summary>
+    ///
+    /// <value> The entering device. </value>
+
 	public CE EnteringDevice
 	{
 		get{
@@ -554,9 +593,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Action by(ORC-19).
-	///</summary>
+    /// <summary>   Returns Action by(ORC-19). </summary>
+    ///
+    /// <value> Amount to action by. </value>
+
 	public CN_PERSON ActionBy
 	{
 		get{

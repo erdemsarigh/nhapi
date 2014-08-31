@@ -30,15 +30,19 @@ namespace NHapi.Base.SourceGeneration
     using System;
     using System.IO;
 
-    /// <summary> <p>Manages automatic generation of HL7 API source code for all data types,
-    /// segments, groups, and message structures. </p>
+    /// <summary>
+    /// <p>Manages automatic generation of HL7 API source code for all data types, segments, groups,
+    /// and message structures. </p>
     /// <p>Note: should put a nice UI on this</p>
     /// </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+
     public class SourceGenerator : System.Object
     {
         #region Public Methods and Operators
+
+        /// <summary>   Main entry-point for this application. </summary>
+        ///
+        /// <param name="args"> Array of command-line argument strings. </param>
 
         [STAThread]
         public static void Main(System.String[] args)
@@ -51,25 +55,38 @@ namespace NHapi.Base.SourceGeneration
             makeAll(args[0], args[1]);
         }
 
-        /// <summary> Make a Java-ish accessor method name out of a field or component description
-        /// by removing non-letters and adding "get".  One complication is that some description
-        /// entries in the DB have their data types in brackets, and these should not be
-        /// part of the method name.  On the other hand, sometimes critical distinguishing
-        /// information is in brackets, so we can't omit everything in brackets.  The approach
-        /// taken here is to eliminate bracketed text if a it looks like a data type.
+        /// <summary>
+        /// Make a Java-ish accessor method name out of a field or component description by removing non-
+        /// letters and adding "get".  One complication is that some description entries in the DB have
+        /// their data types in brackets, and these should not be part of the method name.  On the other
+        /// hand, sometimes critical distinguishing information is in brackets, so we can't omit
+        /// everything in brackets.  The approach taken here is to eliminate bracketed text if a it looks
+        /// like a data type.
         /// </summary>
+        ///
+        /// <param name="fieldDesc">    Information describing the field. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String MakeAccessorName(System.String fieldDesc)
         {
             return MakeName(fieldDesc);
         }
 
-        /// <summary> Make a C#-ish accessor method name out of a field or component description
-        /// by removing non-letters and adding "get".  One complication is that some description
-        /// entries in the DB have their data types in brackets, and these should not be
-        /// part of the method name.  On the other hand, sometimes critical distinguishing
-        /// information is in brackets, so we can't omit everything in brackets.  The approach
-        /// taken here is to eliminate bracketed text if a it looks like a data type.
+        /// <summary>
+        /// Make a C#-ish accessor method name out of a field or component description by removing non-
+        /// letters and adding "get".  One complication is that some description entries in the DB have
+        /// their data types in brackets, and these should not be part of the method name.  On the other
+        /// hand, sometimes critical distinguishing information is in brackets, so we can't omit
+        /// everything in brackets.  The approach taken here is to eliminate bracketed text if a it looks
+        /// like a data type.
         /// </summary>
+        ///
+        /// <param name="fieldDesc">    Information describing the field. </param>
+        /// <param name="repitions">    The repitions. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         public static System.String MakeAccessorName(System.String fieldDesc, int repitions)
         {
             string name = MakeName(fieldDesc);
@@ -81,10 +98,21 @@ namespace NHapi.Base.SourceGeneration
             return name;
         }
 
+        /// <summary>   Makes event mapping. </summary>
+        ///
+        /// <param name="baseDirectory">    the directory where source should be written. </param>
+        /// <param name="version">          The version. </param>
+
         public static void MakeEventMapping(System.String baseDirectory, System.String version)
         {
             EventMappingGenerator.makeAll(baseDirectory, version);
         }
+
+        /// <summary>   Makes a name. </summary>
+        ///
+        /// <param name="fieldDesc">    Information describing the field. </param>
+        ///
+        /// <returns>   A string. </returns>
 
         public static string MakeName(string fieldDesc)
         {
@@ -167,22 +195,34 @@ namespace NHapi.Base.SourceGeneration
             return aName.ToString();
         }
 
+        /// <summary>   Makes property name. </summary>
+        ///
+        /// <param name="fieldDesc">    Information describing the field. </param>
+        ///
+        /// <returns>   A string. </returns>
+
         public static string MakePropertyName(string fieldDesc)
         {
             string name = MakeName(fieldDesc);
             return name;
         }
 
-        /// <summary> <p>Returns either the given data type name or an alternate data type that Composites
-        /// and Segments should use in place of the given Type.  </p>
+        /// <summary>
+        /// <p>Returns either the given data type name or an alternate data type that Composites and
+        /// Segments should use in place of the given Type.  </p>
         /// <p>As currently implemented, substitutions
-        /// may be desired if there is a validating subclass of the given Type.
-        /// By convention such classes would be named ValidX (where X is the Type name).  This
-        /// method checks the classpath for classes of this name in the datatype package and
-        /// returns this name if one is found.</p>
+        /// may be desired if there is a validating subclass of the given Type. By convention such
+        /// classes would be named ValidX (where X is the Type name).  This method checks the classpath
+        /// for classes of this name in the datatype package and returns this name if one is found.</p>
         /// <p>Also converts "varies" to Varies which is an implementation of Type that contains
         /// a Type that can be set at run-time.</p>
         /// </summary>
+        ///
+        /// <param name="dataTypeName"> Name of the data type. </param>
+        /// <param name="version">      The version. </param>
+        ///
+        /// <returns>   The alternate type. </returns>
+
         public static System.String getAlternateType(System.String dataTypeName, System.String version)
         {
             System.String ret = dataTypeName;
@@ -206,9 +246,11 @@ namespace NHapi.Base.SourceGeneration
             return ret;
         }
 
-        /// <summary> Generates source code for all data types, segments, groups, and messages.</summary>
-        /// <param name="baseDirectory">the directory where source should be written
-        /// </param>
+        /// <summary>   Generates source code for all data types, segments, groups, and messages. </summary>
+        ///
+        /// <param name="baseDirectory">    the directory where source should be written. </param>
+        /// <param name="version">          The version. </param>
+
         public static void makeAll(System.String baseDirectory, System.String version)
         {
             try
@@ -224,7 +266,12 @@ namespace NHapi.Base.SourceGeneration
             }
         }
 
-        /// <summary> Creates the given directory if it does not exist.</summary>
+        /// <summary>   Creates the given directory if it does not exist. </summary>
+        ///
+        /// <param name="directory">    Pathname of the directory. </param>
+        ///
+        /// <returns>   A FileInfo. </returns>
+
         public static FileInfo makeDirectory(System.String directory)
         {
             SupportClass.Tokenizer tok = new SupportClass.Tokenizer(directory, "\\/", false);
@@ -239,7 +286,12 @@ namespace NHapi.Base.SourceGeneration
 
         #region Methods
 
-        /// <summary>Capitalizes first character of the given text. </summary>
+        /// <summary>   Capitalizes first character of the given text. </summary>
+        ///
+        /// <param name="text"> The text. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         private static System.String capitalize(System.String text)
         {
             System.Text.StringBuilder cap = new System.Text.StringBuilder();
@@ -251,14 +303,20 @@ namespace NHapi.Base.SourceGeneration
             return cap.ToString();
         }
 
-        /// <summary> Bracketed text in a field description should be included in the accessor 
-        /// name unless it corresponds to a data type name. Given the text that appears in 
-        /// brackets in a field description, this method returns an empty string if it 
-        /// corresponds to a data type name, or returns original text if not.  It isn't 
-        /// convenient to actually check (e.g. with DataTypeGenerator) whether the given 
-        /// text actually corresponds to a data type name, so we are going to conclude that 
-        /// it is a data type if and only if it is all caps and has 2 or 3 characters.  
+        /// <summary>
+        /// Bracketed text in a field description should be included in the accessor name unless it
+        /// corresponds to a data type name. Given the text that appears in brackets in a field
+        /// description, this method returns an empty string if it corresponds to a data type name, or
+        /// returns original text if not.  It isn't convenient to actually check (e.g. with
+        /// DataTypeGenerator) whether the given text actually corresponds to a data type name, so we are
+        /// going to conclude that it is a data type if and only if it is all caps and has 2 or 3
+        /// characters.  
         /// </summary>
+        ///
+        /// <param name="text"> The text. </param>
+        ///
+        /// <returns>   A System.String. </returns>
+
         private static System.String filterBracketedText(System.String text)
         {
             System.String filtered = "";

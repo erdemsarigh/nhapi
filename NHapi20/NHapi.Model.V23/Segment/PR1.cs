@@ -7,38 +7,39 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 PR1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>PR1-1: Set ID - Procedure (SI)</li>
-///<li>PR1-2: Procedure Coding Method (IS)</li>
-///<li>PR1-3: Procedure Code (CE)</li>
-///<li>PR1-4: Procedure Description (ST)</li>
-///<li>PR1-5: Procedure Date/Time (TS)</li>
-///<li>PR1-6: Procedure Type (ID)</li>
-///<li>PR1-7: Procedure Minutes (NM)</li>
-///<li>PR1-8: Anesthesiologist (XCN)</li>
-///<li>PR1-9: Anesthesia Code (IS)</li>
-///<li>PR1-10: Anesthesia Minutes (NM)</li>
-///<li>PR1-11: Surgeon (XCN)</li>
-///<li>PR1-12: Procedure Practitioner (XCN)</li>
-///<li>PR1-13: Consent Code (CE)</li>
-///<li>PR1-14: Procedure Priority (NM)</li>
-///<li>PR1-15: Associated Diagnosis Code (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 PR1 message segment. This segment has the following fields:<ol>
+/// <li>PR1-1: Set ID - Procedure (SI)</li>
+/// <li>PR1-2: Procedure Coding Method (IS)</li>
+/// <li>PR1-3: Procedure Code (CE)</li>
+/// <li>PR1-4: Procedure Description (ST)</li>
+/// <li>PR1-5: Procedure Date/Time (TS)</li>
+/// <li>PR1-6: Procedure Type (ID)</li>
+/// <li>PR1-7: Procedure Minutes (NM)</li>
+/// <li>PR1-8: Anesthesiologist (XCN)</li>
+/// <li>PR1-9: Anesthesia Code (IS)</li>
+/// <li>PR1-10: Anesthesia Minutes (NM)</li>
+/// <li>PR1-11: Surgeon (XCN)</li>
+/// <li>PR1-12: Procedure Practitioner (XCN)</li>
+/// <li>PR1-13: Consent Code (CE)</li>
+/// <li>PR1-14: Procedure Priority (NM)</li>
+/// <li>PR1-15: Associated Diagnosis Code (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class PR1 : AbstractSegment  {
 
-  /**
-   * Creates a PR1 (Procedures) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the PR1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public PR1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -62,9 +63,10 @@ public class PR1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - Procedure(PR1-1).
-	///</summary>
+    /// <summary>   Returns Set ID - Procedure(PR1-1). </summary>
+    ///
+    /// <value> The set identifier procedure. </value>
+
 	public SI SetIDProcedure
 	{
 		get{
@@ -85,9 +87,10 @@ public class PR1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Procedure Coding Method(PR1-2).
-	///</summary>
+    /// <summary>   Returns Procedure Coding Method(PR1-2). </summary>
+    ///
+    /// <value> The procedure coding method. </value>
+
 	public IS ProcedureCodingMethod
 	{
 		get{
@@ -108,9 +111,10 @@ public class PR1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Procedure Code(PR1-3).
-	///</summary>
+    /// <summary>   Returns Procedure Code(PR1-3). </summary>
+    ///
+    /// <value> The procedure code. </value>
+
 	public CE ProcedureCode
 	{
 		get{
@@ -131,9 +135,10 @@ public class PR1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Procedure Description(PR1-4).
-	///</summary>
+    /// <summary>   Returns Procedure Description(PR1-4). </summary>
+    ///
+    /// <value> Information describing the procedure. </value>
+
 	public ST ProcedureDescription
 	{
 		get{
@@ -154,9 +159,10 @@ public class PR1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Procedure Date/Time(PR1-5).
-	///</summary>
+    /// <summary>   Returns Procedure Date/Time(PR1-5). </summary>
+    ///
+    /// <value> The procedure date time. </value>
+
 	public TS ProcedureDateTime
 	{
 		get{
@@ -177,9 +183,10 @@ public class PR1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Procedure Type(PR1-6).
-	///</summary>
+    /// <summary>   Returns Procedure Type(PR1-6). </summary>
+    ///
+    /// <value> The type of the procedure. </value>
+
 	public ID ProcedureType
 	{
 		get{
@@ -200,9 +207,10 @@ public class PR1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Procedure Minutes(PR1-7).
-	///</summary>
+    /// <summary>   Returns Procedure Minutes(PR1-7). </summary>
+    ///
+    /// <value> The procedure minutes. </value>
+
 	public NM ProcedureMinutes
 	{
 		get{
@@ -223,11 +231,17 @@ public class PR1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Anesthesiologist(PR1-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Anesthesiologist(PR1-8). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The anesthesiologist. </returns>
+
 	public XCN GetAnesthesiologist(int rep)
 	{
 			XCN ret = null;
@@ -242,9 +256,12 @@ public class PR1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Anesthesiologist (PR1-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of Anesthesiologist (PR1-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetAnesthesiologist() {
      XCN[] ret = null;
     try {
@@ -263,9 +280,10 @@ public class PR1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Anesthesiologist (PR1-8).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Anesthesiologist (PR1-8). </summary>
+  ///
+  /// <value>   The anesthesiologist repetitions used. </value>
+
   public int AnesthesiologistRepetitionsUsed
 {
 get{
@@ -281,9 +299,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Anesthesia Code(PR1-9).
-	///</summary>
+
+    /// <summary>   Returns Anesthesia Code(PR1-9). </summary>
+    ///
+    /// <value> The anesthesia code. </value>
+
 	public IS AnesthesiaCode
 	{
 		get{
@@ -304,9 +324,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Anesthesia Minutes(PR1-10).
-	///</summary>
+    /// <summary>   Returns Anesthesia Minutes(PR1-10). </summary>
+    ///
+    /// <value> The anesthesia minutes. </value>
+
 	public NM AnesthesiaMinutes
 	{
 		get{
@@ -327,11 +348,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Surgeon(PR1-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Surgeon(PR1-11). throws HL7Exception if the repetition number
+    /// is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The surgeon. </returns>
+
 	public XCN GetSurgeon(int rep)
 	{
 			XCN ret = null;
@@ -346,9 +373,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Surgeon (PR1-11).
-   ///</summary>
+  /// <summary> Returns all repetitions of Surgeon (PR1-11). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetSurgeon() {
      XCN[] ret = null;
     try {
@@ -367,9 +397,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Surgeon (PR1-11).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Surgeon (PR1-11). </summary>
+  ///
+  /// <value>   The surgeon repetitions used. </value>
+
   public int SurgeonRepetitionsUsed
 {
 get{
@@ -385,11 +416,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Procedure Practitioner(PR1-12).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Procedure Practitioner(PR1-12). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The procedure practitioner. </returns>
+
 	public XCN GetProcedurePractitioner(int rep)
 	{
 			XCN ret = null;
@@ -404,9 +442,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Procedure Practitioner (PR1-12).
-   ///</summary>
+  /// <summary> Returns all repetitions of Procedure Practitioner (PR1-12). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xcn. </returns>
+
   public XCN[] GetProcedurePractitioner() {
      XCN[] ret = null;
     try {
@@ -425,9 +466,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Procedure Practitioner (PR1-12).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Procedure Practitioner (PR1-12). </summary>
+  ///
+  /// <value>   The procedure practitioner repetitions used. </value>
+
   public int ProcedurePractitionerRepetitionsUsed
 {
 get{
@@ -443,9 +485,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Consent Code(PR1-13).
-	///</summary>
+
+    /// <summary>   Returns Consent Code(PR1-13). </summary>
+    ///
+    /// <value> The consent code. </value>
+
 	public CE ConsentCode
 	{
 		get{
@@ -466,9 +510,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Procedure Priority(PR1-14).
-	///</summary>
+    /// <summary>   Returns Procedure Priority(PR1-14). </summary>
+    ///
+    /// <value> The procedure priority. </value>
+
 	public NM ProcedurePriority
 	{
 		get{
@@ -489,9 +534,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Associated Diagnosis Code(PR1-15).
-	///</summary>
+    /// <summary>   Returns Associated Diagnosis Code(PR1-15). </summary>
+    ///
+    /// <value> The associated diagnosis code. </value>
+
 	public CE AssociatedDiagnosisCode
 	{
 		get{

@@ -3,43 +3,47 @@ namespace NHapi.Base.Util
     using NHapi.Base.Log;
     using NHapi.Base.Model;
 
-    /// <summary> Iterates over all defined nodes (ie segments, groups) in a message, 
-    /// regardless of whether they have been instantiated previously.  This is a 
-    /// tricky process, because the number of nodes is infinite, due to infinitely 
-    /// repeating segments and groups.  See <code>next()</code> for details on 
-    /// how this is handled. 
+    /// <summary>
+    /// Iterates over all defined nodes (ie segments, groups) in a message, regardless of whether
+    /// they have been instantiated previously.  This is a tricky process, because the number of
+    /// nodes is infinite, due to infinitely repeating segments and groups.  See <code>next()</code>
+    /// for details on how this is handled.
     /// 
-    /// This implementation assumes that the first segment in each group is present (as per
-    /// HL7 rules).  Specifically, when looking for a segment location, an empty group that has 
-    /// a spot for the segment will be overlooked if there is anything else before that spot. 
-    /// This may result in surprising (but sensible) behaviour if a message is missing the 
-    /// first segment in a group. 
-    /// 
+    /// This implementation assumes that the first segment in each group is present (as per HL7
+    /// rules).  Specifically, when looking for a segment location, an empty group that has a spot
+    /// for the segment will be overlooked if there is anything else before that spot. This may
+    /// result in surprising (but sensible) behaviour if a message is missing the first segment in a
+    /// group.
     /// </summary>
-    /// <author>  Bryan Tripp
-    /// </author>
+
     public class MessageIterator : System.Collections.IEnumerator
     {
         #region Static Fields
 
+        /// <summary>   The log. </summary>
         private static readonly IHapiLog log;
 
         #endregion
 
         #region Fields
 
+        /// <summary>   The current structure. </summary>
         private IStructure currentStructure;
 
+        /// <summary>   The direction. </summary>
         private System.String direction;
 
+        /// <summary>   true to handle unexpected segments. </summary>
         private bool handleUnexpectedSegments;
 
+        /// <summary>   The next renamed field. </summary>
         private Position next_Renamed_Field;
 
         #endregion
 
         #region Constructors and Destructors
 
+        /// <summary>   Initializes static members of the MessageIterator class. </summary>
         static MessageIterator()
         {
             log = HapiLogFactory.GetHapiLog(typeof(MessageIterator));
@@ -54,7 +58,12 @@ namespace NHapi.Base.Util
         public static final String UP_TO_FIRST_REQUIRED;
         */
 
-        /// <summary>Creates a new instance of MessageIterator </summary>
+        /// <summary>   Creates a new instance of MessageIterator. </summary>
+        ///
+        /// <param name="start">                    The start. </param>
+        /// <param name="direction">                The direction. </param>
+        /// <param name="handleUnexpectedSegments"> true to handle unexpected segments. </param>
+
         public MessageIterator(IStructure start, System.String direction, bool handleUnexpectedSegments)
         {
             this.currentStructure = start;
@@ -66,29 +75,32 @@ namespace NHapi.Base.Util
 
         #region Public Properties
 
-        /// <summary> <p>Returns the next node in the message.  Sometimes the next node is 
-        /// ambiguous.  For example at the end of a repeating group, the next node 
-        /// may be the first segment in the next repetition of the group, or the 
-        /// next sibling, or an undeclared segment locally added to the group's end.  
+        /// <summary>
+        /// <p>Returns the next node in the message.  Sometimes the next node is ambiguous.  For example
+        /// at the end of a repeating group, the next node may be the first segment in the next
+        /// repetition of the group, or the next sibling, or an undeclared segment locally added to the
+        /// group's end.  
         /// Cases like this are disambiguated using getDirection(), which returns  
         /// the name of the structure that we are "iterating towards".  
-        /// Usually we are "iterating towards" a segment of a certain name because we 
-        /// have a segment string that we would like to parse into that node. 
-        /// Here are the rules: </p>
+        /// Usually we are "iterating towards" a segment of a certain name because we have a segment
+        /// string that we would like to parse into that node. Here are the rules: </p>
         /// <ol><li>If at a group, next means first child.</li>
         /// <li>If at a non-repeating segment, next means next "position"</li>
-        /// <li>If at a repeating segment: if segment name matches 
+        /// <li>If at a repeating segment: if segment name matches
         /// direction then next means next rep, otherwise next means next "position".</li>
-        /// <li>If at a segment within a group (not at the end of the group), next "position" 
+        /// <li>If at a segment within a group (not at the end of the group), next "position"
         /// means next sibling</li>
-        /// <li>If at the end of a group: If name of group or any of its "first 
-        /// decendents" matches direction, then next position means next rep of group.  Otherwise 
-        /// if direction matches name of next sibling of the group, or any of its first 
-        /// descendents, next position means next sibling of the group.  Otherwise, next means a 
-        /// new segment added to the group (with a name that matches "direction").  </li>
-        /// <li>"First descendents" means first child, or first child of the first child, 
+        /// <li>If at the end of a group: If name of group or any of its "first
+        /// decendents" matches direction, then next position means next rep of group.  Otherwise if
+        /// direction matches name of next sibling of the group, or any of its first descendents, next
+        /// position means next sibling of the group.  Otherwise, next means a new segment added to the
+        /// group (with a name that matches "direction").  </li>
+        /// <li>"First descendents" means first child, or first child of the first child,
         /// or first child of the first child of the first child, etc. </li> </ol>
         /// </summary>
+        ///
+        /// <value> The current. </value>
+
         public virtual System.Object Current
         {
             get
@@ -113,9 +125,10 @@ namespace NHapi.Base.Util
             }
         }
 
-        /// <summary>
-        /// The direction
-        /// </summary>
+        /// <summary>   The direction. </summary>
+        ///
+        /// <value> The direction. </value>
+
         public virtual System.String Direction
         {
             get
@@ -161,23 +174,25 @@ namespace NHapi.Base.Util
 
         #region Public Methods and Operators
 
-        /// <summary> Determines whether the given structure matches the given name, or contains 
-        /// a child that does.  
+        /// <summary>
+        /// Determines whether the given structure matches the given name, or contains a child that does.
         /// </summary>
-        /// <param name="s">the structure to check 
-        /// </param>
-        /// <param name="name">the name to look for 
-        /// </param>
-        /// <param name="firstDescendentsOnly">only checks first descendents (i.e. first 
-        /// child, first child of first child, etc.)  In theory the first child 
-        /// of a group should always be present, and we don't use this method with 
-        /// subsequent children because finding the next position within a group is 
-        /// straightforward.  
-        /// </param>
-        /// <param name="upToFirstRequired">only checks first descendents and of their siblings 
-        /// up to the first required one.  This may be needed because in practice 
-        /// some first children of groups are not required.  
-        /// </param>
+        ///
+        /// <exception cref="ApplicationException"> Thrown when an Application error condition occurs. </exception>
+        ///
+        /// <param name="s">                    the structure to check. </param>
+        /// <param name="name">                 the name to look for. </param>
+        /// <param name="firstDescendentsOnly"> only checks first descendents (i.e. first child, first
+        ///                                     child of first child, etc.)  In theory the first child of
+        ///                                     a group should always be present, and we don't use this
+        ///                                     method with subsequent children because finding the next
+        ///                                     position within a group is straightforward.  </param>
+        /// <param name="upToFirstRequired">    only checks first descendents and of their siblings up to
+        ///                                     the first required one.  This may be needed because in
+        ///                                     practice some first children of groups are not required.  </param>
+        ///
+        /// <returns>   true if the object is in this collection, false if not. </returns>
+
         public static bool contains(IStructure s, System.String name, bool firstDescendentsOnly, bool upToFirstRequired)
         {
             bool contains = false;
@@ -219,9 +234,18 @@ namespace NHapi.Base.Util
             return contains;
         }
 
-        /// <summary> Returns the index of the given structure as a child of the 
-        /// given parent.  Returns null if the child isn't found. 
+        /// <summary>
+        /// Returns the index of the given structure as a child of the given parent.  Returns null if the
+        /// child isn't found.
         /// </summary>
+        ///
+        /// <exception cref="ApplicationException"> Thrown when an Application error condition occurs. </exception>
+        ///
+        /// <param name="parent">   The parent. </param>
+        /// <param name="child">    The child. </param>
+        ///
+        /// <returns>   The index. </returns>
+
         public static Index getIndex(IGroup parent, IStructure child)
         {
             Index index = null;
@@ -253,31 +277,39 @@ namespace NHapi.Base.Util
             return index;
         }
 
-        /// <summary> Tests whether the name of the given Index matches 
-        /// the name of the last child of the given group. 
+        /// <summary>
+        /// Tests whether the name of the given Index matches the name of the last child of the given
+        /// group.
         /// </summary>
+        ///
+        /// <param name="p">    The Position to process. </param>
+        ///
+        /// <returns>   true if last, false if not. </returns>
+
         public static bool isLast(Position p)
         {
             System.String[] names = p.parent.Names;
             return names[names.Length - 1].Equals(p.index.name);
         }
 
-        /// <summary> A match exists for the given name somewhere after the given position (in the 
-        /// normal serialization order).  
+        /// <summary>
+        /// A match exists for the given name somewhere after the given position (in the normal
+        /// serialization order).  
         /// </summary>
-        /// <param name="pos">the message position after which to look (note that this specifies 
-        /// the message instance)
-        /// </param>
-        /// <param name="name">the name of the structure to look for
-        /// </param>
-        /// <param name="firstDescendentsOnly">only searches the first children of a group 
-        /// </param>
-        /// <param name="upToFirstRequired">only searches the children of a group up to the first 
-        /// required child (normally the first one).  This is used when we are parsing 
-        /// a message in order and looking for a place to parse a particular segment -- 
-        /// if the message is correct then it can't go after a required position of a 
-        /// different name. 
-        /// </param>
+        ///
+        /// <param name="pos">                  the message position after which to look (note that this
+        ///                                     specifies the message instance) </param>
+        /// <param name="name">                 the name of the structure to look for. </param>
+        /// <param name="firstDescendentsOnly"> only searches the first children of a group. </param>
+        /// <param name="upToFirstRequired">    only searches the children of a group up to the first
+        ///                                     required child (normally the first one).  This is used
+        ///                                     when we are parsing a message in order and looking for a
+        ///                                     place to parse a particular segment -- if the message is
+        ///                                     correct then it can't go after a required position of a
+        ///                                     different name. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         public static bool matchExistsAfterPosition(
             Position pos,
             System.String name,
@@ -330,7 +362,12 @@ namespace NHapi.Base.Util
             return matchExists;
         }
 
-        /// <summary> Returns true if another object exists in the iteration sequence.  </summary>
+        /// <summary>   Returns true if another object exists in the iteration sequence. </summary>
+        ///
+        /// <exception cref="ApplicationException"> Thrown when an Application error condition occurs. </exception>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         public virtual bool MoveNext()
         {
             bool has = true;
@@ -368,14 +405,16 @@ namespace NHapi.Base.Util
             return has;
         }
 
-        /// <summary>
-        /// Reset the iterator
-        /// </summary>
+        /// <summary>   Reset the iterator. </summary>
         public virtual void Reset()
         {
         }
 
-        /// <summary>Not supported </summary>
+        /// <summary>   Not supported. </summary>
+        ///
+        /// <exception cref="NotSupportedException">    Thrown when the requested operation is not
+        ///                                             supported. </exception>
+
         public virtual void remove()
         {
             throw new System.NotSupportedException("Can't remove a node from a message");
@@ -385,22 +424,54 @@ namespace NHapi.Base.Util
 
         #region Methods
 
+        /// <summary>   Clears the next. </summary>
         private void clearNext()
         {
             this.next_Renamed_Field = null;
         }
 
-        /// <summary> Sets next to the first child of the given group (iteration 
-        /// always proceeds from group to first child). 
+        /// <summary>
+        /// Sets next to the first child of the given group (iteration always proceeds from group to
+        /// first child).
         /// </summary>
+        ///
+        /// <param name="current">  <p>Returns the next node in the message.  Sometimes the next node is
+        ///                         ambiguous.  For example at the end of a repeating group, the next
+        ///                         node may be the first segment in the next repetition of the group, or
+        ///                         the next sibling, or an undeclared segment locally added to the
+        ///                         group's end.  
+        ///                         Cases like this are disambiguated using getDirection(), which returns
+        ///                         
+        ///                         the name of the structure that we are "iterating towards".  
+        ///                         Usually we are "iterating towards" a segment of a certain name
+        ///                         because we have a segment string that we would like to parse into
+        ///                         that node. Here are the rules:</p><ol><li>If at a group, next means
+        ///                         first child.</li><li>If at a non-repeating segment, next means next
+        ///                         "position"</li><li>If at a repeating segment: if segment name matches
+        ///                         direction then next means next rep, otherwise next means next
+        ///                         "position".</li><li>If at a segment within a group (not at the end of
+        ///                         the group), next "position" means next sibling</li><li>If at the end
+        ///                         of a group: If name of group or any of its "first decendents" matches
+        ///                         direction, then next position means next rep of group.  Otherwise if
+        ///                         direction matches name of next sibling of the group, or any of its
+        ///                         first descendents, next position means next sibling of the group.
+        ///                         Otherwise, next means a new segment added to the group (with a name
+        ///                         that matches "direction").</li><li>"First descendents" means first
+        ///                         child, or first child of the first child, or first child of the first
+        ///                         child of the first child, etc.</li></ol> </param>
+
         private void groupNext(IGroup current)
         {
             this.next_Renamed_Field = new Position(current, current.Names[0], 0);
         }
 
-        /// <summary> Sets the next position to a new segment of the given name, within the 
-        /// given group. 
+        /// <summary>
+        /// Sets the next position to a new segment of the given name, within the given group.
         /// </summary>
+        ///
+        /// <param name="parent">   The parent. </param>
+        /// <param name="name">     the name to look for. </param>
+
         private void newSegment(IGroup parent, System.String name)
         {
             log.Info("MessageIterator creating new segment: " + name);
@@ -408,7 +479,16 @@ namespace NHapi.Base.Util
             this.next_Renamed_Field = new Position(parent, parent.Names[parent.Names.Length - 1], 0);
         }
 
-        /// <summary>Navigates from end of group </summary>
+        /// <summary>   Navigates from end of group. </summary>
+        ///
+        /// <exception cref="ApplicationException"> Thrown when an Application error condition occurs. </exception>
+        ///
+        /// <param name="currPos">                  The curr position. </param>
+        /// <param name="direction">                The direction. </param>
+        /// <param name="makeNewSegmentIfNeeded">   true if make new segment if needed. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         private bool nextFromGroupEnd(Position currPos, System.String direction, bool makeNewSegmentIfNeeded)
         {
             //assert isLast(currPos);
@@ -452,10 +532,17 @@ namespace NHapi.Base.Util
             return nextExists;
         }
 
-        /// <summary> Sets this.next to the next position in the message (from the given position), 
-        /// which could be the next sibling, a new segment, or the next rep 
-        /// of the parent.  See next() for details. 
+        /// <summary>
+        /// Sets this.next to the next position in the message (from the given position), which could be
+        /// the next sibling, a new segment, or the next rep of the parent.  See next() for details.
         /// </summary>
+        ///
+        /// <param name="currPos">                  The curr position. </param>
+        /// <param name="direction">                The direction. </param>
+        /// <param name="makeNewSegmentIfNeeded">   true if make new segment if needed. </param>
+        ///
+        /// <returns>   true if it succeeds, false if it fails. </returns>
+
         private bool nextPosition(Position currPos, System.String direction, bool makeNewSegmentIfNeeded)
         {
             bool nextExists = true;
@@ -470,15 +557,43 @@ namespace NHapi.Base.Util
             return nextExists;
         }
 
-        /// <summary> Sets next to the next repetition of the current structure.  </summary>
+        /// <summary>   Sets next to the next repetition of the current structure. </summary>
+        ///
+        /// <param name="current">  <p>Returns the next node in the message.  Sometimes the next node is
+        ///                         ambiguous.  For example at the end of a repeating group, the next
+        ///                         node may be the first segment in the next repetition of the group, or
+        ///                         the next sibling, or an undeclared segment locally added to the
+        ///                         group's end.  
+        ///                         Cases like this are disambiguated using getDirection(), which returns
+        ///                         
+        ///                         the name of the structure that we are "iterating towards".  
+        ///                         Usually we are "iterating towards" a segment of a certain name
+        ///                         because we have a segment string that we would like to parse into
+        ///                         that node. Here are the rules:</p><ol><li>If at a group, next means
+        ///                         first child.</li><li>If at a non-repeating segment, next means next
+        ///                         "position"</li><li>If at a repeating segment: if segment name matches
+        ///                         direction then next means next rep, otherwise next means next
+        ///                         "position".</li><li>If at a segment within a group (not at the end of
+        ///                         the group), next "position" means next sibling</li><li>If at the end
+        ///                         of a group: If name of group or any of its "first decendents" matches
+        ///                         direction, then next position means next rep of group.  Otherwise if
+        ///                         direction matches name of next sibling of the group, or any of its
+        ///                         first descendents, next position means next sibling of the group.
+        ///                         Otherwise, next means a new segment added to the group (with a name
+        ///                         that matches "direction").</li><li>"First descendents" means first
+        ///                         child, or first child of the first child, or first child of the first
+        ///                         child of the first child, etc.</li></ol> </param>
+
         private void nextRep(Position current)
         {
             this.next_Renamed_Field = new Position(current.parent, current.index.name, current.index.rep + 1);
         }
 
-        /// <summary> Sets the next location to the next sibling of the given 
-        /// index.  
-        /// </summary>
+        /// <summary>   Sets the next location to the next sibling of the given index.   </summary>
+        ///
+        /// <param name="pos">  the message position after which to look (note that this specifies the
+        ///                     message instance) </param>
+
         private void nextSibling(Position pos)
         {
             System.String[] names = pos.parent.Names;
@@ -493,32 +608,29 @@ namespace NHapi.Base.Util
 
         #endregion
 
-        /// <summary> An index of a child structure within a group, consisting of the name and rep of 
-        /// of the child.
+        /// <summary>
+        /// An index of a child structure within a group, consisting of the name and rep of of the child.
         /// </summary>
+
         public class Index
         {
             #region Fields
 
-            /// <summary>
-            /// The name
-            /// </summary>
+            /// <summary>   The name. </summary>
             public System.String name;
 
-            /// <summary>
-            /// The repetition
-            /// </summary>
+            /// <summary>   The repetition. </summary>
             public int rep;
 
             #endregion
 
             #region Constructors and Destructors
 
-            /// <summary>
-            /// The index
-            /// </summary>
-            /// <param name="name">name</param>
-            /// <param name="rep">repetition</param>
+            /// <summary>   The index. </summary>
+            ///
+            /// <param name="name"> name. </param>
+            /// <param name="rep">  repetition. </param>
+
             public Index(System.String name, int rep)
             {
                 this.name = name;
@@ -529,11 +641,15 @@ namespace NHapi.Base.Util
 
             #region Public Methods and Operators
 
-            /// <summary>
-            /// Override equals
-            /// </summary>
-            /// <param name="o"></param>
-            /// <returns></returns>
+            /// <summary>   Override equals. </summary>
+            ///
+            /// <param name="o">    . </param>
+            ///
+            /// <returns>   true if the objects are considered equal, false if they are not. </returns>
+            ///
+            /// ### <param name="obj">  The <see cref="T:System.Object" /> to compare with the current
+            ///                         <see cref="T:System.Object" />. </param>
+
             public override bool Equals(System.Object o)
             {
                 bool equals = false;
@@ -548,19 +664,19 @@ namespace NHapi.Base.Util
                 return equals;
             }
 
-            /// <summary>
-            /// Override has code
-            /// </summary>
-            /// <returns></returns>
+            /// <summary>   Override has code. </summary>
+            ///
+            /// <returns>   A hash code for this object. </returns>
+
             public override int GetHashCode()
             {
                 return this.name.GetHashCode() + 700 * this.rep;
             }
 
-            /// <summary>
-            /// Override to string
-            /// </summary>
-            /// <returns></returns>
+            /// <summary>   Override to string. </summary>
+            ///
+            /// <returns>   A System.String that represents this object. </returns>
+
             public override System.String ToString()
             {
                 return this.name + ":" + this.rep;
@@ -569,42 +685,38 @@ namespace NHapi.Base.Util
             #endregion
         }
 
-        /// <summary> A structure position within a message. </summary>
+        /// <summary>   A structure position within a message. </summary>
         public class Position
         {
             #region Fields
 
-            /// <summary>
-            /// The index
-            /// </summary>
+            /// <summary>   The index. </summary>
             public Index index;
 
-            /// <summary>
-            /// The parent
-            /// </summary>
+            /// <summary>   The parent. </summary>
             public IGroup parent;
 
             #endregion
 
             #region Constructors and Destructors
 
-            /// <summary>
-            /// The position of the element
-            /// </summary>
-            /// <param name="parent">Parent</param>
-            /// <param name="name">Name</param>
-            /// <param name="rep">Repetition</param>
+            /// <summary>   The position of the element. </summary>
+            ///
+            /// <param name="parent">   Parent. </param>
+            /// <param name="name">     Name. </param>
+            /// <param name="rep">      Repetition. </param>
+
             public Position(IGroup parent, System.String name, int rep)
             {
                 this.parent = parent;
                 this.index = new Index(name, rep);
             }
 
-            /// <summary>
-            /// The position of the element
-            /// </summary>
-            /// <param name="parent">Parent</param>
-            /// <param name="i">index</param>
+            /// <summary>   The position of the element. </summary>
+            ///
+            /// <param name="parent">   Parent. </param>
+            /// <param name="i">        index. </param>
+
             public Position(IGroup parent, Index i)
             {
                 this.parent = parent;
@@ -615,11 +727,15 @@ namespace NHapi.Base.Util
 
             #region Public Methods and Operators
 
-            /// <summary>
-            /// Override equals operator
-            /// </summary>
-            /// <param name="o">Object o</param>
-            /// <returns>true if objects are equal</returns>
+            /// <summary>   Override equals operator. </summary>
+            ///
+            /// <param name="o">    Object o. </param>
+            ///
+            /// <returns>   true if objects are equal. </returns>
+            ///
+            /// ### <param name="obj">  The <see cref="T:System.Object" /> to compare with the current
+            ///                         <see cref="T:System.Object" />. </param>
+
             public override bool Equals(System.Object o)
             {
                 bool equals = false;
@@ -634,19 +750,19 @@ namespace NHapi.Base.Util
                 return equals;
             }
 
-            /// <summary>
-            /// Override hash code
-            /// </summary>
-            /// <returns></returns>
+            /// <summary>   Override hash code. </summary>
+            ///
+            /// <returns>   A hash code for this object. </returns>
+
             public override int GetHashCode()
             {
                 return this.parent.GetHashCode() + this.index.GetHashCode();
             }
 
-            /// <summary>
-            /// Override to string
-            /// </summary>
-            /// <returns></returns>
+            /// <summary>   Override to string. </summary>
+            ///
+            /// <returns>   A System.String that represents this object. </returns>
+
             public override System.String ToString()
             {
                 System.Text.StringBuilder ret = new System.Text.StringBuilder(this.parent.GetStructureName());

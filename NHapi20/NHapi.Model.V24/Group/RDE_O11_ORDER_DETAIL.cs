@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RDE_O11_ORDER_DETAIL Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: RXO (Pharmacy/Treatment Order) </li>
-///<li>1: NTE (Notes and Comments) optional repeating</li>
-///<li>2: RXR (Pharmacy/Treatment Route) repeating</li>
-///<li>3: RDE_O11_COMPONENT (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RDE_O11_ORDER_DETAIL Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: RXO (Pharmacy/Treatment Order) </li>
+/// <li>1: NTE (Notes and Comments) optional repeating</li>
+/// <li>2: RXR (Pharmacy/Treatment Route) repeating</li>
+/// <li>3: RDE_O11_COMPONENT (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RDE_O11_ORDER_DETAIL : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RDE_O11_ORDER_DETAIL Group.
-	///</summary>
+    /// <summary>   Creates a new RDE_O11_ORDER_DETAIL Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RDE_O11_ORDER_DETAIL(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(RXO), true, false);
@@ -36,9 +39,10 @@ public class RDE_O11_ORDER_DETAIL : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns RXO (Pharmacy/Treatment Order) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RXO (Pharmacy/Treatment Order) - creates it if necessary. </summary>
+    ///
+    /// <value> The rxo. </value>
+
 	public RXO RXO { 
 get{
 	   RXO ret = null;
@@ -52,9 +56,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and Comments) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -66,19 +75,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and Comments) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and Comments) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -93,9 +108,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of RXR (Pharmacy/Treatment Route) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RXR (Pharmacy/Treatment Route) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The rxr. </returns>
+
 	public RXR GetRXR() {
 	   RXR ret = null;
 	   try {
@@ -107,19 +127,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RXR
-	/// * (Pharmacy/Treatment Route) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RXR
+    ///  * (Pharmacy/Treatment Route) - creates it if necessary throws HL7Exception if the repetition
+    ///  requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The rxr. </returns>
+
 	public RXR GetRXR(int rep) { 
 	   return (RXR)this.GetStructure("RXR", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RXR 
-	 */ 
+    /// <summary>   Gets the rxr repetitions used. </summary>
+    ///
+    /// <value> The rxr repetitions used. </value>
+
 	public int RXRRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -134,9 +160,10 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns RDE_O11_COMPONENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RDE_O11_COMPONENT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The component. </value>
+
 	public RDE_O11_COMPONENT COMPONENT { 
 get{
 	   RDE_O11_COMPONENT ret = null;

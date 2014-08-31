@@ -7,28 +7,29 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 AFF message segment. 
-/// This segment has the following fields:<ol>
-///<li>AFF-1: Set ID - AFF (SI)</li>
-///<li>AFF-2: Professional Organization (XON)</li>
-///<li>AFF-3: Professional Organization Address (XAD)</li>
-///<li>AFF-4: Professional Organization Affiliation Date Range (DR)</li>
-///<li>AFF-5: Professional Affiliation Additional Information (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 AFF message segment. This segment has the following fields:<ol>
+/// <li>AFF-1: Set ID - AFF (SI)</li>
+/// <li>AFF-2: Professional Organization (XON)</li>
+/// <li>AFF-3: Professional Organization Address (XAD)</li>
+/// <li>AFF-4: Professional Organization Affiliation Date Range (DR)</li>
+/// <li>AFF-5: Professional Affiliation Additional Information (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class AFF : AbstractSegment  {
 
-  /**
-   * Creates a AFF (Professional Affiliation) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the AFF class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public AFF(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -42,9 +43,10 @@ public class AFF : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - AFF(AFF-1).
-	///</summary>
+    /// <summary>   Returns Set ID - AFF(AFF-1). </summary>
+    ///
+    /// <value> The set idaff. </value>
+
 	public SI SetIDAFF
 	{
 		get{
@@ -65,9 +67,10 @@ public class AFF : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Professional Organization(AFF-2).
-	///</summary>
+    /// <summary>   Returns Professional Organization(AFF-2). </summary>
+    ///
+    /// <value> The professional organization. </value>
+
 	public XON ProfessionalOrganization
 	{
 		get{
@@ -88,9 +91,10 @@ public class AFF : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Professional Organization Address(AFF-3).
-	///</summary>
+    /// <summary>   Returns Professional Organization Address(AFF-3). </summary>
+    ///
+    /// <value> The professional organization address. </value>
+
 	public XAD ProfessionalOrganizationAddress
 	{
 		get{
@@ -111,11 +115,17 @@ public class AFF : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Professional Organization Affiliation Date Range(AFF-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Professional Organization Affiliation Date Range(AFF-4).
+    /// throws HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The calculated professional organization affiliation date range. </returns>
+
 	public DR GetProfessionalOrganizationAffiliationDateRange(int rep)
 	{
 			DR ret = null;
@@ -130,9 +140,14 @@ public class AFF : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Professional Organization Affiliation Date Range (AFF-4).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> The calculated professional organization affiliation date range. </returns>
+
   public DR[] GetProfessionalOrganizationAffiliationDateRange() {
      DR[] ret = null;
     try {
@@ -151,9 +166,12 @@ public class AFF : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Professional Organization Affiliation Date Range (AFF-4).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The professional organization affiliation date range repetitions used. </value>
+
   public int ProfessionalOrganizationAffiliationDateRangeRepetitionsUsed
 {
 get{
@@ -169,9 +187,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Professional Affiliation Additional Information(AFF-5).
-	///</summary>
+
+    /// <summary>   Returns Professional Affiliation Additional Information(AFF-5). </summary>
+    ///
+    /// <value> Information describing the professional affiliation additional. </value>
+
 	public ST ProfessionalAffiliationAdditionalInformation
 	{
 		get{

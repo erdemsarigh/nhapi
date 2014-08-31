@@ -9,37 +9,40 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V23.Message
 
 {
-///<summary>
-/// Represents a SIU_S21 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a SIU_S21 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message header segment) </li>
-///<li>1: SCH (Schedule Activity Information) </li>
-///<li>2: NTE (Notes and comments segment) optional repeating</li>
-///<li>3: SIU_S21_PATIENT (a Group object) optional repeating</li>
-///<li>4: SIU_S21_RESOURCES (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message header segment) </li>
+/// <li>1: SCH (Schedule Activity Information) </li>
+/// <li>2: NTE (Notes and comments segment) optional repeating</li>
+/// <li>3: SIU_S21_PATIENT (a Group object) optional repeating</li>
+/// <li>4: SIU_S21_RESOURCES (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class SIU_S21 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new SIU_S21 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new SIU_S21 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public SIU_S21(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new SIU_S21 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new SIU_S21 Group with DefaultModelClassFactory. </summary>
 	public SIU_S21() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for SIU_S21.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for SIU_S21.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -52,6 +55,13 @@ public class SIU_S21 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -59,9 +69,11 @@ public class SIU_S21 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -75,9 +87,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns SCH (Schedule Activity Information) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns SCH (Schedule Activity Information) - creates it if necessary. </summary>
+    ///
+    /// <value> The sch. </value>
+
 	public SCH SCH { 
 get{
 	   SCH ret = null;
@@ -91,9 +104,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -105,19 +123,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -132,9 +156,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of SIU_S21_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of SIU_S21_PATIENT (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The patient. </returns>
+
 	public SIU_S21_PATIENT GetPATIENT() {
 	   SIU_S21_PATIENT ret = null;
 	   try {
@@ -146,19 +175,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of SIU_S21_PATIENT
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of SIU_S21_PATIENT
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The patient. </returns>
+
 	public SIU_S21_PATIENT GetPATIENT(int rep) { 
 	   return (SIU_S21_PATIENT)this.GetStructure("PATIENT", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of SIU_S21_PATIENT 
-	 */ 
+    /// <summary>   Gets the patient repetitions used. </summary>
+    ///
+    /// <value> The patient repetitions used. </value>
+
 	public int PATIENTRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -173,9 +208,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of SIU_S21_RESOURCES (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of SIU_S21_RESOURCES (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The resources. </returns>
+
 	public SIU_S21_RESOURCES GetRESOURCES() {
 	   SIU_S21_RESOURCES ret = null;
 	   try {
@@ -187,19 +227,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of SIU_S21_RESOURCES
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of SIU_S21_RESOURCES
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The resources. </returns>
+
 	public SIU_S21_RESOURCES GetRESOURCES(int rep) { 
 	   return (SIU_S21_RESOURCES)this.GetStructure("RESOURCES", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of SIU_S21_RESOURCES 
-	 */ 
+    /// <summary>   Gets the resources repetitions used. </summary>
+    ///
+    /// <value> The resources repetitions used. </value>
+
 	public int RESOURCESRepetitionsUsed { 
 get{
 	    int reps = -1; 

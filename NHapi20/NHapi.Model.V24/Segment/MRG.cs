@@ -7,30 +7,31 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 MRG message segment. 
-/// This segment has the following fields:<ol>
-///<li>MRG-1: Prior Patient Identifier List (CX)</li>
-///<li>MRG-2: Prior Alternate Patient ID (CX)</li>
-///<li>MRG-3: Prior Patient Account Number (CX)</li>
-///<li>MRG-4: Prior Patient ID (CX)</li>
-///<li>MRG-5: Prior Visit Number (CX)</li>
-///<li>MRG-6: Prior Alternate Visit ID (CX)</li>
-///<li>MRG-7: Prior Patient Name (XPN)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 MRG message segment. This segment has the following fields:<ol>
+/// <li>MRG-1: Prior Patient Identifier List (CX)</li>
+/// <li>MRG-2: Prior Alternate Patient ID (CX)</li>
+/// <li>MRG-3: Prior Patient Account Number (CX)</li>
+/// <li>MRG-4: Prior Patient ID (CX)</li>
+/// <li>MRG-5: Prior Visit Number (CX)</li>
+/// <li>MRG-6: Prior Alternate Visit ID (CX)</li>
+/// <li>MRG-7: Prior Patient Name (XPN)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class MRG : AbstractSegment  {
 
-  /**
-   * Creates a MRG (Merge patient information) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the MRG class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public MRG(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -46,11 +47,17 @@ public class MRG : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns a single repetition of Prior Patient Identifier List(MRG-1).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Prior Patient Identifier List(MRG-1). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The prior patient identifier list. </returns>
+
 	public CX GetPriorPatientIdentifierList(int rep)
 	{
 			CX ret = null;
@@ -65,9 +72,12 @@ public class MRG : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Prior Patient Identifier List (MRG-1).
-   ///</summary>
+  /// <summary> Returns all repetitions of Prior Patient Identifier List (MRG-1). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of cx. </returns>
+
   public CX[] GetPriorPatientIdentifierList() {
      CX[] ret = null;
     try {
@@ -86,9 +96,10 @@ public class MRG : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Prior Patient Identifier List (MRG-1).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Prior Patient Identifier List (MRG-1). </summary>
+  ///
+  /// <value>   The prior patient identifier list repetitions used. </value>
+
   public int PriorPatientIdentifierListRepetitionsUsed
 {
 get{
@@ -104,11 +115,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Prior Alternate Patient ID(MRG-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Prior Alternate Patient ID(MRG-2). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The prior alternate patient identifier. </returns>
+
 	public CX GetPriorAlternatePatientID(int rep)
 	{
 			CX ret = null;
@@ -123,9 +141,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Prior Alternate Patient ID (MRG-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Prior Alternate Patient ID (MRG-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of cx. </returns>
+
   public CX[] GetPriorAlternatePatientID() {
      CX[] ret = null;
     try {
@@ -144,9 +165,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Prior Alternate Patient ID (MRG-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Prior Alternate Patient ID (MRG-2). </summary>
+  ///
+  /// <value>   The prior alternate patient identifier repetitions used. </value>
+
   public int PriorAlternatePatientIDRepetitionsUsed
 {
 get{
@@ -162,9 +184,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Prior Patient Account Number(MRG-3).
-	///</summary>
+
+    /// <summary>   Returns Prior Patient Account Number(MRG-3). </summary>
+    ///
+    /// <value> The prior patient account number. </value>
+
 	public CX PriorPatientAccountNumber
 	{
 		get{
@@ -185,9 +209,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Prior Patient ID(MRG-4).
-	///</summary>
+    /// <summary>   Returns Prior Patient ID(MRG-4). </summary>
+    ///
+    /// <value> The identifier of the prior patient. </value>
+
 	public CX PriorPatientID
 	{
 		get{
@@ -208,9 +233,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Prior Visit Number(MRG-5).
-	///</summary>
+    /// <summary>   Returns Prior Visit Number(MRG-5). </summary>
+    ///
+    /// <value> The prior visit number. </value>
+
 	public CX PriorVisitNumber
 	{
 		get{
@@ -231,9 +257,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Prior Alternate Visit ID(MRG-6).
-	///</summary>
+    /// <summary>   Returns Prior Alternate Visit ID(MRG-6). </summary>
+    ///
+    /// <value> The identifier of the prior alternate visit. </value>
+
 	public CX PriorAlternateVisitID
 	{
 		get{
@@ -254,11 +281,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Prior Patient Name(MRG-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Prior Patient Name(MRG-7). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The prior patient name. </returns>
+
 	public XPN GetPriorPatientName(int rep)
 	{
 			XPN ret = null;
@@ -273,9 +306,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Prior Patient Name (MRG-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Prior Patient Name (MRG-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of xpn. </returns>
+
   public XPN[] GetPriorPatientName() {
      XPN[] ret = null;
     try {
@@ -294,9 +330,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Prior Patient Name (MRG-7).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Prior Patient Name (MRG-7). </summary>
+  ///
+  /// <value>   The prior patient name repetitions used. </value>
+
   public int PriorPatientNameRepetitionsUsed
 {
 get{

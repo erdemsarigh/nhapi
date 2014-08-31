@@ -7,28 +7,29 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V21.Segment{
 
-///<summary>
-/// Represents an HL7 NK1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>NK1-1: SET ID - NEXT OF KIN (SI)</li>
-///<li>NK1-2: NEXT OF KIN NAME (PN)</li>
-///<li>NK1-3: NEXT OF KIN RELATIONSHIP (ST)</li>
-///<li>NK1-4: NEXT OF KIN - ADDRESS (AD)</li>
-///<li>NK1-5: NEXT OF KIN - PHONE NUMBER (TN)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 NK1 message segment. This segment has the following fields:<ol>
+/// <li>NK1-1: SET ID - NEXT OF KIN (SI)</li>
+/// <li>NK1-2: NEXT OF KIN NAME (PN)</li>
+/// <li>NK1-3: NEXT OF KIN RELATIONSHIP (ST)</li>
+/// <li>NK1-4: NEXT OF KIN - ADDRESS (AD)</li>
+/// <li>NK1-5: NEXT OF KIN - PHONE NUMBER (TN)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class NK1 : AbstractSegment  {
 
-  /**
-   * Creates a NK1 (NEXT OF KIN) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the NK1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public NK1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -42,9 +43,10 @@ public class NK1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns SET ID - NEXT OF KIN(NK1-1).
-	///</summary>
+    /// <summary>   Returns SET ID - NEXT OF KIN(NK1-1). </summary>
+    ///
+    /// <value> The setidnextofkin. </value>
+
 	public SI SETIDNEXTOFKIN
 	{
 		get{
@@ -65,9 +67,10 @@ public class NK1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns NEXT OF KIN NAME(NK1-2).
-	///</summary>
+    /// <summary>   Returns NEXT OF KIN NAME(NK1-2). </summary>
+    ///
+    /// <value> The nextofkinname. </value>
+
 	public PN NEXTOFKINNAME
 	{
 		get{
@@ -88,9 +91,10 @@ public class NK1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns NEXT OF KIN RELATIONSHIP(NK1-3).
-	///</summary>
+    /// <summary>   Returns NEXT OF KIN RELATIONSHIP(NK1-3). </summary>
+    ///
+    /// <value> The nextofkinrelationship. </value>
+
 	public ST NEXTOFKINRELATIONSHIP
 	{
 		get{
@@ -111,9 +115,10 @@ public class NK1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns NEXT OF KIN - ADDRESS(NK1-4).
-	///</summary>
+    /// <summary>   Returns NEXT OF KIN - ADDRESS(NK1-4). </summary>
+    ///
+    /// <value> The nextofkinaddress. </value>
+
 	public AD NEXTOFKINADDRESS
 	{
 		get{
@@ -134,11 +139,17 @@ public class NK1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of NEXT OF KIN - PHONE NUMBER(NK1-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of NEXT OF KIN - PHONE NUMBER(NK1-5). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The nextofkinphonenumber. </returns>
+
 	public TN GetNEXTOFKINPHONENUMBER(int rep)
 	{
 			TN ret = null;
@@ -153,9 +164,12 @@ public class NK1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of NEXT OF KIN - PHONE NUMBER (NK1-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of NEXT OF KIN - PHONE NUMBER (NK1-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of tn. </returns>
+
   public TN[] GetNEXTOFKINPHONENUMBER() {
      TN[] ret = null;
     try {
@@ -174,9 +188,10 @@ public class NK1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of NEXT OF KIN - PHONE NUMBER (NK1-5).
-   ///</summary>
+  /// <summary> Returns the total repetitions of NEXT OF KIN - PHONE NUMBER (NK1-5). </summary>
+  ///
+  /// <value>   The nextofkinphonenumber repetitions used. </value>
+
   public int NEXTOFKINPHONENUMBERRepetitionsUsed
 {
 get{

@@ -7,46 +7,47 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 UB1 message segment. 
-/// This segment has the following fields:<ol>
-///<li>UB1-1: Set ID - UB82 (SI)</li>
-///<li>UB1-2: Blood deductible (43) (NM)</li>
-///<li>UB1-3: Blood furnished pints of (40) (NM)</li>
-///<li>UB1-4: Blood replaced pints (41) (NM)</li>
-///<li>UB1-5: Blood not replaced pints (42) (NM)</li>
-///<li>UB1-6: Co-insurance days (25) (NM)</li>
-///<li>UB1-7: Condition code (35-39) (ID)</li>
-///<li>UB1-8: Covered days (23) (NM)</li>
-///<li>UB1-9: Non-covered days (24) (NM)</li>
-///<li>UB1-10: Value amount and code (46-49) (CM_UVC)</li>
-///<li>UB1-11: Number of grace days (90) (NM)</li>
-///<li>UB1-12: Special program indicator (44) (ID)</li>
-///<li>UB1-13: PSRO / UR approval indicator (87) (ID)</li>
-///<li>UB1-14: PSRO / UR approved stay - from (88) (DT)</li>
-///<li>UB1-15: PSRO / UR approved stay - to (89) (DT)</li>
-///<li>UB1-16: Occurrence (28-32) (CM_OCD)</li>
-///<li>UB1-17: Occurrence span (33) (ID)</li>
-///<li>UB1-18: Occurrence span start date (33) (DT)</li>
-///<li>UB1-19: Occurrence span end date (33) (DT)</li>
-///<li>UB1-20: UB-82 locator 2 (ST)</li>
-///<li>UB1-21: UB-82 locator 9 (ST)</li>
-///<li>UB1-22: UB-82 locator 27 (ST)</li>
-///<li>UB1-23: UB-82 locator 45 (ST)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 UB1 message segment. This segment has the following fields:<ol>
+/// <li>UB1-1: Set ID - UB82 (SI)</li>
+/// <li>UB1-2: Blood deductible (43) (NM)</li>
+/// <li>UB1-3: Blood furnished pints of (40) (NM)</li>
+/// <li>UB1-4: Blood replaced pints (41) (NM)</li>
+/// <li>UB1-5: Blood not replaced pints (42) (NM)</li>
+/// <li>UB1-6: Co-insurance days (25) (NM)</li>
+/// <li>UB1-7: Condition code (35-39) (ID)</li>
+/// <li>UB1-8: Covered days (23) (NM)</li>
+/// <li>UB1-9: Non-covered days (24) (NM)</li>
+/// <li>UB1-10: Value amount and code (46-49) (CM_UVC)</li>
+/// <li>UB1-11: Number of grace days (90) (NM)</li>
+/// <li>UB1-12: Special program indicator (44) (ID)</li>
+/// <li>UB1-13: PSRO / UR approval indicator (87) (ID)</li>
+/// <li>UB1-14: PSRO / UR approved stay - from (88) (DT)</li>
+/// <li>UB1-15: PSRO / UR approved stay - to (89) (DT)</li>
+/// <li>UB1-16: Occurrence (28-32) (CM_OCD)</li>
+/// <li>UB1-17: Occurrence span (33) (ID)</li>
+/// <li>UB1-18: Occurrence span start date (33) (DT)</li>
+/// <li>UB1-19: Occurrence span end date (33) (DT)</li>
+/// <li>UB1-20: UB-82 locator 2 (ST)</li>
+/// <li>UB1-21: UB-82 locator 9 (ST)</li>
+/// <li>UB1-22: UB-82 locator 27 (ST)</li>
+/// <li>UB1-23: UB-82 locator 45 (ST)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class UB1 : AbstractSegment  {
 
-  /**
-   * Creates a UB1 (UB82 DATA) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the UB1 class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public UB1(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -78,9 +79,10 @@ public class UB1 : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - UB82(UB1-1).
-	///</summary>
+    /// <summary>   Returns Set ID - UB82(UB1-1). </summary>
+    ///
+    /// <value> The set idub 82. </value>
+
 	public SI SetIDUB82
 	{
 		get{
@@ -101,9 +103,10 @@ public class UB1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Blood deductible (43)(UB1-2).
-	///</summary>
+    /// <summary>   Returns Blood deductible (43)(UB1-2). </summary>
+    ///
+    /// <value> The blood deductible. </value>
+
 	public NM BloodDeductible
 	{
 		get{
@@ -124,9 +127,10 @@ public class UB1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Blood furnished pints of (40)(UB1-3).
-	///</summary>
+    /// <summary>   Returns Blood furnished pints of (40)(UB1-3). </summary>
+    ///
+    /// <value> The blood furnished pints of. </value>
+
 	public NM BloodFurnishedPintsOf
 	{
 		get{
@@ -147,9 +151,10 @@ public class UB1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Blood replaced pints (41)(UB1-4).
-	///</summary>
+    /// <summary>   Returns Blood replaced pints (41)(UB1-4). </summary>
+    ///
+    /// <value> The blood replaced pints. </value>
+
 	public NM BloodReplacedPints
 	{
 		get{
@@ -170,9 +175,10 @@ public class UB1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Blood not replaced pints (42)(UB1-5).
-	///</summary>
+    /// <summary>   Returns Blood not replaced pints (42)(UB1-5). </summary>
+    ///
+    /// <value> The blood not replaced pints. </value>
+
 	public NM BloodNotReplacedPints
 	{
 		get{
@@ -193,9 +199,10 @@ public class UB1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Co-insurance days (25)(UB1-6).
-	///</summary>
+    /// <summary>   Returns Co-insurance days (25)(UB1-6). </summary>
+    ///
+    /// <value> The co insurance days. </value>
+
 	public NM CoInsuranceDays
 	{
 		get{
@@ -216,11 +223,17 @@ public class UB1 : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Condition code (35-39)(UB1-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Condition code (35-39)(UB1-7). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The condition code 3539. </returns>
+
 	public ID GetConditionCode3539(int rep)
 	{
 			ID ret = null;
@@ -235,9 +248,12 @@ public class UB1 : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Condition code (35-39) (UB1-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Condition code (35-39) (UB1-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetConditionCode3539() {
      ID[] ret = null;
     try {
@@ -256,9 +272,10 @@ public class UB1 : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Condition code (35-39) (UB1-7).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Condition code (35-39) (UB1-7). </summary>
+  ///
+  /// <value>   The condition code 3539 repetitions used. </value>
+
   public int ConditionCode3539RepetitionsUsed
 {
 get{
@@ -274,9 +291,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Covered days (23)(UB1-8).
-	///</summary>
+
+    /// <summary>   Returns Covered days (23)(UB1-8). </summary>
+    ///
+    /// <value> The covered days. </value>
+
 	public NM CoveredDays
 	{
 		get{
@@ -297,9 +316,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Non-covered days (24)(UB1-9).
-	///</summary>
+    /// <summary>   Returns Non-covered days (24)(UB1-9). </summary>
+    ///
+    /// <value> The non covered days. </value>
+
 	public NM NonCoveredDays
 	{
 		get{
@@ -320,11 +340,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Value amount and code (46-49)(UB1-10).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Value amount and code (46-49)(UB1-10). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The value amount and code 4649. </returns>
+
 	public CM_UVC GetValueAmountAndCode4649(int rep)
 	{
 			CM_UVC ret = null;
@@ -339,9 +365,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Value amount and code (46-49) (UB1-10).
-   ///</summary>
+  /// <summary> Returns all repetitions of Value amount and code (46-49) (UB1-10). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of centimetres uvc. </returns>
+
   public CM_UVC[] GetValueAmountAndCode4649() {
      CM_UVC[] ret = null;
     try {
@@ -360,9 +389,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Value amount and code (46-49) (UB1-10).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Value amount and code (46-49) (UB1-10). </summary>
+  ///
+  /// <value>   The value amount and code 4649 repetitions used. </value>
+
   public int ValueAmountAndCode4649RepetitionsUsed
 {
 get{
@@ -378,9 +408,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Number of grace days (90)(UB1-11).
-	///</summary>
+
+    /// <summary>   Returns Number of grace days (90)(UB1-11). </summary>
+    ///
+    /// <value> The total number of grace days. </value>
+
 	public NM NumberOfGraceDays
 	{
 		get{
@@ -401,9 +433,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Special program indicator (44)(UB1-12).
-	///</summary>
+    /// <summary>   Returns Special program indicator (44)(UB1-12). </summary>
+    ///
+    /// <value> The special program indicator. </value>
+
 	public ID SpecialProgramIndicator
 	{
 		get{
@@ -424,9 +457,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns PSRO / UR approval indicator (87)(UB1-13).
-	///</summary>
+    /// <summary>   Returns PSRO / UR approval indicator (87)(UB1-13). </summary>
+    ///
+    /// <value> The psrour approval indicator. </value>
+
 	public ID PSROURApprovalIndicator
 	{
 		get{
@@ -447,9 +481,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns PSRO / UR approved stay - from (88)(UB1-14).
-	///</summary>
+    /// <summary>   Returns PSRO / UR approved stay - from (88)(UB1-14). </summary>
+    ///
+    /// <value> The psrour approved stay from. </value>
+
 	public DT PSROURApprovedStayFrom
 	{
 		get{
@@ -470,9 +505,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns PSRO / UR approved stay - to (89)(UB1-15).
-	///</summary>
+    /// <summary>   Returns PSRO / UR approved stay - to (89)(UB1-15). </summary>
+    ///
+    /// <value> The psrour approved stay to. </value>
+
 	public DT PSROURApprovedStayTo
 	{
 		get{
@@ -493,11 +529,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Occurrence (28-32)(UB1-16).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Occurrence (28-32)(UB1-16). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The occurrence 2832. </returns>
+
 	public CM_OCD GetOccurrence2832(int rep)
 	{
 			CM_OCD ret = null;
@@ -512,9 +554,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Occurrence (28-32) (UB1-16).
-   ///</summary>
+  /// <summary> Returns all repetitions of Occurrence (28-32) (UB1-16). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of centimetres ocd. </returns>
+
   public CM_OCD[] GetOccurrence2832() {
      CM_OCD[] ret = null;
     try {
@@ -533,9 +578,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Occurrence (28-32) (UB1-16).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Occurrence (28-32) (UB1-16). </summary>
+  ///
+  /// <value>   The occurrence 2832 repetitions used. </value>
+
   public int Occurrence2832RepetitionsUsed
 {
 get{
@@ -551,9 +597,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Occurrence span (33)(UB1-17).
-	///</summary>
+
+    /// <summary>   Returns Occurrence span (33)(UB1-17). </summary>
+    ///
+    /// <value> The occurrence span. </value>
+
 	public ID OccurrenceSpan
 	{
 		get{
@@ -574,9 +622,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Occurrence span start date (33)(UB1-18).
-	///</summary>
+    /// <summary>   Returns Occurrence span start date (33)(UB1-18). </summary>
+    ///
+    /// <value> The occurrence span start date. </value>
+
 	public DT OccurrenceSpanStartDate
 	{
 		get{
@@ -597,9 +646,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Occurrence span end date (33)(UB1-19).
-	///</summary>
+    /// <summary>   Returns Occurrence span end date (33)(UB1-19). </summary>
+    ///
+    /// <value> The occurrence span end date. </value>
+
 	public DT OccurrenceSpanEndDate
 	{
 		get{
@@ -620,9 +670,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns UB-82 locator 2(UB1-20).
-	///</summary>
+    /// <summary>   Returns UB-82 locator 2(UB1-20). </summary>
+    ///
+    /// <value> The ub 82 locator 2. </value>
+
 	public ST UB82Locator2
 	{
 		get{
@@ -643,9 +694,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns UB-82 locator 9(UB1-21).
-	///</summary>
+    /// <summary>   Returns UB-82 locator 9(UB1-21). </summary>
+    ///
+    /// <value> The ub 82 locator 9. </value>
+
 	public ST UB82Locator9
 	{
 		get{
@@ -666,9 +718,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns UB-82 locator 27(UB1-22).
-	///</summary>
+    /// <summary>   Returns UB-82 locator 27(UB1-22). </summary>
+    ///
+    /// <value> The ub 82 locator 27. </value>
+
 	public ST UB82Locator27
 	{
 		get{
@@ -689,9 +742,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns UB-82 locator 45(UB1-23).
-	///</summary>
+    /// <summary>   Returns UB-82 locator 45(UB1-23). </summary>
+    ///
+    /// <value> The ub 82 locator 45. </value>
+
 	public ST UB82Locator45
 	{
 		get{

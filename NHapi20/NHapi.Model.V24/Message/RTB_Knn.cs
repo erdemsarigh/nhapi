@@ -9,38 +9,41 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V24.Message
 
 {
-///<summary>
-/// Represents a RTB_Knn message structure (see chapter 5). This structure contains the 
-/// following elements:
-///<ol>
-///<li>0: MSH (Message Header) </li>
-///<li>1: MSA (Message Acknowledgment) </li>
-///<li>2: ERR (Error) optional </li>
-///<li>3: QAK (Query Acknowledgment) </li>
-///<li>4: QPD (Query Parameter Definition) </li>
-///<li>5: DSC (Continuation Pointer) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents a RTB_Knn message structure (see chapter 5). This structure contains the following
+/// elements:
+/// <ol>
+/// <li>0: MSH (Message Header) </li>
+/// <li>1: MSA (Message Acknowledgment) </li>
+/// <li>2: ERR (Error) optional </li>
+/// <li>3: QAK (Query Acknowledgment) </li>
+/// <li>4: QPD (Query Parameter Definition) </li>
+/// <li>5: DSC (Continuation Pointer) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RTB_Knn : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new RTB_Knn Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new RTB_Knn Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public RTB_Knn(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new RTB_Knn Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new RTB_Knn Group with DefaultModelClassFactory. </summary>
 	public RTB_Knn() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for RTB_Knn.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for RTB_Knn.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -54,6 +57,13 @@ public class RTB_Knn : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -61,9 +71,11 @@ public class RTB_Knn : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message Header) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message Header) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -77,9 +89,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MSA (Message Acknowledgment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MSA (Message Acknowledgment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msa. </value>
+
 	public MSA MSA { 
 get{
 	   MSA ret = null;
@@ -93,9 +106,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ERR (Error) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ERR (Error) - creates it if necessary. </summary>
+    ///
+    /// <value> The error. </value>
+
 	public ERR ERR { 
 get{
 	   ERR ret = null;
@@ -109,9 +123,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QAK (Query Acknowledgment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QAK (Query Acknowledgment) - creates it if necessary. </summary>
+    ///
+    /// <value> The qak. </value>
+
 	public QAK QAK { 
 get{
 	   QAK ret = null;
@@ -125,9 +140,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QPD (Query Parameter Definition) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QPD (Query Parameter Definition) - creates it if necessary. </summary>
+    ///
+    /// <value> The qpd. </value>
+
 	public QPD QPD { 
 get{
 	   QPD ret = null;
@@ -141,9 +157,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns DSC (Continuation Pointer) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns DSC (Continuation Pointer) - creates it if necessary. </summary>
+    ///
+    /// <value> The dsc. </value>
+
 	public DSC DSC { 
 get{
 	   DSC ret = null;

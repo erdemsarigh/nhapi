@@ -8,22 +8,25 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V231.Group
 {
-///<summary>
-///Represents the ORD_O02_ORDER_TRAY Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (ORC - common order segment) </li>
-///<li>1: ODT (ODT - diet tray instructions segment) optional repeating</li>
-///<li>2: NTE (NTE - notes and comments segment) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the ORD_O02_ORDER_TRAY Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (ORC - common order segment) </li>
+/// <li>1: ODT (ODT - diet tray instructions segment) optional repeating</li>
+/// <li>2: NTE (NTE - notes and comments segment) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class ORD_O02_ORDER_TRAY : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new ORD_O02_ORDER_TRAY Group.
-	///</summary>
+    /// <summary>   Creates a new ORD_O02_ORDER_TRAY Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public ORD_O02_ORDER_TRAY(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -34,9 +37,10 @@ public class ORD_O02_ORDER_TRAY : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (ORC - common order segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (ORC - common order segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -50,9 +54,15 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of ODT (ODT - diet tray instructions segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of ODT (ODT - diet tray instructions segment) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The odt. </returns>
+
 	public ODT GetODT() {
 	   ODT ret = null;
 	   try {
@@ -64,19 +74,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of ODT
-	/// * (ODT - diet tray instructions segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of ODT
+    ///  * (ODT - diet tray instructions segment) - creates it if necessary throws HL7Exception if
+    ///  the repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The odt. </returns>
+
 	public ODT GetODT(int rep) { 
 	   return (ODT)this.GetStructure("ODT", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of ODT 
-	 */ 
+    /// <summary>   Gets the odt repetitions used. </summary>
+    ///
+    /// <value> The odt repetitions used. </value>
+
 	public int ODTRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -91,9 +107,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (NTE - notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -105,19 +126,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (NTE - notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (NTE - notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 

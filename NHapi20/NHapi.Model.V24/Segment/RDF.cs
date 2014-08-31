@@ -7,25 +7,26 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 RDF message segment. 
-/// This segment has the following fields:<ol>
-///<li>RDF-1: Number of Columns per Row (NM)</li>
-///<li>RDF-2: Column Description (RCD)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 RDF message segment. This segment has the following fields:<ol>
+/// <li>RDF-1: Number of Columns per Row (NM)</li>
+/// <li>RDF-2: Column Description (RCD)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class RDF : AbstractSegment  {
 
-  /**
-   * Creates a RDF (Table Row Definition) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the RDF class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RDF(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -36,9 +37,10 @@ public class RDF : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Number of Columns per Row(RDF-1).
-	///</summary>
+    /// <summary>   Returns Number of Columns per Row(RDF-1). </summary>
+    ///
+    /// <value> The total number of columns per row. </value>
+
 	public NM NumberOfColumnsPerRow
 	{
 		get{
@@ -59,11 +61,17 @@ public class RDF : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Column Description(RDF-2).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Column Description(RDF-2). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The column description. </returns>
+
 	public RCD GetColumnDescription(int rep)
 	{
 			RCD ret = null;
@@ -78,9 +86,12 @@ public class RDF : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Column Description (RDF-2).
-   ///</summary>
+  /// <summary> Returns all repetitions of Column Description (RDF-2). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of rcd. </returns>
+
   public RCD[] GetColumnDescription() {
      RCD[] ret = null;
     try {
@@ -99,9 +110,10 @@ public class RDF : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Column Description (RDF-2).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Column Description (RDF-2). </summary>
+  ///
+  /// <value>   The column description repetitions used. </value>
+
   public int ColumnDescriptionRepetitionsUsed
 {
 get{

@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RAR_RAR_DEFINITION Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: QRD (Original-Style Query Definition) </li>
-///<li>1: QRF (Original Style Query Filter) optional </li>
-///<li>2: RAR_RAR_PATIENT (a Group object) optional </li>
-///<li>3: RAR_RAR_ORDER (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RAR_RAR_DEFINITION Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: QRD (Original-Style Query Definition) </li>
+/// <li>1: QRF (Original Style Query Filter) optional </li>
+/// <li>2: RAR_RAR_PATIENT (a Group object) optional </li>
+/// <li>3: RAR_RAR_ORDER (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RAR_RAR_DEFINITION : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RAR_RAR_DEFINITION Group.
-	///</summary>
+    /// <summary>   Creates a new RAR_RAR_DEFINITION Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RAR_RAR_DEFINITION(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(QRD), true, false);
@@ -36,9 +39,10 @@ public class RAR_RAR_DEFINITION : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns QRD (Original-Style Query Definition) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QRD (Original-Style Query Definition) - creates it if necessary. </summary>
+    ///
+    /// <value> The qrd. </value>
+
 	public QRD QRD { 
 get{
 	   QRD ret = null;
@@ -52,9 +56,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns QRF (Original Style Query Filter) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns QRF (Original Style Query Filter) - creates it if necessary. </summary>
+    ///
+    /// <value> The qrf. </value>
+
 	public QRF QRF { 
 get{
 	   QRF ret = null;
@@ -68,9 +73,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RAR_RAR_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RAR_RAR_PATIENT (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The patient. </value>
+
 	public RAR_RAR_PATIENT PATIENT { 
 get{
 	   RAR_RAR_PATIENT ret = null;
@@ -84,9 +90,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of RAR_RAR_ORDER (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of RAR_RAR_ORDER (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The order. </returns>
+
 	public RAR_RAR_ORDER GetORDER() {
 	   RAR_RAR_ORDER ret = null;
 	   try {
@@ -98,19 +109,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of RAR_RAR_ORDER
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of RAR_RAR_ORDER
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The order. </returns>
+
 	public RAR_RAR_ORDER GetORDER(int rep) { 
 	   return (RAR_RAR_ORDER)this.GetStructure("ORDER", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of RAR_RAR_ORDER 
-	 */ 
+    /// <summary>   Gets the order repetitions used. </summary>
+    ///
+    /// <value> The order repetitions used. </value>
+
 	public int ORDERRepetitionsUsed { 
 get{
 	    int reps = -1; 

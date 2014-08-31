@@ -7,35 +7,36 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 AIS message segment. 
-/// This segment has the following fields:<ol>
-///<li>AIS-1: Set ID - AIS (SI)</li>
-///<li>AIS-2: Segment Action Code (ID)</li>
-///<li>AIS-3: Universal Service Identifier (CE)</li>
-///<li>AIS-4: Start Date/Time (TS)</li>
-///<li>AIS-5: Start Date/Time Offset (NM)</li>
-///<li>AIS-6: Start Date/Time Offset Units (CE)</li>
-///<li>AIS-7: Duration (NM)</li>
-///<li>AIS-8: Duration Units (CE)</li>
-///<li>AIS-9: Allow Substitution Code (IS)</li>
-///<li>AIS-10: Filler Status Code (CE)</li>
-///<li>AIS-11: Placer Supplemental Service Information (CE)</li>
-///<li>AIS-12: Filler Supplemental Service Information (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 AIS message segment. This segment has the following fields:<ol>
+/// <li>AIS-1: Set ID - AIS (SI)</li>
+/// <li>AIS-2: Segment Action Code (ID)</li>
+/// <li>AIS-3: Universal Service Identifier (CE)</li>
+/// <li>AIS-4: Start Date/Time (TS)</li>
+/// <li>AIS-5: Start Date/Time Offset (NM)</li>
+/// <li>AIS-6: Start Date/Time Offset Units (CE)</li>
+/// <li>AIS-7: Duration (NM)</li>
+/// <li>AIS-8: Duration Units (CE)</li>
+/// <li>AIS-9: Allow Substitution Code (IS)</li>
+/// <li>AIS-10: Filler Status Code (CE)</li>
+/// <li>AIS-11: Placer Supplemental Service Information (CE)</li>
+/// <li>AIS-12: Filler Supplemental Service Information (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class AIS : AbstractSegment  {
 
-  /**
-   * Creates a AIS (Appointment Information - Service) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the AIS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public AIS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -56,9 +57,10 @@ public class AIS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Set ID - AIS(AIS-1).
-	///</summary>
+    /// <summary>   Returns Set ID - AIS(AIS-1). </summary>
+    ///
+    /// <value> The set idais. </value>
+
 	public SI SetIDAIS
 	{
 		get{
@@ -79,9 +81,10 @@ public class AIS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Segment Action Code(AIS-2).
-	///</summary>
+    /// <summary>   Returns Segment Action Code(AIS-2). </summary>
+    ///
+    /// <value> The segment action code. </value>
+
 	public ID SegmentActionCode
 	{
 		get{
@@ -102,9 +105,10 @@ public class AIS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Universal Service Identifier(AIS-3).
-	///</summary>
+    /// <summary>   Returns Universal Service Identifier(AIS-3). </summary>
+    ///
+    /// <value> The identifier of the universal service. </value>
+
 	public CE UniversalServiceIdentifier
 	{
 		get{
@@ -125,9 +129,10 @@ public class AIS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date/Time(AIS-4).
-	///</summary>
+    /// <summary>   Returns Start Date/Time(AIS-4). </summary>
+    ///
+    /// <value> The start date time. </value>
+
 	public TS StartDateTime
 	{
 		get{
@@ -148,9 +153,10 @@ public class AIS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date/Time Offset(AIS-5).
-	///</summary>
+    /// <summary>   Returns Start Date/Time Offset(AIS-5). </summary>
+    ///
+    /// <value> The start date time offset. </value>
+
 	public NM StartDateTimeOffset
 	{
 		get{
@@ -171,9 +177,10 @@ public class AIS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Start Date/Time Offset Units(AIS-6).
-	///</summary>
+    /// <summary>   Returns Start Date/Time Offset Units(AIS-6). </summary>
+    ///
+    /// <value> The start date time offset units. </value>
+
 	public CE StartDateTimeOffsetUnits
 	{
 		get{
@@ -194,9 +201,10 @@ public class AIS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Duration(AIS-7).
-	///</summary>
+    /// <summary>   Returns Duration(AIS-7). </summary>
+    ///
+    /// <value> The duration. </value>
+
 	public NM Duration
 	{
 		get{
@@ -217,9 +225,10 @@ public class AIS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Duration Units(AIS-8).
-	///</summary>
+    /// <summary>   Returns Duration Units(AIS-8). </summary>
+    ///
+    /// <value> The duration units. </value>
+
 	public CE DurationUnits
 	{
 		get{
@@ -240,9 +249,10 @@ public class AIS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Allow Substitution Code(AIS-9).
-	///</summary>
+    /// <summary>   Returns Allow Substitution Code(AIS-9). </summary>
+    ///
+    /// <value> The allow substitution code. </value>
+
 	public IS AllowSubstitutionCode
 	{
 		get{
@@ -263,9 +273,10 @@ public class AIS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Filler Status Code(AIS-10).
-	///</summary>
+    /// <summary>   Returns Filler Status Code(AIS-10). </summary>
+    ///
+    /// <value> The filler status code. </value>
+
 	public CE FillerStatusCode
 	{
 		get{
@@ -286,11 +297,17 @@ public class AIS : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Placer Supplemental Service Information(AIS-11).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Placer Supplemental Service Information(AIS-11). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The placer supplemental service information. </returns>
+
 	public CE GetPlacerSupplementalServiceInformation(int rep)
 	{
 			CE ret = null;
@@ -305,9 +322,14 @@ public class AIS : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Placer Supplemental Service Information (AIS-11).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetPlacerSupplementalServiceInformation() {
      CE[] ret = null;
     try {
@@ -326,9 +348,12 @@ public class AIS : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Placer Supplemental Service Information (AIS-11).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The placer supplemental service information repetitions used. </value>
+
   public int PlacerSupplementalServiceInformationRepetitionsUsed
 {
 get{
@@ -344,11 +369,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Filler Supplemental Service Information(AIS-12).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Filler Supplemental Service Information(AIS-12). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The filler supplemental service information. </returns>
+
 	public CE GetFillerSupplementalServiceInformation(int rep)
 	{
 			CE ret = null;
@@ -363,9 +395,14 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
+  /// <summary>
   /// Returns all repetitions of Filler Supplemental Service Information (AIS-12).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetFillerSupplementalServiceInformation() {
      CE[] ret = null;
     try {
@@ -384,9 +421,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Filler Supplemental Service Information (AIS-12).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The filler supplemental service information repetitions used. </value>
+
   public int FillerSupplementalServiceInformationRepetitionsUsed
 {
 get{

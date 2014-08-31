@@ -7,25 +7,26 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 BLC message segment. 
-/// This segment has the following fields:<ol>
-///<li>BLC-1: Blood Product Code (CE)</li>
-///<li>BLC-2: Blood Amount (CQ)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 BLC message segment. This segment has the following fields:<ol>
+/// <li>BLC-1: Blood Product Code (CE)</li>
+/// <li>BLC-2: Blood Amount (CQ)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class BLC : AbstractSegment  {
 
-  /**
-   * Creates a BLC (Blood Code) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the BLC class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public BLC(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -36,9 +37,10 @@ public class BLC : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Blood Product Code(BLC-1).
-	///</summary>
+    /// <summary>   Returns Blood Product Code(BLC-1). </summary>
+    ///
+    /// <value> The blood product code. </value>
+
 	public CE BloodProductCode
 	{
 		get{
@@ -59,9 +61,10 @@ public class BLC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Blood Amount(BLC-2).
-	///</summary>
+    /// <summary>   Returns Blood Amount(BLC-2). </summary>
+    ///
+    /// <value> The blood amount. </value>
+
 	public CQ BloodAmount
 	{
 		get{

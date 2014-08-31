@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the CSU_C09_STUDY_PHARM Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common order segment) optional </li>
-///<li>1: CSU_C09_RX_ADMIN (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the CSU_C09_STUDY_PHARM Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common order segment) optional </li>
+/// <li>1: CSU_C09_RX_ADMIN (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class CSU_C09_STUDY_PHARM : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new CSU_C09_STUDY_PHARM Group.
-	///</summary>
+    /// <summary>   Creates a new CSU_C09_STUDY_PHARM Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public CSU_C09_STUDY_PHARM(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), false, false);
@@ -32,9 +35,10 @@ public class CSU_C09_STUDY_PHARM : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common order segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common order segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -48,9 +52,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of CSU_C09_RX_ADMIN (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of CSU_C09_RX_ADMIN (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The receive admin. </returns>
+
 	public CSU_C09_RX_ADMIN GetRX_ADMIN() {
 	   CSU_C09_RX_ADMIN ret = null;
 	   try {
@@ -62,19 +71,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of CSU_C09_RX_ADMIN
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of CSU_C09_RX_ADMIN
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The receive admin. </returns>
+
 	public CSU_C09_RX_ADMIN GetRX_ADMIN(int rep) { 
 	   return (CSU_C09_RX_ADMIN)this.GetStructure("RX_ADMIN", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of CSU_C09_RX_ADMIN 
-	 */ 
+    /// <summary>   Gets the receive admin repetitions used. </summary>
+    ///
+    /// <value> The receive admin repetitions used. </value>
+
 	public int RX_ADMINRepetitionsUsed { 
 get{
 	    int reps = -1; 

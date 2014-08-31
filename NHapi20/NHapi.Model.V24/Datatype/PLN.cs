@@ -6,30 +6,32 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V24.Datatype
 {
-
-///<summary>
-/// <p>The HL7 PLN (Practitioner ID Numbers) data type.  Consists of the following components: </p><ol>
+/// <summary>
+/// <p>The HL7 PLN (Practitioner ID Numbers) data type.  Consists of the following components:
+/// </p><ol>
 /// <li>ID number (ST) (ST)</li>
 /// <li>type of ID number (IS) (IS)</li>
 /// <li>state/other qualifying info (ST)</li>
 /// <li>expiration date (DT)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class PLN : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a PLN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a PLN. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public PLN(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a PLN.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a PLN. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public PLN(IMessage message, string description) : base(message, description){
 		data = new IType[4];
 		data[0] = new ST(message,"ID number (ST)");
@@ -38,9 +40,10 @@ public class PLN : AbstractType, IComposite{
 		data[3] = new DT(message,"Expiration date");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -48,12 +51,15 @@ public class PLN : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -64,10 +70,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns ID number (ST) (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns ID number (ST) (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The identifier number. </value>
+
 	public ST IDNumber {
 get{
 	   ST ret = null;
@@ -81,10 +91,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns type of ID number (IS) (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns type of ID number (IS) (component #1).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The type of the identifier number. </value>
+
 	public IS TypeOfIDNumber {
 get{
 	   IS ret = null;
@@ -98,10 +112,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns state/other qualifying info (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns state/other qualifying info (component #2).  This is a convenience method that saves
+    /// you from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> Information describing the state other qualifying. </value>
+
 	public ST StateOtherQualifyingInfo {
 get{
 	   ST ret = null;
@@ -115,10 +133,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns expiration date (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns expiration date (component #3).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The expiration date. </value>
+
 	public DT ExpirationDate {
 get{
 	   DT ret = null;

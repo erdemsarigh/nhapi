@@ -7,45 +7,46 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V23.Segment{
 
-///<summary>
-/// Represents an HL7 RXO message segment. 
-/// This segment has the following fields:<ol>
-///<li>RXO-1: Requested Give Code (CE)</li>
-///<li>RXO-2: Requested Give Amount - Minimum (NM)</li>
-///<li>RXO-3: Requested Give Amount - Maximum (NM)</li>
-///<li>RXO-4: Requested Give Units (CE)</li>
-///<li>RXO-5: Requested Dosage Form (CE)</li>
-///<li>RXO-6: Provider's Pharmacy Instructions (CE)</li>
-///<li>RXO-7: Provider's Administration Instructions (CE)</li>
-///<li>RXO-8: Deliver To Location (CM_LA1)</li>
-///<li>RXO-9: Allow Substitutions (ID)</li>
-///<li>RXO-10: Requested Dispense Code (CE)</li>
-///<li>RXO-11: Requested Dispense Amount (NM)</li>
-///<li>RXO-12: Requested Dispense Units (CE)</li>
-///<li>RXO-13: Number of Refills (NM)</li>
-///<li>RXO-14: Ordering Provider's DEA Number (CN)</li>
-///<li>RXO-15: Pharmacist/Treatment Supplier's Verifier ID (CN)</li>
-///<li>RXO-16: Needs Human Review (ID)</li>
-///<li>RXO-17: Requested Give Per (Time Unit) (ST)</li>
-///<li>RXO-18: Requested Give Strength (NM)</li>
-///<li>RXO-19: Requested Give Strength Units (CE)</li>
-///<li>RXO-20: Indication (CE)</li>
-///<li>RXO-21: Requested Give Rate Amount (ST)</li>
-///<li>RXO-22: Requested Give Rate Units (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 RXO message segment. This segment has the following fields:<ol>
+/// <li>RXO-1: Requested Give Code (CE)</li>
+/// <li>RXO-2: Requested Give Amount - Minimum (NM)</li>
+/// <li>RXO-3: Requested Give Amount - Maximum (NM)</li>
+/// <li>RXO-4: Requested Give Units (CE)</li>
+/// <li>RXO-5: Requested Dosage Form (CE)</li>
+/// <li>RXO-6: Provider's Pharmacy Instructions (CE)</li>
+/// <li>RXO-7: Provider's Administration Instructions (CE)</li>
+/// <li>RXO-8: Deliver To Location (CM_LA1)</li>
+/// <li>RXO-9: Allow Substitutions (ID)</li>
+/// <li>RXO-10: Requested Dispense Code (CE)</li>
+/// <li>RXO-11: Requested Dispense Amount (NM)</li>
+/// <li>RXO-12: Requested Dispense Units (CE)</li>
+/// <li>RXO-13: Number of Refills (NM)</li>
+/// <li>RXO-14: Ordering Provider's DEA Number (CN)</li>
+/// <li>RXO-15: Pharmacist/Treatment Supplier's Verifier ID (CN)</li>
+/// <li>RXO-16: Needs Human Review (ID)</li>
+/// <li>RXO-17: Requested Give Per (Time Unit) (ST)</li>
+/// <li>RXO-18: Requested Give Strength (NM)</li>
+/// <li>RXO-19: Requested Give Strength Units (CE)</li>
+/// <li>RXO-20: Indication (CE)</li>
+/// <li>RXO-21: Requested Give Rate Amount (ST)</li>
+/// <li>RXO-22: Requested Give Rate Units (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class RXO : AbstractSegment  {
 
-  /**
-   * Creates a RXO (Pharmacy prescription order segment) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the RXO class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RXO(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -76,9 +77,10 @@ public class RXO : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Requested Give Code(RXO-1).
-	///</summary>
+    /// <summary>   Returns Requested Give Code(RXO-1). </summary>
+    ///
+    /// <value> The requested give code. </value>
+
 	public CE RequestedGiveCode
 	{
 		get{
@@ -99,9 +101,10 @@ public class RXO : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Give Amount - Minimum(RXO-2).
-	///</summary>
+    /// <summary>   Returns Requested Give Amount - Minimum(RXO-2). </summary>
+    ///
+    /// <value> The requested give amount minimum. </value>
+
 	public NM RequestedGiveAmountMinimum
 	{
 		get{
@@ -122,9 +125,10 @@ public class RXO : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Give Amount - Maximum(RXO-3).
-	///</summary>
+    /// <summary>   Returns Requested Give Amount - Maximum(RXO-3). </summary>
+    ///
+    /// <value> The requested give amount maximum. </value>
+
 	public NM RequestedGiveAmountMaximum
 	{
 		get{
@@ -145,9 +149,10 @@ public class RXO : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Give Units(RXO-4).
-	///</summary>
+    /// <summary>   Returns Requested Give Units(RXO-4). </summary>
+    ///
+    /// <value> The requested give units. </value>
+
 	public CE RequestedGiveUnits
 	{
 		get{
@@ -168,9 +173,10 @@ public class RXO : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Dosage Form(RXO-5).
-	///</summary>
+    /// <summary>   Returns Requested Dosage Form(RXO-5). </summary>
+    ///
+    /// <value> The requested dosage form. </value>
+
 	public CE RequestedDosageForm
 	{
 		get{
@@ -191,11 +197,17 @@ public class RXO : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Provider's Pharmacy Instructions(RXO-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Provider's Pharmacy Instructions(RXO-6). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The provider s pharmacy instructions. </returns>
+
 	public CE GetProviderSPharmacyInstructions(int rep)
 	{
 			CE ret = null;
@@ -210,9 +222,12 @@ public class RXO : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Provider's Pharmacy Instructions (RXO-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of Provider's Pharmacy Instructions (RXO-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetProviderSPharmacyInstructions() {
      CE[] ret = null;
     try {
@@ -231,9 +246,10 @@ public class RXO : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Provider's Pharmacy Instructions (RXO-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Provider's Pharmacy Instructions (RXO-6). </summary>
+  ///
+  /// <value>   The provider s pharmacy instructions repetitions used. </value>
+
   public int ProviderSPharmacyInstructionsRepetitionsUsed
 {
 get{
@@ -249,11 +265,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Provider's Administration Instructions(RXO-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Provider's Administration Instructions(RXO-7). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The provider s administration instructions. </returns>
+
 	public CE GetProviderSAdministrationInstructions(int rep)
 	{
 			CE ret = null;
@@ -268,9 +291,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Provider's Administration Instructions (RXO-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of Provider's Administration Instructions (RXO-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetProviderSAdministrationInstructions() {
      CE[] ret = null;
     try {
@@ -289,9 +315,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of Provider's Administration Instructions (RXO-7).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The provider s administration instructions repetitions used. </value>
+
   public int ProviderSAdministrationInstructionsRepetitionsUsed
 {
 get{
@@ -307,9 +336,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Deliver To Location(RXO-8).
-	///</summary>
+
+    /// <summary>   Returns Deliver To Location(RXO-8). </summary>
+    ///
+    /// <value> The deliver to location. </value>
+
 	public CM_LA1 DeliverToLocation
 	{
 		get{
@@ -330,9 +361,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Allow Substitutions(RXO-9).
-	///</summary>
+    /// <summary>   Returns Allow Substitutions(RXO-9). </summary>
+    ///
+    /// <value> The allow substitutions. </value>
+
 	public ID AllowSubstitutions
 	{
 		get{
@@ -353,9 +385,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Dispense Code(RXO-10).
-	///</summary>
+    /// <summary>   Returns Requested Dispense Code(RXO-10). </summary>
+    ///
+    /// <value> The requested dispense code. </value>
+
 	public CE RequestedDispenseCode
 	{
 		get{
@@ -376,9 +409,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Dispense Amount(RXO-11).
-	///</summary>
+    /// <summary>   Returns Requested Dispense Amount(RXO-11). </summary>
+    ///
+    /// <value> The requested dispense amount. </value>
+
 	public NM RequestedDispenseAmount
 	{
 		get{
@@ -399,9 +433,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Dispense Units(RXO-12).
-	///</summary>
+    /// <summary>   Returns Requested Dispense Units(RXO-12). </summary>
+    ///
+    /// <value> The requested dispense units. </value>
+
 	public CE RequestedDispenseUnits
 	{
 		get{
@@ -422,9 +457,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Number of Refills(RXO-13).
-	///</summary>
+    /// <summary>   Returns Number of Refills(RXO-13). </summary>
+    ///
+    /// <value> The total number of refills. </value>
+
 	public NM NumberOfRefills
 	{
 		get{
@@ -445,9 +481,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Ordering Provider's DEA Number(RXO-14).
-	///</summary>
+    /// <summary>   Returns Ordering Provider's DEA Number(RXO-14). </summary>
+    ///
+    /// <value> The ordering provider sdea number. </value>
+
 	public CN OrderingProviderSDEANumber
 	{
 		get{
@@ -468,9 +505,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Pharmacist/Treatment Supplier's Verifier ID(RXO-15).
-	///</summary>
+    /// <summary>   Returns Pharmacist/Treatment Supplier's Verifier ID(RXO-15). </summary>
+    ///
+    /// <value> The identifier of the pharmacist treatment supplier s verifier. </value>
+
 	public CN PharmacistTreatmentSupplierSVerifierID
 	{
 		get{
@@ -491,9 +529,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Needs Human Review(RXO-16).
-	///</summary>
+    /// <summary>   Returns Needs Human Review(RXO-16). </summary>
+    ///
+    /// <value> The needs human review. </value>
+
 	public ID NeedsHumanReview
 	{
 		get{
@@ -514,9 +553,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Give Per (Time Unit)(RXO-17).
-	///</summary>
+    /// <summary>   Returns Requested Give Per (Time Unit)(RXO-17). </summary>
+    ///
+    /// <value> The requested give per time unit. </value>
+
 	public ST RequestedGivePerTimeUnit
 	{
 		get{
@@ -537,9 +577,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Give Strength(RXO-18).
-	///</summary>
+    /// <summary>   Returns Requested Give Strength(RXO-18). </summary>
+    ///
+    /// <value> The requested give strength. </value>
+
 	public NM RequestedGiveStrength
 	{
 		get{
@@ -560,9 +601,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Give Strength Units(RXO-19).
-	///</summary>
+    /// <summary>   Returns Requested Give Strength Units(RXO-19). </summary>
+    ///
+    /// <value> The requested give strength units. </value>
+
 	public CE RequestedGiveStrengthUnits
 	{
 		get{
@@ -583,9 +625,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Indication(RXO-20).
-	///</summary>
+    /// <summary>   Returns Indication(RXO-20). </summary>
+    ///
+    /// <value> The indication. </value>
+
 	public CE Indication
 	{
 		get{
@@ -606,9 +649,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Give Rate Amount(RXO-21).
-	///</summary>
+    /// <summary>   Returns Requested Give Rate Amount(RXO-21). </summary>
+    ///
+    /// <value> The requested give rate amount. </value>
+
 	public ST RequestedGiveRateAmount
 	{
 		get{
@@ -629,9 +673,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Requested Give Rate Units(RXO-22).
-	///</summary>
+    /// <summary>   Returns Requested Give Rate Units(RXO-22). </summary>
+    ///
+    /// <value> The requested give rate units. </value>
+
 	public CE RequestedGiveRateUnits
 	{
 		get{

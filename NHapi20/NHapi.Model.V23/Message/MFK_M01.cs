@@ -9,39 +9,42 @@ using NHapi.Base.Model;
 namespace NHapi.Model.V23.Message
 
 {
-///<summary>
-/// Represents a MFK_M01 message structure (see chapter [AAA]). This structure contains the 
+/// <summary>
+/// Represents a MFK_M01 message structure (see chapter [AAA]). This structure contains the
 /// following elements:
-///<ol>
-///<li>0: MSH (Message header segment) </li>
-///<li>1: MSA (Message acknowledgement segment) </li>
-///<li>2: MFI (Master file identification segment) </li>
-///<li>3: ERR (Error segment) optional </li>
-///<li>4: MFA (Master file acknowledgement segment) optional repeating</li>
-///<li>5: MFI (Master file identification segment) </li>
-///<li>6: MFK_M01_MF (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <ol>
+/// <li>0: MSH (Message header segment) </li>
+/// <li>1: MSA (Message acknowledgement segment) </li>
+/// <li>2: MFI (Master file identification segment) </li>
+/// <li>3: ERR (Error segment) optional </li>
+/// <li>4: MFA (Master file acknowledgement segment) optional repeating</li>
+/// <li>5: MFI (Master file identification segment) </li>
+/// <li>6: MFK_M01_MF (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class MFK_M01 : AbstractMessage  {
 
-	///<summary> 
-	/// Creates a new MFK_M01 Group with custom IModelClassFactory.
-	///</summary>
+    /// <summary>   Creates a new MFK_M01 Group with custom IModelClassFactory. </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	public MFK_M01(IModelClassFactory factory) : base(factory){
 	   init(factory);
 	}
 
-	///<summary>
-	/// Creates a new MFK_M01 Group with DefaultModelClassFactory. 
-	///</summary> 
+    /// <summary>   Creates a new MFK_M01 Group with DefaultModelClassFactory. </summary>
 	public MFK_M01() : base(new DefaultModelClassFactory()) { 
 	   init(new DefaultModelClassFactory());
 	}
 
-	///<summary>
-	/// initalize method for MFK_M01.  This does the segment setup for the message. 
-	///</summary> 
+    /// <summary>
+    /// initalize method for MFK_M01.  This does the segment setup for the message.
+    /// </summary>
+    ///
+    /// <param name="factory">  The factory. </param>
+
 	private void init(IModelClassFactory factory) {
 	   try {
 	      this.add(typeof(MSH), true, false);
@@ -56,6 +59,13 @@ public class MFK_M01 : AbstractMessage  {
 	   }
 	}
 
+    /// <summary>
+    /// Returns the version number.  This default implementation inspects this.GetClass().getName().
+    /// This should be overridden if you are putting a custom message definition in your own package,
+    /// or it will default.
+    /// </summary>
+    ///
+    /// <value> s 2.4 if not obvious from package name. </value>
 
 	public override string Version
 		{
@@ -63,9 +73,11 @@ public class MFK_M01 : AbstractMessage  {
 			return Constants.VERSION;
 			}
 		}
-	///<summary>
-	/// Returns MSH (Message header segment) - creates it if necessary
-	///</summary>
+
+    /// <summary>   Returns MSH (Message header segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msh. </value>
+
 	public MSH MSH { 
 get{
 	   MSH ret = null;
@@ -79,9 +91,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MSA (Message acknowledgement segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns MSA (Message acknowledgement segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The msa. </value>
+
 	public MSA MSA { 
 get{
 	   MSA ret = null;
@@ -95,9 +108,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns MFI (Master file identification segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns MFI (Master file identification segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The mfi. </value>
+
 	public MFI MFI { 
 get{
 	   MFI ret = null;
@@ -111,9 +127,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns ERR (Error segment) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ERR (Error segment) - creates it if necessary. </summary>
+    ///
+    /// <value> The error. </value>
+
 	public ERR ERR { 
 get{
 	   ERR ret = null;
@@ -127,9 +144,15 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of MFA (Master file acknowledgement segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of MFA (Master file acknowledgement segment) - creates it if
+    /// necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The mfa. </returns>
+
 	public MFA GetMFA() {
 	   MFA ret = null;
 	   try {
@@ -141,19 +164,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of MFA
-	/// * (Master file acknowledgement segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of MFA
+    ///  * (Master file acknowledgement segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The mfa. </returns>
+
 	public MFA GetMFA(int rep) { 
 	   return (MFA)this.GetStructure("MFA", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of MFA 
-	 */ 
+    /// <summary>   Gets the mfa repetitions used. </summary>
+    ///
+    /// <value> The mfa repetitions used. </value>
+
 	public int MFARepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -168,9 +197,12 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns MFI2 (Master file identification segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns MFI2 (Master file identification segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <value> The mfi 2. </value>
+
 	public MFI MFI2 { 
 get{
 	   MFI ret = null;
@@ -184,9 +216,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of MFK_M01_MF (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of MFK_M01_MF (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The mf. </returns>
+
 	public MFK_M01_MF GetMF() {
 	   MFK_M01_MF ret = null;
 	   try {
@@ -198,19 +235,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of MFK_M01_MF
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of MFK_M01_MF
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The mf. </returns>
+
 	public MFK_M01_MF GetMF(int rep) { 
 	   return (MFK_M01_MF)this.GetStructure("MF", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of MFK_M01_MF 
-	 */ 
+    /// <summary>   Gets the mf repetitions used. </summary>
+    ///
+    /// <value> The mf repetitions used. </value>
+
 	public int MFRepetitionsUsed { 
 get{
 	    int reps = -1; 

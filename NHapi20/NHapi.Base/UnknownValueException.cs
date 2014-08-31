@@ -23,18 +23,16 @@ namespace NHapi.Base
 {
     using System;
 
-    /// <summary> Thrown when a table value can not be found by a TableRepository. </summary>
-    /// <author>  Bryan Tripp (bryan_tripp@sourceforge.net)
-    /// </author>
+    /// <summary>   Thrown when a table value can not be found by a TableRepository. </summary>
     [Serializable]
     public class UnknownValueException : HL7Exception
     {
         #region Constructors and Destructors
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="message"></param>
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <param name="message">  . </param>
+
         public UnknownValueException(System.String message)
             : base(message, HL7Exception.TABLE_VALUE_NOT_FOUND)
         {

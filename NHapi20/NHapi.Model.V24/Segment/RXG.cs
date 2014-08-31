@@ -7,45 +7,46 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 RXG message segment. 
-/// This segment has the following fields:<ol>
-///<li>RXG-1: Give Sub-ID Counter (NM)</li>
-///<li>RXG-2: Dispense Sub-ID Counter (NM)</li>
-///<li>RXG-3: Quantity/Timing (TQ)</li>
-///<li>RXG-4: Give Code (CE)</li>
-///<li>RXG-5: Give Amount - Minimum (NM)</li>
-///<li>RXG-6: Give Amount - Maximum (NM)</li>
-///<li>RXG-7: Give Units (CE)</li>
-///<li>RXG-8: Give Dosage Form (CE)</li>
-///<li>RXG-9: Administration Notes (CE)</li>
-///<li>RXG-10: Substitution Status (ID)</li>
-///<li>RXG-11: Dispense-To Location (LA2)</li>
-///<li>RXG-12: Needs Human Review (ID)</li>
-///<li>RXG-13: Pharmacy/Treatment Supplier's Special Administration Instructions (CE)</li>
-///<li>RXG-14: Give Per (Time Unit) (ST)</li>
-///<li>RXG-15: Give Rate Amount (ST)</li>
-///<li>RXG-16: Give Rate Units (CE)</li>
-///<li>RXG-17: Give Strength (NM)</li>
-///<li>RXG-18: Give Strength Units (CE)</li>
-///<li>RXG-19: Substance Lot Number (ST)</li>
-///<li>RXG-20: Substance Expiration Date (TS)</li>
-///<li>RXG-21: Substance Manufacturer Name (CE)</li>
-///<li>RXG-22: Indication (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 RXG message segment. This segment has the following fields:<ol>
+/// <li>RXG-1: Give Sub-ID Counter (NM)</li>
+/// <li>RXG-2: Dispense Sub-ID Counter (NM)</li>
+/// <li>RXG-3: Quantity/Timing (TQ)</li>
+/// <li>RXG-4: Give Code (CE)</li>
+/// <li>RXG-5: Give Amount - Minimum (NM)</li>
+/// <li>RXG-6: Give Amount - Maximum (NM)</li>
+/// <li>RXG-7: Give Units (CE)</li>
+/// <li>RXG-8: Give Dosage Form (CE)</li>
+/// <li>RXG-9: Administration Notes (CE)</li>
+/// <li>RXG-10: Substitution Status (ID)</li>
+/// <li>RXG-11: Dispense-To Location (LA2)</li>
+/// <li>RXG-12: Needs Human Review (ID)</li>
+/// <li>RXG-13: Pharmacy/Treatment Supplier's Special Administration Instructions (CE)</li>
+/// <li>RXG-14: Give Per (Time Unit) (ST)</li>
+/// <li>RXG-15: Give Rate Amount (ST)</li>
+/// <li>RXG-16: Give Rate Units (CE)</li>
+/// <li>RXG-17: Give Strength (NM)</li>
+/// <li>RXG-18: Give Strength Units (CE)</li>
+/// <li>RXG-19: Substance Lot Number (ST)</li>
+/// <li>RXG-20: Substance Expiration Date (TS)</li>
+/// <li>RXG-21: Substance Manufacturer Name (CE)</li>
+/// <li>RXG-22: Indication (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class RXG : AbstractSegment  {
 
-  /**
-   * Creates a RXG (Pharmacy/Treatment Give) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the RXG class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RXG(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -76,9 +77,10 @@ public class RXG : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Give Sub-ID Counter(RXG-1).
-	///</summary>
+    /// <summary>   Returns Give Sub-ID Counter(RXG-1). </summary>
+    ///
+    /// <value> The give sub identifier counter. </value>
+
 	public NM GiveSubIDCounter
 	{
 		get{
@@ -99,9 +101,10 @@ public class RXG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Dispense Sub-ID Counter(RXG-2).
-	///</summary>
+    /// <summary>   Returns Dispense Sub-ID Counter(RXG-2). </summary>
+    ///
+    /// <value> The dispense sub identifier counter. </value>
+
 	public NM DispenseSubIDCounter
 	{
 		get{
@@ -122,9 +125,10 @@ public class RXG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Quantity/Timing(RXG-3).
-	///</summary>
+    /// <summary>   Returns Quantity/Timing(RXG-3). </summary>
+    ///
+    /// <value> The quantity timing. </value>
+
 	public TQ QuantityTiming
 	{
 		get{
@@ -145,9 +149,10 @@ public class RXG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Give Code(RXG-4).
-	///</summary>
+    /// <summary>   Returns Give Code(RXG-4). </summary>
+    ///
+    /// <value> The give code. </value>
+
 	public CE GiveCode
 	{
 		get{
@@ -168,9 +173,10 @@ public class RXG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Give Amount - Minimum(RXG-5).
-	///</summary>
+    /// <summary>   Returns Give Amount - Minimum(RXG-5). </summary>
+    ///
+    /// <value> The give amount minimum. </value>
+
 	public NM GiveAmountMinimum
 	{
 		get{
@@ -191,9 +197,10 @@ public class RXG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Give Amount - Maximum(RXG-6).
-	///</summary>
+    /// <summary>   Returns Give Amount - Maximum(RXG-6). </summary>
+    ///
+    /// <value> The give amount maximum. </value>
+
 	public NM GiveAmountMaximum
 	{
 		get{
@@ -214,9 +221,10 @@ public class RXG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Give Units(RXG-7).
-	///</summary>
+    /// <summary>   Returns Give Units(RXG-7). </summary>
+    ///
+    /// <value> The give units. </value>
+
 	public CE GiveUnits
 	{
 		get{
@@ -237,9 +245,10 @@ public class RXG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Give Dosage Form(RXG-8).
-	///</summary>
+    /// <summary>   Returns Give Dosage Form(RXG-8). </summary>
+    ///
+    /// <value> The give dosage form. </value>
+
 	public CE GiveDosageForm
 	{
 		get{
@@ -260,11 +269,17 @@ public class RXG : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Administration Notes(RXG-9).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Administration Notes(RXG-9). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The administration notes. </returns>
+
 	public CE GetAdministrationNotes(int rep)
 	{
 			CE ret = null;
@@ -279,9 +294,12 @@ public class RXG : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Administration Notes (RXG-9).
-   ///</summary>
+  /// <summary> Returns all repetitions of Administration Notes (RXG-9). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetAdministrationNotes() {
      CE[] ret = null;
     try {
@@ -300,9 +318,10 @@ public class RXG : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Administration Notes (RXG-9).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Administration Notes (RXG-9). </summary>
+  ///
+  /// <value>   The administration notes repetitions used. </value>
+
   public int AdministrationNotesRepetitionsUsed
 {
 get{
@@ -318,9 +337,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Substitution Status(RXG-10).
-	///</summary>
+
+    /// <summary>   Returns Substitution Status(RXG-10). </summary>
+    ///
+    /// <value> The substitution status. </value>
+
 	public ID SubstitutionStatus
 	{
 		get{
@@ -341,9 +362,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Dispense-To Location(RXG-11).
-	///</summary>
+    /// <summary>   Returns Dispense-To Location(RXG-11). </summary>
+    ///
+    /// <value> The dispense to location. </value>
+
 	public LA2 DispenseToLocation
 	{
 		get{
@@ -364,9 +386,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Needs Human Review(RXG-12).
-	///</summary>
+    /// <summary>   Returns Needs Human Review(RXG-12). </summary>
+    ///
+    /// <value> The needs human review. </value>
+
 	public ID NeedsHumanReview
 	{
 		get{
@@ -387,11 +410,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Pharmacy/Treatment Supplier's Special Administration Instructions(RXG-13).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Pharmacy/Treatment Supplier's Special Administration
+    /// Instructions(RXG-13). throws HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The pharmacy treatment supplier s special administration instructions. </returns>
+
 	public CE GetPharmacyTreatmentSupplierSSpecialAdministrationInstructions(int rep)
 	{
 			CE ret = null;
@@ -406,9 +435,15 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Pharmacy/Treatment Supplier's Special Administration Instructions (RXG-13).
-   ///</summary>
+  /// <summary>
+  /// Returns all repetitions of Pharmacy/Treatment Supplier's Special Administration Instructions
+  /// (RXG-13).
+  /// </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetPharmacyTreatmentSupplierSSpecialAdministrationInstructions() {
      CE[] ret = null;
     try {
@@ -427,9 +462,15 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Pharmacy/Treatment Supplier's Special Administration Instructions (RXG-13).
-   ///</summary>
+  /// <summary>
+  /// Returns the total repetitions of Pharmacy/Treatment Supplier's Special Administration
+  /// Instructions (RXG-13).
+  /// </summary>
+  ///
+  /// <value>
+  /// The pharmacy treatment supplier s special administration instructions repetitions used.
+  /// </value>
+
   public int PharmacyTreatmentSupplierSSpecialAdministrationInstructionsRepetitionsUsed
 {
 get{
@@ -445,9 +486,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Give Per (Time Unit)(RXG-14).
-	///</summary>
+
+    /// <summary>   Returns Give Per (Time Unit)(RXG-14). </summary>
+    ///
+    /// <value> The give per time unit. </value>
+
 	public ST GivePerTimeUnit
 	{
 		get{
@@ -468,9 +511,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Give Rate Amount(RXG-15).
-	///</summary>
+    /// <summary>   Returns Give Rate Amount(RXG-15). </summary>
+    ///
+    /// <value> The give rate amount. </value>
+
 	public ST GiveRateAmount
 	{
 		get{
@@ -491,9 +535,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Give Rate Units(RXG-16).
-	///</summary>
+    /// <summary>   Returns Give Rate Units(RXG-16). </summary>
+    ///
+    /// <value> The give rate units. </value>
+
 	public CE GiveRateUnits
 	{
 		get{
@@ -514,9 +559,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Give Strength(RXG-17).
-	///</summary>
+    /// <summary>   Returns Give Strength(RXG-17). </summary>
+    ///
+    /// <value> The give strength. </value>
+
 	public NM GiveStrength
 	{
 		get{
@@ -537,9 +583,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Give Strength Units(RXG-18).
-	///</summary>
+    /// <summary>   Returns Give Strength Units(RXG-18). </summary>
+    ///
+    /// <value> The give strength units. </value>
+
 	public CE GiveStrengthUnits
 	{
 		get{
@@ -560,11 +607,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Substance Lot Number(RXG-19).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Substance Lot Number(RXG-19). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The substance lot number. </returns>
+
 	public ST GetSubstanceLotNumber(int rep)
 	{
 			ST ret = null;
@@ -579,9 +632,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Substance Lot Number (RXG-19).
-   ///</summary>
+  /// <summary> Returns all repetitions of Substance Lot Number (RXG-19). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetSubstanceLotNumber() {
      ST[] ret = null;
     try {
@@ -600,9 +656,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Substance Lot Number (RXG-19).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Substance Lot Number (RXG-19). </summary>
+  ///
+  /// <value>   The substance lot number repetitions used. </value>
+
   public int SubstanceLotNumberRepetitionsUsed
 {
 get{
@@ -618,11 +675,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Substance Expiration Date(RXG-20).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Substance Expiration Date(RXG-20). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The substance expiration date. </returns>
+
 	public TS GetSubstanceExpirationDate(int rep)
 	{
 			TS ret = null;
@@ -637,9 +701,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Substance Expiration Date (RXG-20).
-   ///</summary>
+  /// <summary> Returns all repetitions of Substance Expiration Date (RXG-20). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ts. </returns>
+
   public TS[] GetSubstanceExpirationDate() {
      TS[] ret = null;
     try {
@@ -658,9 +725,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Substance Expiration Date (RXG-20).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Substance Expiration Date (RXG-20). </summary>
+  ///
+  /// <value>   The substance expiration date repetitions used. </value>
+
   public int SubstanceExpirationDateRepetitionsUsed
 {
 get{
@@ -676,11 +744,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Substance Manufacturer Name(RXG-21).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Substance Manufacturer Name(RXG-21). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The substance manufacturer name. </returns>
+
 	public CE GetSubstanceManufacturerName(int rep)
 	{
 			CE ret = null;
@@ -695,9 +770,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Substance Manufacturer Name (RXG-21).
-   ///</summary>
+  /// <summary> Returns all repetitions of Substance Manufacturer Name (RXG-21). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetSubstanceManufacturerName() {
      CE[] ret = null;
     try {
@@ -716,9 +794,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Substance Manufacturer Name (RXG-21).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Substance Manufacturer Name (RXG-21). </summary>
+  ///
+  /// <value>   The substance manufacturer name repetitions used. </value>
+
   public int SubstanceManufacturerNameRepetitionsUsed
 {
 get{
@@ -734,11 +813,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Indication(RXG-22).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Indication(RXG-22). throws HL7Exception if the repetition
+    /// number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The indication. </returns>
+
 	public CE GetIndication(int rep)
 	{
 			CE ret = null;
@@ -753,9 +839,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Indication (RXG-22).
-   ///</summary>
+  /// <summary> Returns all repetitions of Indication (RXG-22). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetIndication() {
      CE[] ret = null;
     try {
@@ -774,9 +863,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Indication (RXG-22).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Indication (RXG-22). </summary>
+  ///
+  /// <value>   The indication repetitions used. </value>
+
   public int IndicationRepetitionsUsed
 {
 get{

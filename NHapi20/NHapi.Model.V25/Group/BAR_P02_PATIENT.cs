@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V25.Group
 {
-///<summary>
-///Represents the BAR_P02_PATIENT Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: PID (Patient Identification) </li>
-///<li>1: PD1 (Patient Additional Demographic) optional </li>
-///<li>2: PV1 (Patient Visit) optional </li>
-///<li>3: DB1 (Disability) optional repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the BAR_P02_PATIENT Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: PID (Patient Identification) </li>
+/// <li>1: PD1 (Patient Additional Demographic) optional </li>
+/// <li>2: PV1 (Patient Visit) optional </li>
+/// <li>3: DB1 (Disability) optional repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class BAR_P02_PATIENT : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new BAR_P02_PATIENT Group.
-	///</summary>
+    /// <summary>   Creates a new BAR_P02_PATIENT Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public BAR_P02_PATIENT(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(PID), true, false);
@@ -36,9 +39,10 @@ public class BAR_P02_PATIENT : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns PID (Patient Identification) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PID (Patient Identification) - creates it if necessary. </summary>
+    ///
+    /// <value> The PID. </value>
+
 	public PID PID { 
 get{
 	   PID ret = null;
@@ -52,9 +56,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PD1 (Patient Additional Demographic) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PD1 (Patient Additional Demographic) - creates it if necessary. </summary>
+    ///
+    /// <value> The pd 1. </value>
+
 	public PD1 PD1 { 
 get{
 	   PD1 ret = null;
@@ -68,9 +73,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns PV1 (Patient Visit) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns PV1 (Patient Visit) - creates it if necessary. </summary>
+    ///
+    /// <value> The pv 1. </value>
+
 	public PV1 PV1 { 
 get{
 	   PV1 ret = null;
@@ -84,9 +90,12 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of DB1 (Disability) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns  first repetition of DB1 (Disability) - creates it if necessary. </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The database 1. </returns>
+
 	public DB1 GetDB1() {
 	   DB1 ret = null;
 	   try {
@@ -98,19 +107,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of DB1
-	/// * (Disability) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of DB1
+    ///  * (Disability) - creates it if necessary throws HL7Exception if the repetition requested is
+    ///  more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The database 1. </returns>
+
 	public DB1 GetDB1(int rep) { 
 	   return (DB1)this.GetStructure("DB1", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of DB1 
-	 */ 
+    /// <summary>   Gets the database 1 repetitions used. </summary>
+    ///
+    /// <value> The database 1 repetitions used. </value>
+
 	public int DB1RepetitionsUsed { 
 get{
 	    int reps = -1; 

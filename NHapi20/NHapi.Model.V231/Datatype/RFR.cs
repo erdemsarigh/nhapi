@@ -6,8 +6,7 @@ using NHapi.Base.Model.Primitive;
 
 namespace NHapi.Model.V231.Datatype
 {
-
-///<summary>
+/// <summary>
 /// <p>The HL7 RFR (reference range) data type.  Consists of the following components: </p><ol>
 /// <li>numeric range (NR)</li>
 /// <li>administrative sex (IS)</li>
@@ -17,22 +16,24 @@ namespace NHapi.Model.V231.Datatype
 /// <li>race/subspecies (ST)</li>
 /// <li>conditions (TX)</li>
 /// </ol>
-///</summary>
+/// </summary>
+
 [Serializable]
 public class RFR : AbstractType, IComposite{
+    /// <summary>   The data. </summary>
 	private IType[] data;
 
-	///<summary>
-	/// Creates a RFR.
-	/// <param name="message">The Message to which this Type belongs</param>
-	///</summary>
+    /// <summary>   Creates a RFR. </summary>
+    ///
+    /// <param name="message">  The Message to which this Type belongs. </param>
+
 	public RFR(IMessage message) : this(message, null){}
 
-	///<summary>
-	/// Creates a RFR.
-	/// <param name="message">The Message to which this Type belongs</param>
-	/// <param name="description">The description of this type</param>
-	///</summary>
+    /// <summary>   Creates a RFR. </summary>
+    ///
+    /// <param name="message">      The Message to which this Type belongs. </param>
+    /// <param name="description">  The description of this type. </param>
+
 	public RFR(IMessage message, string description) : base(message, description){
 		data = new IType[7];
 		data[0] = new NR(message,"Numeric range");
@@ -44,9 +45,10 @@ public class RFR : AbstractType, IComposite{
 		data[6] = new TX(message,"Conditions");
 	}
 
-	///<summary>
-	/// Returns an array containing the data elements.
-	///</summary>
+    /// <summary>   Returns an array containing the data elements. </summary>
+    ///
+    /// <value> The components. </value>
+
 	public IType[] Components
 	{ 
 		get{
@@ -54,12 +56,15 @@ public class RFR : AbstractType, IComposite{
 		}
 	}
 
-	///<summary>
-	/// Returns an individual data component.
-	/// @throws DataTypeException if the given element number is out of range.
-	///<param name="index">The index item to get (zero based)</param>
-	///<returns>The data component (as a type) at the requested number (ordinal)</returns>
-	///</summary>
+    /// <summary>
+    /// Returns an individual data component.
+    /// @throws DataTypeException if the given element number is out of range.
+    /// </summary>
+    ///
+    /// <param name="index">    The index item to get (zero based) </param>
+    ///
+    /// <returns>   The data component (as a type) at the requested number (ordinal) </returns>
+
 	public IType this[int index] { 
 
 get{
@@ -70,10 +75,14 @@ get{
 		} 
 	} 
 	} 
-	///<summary>
-	/// Returns numeric range (component #0).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns numeric range (component #0).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The total number of eric range. </value>
+
 	public NR NumericRange {
 get{
 	   NR ret = null;
@@ -87,10 +96,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns administrative sex (component #1).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns administrative sex (component #1).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The administrative sex. </value>
+
 	public IS AdministrativeSex {
 get{
 	   IS ret = null;
@@ -104,10 +117,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns age range (component #2).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns age range (component #2).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The age range. </value>
+
 	public NR AgeRange {
 get{
 	   NR ret = null;
@@ -121,10 +138,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns gestational age range (component #3).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns gestational age range (component #3).  This is a convenience method that saves you
+    /// from casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The gestational age range. </value>
+
 	public NR GestationalAgeRange {
 get{
 	   NR ret = null;
@@ -138,10 +159,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns species (component #4).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns species (component #4).  This is a convenience method that saves you from casting and
+    /// handling an exception.
+    /// </summary>
+    ///
+    /// <value> The species. </value>
+
 	public TX Species {
 get{
 	   TX ret = null;
@@ -155,10 +180,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns race/subspecies (component #5).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns race/subspecies (component #5).  This is a convenience method that saves you from
+    /// casting and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The race subspecies. </value>
+
 	public ST RaceSubspecies {
 get{
 	   ST ret = null;
@@ -172,10 +201,14 @@ get{
 }
 
 }
-	///<summary>
-	/// Returns conditions (component #6).  This is a convenience method that saves you from 
-	/// casting and handling an exception.
-	///</summary>
+
+    /// <summary>
+    /// Returns conditions (component #6).  This is a convenience method that saves you from casting
+    /// and handling an exception.
+    /// </summary>
+    ///
+    /// <value> The conditions. </value>
+
 	public TX Conditions {
 get{
 	   TX ret = null;

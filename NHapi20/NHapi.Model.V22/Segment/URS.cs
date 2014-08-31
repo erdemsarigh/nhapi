@@ -7,31 +7,32 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V22.Segment{
 
-///<summary>
-/// Represents an HL7 URS message segment. 
-/// This segment has the following fields:<ol>
-///<li>URS-1: R/U Where Subject Definition (ST)</li>
-///<li>URS-2: R/U when data start date / time (TS)</li>
-///<li>URS-3: R/U when data end date / time (TS)</li>
-///<li>URS-4: R/U What User Qualifier (ST)</li>
-///<li>URS-5: R/U Other Results Subject Definition (ST)</li>
-///<li>URS-6: R/U which date / time qualifier (ID)</li>
-///<li>URS-7: R/U which date / time status qualifier (ID)</li>
-///<li>URS-8: R/U date / time selection qualifier (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 URS message segment. This segment has the following fields:<ol>
+/// <li>URS-1: R/U Where Subject Definition (ST)</li>
+/// <li>URS-2: R/U when data start date / time (TS)</li>
+/// <li>URS-3: R/U when data end date / time (TS)</li>
+/// <li>URS-4: R/U What User Qualifier (ST)</li>
+/// <li>URS-5: R/U Other Results Subject Definition (ST)</li>
+/// <li>URS-6: R/U which date / time qualifier (ID)</li>
+/// <li>URS-7: R/U which date / time status qualifier (ID)</li>
+/// <li>URS-8: R/U date / time selection qualifier (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class URS : AbstractSegment  {
 
-  /**
-   * Creates a URS (UNSOLICITED SELECTION) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the URS class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public URS(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -48,11 +49,17 @@ public class URS : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns a single repetition of R/U Where Subject Definition(URS-1).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of R/U Where Subject Definition(URS-1). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ru where subject definition. </returns>
+
 	public ST GetRUWhereSubjectDefinition(int rep)
 	{
 			ST ret = null;
@@ -67,9 +74,12 @@ public class URS : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of R/U Where Subject Definition (URS-1).
-   ///</summary>
+  /// <summary> Returns all repetitions of R/U Where Subject Definition (URS-1). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetRUWhereSubjectDefinition() {
      ST[] ret = null;
     try {
@@ -88,9 +98,10 @@ public class URS : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of R/U Where Subject Definition (URS-1).
-   ///</summary>
+  /// <summary> Returns the total repetitions of R/U Where Subject Definition (URS-1). </summary>
+  ///
+  /// <value>   The ru where subject definition repetitions used. </value>
+
   public int RUWhereSubjectDefinitionRepetitionsUsed
 {
 get{
@@ -106,9 +117,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns R/U when data start date / time(URS-2).
-	///</summary>
+
+    /// <summary>   Returns R/U when data start date / time(URS-2). </summary>
+    ///
+    /// <value> The ru when data start date time. </value>
+
 	public TS RUWhenDataStartDateTime
 	{
 		get{
@@ -129,9 +142,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns R/U when data end date / time(URS-3).
-	///</summary>
+    /// <summary>   Returns R/U when data end date / time(URS-3). </summary>
+    ///
+    /// <value> The ru when data end date time. </value>
+
 	public TS RUWhenDataEndDateTime
 	{
 		get{
@@ -152,11 +166,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of R/U What User Qualifier(URS-4).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of R/U What User Qualifier(URS-4). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ru what user qualifier. </returns>
+
 	public ST GetRUWhatUserQualifier(int rep)
 	{
 			ST ret = null;
@@ -171,9 +191,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of R/U What User Qualifier (URS-4).
-   ///</summary>
+  /// <summary> Returns all repetitions of R/U What User Qualifier (URS-4). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetRUWhatUserQualifier() {
      ST[] ret = null;
     try {
@@ -192,9 +215,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of R/U What User Qualifier (URS-4).
-   ///</summary>
+  /// <summary> Returns the total repetitions of R/U What User Qualifier (URS-4). </summary>
+  ///
+  /// <value>   The ru what user qualifier repetitions used. </value>
+
   public int RUWhatUserQualifierRepetitionsUsed
 {
 get{
@@ -210,11 +234,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of R/U Other Results Subject Definition(URS-5).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of R/U Other Results Subject Definition(URS-5). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ru other results subject definition. </returns>
+
 	public ST GetRUOtherResultsSubjectDefinition(int rep)
 	{
 			ST ret = null;
@@ -229,9 +260,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of R/U Other Results Subject Definition (URS-5).
-   ///</summary>
+  /// <summary> Returns all repetitions of R/U Other Results Subject Definition (URS-5). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of st. </returns>
+
   public ST[] GetRUOtherResultsSubjectDefinition() {
      ST[] ret = null;
     try {
@@ -250,9 +284,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of R/U Other Results Subject Definition (URS-5).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The ru other results subject definition repetitions used. </value>
+
   public int RUOtherResultsSubjectDefinitionRepetitionsUsed
 {
 get{
@@ -268,11 +305,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of R/U which date / time qualifier(URS-6).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of R/U which date / time qualifier(URS-6). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ru which date time qualifier. </returns>
+
 	public ID GetRUWhichDateTimeQualifier(int rep)
 	{
 			ID ret = null;
@@ -287,9 +331,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of R/U which date / time qualifier (URS-6).
-   ///</summary>
+  /// <summary> Returns all repetitions of R/U which date / time qualifier (URS-6). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetRUWhichDateTimeQualifier() {
      ID[] ret = null;
     try {
@@ -308,9 +355,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of R/U which date / time qualifier (URS-6).
-   ///</summary>
+  /// <summary> Returns the total repetitions of R/U which date / time qualifier (URS-6). </summary>
+  ///
+  /// <value>   The ru which date time qualifier repetitions used. </value>
+
   public int RUWhichDateTimeQualifierRepetitionsUsed
 {
 get{
@@ -326,11 +374,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of R/U which date / time status qualifier(URS-7).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of R/U which date / time status qualifier(URS-7). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ru which date time status qualifier. </returns>
+
 	public ID GetRUWhichDateTimeStatusQualifier(int rep)
 	{
 			ID ret = null;
@@ -345,9 +400,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of R/U which date / time status qualifier (URS-7).
-   ///</summary>
+  /// <summary> Returns all repetitions of R/U which date / time status qualifier (URS-7). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetRUWhichDateTimeStatusQualifier() {
      ID[] ret = null;
     try {
@@ -366,9 +424,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of R/U which date / time status qualifier (URS-7).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The ru which date time status qualifier repetitions used. </value>
+
   public int RUWhichDateTimeStatusQualifierRepetitionsUsed
 {
 get{
@@ -384,11 +445,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of R/U date / time selection qualifier(URS-8).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of R/U date / time selection qualifier(URS-8). throws
+    /// HL7Exception if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The ru date time selection qualifier. </returns>
+
 	public ID GetRUDateTimeSelectionQualifier(int rep)
 	{
 			ID ret = null;
@@ -403,9 +471,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of R/U date / time selection qualifier (URS-8).
-   ///</summary>
+  /// <summary> Returns all repetitions of R/U date / time selection qualifier (URS-8). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of identifier. </returns>
+
   public ID[] GetRUDateTimeSelectionQualifier() {
      ID[] ret = null;
     try {
@@ -424,9 +495,12 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
+  /// <summary>
   /// Returns the total repetitions of R/U date / time selection qualifier (URS-8).
-   ///</summary>
+  /// </summary>
+  ///
+  /// <value>   The ru date time selection qualifier repetitions used. </value>
+
   public int RUDateTimeSelectionQualifierRepetitionsUsed
 {
 get{

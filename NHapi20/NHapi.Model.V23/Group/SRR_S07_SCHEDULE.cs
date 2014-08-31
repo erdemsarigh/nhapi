@@ -8,23 +8,26 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V23.Group
 {
-///<summary>
-///Represents the SRR_S07_SCHEDULE Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: SCH (Schedule Activity Information) </li>
-///<li>1: NTE (Notes and comments segment) optional repeating</li>
-///<li>2: SRR_S07_PATIENT (a Group object) optional repeating</li>
-///<li>3: SRR_S07_RESOURCES (a Group object) repeating</li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the SRR_S07_SCHEDULE Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: SCH (Schedule Activity Information) </li>
+/// <li>1: NTE (Notes and comments segment) optional repeating</li>
+/// <li>2: SRR_S07_PATIENT (a Group object) optional repeating</li>
+/// <li>3: SRR_S07_RESOURCES (a Group object) repeating</li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class SRR_S07_SCHEDULE : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new SRR_S07_SCHEDULE Group.
-	///</summary>
+    /// <summary>   Creates a new SRR_S07_SCHEDULE Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SRR_S07_SCHEDULE(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(SCH), true, false);
@@ -36,9 +39,10 @@ public class SRR_S07_SCHEDULE : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns SCH (Schedule Activity Information) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns SCH (Schedule Activity Information) - creates it if necessary. </summary>
+    ///
+    /// <value> The sch. </value>
+
 	public SCH SCH { 
 get{
 	   SCH ret = null;
@@ -52,9 +56,14 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of NTE (Notes and comments segment) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE() {
 	   NTE ret = null;
 	   try {
@@ -66,19 +75,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of NTE
-	/// * (Notes and comments segment) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of NTE
+    ///  * (Notes and comments segment) - creates it if necessary throws HL7Exception if the
+    ///  repetition requested is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The nte. </returns>
+
 	public NTE GetNTE(int rep) { 
 	   return (NTE)this.GetStructure("NTE", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of NTE 
-	 */ 
+    /// <summary>   Gets the nte repetitions used. </summary>
+    ///
+    /// <value> The nte repetitions used. </value>
+
 	public int NTERepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -93,9 +108,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of SRR_S07_PATIENT (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of SRR_S07_PATIENT (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The patient. </returns>
+
 	public SRR_S07_PATIENT GetPATIENT() {
 	   SRR_S07_PATIENT ret = null;
 	   try {
@@ -107,19 +127,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of SRR_S07_PATIENT
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of SRR_S07_PATIENT
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The patient. </returns>
+
 	public SRR_S07_PATIENT GetPATIENT(int rep) { 
 	   return (SRR_S07_PATIENT)this.GetStructure("PATIENT", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of SRR_S07_PATIENT 
-	 */ 
+    /// <summary>   Gets the patient repetitions used. </summary>
+    ///
+    /// <value> The patient repetitions used. </value>
+
 	public int PATIENTRepetitionsUsed { 
 get{
 	    int reps = -1; 
@@ -134,9 +160,14 @@ get{
 	}
 	} 
 
-	///<summary>
-	/// Returns  first repetition of SRR_S07_RESOURCES (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>
+    /// Returns  first repetition of SRR_S07_RESOURCES (a Group object) - creates it if necessary.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <returns>   The resources. </returns>
+
 	public SRR_S07_RESOURCES GetRESOURCES() {
 	   SRR_S07_RESOURCES ret = null;
 	   try {
@@ -148,19 +179,25 @@ get{
 	   return ret;
 	}
 
-	///<summary>
-	///Returns a specific repetition of SRR_S07_RESOURCES
-	/// * (a Group object) - creates it if necessary
-	/// throws HL7Exception if the repetition requested is more than one 
-	///     greater than the number of existing repetitions.
-	///</summary>
+    /// <summary>
+    /// Returns a specific repetition of SRR_S07_RESOURCES
+    ///  * (a Group object) - creates it if necessary throws HL7Exception if the repetition requested
+    ///  is more than one
+    ///      greater than the number of existing repetitions.
+    /// </summary>
+    ///
+    /// <param name="rep">  The rep. </param>
+    ///
+    /// <returns>   The resources. </returns>
+
 	public SRR_S07_RESOURCES GetRESOURCES(int rep) { 
 	   return (SRR_S07_RESOURCES)this.GetStructure("RESOURCES", rep);
 	}
 
-	/** 
-	 * Returns the number of existing repetitions of SRR_S07_RESOURCES 
-	 */ 
+    /// <summary>   Gets the resources repetitions used. </summary>
+    ///
+    /// <value> The resources repetitions used. </value>
+
 	public int RESOURCESRepetitionsUsed { 
 get{
 	    int reps = -1; 

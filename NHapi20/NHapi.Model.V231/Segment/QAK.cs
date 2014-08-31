@@ -7,25 +7,26 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V231.Segment{
 
-///<summary>
-/// Represents an HL7 QAK message segment. 
-/// This segment has the following fields:<ol>
-///<li>QAK-1: Query Tag (ST)</li>
-///<li>QAK-2: Query Response Status (ID)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 QAK message segment. This segment has the following fields:<ol>
+/// <li>QAK-1: Query Tag (ST)</li>
+/// <li>QAK-2: Query Response Status (ID)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class QAK : AbstractSegment  {
 
-  /**
-   * Creates a QAK (Query Acknowledgement) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the QAK class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public QAK(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -36,9 +37,10 @@ public class QAK : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns Query Tag(QAK-1).
-	///</summary>
+    /// <summary>   Returns Query Tag(QAK-1). </summary>
+    ///
+    /// <value> The query tag. </value>
+
 	public ST QueryTag
 	{
 		get{
@@ -59,9 +61,10 @@ public class QAK : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Query Response Status(QAK-2).
-	///</summary>
+    /// <summary>   Returns Query Response Status(QAK-2). </summary>
+    ///
+    /// <value> The query response status. </value>
+
 	public ID QueryResponseStatus
 	{
 		get{

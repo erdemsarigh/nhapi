@@ -8,21 +8,24 @@ using NHapi.Base.Model;
 
 namespace NHapi.Model.V24.Group
 {
-///<summary>
-///Represents the RRG_O16_ORDER Group.  A Group is an ordered collection of message 
-/// segments that can repeat together or be optionally in/excluded together.
-/// This Group contains the following elements: 
-///<ol>
-///<li>0: ORC (Common Order) </li>
-///<li>1: RRG_O16_GIVE (a Group object) optional </li>
-///</ol>
-///</summary>
+/// <summary>
+/// Represents the RRG_O16_ORDER Group.  A Group is an ordered collection of message
+///  segments that can repeat together or be optionally in/excluded together. This Group contains
+///  the following elements:
+/// <ol>
+/// <li>0: ORC (Common Order) </li>
+/// <li>1: RRG_O16_GIVE (a Group object) optional </li>
+/// </ol>
+/// </summary>
+
 [Serializable]
 public class RRG_O16_ORDER : AbstractGroup {
 
-	///<summary> 
-	/// Creates a new RRG_O16_ORDER Group.
-	///</summary>
+    /// <summary>   Creates a new RRG_O16_ORDER Group. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public RRG_O16_ORDER(IGroup parent, IModelClassFactory factory) : base(parent, factory){
 	   try {
 	      this.add(typeof(ORC), true, false);
@@ -32,9 +35,10 @@ public class RRG_O16_ORDER : AbstractGroup {
 	   }
 	}
 
-	///<summary>
-	/// Returns ORC (Common Order) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns ORC (Common Order) - creates it if necessary. </summary>
+    ///
+    /// <value> The orc. </value>
+
 	public ORC ORC { 
 get{
 	   ORC ret = null;
@@ -48,9 +52,10 @@ get{
 	}
 	}
 
-	///<summary>
-	/// Returns RRG_O16_GIVE (a Group object) - creates it if necessary
-	///</summary>
+    /// <summary>   Returns RRG_O16_GIVE (a Group object) - creates it if necessary. </summary>
+    ///
+    /// <value> The give. </value>
+
 	public RRG_O16_GIVE GIVE { 
 get{
 	   RRG_O16_GIVE ret = null;

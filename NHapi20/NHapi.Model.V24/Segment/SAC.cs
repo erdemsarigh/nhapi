@@ -7,67 +7,68 @@ using NHapi.Base.Log;
 
 namespace NHapi.Model.V24.Segment{
 
-///<summary>
-/// Represents an HL7 SAC message segment. 
-/// This segment has the following fields:<ol>
-///<li>SAC-1: External Accession Identifier (EI)</li>
-///<li>SAC-2: Accession Identifier (EI)</li>
-///<li>SAC-3: Container Identifier (EI)</li>
-///<li>SAC-4: Primary (parent) Container Identifier (EI)</li>
-///<li>SAC-5: Equipment Container Identifier (EI)</li>
-///<li>SAC-6: Specimen Source (SPS)</li>
-///<li>SAC-7: Registration Date/Time (TS)</li>
-///<li>SAC-8: Container Status (CE)</li>
-///<li>SAC-9: Carrier Type (CE)</li>
-///<li>SAC-10: Carrier Identifier (EI)</li>
-///<li>SAC-11: Position in Carrier (NA)</li>
-///<li>SAC-12: Tray Type - SAC (CE)</li>
-///<li>SAC-13: Tray Identifier (EI)</li>
-///<li>SAC-14: Position in Tray (NA)</li>
-///<li>SAC-15: Location (CE)</li>
-///<li>SAC-16: Container Height (NM)</li>
-///<li>SAC-17: Container Diameter (NM)</li>
-///<li>SAC-18: Barrier Delta (NM)</li>
-///<li>SAC-19: Bottom Delta (NM)</li>
-///<li>SAC-20: Container Height/Diameter/Delta Units (CE)</li>
-///<li>SAC-21: Container Volume (NM)</li>
-///<li>SAC-22: Available Volume (NM)</li>
-///<li>SAC-23: Initial Specimen Volume (NM)</li>
-///<li>SAC-24: Volume  Units (CE)</li>
-///<li>SAC-25: Separator Type (CE)</li>
-///<li>SAC-26: Cap Type (CE)</li>
-///<li>SAC-27: Additive (CE)</li>
-///<li>SAC-28: Specimen Component (CE)</li>
-///<li>SAC-29: Dilution Factor (SN)</li>
-///<li>SAC-30: Treatment (CE)</li>
-///<li>SAC-31: Temperature (SN)</li>
-///<li>SAC-32: Hemolysis Index (NM)</li>
-///<li>SAC-33: Hemolysis Index Units (CE)</li>
-///<li>SAC-34: Lipemia Index (NM)</li>
-///<li>SAC-35: Lipemia Index Units (CE)</li>
-///<li>SAC-36: Icterus Index (NM)</li>
-///<li>SAC-37: Icterus Index Units (CE)</li>
-///<li>SAC-38: Fibrin Index (NM)</li>
-///<li>SAC-39: Fibrin Index Units (CE)</li>
-///<li>SAC-40: System Induced Contaminants (CE)</li>
-///<li>SAC-41: Drug Interference (CE)</li>
-///<li>SAC-42: Artificial Blood (CE)</li>
-///<li>SAC-43: Special Handling Considerations (CE)</li>
-///<li>SAC-44: Other Environmental Factors (CE)</li>
-///</ol>
-/// The get...() methods return data from individual fields.  These methods 
-/// do not throw exceptions and may therefore have to handle exceptions internally.  
+/// <summary>
+/// Represents an HL7 SAC message segment. This segment has the following fields:<ol>
+/// <li>SAC-1: External Accession Identifier (EI)</li>
+/// <li>SAC-2: Accession Identifier (EI)</li>
+/// <li>SAC-3: Container Identifier (EI)</li>
+/// <li>SAC-4: Primary (parent) Container Identifier (EI)</li>
+/// <li>SAC-5: Equipment Container Identifier (EI)</li>
+/// <li>SAC-6: Specimen Source (SPS)</li>
+/// <li>SAC-7: Registration Date/Time (TS)</li>
+/// <li>SAC-8: Container Status (CE)</li>
+/// <li>SAC-9: Carrier Type (CE)</li>
+/// <li>SAC-10: Carrier Identifier (EI)</li>
+/// <li>SAC-11: Position in Carrier (NA)</li>
+/// <li>SAC-12: Tray Type - SAC (CE)</li>
+/// <li>SAC-13: Tray Identifier (EI)</li>
+/// <li>SAC-14: Position in Tray (NA)</li>
+/// <li>SAC-15: Location (CE)</li>
+/// <li>SAC-16: Container Height (NM)</li>
+/// <li>SAC-17: Container Diameter (NM)</li>
+/// <li>SAC-18: Barrier Delta (NM)</li>
+/// <li>SAC-19: Bottom Delta (NM)</li>
+/// <li>SAC-20: Container Height/Diameter/Delta Units (CE)</li>
+/// <li>SAC-21: Container Volume (NM)</li>
+/// <li>SAC-22: Available Volume (NM)</li>
+/// <li>SAC-23: Initial Specimen Volume (NM)</li>
+/// <li>SAC-24: Volume  Units (CE)</li>
+/// <li>SAC-25: Separator Type (CE)</li>
+/// <li>SAC-26: Cap Type (CE)</li>
+/// <li>SAC-27: Additive (CE)</li>
+/// <li>SAC-28: Specimen Component (CE)</li>
+/// <li>SAC-29: Dilution Factor (SN)</li>
+/// <li>SAC-30: Treatment (CE)</li>
+/// <li>SAC-31: Temperature (SN)</li>
+/// <li>SAC-32: Hemolysis Index (NM)</li>
+/// <li>SAC-33: Hemolysis Index Units (CE)</li>
+/// <li>SAC-34: Lipemia Index (NM)</li>
+/// <li>SAC-35: Lipemia Index Units (CE)</li>
+/// <li>SAC-36: Icterus Index (NM)</li>
+/// <li>SAC-37: Icterus Index Units (CE)</li>
+/// <li>SAC-38: Fibrin Index (NM)</li>
+/// <li>SAC-39: Fibrin Index Units (CE)</li>
+/// <li>SAC-40: System Induced Contaminants (CE)</li>
+/// <li>SAC-41: Drug Interference (CE)</li>
+/// <li>SAC-42: Artificial Blood (CE)</li>
+/// <li>SAC-43: Special Handling Considerations (CE)</li>
+/// <li>SAC-44: Other Environmental Factors (CE)</li>
+/// </ol>
+/// The get...() methods return data from individual fields.  These methods do not throw
+/// exceptions and may therefore have to handle exceptions internally.  
 /// If an exception is handled internally, it is logged and null is returned.  
-/// This is not expected to happen - if it does happen this indicates not so much 
-/// an exceptional circumstance as a bug in the code for this class.
-///</summary>
+/// This is not expected to happen - if it does happen this indicates not so much an exceptional
+/// circumstance as a bug in the code for this class.
+/// </summary>
+
 [Serializable]
 public class SAC : AbstractSegment  {
 
-  /**
-   * Creates a SAC (Specimen and container detail) segment object that belongs to the given 
-   * message.  
-   */
+    /// <summary>   Initializes a new instance of the SAC class. </summary>
+    ///
+    /// <param name="parent">   The parent. </param>
+    /// <param name="factory">  The factory. </param>
+
 	public SAC(IGroup parent, IModelClassFactory factory) : base(parent,factory) {
 	IMessage message = Message;
     try {
@@ -120,9 +121,10 @@ public class SAC : AbstractSegment  {
     }
   }
 
-	///<summary>
-	/// Returns External Accession Identifier(SAC-1).
-	///</summary>
+    /// <summary>   Returns External Accession Identifier(SAC-1). </summary>
+    ///
+    /// <value> The identifier of the external accession. </value>
+
 	public EI ExternalAccessionIdentifier
 	{
 		get{
@@ -143,9 +145,10 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Accession Identifier(SAC-2).
-	///</summary>
+    /// <summary>   Returns Accession Identifier(SAC-2). </summary>
+    ///
+    /// <value> The identifier of the accession. </value>
+
 	public EI AccessionIdentifier
 	{
 		get{
@@ -166,9 +169,10 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Container Identifier(SAC-3).
-	///</summary>
+    /// <summary>   Returns Container Identifier(SAC-3). </summary>
+    ///
+    /// <value> The identifier of the container. </value>
+
 	public EI ContainerIdentifier
 	{
 		get{
@@ -189,9 +193,10 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Primary (parent) Container Identifier(SAC-4).
-	///</summary>
+    /// <summary>   Returns Primary (parent) Container Identifier(SAC-4). </summary>
+    ///
+    /// <value> The identifier of the primary parent container. </value>
+
 	public EI PrimaryParentContainerIdentifier
 	{
 		get{
@@ -212,9 +217,10 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Equipment Container Identifier(SAC-5).
-	///</summary>
+    /// <summary>   Returns Equipment Container Identifier(SAC-5). </summary>
+    ///
+    /// <value> The identifier of the equipment container. </value>
+
 	public EI EquipmentContainerIdentifier
 	{
 		get{
@@ -235,9 +241,10 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Specimen Source(SAC-6).
-	///</summary>
+    /// <summary>   Returns Specimen Source(SAC-6). </summary>
+    ///
+    /// <value> The specimen source. </value>
+
 	public SPS SpecimenSource
 	{
 		get{
@@ -258,9 +265,10 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Registration Date/Time(SAC-7).
-	///</summary>
+    /// <summary>   Returns Registration Date/Time(SAC-7). </summary>
+    ///
+    /// <value> The registration date time. </value>
+
 	public TS RegistrationDateTime
 	{
 		get{
@@ -281,9 +289,10 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Container Status(SAC-8).
-	///</summary>
+    /// <summary>   Returns Container Status(SAC-8). </summary>
+    ///
+    /// <value> The container status. </value>
+
 	public CE ContainerStatus
 	{
 		get{
@@ -304,9 +313,10 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Carrier Type(SAC-9).
-	///</summary>
+    /// <summary>   Returns Carrier Type(SAC-9). </summary>
+    ///
+    /// <value> The type of the carrier. </value>
+
 	public CE CarrierType
 	{
 		get{
@@ -327,9 +337,10 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Carrier Identifier(SAC-10).
-	///</summary>
+    /// <summary>   Returns Carrier Identifier(SAC-10). </summary>
+    ///
+    /// <value> The identifier of the carrier. </value>
+
 	public EI CarrierIdentifier
 	{
 		get{
@@ -350,9 +361,10 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Position in Carrier(SAC-11).
-	///</summary>
+    /// <summary>   Returns Position in Carrier(SAC-11). </summary>
+    ///
+    /// <value> The position in carrier. </value>
+
 	public NA PositionInCarrier
 	{
 		get{
@@ -373,9 +385,10 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Tray Type - SAC(SAC-12).
-	///</summary>
+    /// <summary>   Returns Tray Type - SAC(SAC-12). </summary>
+    ///
+    /// <value> The tray type sac. </value>
+
 	public CE TrayTypeSAC
 	{
 		get{
@@ -396,9 +409,10 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Tray Identifier(SAC-13).
-	///</summary>
+    /// <summary>   Returns Tray Identifier(SAC-13). </summary>
+    ///
+    /// <value> The identifier of the tray. </value>
+
 	public EI TrayIdentifier
 	{
 		get{
@@ -419,9 +433,10 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns Position in Tray(SAC-14).
-	///</summary>
+    /// <summary>   Returns Position in Tray(SAC-14). </summary>
+    ///
+    /// <value> The position in tray. </value>
+
 	public NA PositionInTray
 	{
 		get{
@@ -442,11 +457,17 @@ public class SAC : AbstractSegment  {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Location(SAC-15).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Location(SAC-15). throws HL7Exception if the repetition number
+    /// is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The location. </returns>
+
 	public CE GetLocation(int rep)
 	{
 			CE ret = null;
@@ -461,9 +482,12 @@ public class SAC : AbstractSegment  {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Location (SAC-15).
-   ///</summary>
+  /// <summary> Returns all repetitions of Location (SAC-15). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetLocation() {
      CE[] ret = null;
     try {
@@ -482,9 +506,10 @@ public class SAC : AbstractSegment  {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Location (SAC-15).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Location (SAC-15). </summary>
+  ///
+  /// <value>   The location repetitions used. </value>
+
   public int LocationRepetitionsUsed
 {
 get{
@@ -500,9 +525,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Container Height(SAC-16).
-	///</summary>
+
+    /// <summary>   Returns Container Height(SAC-16). </summary>
+    ///
+    /// <value> The height of the container. </value>
+
 	public NM ContainerHeight
 	{
 		get{
@@ -523,9 +550,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Container Diameter(SAC-17).
-	///</summary>
+    /// <summary>   Returns Container Diameter(SAC-17). </summary>
+    ///
+    /// <value> The container diameter. </value>
+
 	public NM ContainerDiameter
 	{
 		get{
@@ -546,9 +574,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Barrier Delta(SAC-18).
-	///</summary>
+    /// <summary>   Returns Barrier Delta(SAC-18). </summary>
+    ///
+    /// <value> The barrier delta. </value>
+
 	public NM BarrierDelta
 	{
 		get{
@@ -569,9 +598,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Bottom Delta(SAC-19).
-	///</summary>
+    /// <summary>   Returns Bottom Delta(SAC-19). </summary>
+    ///
+    /// <value> The bottom delta. </value>
+
 	public NM BottomDelta
 	{
 		get{
@@ -592,9 +622,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Container Height/Diameter/Delta Units(SAC-20).
-	///</summary>
+    /// <summary>   Returns Container Height/Diameter/Delta Units(SAC-20). </summary>
+    ///
+    /// <value> The container height diameter delta units. </value>
+
 	public CE ContainerHeightDiameterDeltaUnits
 	{
 		get{
@@ -615,9 +646,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Container Volume(SAC-21).
-	///</summary>
+    /// <summary>   Returns Container Volume(SAC-21). </summary>
+    ///
+    /// <value> The container volume. </value>
+
 	public NM ContainerVolume
 	{
 		get{
@@ -638,9 +670,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Available Volume(SAC-22).
-	///</summary>
+    /// <summary>   Returns Available Volume(SAC-22). </summary>
+    ///
+    /// <value> The available volume. </value>
+
 	public NM AvailableVolume
 	{
 		get{
@@ -661,9 +694,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Initial Specimen Volume(SAC-23).
-	///</summary>
+    /// <summary>   Returns Initial Specimen Volume(SAC-23). </summary>
+    ///
+    /// <value> The initial specimen volume. </value>
+
 	public NM InitialSpecimenVolume
 	{
 		get{
@@ -684,9 +718,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Volume  Units(SAC-24).
-	///</summary>
+    /// <summary>   Returns Volume  Units(SAC-24). </summary>
+    ///
+    /// <value> The volume units. </value>
+
 	public CE VolumeUnits
 	{
 		get{
@@ -707,9 +742,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Separator Type(SAC-25).
-	///</summary>
+    /// <summary>   Returns Separator Type(SAC-25). </summary>
+    ///
+    /// <value> The type of the separator. </value>
+
 	public CE SeparatorType
 	{
 		get{
@@ -730,9 +766,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Cap Type(SAC-26).
-	///</summary>
+    /// <summary>   Returns Cap Type(SAC-26). </summary>
+    ///
+    /// <value> The type of the capability. </value>
+
 	public CE CapType
 	{
 		get{
@@ -753,11 +790,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Additive(SAC-27).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Additive(SAC-27). throws HL7Exception if the repetition number
+    /// is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The additive. </returns>
+
 	public CE GetAdditive(int rep)
 	{
 			CE ret = null;
@@ -772,9 +815,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Additive (SAC-27).
-   ///</summary>
+  /// <summary> Returns all repetitions of Additive (SAC-27). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetAdditive() {
      CE[] ret = null;
     try {
@@ -793,9 +839,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Additive (SAC-27).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Additive (SAC-27). </summary>
+  ///
+  /// <value>   The additive repetitions used. </value>
+
   public int AdditiveRepetitionsUsed
 {
 get{
@@ -811,9 +858,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Specimen Component(SAC-28).
-	///</summary>
+
+    /// <summary>   Returns Specimen Component(SAC-28). </summary>
+    ///
+    /// <value> The specimen component. </value>
+
 	public CE SpecimenComponent
 	{
 		get{
@@ -834,9 +883,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Dilution Factor(SAC-29).
-	///</summary>
+    /// <summary>   Returns Dilution Factor(SAC-29). </summary>
+    ///
+    /// <value> The dilution factor. </value>
+
 	public SN DilutionFactor
 	{
 		get{
@@ -857,9 +907,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Treatment(SAC-30).
-	///</summary>
+    /// <summary>   Returns Treatment(SAC-30). </summary>
+    ///
+    /// <value> The treatment. </value>
+
 	public CE Treatment
 	{
 		get{
@@ -880,9 +931,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Temperature(SAC-31).
-	///</summary>
+    /// <summary>   Returns Temperature(SAC-31). </summary>
+    ///
+    /// <value> The temperature. </value>
+
 	public SN Temperature
 	{
 		get{
@@ -903,9 +955,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Hemolysis Index(SAC-32).
-	///</summary>
+    /// <summary>   Returns Hemolysis Index(SAC-32). </summary>
+    ///
+    /// <value> The hemolysis index. </value>
+
 	public NM HemolysisIndex
 	{
 		get{
@@ -926,9 +979,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Hemolysis Index Units(SAC-33).
-	///</summary>
+    /// <summary>   Returns Hemolysis Index Units(SAC-33). </summary>
+    ///
+    /// <value> The hemolysis index units. </value>
+
 	public CE HemolysisIndexUnits
 	{
 		get{
@@ -949,9 +1003,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Lipemia Index(SAC-34).
-	///</summary>
+    /// <summary>   Returns Lipemia Index(SAC-34). </summary>
+    ///
+    /// <value> The lipemia index. </value>
+
 	public NM LipemiaIndex
 	{
 		get{
@@ -972,9 +1027,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Lipemia Index Units(SAC-35).
-	///</summary>
+    /// <summary>   Returns Lipemia Index Units(SAC-35). </summary>
+    ///
+    /// <value> The lipemia index units. </value>
+
 	public CE LipemiaIndexUnits
 	{
 		get{
@@ -995,9 +1051,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Icterus Index(SAC-36).
-	///</summary>
+    /// <summary>   Returns Icterus Index(SAC-36). </summary>
+    ///
+    /// <value> The icterus index. </value>
+
 	public NM IcterusIndex
 	{
 		get{
@@ -1018,9 +1075,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Icterus Index Units(SAC-37).
-	///</summary>
+    /// <summary>   Returns Icterus Index Units(SAC-37). </summary>
+    ///
+    /// <value> The icterus index units. </value>
+
 	public CE IcterusIndexUnits
 	{
 		get{
@@ -1041,9 +1099,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Fibrin Index(SAC-38).
-	///</summary>
+    /// <summary>   Returns Fibrin Index(SAC-38). </summary>
+    ///
+    /// <value> The fibrin index. </value>
+
 	public NM FibrinIndex
 	{
 		get{
@@ -1064,9 +1123,10 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns Fibrin Index Units(SAC-39).
-	///</summary>
+    /// <summary>   Returns Fibrin Index Units(SAC-39). </summary>
+    ///
+    /// <value> The fibrin index units. </value>
+
 	public CE FibrinIndexUnits
 	{
 		get{
@@ -1087,11 +1147,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of System Induced Contaminants(SAC-40).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of System Induced Contaminants(SAC-40). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The system induced contaminants. </returns>
+
 	public CE GetSystemInducedContaminants(int rep)
 	{
 			CE ret = null;
@@ -1106,9 +1172,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of System Induced Contaminants (SAC-40).
-   ///</summary>
+  /// <summary> Returns all repetitions of System Induced Contaminants (SAC-40). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetSystemInducedContaminants() {
      CE[] ret = null;
     try {
@@ -1127,9 +1196,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of System Induced Contaminants (SAC-40).
-   ///</summary>
+  /// <summary> Returns the total repetitions of System Induced Contaminants (SAC-40). </summary>
+  ///
+  /// <value>   The system induced contaminants repetitions used. </value>
+
   public int SystemInducedContaminantsRepetitionsUsed
 {
 get{
@@ -1145,11 +1215,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Drug Interference(SAC-41).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Drug Interference(SAC-41). throws HL7Exception if the
+    /// repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The drug interference. </returns>
+
 	public CE GetDrugInterference(int rep)
 	{
 			CE ret = null;
@@ -1164,9 +1241,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Drug Interference (SAC-41).
-   ///</summary>
+  /// <summary> Returns all repetitions of Drug Interference (SAC-41). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetDrugInterference() {
      CE[] ret = null;
     try {
@@ -1185,9 +1265,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Drug Interference (SAC-41).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Drug Interference (SAC-41). </summary>
+  ///
+  /// <value>   The drug interference repetitions used. </value>
+
   public int DrugInterferenceRepetitionsUsed
 {
 get{
@@ -1203,9 +1284,11 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns Artificial Blood(SAC-42).
-	///</summary>
+
+    /// <summary>   Returns Artificial Blood(SAC-42). </summary>
+    ///
+    /// <value> The artificial blood. </value>
+
 	public CE ArtificialBlood
 	{
 		get{
@@ -1226,11 +1309,17 @@ catch (HL7Exception he) {
 	}
   }
 
-	///<summary>
-	/// Returns a single repetition of Special Handling Considerations(SAC-43).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+    /// <summary>
+    /// Returns a single repetition of Special Handling Considerations(SAC-43). throws HL7Exception
+    /// if the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The special handling considerations. </returns>
+
 	public CE GetSpecialHandlingConsiderations(int rep)
 	{
 			CE ret = null;
@@ -1245,9 +1334,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Special Handling Considerations (SAC-43).
-   ///</summary>
+  /// <summary> Returns all repetitions of Special Handling Considerations (SAC-43). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetSpecialHandlingConsiderations() {
      CE[] ret = null;
     try {
@@ -1266,9 +1358,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Special Handling Considerations (SAC-43).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Special Handling Considerations (SAC-43). </summary>
+  ///
+  /// <value>   The special handling considerations repetitions used. </value>
+
   public int SpecialHandlingConsiderationsRepetitionsUsed
 {
 get{
@@ -1284,11 +1377,18 @@ catch (HL7Exception he) {
 }
 }
 }
-	///<summary>
-	/// Returns a single repetition of Other Environmental Factors(SAC-44).
-	/// throws HL7Exception if the repetition number is invalid.
-	/// <param name="rep">The repetition number (this is a repeating field)</param>
-	///</summary>
+
+    /// <summary>
+    /// Returns a single repetition of Other Environmental Factors(SAC-44). throws HL7Exception if
+    /// the repetition number is invalid.
+    /// </summary>
+    ///
+    /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+    ///
+    /// <param name="rep">  The repetition number (this is a repeating field) </param>
+    ///
+    /// <returns>   The other environmental factors. </returns>
+
 	public CE GetOtherEnvironmentalFactors(int rep)
 	{
 			CE ret = null;
@@ -1303,9 +1403,12 @@ catch (HL7Exception he) {
 			return ret;
   }
 
-  ///<summary>
-  /// Returns all repetitions of Other Environmental Factors (SAC-44).
-   ///</summary>
+  /// <summary> Returns all repetitions of Other Environmental Factors (SAC-44). </summary>
+  ///
+  /// <exception cref="Exception">  Thrown when an exception error condition occurs. </exception>
+  ///
+  /// <returns> An array of ce. </returns>
+
   public CE[] GetOtherEnvironmentalFactors() {
      CE[] ret = null;
     try {
@@ -1324,9 +1427,10 @@ catch (HL7Exception he) {
  return ret;
 }
 
-  ///<summary>
-  /// Returns the total repetitions of Other Environmental Factors (SAC-44).
-   ///</summary>
+  /// <summary> Returns the total repetitions of Other Environmental Factors (SAC-44). </summary>
+  ///
+  /// <value>   The other environmental factors repetitions used. </value>
+
   public int OtherEnvironmentalFactorsRepetitionsUsed
 {
 get{

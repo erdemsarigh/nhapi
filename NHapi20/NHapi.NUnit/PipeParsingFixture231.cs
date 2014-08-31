@@ -12,9 +12,11 @@ using NUnit.Framework;
 namespace NHapi.NUnit
 {
 
+    /// <summary>   A pipe parsing fixture 231. </summary>
     [TestFixture]
     public class PipeParsingFixture231
     {
+        /// <summary>   Parse qryr 02. </summary>
         [Test]
         public void ParseQRYR02()
         {
@@ -31,6 +33,7 @@ QRD|20060228155525|R|I||||10^RD&Records&0126|38923^^^^^^^^&TCH|||";
             Assert.AreEqual("38923", qryR02.QRD.GetWhoSubjectFilter(0).IDNumber.Value);
         }
 
+        /// <summary>   Parse or mo 01 PID segment. </summary>
         [Test]
         public void ParseORMo01PIDSegment()
         {
@@ -56,6 +59,7 @@ OBR||01444^00001||CAI^CALCIUM IONIZED|||200606191614||||L|||||045716^STEELE, AND
             Assert.AreEqual("ABAZA, MONA M", ormo01.PATIENT.PATIENT_VISIT.PV1.GetAttendingDoctor(0).FamilyLastName.FamilyName.Value);
         }
 
+        /// <summary>   Parse or mo 01 to XML. </summary>
         [Test]
         public void ParseORMo01ToXml()
         {
@@ -83,6 +87,7 @@ OBR||01444^00001||CAI^CALCIUM IONIZED|||200606191614||||L|||||045716^STEELE, AND
             Assert.IsNotNull(ormDoc);
         }
 
+        /// <summary>   Parse or ro 02 to XML. </summary>
         [Test]
         public void ParseORRo02ToXml()
         {
@@ -111,6 +116,7 @@ OBR||00003^00001|F1492|RESPC^CULTURE RESPIRATORY ROUTINE|||||||L|||||||||F1492||
         }
 
 
+        /// <summary>   Parse or ur 01 long to XML. </summary>
         [Test]
         public void ParseORUr01LongToXml()
         {
@@ -156,6 +162,7 @@ OBX|10|TX|MPV|1|(Ref Range: 6 fL)|fL|6.2-10.0||||Z
             Assert.IsNotNull(orrDoc);
         }
 
+        /// <summary>   Parse orfr 04. </summary>
         [Test]
         public void ParseORFR04()
         {
@@ -177,6 +184,7 @@ OBX|1|NM|50026400^HEMOGLOBIN A1C^^50026400^HEMOGLOBIN A1C||12|^% TOTAL HGB|4.0 -
 
         }
 
+        /// <summary>   Parse orfr 04 to XML. </summary>
         [Test]
         public void ParseORFR04ToXML()
         {
@@ -204,9 +212,7 @@ OBX|1|NM|50026400^HEMOGLOBIN A1C^^50026400^HEMOGLOBIN A1C||12|^% TOTAL HGB|4.0 -
             Assert.IsFalse(string.Empty.Equals(recoveredMessage));
         }
 
-        /// <summary>
-        /// translate a more complex ORM Message
-        /// </summary>
+        /// <summary>   translate a more complex ORM Message. </summary>
         [Test]
         public void ParseORMwithOBXToXML()
         {
@@ -235,9 +241,7 @@ OBX||NM|||999||||||";
             Assert.IsFalse(string.Empty.Equals(recoveredMessage));
         }
 
-        /// <summary>
-        /// translate a more complex ORM Message
-        /// </summary>
+        /// <summary>   translate a more complex ORM Message. </summary>
         [Test]
         public void ParseORMwithCompleteOBXToXML()
         {
@@ -270,6 +274,7 @@ OBX|4|TX|CULT||Critical result(s) called to and verification ";
             Assert.IsFalse(string.Empty.Equals(recoveredMessage));
         }
 
+        /// <summary>   Parse XML to hl 7. </summary>
         [Test]
         public void ParseXMLToHL7()
         {
@@ -291,6 +296,7 @@ OBX|4|TX|CULT||Critical result(s) called to and verification ";
         }
 
 
+        /// <summary>   Parse orfr 04 to XML no OCR. </summary>
         [Test]
         public void ParseORFR04ToXmlNoOCR()
         {
@@ -318,6 +324,7 @@ OBX|1|NM|50026400^HEMOGLOBIN A1C^^50026400^HEMOGLOBIN A1C||12|^% TOTAL HGB|4.0 -
             Assert.IsFalse(recoveredMessage.IndexOf("ORC") > -1, "Returned Message added ORC segment.");
         }
 
+        /// <summary>   Parse orfr 04 to XML no nte. </summary>
         [Test]
         public void ParseORFR04ToXmlNoNTE()
         {
@@ -345,6 +352,7 @@ OBX|1|NM|50026400^HEMOGLOBIN A1C^^50026400^HEMOGLOBIN A1C||12|^% TOTAL HGB|4.0 -
             Assert.IsFalse(recoveredMessage.IndexOf("NTE") > -1, "Returned Message added ORC segment.");
         }
 
+        /// <summary>   Tests parse orfr 04 from dh. </summary>
         [Test]
         public void ParseORFR04FromDHTest()
         {
@@ -440,6 +448,7 @@ OBX|10|TX|MPV|1|(Ref Range: 6 fL)|fL|6.2-10.0||||Z";
             Assert.IsFalse(recoveredMessage.IndexOf("NTE") > -1, "Returned Message added ORC segment.");
         }
 
+        /// <summary>   Tests dh patient 1111111. </summary>
         public void TestDHPatient1111111()
         {
             NHapi.Base.Parser.PipeParser Parser = new NHapi.Base.Parser.PipeParser();
@@ -459,6 +468,9 @@ OBX|10|TX|MPV|1|(Ref Range: 6 fL)|fL|6.2-10.0||||Z";
             Assert.IsFalse(recoveredMessage.IndexOf("NTE") > -1, "Returned Message added ORC segment.");
         }
 
+        /// <summary>   Gets qryr 02 XML. </summary>
+        ///
+        /// <returns>   The qryr 02 XML. </returns>
 
         private static string GetQRYR02XML()
         {
@@ -531,6 +543,7 @@ OBX|10|TX|MPV|1|(Ref Range: 6 fL)|fL|6.2-10.0||||Z";
 ";
         }
 
+        /// <summary>   Tests obx data types. </summary>
         [Test]
         public void TestOBXDataTypes()
         {
@@ -568,6 +581,10 @@ QAK||OK||1|1|0
             string recoveredMessage = xmlParser.Encode(orfR04);
 
         }
+
+        /// <summary>   Gets dh patient 1111111. </summary>
+        ///
+        /// <returns>   The dh patient 1111111. </returns>
 
         private static string GetDHPatient1111111()
         {
